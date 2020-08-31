@@ -40,7 +40,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \wd}.
- * 
+ *
  * <p>The Primitive {@code \wd}</p>
  * <p>
  * The primitive {@code \wd} refers to the width of a box register. It can be
@@ -55,112 +55,117 @@ import org.extex.typesetter.exception.TypesetterException;
  *      &rarr; {@code \wd}
  *        &lang;box register name&rang; &lang;equals&rang; &lang;dimen&rang;
  * </pre>
- * 
+ *
  * <p>
  * Examples:
  * </p>
  *
  * <pre class="TeXSample">
  *    \wd42  </pre>
- * 
+ *
  * <pre>
  *  \advance\dimen12 \wd0
  *  \wd12=123pt
  * </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Wd extends AbstractAssignment
-        implements
-            ExpandableCode,
-            Theable,
-            CountConvertible,
-            DimenConvertible {
+    implements
+    ExpandableCode,
+    Theable,
+    CountConvertible,
+    DimenConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Wd(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Wd( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = Setbox.getKey( context, source, typesetter, getToken() );
+    source.getOptionalEquals( context );
+    Dimen d = source.parseDimen( context, source, typesetter );
+
+    Box box = context.getBox( key );
+    if( box != null ) {
+      box.setWidth( d );
     }
+    // TODO gene: treatment of \global correct?
+    prefix.clearGlobal();
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String key = Setbox.getKey(context, source, typesetter, getToken());
-        source.getOptionalEquals(context);
-        Dimen d = source.parseDimen(context, source, typesetter);
+    return convertDimen( context, source, typesetter );
+  }
 
-        Box box = context.getBox(key);
-        if (box != null) {
-            box.setWidth(d);
-        }
-        // TODO gene: treatment of \global correct?
-        prefix.clearGlobal();
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertDimen( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Box b = context.getBox(
+        Setbox.getKey( context, source, typesetter, getToken() ) );
+    return (b == null ? 0 : b.getWidth().getValue());
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    source.push( the( context, source, typesetter ) );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
+
+    Box box = context.getBox(
+        Setbox.getKey( context, source, typesetter, getToken() ) );
+    FixedDimen d = (box == null ? Dimen.ZERO_PT : box.getWidth());
+    try {
+      return context.getTokenFactory().toTokens( d.toString() );
+    } catch( GeneralException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        return convertDimen(context, source, typesetter);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Box b = context.getBox(
-            Setbox.getKey(context, source, typesetter, getToken()));
-        return (b == null ? 0 : b.getWidth().getValue());
-    }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        source.push(the(context, source, typesetter));
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        Box box = context.getBox(
-            Setbox.getKey(context, source, typesetter, getToken()));
-        FixedDimen d = (box == null ? Dimen.ZERO_PT : box.getWidth());
-        try {
-            return context.getTokenFactory().toTokens(d.toString());
-        } catch (GeneralException e) {
-            throw new NoHelpException(e);
-        }
-    }
+  }
 
 }

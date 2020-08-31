@@ -34,7 +34,7 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
 
 /**
  * This class provides an implementation for the primitive {@code \ocp}.
- * 
+ *
  * <p>The Primitive {@code \ocp}</p>
  * <p>
  * The primitive {@code \ocp} can be used to define a control sequence which
@@ -45,11 +45,11 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
  * {@code \globaldefs} and {@code \afterassignment} are taken into
  * account.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;ocp&rang;
  *      &rarr; &lang;prefix&rang; {@code \ocp} {@linkplain
@@ -57,69 +57,67 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
  *       &lang;control sequence&rang;}  {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} &lang;resource name&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  * \ocp\abc=def </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OcpPrimitive extends AbstractAssignment implements ResourceAware {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code finder} contains the resource finder.
-     */
-    private transient ResourceFinder finder;
+  /**
+   * The field {@code finder} contains the resource finder.
+   */
+  private transient ResourceFinder finder;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public OcpPrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public OcpPrimitive( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws TypesetterException, HelpingException {
+
+    CodeToken cs = source.getControlSequence( context, typesetter );
+    source.getOptionalEquals( context );
+    String resource = OcpUtil.scanOcpFileName( context, source, getToken() );
+    Ocp ocp = Ocp.load( resource, finder );
+    if( ocp == null ) {
+      throw new HelpingException( getLocalizer(), "message", resource );
     }
+    context.setCode( cs, ocp, prefix.clearGlobal() );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+  /**
+   * Setter for the resource finder.
+   *
+   * @param resourceFinder the resource finder
+   * @see org.extex.resource.ResourceAware#setResourceFinder(
+   *org.extex.resource.ResourceFinder)
+   */
+  public void setResourceFinder( ResourceFinder resourceFinder ) {
 
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        source.getOptionalEquals(context);
-        String resource = OcpUtil.scanOcpFileName(context, source, getToken());
-        Ocp ocp = Ocp.load(resource, finder);
-        if (ocp == null) {
-            throw new HelpingException(getLocalizer(), "message", resource);
-        }
-        context.setCode(cs, ocp, prefix.clearGlobal());
-    }
-
-    /**
-     * Setter for the resource finder.
-     * 
-     * @param resourceFinder the resource finder
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
-     */
-    public void setResourceFinder(ResourceFinder resourceFinder) {
-
-        this.finder = resourceFinder;
-    }
+    this.finder = resourceFinder;
+  }
 
 }

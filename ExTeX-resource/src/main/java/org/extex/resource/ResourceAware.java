@@ -23,14 +23,14 @@ package org.extex.resource;
  * This interface descries the ability to receive a RsourceFinder.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ResourceAware {
 
-    /**
-     * Setter for the resource finder.
-     *
-     * @param finder the resource finder
-     */
-    void setResourceFinder(ResourceFinder finder);
+  /**
+   * Setter for the resource finder.
+   *
+   * @param finder the resource finder
+   */
+  void setResourceFinder( ResourceFinder finder );
 
 }

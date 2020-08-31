@@ -35,111 +35,107 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the count valued primitives like
  * {@code \day}. It sets the named count register to the value given, and
  * as a side effect all prefixes are zeroed.
- * 
+ *
  * <p>
  * Example
  * </p>
- * 
+ *
  * <pre>
  *  \day=345
  * </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class IntegerParameter extends CountPrimitive
-        implements
-            InitializableCode,
-            Configurable {
+    implements
+    InitializableCode,
+    Configurable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code key} contains the key.
-     */
-    private String key;
+  /**
+   * The field {@code key} contains the key.
+   */
+  private String key;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public IntegerParameter(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public IntegerParameter( CodeToken token ) {
 
-        super(token);
-        this.key = token.getName();
+    super( token );
+    this.key = token.getName();
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   * @param key   the key
+   */
+  public IntegerParameter( CodeToken token, String key ) {
+
+    super( token );
+    this.key = key;
+  }
+
+  /**
+   * Configure an object according to a given Configuration.
+   *
+   * @param config the configuration object to consider
+   * @throws ConfigurationException in case that something went wrong
+   * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
+   */
+  @Override
+  public void configure( Configuration config ) throws ConfigurationException {
+
+    String k = config.getAttribute( "key" );
+    if( k != null ) {
+      key = k;
     }
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     * @param key the key
-     */
-    public IntegerParameter(CodeToken token, String key) {
+  /**
+   * Return the key (the name of the primitive) for the numbered count
+   * register.
+   *
+   * @param context    the interpreter context to use
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the key for the current register
+   * @see org.extex.unit.tex.register.count.AbstractCount#getKey(org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter ) {
 
-        super(token);
-        this.key = key;
+    return key;
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void init( Context context, TokenSource source, Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
+
+    if( source != null ) {
+      Token t = source.getToken( context );
+      if( t != null ) {
+        source.push( t );
+        long value = source.parseInteger( context, source, typesetter );
+        context.setCount( getKey( context, source, typesetter ), value,
+                          true );
+      }
     }
-
-    /**
-     * Configure an object according to a given Configuration.
-     * 
-     * @param config the configuration object to consider
-     * 
-     * @throws ConfigurationException in case that something went wrong
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
-    public void configure(Configuration config) throws ConfigurationException {
-
-        String k = config.getAttribute("key");
-        if (k != null) {
-            key = k;
-        }
-    }
-
-    /**
-     * Return the key (the name of the primitive) for the numbered count
-     * register.
-     * 
-     * @param context the interpreter context to use
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the key for the current register
-     * 
-     * @see org.extex.unit.tex.register.count.AbstractCount#getKey(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) {
-
-        return key;
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void init(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        if (source != null) {
-            Token t = source.getToken(context);
-            if (t != null) {
-                source.push(t);
-                long value = source.parseInteger(context, source, typesetter);
-                context.setCount(getKey(context, source, typesetter), value,
-                    true);
-            }
-        }
-    }
+  }
 
 }

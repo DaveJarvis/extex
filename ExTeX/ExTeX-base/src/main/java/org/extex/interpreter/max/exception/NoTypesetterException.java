@@ -26,40 +26,40 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@code null} or the empty string.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoTypesetterException extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code message} contains the message of this exception.
-     */
-    private final String message;
+  /**
+   * The field {@code message} contains the message of this exception.
+   */
+  private final String message;
 
-    /**
-     * Create a new object.
-     *
-     * @param aMessage the message string
-     */
-    public NoTypesetterException(String aMessage) {
+  /**
+   * Create a new object.
+   *
+   * @param aMessage the message string
+   */
+  public NoTypesetterException( String aMessage ) {
 
-        super(aMessage, (String) null);
-        this.message = aMessage;
-    }
+    super( aMessage, (String) null );
+    this.message = aMessage;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        return getLocalizer().format("ConfigurationNoTypesetterException.Text",
-                message);
-    }
+    return getLocalizer().format( "ConfigurationNoTypesetterException.Text",
+                                  message );
+  }
 
 }

@@ -21,32 +21,32 @@ package org.extex.exindex.core.type.page;
 
 /**
  * This interface describes a page reference.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface PageReference {
 
-    /**
-     * Getter for the encapsulator.
-     * 
-     * @return the encapsulator
-     */
-    String getEncap();
+  /**
+   * Getter for the encapsulator.
+   *
+   * @return the encapsulator
+   */
+  String getEncap();
 
-    /**
-     * Getter for the ordinal number. The ordinal number is used to map an
-     * arbitrary page reference to the natural numbers. This is needed for
-     * determining the ordering and length of ranges. If no such mapping is
-     * desirable then a negative number is used as indicator.
-     * 
-     * @return the ordinal number or a negative number
-     */
-    int getOrd();
+  /**
+   * Getter for the ordinal number. The ordinal number is used to map an
+   * arbitrary page reference to the natural numbers. This is needed for
+   * determining the ordering and length of ranges. If no such mapping is
+   * desirable then a negative number is used as indicator.
+   *
+   * @return the ordinal number or a negative number
+   */
+  int getOrd();
 
-    /**
-     * Getter for page.
-     * 
-     * @return the page
-     */
-    String getPage();
+  /**
+   * Getter for page.
+   *
+   * @return the page
+   */
+  String getPage();
 }

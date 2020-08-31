@@ -19,60 +19,60 @@
 
 package org.extex.exindex.core.type.alphabet;
 
-import java.io.PrintStream;
-
 import org.extex.exindex.core.type.alphabet.util.RomanNumber;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.page.UpperRomanPage;
 import org.extex.exindex.lisp.type.value.LValue;
 
+import java.io.PrintStream;
+
 /**
  * This location class represents a parser for roman numbers made of uppercase
  * letters.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RomanNumeralsUppercase implements LValue, Alphabet, LocationClass {
 
 
-    public RomanNumeralsUppercase() {
+  public RomanNumeralsUppercase() {
 
+  }
+
+  /**
+   * java.lang.String)
+   */
+  public PageReference match( String encap, String s ) {
+
+    if( RomanNumber.isUpperRomanNumber( s ) ) {
+      return new UpperRomanPage( encap, s );
     }
+    return null;
+  }
 
-    /**
-*      java.lang.String)
-     */
-    public PageReference match(String encap, String s) {
+  public boolean match( StringBuilder s ) {
 
-        if (RomanNumber.isUpperRomanNumber(s)) {
-            return new UpperRomanPage(encap, s);
-        }
-        return null;
+    if( s.length() == 0 ) {
+      return false;
     }
-
-public boolean match(StringBuilder s) {
-
-        if (s.length() == 0) {
-            return false;
-        }
-        char c = s.charAt(0);
-        if (c != 'I' && c != 'V' && c != 'X' && c != 'C' && c != 'M') {
-            return false;
-        }
-        s.deleteCharAt(0);
-        while (s.length() > 0) {
-            c = s.charAt(0);
-            if (c != 'I' && c != 'V' && c != 'X' && c != 'C' && c != 'M') {
-                return true;
-            }
-            s.deleteCharAt(0);
-        }
+    char c = s.charAt( 0 );
+    if( c != 'I' && c != 'V' && c != 'X' && c != 'C' && c != 'M' ) {
+      return false;
+    }
+    s.deleteCharAt( 0 );
+    while( s.length() > 0 ) {
+      c = s.charAt( 0 );
+      if( c != 'I' && c != 'V' && c != 'X' && c != 'C' && c != 'M' ) {
         return true;
+      }
+      s.deleteCharAt( 0 );
     }
+    return true;
+  }
 
-public void print(PrintStream stream) {
+  public void print( PrintStream stream ) {
 
-        stream.print("#roman-numeral-uppercase");
-    }
+    stream.print( "#roman-numeral-uppercase" );
+  }
 
 }

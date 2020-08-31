@@ -29,7 +29,8 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code missing$}
  * <p>
  * This function determines whether a field is missing. It takes one argument
@@ -44,23 +45,23 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *     crossref missing$
  *     { "author and editor" editor either.or.check }
  *     'skip$
  *   if$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Pops the top literal and pushes the integer 1 if it's a missing field, 0
  * otherwise.</dd>
  * </dl>
- * 
- * 
+ *
+ *
  * <p>
  * Missing items are represented as
  * {@link org.extex.exbib.core.bst.token.impl.TString}s with the value
@@ -69,41 +70,41 @@ import org.extex.exbib.core.io.Locator;
  * can be detected only by the special method
  * {@link org.extex.exbib.core.bst.token.impl.TString#isNull()}.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Missing extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public Missing() {
+  /**
+   * Create a new object.
+   */
+  public Missing() {
 
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Missing( String name ) {
+
+    super( name );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  @Override
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    if( entry == null ) {
+      throw new ExBibMissingEntryException( null, locator );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Missing(String name) {
-
-        super(name);
-    }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    @Override
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        if (entry == null) {
-            throw new ExBibMissingEntryException(null, locator);
-        }
-
-        boolean missing = processor.popString(locator).isNull();
-        processor.push(missing ? TokenFactory.T_ONE : TokenFactory.T_ZERO);
-    }
+    boolean missing = processor.popString( locator ).isNull();
+    processor.push( missing ? TokenFactory.T_ONE : TokenFactory.T_ZERO );
+  }
 
 }

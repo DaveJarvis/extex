@@ -19,43 +19,43 @@
 
 package org.extex.unit.tex.register.count;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.extex.test.count.AbstractCountRegisterTester;
 import org.junit.runner.JUnitCore;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * This is a test suite for the primitive {@code \year}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class YearTest extends AbstractCountRegisterTester {
 
-    /**
-     * Provide the current year as default value for the comparison.
-     * 
-     * @return the current year as string
-     */
-    private static String getDefaultValue() {
+  /**
+   * Provide the current year as default value for the comparison.
+   *
+   * @return the current year as string
+   */
+  private static String getDefaultValue() {
 
-        return new SimpleDateFormat("yyyy").format(new Date());
-    }
+    return new SimpleDateFormat( "yyyy" ).format( new Date() );
+  }
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(YearTest.class);
-    }
+    (new JUnitCore()).run( YearTest.class );
+  }
 
 
-    public YearTest() {
+  public YearTest() {
 
-        super("year", "", getDefaultValue());
-    }
+    super( "year", "", getDefaultValue() );
+  }
 
 }

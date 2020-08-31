@@ -23,15 +23,15 @@ package org.extex.font.format.xtf.tables.cff;
  * Finishing a path.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public abstract class T2FinishingPath extends T2Operator {
 
-    /**
-     * Create a new object
-     */
-    protected T2FinishingPath() {
+  /**
+   * Create a new object
+   */
+  protected T2FinishingPath() {
 
-    }
+  }
 
 }

@@ -21,23 +21,22 @@ package org.extex.exindex.core.type.page;
 
 /**
  * This page reference consists of digits only.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NumericPage extends AbstractPage {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param enc the encapsulator
-     * @param page the page number
-     * 
-     * @throws NumberFormatException in case that the sting given does not
-     *         contain a valid number
-     */
-    public NumericPage(String enc, String page) throws NumberFormatException {
+  /**
+   * Creates a new object.
+   *
+   * @param enc  the encapsulator
+   * @param page the page number
+   * @throws NumberFormatException in case that the sting given does not
+   *                               contain a valid number
+   */
+  public NumericPage( String enc, String page ) throws NumberFormatException {
 
-        super(enc, page, Integer.parseInt(page));
-    }
+    super( enc, page, Integer.parseInt( page ) );
+  }
 
 }

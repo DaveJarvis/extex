@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \widowpenalties}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class WidowpenaltiesTest extends AbstractCountArrayTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(WidowpenaltiesTest.class);
-    }
+    (new JUnitCore()).run( WidowpenaltiesTest.class );
+  }
 
 
-    public WidowpenaltiesTest() {
+  public WidowpenaltiesTest() {
 
-        super("widowpenalties", "255", "0");
-        setConfig("etex-test");
-    }
+    super( "widowpenalties", "255", "0" );
+    setConfig( "etex-test" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

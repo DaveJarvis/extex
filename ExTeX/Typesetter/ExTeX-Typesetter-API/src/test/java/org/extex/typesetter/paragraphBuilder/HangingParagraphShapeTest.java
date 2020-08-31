@@ -19,180 +19,180 @@
 
 package org.extex.typesetter.paragraphBuilder;
 
-import static org.junit.Assert.assertEquals;
-
 import org.extex.core.dimen.Dimen;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Test cases for the class HangingParagraphShape.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HangingParagraphShapeTest {
 
-    /**
-     * The constant {@code INDENT} contains the amount of indentation to use.
-     */
-    private static final int INDENT = 1024;
+  /**
+   * The constant {@code INDENT} contains the amount of indentation to use.
+   */
+  private static final int INDENT = 1024;
 
-    /**
-     * The constant {@code RIGHT} contains the right margin.
-     */
-    private static final int RIGHT = 4096;
+  /**
+   * The constant {@code RIGHT} contains the right margin.
+   */
+  private static final int RIGHT = 4096;
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(HangingParagraphShapeTest.class);
-    }
+    (new JUnitCore()).run( HangingParagraphShapeTest.class );
+  }
 
-    /**
-     * Test case checking that parshape of length 0 repeats 0 as left and the
-     * right margin.
-     */
-    @Test
-    public void test0() {
+  /**
+   * Test case checking that parshape of length 0 repeats 0 as left and the
+   * right margin.
+   */
+  @Test
+  public void test0() {
 
-        HangingParagraphShape shape =
-                new HangingParagraphShape(0, new Dimen(INDENT),
-                    new Dimen(RIGHT));
+    HangingParagraphShape shape =
+        new HangingParagraphShape( 0, new Dimen( INDENT ),
+                                   new Dimen( RIGHT ) );
 
-        assertEquals(0, shape.getIndent(0).getValue());
-        assertEquals(0, shape.getIndent(1).getValue());
-        assertEquals(0, shape.getIndent(2).getValue());
-        assertEquals(0, shape.getIndent(3).getValue());
-        assertEquals(RIGHT, shape.getLength(0).getValue());
-        assertEquals(RIGHT, shape.getLength(1).getValue());
-        assertEquals(RIGHT, shape.getLength(2).getValue());
-        assertEquals(RIGHT, shape.getLength(3).getValue());
-    }
+    assertEquals( 0, shape.getIndent( 0 ).getValue() );
+    assertEquals( 0, shape.getIndent( 1 ).getValue() );
+    assertEquals( 0, shape.getIndent( 2 ).getValue() );
+    assertEquals( 0, shape.getIndent( 3 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 0 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 1 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 2 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 3 ).getValue() );
+  }
 
-    /**
-     * Test case checking that parshape of length 1 repeats 0 as left and the
-     * right margin.
-     */
-    @Test
-    public void test1() {
+  /**
+   * Test case checking that parshape of length 1 repeats 0 as left and the
+   * right margin.
+   */
+  @Test
+  public void test1() {
 
-        HangingParagraphShape shape =
-                new HangingParagraphShape(1, new Dimen(INDENT),
-                    new Dimen(RIGHT));
+    HangingParagraphShape shape =
+        new HangingParagraphShape( 1, new Dimen( INDENT ),
+                                   new Dimen( RIGHT ) );
 
-        assertEquals(0, shape.getIndent(0).getValue());
-        assertEquals(INDENT, shape.getIndent(1).getValue());
-        assertEquals(INDENT, shape.getIndent(2).getValue());
-        assertEquals(INDENT, shape.getIndent(3).getValue());
-        assertEquals(RIGHT, shape.getLength(0).getValue());
-        assertEquals(RIGHT, shape.getLength(1).getValue());
-        assertEquals(RIGHT, shape.getLength(2).getValue());
-        assertEquals(RIGHT, shape.getLength(3).getValue());
-    }
+    assertEquals( 0, shape.getIndent( 0 ).getValue() );
+    assertEquals( INDENT, shape.getIndent( 1 ).getValue() );
+    assertEquals( INDENT, shape.getIndent( 2 ).getValue() );
+    assertEquals( INDENT, shape.getIndent( 3 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 0 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 1 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 2 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 3 ).getValue() );
+  }
 
-    /**
-     * Test case checking that parshape of length 2 repeats 0 as left and the
-     * right margin.
-     */
-    @Test
-    public void test2() {
+  /**
+   * Test case checking that parshape of length 2 repeats 0 as left and the
+   * right margin.
+   */
+  @Test
+  public void test2() {
 
-        HangingParagraphShape shape =
-                new HangingParagraphShape(2, new Dimen(INDENT),
-                    new Dimen(RIGHT));
+    HangingParagraphShape shape =
+        new HangingParagraphShape( 2, new Dimen( INDENT ),
+                                   new Dimen( RIGHT ) );
 
-        assertEquals(0, shape.getIndent(0).getValue());
-        assertEquals(0, shape.getIndent(1).getValue());
-        assertEquals(INDENT, shape.getIndent(2).getValue());
-        assertEquals(INDENT, shape.getIndent(3).getValue());
-        assertEquals(RIGHT, shape.getLength(0).getValue());
-        assertEquals(RIGHT, shape.getLength(1).getValue());
-        assertEquals(RIGHT, shape.getLength(2).getValue());
-        assertEquals(RIGHT, shape.getLength(3).getValue());
-    }
+    assertEquals( 0, shape.getIndent( 0 ).getValue() );
+    assertEquals( 0, shape.getIndent( 1 ).getValue() );
+    assertEquals( INDENT, shape.getIndent( 2 ).getValue() );
+    assertEquals( INDENT, shape.getIndent( 3 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 0 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 1 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 2 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 3 ).getValue() );
+  }
 
-    /**
-     * ...
-     */
-    @Test
-    public void test3() {
+  /**
+   * ...
+   */
+  @Test
+  public void test3() {
 
-        HangingParagraphShape shape =
-                new HangingParagraphShape(3, new Dimen(INDENT),
-                    new Dimen(RIGHT));
+    HangingParagraphShape shape =
+        new HangingParagraphShape( 3, new Dimen( INDENT ),
+                                   new Dimen( RIGHT ) );
 
-        assertEquals(0, shape.getIndent(0).getValue());
-        assertEquals(0, shape.getIndent(1).getValue());
-        assertEquals(0, shape.getIndent(2).getValue());
-        assertEquals(INDENT, shape.getIndent(3).getValue());
-        assertEquals(RIGHT, shape.getLength(0).getValue());
-        assertEquals(RIGHT, shape.getLength(1).getValue());
-        assertEquals(RIGHT, shape.getLength(2).getValue());
-        assertEquals(RIGHT, shape.getLength(3).getValue());
-    }
+    assertEquals( 0, shape.getIndent( 0 ).getValue() );
+    assertEquals( 0, shape.getIndent( 1 ).getValue() );
+    assertEquals( 0, shape.getIndent( 2 ).getValue() );
+    assertEquals( INDENT, shape.getIndent( 3 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 0 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 1 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 2 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 3 ).getValue() );
+  }
 
-    /**
-     * ...
-     */
-    @Test
-    public void testM1() {
+  /**
+   * ...
+   */
+  @Test
+  public void testM1() {
 
-        HangingParagraphShape shape =
-                new HangingParagraphShape(-1, new Dimen(INDENT), new Dimen(
-                    RIGHT));
+    HangingParagraphShape shape =
+        new HangingParagraphShape( -1, new Dimen( INDENT ), new Dimen(
+            RIGHT ) );
 
-        assertEquals(INDENT, shape.getIndent(0).getValue());
-        assertEquals(0, shape.getIndent(1).getValue());
-        assertEquals(0, shape.getIndent(2).getValue());
-        assertEquals(0, shape.getIndent(3).getValue());
-        assertEquals(RIGHT, shape.getLength(0).getValue());
-        assertEquals(RIGHT, shape.getLength(1).getValue());
-        assertEquals(RIGHT, shape.getLength(2).getValue());
-        assertEquals(RIGHT, shape.getLength(3).getValue());
-    }
+    assertEquals( INDENT, shape.getIndent( 0 ).getValue() );
+    assertEquals( 0, shape.getIndent( 1 ).getValue() );
+    assertEquals( 0, shape.getIndent( 2 ).getValue() );
+    assertEquals( 0, shape.getIndent( 3 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 0 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 1 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 2 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 3 ).getValue() );
+  }
 
-    /**
-     * ...
-     */
-    @Test
-    public void testM2() {
+  /**
+   * ...
+   */
+  @Test
+  public void testM2() {
 
-        HangingParagraphShape shape =
-                new HangingParagraphShape(-2, new Dimen(INDENT), new Dimen(
-                    RIGHT));
+    HangingParagraphShape shape =
+        new HangingParagraphShape( -2, new Dimen( INDENT ), new Dimen(
+            RIGHT ) );
 
-        assertEquals(INDENT, shape.getIndent(0).getValue());
-        assertEquals(INDENT, shape.getIndent(1).getValue());
-        assertEquals(0, shape.getIndent(2).getValue());
-        assertEquals(0, shape.getIndent(3).getValue());
-        assertEquals(RIGHT, shape.getLength(0).getValue());
-        assertEquals(RIGHT, shape.getLength(1).getValue());
-        assertEquals(RIGHT, shape.getLength(2).getValue());
-        assertEquals(RIGHT, shape.getLength(3).getValue());
-    }
+    assertEquals( INDENT, shape.getIndent( 0 ).getValue() );
+    assertEquals( INDENT, shape.getIndent( 1 ).getValue() );
+    assertEquals( 0, shape.getIndent( 2 ).getValue() );
+    assertEquals( 0, shape.getIndent( 3 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 0 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 1 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 2 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 3 ).getValue() );
+  }
 
-    /**
-     * ...
-     */
-    @Test
-    public void testM3() {
+  /**
+   * ...
+   */
+  @Test
+  public void testM3() {
 
-        HangingParagraphShape shape =
-                new HangingParagraphShape(-3, new Dimen(INDENT), new Dimen(
-                    RIGHT));
+    HangingParagraphShape shape =
+        new HangingParagraphShape( -3, new Dimen( INDENT ), new Dimen(
+            RIGHT ) );
 
-        assertEquals(INDENT, shape.getIndent(0).getValue());
-        assertEquals(INDENT, shape.getIndent(1).getValue());
-        assertEquals(INDENT, shape.getIndent(2).getValue());
-        assertEquals(0, shape.getIndent(3).getValue());
-        assertEquals(RIGHT, shape.getLength(0).getValue());
-        assertEquals(RIGHT, shape.getLength(1).getValue());
-        assertEquals(RIGHT, shape.getLength(2).getValue());
-        assertEquals(RIGHT, shape.getLength(3).getValue());
-    }
+    assertEquals( INDENT, shape.getIndent( 0 ).getValue() );
+    assertEquals( INDENT, shape.getIndent( 1 ).getValue() );
+    assertEquals( INDENT, shape.getIndent( 2 ).getValue() );
+    assertEquals( 0, shape.getIndent( 3 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 0 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 1 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 2 ).getValue() );
+    assertEquals( RIGHT, shape.getLength( 3 ).getValue() );
+  }
 
 }

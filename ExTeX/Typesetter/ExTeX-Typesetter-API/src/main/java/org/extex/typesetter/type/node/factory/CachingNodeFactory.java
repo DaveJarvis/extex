@@ -19,12 +19,12 @@
 
 package org.extex.typesetter.type.node.factory;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.core.UnicodeChar;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This is the factory for
@@ -33,53 +33,51 @@ import org.extex.typesetter.type.Node;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class CachingNodeFactory extends SimpleNodeFactory {
 
-    /**
-     * The field {@code cache} contains the cache for previously created nodes.
-     */
-    private final Map<TypesettingContext, Map<UnicodeChar, Node>> cache;
+  /**
+   * The field {@code cache} contains the cache for previously created nodes.
+   */
+  private final Map<TypesettingContext, Map<UnicodeChar, Node>> cache;
 
 
-    public CachingNodeFactory() {
+  public CachingNodeFactory() {
 
-        cache = new HashMap<TypesettingContext, Map<UnicodeChar, Node>>();
+    cache = new HashMap<TypesettingContext, Map<UnicodeChar, Node>>();
+  }
+
+  /**
+   * Create a new instance for the node.
+   * If the character is not defined in the font given then {@code null}
+   * is returned instead.
+   *
+   * @param typesettingContext the typographic context for the node
+   * @param uc                 the Unicode character
+   * @return the new character node
+   * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
+   *org.extex.typesetter.tc.TypesettingContext,
+   * org.extex.core.UnicodeChar)
+   */
+  @Override
+  public Node getNode( TypesettingContext typesettingContext,
+                       UnicodeChar uc ) {
+
+    Map<UnicodeChar, Node> map = cache.get( typesettingContext );
+    if( map == null ) {
+      map = new HashMap<UnicodeChar, Node>();
+      cache.put( typesettingContext, map );
     }
 
-    /**
-     * Create a new instance for the node.
-     * If the character is not defined in the font given then {@code null}
-     * is returned instead.
-     *
-     * @param typesettingContext the typographic context for the node
-     * @param uc the Unicode character
-     *
-     * @return the new character node
-     *
-     * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
-     *      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.UnicodeChar)
-     */
-    @Override
-    public Node getNode(TypesettingContext typesettingContext,
-            UnicodeChar uc) {
+    Node node = map.get( uc );
 
-        Map<UnicodeChar, Node> map = cache.get(typesettingContext);
-        if (map == null) {
-            map = new HashMap<UnicodeChar, Node>();
-            cache.put(typesettingContext, map);
-        }
-
-        Node node = map.get(uc);
-
-        if (node == null) {
-            node = super.getNode(typesettingContext, uc);
-            if (node != null) {
-                map.put(uc, node);
-            }
-        }
-        return node;
+    if( node == null ) {
+      node = super.getNode( typesettingContext, uc );
+      if( node != null ) {
+        map.put( uc, node );
+      }
     }
+    return node;
+  }
 
 }

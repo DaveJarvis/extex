@@ -33,50 +33,50 @@ import org.extex.typesetter.exception.TypesetterException;
  * numbered tokens registers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractToks extends AbstractAssignment {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2009L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2009L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param token the initial token for the primitive
-     */
-    public AbstractToks(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractToks( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Return the key (the name of the primitive) for the numbered tokens
+   * register.
+   *
+   * @param source     the source for new tokens
+   * @param context    the interpreter context to use
+   * @param typesetter the typesetter
+   * @return the key for the current register
+   * @throws HelpingException    in case that a derived class needs to 
+   * throw an
+   *                             Exception this one is declared.
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String name =
+        source
+            .scanRegisterName( context, source, typesetter, getToken() );
+
+    if( Namespace.SUPPORT_NAMESPACE_TOKS ) {
+      return context.getNamespace() + "toks#" + name;
     }
-
-    /**
-     * Return the key (the name of the primitive) for the numbered tokens
-     * register.
-     *
-     * @param source the source for new tokens
-     * @param context the interpreter context to use
-     * @param typesetter the typesetter
-     *
-     * @return the key for the current register
-     *
-     * @throws HelpingException in case that a derived class needs to throw an
-     *         Exception this one is declared.
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String name =
-                source
-                    .scanRegisterName(context, source, typesetter, getToken());
-
-        if (Namespace.SUPPORT_NAMESPACE_TOKS) {
-            return context.getNamespace() + "toks#" + name;
-        }
-        return "toks#" + name;
-    }
+    return "toks#" + name;
+  }
 
 }

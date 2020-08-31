@@ -25,7 +25,7 @@ import org.extex.typesetter.type.Node;
  * This interface describes a horizontal or vertical adjustment of the current
  * position on the page. In fact the dimensions width, height, and depth simply
  * act as for each node without the necessity to place some toner on the paper.
- * 
+ * <p>
  * From The TeXbook
  * <p>
  * A kern_node has a width field to specify a (normally negative) amount of
@@ -35,12 +35,11 @@ import org.extex.typesetter.type.Node;
  * vertical list, when its `width' denotes additional spacing in the vertical
  * direction.
  * </p>
- * 
- * @see org.extex.typesetter.type.node.ImplicitKernNode
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see org.extex.typesetter.type.node.ImplicitKernNode
+ */
 public interface KernNode extends Node {
 
-    // nothing else
+  // nothing else
 }

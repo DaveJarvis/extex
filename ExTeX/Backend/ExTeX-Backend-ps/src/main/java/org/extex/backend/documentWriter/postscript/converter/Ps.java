@@ -19,13 +19,6 @@
 
 package org.extex.backend.documentWriter.postscript.converter;
 
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.extex.backend.documentWriter.postscript.util.PsUnit;
 import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.RgbColor;
@@ -33,240 +26,246 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.typesetter.type.Node;
 
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * This utility class provides some routines for writing PostScript code.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Ps {
 
-    /**
-     * The field {@code code} contains the pieces of code for the dictionary.
-     */
-    private static final Map<String, String> code = new HashMap<String, String>();
+  /**
+   * The field {@code code} contains the pieces of code for the dictionary.
+   */
+  private static final Map<String, String> code = new HashMap<String, String>();
 
-    static {
-        code.put("eop", "/eop{}def");
-        code.put("rule", "/rule{gsave 0 setlinewidth newpath moveto"
-                + "exch dup 0 rlineto exch "
-                + " 0 exch rlineto neg 0 rlineto closepath fill "
-                + "grestore}def");
-        code.put("s", "/s{moveto show}def");
-        code.put("x", "/x{currentpoint exch pop moveto show}def");
-        code.put("Cg", "/Cg{setgray}def");
-        code.put("Cr", "/Cr{setrgbcolor}def");
-        code.put("box", "/box{gsave 0 setgray .2 setlinewidth newpath "
-                + "moveto exch dup 0 rlineto exch "
-                + "0 exch rlineto neg 0 rlineto closepath stroke "
-                + "grestore}def");
-        code.put("Box", "/Box{gsave 0.75 setgray .2 setlinewidth newpath "
-                + "moveto exch dup 0 rlineto exch "
-                + "0 exch rlineto neg 0 rlineto closepath stroke "
-                + "grestore}def");
+  static {
+    code.put( "eop", "/eop{}def" );
+    code.put( "rule", "/rule{gsave 0 setlinewidth newpath moveto"
+        + "exch dup 0 rlineto exch "
+        + " 0 exch rlineto neg 0 rlineto closepath fill "
+        + "grestore}def" );
+    code.put( "s", "/s{moveto show}def" );
+    code.put( "x", "/x{currentpoint exch pop moveto show}def" );
+    code.put( "Cg", "/Cg{setgray}def" );
+    code.put( "Cr", "/Cr{setrgbcolor}def" );
+    code.put( "box", "/box{gsave 0 setgray .2 setlinewidth newpath "
+        + "moveto exch dup 0 rlineto exch "
+        + "0 exch rlineto neg 0 rlineto closepath stroke "
+        + "grestore}def" );
+    code.put( "Box", "/Box{gsave 0.75 setgray .2 setlinewidth newpath "
+        + "moveto exch dup 0 rlineto exch "
+        + "0 exch rlineto neg 0 rlineto closepath stroke "
+        + "grestore}def" );
+  }
+
+  /**
+   * The field {@code lib} contains the library code to include.
+   */
+  private final List<String> lib = new ArrayList<String>();
+
+  /**
+   * The field {@code used} contains the indicator for the fragments used.
+   */
+  private final Map<String, Boolean> used = new HashMap<String, Boolean>();
+
+
+  public Ps() {
+
+  }
+
+  /**
+   * Add some code to the output stream and the library code.
+   *
+   * @param out the output stream
+   * @param key the key for the code
+   */
+  private void addLib( PrintStream out, String key ) {
+
+    out.println( key );
+    if( used.get( key ) == null ) {
+      used.put( key, Boolean.TRUE );
+      lib.add( key );
     }
+  }
 
-    /**
-     * The field {@code lib} contains the library code to include.
-     */
-    private final List<String> lib = new ArrayList<String>();
+  /**
+   * Draw a little box showing the dimensions of the node.
+   *
+   * @param out  the target string buffer
+   * @param node the node to draw
+   * @param x    the x coordinate
+   * @param y    the y coordinate
+   */
+  protected void drawBox( PrintStream out, Node node, FixedDimen x,
+                          FixedDimen y ) {
 
-    /**
-     * The field {@code used} contains the indicator for the fragments used.
-     */
-    private final Map<String, Boolean> used = new HashMap<String, Boolean>();
-
-
-    public Ps() {
-
+    FixedDimen height = node.getHeight();
+    if( height.ne( Dimen.ZERO_PT ) ) {
+      PsUnit.toPoint( node.getWidth(), out, false );
+      out.write( ' ' );
+      PsUnit.toPoint( height, out, false );
+      out.write( ' ' );
+      PsUnit.toPoint( x, out, false );
+      out.write( ' ' );
+      PsUnit.toPoint( y, out, false );
+      out.write( ' ' );
+      addLib( out, "box" );
     }
+  }
 
-    /**
-     * Add some code to the output stream and the library code.
-     * 
-     * @param out the output stream
-     * @param key the key for the code
-     */
-    private void addLib(PrintStream out, String key) {
+  /**
+   * Draw a little box showing the dimensions of the node.
+   *
+   * @param out  the target string buffer
+   * @param node the node to draw
+   * @param x    the x coordinate
+   * @param y    the y coordinate
+   */
+  protected void drawGrayBox( PrintStream out, Node node, FixedDimen x,
+                              FixedDimen y ) {
 
-        out.println(key);
-        if (used.get(key) == null) {
-            used.put(key, Boolean.TRUE);
-            lib.add(key);
-        }
+    FixedDimen height = node.getHeight();
+    if( height.ne( Dimen.ZERO_PT ) ) {
+      PsUnit.toPoint( node.getWidth(), out, false );
+      out.write( ' ' );
+      PsUnit.toPoint( height, out, false );
+      out.write( ' ' );
+      PsUnit.toPoint( x, out, false );
+      out.write( ' ' );
+      PsUnit.toPoint( y, out, false );
+      out.write( ' ' );
+      addLib( out, "Box" );
     }
+  }
 
-    /**
-     * Draw a little box showing the dimensions of the node.
-     * 
-     * @param out the target string buffer
-     * @param node the node to draw
-     * @param x the x coordinate
-     * @param y the y coordinate
-     */
-    protected void drawBox(PrintStream out, Node node, FixedDimen x,
-            FixedDimen y) {
+  /**
+   * Produce a eop hook invocation.
+   *
+   * @param out the output stream
+   */
+  public void eop( PrintStream out ) {
 
-        FixedDimen height = node.getHeight();
-        if (height.ne(Dimen.ZERO_PT)) {
-            PsUnit.toPoint(node.getWidth(), out, false);
-            out.write(' ');
-            PsUnit.toPoint(height, out, false);
-            out.write(' ');
-            PsUnit.toPoint(x, out, false);
-            out.write(' ');
-            PsUnit.toPoint(y, out, false);
-            out.write(' ');
-            addLib(out, "box");
-        }
+    out.write( ' ' );
+    addLib( out, "eop" );
+  }
+
+  /**
+   * Put some text at a certain position.
+   *
+   * @param out  the output stream
+   * @param text the text
+   * @param x    the x coordinate
+   * @param y    the y coordinate
+   */
+  public void putText( PrintStream out, CharSequence text, Dimen x, Dimen y ) {
+
+    out.write( '(' );
+    out.append( text );
+    out.write( ')' );
+    PsUnit.toPoint( x, out, false );
+    out.write( ' ' );
+    PsUnit.toPoint( y, out, false );
+    out.write( ' ' );
+    addLib( out, "s" );
+  }
+
+  /**
+   * Put some text at a certain position given by x coordinate only.
+   *
+   * @param out  the output stream
+   * @param text the text
+   * @param x    the x coordinate
+   */
+  public void putText( PrintStream out, CharSequence text, Dimen x ) {
+
+    out.write( '(' );
+    out.append( text );
+    out.write( ')' );
+    PsUnit.toPoint( x, out, false );
+    out.write( ' ' );
+    addLib( out, "x" );
+  }
+
+  /**
+   * Produce a filled rectangle.
+   *
+   * @param out    the output stream
+   * @param width  the width of the rule
+   * @param height the height of the rule
+   * @param x      the x coordinate
+   * @param y      the y coordinate
+   */
+  public void rule( PrintStream out, FixedDimen width, FixedDimen height,
+                    FixedDimen x, FixedDimen y ) {
+
+    PsUnit.toPoint( width, out, false );
+    out.write( ' ' );
+    PsUnit.toPoint( height, out, false );
+    out.write( ' ' );
+    PsUnit.toPoint( x, out, false );
+    out.write( ' ' );
+    PsUnit.toPoint( y, out, false );
+    out.write( ' ' );
+    addLib( out, "rule" );
+  }
+
+  /**
+   * Produce a PS setgray instruction.
+   *
+   * @param out  the output stream
+   * @param gray the color
+   */
+  public void setgray( PrintStream out, GrayscaleColor gray ) {
+
+    PsUnit.toPoint( new Dimen( gray.getGray() * Dimen.ONE ), out, false );
+    out.write( ' ' );
+    addLib( out, "Cg" );
+  }
+
+  /**
+   * Produce a PS setrgbcolor instruction.
+   *
+   * @param out the output stream
+   * @param rgb the color
+   */
+  public void setrgb( PrintStream out, RgbColor rgb ) {
+
+    PsUnit.toPoint( new Dimen( rgb.getRed() * Dimen.ONE ), out, false );
+    out.write( ' ' );
+    PsUnit.toPoint( new Dimen( rgb.getGreen() * Dimen.ONE ), out, false );
+    out.write( ' ' );
+    PsUnit.toPoint( new Dimen( rgb.getBlue() * Dimen.ONE ), out, false );
+    out.write( ' ' );
+    addLib( out, "Cr" );
+  }
+
+  /**
+   * Write the dictionary of collected code.
+   *
+   * @param out the output stream
+   * @throws IOException in case of an I/O error
+   */
+  public void writeDict( PrintStream out ) throws IOException {
+
+    if( lib.isEmpty() ) {
+      return;
     }
-
-    /**
-     * Draw a little box showing the dimensions of the node.
-     * 
-     * @param out the target string buffer
-     * @param node the node to draw
-     * @param x the x coordinate
-     * @param y the y coordinate
-     */
-    protected void drawGrayBox(PrintStream out, Node node, FixedDimen x,
-            FixedDimen y) {
-
-        FixedDimen height = node.getHeight();
-        if (height.ne(Dimen.ZERO_PT)) {
-            PsUnit.toPoint(node.getWidth(), out, false);
-            out.write(' ');
-            PsUnit.toPoint(height, out, false);
-            out.write(' ');
-            PsUnit.toPoint(x, out, false);
-            out.write(' ');
-            PsUnit.toPoint(y, out, false);
-            out.write(' ');
-            addLib(out, "Box");
-        }
+    out.println( "%%BeginProcSet: Ps.java" );
+    out.print( "TeXDict begin " );
+    for( String s : lib ) {
+      out.print( code.get( s ) );
+      out.write( ' ' );
     }
-
-    /**
-     * Produce a eop hook invocation.
-     * 
-     * @param out the output stream
-     */
-    public void eop(PrintStream out) {
-
-        out.write(' ');
-        addLib(out, "eop");
-    }
-
-    /**
-     * Put some text at a certain position.
-     * 
-     * @param out the output stream
-     * @param text the text
-     * @param x the x coordinate
-     * @param y the y coordinate
-     */
-    public void putText(PrintStream out, CharSequence text, Dimen x, Dimen y) {
-
-        out.write('(');
-        out.append(text);
-        out.write(')');
-        PsUnit.toPoint(x, out, false);
-        out.write(' ');
-        PsUnit.toPoint(y, out, false);
-        out.write(' ');
-        addLib(out, "s");
-    }
-
-    /**
-     * Put some text at a certain position given by x coordinate only.
-     * 
-     * @param out the output stream
-     * @param text the text
-     * @param x the x coordinate
-     */
-    public void putText(PrintStream out, CharSequence text, Dimen x) {
-
-        out.write('(');
-        out.append(text);
-        out.write(')');
-        PsUnit.toPoint(x, out, false);
-        out.write(' ');
-        addLib(out, "x");
-    }
-
-    /**
-     * Produce a filled rectangle.
-     * 
-     * @param out the output stream
-     * @param width the width of the rule
-     * @param height the height of the rule
-     * @param x the x coordinate
-     * @param y the y coordinate
-     */
-    public void rule(PrintStream out, FixedDimen width, FixedDimen height,
-            FixedDimen x, FixedDimen y) {
-
-        PsUnit.toPoint(width, out, false);
-        out.write(' ');
-        PsUnit.toPoint(height, out, false);
-        out.write(' ');
-        PsUnit.toPoint(x, out, false);
-        out.write(' ');
-        PsUnit.toPoint(y, out, false);
-        out.write(' ');
-        addLib(out, "rule");
-    }
-
-    /**
-     * Produce a PS setgray instruction.
-     * 
-     * @param out the output stream
-     * @param gray the color
-     */
-    public void setgray(PrintStream out, GrayscaleColor gray) {
-
-        PsUnit.toPoint(new Dimen(gray.getGray() * Dimen.ONE), out, false);
-        out.write(' ');
-        addLib(out, "Cg");
-    }
-
-    /**
-     * Produce a PS setrgbcolor instruction.
-     * 
-     * @param out the output stream
-     * @param rgb the color
-     */
-    public void setrgb(PrintStream out, RgbColor rgb) {
-
-        PsUnit.toPoint(new Dimen(rgb.getRed() * Dimen.ONE), out, false);
-        out.write(' ');
-        PsUnit.toPoint(new Dimen(rgb.getGreen() * Dimen.ONE), out, false);
-        out.write(' ');
-        PsUnit.toPoint(new Dimen(rgb.getBlue() * Dimen.ONE), out, false);
-        out.write(' ');
-        addLib(out, "Cr");
-    }
-
-    /**
-     * Write the dictionary of collected code.
-     * 
-     * @param out the output stream
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    public void writeDict(PrintStream out) throws IOException {
-
-        if (lib.isEmpty()) {
-            return;
-        }
-        out.println("%%BeginProcSet: Ps.java");
-        out.print("TeXDict begin ");
-        for (String s : lib) {
-            out.print(code.get(s));
-            out.write(' ');
-        }
-        out.println("end");
-        out.println("%%EndProcSet");
-        lib.clear();
-    }
+    out.println( "end" );
+    out.println( "%%EndProcSet" );
+    lib.clear();
+  }
 
 }

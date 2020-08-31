@@ -42,306 +42,321 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides a fixed point number.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class ScaledNumberParser {
 
-    /**
-     * This interface describes a binary operation on two longs.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-    */
-    private interface BinOp {
-
-        /**
-         * Apply the operation on the arguments.
-         * 
-         * @param arg1 the first argument
-         * @param arg2 the second argument
-         * 
-         * @return the result
-         */
-        long apply(long arg1, long arg2);
-    }
+  /**
+   * This interface describes a binary operation on two longs.
+   *
+   * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+   */
+  private interface BinOp {
 
     /**
-     * The constant {@code FLOAT_DIGITS} contains the number of digits to
-     * consider when producing a string representation of this type.
-     * 
-     * Attention: Do not change this value unless you have read and understood
-     * TeX the program!
-     */
-    private static final int FLOAT_DIGITS = 17;
-
-    /**
-     * The field {@code MINUS} contains the subtractor.
-     */
-    private static final BinOp MINUS = new BinOp() {
-
-    @Override
-        public long apply(long arg1, long arg2) {
-
-            return arg1 - arg2;
-        }
-    };
-
-    /**
-     * The field {@code PLUS} contains the adder.
-     */
-    private static final BinOp PLUS = new BinOp() {
-
-    @Override
-        public long apply(long arg1, long arg2) {
-
-            return arg1 + arg2;
-        }
-    };
-
-    /**
-     * The field {@code SECOND} contains the operation to select the second
-     * argument.
-     */
-    private static final BinOp SECOND = new BinOp() {
-
-    @Override
-        public long apply(long arg1, long arg2) {
-
-            return arg2;
-        }
-
-    };
-
-    /**
-     * Evaluate an expression.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
+     * Apply the operation on the arguments.
+     *
+     * @param arg1 the first argument
+     * @param arg2 the second argument
      * @return the result
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
      */
-    private static long evalExpr(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    long apply( long arg1, long arg2 );
+  }
 
-        long saveVal = 0;
-        BinOp op = SECOND;
-        long val = parse(context, source, typesetter);
+  /**
+   * The constant {@code FLOAT_DIGITS} contains the number of digits to
+   * consider when producing a string representation of this type.
+   * <p>
+   * Attention: Do not change this value unless you have read and understood
+   * TeX the program!
+   */
+  private static final int FLOAT_DIGITS = 17;
 
-        for (;;) {
+  /**
+   * The field {@code MINUS} contains the subtractor.
+   */
+  private static final BinOp MINUS = new BinOp() {
 
-            Token t = source.getNonSpace(context);
-            if (t == null) {
-                throw new EofException();
+    @Override
+    public long apply( long arg1, long arg2 ) {
 
-            } else if (t.eq(Catcode.OTHER, '*')) {
-                val *= parse(context, source, typesetter);
-                val /= ScaledNumber.ONE;
+      return arg1 - arg2;
+    }
+  };
 
-            } else if (t.eq(Catcode.OTHER, '/')) {
-                long x = parse(context, source, typesetter);
-                if (x == 0) {
-                    throw new ArithmeticOverflowException("");
-                }
-                val *= ScaledNumber.ONE;
-                val /= x;
+  /**
+   * The field {@code PLUS} contains the adder.
+   */
+  private static final BinOp PLUS = new BinOp() {
 
-            } else if (t.eq(Catcode.OTHER, '+')) {
-                saveVal = op.apply(saveVal, val);
-                val = parse(context, source, typesetter);
-                op = PLUS;
+    @Override
+    public long apply( long arg1, long arg2 ) {
 
-            } else if (t.eq(Catcode.OTHER, '-')) {
-                saveVal = op.apply(saveVal, val);
-                val = parse(context, source, typesetter);
-                op = MINUS;
+      return arg1 + arg2;
+    }
+  };
 
-            } else {
-                source.push(t);
-                return op.apply(saveVal, val);
-            }
-        }
+  /**
+   * The field {@code SECOND} contains the operation to select the second
+   * argument.
+   */
+  private static final BinOp SECOND = new BinOp() {
+
+    @Override
+    public long apply( long arg1, long arg2 ) {
+
+      return arg2;
     }
 
-    /**
-     * Evaluate an expression.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the result
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    public static long parse(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  };
 
-        for (;;) {
-            Token t = source.getNonSpace(context);
-            if (t == null) {
-                throw new EofException();
+  /**
+   * Evaluate an expression.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the result
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  private static long evalExpr( Context context, TokenSource source,
+                                Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-            } else if (t instanceof OtherToken) {
-                if (t.eq(Catcode.OTHER, '(')) {
-                    long val = evalExpr(context, source, typesetter);
-                    t = source.getToken(context);
-                    if (t != null && t.eq(Catcode.OTHER, ')')) {
-                        source.skipSpace();
-                        return val;
-                    }
+    long saveVal = 0;
+    BinOp op = SECOND;
+    long val = parse( context, source, typesetter );
 
-                    throw new HelpingException(
-                        LocalizerFactory.getLocalizer(ScaledNumberParser.class),
-                        "MissingParenthesis", (t == null ? "null" : t
-                            .toString()));
+    for( ; ; ) {
 
-                } else if (t.eq(Catcode.OTHER, '-')) {
-                    return -parse(context, source, typesetter);
-                } else {
-                    return scanFloat(context, source, typesetter, t, false);
-                }
+      Token t = source.getNonSpace( context );
+      if( t == null ) {
+        throw new EofException();
 
-            } else if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
-                if (code instanceof ScaledConvertible) {
-                    long val =
-                            ((ScaledConvertible) code).convertScaled(context,
-                                source, typesetter);
-                    source.skipSpace();
-                    return val;
+      }
+      else if( t.eq( Catcode.OTHER, '*' ) ) {
+        val *= parse( context, source, typesetter );
+        val /= ScaledNumber.ONE;
 
-                } else if (code instanceof CountConvertible) {
-                    long val =
-                            ((CountConvertible) code).convertCount(context,
-                                source, typesetter) * ScaledNumber.ONE;
-                    source.skipSpace();
-                    return val;
+      }
+      else if( t.eq( Catcode.OTHER, '/' ) ) {
+        long x = parse( context, source, typesetter );
+        if( x == 0 ) {
+          throw new ArithmeticOverflowException( "" );
+        }
+        val *= ScaledNumber.ONE;
+        val /= x;
 
-                } else if (code instanceof ExpandableCode) {
-                    ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                        typesetter);
-                } else {
-                    source.push(t);
-                    break;
-                }
-            } else if (t instanceof LetterToken) {
-                source.push(t);
-                if (source.getKeyword(context, "min")) {
-                    // TODO
+      }
+      else if( t.eq( Catcode.OTHER, '+' ) ) {
+        saveVal = op.apply( saveVal, val );
+        val = parse( context, source, typesetter );
+        op = PLUS;
 
-                } else if (source.getKeyword(context, "max")) {
-                    // TODO
+      }
+      else if( t.eq( Catcode.OTHER, '-' ) ) {
+        saveVal = op.apply( saveVal, val );
+        val = parse( context, source, typesetter );
+        op = MINUS;
 
-                } else if (source.getKeyword(context, "sin")) {
-                    // TODO
+      }
+      else {
+        source.push( t );
+        return op.apply( saveVal, val );
+      }
+    }
+  }
 
-                }
+  /**
+   * Evaluate an expression.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the result
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  public static long parse( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-                break;
+    for( ; ; ) {
+      Token t = source.getNonSpace( context );
+      if( t == null ) {
+        throw new EofException();
 
-            } else {
-                break;
-            }
+      }
+      else if( t instanceof OtherToken ) {
+        if( t.eq( Catcode.OTHER, '(' ) ) {
+          long val = evalExpr( context, source, typesetter );
+          t = source.getToken( context );
+          if( t != null && t.eq( Catcode.OTHER, ')' ) ) {
+            source.skipSpace();
+            return val;
+          }
+
+          throw new HelpingException(
+              LocalizerFactory.getLocalizer( ScaledNumberParser.class ),
+              "MissingParenthesis", (t == null ? "null" : t
+              .toString()) );
+
+        }
+        else if( t.eq( Catcode.OTHER, '-' ) ) {
+          return -parse( context, source, typesetter );
+        }
+        else {
+          return scanFloat( context, source, typesetter, t, false );
         }
 
-        throw new MissingNumberException();
+      }
+      else if( t instanceof CodeToken ) {
+        Code code = context.getCode( (CodeToken) t );
+        if( code instanceof ScaledConvertible ) {
+          long val =
+              ((ScaledConvertible) code).convertScaled( context,
+                                                        source, typesetter );
+          source.skipSpace();
+          return val;
+
+        }
+        else if( code instanceof CountConvertible ) {
+          long val =
+              ((CountConvertible) code).convertCount( context,
+                                                      source,
+                                                      typesetter ) * ScaledNumber.ONE;
+          source.skipSpace();
+          return val;
+
+        }
+        else if( code instanceof ExpandableCode ) {
+          ((ExpandableCode) code).expand( Flags.NONE, context, source,
+                                          typesetter );
+        }
+        else {
+          source.push( t );
+          break;
+        }
+      }
+      else if( t instanceof LetterToken ) {
+        source.push( t );
+        if( source.getKeyword( context, "min" ) ) {
+          // TODO
+
+        }
+        else if( source.getKeyword( context, "max" ) ) {
+          // TODO
+
+        }
+        else if( source.getKeyword( context, "sin" ) ) {
+          // TODO
+
+        }
+
+        break;
+
+      }
+      else {
+        break;
+      }
     }
 
-    /**
-     * Parses a token stream for a float and returns it as fixed point number.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param start the initial token to start with
-     * @param negate negate the value found
-     * 
-     * @return the fixed point representation of the floating number in units of
-     *         2<sup>-16</sup>.
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    public static long scanFloat(Context context, TokenSource source,
-            Typesetter typesetter, Token start, boolean negate)
-            throws HelpingException,
-                TypesetterException {
+    throw new MissingNumberException();
+  }
 
-        boolean neg = negate;
-        long val = 0;
-        int post = 0;
-        Token t = start;
-        if (t == null) {
-            t = source.scanNonSpace(context);
-        }
+  /**
+   * Parses a token stream for a float and returns it as fixed point number.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @param start      the initial token to start with
+   * @param negate     negate the value found
+   * @return the fixed point representation of the floating number in units of
+   * 2<sup>-16</sup>.
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  public static long scanFloat( Context context, TokenSource source,
+                                Typesetter typesetter, Token start,
+                                boolean negate )
+      throws HelpingException,
+      TypesetterException {
 
-        while (t != null) {
-            if (t.eq(Catcode.OTHER, '-')) {
-                neg = !neg;
-            } else if (!t.eq(Catcode.OTHER, '+')) {
-                break;
-            }
-            t = source.scanNonSpace(context);
-        }
-        if (t != null && !t.eq(Catcode.OTHER, ".") && !t.eq(Catcode.OTHER, ",")) {
-            source.push(t);
-            val = ConstantCountParser.scanNumber(context, source, typesetter);
-            t = source.getToken(context);
-        }
-        if (t != null && (t.eq(Catcode.OTHER, '.') || t.eq(Catcode.OTHER, ','))) {
-            // @see "TeX -- The Program [102]"
-            int[] dig = new int[FLOAT_DIGITS];
-            int k = 0;
-            for (t = source.getToken(context); t instanceof OtherToken
-                    && t.getChar().isDigit(); t = source.getToken(context)) {
-                if (k < FLOAT_DIGITS) {
-                    dig[k++] = t.getChar().getCodePoint() - '0';
-                }
-            }
-            if (k < FLOAT_DIGITS) {
-                k = FLOAT_DIGITS;
-            }
-            post = 0;
-            while (k-- > 0) {
-                post = (post + dig[k] * (1 << FLOAT_DIGITS)) / 10;
-            }
-            post = (post + 1) / 2;
-        }
-        source.push(t);
-        source.skipSpace();
-        val = val << 16 | post;
-        return (neg ? -val : val);
+    boolean neg = negate;
+    long val = 0;
+    int post = 0;
+    Token t = start;
+    if( t == null ) {
+      t = source.scanNonSpace( context );
     }
 
-    /**
-     * Parses a token stream for a float and returns it as fixed point number.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the fixed point representation of the floating point number
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    public static ScaledNumber scanScaledNumber(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        return new ScaledNumber(parse(context, source, typesetter));
+    while( t != null ) {
+      if( t.eq( Catcode.OTHER, '-' ) ) {
+        neg = !neg;
+      }
+      else if( !t.eq( Catcode.OTHER, '+' ) ) {
+        break;
+      }
+      t = source.scanNonSpace( context );
     }
-
-
-    private ScaledNumberParser() {
-
-        // impossible
+    if( t != null && !t.eq( Catcode.OTHER, "." ) && !t.eq( Catcode.OTHER,
+                                                           "," ) ) {
+      source.push( t );
+      val = ConstantCountParser.scanNumber( context, source, typesetter );
+      t = source.getToken( context );
     }
+    if( t != null && (t.eq( Catcode.OTHER, '.' ) || t.eq( Catcode.OTHER,
+                                                          ',' )) ) {
+      // @see "TeX -- The Program [102]"
+      int[] dig = new int[ FLOAT_DIGITS ];
+      int k = 0;
+      for( t = source.getToken( context ); t instanceof OtherToken
+          && t.getChar().isDigit(); t = source.getToken( context ) ) {
+        if( k < FLOAT_DIGITS ) {
+          dig[ k++ ] = t.getChar().getCodePoint() - '0';
+        }
+      }
+      if( k < FLOAT_DIGITS ) {
+        k = FLOAT_DIGITS;
+      }
+      post = 0;
+      while( k-- > 0 ) {
+        post = (post + dig[ k ] * (1 << FLOAT_DIGITS)) / 10;
+      }
+      post = (post + 1) / 2;
+    }
+    source.push( t );
+    source.skipSpace();
+    val = val << 16 | post;
+    return (neg ? -val : val);
+  }
+
+  /**
+   * Parses a token stream for a float and returns it as fixed point number.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the fixed point representation of the floating point number
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  public static ScaledNumber scanScaledNumber( Context context,
+                                               TokenSource source,
+                                               Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
+
+    return new ScaledNumber( parse( context, source, typesetter ) );
+  }
+
+
+  private ScaledNumberParser() {
+
+    // impossible
+  }
 
 }

@@ -28,7 +28,8 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code type$}
  * <p>
  * If the function is executed in the context of a current entry the type of
@@ -43,49 +44,49 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *   type$ "book" =
  *   type$ "inbook" =
  *   or
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Pushes the current entry's type (book, article, etc.), but pushes the
  * null string if the type is either unknown or undefined.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Type extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public Type() {
+  /**
+   * Create a new object.
+   */
+  public Type() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Type(String name) {
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Type( String name ) {
 
-        super(name);
-    }
+    super( name );
+  }
 
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
 
-        String type = (entry != null ? entry.getType() : "");
-        processor.push(new TString(type, locator));
-    }
+    String type = (entry != null ? entry.getType() : "");
+    processor.push( new TString( type, locator ) );
+  }
 }

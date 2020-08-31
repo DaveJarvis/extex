@@ -31,7 +31,7 @@ import org.extex.typesetter.Typesetter;
  * This class provides an implementation for the primitive {@code \global}.
  * It does simply nothing, but as a side effect the prefix <i>GLOBAL</i> is
  * added to the prefixes.
- * 
+ *
  * <p>The Prefix Primitive {@code \global}</p>
  * <p>
  * The primitive {@code \global} is a prefix macro. It does not do anything
@@ -46,75 +46,73 @@ import org.extex.typesetter.Typesetter;
  * <p>
  * Multiple {@code \global} prefixes act identical to a single one.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ *
  * <p>
  * The formal description of this primitive is the following:
  * </p>
- * 
+ *
  * <pre class="syntax">
  *   &lang;global&rang;
  *     &rarr; {@code \global}  </pre>
- * 
+ *
  * <p>Examples</p>
-
+ *
  * <p>
  * The following example shows that two macros defined in a group. The first
  * macro falls back to its previous binding when the group is closed. The second
  * macro has the same binding in all groups. defined.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *   \begingroup
  *     \def\a{123}
  *     \global\def\b{123}
  *   \endgroup  </pre>
- * 
+ *
  * <p>
  * The following example shows that two count registers are set in a group. The
  * first count register keeps its value until the group is closed and falls
  * back to the value it had when the group has been entered. The second count
  * register keeps its value even when the group is closed.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *   \begingroup
  *     \count1=123
  *     \global\count2=45
  *   \endgroup  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Global extends AbstractCode implements PrefixCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Global(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Global( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter ) {
 
-        prefix.setGlobal();
-    }
+    prefix.setGlobal();
+  }
 
 }

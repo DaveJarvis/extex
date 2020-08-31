@@ -23,16 +23,18 @@ import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive {@code \middle}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MiddleTest extends AbstractMathTester {
 
 
-    public MiddleTest() {
+  public MiddleTest() {
 
-        setPrimitive("middle");setArguments("123 ");setPrepare("");
-        setConfig("etex-test");
-    }
+    setPrimitive( "middle" );
+    setArguments( "123 " );
+    setPrepare( "" );
+    setConfig( "etex-test" );
+  }
 
 }

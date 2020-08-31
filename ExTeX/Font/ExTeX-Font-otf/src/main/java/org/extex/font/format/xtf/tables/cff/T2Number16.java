@@ -19,77 +19,77 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.XtfConstants;
 import org.extex.util.file.random.RandomAccessR;
 
+import java.io.IOException;
+
 /**
  * T2 Number: 16-bit two complement number.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2Number16 extends T2Number {
 
-    /**
-     * the bytes as short-array
-     */
-    private final short[] bytes;
+  /**
+   * the bytes as short-array
+   */
+  private final short[] bytes;
 
-    /**
-     * The value.
-     */
-    private final int val;
+  /**
+   * The value.
+   */
+  private final int val;
 
-    /**
-     * Create a new object.
-     * 
-     * @param rar the input
-     * @param b0 the b0
-     * @throws IOException if an IO-error occurs.
-     */
-    T2Number16(RandomAccessR rar, int b0) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param rar the input
+   * @param b0  the b0
+   * @throws IOException if an IO-error occurs.
+   */
+  T2Number16( RandomAccessR rar, int b0 ) throws IOException {
 
-        int b1 = rar.readUnsignedByte();
-        int b2 = rar.readUnsignedByte();
-        val = ((short) (b1 << XtfConstants.SHIFT8) + (short) b2);
+    int b1 = rar.readUnsignedByte();
+    int b2 = rar.readUnsignedByte();
+    val = ((short) (b1 << XtfConstants.SHIFT8) + (short) b2);
 
-        bytes = new short[3];
-        bytes[0] = (short) b0;
-        bytes[1] = (short) b1;
-        bytes[2] = (short) b2;
+    bytes = new short[ 3 ];
+    bytes[ 0 ] = (short) b0;
+    bytes[ 1 ] = (short) b1;
+    bytes[ 2 ] = (short) b2;
 
-    }
+  }
 
-@Override
-    public short[] getBytes() {
+  @Override
+  public short[] getBytes() {
 
-        return bytes;
-    }
+    return bytes;
+  }
 
-@Override
-    public double getDouble() {
+  @Override
+  public double getDouble() {
 
-        return val;
-    }
+    return val;
+  }
 
-@Override
-    public int getInteger() {
+  @Override
+  public int getInteger() {
 
-        return val;
-    }
+    return val;
+  }
 
-@Override
-    public boolean isInteger() {
+  @Override
+  public boolean isInteger() {
 
-        return true;
-    }
+    return true;
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        return String.valueOf(val);
-    }
+    return String.valueOf( val );
+  }
 
 }

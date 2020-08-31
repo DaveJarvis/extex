@@ -30,25 +30,25 @@ import java.io.IOException;
 
 /**
  * VfCommand: character packets
- * 
+ *
  * <p>
  * The preamble is followed by zero or more character packets, where each
  * character packet begins with a byte that is &lt;243. Character packets have
  * two formats, one long and one short:
  * </p>
- * 
+ *
  * <pre>
  *    long_char  242     pl[4]  cc[4]   tfm[4]  dvi[pl]
  * </pre>
- * 
+ *
  * <p>
  * This long form specifies a virtual character in the general case.
  * </p>
- * 
+ *
  * <pre>
  *    short_char 0..241=pl[1]  cc[1]   tfm[3]  dvi[pl]
  * </pre>
- * 
+ *
  * <p>
  * This short form specifies a virtual character in the common case when 0 &lt;=
  * pl &lt;242 and 0 &lt;= cc &lt;256 and 0 &lt; &lt;= tfm &lt; 2^24. The ccode
@@ -91,214 +91,216 @@ import java.io.IOException;
  * {@code h} is increased by the TFM width (properly scaled) - just as if
  * a simple character had been typeset.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class VfCommandCharacterPackets extends VfCommand {
 
-    /**
-     * the character code (cc)
-     */
-    private final int charactercode;
+  /**
+   * the character code (cc)
+   */
+  private final int charactercode;
 
-    /**
-     * the dvi commands
-     */
-    private final byte[] dvi;
+  /**
+   * the dvi commands
+   */
+  private final byte[] dvi;
 
-    /**
-     * the packet length (pl)
-     */
-    private final int packetlength;
+  /**
+   * the packet length (pl)
+   */
+  private final int packetlength;
 
-    /**
-     * the character width (from tfm file) (tfm)
-     */
-    private final TfmFixWord width;
+  /**
+   * the character width (from tfm file) (tfm)
+   */
+  private final TfmFixWord width;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param localizer The localizer.
-     * @param rar The input.
-     * @param ccode The command code.
-     * @throws FontException if a font error occurred.
-     * @throws IOException if an IO-error occurred.
-     */
-    public VfCommandCharacterPackets(Localizer localizer, RandomAccessR rar,
-            int ccode) throws FontException, IOException {
+  /**
+   * Creates a new object.
+   *
+   * @param localizer The localizer.
+   * @param rar       The input.
+   * @param ccode     The command code.
+   * @throws FontException if a font error occurred.
+   * @throws IOException   if an IO-error occurred.
+   */
+  public VfCommandCharacterPackets( Localizer localizer, RandomAccessR rar,
+                                    int ccode )
+      throws FontException, IOException {
 
-        super(localizer, ccode);
+    super( localizer, ccode );
 
-        // check range
-        if (ccode < MIN_CHARACTER || ccode > MAX_CHARACTER) {
-            throw new FontException(getLocalizer().format("VF.WrongCode",
-                String.valueOf(ccode)));
-        }
-
-        if (ccode == MAX_CHARACTER) {
-            // long format
-            packetlength = rar.readInt();
-            charactercode = rar.readInt();
-            width =
-                    new TfmFixWord(rar.readInt(), TfmFixWord.FIXWORDDENOMINATOR);
-        } else {
-            // short format
-            packetlength = ccode;
-            charactercode = rar.readByteAsInt();
-
-            // 24 bit
-            width =
-                    new TfmFixWord(rar.readInt24(),
-                        TfmFixWord.FIXWORDDENOMINATOR);
-        }
-        dvi = new byte[packetlength];
-        for (int i = 0; i < packetlength; i++) {
-            dvi[i] = (byte) rar.readByteAsInt();
-        }
+    // check range
+    if( ccode < MIN_CHARACTER || ccode > MAX_CHARACTER ) {
+      throw new FontException( getLocalizer().format( "VF.WrongCode",
+                                                      String.valueOf( ccode ) ) );
     }
 
-    /**
-     * Getter for charactercode.
-     * 
-     * @return the charactercode
-     */
-    public int getCharactercode() {
+    if( ccode == MAX_CHARACTER ) {
+      // long format
+      packetlength = rar.readInt();
+      charactercode = rar.readInt();
+      width =
+          new TfmFixWord( rar.readInt(), TfmFixWord.FIXWORDDENOMINATOR );
+    }
+    else {
+      // short format
+      packetlength = ccode;
+      charactercode = rar.readByteAsInt();
 
-        return charactercode;
+      // 24 bit
+      width =
+          new TfmFixWord( rar.readInt24(),
+                          TfmFixWord.FIXWORDDENOMINATOR );
+    }
+    dvi = new byte[ packetlength ];
+    for( int i = 0; i < packetlength; i++ ) {
+      dvi[ i ] = (byte) rar.readByteAsInt();
+    }
+  }
+
+  /**
+   * Getter for charactercode.
+   *
+   * @return the charactercode
+   */
+  public int getCharactercode() {
+
+    return charactercode;
+  }
+
+  /**
+   * Getter for dvi.
+   *
+   * @return the dvi
+   */
+  public byte[] getDvi() {
+
+    return dvi;
+  }
+
+  /**
+   * Getter for packetlength.
+   *
+   * @return the packetlength
+   */
+  public int getPacketlength() {
+
+    return packetlength;
+  }
+
+  /**
+   * Getter for width.
+   *
+   * @return the width
+   */
+  public TfmFixWord getWidth() {
+
+    return width;
+  }
+
+  @Override
+  public String toString() {
+
+    return "charcode: " + charactercode;
+  }
+
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( "char" );
+    writer.writeAttribute( "opcode", getCommandCode() );
+    writer.writeAttribute( "char", charactercode );
+    writer.writeAttribute( "packetlength", packetlength );
+    writer.writeAttribute( "width", width.toString() );
+
+    writer.writeStartElement( "dvi" );
+
+    try {
+      VfDviXml dvixml = new VfDviXml( writer );
+      dvixml.interpret( new RandomAccessInputArray( dvi ) );
+    } catch( FontException e ) {
+      throw new IOException( e.getLocalizedMessage() );
     }
 
-    /**
-     * Getter for dvi.
-     * 
-     * @return the dvi
-     */
-    public byte[] getDvi() {
+    writer.writeEndElement();
+    writer.writeEndElement();
 
-        return dvi;
-    }
+  }
 
-    /**
-     * Getter for packetlength.
-     * 
-     * @return the packetlength
-     */
-    public int getPacketlength() {
+  // /**
+  // * @see de.dante.extex.font.type.PlFormat#toPL(
+  // * de.dante.extex.font.type.PlWriter)
+  // */
+  // public void toPL(final PlWriter out) throws IOException, FontException {
 
-        return packetlength;
-    }
+  // // read the char from ther master-tfm
+  // int bc = mastertfm.getLengths().getBc();
+  // TFMCharInfoWord ciw =
+  // mastertfm.getCharinfo().getCharInfoWord(charactercode - bc);
 
-    /**
-     * Getter for width.
-     * 
-     * @return the width
-     */
-    public TfmFixWord getWidth() {
+  // out.plopen("CHARACTER").addChar((short) charactercode);
+  // if (ciw != null) {
+  // ciw.toPL(out);
+  // }
 
-        return width;
-    }
+  // // print the map
+  // out.plopen("MAP");
+  // try {
+  // RandomAccessR arar = new RandomAccessInputArray(dvi);
 
-    @Override
-    public String toString() {
+  // DviPl pl = new DviPl(out, fontfactory);
+  // pl.interpret(arar);
+  // arar.close();
+  // } catch (Exception e) {
+  // throw new VFDviException(e.getMessage());
+  // }
+  // out.plclose();
+  // out.plclose();
+  // }
 
-        return "charcode: " + charactercode;
-    }
+  // /**
+  // * Add glyph to the element
+  // *
+  // * @param element the element
+  // * @throws FontException if a font-error occurs.
+  // */
+  // public void addGlyph(final Element element) throws FontException {
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  // // read the char from ther master-tfm
+  // int bc = mastertfm.getLengths().getBc();
+  // TFMCharInfoWord ciw =
+  // mastertfm.getCharinfo().getCharInfoWord(charactercode - bc);
 
-        writer.writeStartElement("char");
-        writer.writeAttribute("opcode", getCommandCode());
-        writer.writeAttribute("char", charactercode);
-        writer.writeAttribute("packetlength", packetlength);
-        writer.writeAttribute("width", width.toString());
+  // // create glyph
+  // Element glyph = new Element("glyph");
 
-        writer.writeStartElement("dvi");
+  // glyph.setAttribute("ID", String.valueOf(charactercode));
+  // glyph.setAttribute("glyph-number", String.valueOf(charactercode - bc));
+  // String c = Character.toString((char) (charactercode - bc));
+  // if (c != null && c.trim().length() > 0) {
+  // glyph.setAttribute("char", c);
+  // }
+  // if (ciw.getGlyphname() != null) {
+  // element.setAttribute("glyph-name", ciw.getGlyphname().substring(1));
+  // }
+  // ciw.addGlyph(glyph);
 
-        try {
-            VfDviXml dvixml = new VfDviXml(writer);
-            dvixml.interpret(new RandomAccessInputArray(dvi));
-        } catch (FontException e) {
-            throw new IOException(e.getLocalizedMessage());
-        }
+  // try {
+  // RandomAccessR arar = new RandomAccessInputArray(dvi);
 
-        writer.writeEndElement();
-        writer.writeEndElement();
-
-    }
-
-    // /**
-    // * @see de.dante.extex.font.type.PlFormat#toPL(
-    // * de.dante.extex.font.type.PlWriter)
-    // */
-    // public void toPL(final PlWriter out) throws IOException, FontException {
-
-    // // read the char from ther master-tfm
-    // int bc = mastertfm.getLengths().getBc();
-    // TFMCharInfoWord ciw =
-    // mastertfm.getCharinfo().getCharInfoWord(charactercode - bc);
-
-    // out.plopen("CHARACTER").addChar((short) charactercode);
-    // if (ciw != null) {
-    // ciw.toPL(out);
-    // }
-
-    // // print the map
-    // out.plopen("MAP");
-    // try {
-    // RandomAccessR arar = new RandomAccessInputArray(dvi);
-
-    // DviPl pl = new DviPl(out, fontfactory);
-    // pl.interpret(arar);
-    // arar.close();
-    // } catch (Exception e) {
-    // throw new VFDviException(e.getMessage());
-    // }
-    // out.plclose();
-    // out.plclose();
-    // }
-
-    // /**
-    // * Add glyph to the element
-    // *
-    // * @param element the element
-    // * @throws FontException if a font-error occurs.
-    // */
-    // public void addGlyph(final Element element) throws FontException {
-
-    // // read the char from ther master-tfm
-    // int bc = mastertfm.getLengths().getBc();
-    // TFMCharInfoWord ciw =
-    // mastertfm.getCharinfo().getCharInfoWord(charactercode - bc);
-
-    // // create glyph
-    // Element glyph = new Element("glyph");
-
-    // glyph.setAttribute("ID", String.valueOf(charactercode));
-    // glyph.setAttribute("glyph-number", String.valueOf(charactercode - bc));
-    // String c = Character.toString((char) (charactercode - bc));
-    // if (c != null && c.trim().length() > 0) {
-    // glyph.setAttribute("char", c);
-    // }
-    // if (ciw.getGlyphname() != null) {
-    // element.setAttribute("glyph-name", ciw.getGlyphname().substring(1));
-    // }
-    // ciw.addGlyph(glyph);
-
-    // try {
-    // RandomAccessR arar = new RandomAccessInputArray(dvi);
-
-    // Element cmd = new Element("commands");
-    // DviEfm dviefm = new DviEfm(cmd, fontfactory, fontmap);
-    // dviefm.interpret(arar);
-    // arar.close();
-    // glyph.addContent(cmd);
-    // } catch (Exception e) {
-    // throw new VFDviException(e.getMessage());
-    // }
-    // element.addContent(glyph);
-    // }
+  // Element cmd = new Element("commands");
+  // DviEfm dviefm = new DviEfm(cmd, fontfactory, fontmap);
+  // dviefm.interpret(arar);
+  // arar.close();
+  // glyph.addContent(cmd);
+  // } catch (Exception e) {
+  // throw new VFDviException(e.getMessage());
+  // }
+  // element.addContent(glyph);
+  // }
 }

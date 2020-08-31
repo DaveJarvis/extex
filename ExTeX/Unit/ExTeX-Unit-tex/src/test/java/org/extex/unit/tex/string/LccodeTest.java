@@ -23,26 +23,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \lccode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LccodeTest extends AbstractCharMapTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LccodeTest.class);
-    }
+    (new JUnitCore()).run( LccodeTest.class );
+  }
 
 
-    public LccodeTest() {
+  public LccodeTest() {
 
-        super("lccode", "65", "97", "1114111");
-    }
+    super( "lccode", "65", "97", "1114111" );
+  }
 
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

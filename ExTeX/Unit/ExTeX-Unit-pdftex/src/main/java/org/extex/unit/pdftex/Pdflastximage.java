@@ -35,100 +35,99 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdflastximage}.
- * 
+ *
  * <p>The PDF Primitive {@code \pdflastximage}</p>
  * <p>
  * This primitive provides a read-only count register containing the number of
  * the last ximage. If none is present then 0 is returned.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;pdflastximage&rang;
  *       &rarr; {@code \pdflastximage}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \count0=\pdflastximage  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdflastximage extends AbstractPdftexCode
-        implements
-            Theable,
-            CountConvertible {
+    implements
+    Theable,
+    CountConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2011L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2011L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdflastximage(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdflastximage( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    PdftexSupport writer = ensurePdftex( context, typesetter );
+
+    return writer.pdflastximage();
+  }
+
+  /**
+   * This method converts a register into tokens. It might be necessary to
+   * read further tokens to determine which value to use. For instance an
+   * additional register number might be required. In this case the additional
+   * arguments Context and TokenSource can be used.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter to use for conversion
+   * @return the converted value
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of a typesetter error
+   * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens convertTokens( Context context, TokenSource source,
+                               Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    try {
+      return context.getTokenFactory().toTokens(
+          convertCount( context, source, typesetter ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
+    return convertTokens( context, source, typesetter );
 
-        return writer.pdflastximage();
-    }
-
-    /**
-     * This method converts a register into tokens. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     * 
-     * @return the converted value
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of a typesetter error
-     * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens convertTokens(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        try {
-            return context.getTokenFactory().toTokens(
-                convertCount(context, source, typesetter));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        return convertTokens(context, source, typesetter);
-
-    }
+  }
 
 }

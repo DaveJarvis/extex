@@ -31,7 +31,7 @@ import org.extex.typesetter.type.node.MarkNode;
 
 /**
  * This class provides an implementation for the primitive {@code \marks}.
- * 
+ *
  * <p>The Primitive {@code \marks}</p>
  * <p>
  * The primitive {@code \marks} places a mark in the current list. The marks on
@@ -46,54 +46,55 @@ import org.extex.typesetter.type.node.MarkNode;
  * <p>
  * The {@code \marks0} is equivalent to {@code \mark}.
  * </p>
- * 
+ *
  * <p>Syntax</p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;marks&rang;
  *      &rarr; {@code \marks} {@linkplain
- *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
+ *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(Context, TokenSource, Typesetter)
  *        &lang;mark name&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context, TokenSource, Typesetter)
  *        &lang;tokens&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
- * 
+ *
  * <pre class="TeXSample">
  *    \marks123{abc}  </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Marks extends AbstractMarkCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Marks(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Marks( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String index = getKey(context, source, typesetter);
-        Tokens toks =
-                source.scanUnprotectedTokens(context, false, false, getToken());
-        typesetter.add(new MarkNode(toks, index));
-    }
+    String index = getKey( context, source, typesetter );
+    Tokens toks =
+        source.scanUnprotectedTokens( context, false, false, getToken() );
+    typesetter.add( new MarkNode( toks, index ) );
+  }
 
 }

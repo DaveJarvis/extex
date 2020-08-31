@@ -19,16 +19,16 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * The table 'gasp'.
- * 
+ *
  * <p>
  * This table contains information which describes the preferred rasterization
  * techniques for the typeface when it is rendered on grayscale-capable devices.
@@ -58,7 +58,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Sorted by ppem</td>
  * </tr>
  * </table>
- * 
+ *
  * <p>
  * GASPRANGE
  * </p>
@@ -80,7 +80,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Flags describing desired rasterizer behavior.</td>
  * </tr>
  * </table>
- * 
+ *
  * <p>
  * There are two flags for the rangeGaspBehavior flags:
  * </p>
@@ -99,7 +99,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Use grayscale rendering</td>
  * </tr>
  * </table>
- * 
+ *
  * <p>
  * The four currently defined values of rangeGaspBehavior would have the
  * following uses:
@@ -132,7 +132,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>optional for very large sizes, typically ppem&gt;2048</td>
  * </tr>
  * </table>
- * 
+ *
  * <p>
  * The records in the gaspRange[] array must be sorted in order of increasing
  * rangeMaxPPEM value. The last record should use 0xFFFF as a sentinel value for
@@ -140,207 +140,210 @@ import org.extex.util.xml.XMLWriterConvertible;
  * than the previous record's upper limit. If the only entry in 'gasp' is the
  * 0xFFFF sentinel value, the behavior described will be used for all sizes.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTableGASP extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
+
+  /**
+   * GaspRange
+   */
+  public class GaspRange implements XMLWriterConvertible {
 
     /**
-     * GaspRange
+     * rangeGaspBehavior
      */
-    public class GaspRange implements XMLWriterConvertible {
+    private final int rangeGaspBehavior;
 
-        /**
-         * rangeGaspBehavior
-         */
-        private final int rangeGaspBehavior;
+    /**
+     * rangeMaxPPEM
+     */
+    private final int rangeMaxPPEM;
 
-        /**
-         * rangeMaxPPEM
-         */
-        private final int rangeMaxPPEM;
+    /**
+     * Create a new object.
+     *
+     * @param rar the input
+     * @throws IOException if an IO-error occurred.
+     */
+    public GaspRange( RandomAccessR rar ) throws IOException {
 
-        /**
-         * Create a new object.
-         * 
-         * @param rar the input
-         * @throws IOException if an IO-error occurred.
-         */
-        public GaspRange(RandomAccessR rar) throws IOException {
-
-            rangeMaxPPEM = rar.readUnsignedShort();
-            rangeGaspBehavior = rar.readUnsignedShort();
-        }
-
-        /**
-         * Returns the Flags as String.
-         * 
-         * @return Returns the Flags as String.
-         */
-        public String getFlags() {
-
-            if (rangeGaspBehavior == GASP_DOGRAY_GRIDFIT) {
-                return "Use grayscale rendering and gridfitting";
-            } else if (rangeGaspBehavior == GASP_DOGRAY) {
-                return "Use grayscale rendering";
-            } else if (rangeGaspBehavior == GASP_GRIDFIT) {
-                return "Use gridfitting";
-            } else if (rangeGaspBehavior == GASP_NONE) {
-                return "none";
-            }
-            return "???";
-        }
-
-        /**
-         * Returns the rangeGaspBehavior.
-         * 
-         * @return Returns the rangeGaspBehavior.
-         */
-        public int getRangeGaspBehavior() {
-
-            return rangeGaspBehavior;
-        }
-
-        /**
-         * Returns the rangeMaxPPEM.
-         * 
-         * @return Returns the rangeMaxPPEM.
-         */
-        public int getRangeMaxPPEM() {
-
-            return rangeMaxPPEM;
-        }
-
-        /**
-    *      org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("gasprange");
-            writer.writeAttribute("rangemaxPPEM", String.valueOf(rangeMaxPPEM));
-            writer.writeAttribute("rangegaspbehavior", String
-                .valueOf(rangeGaspBehavior));
-            writer.writeAttribute("flags", getFlags());
-            writer.writeEndElement();
-        }
+      rangeMaxPPEM = rar.readUnsignedShort();
+      rangeGaspBehavior = rar.readUnsignedShort();
     }
 
     /**
-     * GASP_DOGRAY
+     * Returns the Flags as String.
+     *
+     * @return Returns the Flags as String.
      */
-    public static final int GASP_DOGRAY = 0x0002;
+    public String getFlags() {
 
-    /**
-     * GASP_DOGRAY_GRIDFIT
-     */
-    public static final int GASP_DOGRAY_GRIDFIT = 0x0003;
-
-    /**
-     * GASP_GRIDFIT
-     */
-    public static final int GASP_GRIDFIT = 0x0001;
-
-    /**
-     * GASP_NONE
-     */
-    public static final int GASP_NONE = 0x0000;
-
-    /**
-     * the GaspRange array
-     */
-    private final GaspRange[] gaspRange;
-
-    /**
-     * number of records
-     */
-    private final int numRanges;
-
-    /**
-     * version
-     */
-    private final int version;
-
-    /**
-     * Create a new object
-     * 
-     * @param tablemap the table map
-     * @param de entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public TtfTableGASP(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
-
-        super(tablemap);
-        rar.seek(de.getOffset());
-
-        version = rar.readUnsignedShort();
-        numRanges = rar.readUnsignedShort();
-        gaspRange = new GaspRange[numRanges];
-        for (int i = 0; i < numRanges; i++) {
-            gaspRange[i] = new GaspRange(rar);
-        }
+      if( rangeGaspBehavior == GASP_DOGRAY_GRIDFIT ) {
+        return "Use grayscale rendering and gridfitting";
+      }
+      else if( rangeGaspBehavior == GASP_DOGRAY ) {
+        return "Use grayscale rendering";
+      }
+      else if( rangeGaspBehavior == GASP_GRIDFIT ) {
+        return "Use gridfitting";
+      }
+      else if( rangeGaspBehavior == GASP_NONE ) {
+        return "none";
+      }
+      return "???";
     }
 
     /**
-     * Returns the gaspRange.
-     * 
-     * @return Returns the gaspRange.
+     * Returns the rangeGaspBehavior.
+     *
+     * @return Returns the rangeGaspBehavior.
      */
-    public GaspRange[] getGaspRange() {
+    public int getRangeGaspBehavior() {
 
-        return gaspRange;
+      return rangeGaspBehavior;
     }
 
     /**
-     * Returns the numRanges.
-     * 
-     * @return Returns the numRanges.
+     * Returns the rangeMaxPPEM.
+     *
+     * @return Returns the rangeMaxPPEM.
      */
-    public int getNumRanges() {
+    public int getRangeMaxPPEM() {
 
-        return numRanges;
-    }
-
-public String getShortcut() {
-
-        return "gasp";
+      return rangeMaxPPEM;
     }
 
     /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
+     * org.extex.util.xml.XMLStreamWriter)
      */
-    public int getType() {
+    public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        return XtfReader.GASP;
+      writer.writeStartElement( "gasprange" );
+      writer.writeAttribute( "rangemaxPPEM", String.valueOf( rangeMaxPPEM ) );
+      writer.writeAttribute( "rangegaspbehavior", String
+          .valueOf( rangeGaspBehavior ) );
+      writer.writeAttribute( "flags", getFlags() );
+      writer.writeEndElement();
     }
+  }
 
-    /**
-     * Returns the version.
-     * 
-     * @return Returns the version.
-     */
-    public int getVersion() {
+  /**
+   * GASP_DOGRAY
+   */
+  public static final int GASP_DOGRAY = 0x0002;
 
-        return version;
+  /**
+   * GASP_DOGRAY_GRIDFIT
+   */
+  public static final int GASP_DOGRAY_GRIDFIT = 0x0003;
+
+  /**
+   * GASP_GRIDFIT
+   */
+  public static final int GASP_GRIDFIT = 0x0001;
+
+  /**
+   * GASP_NONE
+   */
+  public static final int GASP_NONE = 0x0000;
+
+  /**
+   * the GaspRange array
+   */
+  private final GaspRange[] gaspRange;
+
+  /**
+   * number of records
+   */
+  private final int numRanges;
+
+  /**
+   * version
+   */
+  private final int version;
+
+  /**
+   * Create a new object
+   *
+   * @param tablemap the table map
+   * @param de       entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public TtfTableGASP( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
+
+    super( tablemap );
+    rar.seek( de.getOffset() );
+
+    version = rar.readUnsignedShort();
+    numRanges = rar.readUnsignedShort();
+    gaspRange = new GaspRange[ numRanges ];
+    for( int i = 0; i < numRanges; i++ ) {
+      gaspRange[ i ] = new GaspRange( rar );
     }
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * Returns the gaspRange.
+   *
+   * @return Returns the gaspRange.
+   */
+  public GaspRange[] getGaspRange() {
 
-        writeStartElement(writer);
-        writer.writeAttribute("version", String.valueOf(version));
-        writer.writeAttribute("numranges", String.valueOf(numRanges));
-        for (int i = 0; i < numRanges; i++) {
-            gaspRange[i].writeXML(writer);
-        }
-        writer.writeEndElement();
+    return gaspRange;
+  }
+
+  /**
+   * Returns the numRanges.
+   *
+   * @return Returns the numRanges.
+   */
+  public int getNumRanges() {
+
+    return numRanges;
+  }
+
+  public String getShortcut() {
+
+    return "gasp";
+  }
+
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
+
+    return XtfReader.GASP;
+  }
+
+  /**
+   * Returns the version.
+   *
+   * @return Returns the version.
+   */
+  public int getVersion() {
+
+    return version;
+  }
+
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writeStartElement( writer );
+    writer.writeAttribute( "version", String.valueOf( version ) );
+    writer.writeAttribute( "numranges", String.valueOf( numRanges ) );
+    for( int i = 0; i < numRanges; i++ ) {
+      gaspRange[ i ].writeXML( writer );
     }
+    writer.writeEndElement();
+  }
 }

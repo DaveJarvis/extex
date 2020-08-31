@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \delimiterfactor}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DelimiterfactorTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DelimiterfactorTest.class);
-    }
+    (new JUnitCore()).run( DelimiterfactorTest.class );
+  }
 
 
-    public DelimiterfactorTest() {
+  public DelimiterfactorTest() {
 
-        super("delimiterfactor", "", "0");
-    }
+    super( "delimiterfactor", "", "0" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

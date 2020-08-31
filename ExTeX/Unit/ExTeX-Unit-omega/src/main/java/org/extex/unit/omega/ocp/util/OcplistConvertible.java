@@ -27,24 +27,22 @@ import org.extex.typesetter.Typesetter;
 /**
  * This interface describes the feature of a code to be convertible into an
  * &Omega;PC list.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OcplistConvertible {
 
-    /**
-     * Convert the value into an &Omega;PC list. Some tokens may be read from
-     * the input stream to perform the job.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the &Omega;PC list encountered
-     * 
-     * @throws HelpingException in case of an error
-     */
-    OcpList convertOcplist(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException;
+  /**
+   * Convert the value into an &Omega;PC list. Some tokens may be read from
+   * the input stream to perform the job.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the &Omega;PC list encountered
+   * @throws HelpingException in case of an error
+   */
+  OcpList convertOcplist( Context context, TokenSource source,
+                          Typesetter typesetter ) throws HelpingException;
 
 }

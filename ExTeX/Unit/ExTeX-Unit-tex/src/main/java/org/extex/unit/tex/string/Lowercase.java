@@ -30,11 +30,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.api.exception.CatcodeException;
-import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.LetterToken;
-import org.extex.scanner.type.token.OtherToken;
-import org.extex.scanner.type.token.Token;
-import org.extex.scanner.type.token.TokenFactory;
+import org.extex.scanner.type.token.*;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -42,100 +38,100 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \lowercase}.
- * 
+ *
  * <p>The Primitive {@code \lowercase}</p>
  * <p>
  * The primitive {@code \lowercase} takes as argument a token list in braces
  * and translates all letters to their lowercase form. The translation table is
  * stored in {@code \lccode}. Thus the translation can be modified freely.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;lowercase&rang;
  *        &rarr; {@code \lowercase} {@linkplain
- *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context, TokenSource, Typesetter)
  *        &lang;tokens&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \lowercase {ABC}  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Lowercase extends AbstractCode implements ExpandableCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Lowercase(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Lowercase( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    expand( prefix, context, source, typesetter );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Tokens toks;
+    try {
+      toks = source.getTokens( context, source, typesetter );
+    } catch( EofException e ) {
+      throw new EofInToksException( toText( context ) );
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    String namespace = context.getNamespace();
+    Token[] result = new Token[ toks.length() ];
+    TokenFactory factory = context.getTokenFactory();
+    Token t;
 
-        expand(prefix, context, source, typesetter);
-    }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Tokens toks;
-        try {
-            toks = source.getTokens(context, source, typesetter);
-        } catch (EofException e) {
-            throw new EofInToksException(toText(context));
+    try {
+      for( int i = 0; i < toks.length(); i++ ) {
+        t = toks.get( i );
+        if( t instanceof LetterToken || t instanceof OtherToken ) {
+          UnicodeChar uc = context.getLccode( t.getChar() );
+          if( uc != null &&
+              uc.getCodePoint() != 0 &&
+              !uc.equals( t.getChar() ) ) {
+            t = factory.createToken( t.getCatcode(), uc, namespace );
+          }
         }
-
-        String namespace = context.getNamespace();
-        Token[] result = new Token[toks.length()];
-        TokenFactory factory = context.getTokenFactory();
-        Token t;
-
-        try {
-            for (int i = 0; i < toks.length(); i++) {
-                t = toks.get(i);
-                if (t instanceof LetterToken || t instanceof OtherToken) {
-                    UnicodeChar uc = context.getLccode(t.getChar());
-                    if (uc != null &&
-                            uc.getCodePoint() != 0 &&
-                            !uc.equals(t.getChar())) {
-                        t = factory.createToken(t.getCatcode(), uc, namespace);
-                    }
-                }
-                result[i] = t;
-            }
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-
-        source.push(result);
+        result[ i ] = t;
+      }
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+
+    source.push( result );
+  }
 
 }

@@ -25,40 +25,42 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \raise}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RaiseTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(RaiseTest.class);
-    }
+    (new JUnitCore()).run( RaiseTest.class );
+  }
 
 
-    public RaiseTest() {
+  public RaiseTest() {
 
-        setPrimitive("raise");setArguments("1pt\\hbox{} ");setPrepare("");
-    }
+    setPrimitive( "raise" );
+    setArguments( "1pt\\hbox{} " );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\raise"> Test case checking that {@code \raise}
-     * on a void box works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVoid1() throws Exception {
+  /**
+   * <testcase primitive="\raise"> Test case checking that {@code \raise}
+   * on a void box works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testVoid1() throws Exception {
 
-        assertSuccess(DEFINE_BRACES + "\\raise1pt\\box0 \\end",
+    assertSuccess( DEFINE_BRACES + "\\raise1pt\\box0 \\end",
 
-            "");
-    }
+                   "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \boxmaxdepth}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BoxmaxdepthTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(BoxmaxdepthTest.class);
-    }
+    (new JUnitCore()).run( BoxmaxdepthTest.class );
+  }
 
 
-    public BoxmaxdepthTest() {
+  public BoxmaxdepthTest() {
 
-        super("boxmaxdepth", "", "0.0pt");
-    }
+    super( "boxmaxdepth", "", "0.0pt" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

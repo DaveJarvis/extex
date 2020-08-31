@@ -26,68 +26,65 @@ import org.extex.scanner.type.tokens.Tokens;
 /**
  * This class provides an implementation for the primitive
  * {@code \splitbotmarks}.
- * 
+ *
  * <p>The Primitive {@code \splitbotmarks}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;splibotmarks&rang;
  *      &rarr; {@code \splitbotmarks} {@linkplain
  *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(
- *        org.extex.interpreter.context.Context,
- *        org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
+ *org.extex.interpreter.context.Context,
+ *        org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
  *        &lang;mark name&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \splitbotmarks42  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \splitbotmarks\count0  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Splitbotmarks extends AbstractMarksCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Splitbotmarks(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Splitbotmarks( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-     * Get the value for this mark.
-     * 
-     * @param context the interpreter context
-     * @param key the key
-     * 
-     * @return the value
-     * 
-     * @see org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getValue(
-     *      org.extex.interpreter.context.Context, java.lang.String)
-     */
-    @Override
-    protected Tokens getValue(Context context, String key) {
+  /**
+   * Get the value for this mark.
+   *
+   * @param context the interpreter context
+   * @param key     the key
+   * @return the value
+   * @see org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getValue(
+   *org.extex.interpreter.context.Context, java.lang.String)
+   */
+  @Override
+  protected Tokens getValue( Context context, String key ) {
 
-        return context.getSplitBottomMark(key);
-    }
+    return context.getSplitBottomMark( key );
+  }
 
 }

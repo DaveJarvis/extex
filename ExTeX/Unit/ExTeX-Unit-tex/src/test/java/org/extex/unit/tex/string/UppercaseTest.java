@@ -25,100 +25,102 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code &#x5c;uppercase}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class UppercaseTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(UppercaseTest.class);
-    }
+    (new JUnitCore()).run( UppercaseTest.class );
+  }
 
 
-    public UppercaseTest() {
+  public UppercaseTest() {
 
-        setPrimitive("uppercase");setArguments("{abc}");setPrepare("");
-    }
+    setPrimitive( "uppercase" );
+    setArguments( "{abc}" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="&#x5c;uppercase"> Test case checking that
-     * {@code &#x5c;uppercase} throws an error on eof. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEOF1() throws Exception {
+  /**
+   * <testcase primitive="&#x5c;uppercase"> Test case checking that
+   * {@code &#x5c;uppercase} throws an error on eof.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEOF1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\uppercase",
-            // --- log message ---
-            "File ended while scanning text of \\uppercase");
-    }
+    assertFailure(// --- input code ---
+                  "\\uppercase",
+                  // --- log message ---
+                  "File ended while scanning text of \\uppercase" );
+  }
 
-    /**
-     * <testcase primitive="&#x5c;uppercase"> Test case checking that
-     * {@code &#x5c;uppercase} is invariant on uppercase letters. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="&#x5c;uppercase"> Test case checking that
+   * {@code &#x5c;uppercase} is invariant on uppercase letters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\uppercase{ABC}\\end",
-            // --- output channel ---
-            "ABC" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\uppercase{ABC}\\end",
+                  // --- output channel ---
+                  "ABC" + TERM );
+  }
 
-    /**
-     * <testcase primitive="&#x5c;uppercase"> Test case checking that
-     * {@code &#x5c;uppercase} translates lowercase letters. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="&#x5c;uppercase"> Test case checking that
+   * {@code &#x5c;uppercase} translates lowercase letters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\uppercase{abc}\\end",
-            // --- output channel ---
-            "ABC" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\uppercase{abc}\\end",
+                  // --- output channel ---
+                  "ABC" + TERM );
+  }
 
-    /**
-     * <testcase primitive="&#x5c;uppercase"> Test case checking that
-     * {@code &#x5c;uppercase} translates mixed letters. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="&#x5c;uppercase"> Test case checking that
+   * {@code &#x5c;uppercase} translates mixed letters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\uppercase{aBc}\\end",
-            // --- output channel ---
-            "ABC" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\uppercase{aBc}\\end",
+                  // --- output channel ---
+                  "ABC" + TERM );
+  }
 
-    /**
-     * <testcase primitive="&#x5c;uppercase"> Test case checking that
-     * {@code &#x5c;uppercase} respects uccode. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test10() throws Exception {
+  /**
+   * <testcase primitive="&#x5c;uppercase"> Test case checking that
+   * {@code &#x5c;uppercase} respects uccode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test10() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\uccode`b=`1 " + "\\uppercase{abc}\\end",
-            // --- output channel ---
-            "A1C" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\uccode`b=`1 " + "\\uppercase{abc}\\end",
+                  // --- output channel ---
+                  "A1C" + TERM );
+  }
 
 }

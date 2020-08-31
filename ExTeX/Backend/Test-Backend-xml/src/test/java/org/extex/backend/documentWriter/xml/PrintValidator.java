@@ -23,15 +23,15 @@ import org.extex.test.Validator;
 
 /**
  * Validator, which prints the string.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class PrintValidator implements Validator {
 
-public boolean validate(String s) {
+  public boolean validate( String s ) {
 
-        System.out.println(s);
-        return true;
-    }
+    System.out.println( s );
+    return true;
+  }
 
 }

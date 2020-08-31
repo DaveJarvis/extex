@@ -24,37 +24,36 @@ package org.extex.framework.configuration.exception;
  * {@code null} or the empty string.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationInvalidResourceException
-        extends
-            ConfigurationException {
+    extends
+    ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new object.
-     *
-     */
-    public ConfigurationInvalidResourceException() {
+  /**
+   * Create a new object.
+   */
+  public ConfigurationInvalidResourceException() {
 
-        super("", (String) null);
-    }
+    super( "", (String) null );
+  }
 
-    /**
-     * Getter for the text prefix of this ConfigException.
-     * The text is taken from the resource bundle {@code ConfigurationEception}
-     * under the key {@code ConfigurationInvalidResourceException.Text}.
-     *
-     * @return the text
-     */
-    @Override
-    protected String getText() {
+  /**
+   * Getter for the text prefix of this ConfigException.
+   * The text is taken from the resource bundle {@code ConfigurationEception}
+   * under the key {@code ConfigurationInvalidResourceException.Text}.
+   *
+   * @return the text
+   */
+  @Override
+  protected String getText() {
 
-        return getLocalizer().format(
-            "ConfigurationInvalidResourceException.Text");
-    }
+    return getLocalizer().format(
+        "ConfigurationInvalidResourceException.Text" );
+  }
 
 }

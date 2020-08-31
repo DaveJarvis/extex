@@ -23,82 +23,81 @@ import java.io.IOException;
 
 /**
  * This is the abstract base class for all value items.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractValueItem implements ValueItem {
 
-    /**
-     * The field {@code content} contains the content of the value.
-     */
-    private String content;
+  /**
+   * The field {@code content} contains the content of the value.
+   */
+  private String content;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param content the initial value
-     */
-    public AbstractValueItem(String content) {
+  /**
+   * Creates a new object.
+   *
+   * @param content the initial value
+   */
+  public AbstractValueItem( String content ) {
 
-        this.content = content;
-    }
+    this.content = content;
+  }
 
-    /**
-     * This is the default implementation of an expansion. It simply expands the
-     * content of the object.
-     * 
-     * @param sb the target StringBuilder
-     * @param db the database context
-     */
-    @Override
-    public void expand(StringBuilder sb, DB db) {
+  /**
+   * This is the default implementation of an expansion. It simply expands the
+   * content of the object.
+   *
+   * @param sb the target StringBuilder
+   * @param db the database context
+   */
+  @Override
+  public void expand( StringBuilder sb, DB db ) {
 
-        sb.append(content);
-    }
+    sb.append( content );
+  }
 
-    /**
-     * Getter for the value of the object.
-     * 
-     * @return the value
-     */
-    @Override
-    public String getContent() {
+  /**
+   * Getter for the value of the object.
+   *
+   * @return the value
+   */
+  @Override
+  public String getContent() {
 
-        return content;
-    }
+    return content;
+  }
 
-    /**
-     * Setter for the value.
-     * 
-     * @param content the new value
-     */
-    @Override
-    public void setContent(String content) {
+  /**
+   * Setter for the value.
+   *
+   * @param content the new value
+   */
+  @Override
+  public void setContent( String content ) {
 
-        this.content = content;
-    }
+    this.content = content;
+  }
 
-    /**
-     * Return a String representation of the object suitable for a
-     * BibTeX file.
-     * 
-     * @return the string representation
-     */
-    @Override
-    public String toString() {
+  /**
+   * Return a String representation of the object suitable for a
+   * BibTeX file.
+   *
+   * @return the string representation
+   */
+  @Override
+  public String toString() {
 
-        return getContent();
-    }
+    return getContent();
+  }
 
-    /**
-     * The visitor pattern is used to distinguish the different subtypes. Thus
-     * the derived classes are forced to overwrite this method.
-     * 
-     * @param visitor the visitor
-     * @param db the database context
-     * 
-     * @throws IOException just in case
-     */
-    @Override
-    public abstract void visit(ValueVisitor visitor, DB db) throws IOException;
+  /**
+   * The visitor pattern is used to distinguish the different subtypes. Thus
+   * the derived classes are forced to overwrite this method.
+   *
+   * @param visitor the visitor
+   * @param db      the database context
+   * @throws IOException just in case
+   */
+  @Override
+  public abstract void visit( ValueVisitor visitor, DB db ) throws IOException;
 }

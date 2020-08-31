@@ -37,79 +37,77 @@ import org.extex.typesetter.type.node.ExplicitKernNode;
 
 /**
  * This class provides an implementation for the primitive {@code \ }.
- * 
+ *
  * <p>The Primitive {@code \/}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;italic correction&rang;
  *        &rarr; {@code \/}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    123\/456  </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ItalicCorrection extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public ItalicCorrection(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public ItalicCorrection( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Node node = typesetter.getLastNode();
+
+    if( node instanceof CharNode ) {
+      FixedDimen ic = italicCorrection(
+          ((CharNode) node).getCharacter(),
+          ((CharNode) node).getTypesettingContext().getFont() );
+      typesetter.add( new ExplicitKernNode( ic, true ) );
     }
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * Determine the italic correction for a character in a font. If no
+   * information can be found in the font then opt is returned.
+   *
+   * @param uc   the Unicode character to compute the italic correction for
+   * @param font the font to use
+   * @return the italic correction
+   */
+  private FixedDimen italicCorrection( UnicodeChar uc, Font font ) {
 
-        Node node = typesetter.getLastNode();
-
-        if (node instanceof CharNode) {
-            FixedDimen ic = italicCorrection(
-                ((CharNode) node).getCharacter(), 
-                ((CharNode) node).getTypesettingContext().getFont());
-            typesetter.add(new ExplicitKernNode(ic, true));
-        }
-    }
-
-    /**
-     * Determine the italic correction for a character in a font. If no
-     * information can be found in the font then opt is returned.
-     * 
-     * @param uc the Unicode character to compute the italic correction for
-     * @param font the font to use
-     * 
-     * @return the italic correction
-     */
-    private FixedDimen italicCorrection(UnicodeChar uc, Font font) {
-
-        FixedDimen ic = font.getItalicCorrection(uc);
-        return (ic != null ? ic : Dimen.ZERO_PT);
-    }
+    FixedDimen ic = font.getItalicCorrection( uc );
+    return (ic != null ? ic : Dimen.ZERO_PT);
+  }
 
 }

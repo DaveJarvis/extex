@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \tracingonline}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TracingonlineTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(TracingonlineTest.class);
-    }
+    (new JUnitCore()).run( TracingonlineTest.class );
+  }
 
 
-    public TracingonlineTest() {
+  public TracingonlineTest() {
 
-        super("tracingonline", "", "0");
-    }
+    super( "tracingonline", "", "0" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

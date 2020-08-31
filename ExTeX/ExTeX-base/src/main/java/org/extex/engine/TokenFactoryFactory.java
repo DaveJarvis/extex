@@ -28,9 +28,9 @@ import org.extex.scanner.type.token.TokenFactory;
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}. This factory
  * inherits its properties from the {@link org.extex.framework.AbstractFactory
  * AbstractFactory}. Among them the support for configuration and logging.
- * 
- *  Configuration
- * 
+ * <p>
+ * Configuration
+ *
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * TokenFactory. The name of the class is given as the argument {@code class}
@@ -40,7 +40,7 @@ import org.extex.scanner.type.token.TokenFactory;
  * <pre>
  *   &lt;TokenFactory class="org.extex.scanner.type.token.TokenFactoryImpl"/&gt;
  *  </pre>
- * 
+ *
  * <p>
  * The named class needs to implement the interface
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}. If this
@@ -57,22 +57,20 @@ import org.extex.scanner.type.token.TokenFactory;
  * passed to the new instance. For this purpose the factory itself is log
  * enabled to receive the logger.
  * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TokenFactoryFactory extends AbstractFactory<TokenFactory> {
 
-    /**
-     * Instance delivering method.
-     * 
-     * @return an appropriate instance
-     * 
-     * @throws ConfigurationException in case of an error in the configuration
-     */
-    public TokenFactory createInstance() throws ConfigurationException {
+  /**
+   * Instance delivering method.
+   *
+   * @return an appropriate instance
+   * @throws ConfigurationException in case of an error in the configuration
+   */
+  public TokenFactory createInstance() throws ConfigurationException {
 
-        return createInstance(TokenFactory.class);
-    }
+    return createInstance( TokenFactory.class );
+  }
 
 }

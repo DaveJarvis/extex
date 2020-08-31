@@ -34,83 +34,76 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface ListManager {
 
-    /**
-     * Invoke the paragraph builder on a list of nodes.
-     *
-     * @param nodes the nodes to make a paragraph from
-     *
-     * @return the vertical node list containing the lines of the paragraph
-     *
-     * @throws TypesetterException in case of an error
-     */
-    NodeList buildParagraph(HorizontalListNode nodes)
-            throws TypesetterException;
+  /**
+   * Invoke the paragraph builder on a list of nodes.
+   *
+   * @param nodes the nodes to make a paragraph from
+   * @return the vertical node list containing the lines of the paragraph
+   * @throws TypesetterException in case of an error
+   */
+  NodeList buildParagraph( HorizontalListNode nodes )
+      throws TypesetterException;
 
-    /**
-     * End the current paragraph.
-     *
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of an configuration problem
-     */
-    void endParagraph() throws TypesetterException, ConfigurationException;
+  /**
+   * End the current paragraph.
+   *
+   * @throws TypesetterException    in case of an error
+   * @throws ConfigurationException in case of an configuration problem
+   */
+  void endParagraph() throws TypesetterException, ConfigurationException;
 
-    /**
-     * Switch to horizontal mode if necessary.
-     * If the current mode is a horizontal mode then nothing is done.
-     *
-     * @param locator the locator
-     *
-     * @return the horizontal list maker
-     *
-     * @throws TypesetterException in case of an error
-     */
-    ListMaker ensureHorizontalMode(Locator locator) throws TypesetterException;
+  /**
+   * Switch to horizontal mode if necessary.
+   * If the current mode is a horizontal mode then nothing is done.
+   *
+   * @param locator the locator
+   * @return the horizontal list maker
+   * @throws TypesetterException in case of an error
+   */
+  ListMaker ensureHorizontalMode( Locator locator ) throws TypesetterException;
 
-    /**
-     * Getter for the char node factory.
-     *
-     * @return the char node factory
-     */
-    NodeFactory getNodeFactory();
+  /**
+   * Getter for the char node factory.
+   *
+   * @return the char node factory
+   */
+  NodeFactory getNodeFactory();
 
-    /**
-     * Getter for the options object.
-     *
-     * @return the options
-     */
-    TypesetterOptions getOptions();
+  /**
+   * Getter for the options object.
+   *
+   * @return the options
+   */
+  TypesetterOptions getOptions();
 
-    /**
-     * Discard the top of the stack of list makers.
-     *
-     * @return the list maker popped from the stack
-     *
-     * @throws TypesetterException in case of an error
-     */
-    ListMaker pop() throws TypesetterException;
+  /**
+   * Discard the top of the stack of list makers.
+   *
+   * @return the list maker popped from the stack
+   * @throws TypesetterException in case of an error
+   */
+  ListMaker pop() throws TypesetterException;
 
-    /**
-     * Push a new element to the stack of list makers.
-     *
-     * @param listMaker the new element to push
-     *
-     * @throws TypesetterException in case of an error
-     */
-    void push(ListMaker listMaker) throws TypesetterException;
+  /**
+   * Push a new element to the stack of list makers.
+   *
+   * @param listMaker the new element to push
+   * @throws TypesetterException in case of an error
+   */
+  void push( ListMaker listMaker ) throws TypesetterException;
 
-    /**
-     * Setter for the space factor
-     *
-     * @param spaceFactor the space factor
-     *
-     * @throws TypesetterUnsupportedException in case of an error
-     * @throws InvalidSpacefactorException in case of an invalid space factor
-     */
-    void setSpacefactor(FixedCount spaceFactor)
-            throws TypesetterUnsupportedException,
-                InvalidSpacefactorException;
+  /**
+   * Setter for the space factor
+   *
+   * @param spaceFactor the space factor
+   * @throws TypesetterUnsupportedException in case of an error
+   * @throws InvalidSpacefactorException    in case of an invalid space factor
+   */
+  void setSpacefactor( FixedCount spaceFactor )
+      throws TypesetterUnsupportedException,
+      InvalidSpacefactorException;
 
 }

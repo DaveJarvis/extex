@@ -19,121 +19,120 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * hhcurveto: dy1? {dxa dxb dyb dxc}+ hhcurveto (27).
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2HhcurveTo extends T2PathConstruction {
 
-    /**
-     * The dy1.
-     */
-    private T2Number dy1;
+  /**
+   * The dy1.
+   */
+  private T2Number dy1;
 
-    /**
-     * The four values array.
-     */
-    private final T2FourNumber[] four;
+  /**
+   * The four values array.
+   */
+  private final T2FourNumber[] four;
 
-    /**
-     * Create a new object.
-     * 
-     * @param ch The char string.
-     * @param stack The stack.
-     * 
-     * @throws IOException in case of an error
-     */
-    public T2HhcurveTo(List<T2CharString> stack, CharString ch)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param ch    The char string.
+   * @param stack The stack.
+   * @throws IOException in case of an error
+   */
+  public T2HhcurveTo( List<T2CharString> stack, CharString ch )
+      throws IOException {
 
-        super(stack, new short[]{T2HHCURVETO}, ch);
+    super( stack, new short[]{T2HHCURVETO}, ch );
 
-        int n = stack.size();
+    int n = stack.size();
 
-        if (n % 4 != 0) {
-            // dy1 exists
-            dy1 = (T2Number) stack.remove(0);
-        }
-
-        n = stack.size();
-
-        if (n % 4 != 0) {
-            throw new T2MissingNumberException();
-        }
-
-        four = new T2FourNumber[n / 4];
-
-        for (int i = 0; i < n; i += 4) {
-            T2Number v1 = (T2Number) stack.get(i);
-            T2Number v2 = (T2Number) stack.get(i + 1);
-            T2Number v3 = (T2Number) stack.get(i + 2);
-            T2Number v4 = (T2Number) stack.get(i + 3);
-            T2FourNumber si = new T2FourNumber(v1, v2, v3, v4);
-            four[i / 4] = si;
-        }
-
+    if( n % 4 != 0 ) {
+      // dy1 exists
+      dy1 = (T2Number) stack.remove( 0 );
     }
 
-    /**
-     * Getter for dy1.
-     * 
-     * @return the dy1
-     */
-    public T2Number getDy1() {
+    n = stack.size();
 
-        return dy1;
+    if( n % 4 != 0 ) {
+      throw new T2MissingNumberException();
     }
 
-    /**
-     * Getter for four.
-     * 
-     * @return the four
-     */
-    public T2FourNumber[] getFour() {
+    four = new T2FourNumber[ n / 4 ];
 
-        return four;
+    for( int i = 0; i < n; i += 4 ) {
+      T2Number v1 = (T2Number) stack.get( i );
+      T2Number v2 = (T2Number) stack.get( i + 1 );
+      T2Number v3 = (T2Number) stack.get( i + 2 );
+      T2Number v4 = (T2Number) stack.get( i + 3 );
+      T2FourNumber si = new T2FourNumber( v1, v2, v3, v4 );
+      four[ i / 4 ] = si;
     }
 
-@Override
-    public int getID() {
+  }
 
-        return TYPE_HHCURVETO;
+  /**
+   * Getter for dy1.
+   *
+   * @return the dy1
+   */
+  public T2Number getDy1() {
+
+    return dy1;
+  }
+
+  /**
+   * Getter for four.
+   *
+   * @return the four
+   */
+  public T2FourNumber[] getFour() {
+
+    return four;
+  }
+
+  @Override
+  public int getID() {
+
+    return TYPE_HHCURVETO;
+  }
+
+  @Override
+  public String getName() {
+
+    return "hhcurveto";
+  }
+
+  @Override
+  public Object getValue() {
+
+    return four;
+  }
+
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( getName() );
+    if( dy1 != null ) {
+      writer.writeAttribute( "dy1", dy1 );
     }
-
-@Override
-    public String getName() {
-
-        return "hhcurveto";
+    for( int i = 0; i < four.length; i++ ) {
+      writer.writeStartElement( "pair" );
+      writer.writeAttribute( "id", i );
+      writer.writeAttribute( "value", four[ i ].toString() );
+      writer.writeEndElement();
     }
-
-@Override
-    public Object getValue() {
-
-        return four;
-    }
-
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        if (dy1 != null) {
-            writer.writeAttribute("dy1", dy1);
-        }
-        for (int i = 0; i < four.length; i++) {
-            writer.writeStartElement("pair");
-            writer.writeAttribute("id", i);
-            writer.writeAttribute("value", four[i].toString());
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-    }
+    writer.writeEndElement();
+  }
 
 }

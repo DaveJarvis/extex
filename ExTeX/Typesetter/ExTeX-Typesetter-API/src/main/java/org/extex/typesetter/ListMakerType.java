@@ -21,30 +21,30 @@ package org.extex.typesetter;
 
 /**
  * This class provides a type-save encapsulation for list maker types.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ListMakerType {
 
-    /**
-     * The field {@code id} contains the name of the type.
-     */
-    private final String id;
+  /**
+   * The field {@code id} contains the name of the type.
+   */
+  private final String id;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param id a descriptive name
-     */
-    public ListMakerType(String id) {
+  /**
+   * Creates a new object.
+   *
+   * @param id a descriptive name
+   */
+  public ListMakerType( String id ) {
 
-        this.id = id;
-    }
+    this.id = id;
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        return id;
-    }
+    return id;
+  }
 
 }

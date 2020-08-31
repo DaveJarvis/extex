@@ -19,12 +19,12 @@
 
 package org.extex.exbib.core.io.bibio;
 
-import java.io.FileNotFoundException;
-
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
+
+import java.io.FileNotFoundException;
 
 /**
  * This factory class can be used to get an implementation for the interface
@@ -41,81 +41,81 @@ import org.extex.resource.ResourceFinder;
  * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BibReaderFactory extends AbstractFactory<BibReader> {
 
-    /**
-     * The field {@code encoding} contains the encoding the encoding for
-     * reading or {@code null} for the platform default.
-     */
-    private String encoding;
+  /**
+   * The field {@code encoding} contains the encoding the encoding for
+   * reading or {@code null} for the platform default.
+   */
+  private String encoding;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param configuration the configuration
-     * @param finder the resource finder
-     * @param enc the required encoding or {@code null}
-     * @param encFallback the fallback encoding or {@code null}
-     */
-    public BibReaderFactory(Configuration configuration, ResourceFinder finder,
-            String enc, String encFallback) {
+  /**
+   * Creates a new object.
+   *
+   * @param configuration the configuration
+   * @param finder        the resource finder
+   * @param enc           the required encoding or {@code null}
+   * @param encFallback   the fallback encoding or {@code null}
+   */
+  public BibReaderFactory( Configuration configuration, ResourceFinder finder,
+                           String enc, String encFallback ) {
 
-        super(configuration);
-        setResourceFinder(finder);
-        if (enc != null) {
-            encoding = enc;
-        } else if (encFallback != null) {
-            encoding = encFallback;
-        } else {
-            encoding = configuration.getAttribute("encoding");
-        }
+    super( configuration );
+    setResourceFinder( finder );
+    if( enc != null ) {
+      encoding = enc;
     }
-
-    /**
-     * Getter for encoding.
-     * 
-     * @return the encoding
-     */
-    public String getEncoding() {
-
-        return encoding;
+    else if( encFallback != null ) {
+      encoding = encFallback;
     }
-
-    /**
-     * Get a new instance of a BibReader.
-     * <p>
-     * The encoding used for reading is taken from the configuration or given
-     * explicitly to the factory.
-     * </p>
-     * 
-     * @param file the file name
-     * 
-     * @return a new instance of the desired class
-     * 
-     * @throws ConfigurationException in case of a configuration error
-     * @throws FileNotFoundException in case the file could not be opened for
-     *         reading
-     */
-    public BibReader newInstance(String file)
-            throws ConfigurationException,
-                FileNotFoundException {
-
-        BibReader bibReader = super.createInstance(BibReader.class);
-        bibReader.setResourceFinder(getResourceFinder());
-        bibReader.open(file, encoding);
-
-        return bibReader;
+    else {
+      encoding = configuration.getAttribute( "encoding" );
     }
+  }
 
-    /**
-     * Setter for encoding.
-     * 
-     * @param encoding the encoding to set
-     */
-    public void setEncoding(String encoding) {
+  /**
+   * Getter for encoding.
+   *
+   * @return the encoding
+   */
+  public String getEncoding() {
 
-        this.encoding = encoding;
-    }
+    return encoding;
+  }
+
+  /**
+   * Get a new instance of a BibReader.
+   * <p>
+   * The encoding used for reading is taken from the configuration or given
+   * explicitly to the factory.
+   * </p>
+   *
+   * @param file the file name
+   * @return a new instance of the desired class
+   * @throws ConfigurationException in case of a configuration error
+   * @throws FileNotFoundException  in case the file could not be opened for
+   *                                reading
+   */
+  public BibReader newInstance( String file )
+      throws ConfigurationException,
+      FileNotFoundException {
+
+    BibReader bibReader = super.createInstance( BibReader.class );
+    bibReader.setResourceFinder( getResourceFinder() );
+    bibReader.open( file, encoding );
+
+    return bibReader;
+  }
+
+  /**
+   * Setter for encoding.
+   *
+   * @param encoding the encoding to set
+   */
+  public void setEncoding( String encoding ) {
+
+    this.encoding = encoding;
+  }
 
 }

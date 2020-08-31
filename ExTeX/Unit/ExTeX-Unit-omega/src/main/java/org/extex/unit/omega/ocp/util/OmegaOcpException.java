@@ -25,26 +25,26 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This class indicates that an &Omega;CP instruction has been used in an
  * invalid context.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OmegaOcpException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param primitive the name of the primitive
-     */
-    public OmegaOcpException(String primitive) {
+  /**
+   * Creates a new object.
+   *
+   * @param primitive the name of the primitive
+   */
+  public OmegaOcpException( String primitive ) {
 
-        super(LocalizerFactory.getLocalizer(OmegaOcpException.class),
-            "Message", primitive);
-    }
+    super( LocalizerFactory.getLocalizer( OmegaOcpException.class ),
+           "Message", primitive );
+  }
 
 }

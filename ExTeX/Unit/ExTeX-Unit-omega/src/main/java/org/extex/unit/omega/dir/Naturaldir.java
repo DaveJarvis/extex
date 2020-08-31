@@ -31,57 +31,56 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \naturaldir}.
- * 
+ *
  * <p>The Primitive {@code \naturaldir}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;naturaldir&rang;
  *      &rarr; {@code \naturaldir}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  * \naturaldir  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Naturaldir extends AbstractCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Naturaldir(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Naturaldir( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
-    }
+    // TODO gene: unimplemented
+    throw new RuntimeException( "unimplemented" );
+  }
 
 }

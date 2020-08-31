@@ -19,24 +19,24 @@
 
 package org.extex.font.format.dvi;
 
-import java.io.IOException;
-
 import org.extex.font.exception.FontException;
 import org.extex.util.file.random.RandomAccessR;
 
+import java.io.IOException;
+
 /**
  * Interface for a DVI interpreter.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface DviInterpreter {
 
-    /**
-     * Interpreter for DVI.
-     * 
-     * @param rar the input
-     * @throws IOException in case of a IO-error.
-     * @throws FontException in case of a font-error.
-     */
-    void interpret(RandomAccessR rar) throws IOException, FontException;
+  /**
+   * Interpreter for DVI.
+   *
+   * @param rar the input
+   * @throws IOException   in case of a IO-error.
+   * @throws FontException in case of a font-error.
+   */
+  void interpret( RandomAccessR rar ) throws IOException, FontException;
 }

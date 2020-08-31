@@ -34,70 +34,69 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code &#x5c;unexpanded}.
- * 
+ *
  * <p>The Primitive {@code &#x5c;unexpanded}</p>
  * <p>
  * The macro {@code &#x5c;unexpanded} ...
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;unexpanded&rang;
  *      &rarr; {@code &#x5c;unexpanded} ...  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *   \message{abc&#x5c;unexpanded{\ifx}} </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Unexpanded extends AbstractCode implements ExpandableCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Unexpanded(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Unexpanded( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    try {
+      Tokens body = source.getTokens( context, source, typesetter );
+      source.push( body );
+    } catch( EofException e ) {
+      throw new EofException( toText( context ) );
     }
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter ) throws HelpingException {
 
-        try {
-            Tokens body = source.getTokens(context, source, typesetter);
-            source.push(body);
-        } catch (EofException e) {
-            throw new EofException(toText(context));
-        }
-    }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
-
-        // TODO gene: expand unimplemented
-        throw new RuntimeException("unimplemneted");
-    }
+    // TODO gene: expand unimplemented
+    throw new RuntimeException( "unimplemneted" );
+  }
 
 }

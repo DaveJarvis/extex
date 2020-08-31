@@ -25,29 +25,29 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception is raised when an unexpected end of file is encountered when
  * reading tokens in braces.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code TTP.EOFinToks}.
+ * The localization format is taken from the Localizer under the key
+ * {@code TTP.EOFinToks}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EofInToksException extends EofException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 20060505L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 20060505L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param macro the name of the macro
-     */
-    public EofInToksException(String macro) {
+  /**
+   * Creates a new object.
+   *
+   * @param macro the name of the macro
+   */
+  public EofInToksException( String macro ) {
 
-        super(LocalizerFactory.getLocalizer(EofInToksException.class),
-                "TTP.EOFinToks", macro);
-    }
+    super( LocalizerFactory.getLocalizer( EofInToksException.class ),
+           "TTP.EOFinToks", macro );
+  }
 
 }

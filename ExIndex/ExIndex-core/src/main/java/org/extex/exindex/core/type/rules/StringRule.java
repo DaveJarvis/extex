@@ -22,48 +22,48 @@ package org.extex.exindex.core.type.rules;
 /**
  * This rule replaces a constant string with a constant replacement text. This
  * is the most simple case of a rule.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class StringRule extends Rule {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param pattern the pattern
-     * @param replacement the replacement text
-     * @param again the indicator for repetition
-     */
-    public StringRule(String pattern, String replacement, boolean again) {
+  /**
+   * Creates a new object.
+   *
+   * @param pattern     the pattern
+   * @param replacement the replacement text
+   * @param again       the indicator for repetition
+   */
+  public StringRule( String pattern, String replacement, boolean again ) {
 
-        super(pattern, replacement, again);
-        if (again && replacement.indexOf(pattern) >= 0) {
-            throw new RuntimeException("infinite loop detected");
-        }
+    super( pattern, replacement, again );
+    if( again && replacement.indexOf( pattern ) >= 0 ) {
+      throw new RuntimeException( "infinite loop detected" );
     }
+  }
 
-@Override
-    public int apply(StringBuilder sb, int index) {
+  @Override
+  public int apply( StringBuilder sb, int index ) {
 
-        int ret = -1;
-        String p = getPattern();
-        int len = p.length();
+    int ret = -1;
+    String p = getPattern();
+    int len = p.length();
 
-        do {
-            if (index + len > sb.length()) {
-                return ret;
-            }
-
-            for (int i = 0; i < len; i++) {
-                if (sb.charAt(index + i) != p.charAt(i)) {
-                    return ret;
-                }
-            }
-            sb.replace(index, index + len, getReplacement());
-            ret = index + len;
-        } while (isAgain());
-
+    do {
+      if( index + len > sb.length() ) {
         return ret;
-    }
+      }
+
+      for( int i = 0; i < len; i++ ) {
+        if( sb.charAt( index + i ) != p.charAt( i ) ) {
+          return ret;
+        }
+      }
+      sb.replace( index, index + len, getReplacement() );
+      ret = index + len;
+    } while( isAgain() );
+
+    return ret;
+  }
 
 }

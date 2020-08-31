@@ -25,89 +25,89 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \countdef}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CountdefTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(CountdefTest.class);
-    }
+    (new JUnitCore()).run( CountdefTest.class );
+  }
 
 
-    public CountdefTest() {
+  public CountdefTest() {
 
-        super("cc", "", "0", "\\countdef\\cc=42 ");
-    }
+    super( "cc", "", "0", "\\countdef\\cc=42 " );
+  }
 
-    /**
-     * <testcase primitive="\countdef"> Test case checking that
-     * {@code \countdef} creates a count assignable control sequence which is
-     * equivalent to the {@code \count}. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\countdef"> Test case checking that
+   * {@code \countdef} creates a count assignable control sequence which is
+   * equivalent to the {@code \count}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            "\\countdef\\x=42 " + "\\count42=123 " + "\\the\\count42 \\end",
-            // --- output channel ---
-            "123" + TERM);
-    }
+        "\\countdef\\x=42 " + "\\count42=123 " + "\\the\\count42 \\end",
+        // --- output channel ---
+        "123" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\countdef"> Test case checking that
-     * {@code \countdef} respects a group. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal1() throws Exception {
+  /**
+   * <testcase primitive="\countdef"> Test case checking that
+   * {@code \countdef} respects a group.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\begingroup\\countdef\\x=42 \\endgroup" + "\\the\\x \\end",
-            // --- error channel ---
-            "Undefined control sequence \\x");
-    }
+    assertFailure(// --- input code ---
+                  "\\begingroup\\countdef\\x=42 \\endgroup" + "\\the\\x \\end",
+                  // --- error channel ---
+                  "Undefined control sequence \\x" );
+  }
 
-    /**
-     * <testcase primitive="\countdef"> Test case checking that
-     * {@code \countdef} respects a group. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal2() throws Exception {
+  /**
+   * <testcase primitive="\countdef"> Test case checking that
+   * {@code \countdef} respects a group.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\begingroup\\global\\countdef\\x=42 \\x=123\\endgroup"
-                    + "\\the\\x \\end",
-            // --- output channel ---
-            "0" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\begingroup\\global\\countdef\\x=42 \\x=123\\endgroup"
+                      + "\\the\\x \\end",
+                  // --- output channel ---
+                  "0" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\countdef"> Test case checking that
-     * {@code \countdef} respects {@code \globaldefs}. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal10() throws Exception {
+  /**
+   * <testcase primitive="\countdef"> Test case checking that
+   * {@code \countdef} respects {@code \globaldefs}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal10() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\globaldefs=1\\begingroup\\countdef\\x=42 \\x=123\\endgroup"
-                    + "\\the\\x \\end",
-            // --- output channel ---
-            "123" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\globaldefs=1\\begingroup\\countdef\\x=42 \\x=123\\endgroup"
+                      + "\\the\\x \\end",
+                  // --- output channel ---
+                  "123" + TERM );
+  }
 
 }

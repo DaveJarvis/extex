@@ -26,18 +26,18 @@ import java.io.InputStream;
  * a new file based stream has been opened.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OpenFileObserver {
 
-    /**
-     * This method is meant to be invoked just after a new file based stream has
-     * been opened.
-     *
-     * @param filename the name of the file to be opened
-     * @param filetype the type of the file to be opened. The type is resolved
-     *  via the configuration to a file name pattern
-     * @param stream the input stream to read from
-     */
-    void update(String filename, String filetype, InputStream stream);
+  /**
+   * This method is meant to be invoked just after a new file based stream has
+   * been opened.
+   *
+   * @param filename the name of the file to be opened
+   * @param filetype the type of the file to be opened. The type is resolved
+   *                 via the configuration to a file name pattern
+   * @param stream   the input stream to read from
+   */
+  void update( String filename, String filetype, InputStream stream );
 
 }

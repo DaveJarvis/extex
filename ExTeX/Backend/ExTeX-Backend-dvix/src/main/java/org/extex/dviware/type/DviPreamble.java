@@ -19,75 +19,72 @@
 
 package org.extex.dviware.type;
 
+import org.extex.dviware.Dvi;
+
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.extex.dviware.Dvi;
 
 /**
  * This class represents the DVI instruction {@code pre}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviPreamble extends AbstractDviCode {
 
-    /**
-     * The comment {@code MAX_COMMENT_LEN} contains the maximal length of the
-     * comment string.
-     */
-    private static final int MAX_COMMENT_LEN = 255;
+  /**
+   * The comment {@code MAX_COMMENT_LEN} contains the maximal length of the
+   * comment string.
+   */
+  private static final int MAX_COMMENT_LEN = 255;
 
-    /**
-     * The field {@code comment} contains the comment string.
-     */
-    private final String comment;
+  /**
+   * The field {@code comment} contains the comment string.
+   */
+  private final String comment;
 
-    /**
-     * The field {@code mag} contains the magnification.
-     */
-    private final int mag;
+  /**
+   * The field {@code mag} contains the magnification.
+   */
+  private final int mag;
 
-    /**
-     * Creates a new object.
-     *
-     * @param mag the magnification
-     * @param comment the comment
-     */
-    public DviPreamble(int mag, String comment) {
+  /**
+   * Creates a new object.
+   *
+   * @param mag     the magnification
+   * @param comment the comment
+   */
+  public DviPreamble( int mag, String comment ) {
 
-        super("pre");
+    super( "pre" );
 
-        if (comment.length() > MAX_COMMENT_LEN) {
-            throw new IllegalArgumentException("comment");
-        }
-        this.mag = mag;
-        this.comment = comment;
+    if( comment.length() > MAX_COMMENT_LEN ) {
+      throw new IllegalArgumentException( "comment" );
     }
+    this.mag = mag;
+    this.comment = comment;
+  }
 
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
 
-        stream.write(Dvi.PRE);
-        stream.write(Dvi.DVI_ID);
-        write4(stream, Dvi.DVI_UNIT_NUMERATOR);
-        write4(stream, Dvi.DVI_UNIT_DENOMINATOR);
-        write4(stream, mag);
-        int length = comment.length();
-        stream.write(length);
-        for (int i = 0; i < length; i++) {
-            stream.write(comment.charAt(i));
-        }
-        return 15 + length;
+    stream.write( Dvi.PRE );
+    stream.write( Dvi.DVI_ID );
+    write4( stream, Dvi.DVI_UNIT_NUMERATOR );
+    write4( stream, Dvi.DVI_UNIT_DENOMINATOR );
+    write4( stream, mag );
+    int length = comment.length();
+    stream.write( length );
+    for( int i = 0; i < length; i++ ) {
+      stream.write( comment.charAt( i ) );
     }
+    return 15 + length;
+  }
 
 }

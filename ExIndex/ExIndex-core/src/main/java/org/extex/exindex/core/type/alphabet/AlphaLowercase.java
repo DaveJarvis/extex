@@ -19,58 +19,58 @@
 
 package org.extex.exindex.core.type.alphabet;
 
-import java.io.PrintStream;
-
 import org.extex.exindex.core.type.page.LowerPage;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.type.value.LValue;
 
+import java.io.PrintStream;
+
 /**
  * This location class represents a parser for lowercase letters.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AlphaLowercase implements LValue, Alphabet, LocationClass {
 
 
-    public AlphaLowercase() {
+  public AlphaLowercase() {
 
+  }
+
+  /**
+   * java.lang.String)
+   */
+  public PageReference match( String encap, String s ) {
+
+    if( s.matches( "[a-z]" ) ) {
+      return new LowerPage( encap, s );
     }
+    return null;
+  }
 
-    /**
-*      java.lang.String)
-     */
-    public PageReference match(String encap, String s) {
+  public boolean match( StringBuilder s ) {
 
-        if (s.matches("[a-z]")) {
-            return new LowerPage(encap, s);
-        }
-        return null;
+    if( s.length() == 0 ) {
+      return false;
     }
-
-public boolean match(StringBuilder s) {
-
-        if (s.length() == 0) {
-            return false;
-        }
-        char c = s.charAt(0);
-        if (c < 'a' || c > 'z') {
-            return false;
-        }
-        s.deleteCharAt(0);
-        // while (s.length() > 0) {
-        // c = s.charAt(0);
-        // if (c < 'a' || c > 'z') {
-        // return true;
-        // }
-        // s.deleteCharAt(0);
-        // }
-        return true;
+    char c = s.charAt( 0 );
+    if( c < 'a' || c > 'z' ) {
+      return false;
     }
+    s.deleteCharAt( 0 );
+    // while (s.length() > 0) {
+    // c = s.charAt(0);
+    // if (c < 'a' || c > 'z') {
+    // return true;
+    // }
+    // s.deleteCharAt(0);
+    // }
+    return true;
+  }
 
-public void print(PrintStream stream) {
+  public void print( PrintStream stream ) {
 
-        stream.print("#alpha");
-    }
+    stream.print( "#alpha" );
+  }
 
 }

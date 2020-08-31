@@ -32,76 +32,76 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdfoutline}.
- * 
+ *
  * <p>The Primitive {@code \pdfoutline}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;pdfoutline&rang;
  *       &rarr; {@code \pdfoutline} &lang;optional count&rang; {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context, boolean, boolean, CodeToken)
  *          &lang;general text&rang;}
  *
  *    &lang;optional count&rang;
  *       &rarr;
  *        | {@code count} {@linkplain
- *          org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
+ *          org.extex.interpreter.TokenSource#scanRegisterName(Context, TokenSource, Typesetter, CodeToken)
  *          &lang;number&rang;}   </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \pdfoutline {abc.png}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdfoutline extends AbstractPdftexCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdfoutline(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdfoutline( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    PdftexSupport writer = ensurePdftex( context, typesetter );
+
+    ActionSpec action =
+        ActionSpec.parseActionSpec( context, source, typesetter,
+                                    getToken() );
+    long count = 0;
+    if( source.getKeyword( context, "count" ) ) {
+      count = source.parseInteger( context, source, typesetter );
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    String text = source.scanTokensAsString( context, getToken() );
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
-
-        ActionSpec action =
-                ActionSpec.parseActionSpec(context, source, typesetter,
-                    getToken());
-        long count = 0;
-        if (source.getKeyword(context, "count")) {
-            count = source.parseInteger(context, source, typesetter);
-        }
-
-        String text = source.scanTokensAsString(context, getToken());
-
-        writer.pdfoutline(action, count, text);
-    }
+    writer.pdfoutline( action, count, text );
+  }
 
 }

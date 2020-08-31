@@ -19,50 +19,48 @@
 
 package org.extex.typesetter.tc;
 
-import java.io.Serializable;
-
 import org.extex.color.Color;
 import org.extex.language.Language;
 import org.extex.typesetter.tc.font.Font;
+
+import java.io.Serializable;
 
 /**
  * The typesetting context is a container for attributes describing the
  * appearance of glyphs or other nodes. This interface provides reading
  * methods only. Thus the client can rely on an immutable object only.
  *
- *
- * @see org.extex.typesetter.tc.ModifiableTypesettingContext
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see org.extex.typesetter.tc.ModifiableTypesettingContext
+ */
 public interface TypesettingContext extends Serializable {
 
-    /**
-     * Getter for the color.
-     *
-     * @return the current color
-     */
-    Color getColor();
+  /**
+   * Getter for the color.
+   *
+   * @return the current color
+   */
+  Color getColor();
 
-    /**
-     * Getter for the writing direction.
-     *
-     * @return the current direction
-     */
-    Direction getDirection();
+  /**
+   * Getter for the writing direction.
+   *
+   * @return the current direction
+   */
+  Direction getDirection();
 
-    /**
-     * Getter for the font component.
-     *
-     * @return the font
-     */
-    Font getFont();
+  /**
+   * Getter for the font component.
+   *
+   * @return the font
+   */
+  Font getFont();
 
-    /**
-     * Getter for the hyphenation table.
-     *
-     * @return the hyphenation table
-     */
-    Language getLanguage();
+  /**
+   * Getter for the hyphenation table.
+   *
+   * @return the hyphenation table
+   */
+  Language getLanguage();
 
 }

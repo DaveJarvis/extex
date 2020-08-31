@@ -35,7 +35,7 @@ import org.extex.typesetter.type.noad.Noad;
 /**
  * This class provides an implementation for the primitive
  * {@code \mathchoice}.
- * 
+ *
  * <p>The Math Primitive {@code \mathchoice}</p>
  * <p>
  * The math primitive {@code \mathchoice} provides a switch on the current
@@ -58,68 +58,68 @@ import org.extex.typesetter.type.noad.Noad;
  * <p>
  * Outside the math mode the primitive raises an error.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;mathchoice&rang;
  *       &rarr; {@code \mathchoice} {&lang;display material&rang;}{&lang;text material&rang;}{&lang;script material&rang;}{&lang;scriptscript material&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \mathchoice{d}{t}{s}{ss}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Mathchoice extends AbstractMathCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Mathchoice(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Mathchoice( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
 
-        Flags f = prefix.copy();
-        prefix.clear();
-        NoadConsumer nc = getListMaker(context, typesetter);
-        Token t = getToken();
-        Noad display =
-                nc.scanNoad(prefix, context, source, typesetter, t,
-                    GroupType.MATH_GROUP);
-        Noad text =
-                nc.scanNoad(prefix, context, source, typesetter, t,
-                    GroupType.MATH_GROUP);
-        Noad script =
-                nc.scanNoad(prefix, context, source, typesetter, t,
-                    GroupType.MATH_GROUP);
-        Noad scriptScript =
-                nc.scanNoad(prefix, context, source, typesetter, t,
-                    GroupType.MATH_GROUP);
-        nc.add(new ChoiceNoad(display, text, script, scriptScript));
-        prefix.set(f);
-    }
+    Flags f = prefix.copy();
+    prefix.clear();
+    NoadConsumer nc = getListMaker( context, typesetter );
+    Token t = getToken();
+    Noad display =
+        nc.scanNoad( prefix, context, source, typesetter, t,
+                     GroupType.MATH_GROUP );
+    Noad text =
+        nc.scanNoad( prefix, context, source, typesetter, t,
+                     GroupType.MATH_GROUP );
+    Noad script =
+        nc.scanNoad( prefix, context, source, typesetter, t,
+                     GroupType.MATH_GROUP );
+    Noad scriptScript =
+        nc.scanNoad( prefix, context, source, typesetter, t,
+                     GroupType.MATH_GROUP );
+    nc.add( new ChoiceNoad( display, text, script, scriptScript ) );
+    prefix.set( f );
+  }
 
 }

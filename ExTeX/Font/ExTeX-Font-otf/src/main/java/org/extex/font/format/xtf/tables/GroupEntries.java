@@ -23,129 +23,128 @@ import java.util.List;
 
 /**
  * This class group entries in a list.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*
  */
 public class GroupEntries {
 
-    /**
-     * The list for the entries.
-     */
-    private final List<Object> list;
+  /**
+   * The list for the entries.
+   */
+  private final List<Object> list;
 
-    /**
-     * Create a new object.
-     */
-    public GroupEntries() {
+  /**
+   * Create a new object.
+   */
+  public GroupEntries() {
 
-        list = new ArrayList<Object>();
+    list = new ArrayList<Object>();
+  }
+
+  /**
+   * Create a new object.
+   *
+   * @param size The initialize size of the list.
+   */
+  public GroupEntries( int size ) {
+
+    list = new ArrayList<Object>( size );
+  }
+
+  /**
+   * Add the entry if it not exists in the list.
+   *
+   * @param val The entry.
+   */
+  public void add( int val ) {
+
+    Integer v = new Integer( val );
+    if( !list.contains( v ) ) {
+      list.add( v );
     }
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param size The initialize size of the list.
-     */
-    public GroupEntries(int size) {
+  /**
+   * Add the entry if it not exists in the list.
+   *
+   * @param val The entry.
+   */
+  public void add( Object val ) {
 
-        list = new ArrayList<Object>(size);
+    if( !list.contains( val ) ) {
+      list.add( val );
     }
+  }
 
-    /**
-     * Add the entry if it not exists in the list.
-     * 
-     * @param val The entry.
-     */
-    public void add(int val) {
+  /**
+   * Returns the entry at position 'idx'.
+   *
+   * @param idx The index.
+   * @return Returns the entry at position 'idx'.
+   */
+  public Object get( int idx ) {
 
-        Integer v = new Integer(val);
-        if (!list.contains(v)) {
-            list.add(v);
-        }
+    return list.get( idx );
+  }
+
+  /**
+   * Returns the size of the list.
+   *
+   * @return Returns the size of the list.
+   */
+  public int size() {
+
+    return list.size();
+  }
+
+  /**
+   * Returns the list as array.
+   *
+   * @return Returns the list as array.
+   */
+  public Object[] toArray() {
+
+    Object[] obj = new Object[ list.size() ];
+    obj = list.toArray( obj );
+    return obj;
+  }
+
+  /**
+   * Returns the list as a int-array. If a value can not be convert, the value
+   * set to -1.
+   *
+   * @return Returns the list as a int-array.
+   */
+  public int[] toIntArray() {
+
+    int[] obj = new int[ list.size() ];
+    for( int i = 0, n = list.size(); i < n; i++ ) {
+      try {
+        obj[ i ] = Integer.parseInt( get( i ).toString() );
+      } catch( Exception e ) {
+        obj[ i ] = -1;
+      }
     }
+    return obj;
+  }
 
-    /**
-     * Add the entry if it not exists in the list.
-     * 
-     * @param val The entry.
-     */
-    public void add(Object val) {
+  /**
+   * Returns the entries as a string.
+   *
+   * @return Returns the entries as a string.
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-        if (!list.contains(val)) {
-            list.add(val);
-        }
+    StringBuilder buf = new StringBuilder();
+    for( int i = 0, n = list.size(); i < n; i++ ) {
+      buf.append( get( i ) );
+      if( i < n - 1 ) {
+        buf.append( ", " );
+      }
     }
-
-    /**
-     * Returns the entry at position 'idx'.
-     * 
-     * @param idx The index.
-     * @return Returns the entry at position 'idx'.
-     */
-    public Object get(int idx) {
-
-        return list.get(idx);
-    }
-
-    /**
-     * Returns the size of the list.
-     * 
-     * @return Returns the size of the list.
-     */
-    public int size() {
-
-        return list.size();
-    }
-
-    /**
-     * Returns the list as array.
-     * 
-     * @return Returns the list as array.
-     */
-    public Object[] toArray() {
-
-        Object[] obj = new Object[list.size()];
-        obj = list.toArray(obj);
-        return obj;
-    }
-
-    /**
-     * Returns the list as a int-array. If a value can not be convert, the value
-     * set to -1.
-     * 
-     * @return Returns the list as a int-array.
-     */
-    public int[] toIntArray() {
-
-        int[] obj = new int[list.size()];
-        for (int i = 0, n = list.size(); i < n; i++) {
-            try {
-                obj[i] = Integer.parseInt(get(i).toString());
-            } catch (Exception e) {
-                obj[i] = -1;
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * Returns the entries as a string.
-     * 
-     * @return Returns the entries as a string.
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        StringBuilder buf = new StringBuilder();
-        for (int i = 0, n = list.size(); i < n; i++) {
-            buf.append(get(i));
-            if (i < n - 1) {
-                buf.append(", ");
-            }
-        }
-        return buf.toString();
-    }
+    return buf.toString();
+  }
 
 }

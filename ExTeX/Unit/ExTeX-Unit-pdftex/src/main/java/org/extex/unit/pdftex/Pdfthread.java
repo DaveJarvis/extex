@@ -35,84 +35,88 @@ import org.extex.typesetter.type.node.RuleNode;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdfthread}.
- * 
+ *
  * <p>The Primitive {@code \pdfthread}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;pdfthread&rang;
  *       &rarr; {@code \pdfthread} ... </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \pdfthread {abc.png}  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdfthread extends AbstractPdftexCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdfthread(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdfthread( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
+
+    ensurePdftex( context, typesetter );
+    String attr = null;
+    FixedDimen width = Dimen.ONE_PT; // TODO gene:provide correct default
+    FixedDimen height = Dimen.ONE_PT; // TODO gene:provide correct default
+    FixedDimen depth = Dimen.ONE_PT; // TODO gene:provide correct default
+
+    for( ; ; ) {
+      if( source.getKeyword( context, "width" ) ) {
+        width = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "height" ) ) {
+        height = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "depth" ) ) {
+        depth = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "attr" ) ) {
+        attr = source.scanTokensAsString( context, getToken() );
+      }
+      else {
+        break;
+      }
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+    IdSpec id = IdSpec.parseIdSpec( context, source, typesetter, getToken() );
 
-        ensurePdftex(context, typesetter);
-        String attr = null;
-        FixedDimen width = Dimen.ONE_PT; // TODO gene:provide correct default
-        FixedDimen height = Dimen.ONE_PT; // TODO gene:provide correct default
-        FixedDimen depth = Dimen.ONE_PT; // TODO gene:provide correct default
+    PdfThread thread =
+        new PdfThread( new RuleNode( width, height, depth, context
+            .getTypesettingContext(), true ), attr, id );
 
-        for (;;) {
-            if (source.getKeyword(context, "width")) {
-                width = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "height")) {
-                height = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "depth")) {
-                depth = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "attr")) {
-                attr = source.scanTokensAsString(context, getToken());
-            } else {
-                break;
-            }
-        }
+    typesetter.add( thread );
 
-        IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, getToken());
-
-        PdfThread thread =
-                new PdfThread(new RuleNode(width, height, depth, context
-                    .getTypesettingContext(), true), attr, id);
-
-        typesetter.add(thread);
-
-        prefix.clearImmediate();
-    }
+    prefix.clearImmediate();
+  }
 
 }

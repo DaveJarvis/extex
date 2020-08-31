@@ -21,38 +21,38 @@ package org.extex.framework.configuration.exception;
 
 /**
  * This Exception is thrown when a configuration contains a syntax error.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationSyntaxException extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2010L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2010L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message string
-     * @param source the source of the exception
-     */
-    public ConfigurationSyntaxException(String message, String source) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message string
+   * @param source  the source of the exception
+   */
+  public ConfigurationSyntaxException( String message, String source ) {
 
-        super(message, source);
-    }
+    super( message, source );
+  }
 
-    /**
-     * Getter for the text prefix of this Exception. The text is taken from the
-     * resource bundle {@code ConfigurationEception} under the key
-     * {@code ConfigurationSyntaxException.Text}.
-     * 
-     * @return the text
-     */
-    @Override
-    protected String getText() {
+  /**
+   * Getter for the text prefix of this Exception. The text is taken from the
+   * resource bundle {@code ConfigurationEception} under the key
+   * {@code ConfigurationSyntaxException.Text}.
+   *
+   * @return the text
+   */
+  @Override
+  protected String getText() {
 
-        return getLocalizer().format("ConfigurationSyntaxException.Text");
-    }
+    return getLocalizer().format( "ConfigurationSyntaxException.Text" );
+  }
 
 }

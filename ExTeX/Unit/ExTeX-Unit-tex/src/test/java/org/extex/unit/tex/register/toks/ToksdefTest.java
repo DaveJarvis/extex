@@ -25,75 +25,75 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \toksdef}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ToksdefTest extends AbstractToksRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ToksdefTest.class);
-    }
+    (new JUnitCore()).run( ToksdefTest.class );
+  }
 
 
-    public ToksdefTest() {
+  public ToksdefTest() {
 
-        super("x", "", "", "\\toksdef\\x=42 ");
-    }
+    super( "x", "", "", "\\toksdef\\x=42 " );
+  }
 
-    /**
-     * <testcase primitive="\toksdef"> Test case checking that {@code \toksdef}
-     * creates a toks assignable control sequence which is equivalent to the
-     * {@code \toks}. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\toksdef"> Test case checking that {@code \toksdef}
+   * creates a toks assignable control sequence which is equivalent to the
+   * {@code \toks}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\toksdef\\x=42 " + "\\toks42={abc}"
-                    + "\\the\\toks42 \\end",
-            // --- output channel ---
-            "abc" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\toksdef\\x=42 " + "\\toks42={abc}"
+                      + "\\the\\toks42 \\end",
+                  // --- output channel ---
+                  "abc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\toksdef"> Test case checking that {@code \toksdef}
-     * respects a group. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal1() throws Exception {
+  /**
+   * <testcase primitive="\toksdef"> Test case checking that {@code \toksdef}
+   * respects a group.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\begingroup\\toksdef\\x=42 \\endgroup" + "\\the\\x \\end",
-            // --- error channel ---
-            "Undefined control sequence \\x");
-    }
+    assertFailure(// --- input code ---
+                  "\\begingroup\\toksdef\\x=42 \\endgroup" + "\\the\\x \\end",
+                  // --- error channel ---
+                  "Undefined control sequence \\x" );
+  }
 
-    /**
-     * <testcase primitive="\toksdef"> Test case checking that {@code \toksdef}
-     * respects a group. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal2() throws Exception {
+  /**
+   * <testcase primitive="\toksdef"> Test case checking that {@code \toksdef}
+   * respects a group.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal2() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES
-                    + "\\begingroup\\global\\toksdef\\x=42 \\x={abc}\\endgroup"
-                    + "\\the\\x \\end",
-            // --- output channel ---
-            "");
-    }
+        DEFINE_BRACES
+            + "\\begingroup\\global\\toksdef\\x=42 \\x={abc}\\endgroup"
+            + "\\the\\x \\end",
+        // --- output channel ---
+        "" );
+  }
 
 }

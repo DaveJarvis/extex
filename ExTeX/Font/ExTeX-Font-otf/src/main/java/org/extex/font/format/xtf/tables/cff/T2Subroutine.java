@@ -24,35 +24,34 @@ import java.util.List;
 
 /**
  * Subroutine.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public abstract class T2Subroutine extends T2Operator {
 
-    /**
-     * bytes
-     */
-    private final short[] bytes;
+  /**
+   * bytes
+   */
+  private final short[] bytes;
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @param id the operator-id for the value
-     * @param ch The char string.
-     * 
-     * @throws IOException in case of an error
-     */
-    protected T2Subroutine(List<T2CharString> stack, short[] id, CharString ch)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @param id    the operator-id for the value
+   * @param ch    The char string.
+   * @throws IOException in case of an error
+   */
+  protected T2Subroutine( List<T2CharString> stack, short[] id, CharString ch )
+      throws IOException {
 
-        bytes = convertStackaddID(stack, id);
-    }
+    bytes = convertStackaddID( stack, id );
+  }
 
-@Override
-    public short[] getBytes() {
+  @Override
+  public short[] getBytes() {
 
-        return bytes;
-    }
+    return bytes;
+  }
 }

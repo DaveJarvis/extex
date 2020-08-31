@@ -26,79 +26,75 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \expandafter}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExpandafterTest extends ExTeXLauncher {
 
 
-    public ExpandafterTest() {
+  public ExpandafterTest() {
 
-    }
+  }
 
-    /**
-     * <testcase primitive="\expandafter">
-     *  Test case checking that {@code \expandafter} exchanges two letters.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\expandafter">
+   * Test case checking that {@code \expandafter} exchanges two letters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\expandafter",
-                //--- output message ---
-                "Unexpected end of file while processing \\expandafter");
-    }
+    assertFailure(//--- input code ---
+                  "\\expandafter",
+                  //--- output message ---
+                  "Unexpected end of file while processing \\expandafter" );
+  }
 
-    /**
-     * <testcase primitive="\expandafter">
-     *  Test case checking that {@code \expandafter} exchanges two letters.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testExpandafterLetterLetter1() throws Exception {
+  /**
+   * <testcase primitive="\expandafter">
+   * Test case checking that {@code \expandafter} exchanges two letters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testExpandafterLetterLetter1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_CATCODES + "\\expandafter ab" + "\\end",
-                //--- output message ---
-                "ba" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_CATCODES + "\\expandafter ab" + "\\end",
+                  //--- output message ---
+                  "ba" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\expandafter">
-     *  Test case checking that {@code \expandafter} passes on {@code \global}.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal1() throws Exception {
+  /**
+   * <testcase primitive="\expandafter">
+   * Test case checking that {@code \expandafter} passes on {@code \global}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_CATCODES + "\\global\\expandafter A\\count0=123 B"
-                        + "\\end",
-                //--- output message ---
-                "AB" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_CATCODES + "\\global\\expandafter A\\count0=123 B"
+                      + "\\end",
+                  //--- output message ---
+                  "AB" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\expandafter">
-     *  Test case checking that {@code \expandafter} can expand the second
-     *  token.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\expandafter">
+   * Test case checking that {@code \expandafter} can expand the second
+   * token.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_CATCODES + "\\let\\x=X \\let\\y=Y"
-                        + "\\expandafter\\x\\y A" + "\\end",
-                //--- output message ---
-                "YXA" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_CATCODES + "\\let\\x=X \\let\\y=Y"
+                      + "\\expandafter\\x\\y A" + "\\end",
+                  //--- output message ---
+                  "YXA" + TERM );
+  }
 
 }

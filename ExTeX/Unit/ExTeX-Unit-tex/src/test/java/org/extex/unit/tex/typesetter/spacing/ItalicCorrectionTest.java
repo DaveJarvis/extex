@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \/}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ItalicCorrectionTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ItalicCorrectionTest.class);
-    }
+    (new JUnitCore()).run( ItalicCorrectionTest.class );
+  }
 
 
-    public ItalicCorrectionTest() {
+  public ItalicCorrectionTest() {
 
-        setPrimitive("/");setArguments("");setPrepare("");
-    }
+    setPrimitive( "/" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

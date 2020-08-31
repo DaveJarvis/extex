@@ -24,27 +24,27 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception signals that a register name or number has been found which is
  * not in the legal range.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 
 public class IllegalRegisterException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     */
-    public IllegalRegisterException(String message) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   */
+  public IllegalRegisterException( String message ) {
 
-        super(LocalizerFactory.getLocalizer(IllegalRegisterException.class),
-            "TTP.BadRegister", message);
-    }
+    super( LocalizerFactory.getLocalizer( IllegalRegisterException.class ),
+           "TTP.BadRegister", message );
+  }
 
 }

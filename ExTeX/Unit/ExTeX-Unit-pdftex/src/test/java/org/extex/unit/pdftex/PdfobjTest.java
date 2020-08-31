@@ -24,31 +24,31 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \pdfobj}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfobjTest extends NoFlagsButImmediateAndProtectedPrimitiveTester {
 
 
-    public PdfobjTest() {
+  public PdfobjTest() {
 
-        super("pdfobj", "{}", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfobj", "{}", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    /**
-     * <testcase primitive="\pdfobj"> Test case checking that ... 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pdfobj"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfobj b",
-            // --- output message ---
-            "Missing `{' inserted");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfobj b",
+                  // --- output message ---
+                  "Missing `{' inserted" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

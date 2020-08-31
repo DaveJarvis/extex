@@ -30,24 +30,24 @@ import org.extex.typesetter.type.math.MathCode;
  * This interface describes a primitive which can deliver a MathCode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface MathCodeConvertible {
 
-    /**
-     * This method converts an implementing class into a MathCode.
-     * It might be necessary to read further tokens to determine which value to
-     * use. For instance an additional register number might be required. In
-     * this case the additional arguments Context and TokenSource can be used.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    MathCode convertMathCode(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException;
+  /**
+   * This method converts an implementing class into a MathCode.
+   * It might be necessary to read further tokens to determine which value to
+   * use. For instance an additional register number might be required. In
+   * this case the additional arguments Context and TokenSource can be used.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter to use for conversion
+   * @return the converted value
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  MathCode convertMathCode( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException;
 
 }

@@ -24,42 +24,44 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the hyphenation.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HTest extends ExTeXLauncher {
 
 
-    public HTest() {
+  public HTest() {
 
-    }
+  }
 
-    /**
-     * Test case checking that ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testPattern1() throws Exception {
+  /**
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testPattern1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\patterns{a3b ab4c}" + "a xxxabcyyy" + "\\end ",
-            // --- output channel ---
-            "a xxxabcyyy" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\patterns{a3b ab4c}" + "a xxxabcyyy" + 
+                      "\\end ",
+                  // --- output channel ---
+                  "a xxxabcyyy" + TERM );
+  }
 
-    /**
-     * Test case checking that ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testPattern2() throws Exception {
+  /**
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testPattern2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\patterns{ab4c a3b}" + "a xxxabcyyy" + "\\end ",
-            // --- output channel ---
-            "a xxxabcyyy" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\patterns{ab4c a3b}" + "a xxxabcyyy" + 
+                      "\\end ",
+                  // --- output channel ---
+                  "a xxxabcyyy" + TERM );
+  }
 
 }

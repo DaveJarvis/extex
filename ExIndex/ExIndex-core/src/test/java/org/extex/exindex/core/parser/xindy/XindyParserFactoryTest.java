@@ -19,13 +19,6 @@
 
 package org.extex.exindex.core.parser.xindy;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.io.ByteArrayInputStream;
-import java.io.UnsupportedEncodingException;
-
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -33,140 +26,143 @@ import org.extex.resource.ResourceFinder;
 import org.extex.resource.io.NamedInputStream;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.UnsupportedEncodingException;
+
+import static org.junit.Assert.*;
+
 /**
  * This is a test suite for {@link XindyParserFactory}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class XindyParserFactoryTest {
 
-    /**
-     * The field {@code EMPTY_RESOURCE_FINDER} contains the resource finder
-     * which returns an empty input stream.
-     */
-    private static final ResourceFinder EMPTY_RESOURCE_FINDER =
-            new ResourceFinder() {
+  /**
+   * The field {@code EMPTY_RESOURCE_FINDER} contains the resource finder
+   * which returns an empty input stream.
+   */
+  private static final ResourceFinder EMPTY_RESOURCE_FINDER =
+      new ResourceFinder() {
 
-                public void enableTracing(boolean flag) {
+        public void enableTracing( boolean flag ) {
 
-                    
-                }
 
-                public NamedInputStream findResource(String name, String type)
-                        throws ConfigurationException {
+        }
 
-                    return new NamedInputStream(new ByteArrayInputStream(
-                        new byte[]{}), "");
-                }
-            };
+        public NamedInputStream findResource( String name, String type )
+            throws ConfigurationException {
 
-    /**
-     *  If the resource can not be found then {@code null} is
-     * returned by {@link XindyParserFactory#create(String, String, Indexer)}.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test1() throws Exception {
+          return new NamedInputStream( new ByteArrayInputStream(
+              new byte[]{} ), "" );
+        }
+      };
 
-        XindyParserFactory factory = new XindyParserFactory();
-        factory.setResourceFinder(new ResourceFinder() {
+  /**
+   * If the resource can not be found then {@code null} is
+   * returned by {@link XindyParserFactory#create(String, String, Indexer)}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test1() throws Exception {
 
-            public void enableTracing(boolean flag) {
+    XindyParserFactory factory = new XindyParserFactory();
+    factory.setResourceFinder( new ResourceFinder() {
 
-                
-            }
+      public void enableTracing( boolean flag ) {
 
-            public NamedInputStream findResource(String name, String type)
-                    throws ConfigurationException {
 
-                return null;
-            }
-        });
-        assertNull(factory.create(null, null, null));
-    }
+      }
 
-    /**
-     *  If the resource can be found then a {@link XindyParser} is
-     * returned by {@link XindyParserFactory#create(String, String, Indexer)}
-     * when the default encoding is requested with {@code null} as
-     * encoding.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test2() throws Exception {
+      public NamedInputStream findResource( String name, String type )
+          throws ConfigurationException {
 
-        XindyParserFactory factory = new XindyParserFactory();
-        factory.setResourceFinder(EMPTY_RESOURCE_FINDER);
-        RawIndexParser parser = factory.create(null, null, null);
-        assertNotNull(parser);
-        assertTrue(parser instanceof XindyParser);
-    }
+        return null;
+      }
+    } );
+    assertNull( factory.create( null, null, null ) );
+  }
 
-    /**
-     *  If the resource can be found then a {@link XindyParser} is
-     * returned by {@link XindyParserFactory#create(String, String, Indexer)}
-     * when the default encoding is requested with {@code ""} as
-     * encoding.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test3() throws Exception {
+  /**
+   * If the resource can be found then a {@link XindyParser} is
+   * returned by {@link XindyParserFactory#create(String, String, Indexer)}
+   * when the default encoding is requested with {@code null} as
+   * encoding.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test2() throws Exception {
 
-        XindyParserFactory factory = new XindyParserFactory();
-        factory.setResourceFinder(EMPTY_RESOURCE_FINDER);
-        RawIndexParser parser = factory.create(null, "", null);
-        assertNotNull(parser);
-        assertTrue(parser instanceof XindyParser);
-    }
+    XindyParserFactory factory = new XindyParserFactory();
+    factory.setResourceFinder( EMPTY_RESOURCE_FINDER );
+    RawIndexParser parser = factory.create( null, null, null );
+    assertNotNull( parser );
+    assertTrue( parser instanceof XindyParser );
+  }
 
-    /**
-     *  If the resource can be found then a {@link XindyParser} is
-     * returned by {@link XindyParserFactory#create(String, String, Indexer)}
-     * when the default encoding is requested with an existing encoding (utf-8).
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test4() throws Exception {
+  /**
+   * If the resource can be found then a {@link XindyParser} is
+   * returned by {@link XindyParserFactory#create(String, String, Indexer)}
+   * when the default encoding is requested with {@code ""} as
+   * encoding.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test3() throws Exception {
 
-        XindyParserFactory factory = new XindyParserFactory();
-        factory.setResourceFinder(EMPTY_RESOURCE_FINDER);
-        RawIndexParser parser = factory.create(null, "utf-8", null);
-        assertNotNull(parser);
-        assertTrue(parser instanceof XindyParser);
-    }
+    XindyParserFactory factory = new XindyParserFactory();
+    factory.setResourceFinder( EMPTY_RESOURCE_FINDER );
+    RawIndexParser parser = factory.create( null, "", null );
+    assertNotNull( parser );
+    assertTrue( parser instanceof XindyParser );
+  }
 
-    /**
-     *  If the resource finder is not set then
-     * {@link XindyParserFactory#create(String, String, Indexer)} throws a
-     * {@link NullPointerException}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = NullPointerException.class)
-    public final void testError1() throws Exception {
+  /**
+   * If the resource can be found then a {@link XindyParser} is
+   * returned by {@link XindyParserFactory#create(String, String, Indexer)}
+   * when the default encoding is requested with an existing encoding (utf-8).
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test4() throws Exception {
 
-        new XindyParserFactory().create(null, null, null);
-    }
+    XindyParserFactory factory = new XindyParserFactory();
+    factory.setResourceFinder( EMPTY_RESOURCE_FINDER );
+    RawIndexParser parser = factory.create( null, "utf-8", null );
+    assertNotNull( parser );
+    assertTrue( parser instanceof XindyParser );
+  }
 
-    /**
-     *  If the resource can be found and the encoding is unknown (xxx)
-     * then an {@link UnsupportedEncodingException} is thrown by
-     * {@link XindyParserFactory#create(String, String, Indexer)}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = UnsupportedEncodingException.class)
-    public final void testError2() throws Exception {
+  /**
+   * If the resource finder is not set then
+   * {@link XindyParserFactory#create(String, String, Indexer)} throws a
+   * {@link NullPointerException}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = NullPointerException.class)
+  public final void testError1() throws Exception {
 
-        XindyParserFactory factory = new XindyParserFactory();
-        factory.setResourceFinder(EMPTY_RESOURCE_FINDER);
-        factory.create(null, "xxx", null);
-    }
+    new XindyParserFactory().create( null, null, null );
+  }
+
+  /**
+   * If the resource can be found and the encoding is unknown (xxx)
+   * then an {@link UnsupportedEncodingException} is thrown by
+   * {@link XindyParserFactory#create(String, String, Indexer)}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = UnsupportedEncodingException.class)
+  public final void testError2() throws Exception {
+
+    XindyParserFactory factory = new XindyParserFactory();
+    factory.setResourceFinder( EMPTY_RESOURCE_FINDER );
+    factory.create( null, "xxx", null );
+  }
 
 }

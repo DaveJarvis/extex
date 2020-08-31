@@ -27,55 +27,54 @@ import java.io.IOException;
  * <p>
  * Example:
  * </p>
- * 
+ *
  * <pre>abc.def-ghi</pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class VMacro extends AbstractValueItem {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param contents the contents
-     */
-    public VMacro(String contents) {
+  /**
+   * Creates a new object.
+   *
+   * @param contents the contents
+   */
+  public VMacro( String contents ) {
 
-        super(contents);
+    super( contents );
+  }
+
+  /**
+   * The value of a Macro expands to the concatenation of all constituents,
+   * where undefined items are expanded to the empty string.
+   * <p>
+   * org.extex.exbib.core.db.DB)
+   */
+  @Override
+  public void expand( StringBuilder sb, DB db ) {
+
+    Value val = db.getMacro( getContent() );
+
+    if( val == null ) {
+      return;
     }
 
-    /**
-     * The value of a Macro expands to the concatenation of all constituents,
-     * where undefined items are expanded to the empty string.
-     * 
-*      org.extex.exbib.core.db.DB)
-     */
-    @Override
-    public void expand(StringBuilder sb, DB db) {
-
-        Value val = db.getMacro(getContent());
-
-        if (val == null) {
-            return;
-        }
-
-        for (ValueItem item : val) {
-            item.expand(sb, db);
-        }
+    for( ValueItem item : val ) {
+      item.expand( sb, db );
     }
+  }
 
-    /**
-     * This is a method which is invoked when this object is visited.
-     * 
-     * @param visitor the visitor
-     * @param db the database context
-     * 
-     * @throws IOException just in case
-     */
-    @Override
-    public void visit(ValueVisitor visitor, DB db) throws IOException {
+  /**
+   * This is a method which is invoked when this object is visited.
+   *
+   * @param visitor the visitor
+   * @param db      the database context
+   * @throws IOException just in case
+   */
+  @Override
+  public void visit( ValueVisitor visitor, DB db ) throws IOException {
 
-        visitor.visitMacro(this, db);
-    }
+    visitor.visitMacro( this, db );
+  }
 
 }

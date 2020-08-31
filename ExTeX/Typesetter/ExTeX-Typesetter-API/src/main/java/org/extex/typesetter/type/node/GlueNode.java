@@ -35,99 +35,95 @@ import org.extex.typesetter.type.NodeVisitor;
  * The stretchability is adjusted by the typesetter and the width is adjusted
  * accordingly.
  * </p>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class GlueNode extends AbstractExpandableNode
-        implements
-            SkipNode,
-            Discardable {
+    implements
+    SkipNode,
+    Discardable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object. The size is used to determine the width in
-     * horizontal mode and the height in vertical mode.
-     * 
-     * @param size the actual size
-     * @param horizontal indicator that the glue is used in horizontal mode
-     */
-    public GlueNode(FixedDimen size, boolean horizontal) {
+  /**
+   * Creates a new object. The size is used to determine the width in
+   * horizontal mode and the height in vertical mode.
+   *
+   * @param size       the actual size
+   * @param horizontal indicator that the glue is used in horizontal mode
+   */
+  public GlueNode( FixedDimen size, boolean horizontal ) {
 
-        super(size, horizontal);
-    }
+    super( size, horizontal );
+  }
 
-    /**
-     * Creates a new object. The size is used to determine the width in
-     * horizontal mode and the height in vertical mode.
-     * 
-     * @param size the actual size
-     * @param horizontal indicator that the glue is used in horizontal mode
-     */
-    public GlueNode(FixedGlue size, boolean horizontal) {
+  /**
+   * Creates a new object. The size is used to determine the width in
+   * horizontal mode and the height in vertical mode.
+   *
+   * @param size       the actual size
+   * @param horizontal indicator that the glue is used in horizontal mode
+   */
+  public GlueNode( FixedGlue size, boolean horizontal ) {
 
-        super(size, horizontal);
-    }
+    super( size, horizontal );
+  }
 
-    /**
-     * This method puts the printable representation into the string buffer.
-     * This is meant to produce a short form only as it is used in error
-     * messages to the user.
-     * 
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * @param breadth the breadth (ignored)
-     * @param depth the depth (ignored)
-* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
-     *      java.lang.String, int, int)
-     */
-    @Override
-    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
+  /**
+   * This method puts the printable representation into the string buffer.
+   * This is meant to produce a short form only as it is used in error
+   * messages to the user.
+   *
+   * @param sb      the output string buffer
+   * @param prefix  the prefix string inserted at the beginning of each line
+   * @param breadth the breadth (ignored)
+   * @param depth   the depth (ignored)
+   * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+   * java.lang.String, int, int)
+   */
+  @Override
+  public void toString( StringBuilder sb, String prefix, int breadth,
+                        int depth ) {
 
-        sb.append(getLocalizer().format("String.Format", getSize().toString()));
-    }
+    sb.append( getLocalizer().format( "String.Format", getSize().toString() ) );
+  }
 
-    /**
-     * This method puts the printable representation into the string buffer.
-     * This is meant to produce a short form only as it is used in error
-     * messages to the user.
-     * 
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * 
-     * @see org.extex.typesetter.type.Node#toText(StringBuilder,
-     *      java.lang.String)
-     */
-    @Override
-    public void toText(StringBuilder sb, String prefix) {
+  /**
+   * This method puts the printable representation into the string buffer.
+   * This is meant to produce a short form only as it is used in error
+   * messages to the user.
+   *
+   * @param sb     the output string buffer
+   * @param prefix the prefix string inserted at the beginning of each line
+   * @see org.extex.typesetter.type.Node#toText(StringBuilder,
+   * java.lang.String)
+   */
+  @Override
+  public void toText( StringBuilder sb, String prefix ) {
 
-        sb.append(getLocalizer().format("Text.Format", getSize().toString()));
-    }
+    sb.append( getLocalizer().format( "Text.Format", getSize().toString() ) );
+  }
 
-    /**
-     * This method provides an entry point for the visitor pattern.
-     * 
-     * @param visitor the visitor to apply
-     * @param value the argument for the visitor
-     * 
-     * @return the result of the method invocation of the visitor
-     * 
-     * @throws GeneralException in case of an error
-     * 
-     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
-     */
-    @Override
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(NodeVisitor visitor, Object value)
-            throws GeneralException {
+  /**
+   * This method provides an entry point for the visitor pattern.
+   *
+   * @param visitor the visitor to apply
+   * @param value   the argument for the visitor
+   * @return the result of the method invocation of the visitor
+   * @throws GeneralException in case of an error
+   * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+   * java.lang.Object)
+   */
+  @Override
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public Object visit( NodeVisitor visitor, Object value )
+      throws GeneralException {
 
-        return visitor.visitGlue(this, value);
-    }
+    return visitor.visitGlue( this, value );
+  }
 
 }

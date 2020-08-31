@@ -33,185 +33,176 @@ import org.extex.typesetter.type.NodeList;
 
 /**
  * This interface describes the capabilities of a list maker.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ListMaker {
 
-    /**
-     * Add a glue node to the list.
-     * 
-     * @param g the glue to add
-     * 
-     * @throws TypesetterException in case of an error
-     */
-    void add(FixedGlue g) throws TypesetterException;
+  /**
+   * Add a glue node to the list.
+   *
+   * @param g the glue to add
+   * @throws TypesetterException in case of an error
+   */
+  void add( FixedGlue g ) throws TypesetterException;
 
-    /**
-     * Add an arbitrary node to the internal list of nodes gathered so far. The
-     * node should not be one of the special nodes treated by methods of their
-     * own.
-     * 
-     * @param node the node to add
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
-     */
-    void add(Node node) throws TypesetterException, ConfigurationException;
+  /**
+   * Add an arbitrary node to the internal list of nodes gathered so far. The
+   * node should not be one of the special nodes treated by methods of their
+   * own.
+   *
+   * @param node the node to add
+   * @throws TypesetterException    in case of an error
+   * @throws ConfigurationException in case of a configuration error
+   */
+  void add( Node node ) throws TypesetterException, ConfigurationException;
 
-    /**
-     * Add a node list to the current list maker and adjust the spacing between
-     * the elements of the list.
-     * 
-     * @param list the list
-     * @param options the options to use
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
-     */
-    void addAndAdjust(NodeList list, TypesetterOptions options)
-            throws TypesetterException,
-                ConfigurationException;
+  /**
+   * Add a node list to the current list maker and adjust the spacing between
+   * the elements of the list.
+   *
+   * @param list    the list
+   * @param options the options to use
+   * @throws TypesetterException    in case of an error
+   * @throws ConfigurationException in case of a configuration error
+   */
+  void addAndAdjust( NodeList list, TypesetterOptions options )
+      throws TypesetterException,
+      ConfigurationException;
 
-    /**
-     * Add a space node to the list.
-     * 
-     * @param typesettingContext the typesetting context for the space
-     * @param spacefactor the space factor to use for this space or
-     *        {@code null} to indicate that the default space factor should
-     *        be used.
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
-     */
-    void addSpace(TypesettingContext typesettingContext, FixedCount spacefactor)
-            throws TypesetterException,
-                ConfigurationException;
+  /**
+   * Add a space node to the list.
+   *
+   * @param typesettingContext the typesetting context for the space
+   * @param spacefactor        the space factor to use for this space or
+   *                           {@code null} to indicate that the default
+   *                           space factor should
+   *                           be used.
+   * @throws TypesetterException    in case of an error
+   * @throws ConfigurationException in case of a configuration error
+   */
+  void addSpace( TypesettingContext typesettingContext, FixedCount spacefactor )
+      throws TypesetterException,
+      ConfigurationException;
 
-    /**
-     * Register an observer to be invoked at the end of the paragraph.
-     * 
-     * @param observer the observer to register
-     */
-    void afterParagraph(ParagraphObserver observer);
+  /**
+   * Register an observer to be invoked at the end of the paragraph.
+   *
+   * @param observer the observer to register
+   */
+  void afterParagraph( ParagraphObserver observer );
 
-    /**
-     * Close the node list. This means that everything is done to ship the
-     * closed node list to the document writer. Nevertheless the invoking
-     * application might decide not to modify the node list and continue
-     * processing. In the other case some nodes might be taken from the node
-     * list returned by this method. Then the processing has to continue with
-     * the reduced node list.
-     * 
-     * @param context the typesetter options mapping a fragment of the
-     *        interpreter context
-     * 
-     * @return the node list enclosed in this instance
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
-     */
-    NodeList complete(TypesetterOptions context)
-            throws TypesetterException,
-                ConfigurationException;
+  /**
+   * Close the node list. This means that everything is done to ship the
+   * closed node list to the document writer. Nevertheless the invoking
+   * application might decide not to modify the node list and continue
+   * processing. In the other case some nodes might be taken from the node
+   * list returned by this method. Then the processing has to continue with
+   * the reduced node list.
+   *
+   * @param context the typesetter options mapping a fragment of the
+   *                interpreter context
+   * @return the node list enclosed in this instance
+   * @throws TypesetterException    in case of an error
+   * @throws ConfigurationException in case of a configuration error
+   */
+  NodeList complete( TypesetterOptions context )
+      throws TypesetterException,
+      ConfigurationException;
 
-    /**
-     * Access the last node on the list.
-     * 
-     * @return the last node in the current list or {@code null} if the
-     *         list is empty
-     */
-    Node getLastNode();
+  /**
+   * Access the last node on the list.
+   *
+   * @return the last node in the current list or {@code null} if the
+   * list is empty
+   */
+  Node getLastNode();
 
-    /**
-     * Getter for the locator.
-     * 
-     * @return the locator
-     */
-    Locator getLocator();
+  /**
+   * Getter for the locator.
+   *
+   * @return the locator
+   */
+  Locator getLocator();
 
-    /**
-     * Getter for the current mode.
-     * 
-     * @return the mode which is one of the values defined in
-     *         {@link org.extex.typesetter.Mode Mode}.
-     */
-    Mode getMode();
+  /**
+   * Getter for the current mode.
+   *
+   * @return the mode which is one of the values defined in
+   * {@link org.extex.typesetter.Mode Mode}.
+   */
+  Mode getMode();
 
-    /**
-     * Getter for the previous depth parameter.
-     * 
-     * @return the previous depth
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     */
-    FixedDimen getPrevDepth() throws TypesetterUnsupportedException;
+  /**
+   * Getter for the previous depth parameter.
+   *
+   * @return the previous depth
+   * @throws TypesetterUnsupportedException in case of an error
+   */
+  FixedDimen getPrevDepth() throws TypesetterUnsupportedException;
 
-    /**
-     * Getter for the space factor.
-     * 
-     * @return the space factor
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     */
-    long getSpacefactor() throws TypesetterUnsupportedException;
+  /**
+   * Getter for the space factor.
+   *
+   * @return the space factor
+   * @throws TypesetterUnsupportedException in case of an error
+   */
+  long getSpacefactor() throws TypesetterUnsupportedException;
 
-    /**
-     * Notification method to deal the case that a left brace has been
-     * encountered.
-     */
-    void leftBrace();
+  /**
+   * Notification method to deal the case that a left brace has been
+   * encountered.
+   */
+  void leftBrace();
 
-    /**
-     * Emit a new paragraph. This might be a noop under certain circumstances.
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
-     */
-    void par() throws TypesetterException, ConfigurationException;
+  /**
+   * Emit a new paragraph. This might be a noop under certain circumstances.
+   *
+   * @throws TypesetterException    in case of an error
+   * @throws ConfigurationException in case of a configuration error
+   */
+  void par() throws TypesetterException, ConfigurationException;
 
-    /**
-     * Removes the last node from the list. If the list is empty then nothing is
-     * done.
-     */
-    void removeLastNode();
+  /**
+   * Removes the last node from the list. If the list is empty then nothing is
+   * done.
+   */
+  void removeLastNode();
 
-    /**
-     * Notification method to deal the case that a right brace has been
-     * encountered.
-     * 
-     * @throws TypesetterException in case of an error
-     */
-    void rightBrace() throws TypesetterException;
+  /**
+   * Notification method to deal the case that a right brace has been
+   * encountered.
+   *
+   * @throws TypesetterException in case of an error
+   */
+  void rightBrace() throws TypesetterException;
 
-    /**
-     * Setter for the previous depth parameter.
-     * 
-     * @param pd the previous depth parameter
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     */
-    void setPrevDepth(FixedDimen pd) throws TypesetterUnsupportedException;
+  /**
+   * Setter for the previous depth parameter.
+   *
+   * @param pd the previous depth parameter
+   * @throws TypesetterUnsupportedException in case of an error
+   */
+  void setPrevDepth( FixedDimen pd ) throws TypesetterUnsupportedException;
 
-    /**
-     * Setter for the space factor.
-     * 
-     * @param sf the space factor to set
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     * @throws InvalidSpacefactorException in case of an invalid space factor
-     */
-    void setSpacefactor(FixedCount sf)
-            throws TypesetterUnsupportedException,
-                InvalidSpacefactorException;
+  /**
+   * Setter for the space factor.
+   *
+   * @param sf the space factor to set
+   * @throws TypesetterUnsupportedException in case of an error
+   * @throws InvalidSpacefactorException    in case of an invalid space factor
+   */
+  void setSpacefactor( FixedCount sf )
+      throws TypesetterUnsupportedException,
+      InvalidSpacefactorException;
 
-    /**
-     * Print the status for {@code \showlists}.
-     * 
-     * @param sb the target buffer
-     * @param depth the depth of the list display
-     * @param breadth the breadth of the list display
-     */
-    void showlist(StringBuilder sb, long depth, long breadth);
+  /**
+   * Print the status for {@code \showlists}.
+   *
+   * @param sb      the target buffer
+   * @param depth   the depth of the list display
+   * @param breadth the breadth of the list display
+   */
+  void showlist( StringBuilder sb, long depth, long breadth );
 
 }

@@ -22,25 +22,25 @@ package org.extex.exindex.lisp.exception;
 /**
  * This exception signals that a function has been encountered which is not
  * defined.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LUndefinedFunctionException extends LException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the resource
-     */
-    public LUndefinedFunctionException(String resource) {
+  /**
+   * Creates a new object.
+   *
+   * @param resource the resource
+   */
+  public LUndefinedFunctionException( String resource ) {
 
-        super(resource);
-    }
+    super( resource );
+  }
 
 }

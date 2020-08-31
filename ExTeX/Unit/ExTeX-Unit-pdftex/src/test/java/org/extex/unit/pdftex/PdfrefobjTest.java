@@ -24,31 +24,31 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \pdfrefobj}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfrefobjTest extends NoFlagsButProtectedPrimitiveTester {
 
 
-    public PdfrefobjTest() {
+  public PdfrefobjTest() {
 
-        super("pdfrefobj", "1", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfrefobj", "1", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    /**
-     * <testcase primitive="\pdfrefobj"> Test case checking that ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pdfrefobj"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfrefobj b",
-            // --- output message ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfrefobj b",
+                  // --- output message ---
+                  "Missing number, treated as zero" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

@@ -27,33 +27,34 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \-}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HyphenTest extends NoFlagsPrimitiveTester {
 
 
-    public HyphenTest() {
+  public HyphenTest() {
 
-        setPrimitive("-");setArguments("");setPrepare("");
-    }
+    setPrimitive( "-" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\-">
-     *  Test case checking that {@code \-} ...
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testDisc1() throws Exception {
+  /**
+   * <testcase primitive="\-">
+   * Test case checking that {@code \-} ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testDisc1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\font\\f cmr10 \\f "
-                + "\\hsize=123pt "
-                + "abc\\-def"
-                + "\\end ",
-                //--- output channel ---
-                "abc--def" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  "\\font\\f cmr10 \\f "
+                      + "\\hsize=123pt "
+                      + "abc\\-def"
+                      + "\\end ",
+                  //--- output channel ---
+                  "abc--def" + TERM );
+  }
 
 }

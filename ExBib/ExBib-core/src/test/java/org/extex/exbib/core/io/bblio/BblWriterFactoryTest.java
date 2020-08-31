@@ -19,360 +19,357 @@
 
 package org.extex.exbib.core.io.bblio;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.extex.exbib.core.io.Writer;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationLoader;
+import org.extex.framework.configuration.exception.*;
+import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
 
-import org.extex.exbib.core.io.Writer;
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.ConfigurationLoader;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationIOException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * This class is a test suite for {@link BblWriterFactory}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BblWriterFactoryTest {
 
-    private static final String DIR_TARGET = "build";
+  private static final String DIR_TARGET = "build";
+
+  /**
+   * The object under test.
+   */
+  private class Testee extends BblWriterFactory {
 
     /**
-     * The object under test.
-     */
-    private class Testee extends BblWriterFactory {
-
-        /**
-         * Creates a new object.
-         *
-         * @param configuration the configuration
-         * @param encoding the encoding
-         *
-         * @throws ConfigurationException in case of a configuration error
-         * @throws UnsupportedEncodingException in case of an encoding error
-         */
-        public Testee(Configuration configuration, String encoding)
-                throws ConfigurationException,
-                    UnsupportedEncodingException {
-
-            super(configuration, encoding);
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoDiscarted()
-         */
-        @Override
-        protected void infoDiscarted() {
-
-            dis = true;
-            super.infoDiscarted();
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoOutput(java.lang.String)
-         */
-        @Override
-        protected void infoOutput(String file) {
-
-            out = true;
-            super.infoOutput(file);
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoStdout()
-         */
-        @Override
-        protected void infoStdout() {
-
-            std = true;
-            super.infoStdout();
-        }
-    }
-
-    /**
-     * The field {@code CFG} contains the configuration.
-     */
-    private static final Configuration CFG = new Configuration() {
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
-         */
-        @Override
-        public Configuration findConfiguration(String key)
-                throws ConfigurationInvalidResourceException,
-                    ConfigurationNotFoundException,
-                    ConfigurationSyntaxException,
-                    ConfigurationIOException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-         *      java.lang.String)
-         */
-        @Override
-        public Configuration findConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
-         */
-        @Override
-        public String getAttribute(String name) {
-
-            if ("class".equals(name)) {
-                return BblWriter.class.getName();
-            }
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
-         */
-        @Override
-        public Configuration getConfiguration(String key)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
-         *      java.lang.String)
-         */
-        @Override
-        public Configuration getConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#getValue()
-         */
-        @Override
-        public String getValue() throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
-         */
-        @Override
-        public String getValue(String key) throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
-         *      int)
-         */
-        @Override
-        public int getValueAsInteger(String key, int defaultValue)
-                throws ConfigurationException {
-
-            return 0;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
-         *      java.lang.String)
-         */
-        @Override
-        public void getValues(List<String> list, String key) {
-
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-         */
-        @Override
-        public List<String> getValues(String key) {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#iterator()
-         */
-        @Override
-        public Iterator<Configuration> iterator() throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
-         */
-        @Override
-        public Iterator<Configuration> iterator(String key)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
-         */
-        @Override
-        public void setConfigurationLoader(ConfigurationLoader loader) {
-
-        }
-    };
-
-    /**
-     * The field {@code dis} contains the indicator that discarded output has
-     * been recognized.
-     */
-    private boolean dis;
-
-    /**
-     * The field {@code out} contains the indicator that file output has been
-     * recognized
-     */
-    private boolean out;
-
-    /**
-     * The field {@code std} contains the indicator that standard output has
-     * been recognized
-     */
-    private boolean std;
-
-    /**
-     *  Test that a new instance can be obtained.
+     * Creates a new object.
      *
-     * @throws Exception in case of an error
+     * @param configuration the configuration
+     * @param encoding      the encoding
+     * @throws ConfigurationException       in case of a configuration error
+     * @throws UnsupportedEncodingException in case of an encoding error
      */
-    @Test
-    public void testNewInstance1() throws Exception {
+    public Testee( Configuration configuration, String encoding )
+        throws ConfigurationException,
+        UnsupportedEncodingException {
 
-        Writer w = new BblWriterFactory(CFG, null).newInstance(null);
-        assertNotNull(w);
-        w.close();
+      super( configuration, encoding );
     }
 
     /**
-     * Test that the discarded notifier is triggered and none of the others when invoked with null as argument
-*
-     * @throws Exception in case of an error
+     * {@inheritDoc}
+     *
+     * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoDiscarted()
      */
-    @Test
-    public void testNewInstance2() throws Exception {
+    @Override
+    protected void infoDiscarted() {
 
-        dis = false;
-        out = false;
-        std = false;
-        Writer w = new Testee(CFG, null).newInstance(null);
-        assertNotNull(w);
-        assertTrue(dis);
-        assertFalse(out);
-        assertFalse(std);
-        w.close();
+      dis = true;
+      super.infoDiscarted();
     }
 
     /**
-     * Test that the discarded notifier is triggered and none of the others when invoked with the empty string as argument
-*
-     * @throws Exception in case of an error
+     * {@inheritDoc}
+     *
+     * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoOutput(java.lang.String)
      */
-    @Test
-    public void testNewInstance3() throws Exception {
+    @Override
+    protected void infoOutput( String file ) {
 
-        dis = false;
-        out = false;
-        std = false;
-        Writer w = new Testee(CFG, null).newInstance("");
-        assertNotNull(w);
-        assertTrue(dis);
-        assertFalse(out);
-        assertFalse(std);
-        w.close();
+      out = true;
+      super.infoOutput( file );
     }
 
     /**
-     * Test that the stdout notifier is triggered and none of the others when invoked with the string "-" as argument
-*
-     * @throws Exception in case of an error
+     * {@inheritDoc}
+     *
+     * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoStdout()
      */
-    @Test
-    public void testNewInstance4() throws Exception {
+    @Override
+    protected void infoStdout() {
 
-        dis = false;
-        out = false;
-        std = false;
-        Writer w = new Testee(CFG, null).newInstance("-");
-        assertNotNull(w);
-        assertFalse(dis);
-        assertFalse(out);
-        assertTrue(std);
-        w.close();
+      std = true;
+      super.infoStdout();
+    }
+  }
+
+  /**
+   * The field {@code CFG} contains the configuration.
+   */
+  private static final Configuration CFG = new Configuration() {
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
+     */
+    @Override
+    public Configuration findConfiguration( String key )
+        throws ConfigurationInvalidResourceException,
+        ConfigurationNotFoundException,
+        ConfigurationSyntaxException,
+        ConfigurationIOException {
+
+      return null;
     }
 
     /**
-     * Test that the stdout notifier is triggered and none of the others when invoked with the string "-" as argument
-*
-     * @throws Exception in case of an error
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
+     *      java.lang.String)
      */
-    @Test
-    public void testNewInstance5() throws Exception {
+    @Override
+    public Configuration findConfiguration( String key, String attribute )
+        throws ConfigurationException {
 
-        dis = false;
-        out = false;
-        std = false;
-        Writer w = new Testee(CFG, null).newInstance(DIR_TARGET + "/test");
-        assertNotNull(w);
-        assertFalse(dis);
-        assertTrue(out);
-        assertFalse(std);
-        w.close();
+      return null;
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
+     */
+    @Override
+    public String getAttribute( String name ) {
+
+      if( "class".equals( name ) ) {
+        return BblWriter.class.getName();
+      }
+
+      return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
+     */
+    @Override
+    public Configuration getConfiguration( String key )
+        throws ConfigurationException {
+
+      return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
+     *      java.lang.String)
+     */
+    @Override
+    public Configuration getConfiguration( String key, String attribute )
+        throws ConfigurationException {
+
+      return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#getValue()
+     */
+    @Override
+    public String getValue() throws ConfigurationException {
+
+      return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
+     */
+    @Override
+    public String getValue( String key ) throws ConfigurationException {
+
+      return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
+     *      int)
+     */
+    @Override
+    public int getValueAsInteger( String key, int defaultValue )
+        throws ConfigurationException {
+
+      return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
+     *      java.lang.String)
+     */
+    @Override
+    public void getValues( List<String> list, String key ) {
+
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
+     */
+    @Override
+    public List<String> getValues( String key ) {
+
+      return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#iterator()
+     */
+    @Override
+    public Iterator<Configuration> iterator() throws ConfigurationException {
+
+      return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
+     */
+    @Override
+    public Iterator<Configuration> iterator( String key )
+        throws ConfigurationException {
+
+      return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
+     */
+    @Override
+    public void setConfigurationLoader( ConfigurationLoader loader ) {
+
+    }
+  };
+
+  /**
+   * The field {@code dis} contains the indicator that discarded output has
+   * been recognized.
+   */
+  private boolean dis;
+
+  /**
+   * The field {@code out} contains the indicator that file output has been
+   * recognized
+   */
+  private boolean out;
+
+  /**
+   * The field {@code std} contains the indicator that standard output has
+   * been recognized
+   */
+  private boolean std;
+
+  /**
+   * Test that a new instance can be obtained.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNewInstance1() throws Exception {
+
+    Writer w = new BblWriterFactory( CFG, null ).newInstance( null );
+    assertNotNull( w );
+    w.close();
+  }
+
+  /**
+   * Test that the discarded notifier is triggered and none of the others
+   * when invoked with null as argument
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNewInstance2() throws Exception {
+
+    dis = false;
+    out = false;
+    std = false;
+    Writer w = new Testee( CFG, null ).newInstance( null );
+    assertNotNull( w );
+    assertTrue( dis );
+    assertFalse( out );
+    assertFalse( std );
+    w.close();
+  }
+
+  /**
+   * Test that the discarded notifier is triggered and none of the others
+   * when invoked with the empty string as argument
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNewInstance3() throws Exception {
+
+    dis = false;
+    out = false;
+    std = false;
+    Writer w = new Testee( CFG, null ).newInstance( "" );
+    assertNotNull( w );
+    assertTrue( dis );
+    assertFalse( out );
+    assertFalse( std );
+    w.close();
+  }
+
+  /**
+   * Test that the stdout notifier is triggered and none of the others when
+   * invoked with the string "-" as argument
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNewInstance4() throws Exception {
+
+    dis = false;
+    out = false;
+    std = false;
+    Writer w = new Testee( CFG, null ).newInstance( "-" );
+    assertNotNull( w );
+    assertFalse( dis );
+    assertFalse( out );
+    assertTrue( std );
+    w.close();
+  }
+
+  /**
+   * Test that the stdout notifier is triggered and none of the others when
+   * invoked with the string "-" as argument
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNewInstance5() throws Exception {
+
+    dis = false;
+    out = false;
+    std = false;
+    Writer w = new Testee( CFG, null ).newInstance( DIR_TARGET + "/test" );
+    assertNotNull( w );
+    assertFalse( dis );
+    assertTrue( out );
+    assertFalse( std );
+    w.close();
+  }
 
 }

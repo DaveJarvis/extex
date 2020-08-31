@@ -27,143 +27,142 @@ import org.extex.language.word.WordTokenizer;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
-import org.extex.typesetter.type.node.CharNode;
-import org.extex.typesetter.type.node.DiscretionaryNode;
-import org.extex.typesetter.type.node.ExplicitKernNode;
-import org.extex.typesetter.type.node.KernNode;
-import org.extex.typesetter.type.node.LigatureNode;
-import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.node.*;
 
 /**
  * This class tokenizes a list of nodes according to the rules of TeX.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TeXWords extends ExTeXWords implements WordTokenizer {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
 
-    public TeXWords() {
+  public TeXWords() {
+
+  }
+
+  /**
+   * Add the characters extracted from a char node to the word container.
+   *
+   * @param node the character node to add to the word
+   * @param word the container to add the node to
+   */
+  private void addWord( CharNode node, UnicodeCharList word ) {
+
+    if( node instanceof LigatureNode ) {
+      LigatureNode ln = (LigatureNode) node;
+      CharNode[] chars = ln.getChars();
+      for( int j = 0; j < chars.length; j++ ) {
+        word.add( chars[ j ].getCharacter() );
+      }
 
     }
+    else {
+      word.add( (node).getCharacter() );
+    }
+  }
 
-    /**
-     * Add the characters extracted from a char node to the word container.
-     * 
-     * @param node the character node to add to the word
-     * @param word the container to add the node to
-     */
-    private void addWord(CharNode node, UnicodeCharList word) {
+  /**
+   * Collect all characters form a node list that make up a word.
+   *
+   * @param nodes the nodes to process
+   * @param word  the word with hyphenation marks
+   * @param start the start index
+   * @param lang  the language in effect
+   * @return the index of the first node past the ones processed
+   * @throws HyphenationException in case of an error
+   */
+  private int collectWord( NodeList nodes, UnicodeCharList word, int start,
+                           Language lang ) throws HyphenationException {
 
-        if (node instanceof LigatureNode) {
-            LigatureNode ln = (LigatureNode) node;
-            CharNode[] chars = ln.getChars();
-            for (int j = 0; j < chars.length; j++) {
-                word.add(chars[j].getCharacter());
-            }
+    int i = start;
+    int size = nodes.size();
 
-        } else {
-            word.add((node).getCharacter());
+    Node n;
+    CharNode cn;
+
+    for( ; i < size; i++ ) {
+      n = nodes.get( i );
+      if( n instanceof CharNode ) {
+        cn = (CharNode) n;
+
+        if( cn.getTypesettingContext().getLanguage() != lang ) {
+          return i;
         }
+
+        addWord( cn, word );
+
+      }
+      else if( n instanceof WhatsItNode ) {
+        // ignored
+      }
+      else if( n instanceof DiscretionaryNode ) {
+        i = collectWord( nodes, word, i + 1, lang );
+        return findWord( nodes, i, word );
+
+      }
+      else if( n instanceof KernNode ) {
+        if( n instanceof ExplicitKernNode ) {
+          break;
+        }
+      }
+      else {
+        break;
+      }
     }
 
-    /**
-     * Collect all characters form a node list that make up a word.
-     * 
-     * @param nodes the nodes to process
-     * @param word the word with hyphenation marks
-     * @param start the start index
-     * @param lang the language in effect
-     * 
-     * @return the index of the first node past the ones processed
-     * 
-     * @throws HyphenationException in case of an error
-     */
-    private int collectWord(NodeList nodes, UnicodeCharList word, int start,
-            Language lang) throws HyphenationException {
+    return i;
+  }
 
-        int i = start;
-        int size = nodes.size();
+  /**
+   * int, org.extex.core.UnicodeCharList)
+   */
+  @Override
+  public int findWord( NodeList nodes, int start, UnicodeCharList word )
+      throws HyphenationException {
 
-        Node n;
-        CharNode cn;
+    int i = start;
+    int size = nodes.size();
+    word.clear();
+    Node n;
 
-        for (; i < size; i++) {
-            n = nodes.get(i);
-            if (n instanceof CharNode) {
-                cn = (CharNode) n;
-
-                if (cn.getTypesettingContext().getLanguage() != lang) {
-                    return i;
-                }
-
-                addWord(cn, word);
-
-            } else if (n instanceof WhatsItNode) {
-                // ignored
-            } else if (n instanceof DiscretionaryNode) {
-                i = collectWord(nodes, word, i + 1, lang);
-                return findWord(nodes, i, word);
-
-            } else if (n instanceof KernNode) {
-                if (n instanceof ExplicitKernNode) {
-                    break;
-                }
-            } else {
-                break;
-            }
-        }
-
+    do {
+      if( i >= size ) {
         return i;
+      }
+      n = nodes.get( i++ );
+    } while( !(n instanceof CharNode) );
+
+    addWord( (CharNode) n, word );
+
+    return collectWord( nodes, word, i, ((CharNode) n)
+        .getTypesettingContext().getLanguage() );
+  }
+
+  /**
+   * org.extex.typesetter.TypesetterOptions)
+   */
+  @Override
+  public UnicodeCharList normalize( UnicodeCharList word,
+                                    TypesetterOptions options )
+      throws HyphenationException {
+
+    UnicodeCharList list = new UnicodeCharList();
+    int size = word.size();
+    UnicodeChar c;
+
+    for( int i = 0; i < size; i++ ) {
+      UnicodeChar uc = word.get( i );
+      c = options.getLccode( uc );
+      list.add( c == null ? uc : c );
     }
 
-    /**
-*      int, org.extex.core.UnicodeCharList)
-     */
-    @Override
-    public int findWord(NodeList nodes, int start, UnicodeCharList word)
-            throws HyphenationException {
-
-        int i = start;
-        int size = nodes.size();
-        word.clear();
-        Node n;
-
-        do {
-            if (i >= size) {
-                return i;
-            }
-            n = nodes.get(i++);
-        } while (!(n instanceof CharNode));
-
-        addWord((CharNode) n, word);
-
-        return collectWord(nodes, word, i, ((CharNode) n)
-            .getTypesettingContext().getLanguage());
-    }
-
-    /**
-*      org.extex.typesetter.TypesetterOptions)
-     */
-    @Override
-    public UnicodeCharList normalize(UnicodeCharList word,
-            TypesetterOptions options) throws HyphenationException {
-
-        UnicodeCharList list = new UnicodeCharList();
-        int size = word.size();
-        UnicodeChar c;
-
-        for (int i = 0; i < size; i++) {
-            UnicodeChar uc = word.get(i);
-            c = options.getLccode(uc);
-            list.add(c == null ? uc : c);
-        }
-
-        return list;
-    }
+    return list;
+  }
 
 }

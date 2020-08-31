@@ -19,11 +19,6 @@
 
 package org.extex.language.hyphenation.base;
 
-import java.io.ObjectStreamException;
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.core.UnicodeChar;
 import org.extex.core.UnicodeCharList;
 import org.extex.framework.Registrar;
@@ -38,389 +33,394 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 
+import java.io.ObjectStreamException;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * This class stores the values for hyphenations and hyphenates words.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Create the name for the {@code HyphenationTable}.
-     *
-     * @param pattern the pattern
-     * @param context the interpreter context
-     * @param key the container to store the key in
-     *
-     * @return the name
-     */
-    protected static boolean[] createHyphenation(UnicodeCharList pattern,
-            TypesetterOptions context, UnicodeCharList key) {
+  /**
+   * Create the name for the {@code HyphenationTable}.
+   *
+   * @param pattern the pattern
+   * @param context the interpreter context
+   * @param key     the container to store the key in
+   * @return the name
+   */
+  protected static boolean[] createHyphenation( UnicodeCharList pattern,
+                                                TypesetterOptions context,
+                                                UnicodeCharList key ) {
 
-        int size = pattern.size();
-        int len = 0;
-        for (int i = 0; i < size; i++) {
-            if (!pattern.get(i).equals(UnicodeChar.SHY)) {
-                len++;
-            }
-        }
-        boolean[] vec = new boolean[len];
+    int size = pattern.size();
+    int len = 0;
+    for( int i = 0; i < size; i++ ) {
+      if( !pattern.get( i ).equals( UnicodeChar.SHY ) ) {
+        len++;
+      }
+    }
+    boolean[] vec = new boolean[ len ];
 
-        UnicodeChar uc;
-        int j = 0;
+    UnicodeChar uc;
+    int j = 0;
 
-        for (int i = 0; i < size; i++) {
-            uc = pattern.get(i);
-            if (uc.equals(UnicodeChar.SHY)) {
-                vec[j] = true;
-            } else {
-                j++;
-                key.add(uc);
-            }
-        }
-
-        return vec;
+    for( int i = 0; i < size; i++ ) {
+      uc = pattern.get( i );
+      if( uc.equals( UnicodeChar.SHY ) ) {
+        vec[ j ] = true;
+      }
+      else {
+        j++;
+        key.add( uc );
+      }
     }
 
-    /**
-     * The field {@code exceptionMap} contains the exception words for
-     * hyphenation.
-     */
-    private final Map<UnicodeCharList, boolean[]> exceptionMap =
-            new HashMap<UnicodeCharList, boolean[]>();
+    return vec;
+  }
 
-    /**
-     * The field {@code hyphenating} contains the indicator whether this
-     * hyphenation is active. If the value is {@code false} then no
-     * hyphenation points will be inserted.
-     */
-    private boolean hyphenating = true;
+  /**
+   * The field {@code exceptionMap} contains the exception words for
+   * hyphenation.
+   */
+  private final Map<UnicodeCharList, boolean[]> exceptionMap =
+      new HashMap<UnicodeCharList, boolean[]>();
 
-    /**
-     * The field {@code lefthyphenmin} contains the minimum distance from the
-     * left side of a word before hyphenation is performed.
-     */
-    private long lefthyphenmin = 0;
+  /**
+   * The field {@code hyphenating} contains the indicator whether this
+   * hyphenation is active. If the value is {@code false} then no
+   * hyphenation points will be inserted.
+   */
+  private boolean hyphenating = true;
 
-    /**
-     * The field {@code ligatureBuilder} contains the ligature builder.
-     */
-    private LigatureBuilder ligatureBuilder = null;
+  /**
+   * The field {@code lefthyphenmin} contains the minimum distance from the
+   * left side of a word before hyphenation is performed.
+   */
+  private long lefthyphenmin = 0;
 
-    /**
-     * The field {@code name} contains the name.
-     */
-    private String name = null;
+  /**
+   * The field {@code ligatureBuilder} contains the ligature builder.
+   */
+  private LigatureBuilder ligatureBuilder = null;
 
-    /**
-     * The field {@code righthyphenmin} contains the minimum distance from the
-     * right side of a word before hyphenation is performed.
-     */
-    private long righthyphenmin = 0;
+  /**
+   * The field {@code name} contains the name.
+   */
+  private String name = null;
 
-    /**
-     * The field {@code wordTokenizer} contains the tokenizer to recognize
-     * words.
-     */
-    private WordTokenizer wordTokenizer = null;
+  /**
+   * The field {@code righthyphenmin} contains the minimum distance from the
+   * right side of a word before hyphenation is performed.
+   */
+  private long righthyphenmin = 0;
+
+  /**
+   * The field {@code wordTokenizer} contains the tokenizer to recognize
+   * words.
+   */
+  private WordTokenizer wordTokenizer = null;
 
 
-    public BaseHyphenationTable() {
+  public BaseHyphenationTable() {
 
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.hyphenation.Hyphenator#addHyphenation(
+   *org.extex.core.UnicodeCharList,
+   * org.extex.typesetter.TypesetterOptions)
+   */
+  public void addHyphenation( UnicodeCharList word,
+                              TypesetterOptions options )
+      throws HyphenationException {
+
+    UnicodeCharList key = new UnicodeCharList();
+    boolean[] vec = createHyphenation( word, options, key );
+    exceptionMap.put( wordTokenizer.normalize( key, options ), vec );
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.Language#addPattern(
+   *Tokens)
+   */
+  public void addPattern( Tokens pattern ) throws HyphenationException {
+
+    // nothing to do
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.word.WordTokenizer#findWord(
+   *org.extex.typesetter.type.NodeList,
+   * int,
+   * org.extex.core.UnicodeCharList)
+   */
+  public int findWord( NodeList nodes, int start,
+                       UnicodeCharList word ) throws HyphenationException {
+
+    return wordTokenizer.findWord( nodes, start, word );
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.Language#getLeftHyphenMin()
+   */
+  public long getLeftHyphenMin() throws HyphenationException {
+
+    return lefthyphenmin;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.ligature.LigatureBuilder#getLigature(
+   *org.extex.core.UnicodeChar,
+   * org.extex.core.UnicodeChar,
+   * org.extex.typesetter.tc.font.Font)
+   */
+  public UnicodeChar getLigature( UnicodeChar c1, UnicodeChar c2,
+                                  Font f ) throws HyphenationException {
+
+    return this.ligatureBuilder.getLigature( c1, c2, f );
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.Language#getName()
+   */
+  public String getName() {
+
+    return name;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.Language#getRightHyphenMin()
+   */
+  public long getRightHyphenMin() throws HyphenationException {
+
+    return righthyphenmin;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.hyphenation.Hyphenator#hyphenate(
+   *org.extex.typesetter.type.NodeList,
+   * org.extex.typesetter.TypesetterOptions,
+   * org.extex.core.UnicodeChar,
+   * int,
+   * boolean,
+   * org.extex.typesetter.type.node.factory.NodeFactory)
+   */
+  public boolean hyphenate( NodeList nodes,
+                            TypesetterOptions context, UnicodeChar hyphen,
+                            int start, boolean forall, NodeFactory nodeFactory )
+      throws HyphenationException {
+
+    if( hyphen == null || !hyphenating || nodes.size() == 0
+        || wordTokenizer == null ) {
+      return false;
+    }
+    CharNode hyphenNode =
+        (CharNode) (nodeFactory.getNode(
+            context.getTypesettingContext(), hyphen ));
+
+    boolean modified = false;
+    UnicodeCharList word = new UnicodeCharList();
+    int next = wordTokenizer.findWord( nodes, start, word );
+
+    modified = hyphenateOne( nodes, context, start, word, hyphenNode );
+
+    if( forall ) {
+      for( int i = next; i < nodes.size(); i = next ) {
+        next = wordTokenizer.findWord( nodes, i, word );
+
+        modified =
+            hyphenateOne( nodes, context, start, word, hyphenNode )
+                || modified;
+      }
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.hyphenation.Hyphenator#addHyphenation(
-     *      org.extex.core.UnicodeCharList,
-     *      org.extex.typesetter.TypesetterOptions)
-     */
-    public void addHyphenation(UnicodeCharList word,
-            TypesetterOptions options) throws HyphenationException {
+    return modified;
+  }
 
-        UnicodeCharList key = new UnicodeCharList();
-        boolean[] vec = createHyphenation(word, options, key);
-        exceptionMap.put(wordTokenizer.normalize(key, options), vec);
+  /**
+   * Hyphenate a single word.
+   *
+   * @param nodes      the node list to consider
+   * @param context    the options to use
+   * @param start      the start index in the nodes
+   * @param word       the word to hyphenate
+   * @param hyphenNode the node to use as hyphen
+   * @return {@code true} iff the the word has been found
+   * @throws HyphenationException in case of an error
+   */
+  public boolean hyphenateOne( NodeList nodes,
+                               TypesetterOptions context, int start,
+                               UnicodeCharList word, CharNode hyphenNode )
+      throws HyphenationException {
+
+    boolean[] w = exceptionMap.get( word );
+    if( w == null ) {
+      return false;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.Language#addPattern(
-     *      Tokens)
-     */
-    public void addPattern(Tokens pattern) throws HyphenationException {
-
-        // nothing to do
+    boolean[] wc = w.clone();
+    for( int i = 0; i < lefthyphenmin; i++ ) {
+      wc[ i ] = false;
     }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.word.WordTokenizer#findWord(
-     *      org.extex.typesetter.type.NodeList,
-     *      int,
-     *      org.extex.core.UnicodeCharList)
-     */
-    public int findWord(NodeList nodes, int start,
-            UnicodeCharList word) throws HyphenationException {
-
-        return wordTokenizer.findWord(nodes, start, word);
+    for( int i = 0; i < righthyphenmin; i++ ) {
+      wc[ wc.length - i - 1 ] = false;
     }
+    wordTokenizer.insertShy( nodes, start, wc, hyphenNode );
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.Language#getLeftHyphenMin()
-     */
-    public long getLeftHyphenMin() throws HyphenationException {
+    return true;
+  }
 
-        return lefthyphenmin;
-    }
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.ligature.LigatureBuilder#insertLigatures(
+   *org.extex.typesetter.type.NodeList, int)
+   */
+  public int insertLigatures( NodeList list, int start )
+      throws HyphenationException {
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.ligature.LigatureBuilder#getLigature(
-     *      org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar,
-     *      org.extex.typesetter.tc.font.Font)
-     */
-    public UnicodeChar getLigature(UnicodeChar c1, UnicodeChar c2,
-            Font f) throws HyphenationException {
+    return this.ligatureBuilder.insertLigatures( list, start );
+  }
 
-        return this.ligatureBuilder.getLigature(c1, c2, f);
-    }
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.word.WordTokenizer#insertShy(
+   *org.extex.typesetter.type.NodeList,
+   * int,
+   * boolean[],
+   * org.extex.typesetter.type.node.CharNode)
+   */
+  public void insertShy( NodeList nodes, int insertionPoint,
+                         boolean[] spec, CharNode hyphenNode )
+      throws HyphenationException {
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.Language#getName()
-     */
-    public String getName() {
+    this.wordTokenizer.insertShy( nodes, insertionPoint, spec, hyphenNode );
+  }
 
-        return name;
-    }
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.Language#isHyphenating()
+   */
+  public boolean isHyphenating() throws HyphenationException {
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.Language#getRightHyphenMin()
-     */
-    public long getRightHyphenMin() throws HyphenationException {
+    return hyphenating;
+  }
 
-        return righthyphenmin;
-    }
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.word.WordTokenizer#normalize(
+   *org.extex.core.UnicodeCharList,
+   * org.extex.typesetter.TypesetterOptions)
+   */
+  public UnicodeCharList normalize( UnicodeCharList word,
+                                    TypesetterOptions options )
+      throws HyphenationException {
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.hyphenation.Hyphenator#hyphenate(
-     *      org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.TypesetterOptions,
-     *      org.extex.core.UnicodeChar,
-     *      int,
-     *      boolean,
-     *      org.extex.typesetter.type.node.factory.NodeFactory)
-     */
-    public boolean hyphenate(NodeList nodes,
-            TypesetterOptions context, UnicodeChar hyphen,
-            int start, boolean forall, NodeFactory nodeFactory)
-            throws HyphenationException {
+    return this.wordTokenizer.normalize( word, options );
+  }
 
-        if (hyphen == null || !hyphenating || nodes.size() == 0
-                || wordTokenizer == null) {
-            return false;
-        }
-        CharNode hyphenNode =
-                (CharNode) (nodeFactory.getNode(
-                    context.getTypesettingContext(), hyphen));
+  /**
+   * Magic method for deserialization.
+   *
+   * @return the reconnection result
+   * @throws ObjectStreamException in case of an error
+   */
+  protected Object readResolve() throws ObjectStreamException {
 
-        boolean modified = false;
-        UnicodeCharList word = new UnicodeCharList();
-        int next = wordTokenizer.findWord(nodes, start, word);
+    return Registrar.reconnect( this );
+  }
 
-        modified = hyphenateOne(nodes, context, start, word, hyphenNode);
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.Language#setHyphenating(boolean)
+   */
+  public void setHyphenating( boolean active )
+      throws HyphenationException {
 
-        if (forall) {
-            for (int i = next; i < nodes.size(); i = next) {
-                next = wordTokenizer.findWord(nodes, i, word);
+    hyphenating = active;
+  }
 
-                modified =
-                        hyphenateOne(nodes, context, start, word, hyphenNode)
-                                || modified;
-            }
-        }
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.Language#setLeftHyphenMin(long)
+   */
+  public void setLeftHyphenMin( long left ) throws HyphenationException {
 
-        return modified;
-    }
+    lefthyphenmin = left;
+  }
 
-    /**
-     * Hyphenate a single word.
-     *
-     * @param nodes the node list to consider
-     * @param context the options to use
-     * @param start the start index in the nodes
-     * @param word the word to hyphenate
-     * @param hyphenNode the node to use as hyphen
-     *
-     * @return {@code true} iff the the word has been found
-     *
-     * @throws HyphenationException in case of an error
-     */
-    public boolean hyphenateOne(NodeList nodes,
-            TypesetterOptions context, int start,
-            UnicodeCharList word, CharNode hyphenNode)
-            throws HyphenationException {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.ModifiableLanguage#setLigatureBuilder(
+   *org.extex.language.ligature.LigatureBuilder)
+   */
+  public void setLigatureBuilder( LigatureBuilder builder ) {
 
-        boolean[] w = exceptionMap.get(word);
-        if (w == null) {
-            return false;
-        }
+    this.ligatureBuilder = builder;
+  }
 
-        boolean[] wc = w.clone();
-        for (int i = 0; i < lefthyphenmin; i++) {
-            wc[i] = false;
-        }
-        for (int i = 0; i < righthyphenmin; i++) {
-            wc[wc.length - i - 1] = false;
-        }
-        wordTokenizer.insertShy(nodes, start, wc, hyphenNode);
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.Language#setName(java.lang.String)
+   */
+  public void setName( String name ) {
 
-        return true;
-    }
+    this.name = name;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.ligature.LigatureBuilder#insertLigatures(
-     *      org.extex.typesetter.type.NodeList, int)
-     */
-    public int insertLigatures(NodeList list, int start)
-            throws HyphenationException {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.Language#setRightHyphenMin(long)
+   */
+  public void setRightHyphenMin( long right ) throws HyphenationException {
 
-        return this.ligatureBuilder.insertLigatures(list, start);
-    }
+    righthyphenmin = right;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.word.WordTokenizer#insertShy(
-     *      org.extex.typesetter.type.NodeList,
-     *      int,
-     *      boolean[],
-     *      org.extex.typesetter.type.node.CharNode)
-     */
-    public void insertShy(NodeList nodes, int insertionPoint,
-            boolean[] spec, CharNode hyphenNode)
-            throws HyphenationException {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.ModifiableLanguage#setWordTokenizer(
+   *org.extex.language.word.WordTokenizer)
+   */
+  public void setWordTokenizer( WordTokenizer wordTokenizer ) {
 
-        this.wordTokenizer.insertShy(nodes, insertionPoint, spec, hyphenNode);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.Language#isHyphenating()
-     */
-    public boolean isHyphenating() throws HyphenationException {
-
-        return hyphenating;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.word.WordTokenizer#normalize(
-     *      org.extex.core.UnicodeCharList,
-     *      org.extex.typesetter.TypesetterOptions)
-     */
-    public UnicodeCharList normalize(UnicodeCharList word,
-            TypesetterOptions options) throws HyphenationException {
-
-        return this.wordTokenizer.normalize(word, options);
-    }
-
-    /**
-     * Magic method for deserialization.
-     *
-     * @return the reconnection result
-     *
-     * @throws ObjectStreamException in case of an error
-     */
-    protected Object readResolve() throws ObjectStreamException {
-
-        return Registrar.reconnect(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.Language#setHyphenating(boolean)
-     */
-    public void setHyphenating(boolean active)
-            throws HyphenationException {
-
-        hyphenating = active;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.Language#setLeftHyphenMin(long)
-     */
-    public void setLeftHyphenMin(long left) throws HyphenationException {
-
-        lefthyphenmin = left;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.ModifiableLanguage#setLigatureBuilder(
-     *      org.extex.language.ligature.LigatureBuilder)
-     */
-    public void setLigatureBuilder(LigatureBuilder builder) {
-
-        this.ligatureBuilder = builder;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.Language#setName(java.lang.String)
-     */
-    public void setName(String name) {
-
-        this.name = name;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.Language#setRightHyphenMin(long)
-     */
-    public void setRightHyphenMin(long right) throws HyphenationException {
-
-        righthyphenmin = right;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.ModifiableLanguage#setWordTokenizer(
-     *      org.extex.language.word.WordTokenizer)
-     */
-    public void setWordTokenizer(WordTokenizer wordTokenizer) {
-
-        this.wordTokenizer = wordTokenizer;
-    }
+    this.wordTokenizer = wordTokenizer;
+  }
 
 }

@@ -27,361 +27,361 @@ import java.util.Map;
 
 /**
  * Class for the AFM CharMetric.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class AfmCharMetric implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * B llx.
-     */
-    private float bllx = AfmHeader.NOTINIT;
+  /**
+   * B llx.
+   */
+  private float bllx = AfmHeader.NOTINIT;
 
-    /**
-     * B lly.
-     */
-    private float blly = AfmHeader.NOTINIT;
+  /**
+   * B lly.
+   */
+  private float blly = AfmHeader.NOTINIT;
 
-    /**
-     * B urx.
-     */
-    private float burx = AfmHeader.NOTINIT;
+  /**
+   * B urx.
+   */
+  private float burx = AfmHeader.NOTINIT;
 
-    /**
-     * B ury.
-     */
-    private float bury = AfmHeader.NOTINIT;
+  /**
+   * B ury.
+   */
+  private float bury = AfmHeader.NOTINIT;
 
-    /**
-     * C.
-     */
-    private int c = -1;
+  /**
+   * C.
+   */
+  private int c = -1;
 
-    /**
-     * Kerning. mgn: nach erstelltem Testfall durch map ersetzen
-     */
-    private List<AfmKernPairs> k = null;
+  /**
+   * Kerning. mgn: nach erstelltem Testfall durch map ersetzen
+   */
+  private List<AfmKernPairs> k = null;
 
-    /**
-     * Ligature.
-     */
-    private Map<String, String> l = null;
+  /**
+   * Ligature.
+   */
+  private Map<String, String> l = null;
 
-    /**
-     * Name.
-     */
-    private String n = "";
+  /**
+   * Name.
+   */
+  private String n = "";
 
-    /**
-     * WX.
-     */
-    private float wx = AfmHeader.NOTINIT;
+  /**
+   * WX.
+   */
+  private float wx = AfmHeader.NOTINIT;
 
-    /**
-     * Add a kerning.
-     * 
-     * @param kp The kerning pairs.
-     */
-    public void addK(AfmKernPairs kp) {
+  /**
+   * Add a kerning.
+   *
+   * @param kp The kerning pairs.
+   */
+  public void addK( AfmKernPairs kp ) {
 
-        if (k == null) {
-            k = new ArrayList<AfmKernPairs>();
+    if( k == null ) {
+      k = new ArrayList<AfmKernPairs>();
+    }
+    if( kp != null ) {
+      k.add( kp );
+    }
+  }
+
+  /**
+   * Add a ligature.
+   *
+   * @param letter the basic letter
+   * @param lig    the ligature
+   */
+  public void addL( String letter, String lig ) {
+
+    if( l == null ) {
+      l = new HashMap<String, String>();
+    }
+    l.put( letter, lig );
+  }
+
+  /**
+   * Returns a kerning pair for a letter, or {@code null}, if no
+   * kerning is found.
+   *
+   * @param charpost The post character.
+   * @return Returns a kerning pair for a letter, or {@code null}, if
+   * no kerning is found.
+   */
+  public AfmKernPairs getAfmKernPair( String charpost ) {
+
+    AfmKernPairs kp = null;
+    if( k != null && charpost != null ) {
+      for( int i = 0, j = k.size(); i < j; i++ ) {
+        kp = k.get( i );
+        if( kp.getCharpost().equals( charpost ) ) {
+          return kp;
         }
-        if (kp != null) {
-            k.add(kp);
-        }
+      }
     }
+    return null;
+  }
 
-    /**
-     * Add a ligature.
-     * 
-     * @param letter the basic letter
-     * @param lig the ligature
-     */
-    public void addL(String letter, String lig) {
+  /**
+   * Returns the bllx.
+   *
+   * @return Returns the bllx.
+   */
+  public float getBllx() {
 
-        if (l == null) {
-            l = new HashMap<String, String>();
-        }
-        l.put(letter, lig);
+    return bllx;
+  }
+
+  /**
+   * Returns the blly.
+   *
+   * @return Returns the blly.
+   */
+  public float getBlly() {
+
+    return blly;
+  }
+
+  /**
+   * Returns the burx.
+   *
+   * @return Returns the burx.
+   */
+  public float getBurx() {
+
+    return burx;
+  }
+
+  /**
+   * Returns the bury.
+   *
+   * @return Returns the bury.
+   */
+  public float getBury() {
+
+    return bury;
+  }
+
+  /**
+   * Returns the c.
+   *
+   * @return Returns the c.
+   */
+  public int getC() {
+
+    return c;
+  }
+
+  /**
+   * Returns the depth of a glyph.
+   *
+   * @return the depth of a glyph.
+   */
+  public float getDepth() {
+
+    if( getBlly() < 0 ) {
+      return -getBlly();
     }
+    return 0;
+  }
 
-    /**
-     * Returns a kerning pair for a letter, or {@code null}, if no
-     * kerning is found.
-     * 
-     * @param charpost The post character.
-     * @return Returns a kerning pair for a letter, or {@code null}, if
-     *         no kerning is found.
-     */
-    public AfmKernPairs getAfmKernPair(String charpost) {
+  /**
+   * Returns the height of a glyph.
+   *
+   * @return the height of a glyph.
+   */
+  public float getHeight() {
 
-        AfmKernPairs kp = null;
-        if (k != null && charpost != null) {
-            for (int i = 0, j = k.size(); i < j; i++) {
-                kp = k.get(i);
-                if (kp.getCharpost().equals(charpost)) {
-                    return kp;
-                }
-            }
-        }
-        return null;
+    if( getBury() > 0 ) {
+      return getBury();
     }
+    return 0;
+  }
 
-    /**
-     * Returns the bllx.
-     * 
-     * @return Returns the bllx.
-     */
-    public float getBllx() {
+  /**
+   * Returns the kerning.
+   *
+   * @return Returns the kerning.
+   */
+  public List<AfmKernPairs> getK() {
 
-        return bllx;
+    return k;
+  }
+
+  /**
+   * Returns the l.
+   *
+   * @return Returns the l.
+   */
+  public Map<String, String> getL() {
+
+    return l;
+  }
+
+  /**
+   * Returns the ligature for a letter or {@code null}, if no ligature
+   * found.
+   *
+   * @param letter The letter.
+   * @return Returns the ligature for a letter or {@code null}, if no
+   * ligature found.
+   */
+  public String getLigature( String letter ) {
+
+    if( l != null && letter != null ) {
+      return l.get( letter );
     }
+    return null;
+  }
 
-    /**
-     * Returns the blly.
-     * 
-     * @return Returns the blly.
-     */
-    public float getBlly() {
+  /**
+   * Returns the n.
+   *
+   * @return Returns the n.
+   */
+  public String getN() {
 
-        return blly;
+    return n;
+  }
+
+  /**
+   * Returns the width of a glyph.
+   *
+   * @return the width of a glyph.
+   */
+  public float getWidth() {
+
+    if( getWx() != AfmHeader.NOTINIT ) {
+      return getWx();
     }
-
-    /**
-     * Returns the burx.
-     * 
-     * @return Returns the burx.
-     */
-    public float getBurx() {
-
-        return burx;
+    // calculate with from bbox
+    if( getBllx() != AfmHeader.NOTINIT ) {
+      return getBllx() + getBurx();
     }
+    return 0;
+  }
 
-    /**
-     * Returns the bury.
-     * 
-     * @return Returns the bury.
-     */
-    public float getBury() {
+  /**
+   * Returns the wx.
+   *
+   * @return Returns the wx.
+   */
+  public float getWx() {
 
-        return bury;
-    }
+    return wx;
+  }
 
-    /**
-     * Returns the c.
-     * 
-     * @return Returns the c.
-     */
-    public int getC() {
+  /**
+   * Check, if the char has a kerning.
+   *
+   * @return Return {@code true}, if the char has a kerning.
+   */
+  public boolean isKerning() {
 
-        return c;
-    }
+    return k != null;
+  }
 
-    /**
-     * Returns the depth of a glyph.
-     * 
-     * @return the depth of a glyph.
-     */
-    public float getDepth() {
+  /**
+   * Check, if the char has a ligature.
+   *
+   * @return Return {@code true}, if the char has a ligature.
+   */
+  public boolean isLigatur() {
 
-        if (getBlly() < 0) {
-            return -getBlly();
-        }
-        return 0;
-    }
+    return l != null;
+  }
 
-    /**
-     * Returns the height of a glyph.
-     * 
-     * @return the height of a glyph.
-     */
-    public float getHeight() {
+  /**
+   * Set the bllx.
+   *
+   * @param ibllx The bllx to set.
+   */
+  public void setBllx( float ibllx ) {
 
-        if (getBury() > 0) {
-            return getBury();
-        }
-        return 0;
-    }
+    bllx = ibllx;
+  }
 
-    /**
-     * Returns the kerning.
-     * 
-     * @return Returns the kerning.
-     */
-    public List<AfmKernPairs> getK() {
+  /**
+   * Set the blly.
+   *
+   * @param iblly The blly to set.
+   */
+  public void setBlly( float iblly ) {
 
-        return k;
-    }
+    blly = iblly;
+  }
 
-    /**
-     * Returns the l.
-     * 
-     * @return Returns the l.
-     */
-    public Map<String, String> getL() {
+  /**
+   * Set the burx.
+   *
+   * @param iburx The burx to set.
+   */
+  public void setBurx( float iburx ) {
 
-        return l;
-    }
+    burx = iburx;
+  }
 
-    /**
-     * Returns the ligature for a letter or {@code null}, if no ligature
-     * found.
-     * 
-     * @param letter The letter.
-     * @return Returns the ligature for a letter or {@code null}, if no
-     *         ligature found.
-     */
-    public String getLigature(String letter) {
+  /**
+   * Set the bury.
+   *
+   * @param ibury The bury to set.
+   */
+  public void setBury( float ibury ) {
 
-        if (l != null && letter != null) {
-            return l.get(letter);
-        }
-        return null;
-    }
+    bury = ibury;
+  }
 
-    /**
-     * Returns the n.
-     * 
-     * @return Returns the n.
-     */
-    public String getN() {
+  /**
+   * Set the c.
+   *
+   * @param ic The c to set.
+   */
+  public void setC( int ic ) {
 
-        return n;
-    }
+    c = ic;
+  }
 
-    /**
-     * Returns the width of a glyph.
-     * 
-     * @return the width of a glyph.
-     */
-    public float getWidth() {
+  /**
+   * Set the n.
+   *
+   * @param s The n to set.
+   */
+  public void setN( String s ) {
 
-        if (getWx() != AfmHeader.NOTINIT) {
-            return getWx();
-        }
-        // calculate with from bbox
-        if (getBllx() != AfmHeader.NOTINIT) {
-            return getBllx() + getBurx();
-        }
-        return 0;
-    }
+    n = s;
+  }
 
-    /**
-     * Returns the wx.
-     * 
-     * @return Returns the wx.
-     */
-    public float getWx() {
+  /**
+   * Set the wx.
+   *
+   * @param iwx The wx to set.
+   */
+  public void setWx( float iwx ) {
 
-        return wx;
-    }
+    wx = iwx;
+  }
 
-    /**
-     * Check, if the char has a kerning.
-     * 
-     * @return Return {@code true}, if the char has a kerning.
-     */
-    public boolean isKerning() {
+  /**
+   * Return the name and the number of the glyph.
+   *
+   * @return Return the name and the number of the glyph.
+   */
+  @Override
+  public String toString() {
 
-      return k != null;
-    }
-
-    /**
-     * Check, if the char has a ligature.
-     * 
-     * @return Return {@code true}, if the char has a ligature.
-     */
-    public boolean isLigatur() {
-
-      return l != null;
-    }
-
-    /**
-     * Set the bllx.
-     * 
-     * @param ibllx The bllx to set.
-     */
-    public void setBllx(float ibllx) {
-
-        bllx = ibllx;
-    }
-
-    /**
-     * Set the blly.
-     * 
-     * @param iblly The blly to set.
-     */
-    public void setBlly(float iblly) {
-
-        blly = iblly;
-    }
-
-    /**
-     * Set the burx.
-     * 
-     * @param iburx The burx to set.
-     */
-    public void setBurx(float iburx) {
-
-        burx = iburx;
-    }
-
-    /**
-     * Set the bury.
-     * 
-     * @param ibury The bury to set.
-     */
-    public void setBury(float ibury) {
-
-        bury = ibury;
-    }
-
-    /**
-     * Set the c.
-     * 
-     * @param ic The c to set.
-     */
-    public void setC(int ic) {
-
-        c = ic;
-    }
-
-    /**
-     * Set the n.
-     * 
-     * @param s The n to set.
-     */
-    public void setN(String s) {
-
-        n = s;
-    }
-
-    /**
-     * Set the wx.
-     * 
-     * @param iwx The wx to set.
-     */
-    public void setWx(float iwx) {
-
-        wx = iwx;
-    }
-
-    /**
-     * Return the name and the number of the glyph.
-     * 
-     * @return Return the name and the number of the glyph.
-     */
-    @Override
-    public String toString() {
-
-        return n + " c=" + c;
-    }
+    return n + " c=" + c;
+  }
 
 }

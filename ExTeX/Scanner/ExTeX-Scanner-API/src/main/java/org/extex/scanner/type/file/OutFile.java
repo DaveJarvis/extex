@@ -19,65 +19,62 @@
 
 package org.extex.scanner.type.file;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.tokens.Tokens;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+
 /**
  * This class holds an output file onto which tokens can be written.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OutFile extends Serializable {
 
-    /**
-     * Close the current file.
-     * 
-     * @throws IOException in case of an error
-     */
-    void close() throws IOException;
+  /**
+   * Close the current file.
+   *
+   * @throws IOException in case of an error
+   */
+  void close() throws IOException;
 
-    /**
-     * Check whether the output file is open.
-     * 
-     * @return {@code true} iff the instance is open
-     */
-    boolean isOpen();
+  /**
+   * Check whether the output file is open.
+   *
+   * @return {@code true} iff the instance is open
+   */
+  boolean isOpen();
 
-    /**
-     * Open the current file.
-     *
-     * @param key the key
-     * @param encoding the encoding or {@code null} for the default
-     *        encoding
-     * @param factory the token stream factory
-     * 
-     * @throws UnsupportedEncodingException in case of an invalid encoding
-     */
-    void open(String key, String encoding, TokenStreamFactory factory)
-            throws UnsupportedEncodingException;
+  /**
+   * Open the current file.
+   *
+   * @param key      the key
+   * @param encoding the encoding or {@code null} for the default
+   *                 encoding
+   * @param factory  the token stream factory
+   * @throws UnsupportedEncodingException in case of an invalid encoding
+   */
+  void open( String key, String encoding, TokenStreamFactory factory )
+      throws UnsupportedEncodingException;
 
-    /**
-     * Write out a newline.
-     * 
-     * @throws IOException in case of an error
-     */
-    void newline() throws IOException;
+  /**
+   * Write out a newline.
+   *
+   * @throws IOException in case of an error
+   */
+  void newline() throws IOException;
 
-    /**
-     * Write some tokens to the output writer.
-     * 
-     * @param toks tokens to write
-     * 
-     * @return {@code true} iff the writing was successful 
-     * 
-     * @throws HelpingException in case of an error
-     * @throws IOException in case of an IO error
-     */
-    boolean write(Tokens toks) throws HelpingException, IOException;
+  /**
+   * Write some tokens to the output writer.
+   *
+   * @param toks tokens to write
+   * @return {@code true} iff the writing was successful
+   * @throws HelpingException in case of an error
+   * @throws IOException      in case of an IO error
+   */
+  boolean write( Tokens toks ) throws HelpingException, IOException;
 
 }

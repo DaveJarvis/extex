@@ -33,66 +33,66 @@ import org.extex.typesetter.type.node.SkipNode;
 /**
  * This class provides an implementation for the primitive
  * {@code &#x5c;unskip}.
- * 
+ *
  * <p>The Primitive {@code &#x5c;unskip}</p>
  * <p>
  * The primitive {@code &#x5c;unskip} inspects the current list and removes
  * the last node if it is a glue node. This includes leader nodes. If the
  * current list is empty an error is raised.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;unskip&rang;
  *        &rarr; {@code &#x5c;unskip}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    &#x5c;unskip  </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Unskip extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Unskip(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Unskip( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Node node = typesetter.getLastNode();
+    if( node instanceof SkipNode ) {
+      typesetter.removeLastNode();
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Node node = typesetter.getLastNode();
-        if (node instanceof SkipNode) {
-            typesetter.removeLastNode();
-        } else if (node == null) {
-            throw new HelpingException(getLocalizer(),
-                "TTP.CantDeleteLastSkip", toText(context),
-                typesetter.getMode().toString());
-        }
+    else if( node == null ) {
+      throw new HelpingException( getLocalizer(),
+                                  "TTP.CantDeleteLastSkip", toText( context ),
+                                  typesetter.getMode().toString() );
     }
+  }
 
 }

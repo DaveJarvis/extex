@@ -19,58 +19,60 @@
 
 package org.extex.unit.tex.info;
 
-import java.io.File;
-import java.util.Properties;
-
 import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
+import java.io.File;
+import java.util.Properties;
+
 /**
  * This is a test suite for the primitive {@code \jobname}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class JobnameTest extends NoFlagsPrimitiveTester {
 
 
-    public JobnameTest() {
+  public JobnameTest() {
 
-        setPrimitive("jobname");setArguments("");setPrepare("");
-    }
+    setPrimitive( "jobname" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\jobname"> Test case checking that {@code \jobname}
-     * delivers a decent default value.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testJobname1() throws Exception {
+  /**
+   * <testcase primitive="\jobname"> Test case checking that {@code \jobname}
+   * delivers a decent default value.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testJobname1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\jobname" + "\\end ",
-            // --- output channel ---
-            "texput" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\jobname" + "\\end ",
+                  // --- output channel ---
+                  "texput" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\jobname"> Test case checking that {@code \jobname}
-     * can be set properly.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testJobname2() throws Exception {
+  /**
+   * <testcase primitive="\jobname"> Test case checking that {@code \jobname}
+   * can be set properly.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testJobname2() throws Exception {
 
-        Properties properties = (Properties) System.getProperties().clone();
-        properties.setProperty("extex.jobname", "job");
+    Properties properties = (Properties) System.getProperties().clone();
+    properties.setProperty( "extex.jobname", "job" );
 
-        assertSuccess(properties,
-        // --- input code ---
-            "\\jobname" + "\\end ",
-            // --- output channel ---
-            "job" + TERM);
-        new File("job.log").delete();
-    }
+    assertSuccess( properties,
+                   // --- input code ---
+                   "\\jobname" + "\\end ",
+                   // --- output channel ---
+                   "job" + TERM );
+    new File( "job.log" ).delete();
+  }
 
 }

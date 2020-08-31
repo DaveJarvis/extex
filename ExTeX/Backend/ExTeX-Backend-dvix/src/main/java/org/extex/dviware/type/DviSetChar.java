@@ -19,55 +19,52 @@
 
 package org.extex.dviware.type;
 
+import org.extex.dviware.Dvi;
+
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.extex.dviware.Dvi;
 
 /**
  * This class represents the DVI instruction {@code set_char}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviSetChar extends AbstractDviCode {
 
-    /**
-     * The field {@code codePoint} contains the code point of the character to
-     * set.
-     */
-    private final int codePoint;
+  /**
+   * The field {@code codePoint} contains the code point of the character to
+   * set.
+   */
+  private final int codePoint;
 
-    /**
-     * Creates a new object.
-     *
-     * @param codePoint the code point of the character to set
-     */
-    public DviSetChar(int codePoint) {
+  /**
+   * Creates a new object.
+   *
+   * @param codePoint the code point of the character to set
+   */
+  public DviSetChar( int codePoint ) {
 
-        super(codePoint <= Dvi.SET_CHAR127
-                ? "set_char" + codePoint
-                : "set_char" + variant(codePoint));
-        this.codePoint = codePoint;
+    super( codePoint <= Dvi.SET_CHAR127
+               ? "set_char" + codePoint
+               : "set_char" + variant( codePoint ) );
+    this.codePoint = codePoint;
+  }
+
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
+
+    if( codePoint <= Dvi.SET_CHAR127 ) {
+      stream.write( codePoint );
+      return 1;
     }
-
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
-
-        if (codePoint <= Dvi.SET_CHAR127) {
-            stream.write(codePoint);
-            return 1;
-        }
-        return opcode(Dvi.SET1, codePoint, stream);
-    }
+    return opcode( Dvi.SET1, codePoint, stream );
+  }
 
 }

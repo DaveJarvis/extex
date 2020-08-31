@@ -28,41 +28,41 @@ import static org.junit.Assert.assertNotEquals;
 
 /**
  * Test cases for subscript mark tokens.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SubMarkTokenTest extends TokenTester {
 
-    /**
-     * The field {@code t} contains the reference token.
-     */
-    private static final Token token = new SubMarkToken( UnicodeChar.get( 'x'));
+  /**
+   * The field {@code t} contains the reference token.
+   */
+  private static final Token token = new SubMarkToken( UnicodeChar.get( 'x' ) );
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SubMarkTokenTest.class);
-    }
+    (new JUnitCore()).run( SubMarkTokenTest.class );
+  }
 
 
-    public SubMarkTokenTest() {
+  public SubMarkTokenTest() {
 
-        setToken(token);
-setCatcode( Catcode.SUBMARK);
-setText( "x");
-setStr( "subscript character x");
-    }
+    setToken( token );
+    setCatcode( Catcode.SUBMARK );
+    setText( "x" );
+    setStr( "subscript character x" );
+  }
 
-@Test
-    public void testEqualsToken1() {
+  @Test
+  public void testEqualsToken1() {
 
-        Token t1 = new SubMarkToken(UnicodeChar.get(' '));
-        Token t2 = new SpaceToken(" ");
-        assertNotEquals( t1, t2 );
-    }
+    Token t1 = new SubMarkToken( UnicodeChar.get( ' ' ) );
+    Token t2 = new SpaceToken( " " );
+    assertNotEquals( t1, t2 );
+  }
 
 }

@@ -25,57 +25,57 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \escapechar}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EscapecharTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(EscapecharTest.class);
-    }
+    (new JUnitCore()).run( EscapecharTest.class );
+  }
 
 
-    public EscapecharTest() {
+  public EscapecharTest() {
 
-        super("escapechar", "", "92");
-    }
+    super( "escapechar", "", "92" );
+  }
 
-    /**
-     * <testcase primitive="\escapechar"> Test case checking that
-     * {@code \escapechar} works with {@code \meaning}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\escapechar"> Test case checking that
+   * {@code \escapechar} works with {@code \meaning}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\escapechar=`\\:\\meaning\\relax" + "\\end",
-            // --- output channel ---
-            ":relax=:relax" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\escapechar=`\\:\\meaning\\relax" + "\\end",
+                  // --- output channel ---
+                  ":relax=:relax" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\escapechar"> Test case checking that
-     * {@code \escapechar} works with {@code \string}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\escapechar"> Test case checking that
+   * {@code \escapechar} works with {@code \string}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\escapechar=`\\:\\string\\relax" + "\\end",
-            // --- output channel ---
-            ":relax" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\escapechar=`\\:\\string\\relax" + "\\end",
+                  // --- output channel ---
+                  ":relax" + TERM );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 
 }

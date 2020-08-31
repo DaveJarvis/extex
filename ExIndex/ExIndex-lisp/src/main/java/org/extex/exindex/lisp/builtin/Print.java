@@ -27,39 +27,36 @@ import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * Print the argument.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Print extends LFunction {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the name of the function
-     * 
-     * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
-     * @throws SecurityException in case a security problem occurred
-     */
-    public Print(String name) throws SecurityException, NoSuchMethodException {
+  /**
+   * Creates a new object.
+   *
+   * @param name the name of the function
+   * @throws NoSuchMethodException in case that no method corresponding to the
+   *                               argument specification could be found
+   * @throws SecurityException     in case a security problem occurred
+   */
+  public Print( String name ) throws SecurityException, NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.VALUE});
-    }
+    super( name, new Arg[]{Arg.VALUE} );
+  }
 
-    /**
-     * Perform the function.
-     * 
-     * @param interpreter the interpreter
-     * @param arg the argument to print
-     * 
-     * @return the last item read or {@code nil}
-     * 
-     * @throws LException in case of an error
-     */
-    public LValue evaluate(LInterpreter interpreter, LValue arg)
-            throws LException {
+  /**
+   * Perform the function.
+   *
+   * @param interpreter the interpreter
+   * @param arg         the argument to print
+   * @return the last item read or {@code nil}
+   * @throws LException in case of an error
+   */
+  public LValue evaluate( LInterpreter interpreter, LValue arg )
+      throws LException {
 
-        arg.print(System.out);
-        return null;
-    }
+    arg.print( System.out );
+    return null;
+  }
 }

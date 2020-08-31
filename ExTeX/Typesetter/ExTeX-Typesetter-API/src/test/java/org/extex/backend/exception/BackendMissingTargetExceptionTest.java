@@ -19,47 +19,47 @@
 
 package org.extex.backend.exception;
 
+import org.junit.Test;
+
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-import org.junit.Test;
-
 /**
  * Test suite for the exception.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BackendMissingTargetExceptionTest {
 
-    /**
-     * Test method for
-     * {@link org.extex.backend.exception.BackendMissingTargetException#BackendMissingTargetException()}.
-     */
-    @Test
-    public final void testBackendMissingTargetException() {
+  /**
+   * Test method for
+   * {@link org.extex.backend.exception.BackendMissingTargetException#BackendMissingTargetException()}.
+   */
+  @Test
+  public final void testBackendMissingTargetException() {
 
-        Exception e = new BackendMissingTargetException();
-        assertNotNull(e);
-    }
+    Exception e = new BackendMissingTargetException();
+    assertNotNull( e );
+  }
 
-    /**
-     * Test method for {@link java.lang.Throwable#getLocalizedMessage()}.
-     */
-    @Test
-    public final void testGetLocalizedMessage0() {
+  /**
+   * Test method for {@link java.lang.Throwable#getLocalizedMessage()}.
+   */
+  @Test
+  public final void testGetLocalizedMessage0() {
 
-        Exception e = new BackendMissingTargetException();
-        assertNull(e.getLocalizedMessage());
-    }
+    Exception e = new BackendMissingTargetException();
+    assertNull( e.getLocalizedMessage() );
+  }
 
-    /**
-     * Test method for {@link java.lang.Throwable#getLocalizedMessage()}.
-     */
-    @Test
-    public final void testGetLocalizedMessage1() {
+  /**
+   * Test method for {@link java.lang.Throwable#getLocalizedMessage()}.
+   */
+  @Test
+  public final void testGetLocalizedMessage1() {
 
-        Exception e = new BackendMissingTargetException();
-        assertNull(e.getMessage());
-    }
+    Exception e = new BackendMissingTargetException();
+    assertNull( e.getMessage() );
+  }
 
 }

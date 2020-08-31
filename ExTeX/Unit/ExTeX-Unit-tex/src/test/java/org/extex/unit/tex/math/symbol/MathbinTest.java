@@ -23,12 +23,12 @@ package org.extex.unit.tex.math.symbol;
  * This is a test suite for the primitive {@code \mathbin}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathbinTest extends AbstractOperatorTester {
 
-    public MathbinTest() {
-        setPrimitive("mathbin");
-    }
+  public MathbinTest() {
+    setPrimitive( "mathbin" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

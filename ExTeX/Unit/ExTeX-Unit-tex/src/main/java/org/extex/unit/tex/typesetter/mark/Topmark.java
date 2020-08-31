@@ -26,7 +26,7 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive {@code \topmark}.
- * 
+ *
  * <p>The Primitive {@code \topmark}</p>
  * <p>
  * The primitive {@code \topmark} provides access to the topmost mark
@@ -42,63 +42,59 @@ import org.extex.typesetter.Typesetter;
  * {@link org.extex.unit.tex.typesetter.mark.Mark {@code \mark}} for further
  * explanation of marks.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;topmark&rang;
  *      &rarr; {@code \topmark}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \topmark  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \toks0=\topmark  </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Topmark extends Topmarks {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Topmark(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Topmark( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-     * Get the key for this mark.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the key for the mark primitive
-     * 
-     * @see org.extex.unit.tex.typesetter.mark.AbstractMarkCode#getKey(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) {
+  /**
+   * Get the key for this mark.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the key for the mark primitive
+   * @see org.extex.unit.tex.typesetter.mark.AbstractMarkCode#getKey(
+   *org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter ) {
 
-        return "0";
-    }
+    return "0";
+  }
 
 }

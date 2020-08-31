@@ -25,38 +25,38 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \relax}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AllocTest extends ExTeXLauncher {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(AllocTest.class);
-    }
+    (new JUnitCore()).run( AllocTest.class );
+  }
 
 
-    public AllocTest() {
+  public AllocTest() {
 
-    }
+  }
 
-    /**
-     *  Test case from docstrip.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test case from docstrip.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\dimendef\\z=10 \\z=0pt " + "\\count0\\z\\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\dimendef\\z=10 \\z=0pt " + "\\count0\\z\\end",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

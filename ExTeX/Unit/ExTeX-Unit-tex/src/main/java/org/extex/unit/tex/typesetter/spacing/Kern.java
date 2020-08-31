@@ -32,7 +32,7 @@ import org.extex.typesetter.type.node.ExplicitKernNode;
 
 /**
  * This class provides an implementation for the primitive {@code \kern}.
- * 
+ *
  * <p>The Primitive {@code \kern}</p>
  * <p>
  * This primitive produces a horizontal or vertical kerning. This is a (minor)
@@ -40,23 +40,23 @@ import org.extex.typesetter.type.node.ExplicitKernNode;
  * typesetter. In vertical modes it means a vertical adjustment. Otherwise it
  * means a horizontal adjustment.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;kern&rang;
  *      &rarr; {@code \kern} &lang;dimen&rang;
  * </pre>
- * 
+ *
  * <p>Examples</p>
  *
  * <pre class="TeXSample">
  *    \kern 12pt  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \kern -3mm  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \kern -\dimen123  </pre>
  *
  * <p>
@@ -64,37 +64,38 @@ import org.extex.typesetter.type.node.ExplicitKernNode;
  * {@link org.extex.typesetter.type.node.KernNode KernNode} is is sent to the
  * typesetter.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Kern extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Kern(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Kern( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Dimen kern = source.parseDimen(context, source, typesetter);
-        typesetter.add(new ExplicitKernNode(kern, true));
-    }
+    Dimen kern = source.parseDimen( context, source, typesetter );
+    typesetter.add( new ExplicitKernNode( kern, true ) );
+  }
 
 }

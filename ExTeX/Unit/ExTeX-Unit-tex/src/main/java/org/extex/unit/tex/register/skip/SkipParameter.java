@@ -30,72 +30,72 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive {@code \skip}.
  * It sets the named skip register to the value given, and as a side effect all
  * prefixes are zeroed.
- * 
+ *
  * <p>
  * All features are inherited from
  * {@link org.extex.unit.tex.register.skip.SkipParameter SkipParameter}. Just
  * the key has to be provided under which this Glue has to be stored. This key
  * is constructed from the name, a hash mark and the running number.
  * </p>
- * 
+ *
  * <p>
  * Example
  * </p>
- * 
+ *
  * <pre>
  * \skip12=345pt plus 12em
  * </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SkipParameter extends SkipPrimitive {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code key} contains the reference key.
-     */
-    private final String key;
+  /**
+   * The field {@code key} contains the reference key.
+   */
+  private final String key;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public SkipParameter(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public SkipParameter( CodeToken token ) {
 
-        super(token);
-        this.key = token.getName();
+    super( token );
+    this.key = token.getName();
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   * @param key   the reference key
+   */
+  public SkipParameter( CodeToken token, String key ) {
+
+    super( token );
+    this.key = key;
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter ) throws TypesetterException {
+
+    if( Namespace.SUPPORT_NAMESPACE_SKIP ) {
+      return context.getNamespace() + "\b" + key;
     }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     * @param key the reference key
-     */
-    public SkipParameter(CodeToken token, String key) {
-
-        super(token);
-        this.key = key;
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException {
-
-        if (Namespace.SUPPORT_NAMESPACE_SKIP) {
-            return context.getNamespace() + "\b" + key;
-        }
-        return key;
-    }
+    return key;
+  }
 
 }

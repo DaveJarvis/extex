@@ -33,59 +33,59 @@ import org.extex.typesetter.type.noad.VCenterNoad;
 
 /**
  * This class provides an implementation for the primitive {@code \vcenter}.
- * 
+ *
  * <p>The Math Primitive {@code \vcenter}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;vcenter&rang;
  *       &rarr; {@code \vcenter} ...  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \vcenter  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Vcenter extends AbstractMathCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Vcenter(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Vcenter( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
 
-        NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, 
-            getToken(), GroupType.VCENTER_GROUP);
-        nc.add(new VCenterNoad(noad, context.getTypesettingContext()));
-    }
+    NoadConsumer nc = getListMaker( context, typesetter );
+    Noad noad = nc.scanNoad( prefix, context, source, typesetter,
+                             getToken(), GroupType.VCENTER_GROUP );
+    nc.add( new VCenterNoad( noad, context.getTypesettingContext() ) );
+  }
 
 }

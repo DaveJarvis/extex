@@ -26,23 +26,24 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for the primitive {@code \displayindent}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DisplayindentTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DisplayindentTest.class);
-    }
+    (new JUnitCore()).run( DisplayindentTest.class );
+  }
 
 
-    public DisplayindentTest() {
+  public DisplayindentTest() {
 
-        super("displayindent", "", "0.0pt");
-    }
+    super( "displayindent", "", "0.0pt" );
+  }
 
-    //TODO implement the primitive specific test cases
+  //TODO implement the primitive specific test cases
 }

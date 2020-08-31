@@ -25,18 +25,18 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * This interface describes an instruction.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Instruction {
 
-    /**
-     * Parse an instruction and perform the actions required.
-     * 
-     * @param processor the processor
-     * @param locator the locator
-     * @throws ExBibException in case of an error
-     */
-    void parse(BstProcessor processor, Locator locator) throws ExBibException;
+  /**
+   * Parse an instruction and perform the actions required.
+   *
+   * @param processor the processor
+   * @param locator   the locator
+   * @throws ExBibException in case of an error
+   */
+  void parse( BstProcessor processor, Locator locator ) throws ExBibException;
 
 }

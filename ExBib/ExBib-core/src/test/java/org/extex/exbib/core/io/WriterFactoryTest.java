@@ -19,377 +19,363 @@
 
 package org.extex.exbib.core.io;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
-import java.util.Iterator;
-import java.util.List;
-
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationLoader;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationIOException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
+import org.extex.framework.configuration.exception.*;
 import org.junit.Test;
+
+import java.io.*;
+import java.util.Iterator;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 /**
  * This is a test suite for a {@link WriterFactory}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class WriterFactoryTest {
 
-    private static final String DIR_TARGET = "build";
+  private static final String DIR_TARGET = "build";
+
+  /**
+   * Test configuration.
+   */
+  private static class MyConfig implements Configuration {
 
     /**
-     * Test configuration.
-     * 
+     * The field {@code encoding} contains the encoding.
      */
-    private static class MyConfig implements Configuration {
+    private final String encoding;
 
-        /**
-         * The field {@code encoding} contains the encoding.
-         */
-        private final String encoding;
+    /**
+     * Creates a new object.
+     *
+     * @param encoding the encoding
+     */
+    public MyConfig( String encoding ) {
 
-        /**
-         * Creates a new object.
-         * 
-         * @param encoding the encoding
-         */
-        public MyConfig(String encoding) {
+      this.encoding = encoding;
+    }
 
-            this.encoding = encoding;
-        }
+    /**
+     * java.lang.String)
+     */
+    public Configuration findConfiguration( String key )
+        throws ConfigurationInvalidResourceException,
+        ConfigurationNotFoundException,
+        ConfigurationSyntaxException,
+        ConfigurationIOException {
 
-        /**
-    *      java.lang.String)
-         */
-        public Configuration findConfiguration(String key)
-                throws ConfigurationInvalidResourceException,
-                    ConfigurationNotFoundException,
-                    ConfigurationSyntaxException,
-                    ConfigurationIOException {
+      return null;
+    }
 
-            return null;
-        }
+    /**
+     * java.lang.String, java.lang.String)
+     */
+    public Configuration findConfiguration( String key, String attribute )
+        throws ConfigurationException {
 
-        /**
-    *      java.lang.String, java.lang.String)
-         */
-        public Configuration findConfiguration(String key, String attribute)
-                throws ConfigurationException {
+      return null;
+    }
 
-            return null;
-        }
+    /**
+     * java.lang.String)
+     */
+    public String getAttribute( String name ) {
 
-        /**
-    *      java.lang.String)
-         */
-        public String getAttribute(String name) {
+      if( "encoding".equals( name ) ) {
+        return encoding;
+      }
+      return null;
+    }
 
-            if ("encoding".equals(name)) {
-                return encoding;
-            }
-            return null;
-        }
+    /**
+     * java.lang.String)
+     */
+    public Configuration getConfiguration( String key )
+        throws ConfigurationException {
 
-        /**
-    *      java.lang.String)
-         */
-        public Configuration getConfiguration(String key)
-                throws ConfigurationException {
+      return null;
+    }
 
-            return null;
-        }
+    /**
+     * java.lang.String, java.lang.String)
+     */
+    public Configuration getConfiguration( String key, String attribute )
+        throws ConfigurationException {
 
-        /**
-    *      java.lang.String, java.lang.String)
-         */
-        public Configuration getConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            return null;
-        }
+      return null;
+    }
 
     public String getValue() throws ConfigurationException {
 
-            return null;
-        }
+      return null;
+    }
 
-        /**
-    *      java.lang.String)
-         */
-        public String getValue(String key) throws ConfigurationException {
+    /**
+     * java.lang.String)
+     */
+    public String getValue( String key ) throws ConfigurationException {
 
-            return null;
-        }
+      return null;
+    }
 
-        /**
-    *      java.lang.String, int)
-         */
-        public int getValueAsInteger(String key, int defaultValue)
-                throws ConfigurationException {
+    /**
+     * java.lang.String, int)
+     */
+    public int getValueAsInteger( String key, int defaultValue )
+        throws ConfigurationException {
 
-            return 0;
-        }
+      return 0;
+    }
 
-        /**
-    *      java.util.List, java.lang.String)
-         */
-        public void getValues(List<String> list, String key) {
+    /**
+     * java.util.List, java.lang.String)
+     */
+    public void getValues( List<String> list, String key ) {
 
 
-        }
+    }
 
-        /**
-    *      java.lang.String)
-         */
-        public List<String> getValues(String key) {
+    /**
+     * java.lang.String)
+     */
+    public List<String> getValues( String key ) {
 
-            return null;
-        }
+      return null;
+    }
 
     public Iterator<Configuration> iterator() throws ConfigurationException {
 
-            return null;
-        }
-
-        /**
-    *      java.lang.String)
-         */
-        public Iterator<Configuration> iterator(String key)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-    *      org.extex.framework.configuration.ConfigurationLoader)
-         */
-        public void setConfigurationLoader(ConfigurationLoader loader) {
-
-
-        }
+      return null;
     }
 
     /**
-     * {@link WriterFactory#configure(Configuration)} recognizes an unsupported encoding
-* 
-     * @throws Exception in case of an error
+     * java.lang.String)
      */
-    @Test(expected = ConfigurationUnsupportedEncodingException.class)
-    public final void testConfigureConfiguration() throws Exception {
+    public Iterator<Configuration> iterator( String key )
+        throws ConfigurationException {
 
-        new WriterFactory(new MyConfig(null)).configure(new MyConfig("xyzzy"));
+      return null;
     }
 
     /**
-     * {@link WriterFactory#newInstance()} returns a {@link NullWriter}
-* 
-     * @throws Exception in case of an error
+     * org.extex.framework.configuration.ConfigurationLoader)
      */
-    @Test
-    public final void testNewInstance() throws Exception {
+    public void setConfigurationLoader( ConfigurationLoader loader ) {
 
-        assertTrue(new WriterFactory(new MyConfig(null)).newInstance() instanceof NullWriter);
+
     }
+  }
 
-    /**
-     *  A {@code null} argument leads to a {@link NullWriter}.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testNewInstancePrintStream0() throws Exception {
+  /**
+   * {@link WriterFactory#configure(Configuration)} recognizes an unsupported
+   * encoding
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ConfigurationUnsupportedEncodingException.class)
+  public final void testConfigureConfiguration() throws Exception {
 
-        assertTrue(new WriterFactory(new MyConfig(null))
-            .newInstance((PrintStream) null) instanceof NullWriter);
+    new WriterFactory( new MyConfig( null ) ).configure( new MyConfig( "xyzzy"
+    ) );
+  }
+
+  /**
+   * {@link WriterFactory#newInstance()} returns a {@link NullWriter}
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testNewInstance() throws Exception {
+
+    assertTrue( new WriterFactory( new MyConfig( null ) ).newInstance() instanceof NullWriter );
+  }
+
+  /**
+   * A {@code null} argument leads to a {@link NullWriter}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testNewInstancePrintStream0() throws Exception {
+
+    assertTrue( new WriterFactory( new MyConfig( null ) )
+                    .newInstance( (PrintStream) null ) instanceof NullWriter );
+  }
+
+  /**
+   * A non-{@code null} argument leads to some writer.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testNewInstancePrintStream1() throws Exception {
+
+    PrintStream ps = new PrintStream( new ByteArrayOutputStream() );
+    assertFalse( new WriterFactory( new MyConfig( null ) ).newInstance( ps ) instanceof NullWriter );
+  }
+
+  /**
+   * A {@code null} argument leads to an {@link NullWriter}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testNewInstanceString0() throws Exception {
+
+    assertTrue( new WriterFactory( new MyConfig( null ) )
+                    .newInstance( (String) null ) instanceof NullWriter );
+  }
+
+  /**
+   * A non-{@code null} argument leads to an exception if the file can not be
+   * opened
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = FileNotFoundException.class)
+  public final void testNewInstanceString1() throws Exception {
+
+    new WriterFactory( new MyConfig( null ) )
+        .newInstance( DIR_TARGET + "/does/not/exist" );
+  }
+
+  /**
+   * A non-{@code null} argument opens a file for writing.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testNewInstanceString2() throws Exception {
+
+    File file = new File( DIR_TARGET, "writer.test" );
+    if( file.exists() ) {
+      assertTrue( file.delete() );
     }
-
-    /**
-     *  A non-{@code null} argument leads to some writer.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testNewInstancePrintStream1() throws Exception {
-
-        PrintStream ps = new PrintStream(new ByteArrayOutputStream());
-        assertFalse(new WriterFactory(new MyConfig(null)).newInstance(ps) instanceof NullWriter);
+    Writer writer =
+        new WriterFactory( new MyConfig( null ) ).newInstance( file
+                                                                   .toString() );
+    assertNotNull( writer );
+    writer.close();
+    if( file.exists() ) {
+      assertTrue( file.delete() );
     }
-
-    /**
-     *  A {@code null} argument leads to an {@link NullWriter}.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testNewInstanceString0() throws Exception {
-
-        assertTrue(new WriterFactory(new MyConfig(null))
-            .newInstance((String) null) instanceof NullWriter);
+    else {
+      fail( file.toString() + " has not been created" );
     }
+  }
 
-    /**
-     * A non-{@code null} argument leads to an exception if the file can not be opened
-* 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = FileNotFoundException.class)
-    public final void testNewInstanceString1() throws Exception {
+  /**
+   * A non-{@code null} argument leads to some writer.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testNewInstanceStringBuffer() throws Exception {
 
-        new WriterFactory(new MyConfig(null))
-            .newInstance(DIR_TARGET + "/does/not/exist");
-    }
+    assertFalse( new WriterFactory( new MyConfig( null ) )
+                     .newInstance( new StringBuffer() ) instanceof NullWriter );
+  }
 
-    /**
-     *  A non-{@code null} argument opens a file for writing.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testNewInstanceString2() throws Exception {
+  /**
+   * Two {@code null} writers lead to an {@link NullWriter}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testNewInstanceWriterWriter0() throws Exception {
 
-        File file = new File(DIR_TARGET, "writer.test");
-        if (file.exists()) {
-            assertTrue(file.delete());
-        }
-        Writer writer =
-                new WriterFactory(new MyConfig(null)).newInstance(file
-                    .toString());
-        assertNotNull(writer);
-        writer.close();
-        if (file.exists()) {
-            assertTrue(file.delete());
-        } else {
-            fail( file.toString() + " has not been created" );
-        }
-    }
+    assertTrue( new WriterFactory( new MyConfig( null ) )
+                    .newInstance( null, null ) instanceof NullWriter );
+  }
 
-    /**
-     *  A non-{@code null} argument leads to some writer.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testNewInstanceStringBuffer() throws Exception {
+  /**
+   * One {@code null} writer lead to the other writer.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testNewInstanceWriterWriter1() throws Exception {
 
-        assertFalse(new WriterFactory(new MyConfig(null))
-            .newInstance(new StringBuffer()) instanceof NullWriter);
-    }
+    Writer w = new NullWriter();
+    assertEquals( w, new WriterFactory( new MyConfig( null ) ).newInstance( w,
+                                                                            null ) );
+  }
 
-    /**
-     *  Two {@code null} writers lead to an {@link NullWriter}.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testNewInstanceWriterWriter0() throws Exception {
+  /**
+   * One {@code null} writer lead to the other writer.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testNewInstanceWriterWriter2() throws Exception {
 
-        assertTrue(new WriterFactory(new MyConfig(null))
-            .newInstance(null, null) instanceof NullWriter);
-    }
+    Writer w = new NullWriter();
+    assertEquals( w,
+                  new WriterFactory( new MyConfig( null ) ).newInstance( null,
+                                                                         w ) );
+  }
 
-    /**
-     *  One {@code null} writer lead to the other writer.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testNewInstanceWriterWriter1() throws Exception {
+  /**
+   * One {@code null} writer lead to the other writer.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testNewInstanceWriterWriter3() throws Exception {
 
-        Writer w = new NullWriter();
-        assertEquals(w, new WriterFactory(new MyConfig(null)).newInstance(w,
-            null));
-    }
+    Writer w = new NullWriter();
+    Writer writer = new WriterFactory( new MyConfig( null ) ).newInstance( w,
+                                                                           w );
+    assertNotSame( w, writer );
+    assertTrue( writer instanceof MultiWriter );
+  }
 
-    /**
-     *  One {@code null} writer lead to the other writer.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testNewInstanceWriterWriter2() throws Exception {
+  /**
+   * {@code null} is a legal value for the encoding.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testSetEncoding0() throws Exception {
 
-        Writer w = new NullWriter();
-        assertEquals(w, new WriterFactory(new MyConfig(null)).newInstance(null,
-            w));
-    }
+    new WriterFactory( new MyConfig( null ) ).setEncoding( null );
+  }
 
-    /**
-     *  One {@code null} writer lead to the other writer.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testNewInstanceWriterWriter3() throws Exception {
+  /**
+   * An unknown encoding leads to an Exception.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = UnsupportedEncodingException.class)
+  public final void testSetEncoding1() throws Exception {
 
-        Writer w = new NullWriter();
-        Writer writer = new WriterFactory(new MyConfig(null)).newInstance(w, w);
-        assertNotSame( w, writer );
-        assertTrue(writer instanceof MultiWriter);
-    }
+    new WriterFactory( new MyConfig( null ) ).setEncoding( "xyzzy" );
+  }
 
-    /**
-     *  {@code null} is a legal value for the encoding.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testSetEncoding0() throws Exception {
+  /**
+   * A {@code null} argument leads to a {@link NullPointerException}
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = NullPointerException.class)
+  public final void testWriterFactory1() throws Exception {
 
-        new WriterFactory(new MyConfig(null)).setEncoding(null);
-    }
+    new WriterFactory( null );
+  }
 
-    /**
-     *  An unknown encoding leads to an Exception.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = UnsupportedEncodingException.class)
-    public final void testSetEncoding1() throws Exception {
+  /**
+   * An unknown encoding leads to an Exception.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ConfigurationUnsupportedEncodingException.class)
+  public final void testWriterFactory2() throws Exception {
 
-        new WriterFactory(new MyConfig(null)).setEncoding("xyzzy");
-    }
-
-    /**
-     * A {@code null} argument leads to a {@link NullPointerException}
-* 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = NullPointerException.class)
-    public final void testWriterFactory1() throws Exception {
-
-        new WriterFactory(null);
-    }
-
-    /**
-     *  An unknown encoding leads to an Exception.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ConfigurationUnsupportedEncodingException.class)
-    public final void testWriterFactory2() throws Exception {
-
-        new WriterFactory(new MyConfig("xyzzy"));
-    }
+    new WriterFactory( new MyConfig( "xyzzy" ) );
+  }
 
 }

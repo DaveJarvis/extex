@@ -25,39 +25,41 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \copy}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CopyTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(CopyTest.class);
-    }
+    (new JUnitCore()).run( CopyTest.class );
+  }
 
 
-    public CopyTest() {
+  public CopyTest() {
 
-        setPrimitive("copy");setArguments("1");setPrepare("0");
-    }
+    setPrimitive( "copy" );
+    setArguments( "1" );
+    setPrepare( "0" );
+  }
 
-    /**
-     * <testcase primitive="\copy"> Test case checking that {@code \copy}
-     * needs a key.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\copy"> Test case checking that {@code \copy}
+   * needs a key.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure("\\copy ",
-            "Missing number, treated as zero");
-    }
+    assertFailure( "\\copy ",
+                   "Missing number, treated as zero" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

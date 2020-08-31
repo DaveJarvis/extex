@@ -25,100 +25,102 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \relax}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RelaxTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(RelaxTest.class);
-    }
+    (new JUnitCore()).run( RelaxTest.class );
+  }
 
 
-    public RelaxTest() {
+  public RelaxTest() {
 
-        setPrimitive("relax");setArguments("");setPrepare("");
-    }
+    setPrimitive( "relax" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\relax"> Test case checking that a pure
-     * {@code \relax} has no effect.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\relax"> Test case checking that a pure
+   * {@code \relax} has no effect.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\relax\\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\relax\\end",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\relax"> Test case checking that a pure
-     * {@code \relax} has no effect in the middle of a word.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test10() throws Exception {
+  /**
+   * <testcase primitive="\relax"> Test case checking that a pure
+   * {@code \relax} has no effect in the middle of a word.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test10() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "abc\\relax def\\end",
-            // --- output channel ---
-            "abcdef" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "abc\\relax def\\end",
+                  // --- output channel ---
+                  "abcdef" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\relax"> Test case checking that a white-space after
-     * a {@code \relax} is ignored.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\relax"> Test case checking that a white-space after
+   * a {@code \relax} is ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\relax \\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\relax \\end",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\relax"> Test case checking that more white-space
-     * after a {@code \relax} is ignored.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test4() throws Exception {
+  /**
+   * <testcase primitive="\relax"> Test case checking that more white-space
+   * after a {@code \relax} is ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test4() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\relax         \\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\relax         \\end",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\relax"> Test case checking that a comment after a
-     * {@code \relax} is ignored.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test5() throws Exception {
+  /**
+   * <testcase primitive="\relax"> Test case checking that a comment after a
+   * {@code \relax} is ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test5() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\relax %1234 \n\\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\relax %1234 \n\\end",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

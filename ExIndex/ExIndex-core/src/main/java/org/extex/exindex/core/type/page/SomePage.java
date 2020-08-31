@@ -22,20 +22,20 @@ package org.extex.exindex.core.type.page;
 /**
  * This page reference consists of arbitrary characters. No ordering or distance
  * information is provided in this case.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SomePage extends AbstractPage {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param enc the encapsulator
-     * @param page the page number
-     */
-    public SomePage(String enc, String page) {
+  /**
+   * Creates a new object.
+   *
+   * @param enc  the encapsulator
+   * @param page the page number
+   */
+  public SomePage( String enc, String page ) {
 
-        super(enc, page, -1);
-    }
+    super( enc, page, -1 );
+  }
 
 }

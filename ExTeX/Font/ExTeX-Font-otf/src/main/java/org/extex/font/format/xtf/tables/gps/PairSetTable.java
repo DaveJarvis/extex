@@ -19,16 +19,16 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.XtfGlyphName;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * Class for a pair set table.
- * 
+ *
  * <p>
  * A PairSet table enumerates all the glyph pairs that begin with a covered
  * glyph. An array of PairValueRecords (PairValueRecord) contains one record for
@@ -36,11 +36,11 @@ import org.extex.util.xml.XMLWriterConvertible;
  * each pair. PairValueCount specifies the number of PairValueRecords in the
  * set.
  * </p>
- * 
+ *
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Value</b></td>
+ * <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -56,89 +56,90 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Array of PairValueRecords-ordered by GlyphID of the second glyph</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class PairSetTable implements XMLWriterConvertible {
 
-    /**
-     * The index.
-     */
-    private final int idx;
+  /**
+   * The index.
+   */
+  private final int idx;
 
-    /**
-     * Array of PairValueRecords-ordered by GlyphID of the second glyph.
-     */
-    private final PairValueRecord[] pairValueRecords;
+  /**
+   * Array of PairValueRecords-ordered by GlyphID of the second glyph.
+   */
+  private final PairValueRecord[] pairValueRecords;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param rar The input.
-     * @param posOffset The offset of the pos table.
-     * @param offset The offset of the table.
-     * @param xtfGlyph The glyph name.
-     * @param idx The index.
-     * @param valueFormat2 The valueformat2.
-     * @param valueFormat1 The valueformat1.
-     * @throws IOException if a io-error occurred.
-     */
-    public PairSetTable(RandomAccessR rar, int posOffset, int offset,
-            XtfGlyphName xtfGlyph, int idx, int valueFormat1, int valueFormat2)
-            throws IOException {
+  /**
+   * Creates a new object.
+   *
+   * @param rar          The input.
+   * @param posOffset    The offset of the pos table.
+   * @param offset       The offset of the table.
+   * @param xtfGlyph     The glyph name.
+   * @param idx          The index.
+   * @param valueFormat2 The valueformat2.
+   * @param valueFormat1 The valueformat1.
+   * @throws IOException if a io-error occurred.
+   */
+  public PairSetTable( RandomAccessR rar, int posOffset, int offset,
+                       XtfGlyphName xtfGlyph, int idx, int valueFormat1,
+                       int valueFormat2 )
+      throws IOException {
 
-        this.idx = idx;
-        rar.seek(offset);
-        int pairValueCount = rar.readUnsignedShort();
+    this.idx = idx;
+    rar.seek( offset );
+    int pairValueCount = rar.readUnsignedShort();
 
-        pairValueRecords = new PairValueRecord[pairValueCount];
-        for (int i = 0; i < pairValueRecords.length; i++) {
-            pairValueRecords[i] =
-                    new PairValueRecord(rar, posOffset, xtfGlyph, i,
-                        valueFormat1, valueFormat2);
-        }
-
-        for (int i = 0; i < pairValueRecords.length; i++) {
-            pairValueRecords[i].init(rar, posOffset);
-        }
-
+    pairValueRecords = new PairValueRecord[ pairValueCount ];
+    for( int i = 0; i < pairValueRecords.length; i++ ) {
+      pairValueRecords[ i ] =
+          new PairValueRecord( rar, posOffset, xtfGlyph, i,
+                               valueFormat1, valueFormat2 );
     }
 
-    /**
-     * Returns the {@link PairValueRecord} for the second glyph.
-     * 
-     * @param secondGlyph The second glyph.
-     * @return Returns the {@link PairValueRecord} for the second glyph or
-     *         {@code null}, if not found.
-     */
-    public PairValueRecord getPairValueRecord(int secondGlyph) {
-
-        for (int i = 0; i < pairValueRecords.length; i++) {
-            if (pairValueRecords[i].getSecondGlyph() == secondGlyph) {
-                return pairValueRecords[i];
-            }
-        }
-        return null;
+    for( int i = 0; i < pairValueRecords.length; i++ ) {
+      pairValueRecords[ i ].init( rar, posOffset );
     }
 
-    /**
-     * Getter for pairValueRecords.
-     * 
-     * @return the pairValueRecords
-     */
-    public PairValueRecord[] getPairValueRecords() {
+  }
 
-        return pairValueRecords;
+  /**
+   * Returns the {@link PairValueRecord} for the second glyph.
+   *
+   * @param secondGlyph The second glyph.
+   * @return Returns the {@link PairValueRecord} for the second glyph or
+   * {@code null}, if not found.
+   */
+  public PairValueRecord getPairValueRecord( int secondGlyph ) {
+
+    for( int i = 0; i < pairValueRecords.length; i++ ) {
+      if( pairValueRecords[ i ].getSecondGlyph() == secondGlyph ) {
+        return pairValueRecords[ i ];
+      }
     }
+    return null;
+  }
 
-public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * Getter for pairValueRecords.
+   *
+   * @return the pairValueRecords
+   */
+  public PairValueRecord[] getPairValueRecords() {
 
-        writer.writeStartElement("pairsettable");
-        writer.writeAttribute("ID", idx);
-        for (int i = 0; i < pairValueRecords.length; i++) {
-            pairValueRecords[i].writeXML(writer);
-        }
-        writer.writeEndElement();
+    return pairValueRecords;
+  }
+
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( "pairsettable" );
+    writer.writeAttribute( "ID", idx );
+    for( int i = 0; i < pairValueRecords.length; i++ ) {
+      pairValueRecords[ i ].writeXML( writer );
     }
+    writer.writeEndElement();
+  }
 
 }

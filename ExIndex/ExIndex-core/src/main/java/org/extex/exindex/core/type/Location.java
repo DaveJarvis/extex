@@ -19,32 +19,32 @@
 
 package org.extex.exindex.core.type;
 
-import java.io.IOException;
-import java.io.Writer;
-
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
+import java.io.IOException;
+import java.io.Writer;
+
 /**
  * This interface represents a location.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Location {
 
-    /**
-     * This method writes the location to a writer
-     * 
-     * @param writer the writer
-     * @param interpreter the interpreter
-     * @param markupContainer the container for markup
-     * @param trace the indicator for tracing
-     * @throws IOException in case of an I/O error
-     * @throws LNonMatchingTypeException in case of an error
-     */
-    void write(Writer writer, LInterpreter interpreter,
-            MarkupContainer markupContainer, boolean trace)
-            throws IOException,
-                LNonMatchingTypeException;
+  /**
+   * This method writes the location to a writer
+   *
+   * @param writer          the writer
+   * @param interpreter     the interpreter
+   * @param markupContainer the container for markup
+   * @param trace           the indicator for tracing
+   * @throws IOException               in case of an I/O error
+   * @throws LNonMatchingTypeException in case of an error
+   */
+  void write( Writer writer, LInterpreter interpreter,
+              MarkupContainer markupContainer, boolean trace )
+      throws IOException,
+      LNonMatchingTypeException;
 
 }

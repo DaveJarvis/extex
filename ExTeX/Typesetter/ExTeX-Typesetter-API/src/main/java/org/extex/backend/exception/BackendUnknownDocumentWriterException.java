@@ -22,25 +22,25 @@ package org.extex.backend.exception;
 /**
  * This exception signals that an unknown document writer type has been
  * encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BackendUnknownDocumentWriterException extends BackendException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param message the type
-     */
-    public BackendUnknownDocumentWriterException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the type
+   */
+  public BackendUnknownDocumentWriterException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
 }

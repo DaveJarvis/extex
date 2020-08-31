@@ -22,27 +22,27 @@ package org.extex.exbib.main;
 /**
  * This is a main wrapper for {@link ExBibMain} which does not invoke
  * System.exit().
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class ExBibMainUnfailing {
 
-    /**
-     * The main program. The command line parameters are evaluated and the
-     * appropriate actions are performed. Exceptions are caught and reported to
-     * the logger with the name of this class.
-     * 
-     * @param args list of command line parameters
-     */
-    public static void main(String[] args) {
+  /**
+   * The main program. The command line parameters are evaluated and the
+   * appropriate actions are performed. Exceptions are caught and reported to
+   * the logger with the name of this class.
+   *
+   * @param args list of command line parameters
+   */
+  public static void main( String[] args ) {
 
-        ExBibMain.commandLine(args);
-    }
+    ExBibMain.commandLine( args );
+  }
 
 
-    private ExBibMainUnfailing() {
+  private ExBibMainUnfailing() {
 
-        // unused
-    }
+    // unused
+  }
 
 }

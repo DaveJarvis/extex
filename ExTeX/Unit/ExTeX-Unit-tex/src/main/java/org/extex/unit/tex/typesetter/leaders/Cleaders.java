@@ -29,7 +29,7 @@ import org.extex.typesetter.type.node.CenteredLeadersNode;
 /**
  * This class provides an implementation for the primitive
  * {@code \cleaders}.
- * 
+ *
  * <p>The Primitive {@code \cleaders}</p>
  * <p>
  * The primitive {@code \cleaders} is a leaders construction which centers
@@ -62,11 +62,11 @@ import org.extex.typesetter.type.node.CenteredLeadersNode;
  * {@code \leaders} which provide essentially the same functionality but
  * adjust the material within the final space differently.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;cleaders&rang;
  *      &rarr; {@code \cleaders} &lang;Box or Rule&rang; &lang;Skip&rang;
@@ -74,32 +74,32 @@ import org.extex.typesetter.type.node.CenteredLeadersNode;
  *    &lang;Box or Rule&rang;
  *      &rarr; &lang;Box&rang;
  *       | &lang;Rule&rang;        </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
- * 
+ *
+ *
+ *
  * <pre class="TeXSample">
  *    \cleaders\hrule\hfill  </pre>
- * 
+ *
  * <p>
  * This example creates a horizontal rule which fills the space made up by the
  * {@code \hfill}. The rule stretches horizontally and has its natural
  * dimensions vertically.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *    \cleaders\vrule\vfil  </pre>
- * 
+ *
  * <p>
  * This example demonstrates the same in vertical direction. Since only
  * {@code \vil} is used it may not appear at all when the other elements in
  * the surrounding box overrule it.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *    \cleaders\hbox to 2em{\hss .\hss}\hfill  </pre>
- * 
+ *
  * <p>
  * This example shows a box of the width 2em which has a centered period in it.
  * The contents of the box is repeated until it fills the space available. If
@@ -108,41 +108,40 @@ import org.extex.typesetter.type.node.CenteredLeadersNode;
  * equally on the left and right end.
  * </p>
  *
- * @see org.extex.typesetter.type.node.CenteredLeadersNode
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see org.extex.typesetter.type.node.CenteredLeadersNode
+ */
 public class Cleaders extends Leaders {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Cleaders(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Cleaders( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-     * Finally make an appropriate node and add it to the typesetter.
-     * 
-     * @param typesetter the typesetter
-     * @param node the node
-     * @param skip the skip amount
-     * @throws TypesetterException in case of an error
-     */
-    @Override
-    protected void addNode(Typesetter typesetter, OrientedNode node,
-            FixedGlue skip) throws TypesetterException {
+  /**
+   * Finally make an appropriate node and add it to the typesetter.
+   *
+   * @param typesetter the typesetter
+   * @param node       the node
+   * @param skip       the skip amount
+   * @throws TypesetterException in case of an error
+   */
+  @Override
+  protected void addNode( Typesetter typesetter, OrientedNode node,
+                          FixedGlue skip ) throws TypesetterException {
 
-        typesetter.add(new CenteredLeadersNode(node, skip));
-    }
+    typesetter.add( new CenteredLeadersNode( node, skip ) );
+  }
 
 }

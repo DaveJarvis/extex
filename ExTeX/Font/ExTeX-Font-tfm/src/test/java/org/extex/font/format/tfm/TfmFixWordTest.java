@@ -19,86 +19,86 @@
 
 package org.extex.font.format.tfm;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
 import org.extex.core.dimen.Dimen;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 /**
  * Test for TfmFixWord.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TfmFixWordTest {
 
-    /**
-     * Test method for
-     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
-     * .
-     */
-    @Test
-    public void testToDimen01() {
+  /**
+   * Test method for
+   * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
+   * .
+   */
+  @Test
+  public void testToDimen01() {
 
-        TfmFixWord fw = new TfmFixWord(0);
-        try {
-            fw.toDimen(null);
-            assertFalse(true);
-        } catch (IllegalArgumentException e) {
-            assertEquals("size", e.getMessage());
-        }
+    TfmFixWord fw = new TfmFixWord( 0 );
+    try {
+      fw.toDimen( null );
+      assertFalse( true );
+    } catch( IllegalArgumentException e ) {
+      assertEquals( "size", e.getMessage() );
     }
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
-     * .
-     */
-    @Test
-    public void testToDimen02() {
+  /**
+   * Test method for
+   * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
+   * .
+   */
+  @Test
+  public void testToDimen02() {
 
-        TfmFixWord fw = new TfmFixWord(0);
-        Dimen d = fw.toDimen(Dimen.ONE_PT);
-        assertEquals(0, d.getValue());
-    }
+    TfmFixWord fw = new TfmFixWord( 0 );
+    Dimen d = fw.toDimen( Dimen.ONE_PT );
+    assertEquals( 0, d.getValue() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
-     * .
-     */
-    @Test
-    public void testToDimen03() {
+  /**
+   * Test method for
+   * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
+   * .
+   */
+  @Test
+  public void testToDimen03() {
 
-        TfmFixWord fw = new TfmFixWord(1);
-        Dimen d = fw.toDimen(Dimen.ONE_PT);
-        assertEquals(Dimen.ONE, d.getValue());
-    }
+    TfmFixWord fw = new TfmFixWord( 1 );
+    Dimen d = fw.toDimen( Dimen.ONE_PT );
+    assertEquals( Dimen.ONE, d.getValue() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
-     * .
-     */
-    @Test
-    public void testToDimen04() {
+  /**
+   * Test method for
+   * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
+   * .
+   */
+  @Test
+  public void testToDimen04() {
 
-        TfmFixWord fw = new TfmFixWord(12);
-        Dimen d = fw.toDimen(Dimen.ONE_PT);
-        assertEquals(Dimen.ONE * 12, d.getValue());
-    }
+    TfmFixWord fw = new TfmFixWord( 12 );
+    Dimen d = fw.toDimen( Dimen.ONE_PT );
+    assertEquals( Dimen.ONE * 12, d.getValue() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
-     * .
-     */
-    @Test
-    public void testToDimen05() {
+  /**
+   * Test method for
+   * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
+   * .
+   */
+  @Test
+  public void testToDimen05() {
 
-        TfmFixWord fw = new TfmFixWord(1, 2);
-        Dimen d = fw.toDimen(Dimen.ONE_PT);
-        assertEquals(Dimen.ONE / 2, d.getValue());
-    }
+    TfmFixWord fw = new TfmFixWord( 1, 2 );
+    Dimen d = fw.toDimen( Dimen.ONE_PT );
+    assertEquals( Dimen.ONE / 2, d.getValue() );
+  }
 
 }

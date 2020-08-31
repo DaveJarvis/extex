@@ -29,64 +29,64 @@ import org.extex.exbib.core.io.Locator;
  * This class is a container for interpreted macro
  * {@link org.extex.exbib.core.bst.code.Code Code}. The actual action for
  * execution is attached to a token embedded in this class.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MacroCode extends AbstractCode {
 
-    /**
-     * The field {@code token } contains the value for the macro code.
-     */
-    private Token token = null;
+  /**
+   * The field {@code token } contains the value for the macro code.
+   */
+  private Token token = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the name in the processor context
-     * @param token the value
-     */
-    public MacroCode(String name, Token token) {
+  /**
+   * Creates a new object.
+   *
+   * @param name  the name in the processor context
+   * @param token the value
+   */
+  public MacroCode( String name, Token token ) {
 
-        super(name);
-        this.token = token;
-    }
+    super( name );
+    this.token = token;
+  }
 
-    /**
-     * {@inheritDoc}
-     * <p>
-     * It is a delegate method to the embedded token.
-     * </p>
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#execute( BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
+  /**
+   * {@inheritDoc}
+   * <p>
+   * It is a delegate method to the embedded token.
+   * </p>
+   *
+   * @see org.extex.exbib.core.bst.code.Code#execute(BstProcessor,
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
 
-        token.execute(processor, entry, locator);
-    }
+    token.execute( processor, entry, locator );
+  }
 
-    /**
-     * Getter for the {@link Token} value. The token is embedded in the macro
-     * code to carry the true meaning.
-     * 
-     * @return the {@link Token}
-     */
-    public Token getToken() {
+  /**
+   * Getter for the {@link Token} value. The token is embedded in the macro
+   * code to carry the true meaning.
+   *
+   * @return the {@link Token}
+   */
+  public Token getToken() {
 
-        return token;
-    }
+    return token;
+  }
 
-    /**
-     * Compute the string representation of this macro code. It is a delegate
-     * method to the embedded token.
-     * 
-     * @return the string representation
-     */
-    @Override
-    public String toString() {
+  /**
+   * Compute the string representation of this macro code. It is a delegate
+   * method to the embedded token.
+   *
+   * @return the string representation
+   */
+  @Override
+  public String toString() {
 
-        return token.toString();
-    }
+    return token.toString();
+  }
 
 }

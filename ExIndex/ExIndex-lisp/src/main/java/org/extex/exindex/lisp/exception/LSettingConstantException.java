@@ -24,25 +24,25 @@ import org.extex.exindex.lisp.type.value.LSymbol;
 /**
  * This exception signals that an attempt has been made to set the value of a
  * constant.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LSettingConstantException extends LException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the name of the constant
-     */
-    public LSettingConstantException(LSymbol resource) {
+  /**
+   * Creates a new object.
+   *
+   * @param resource the name of the constant
+   */
+  public LSettingConstantException( LSymbol resource ) {
 
-        super(resource.toString());
-    }
+    super( resource.toString() );
+  }
 
 }

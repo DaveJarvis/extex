@@ -19,112 +19,108 @@
 
 package org.extex.util.font.xtf;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.InputStream;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.font.AbstractFontUtil;
 
+import java.io.*;
+
 /**
  * Extract the xtf information's the shell variables.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Xtf2Var extends AbstractFontUtil {
 
-    /**
-     * parameter.
-     */
-    private static final int PARAMETER = 1;
+  /**
+   * parameter.
+   */
+  private static final int PARAMETER = 1;
 
-    /**
-     * main.
-     * 
-     * @param args The command line.
-     * @throws Exception if an error occurred.
-     */
-    public static void main(String[] args) throws Exception {
+  /**
+   * main.
+   *
+   * @param args The command line.
+   * @throws Exception if an error occurred.
+   */
+  public static void main( String[] args ) throws Exception {
 
-        Xtf2Var xtf = new Xtf2Var();
+    Xtf2Var xtf = new Xtf2Var();
 
-        if (args.length < PARAMETER) {
-            xtf.getLogger().severe(xtf.getLocalizer().format("Xtf2Var.Call"));
-            System.exit(1);
-        }
-
-        String afmfile = "null";
-
-        int i = 0;
-        do {
-            if ("-o".equals(args[i]) || "--outdir".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    xtf.setOutdir(args[++i]);
-                }
-
-            } else {
-                afmfile = args[i];
-            }
-            i++;
-        } while (i < args.length);
-
-        xtf.doIt(afmfile);
-
+    if( args.length < PARAMETER ) {
+      xtf.getLogger().severe( xtf.getLocalizer().format( "Xtf2Var.Call" ) );
+      System.exit( 1 );
     }
 
+    String afmfile = "null";
 
-    public Xtf2Var() {
-
-        super(Xtf2Var.class);
-    }
-
-    /**
-     * do it.
-     * 
-     * @param file The afm file name.
-     * @throws Exception if an error occurs.
-     */
-    public void doIt(String file) throws Exception {
-
-        getLogger().severe(getLocalizer().format("Xtf2Var.start", file));
-
-        InputStream xtfin = null;
-
-        // find directly the afm file.
-        File xtffile = new File(file);
-
-        if (xtffile.canRead()) {
-            xtfin = new FileInputStream(xtffile);
+    int i = 0;
+    do {
+      if( "-o".equals( args[ i ] ) || "--outdir".equals( args[ i ] ) ) {
+        if( i + 1 < args.length ) {
+          xtf.setOutdir( args[ ++i ] );
         }
 
-        if (xtfin == null) {
-            throw new FileNotFoundException(file);
-        }
+      }
+      else {
+        afmfile = args[ i ];
+      }
+      i++;
+    } while( i < args.length );
 
-        XtfReader parser = new XtfReader(xtfin);
+    xtf.doIt( afmfile );
 
-        String outfile =
-                getOutdir()
-                        + File.separator
-                        + xtffile.getName().replaceAll("\\.[tToO][tT][fF]",
-                            ".sh");
+  }
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(outfile));
 
-        writer.write(createVersion("Xtf2Var.created"));
-        writer.write(getLocalizer().format("Xtf2Var.NUMBEROFGLYPHS",
-            String.valueOf(parser.getNumberOfGlyphs())));
+  public Xtf2Var() {
 
-        writer.write(getLocalizer().format("Xtf2Var.FONTNAME",
-            parser.getFontFamilyName()));
+    super( Xtf2Var.class );
+  }
 
-        writer.close();
+  /**
+   * do it.
+   *
+   * @param file The afm file name.
+   * @throws Exception if an error occurs.
+   */
+  public void doIt( String file ) throws Exception {
 
-        getLogger().severe(getLocalizer().format("Xtf2Var.end", outfile));
+    getLogger().severe( getLocalizer().format( "Xtf2Var.start", file ) );
 
+    InputStream xtfin = null;
+
+    // find directly the afm file.
+    File xtffile = new File( file );
+
+    if( xtffile.canRead() ) {
+      xtfin = new FileInputStream( xtffile );
     }
+
+    if( xtfin == null ) {
+      throw new FileNotFoundException( file );
+    }
+
+    XtfReader parser = new XtfReader( xtfin );
+
+    String outfile =
+        getOutdir()
+            + File.separator
+            + xtffile.getName().replaceAll( "\\.[tToO][tT][fF]",
+                                            ".sh" );
+
+    BufferedWriter writer = new BufferedWriter( new FileWriter( outfile ) );
+
+    writer.write( createVersion( "Xtf2Var.created" ) );
+    writer.write( getLocalizer().format( "Xtf2Var.NUMBEROFGLYPHS",
+                                         String.valueOf( parser.getNumberOfGlyphs() ) ) );
+
+    writer.write( getLocalizer().format( "Xtf2Var.FONTNAME",
+                                         parser.getFontFamilyName() ) );
+
+    writer.close();
+
+    getLogger().severe( getLocalizer().format( "Xtf2Var.end", outfile ) );
+
+  }
 
 }

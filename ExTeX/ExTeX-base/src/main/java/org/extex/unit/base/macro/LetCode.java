@@ -34,64 +34,65 @@ import org.extex.typesetter.exception.TypesetterException;
  * This code encapsulated a token which is used to trigger an expansion in the
  * interpreter at execution time. This can be used to access the code pieces for
  * special tokens which are not stored in the context.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LetCode extends AbstractCode implements ExpandableCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 28012007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 28012007L;
 
-    /**
-     * The field {@code token} contains the encapsulated token.
-     */
-    private final Token token;
+  /**
+   * The field {@code token} contains the encapsulated token.
+   */
+  private final Token token;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the token which encapsulated
-     */
-    public LetCode(Token token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the token which encapsulated
+   */
+  public LetCode( Token token ) {
 
-        super(null);
-        this.token = token;
-    }
+    super( null );
+    this.token = token;
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        source.execute(token, context, typesetter);
-    }
+    source.execute( token, context, typesetter );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws ConfigurationException,
+      HelpingException {
 
-        source.push(token);
-    }
+    source.push( token );
+  }
 
-    /**
-     * Getter for token.
-     * 
-     * @return the token
-     */
-    public Token getLetToken() {
+  /**
+   * Getter for token.
+   *
+   * @return the token
+   */
+  public Token getLetToken() {
 
-        return token;
-    }
+    return token;
+  }
 
 }

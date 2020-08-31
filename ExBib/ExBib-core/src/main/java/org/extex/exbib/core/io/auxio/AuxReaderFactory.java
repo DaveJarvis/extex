@@ -39,34 +39,32 @@ import org.extex.resource.ResourceFinder;
  * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AuxReaderFactory extends AbstractFactory<AuxReader> {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param configuration the configuration
-     */
-    public AuxReaderFactory(Configuration configuration) {
+  /**
+   * Creates a new object.
+   *
+   * @param configuration the configuration
+   */
+  public AuxReaderFactory( Configuration configuration ) {
 
-        super(configuration);
-    }
+    super( configuration );
+  }
 
-    /**
-     * Create a new instance of an AuxReader.
-     * 
-     * @param finder the resource finder
-     * 
-     * @return the new instance of AuxReader
-     * 
-     * @throws ConfigurationException in case of an configuration error
-     */
-    public AuxReader newInstance(ResourceFinder finder)
-            throws ConfigurationException {
+  /**
+   * Create a new instance of an AuxReader.
+   *
+   * @param finder the resource finder
+   * @return the new instance of AuxReader
+   * @throws ConfigurationException in case of an configuration error
+   */
+  public AuxReader newInstance( ResourceFinder finder )
+      throws ConfigurationException {
 
-        AuxReader engine = createInstance(AuxReader.class);
-        engine.setResourceFinder(finder);
-        return engine;
-    }
+    AuxReader engine = createInstance( AuxReader.class );
+    engine.setResourceFinder( finder );
+    return engine;
+  }
 
 }

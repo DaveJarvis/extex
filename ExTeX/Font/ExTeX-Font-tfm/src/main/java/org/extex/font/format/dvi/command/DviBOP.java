@@ -21,60 +21,61 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI bop: Beginning of a page.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviBOP extends DviCommand {
 
-    /**
-     * the c
-     */
-    private final int[] c;
+  /**
+   * the c
+   */
+  private final int[] c;
 
-    /**
-     * the p
-     */
-    private final int p;
+  /**
+   * the p
+   */
+  private final int p;
 
-    /**
-     * Create a new object.
-     * 
-     * @param oc the opcode
-     * @param sp the start pointer
-     * @param carray the c-array
-     * @param ap the p
-     */
-    public DviBOP(final int oc, final int sp, final int[] carray, final int ap) {
+  /**
+   * Create a new object.
+   *
+   * @param oc     the opcode
+   * @param sp     the start pointer
+   * @param carray the c-array
+   * @param ap     the p
+   */
+  public DviBOP( final int oc, final int sp, final int[] carray,
+                 final int ap ) {
 
-        super(oc, sp);
-        c = carray;
-        p = ap;
-    }
+    super( oc, sp );
+    c = carray;
+    p = ap;
+  }
 
-    /**
-     * Returns the c.
-     * 
-     * @return Returns the c.
-     */
-    public int[] getC() {
+  /**
+   * Returns the c.
+   *
+   * @return Returns the c.
+   */
+  public int[] getC() {
 
-        return c;
-    }
+    return c;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "bop";
-    }
+    return "bop";
+  }
 
-    /**
-     * Returns the p.
-     * 
-     * @return Returns the p.
-     */
-    public int getP() {
+  /**
+   * Returns the p.
+   *
+   * @return Returns the p.
+   */
+  public int getP() {
 
-        return p;
-    }
+    return p;
+  }
 }

@@ -25,146 +25,147 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \lastpenalty}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LastpenaltyTest.class);
-    }
+    (new JUnitCore()).run( LastpenaltyTest.class );
+  }
 
 
-    public LastpenaltyTest() {
+  public LastpenaltyTest() {
 
-        super("lastpenalty", "", "0");
-    }
+    super( "lastpenalty", "", "0" );
+  }
 
-    /**
-     *  Test case checking that {@code \lastpenalty} is showable.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * Test case checking that {@code \lastpenalty} is showable.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertOutput(
+    assertOutput(
         // --- input code ---
-            "a\\penalty123 \\showthe\\lastpenalty\\end",
-            // --- output channel ---
-            "> 123.\n",
-            
-            null);
-    }
+        "a\\penalty123 \\showthe\\lastpenalty\\end",
+        // --- output channel ---
+        "> 123.\n",
 
-    /**
-     * Test case checking that {@code \lastpenalty} on an empty list returns 0
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+        null );
+  }
 
-        assertOutput(
+  /**
+   * Test case checking that {@code \lastpenalty} on an empty list returns 0
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
+
+    assertOutput(
         // --- input code ---
-            "\\showthe\\lastpenalty\\end",
-            // --- output channel ---
-            "> 0.\n",
-            
-            null);
-    }
+        "\\showthe\\lastpenalty\\end",
+        // --- output channel ---
+        "> 0.\n",
 
-    /**
-     *  Test case checking that \relax does not produce a node.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+        null );
+  }
 
-        assertOutput(
+  /**
+   * Test case checking that \relax does not produce a node.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
+
+    assertOutput(
         // --- input code ---
-            "a\\penalty123\\relax\\showthe\\lastpenalty\\end",
-            // --- output channel ---
-            "> 123.\n",
-            
-            null);
-    }
+        "a\\penalty123\\relax\\showthe\\lastpenalty\\end",
+        // --- output channel ---
+        "> 123.\n",
 
-    /**
-     * Test case checking that <tt\lastpenalty</tt> returns 0 if the last node is a character node
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+        null );
+  }
 
-        assertOutput(
+  /**
+   * Test case checking that <tt\lastpenalty</tt> returns 0 if the last
+   * node is a character node
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
+
+    assertOutput(
         // --- input code ---
-            "a\\showthe\\lastpenalty\\end",
-            // --- output channel ---
-            "> 0.\n",
-            
-            null);
-    }
+        "a\\showthe\\lastpenalty\\end",
+        // --- output channel ---
+        "> 0.\n",
 
-    /**
-     * Test case checking that <tt\lastpenalty</tt> returns 0 if the last node is a kern node
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test4() throws Exception {
+        null );
+  }
 
-        assertOutput(
+  /**
+   * Test case checking that <tt\lastpenalty</tt> returns 0 if the last
+   * node is a kern node
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test4() throws Exception {
+
+    assertOutput(
         // --- input code ---
-            "a\\kern 12pt\\showthe\\lastpenalty\\end",
-            // --- output channel ---
-            "> 0.\n",
-            
-            null);
-    }
+        "a\\kern 12pt\\showthe\\lastpenalty\\end",
+        // --- output channel ---
+        "> 0.\n",
 
-    /**
-     * Test case checking that {@code \lastpenalty} returns 0 if the last node is a glue node
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test5() throws Exception {
+        null );
+  }
 
-        assertOutput(
+  /**
+   * Test case checking that {@code \lastpenalty} returns 0 if the last
+   * node is a glue node
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test5() throws Exception {
+
+    assertOutput(
         // --- input code ---
-            "a\\hfill \\showthe\\lastpenalty\\end",
-            // --- output channel ---
-            "> 0.\n",
-            
-            null);
-    }
+        "a\\hfill \\showthe\\lastpenalty\\end",
+        // --- output channel ---
+        "> 0.\n",
 
-    /**
-     * Test case checking that {@code \lastpenalty} is count convertible
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test10() throws Exception {
+        null );
+  }
 
-        assertOutput(
+  /**
+   * Test case checking that {@code \lastpenalty} is count convertible
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test10() throws Exception {
+
+    assertOutput(
         // --- input code ---
-            "a\\penalty123 \\count0=\\lastpenalty x\\showthe\\count0\\end",
-            // --- output channel ---
-            "> 123.\n",
-            
-            null);
-    }
+        "a\\penalty123 \\count0=\\lastpenalty x\\showthe\\count0\\end",
+        // --- output channel ---
+        "> 123.\n",
+
+        null );
+  }
 
 }

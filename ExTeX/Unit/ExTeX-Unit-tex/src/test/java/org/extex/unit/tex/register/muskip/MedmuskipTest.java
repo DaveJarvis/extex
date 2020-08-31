@@ -23,26 +23,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \medmuskip}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MedmuskipTest extends AbstractMuskipRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MedmuskipTest.class);
-    }
+    (new JUnitCore()).run( MedmuskipTest.class );
+  }
 
 
-    public MedmuskipTest() {
+  public MedmuskipTest() {
 
-        super("medmuskip", "", "0.0mu");
-    }
+    super( "medmuskip", "", "0.0mu" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \mediawidth}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MediawidthTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MediawidthTest.class);
-    }
+    (new JUnitCore()).run( MediawidthTest.class );
+  }
 
 
-    public MediawidthTest() {
+  public MediawidthTest() {
 
-        super("mediawidth", "", "597.50787pt");
-        setConfig("extex-test");
-    }
+    super( "mediawidth", "", "597.50787pt" );
+    setConfig( "extex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

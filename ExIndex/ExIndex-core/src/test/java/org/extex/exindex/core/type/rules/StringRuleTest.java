@@ -19,138 +19,136 @@
 
 package org.extex.exindex.core.type.rules;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * This is a test suite for the {@link StringRule}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class StringRuleTest {
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
-     */
-    @Test(expected = RuntimeException.class)
-    public final void testApply01() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+   */
+  @Test(expected = RuntimeException.class)
+  public final void testApply01() {
 
-        new StringRule("b", "abc", true);
-    }
+    new StringRule( "b", "abc", true );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
-     */
-    @Test
-    public final void testApply02() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+   */
+  @Test
+  public final void testApply02() {
 
-        assertNotNull(new StringRule("b", "abc", false));
-    }
+    assertNotNull( new StringRule( "b", "abc", false ) );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
-     */
-    @Test
-    public final void testApply11() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+   */
+  @Test
+  public final void testApply11() {
 
-        Rule r = new StringRule("b", "B", false);
-        StringBuilder sb = new StringBuilder("abc");
-        assertTrue(r.apply(sb, 0) < 0);
-    }
+    Rule r = new StringRule( "b", "B", false );
+    StringBuilder sb = new StringBuilder( "abc" );
+    assertTrue( r.apply( sb, 0 ) < 0 );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
-     */
-    @Test
-    public final void testApply12() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+   */
+  @Test
+  public final void testApply12() {
 
-        Rule r = new StringRule("b", "B", false);
-        StringBuilder sb = new StringBuilder("abc");
-        assertTrue(r.apply(sb, 2) < 0);
-    }
+    Rule r = new StringRule( "b", "B", false );
+    StringBuilder sb = new StringBuilder( "abc" );
+    assertTrue( r.apply( sb, 2 ) < 0 );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
-     */
-    @Test
-    public final void testApply13() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+   */
+  @Test
+  public final void testApply13() {
 
-        Rule r = new StringRule("b", "B", false);
-        StringBuilder sb = new StringBuilder("abc");
-        assertTrue(r.apply(sb, 3) < 0);
-    }
+    Rule r = new StringRule( "b", "B", false );
+    StringBuilder sb = new StringBuilder( "abc" );
+    assertTrue( r.apply( sb, 3 ) < 0 );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
-     */
-    @Test
-    public final void testApply14() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+   */
+  @Test
+  public final void testApply14() {
 
-        Rule r = new StringRule("b", "B", false);
-        StringBuilder sb = new StringBuilder("abc");
-        assertEquals(2, r.apply(sb, 1));
-        assertEquals("aBc", sb.toString());
-    }
+    Rule r = new StringRule( "b", "B", false );
+    StringBuilder sb = new StringBuilder( "abc" );
+    assertEquals( 2, r.apply( sb, 1 ) );
+    assertEquals( "aBc", sb.toString() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
-     */
-    @Test
-    public final void testApply15() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+   */
+  @Test
+  public final void testApply15() {
 
-        Rule r = new StringRule("b", "B", false);
-        StringBuilder sb = new StringBuilder("ab");
-        assertEquals(2, r.apply(sb, 1));
-        assertEquals("aB", sb.toString());
-    }
+    Rule r = new StringRule( "b", "B", false );
+    StringBuilder sb = new StringBuilder( "ab" );
+    assertEquals( 2, r.apply( sb, 1 ) );
+    assertEquals( "aB", sb.toString() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
-     */
-    @Test
-    public final void testApply16() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+   */
+  @Test
+  public final void testApply16() {
 
-        Rule r = new StringRule("b", ".B.", false);
-        StringBuilder sb = new StringBuilder("ab");
-        assertEquals(2, r.apply(sb, 1));
-        assertEquals("a.B.", sb.toString());
-    }
+    Rule r = new StringRule( "b", ".B.", false );
+    StringBuilder sb = new StringBuilder( "ab" );
+    assertEquals( 2, r.apply( sb, 1 ) );
+    assertEquals( "a.B.", sb.toString() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
-     */
-    @Test
-    public final void testApply24() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+   */
+  @Test
+  public final void testApply24() {
 
-        Rule r = new StringRule("b", "B", true);
-        StringBuilder sb = new StringBuilder("abc");
-        assertEquals(2, r.apply(sb, 1));
-        assertEquals("aBc", sb.toString());
-    }
+    Rule r = new StringRule( "b", "B", true );
+    StringBuilder sb = new StringBuilder( "abc" );
+    assertEquals( 2, r.apply( sb, 1 ) );
+    assertEquals( "aBc", sb.toString() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
-     */
-    @Test
-    public final void testApply25() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+   */
+  @Test
+  public final void testApply25() {
 
-        Rule r = new StringRule("b", "B", true);
-        StringBuilder sb = new StringBuilder("ab");
-        assertEquals(2, r.apply(sb, 1));
-        assertEquals("aB", sb.toString());
-    }
+    Rule r = new StringRule( "b", "B", true );
+    StringBuilder sb = new StringBuilder( "ab" );
+    assertEquals( 2, r.apply( sb, 1 ) );
+    assertEquals( "aB", sb.toString() );
+  }
 
 }

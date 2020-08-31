@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \doublehyphendemerits}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DoublehyphendemeritsTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DoublehyphendemeritsTest.class);
-    }
+    (new JUnitCore()).run( DoublehyphendemeritsTest.class );
+  }
 
 
-    public DoublehyphendemeritsTest() {
+  public DoublehyphendemeritsTest() {
 
-        super("doublehyphendemerits", "", "0");
-    }
+    super( "doublehyphendemerits", "", "0" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

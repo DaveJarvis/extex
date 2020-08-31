@@ -26,26 +26,27 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \abovewithdelims}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AbovewithdelimsTest extends ExTeXLauncher {
 
 
-    public AbovewithdelimsTest() {
+  public AbovewithdelimsTest() {
 
-    }
+  }
 
-    /**
-     * Test case checking that \abovewithdelims needs the math mode.
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNonMathMode() throws Exception {
+  /**
+   * Test case checking that \abovewithdelims needs the math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNonMathMode() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\abovewithdelims \\end",
-                //--- log message ---
-                "Missing $ inserted");
-    }
+    assertFailure(//--- input code ---
+                  "\\abovewithdelims \\end",
+                  //--- log message ---
+                  "Missing $ inserted" );
+  }
 
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

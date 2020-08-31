@@ -19,12 +19,12 @@
 
 package org.extex.language.ligature;
 
-import java.io.Serializable;
-
 import org.extex.core.UnicodeChar;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.NodeList;
+
+import java.io.Serializable;
 
 /**
  * This interface describes the capability of a ligature builder.
@@ -32,36 +32,32 @@ import org.extex.typesetter.type.NodeList;
  * It might use the information from the font.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface LigatureBuilder extends Serializable {
 
-    /**
-     * Take a node list and transform character sequences into ligatures where
-     * appropriate. The processing should extend over all characters with the
-     * same font and non-character nodes. It should return the control to the
-     * caller as soon as a character node with another font is found.
-     *
-     * @param list the node list to create ligatures for
-     * @param start the index in the list to start processing
-     *
-     * @return the index after last node processed
-     *
-     * @throws HyphenationException in case of an error
-     */
-    int insertLigatures(NodeList list, int start) throws HyphenationException;
+  /**
+   * Take a node list and transform character sequences into ligatures where
+   * appropriate. The processing should extend over all characters with the
+   * same font and non-character nodes. It should return the control to the
+   * caller as soon as a character node with another font is found.
+   *
+   * @param list  the node list to create ligatures for
+   * @param start the index in the list to start processing
+   * @return the index after last node processed
+   * @throws HyphenationException in case of an error
+   */
+  int insertLigatures( NodeList list, int start ) throws HyphenationException;
 
-    /**
-     * Get a single ligature of to characters.
-     *
-     * @param c1 the first character
-     * @param c2 the second character
-     * @param f the current font
-     *
-     * @return the ligature of c1 and c2 or {@code null} if none exists
-     *
-     * @throws HyphenationException in case of an error
-     */
-    UnicodeChar getLigature(UnicodeChar c1, UnicodeChar c2, Font f)
-            throws HyphenationException;
+  /**
+   * Get a single ligature of to characters.
+   *
+   * @param c1 the first character
+   * @param c2 the second character
+   * @param f  the current font
+   * @return the ligature of c1 and c2 or {@code null} if none exists
+   * @throws HyphenationException in case of an error
+   */
+  UnicodeChar getLigature( UnicodeChar c1, UnicodeChar c2, Font f )
+      throws HyphenationException;
 
 }

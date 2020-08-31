@@ -24,51 +24,49 @@ import java.util.List;
 
 /**
  * This interface describes a container for sort rules.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface SortRuleContainer {
 
-    /**
-     * Add some sort rule to the set at a given level.
-     * 
-     * @param level the level
-     * @param rule the rule
-     */
-    void addSortRule(Integer level, Rule rule);
+  /**
+   * Add some sort rule to the set at a given level.
+   *
+   * @param level the level
+   * @param rule  the rule
+   */
+  void addSortRule( Integer level, Rule rule );
 
-    /**
-     * Add some sort rules to the set at a given level.
-     * 
-     * @param level the level
-     * @param ruleList the rule list
-     */
-    void addSortRules(Integer level, List<Rule> ruleList);
+  /**
+   * Add some sort rules to the set at a given level.
+   *
+   * @param level    the level
+   * @param ruleList the rule list
+   */
+  void addSortRules( Integer level, List<Rule> ruleList );
 
-    /**
-     * Getter for the rule set of a given level which creates a sort rule if
-     * none exists already.
-     * 
-     * @param level the level
-     * 
-     * @return the rule set for the given level
-     */
-    SortRules lookupOrCreateSortRule(Integer level);
+  /**
+   * Getter for the rule set of a given level which creates a sort rule if
+   * none exists already.
+   *
+   * @param level the level
+   * @return the rule set for the given level
+   */
+  SortRules lookupOrCreateSortRule( Integer level );
 
-    /**
-     * Getter for the rule set of a given level.
-     * 
-     * @param level the level
-     * 
-     * @return the rule set for the given level or {@code null} for none
-     */
-    SortRules lookupSortRules(Integer level);
+  /**
+   * Getter for the rule set of a given level.
+   *
+   * @param level the level
+   * @return the rule set for the given level or {@code null} for none
+   */
+  SortRules lookupSortRules( Integer level );
 
-    /**
-     * Getter for the maximum levels.
-     * 
-     * @return the maximum level
-     */
-    int sortRuleSize();
+  /**
+   * Getter for the maximum levels.
+   *
+   * @return the maximum level
+   */
+  int sortRuleSize();
 
 }

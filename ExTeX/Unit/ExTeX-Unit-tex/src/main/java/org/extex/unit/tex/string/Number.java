@@ -33,7 +33,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \number}.
- * 
+ *
  * <p>The Primitive {@code \number}</p>
  * <p>
  * The primitive {@code \number} takes a following number specification of
@@ -46,80 +46,81 @@ import org.extex.typesetter.exception.TypesetterException;
  * that leading zeroes are discarded. It can as well be applied to a register in
  * which case one gets the tokens representing the content of the register.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;number&rang;
  *        &rarr; {@code \number} {@linkplain
- *           org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *           org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *           &lang;number&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \number 42  &rarr; 42</pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \count=-123
  *    \number -\count3  &rarr; 123 </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \number -0042  &rarr; -42</pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Number extends AbstractCode implements ExpandableCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Number(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Number( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    long number = source.parseInteger( context, source, typesetter );
+    try {
+      source.push( context.getTokenFactory().toTokens( number ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        long number = source.parseInteger(context, source, typesetter);
-        try {
-            source.push(context.getTokenFactory().toTokens(number));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
+    long number = source.parseInteger( context, source, typesetter );
+    try {
+      source.push( context.getTokenFactory().toTokens( number ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        long number = source.parseInteger(context, source, typesetter);
-        try {
-            source.push(context.getTokenFactory().toTokens(number));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
+  }
 
 }

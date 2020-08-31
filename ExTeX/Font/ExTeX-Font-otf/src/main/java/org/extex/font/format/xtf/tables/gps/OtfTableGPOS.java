@@ -19,8 +19,6 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.font.format.xtf.tables.XtfGlyphName;
 import org.extex.font.format.xtf.tables.XtfTable;
@@ -28,6 +26,8 @@ import org.extex.font.format.xtf.tables.XtfTableDirectory;
 import org.extex.font.format.xtf.tables.XtfTableMap;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.IOException;
 
 /**
  * Table gpos.
@@ -46,7 +46,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * The GPOS table begins with a header that defines offsets to a ScriptList, a
  * FeatureList, and a LookupList:
  * </p>
- * 
+ *
  * <ul>
  * <li>The ScriptList identifies all the scripts and language systems in the
  * font that use glyph positioning.
@@ -55,7 +55,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <li>The LookupList contains all the lookup data needed to implement each
  * glyph positioning feature.
  * </ul>
- * 
+ *
  * <p>
  * The GPOS table is organized so text processing clients can easily locate the
  * features and lookups that apply to a particular script or language system. To
@@ -77,7 +77,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <li>Assemble all lookups from the set of chosen features, and apply the
  * lookups in the order given in the LookupList table.
  * </ol>
- * 
+ *
  * <p>
  * A lookup uses subtables to define the specific conditions, type, and results
  * of a positioning action used to implement a feature. All subtables in a
@@ -90,7 +90,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Value</b></td>
+ * <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -145,7 +145,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>For future use</td>
  * </tr>
  * </table>
- * 
+ *
  * <p>
  * Each LookupType is defined by one or more subtables, whose format depends on
  * the type of positioning operation and the resulting storage efficiency. When
@@ -161,7 +161,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * ValueRecords are accumulated in these cases. Each lookup is given a different
  * array number in the LookupList table and is applied in the LookupList order.
  * </p>
- * 
+ *
  * <p>
  * During text processing, a client applies a lookup to each glyph in the string
  * before moving to the next lookup. A lookup is finished for a glyph after the
@@ -195,7 +195,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Value</b></td>
+ * <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -220,72 +220,73 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Offset to LookupList table-from beginning of GPOS table</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class OtfTableGPOS extends AbstractXtfSFLTable
-        implements
-            XtfTable,
-            LookupTableFactory,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    LookupTableFactory,
+    XMLWriterConvertible {
 
-    /**
-     * Create a new object.
-     * 
-     * @param tablemap the table map
-     * @param de directory entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public OtfTableGPOS(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param tablemap the table map
+   * @param de       directory entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public OtfTableGPOS( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap, de, rar);
+    super( tablemap, de, rar );
+  }
+
+  public String getShortcut() {
+
+    return "gpos";
+  }
+
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
+
+    return XtfReader.GPOS;
+  }
+
+  public String lookupType( int type ) {
+
+    if( type >= 1 && type < XtfLookup.LOOKUP_TYPE_NAMES_GPOS.length - 1 ) {
+      return XtfLookup.LOOKUP_TYPE_NAMES_GPOS[ type - 1 ];
     }
+    return "Unknown";
+  }
 
-public String getShortcut() {
+  /**
+   * int, int, int, org.extex.font.format.xtf.tables.XtfGlyphName)
+   */
+  public XtfLookupTable read( RandomAccessR rar, int posOffset, int type,
+                              int offset, XtfGlyphName xtfGlyph )
+      throws IOException {
 
-        return "gpos";
+    switch( type ) {
+      case XtfLookup.GPOS_1_SINGLE:
+        return XtfGPOSSingleTable.newInstance( rar, posOffset, offset,
+                                               xtfGlyph );
+      case XtfLookup.GPOS_2_PAIR:
+        return XtfGPOSPairTable.newInstance( rar, posOffset, offset,
+                                             xtfGlyph );
+      case XtfLookup.GPOS_3_CURSIVE_ATTACHMENT:
+        return XtfGPOSCursiveTable.newInstance( rar, offset, xtfGlyph );
+      case XtfLookup.GPOS_4_MARKTOBASE_ATTACHMENT:
+        return XtfGPOSMarkToBaseTable
+            .newInstance( rar, offset, xtfGlyph );
+      default:
+        return null;
     }
-
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.GPOS;
-    }
-
-public String lookupType(int type) {
-
-        if (type >= 1 && type < XtfLookup.LOOKUP_TYPE_NAMES_GPOS.length - 1) {
-            return XtfLookup.LOOKUP_TYPE_NAMES_GPOS[type - 1];
-        }
-        return "Unknown";
-    }
-
-    /**
-*      int, int, int, org.extex.font.format.xtf.tables.XtfGlyphName)
-     */
-    public XtfLookupTable read(RandomAccessR rar, int posOffset, int type,
-            int offset, XtfGlyphName xtfGlyph) throws IOException {
-
-        switch (type) {
-            case XtfLookup.GPOS_1_SINGLE:
-                return XtfGPOSSingleTable.newInstance(rar, posOffset, offset,
-                    xtfGlyph);
-            case XtfLookup.GPOS_2_PAIR:
-                return XtfGPOSPairTable.newInstance(rar, posOffset, offset,
-                    xtfGlyph);
-            case XtfLookup.GPOS_3_CURSIVE_ATTACHMENT:
-                return XtfGPOSCursiveTable.newInstance(rar, offset, xtfGlyph);
-            case XtfLookup.GPOS_4_MARKTOBASE_ATTACHMENT:
-                return XtfGPOSMarkToBaseTable
-                    .newInstance(rar, offset, xtfGlyph);
-            default:
-                return null;
-        }
-    }
+  }
 }

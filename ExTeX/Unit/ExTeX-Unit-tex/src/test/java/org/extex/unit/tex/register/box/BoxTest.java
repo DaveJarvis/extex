@@ -25,39 +25,41 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \box}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BoxTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(BoxTest.class);
-    }
+    (new JUnitCore()).run( BoxTest.class );
+  }
 
 
-    public BoxTest() {
+  public BoxTest() {
 
-        setPrimitive("box");setArguments("1");setPrepare("0");
-    }
+    setPrimitive( "box" );
+    setArguments( "1" );
+    setPrepare( "0" );
+  }
 
-    /**
-     * <testcase primitive="\box"> Test case checking that {@code \box} needs
-     * a key. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\box"> Test case checking that {@code \box} needs
+   * a key.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure("\\box ", 
-            "Missing number, treated as zero");
-    }
+    assertFailure( "\\box ",
+                   "Missing number, treated as zero" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

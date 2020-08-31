@@ -21,17 +21,17 @@ package org.extex.font.format.xtf.tables;
 
 /**
  * Interface, to get the glyph name.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface XtfGlyphName {
 
-    /**
-     * Returns the glyph name of a index.
-     * 
-     * @param idx The index.
-     * @return Returns the glyph name of a index.
-     */
-    String getGlyphName(int idx);
+  /**
+   * Returns the glyph name of a index.
+   *
+   * @param idx The index.
+   * @return Returns the glyph name of a index.
+   */
+  String getGlyphName( int idx );
 
 }

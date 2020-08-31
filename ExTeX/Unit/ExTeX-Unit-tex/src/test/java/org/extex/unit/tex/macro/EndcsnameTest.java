@@ -26,28 +26,27 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \endcsname}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EndcsnameTest extends ExTeXLauncher {
 
 
-    public EndcsnameTest() {
+  public EndcsnameTest() {
 
-    }
+  }
 
-    /**
-     * <testcase primitive="\endcsname">
-     *  Test case checking that a lonely {@code \endcsname} leads to an error.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLetters1() throws Exception {
+  /**
+   * <testcase primitive="\endcsname">
+   * Test case checking that a lonely {@code \endcsname} leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLetters1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\endcsname",
-                //--- error channel ---
-                "Extra \\endcsname");
-    }
+    assertFailure(//--- input code ---
+                  "\\endcsname",
+                  //--- error channel ---
+                  "Extra \\endcsname" );
+  }
 
 }

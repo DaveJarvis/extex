@@ -24,137 +24,135 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \ifeof}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IfeofTest extends ConditionalTester {
 
-    /**
-     * The field {@code EMPTY_TEX} contains the location of an empty file.
-     */
-    private static final String EMPTY_TEX =
-            "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
+  /**
+   * The field {@code EMPTY_TEX} contains the location of an empty file.
+   */
+  private static final String EMPTY_TEX =
+      "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
 
-    /**
-     * The field {@code NON_EMPTY_TEX} contains the location of an non-empty
-     * file.
-     */
-    private static final String NON_EMPTY_TEX =
-            "../ExTeX-Unit-tex/src/test/resources/tex/read_data.tex";
+  /**
+   * The field {@code NON_EMPTY_TEX} contains the location of an non-empty
+   * file.
+   */
+  private static final String NON_EMPTY_TEX =
+      "../ExTeX-Unit-tex/src/test/resources/tex/read_data.tex";
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IfeofTest.class);
-    }
+    (new JUnitCore()).run( IfeofTest.class );
+  }
 
 
-    public IfeofTest() {
+  public IfeofTest() {
 
-        super("ifeof", " 11");
-    }
+    super( "ifeof", " 11" );
+  }
 
-    /**
-     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
-     * needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError0() throws Exception {
+  /**
+   * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
+   * needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError0() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ifeof ",
-            // --- output channel ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  "\\ifeof ",
+                  // --- output channel ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
-     * needs a file descriptor (number).
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
+   * needs a file descriptor (number).
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ifeof x ",
-            // --- output channel ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  "\\ifeof x ",
+                  // --- output channel ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
-     * expands the then branch on an unused file descriptor.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
+   * expands the then branch on an unused file descriptor.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifeof8 true\\else false\\fi \\end",
-            // --- output channel ---
-            "true" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifeof8 true\\else false\\fi \\end",
+                  // --- output channel ---
+                  "true" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
-     * expands the then branch on a newly opened and empty file descriptor.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
+   * expands the then branch on a newly opened and empty file descriptor.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\openin8 " + EMPTY_TEX + " "
-                    + "\\ifeof8 true\\else false\\fi \\end",
-            // --- output channel ---
-            "true" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\openin8 " + EMPTY_TEX + " "
+                      + "\\ifeof8 true\\else false\\fi \\end",
+                  // --- output channel ---
+                  "true" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
-     * expands the then branch on a file descriptor for an empty file.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
+   * expands the then branch on a file descriptor for an empty file.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\openin8 " + EMPTY_TEX + " " 
-                    + "\\read8 to \\x " 
-                    + "\\ifeof8 true\\else false\\fi \\end",
-            // --- output channel ---
-            "true" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\openin8 " + EMPTY_TEX + " "
+                      + "\\read8 to \\x "
+                      + "\\ifeof8 true\\else false\\fi \\end",
+                  // --- output channel ---
+                  "true" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
-     * expands the else branch on a newly opened file descriptor for a non-empty
-     * file.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test4() throws Exception {
+  /**
+   * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
+   * expands the else branch on a newly opened file descriptor for a non-empty
+   * file.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test4() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\openin8 " + NON_EMPTY_TEX + " " 
-                    + "\\ifeof8 true\\else false\\fi \\end",
-            // --- output channel ---
-            "false" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\openin8 " + NON_EMPTY_TEX + " "
+                      + "\\ifeof8 true\\else false\\fi \\end",
+                  // --- output channel ---
+                  "false" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 
 }

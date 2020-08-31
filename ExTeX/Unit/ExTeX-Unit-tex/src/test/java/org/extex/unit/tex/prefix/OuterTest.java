@@ -26,82 +26,82 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \outer}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OuterTest extends PrefixTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(OuterTest.class);
-    }
+    (new JUnitCore()).run( OuterTest.class );
+  }
 
 
-    public OuterTest() {
+  public OuterTest() {
 
-        super("outer");
-    }
+    super( "outer" );
+  }
 
-    /**
-     * <testcase primitive="\outer"> Test case checking that \outer sets the
-     * flag.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test10() throws Exception {
+  /**
+   * <testcase primitive="\outer"> Test case checking that \outer sets the
+   * flag.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test10() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\outer\\showprefix\\end",
-            // --- error channel ---
-            "outer\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\outer\\showprefix\\end",
+                  // --- error channel ---
+                  "outer\n",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\outer"> Test case checking that double
-     * {@code \outer} has the same effect as one.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test11() throws Exception {
+  /**
+   * <testcase primitive="\outer"> Test case checking that double
+   * {@code \outer} has the same effect as one.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test11() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\outer\\outer\\showprefix\\end",
-            // --- error channel ---
-            "outer\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\outer\\outer\\showprefix\\end",
+                  // --- error channel ---
+                  "outer\n",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\outer"> Test case checking that \outer does not
-     * interfere with \long.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test12() throws Exception {
+  /**
+   * <testcase primitive="\outer"> Test case checking that \outer does not
+   * interfere with \long.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test12() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\outer\\long\\showprefix\\end",
-            // --- error channel ---
-            "long and outer\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\outer\\long\\showprefix\\end",
+                  // --- error channel ---
+                  "long and outer\n",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

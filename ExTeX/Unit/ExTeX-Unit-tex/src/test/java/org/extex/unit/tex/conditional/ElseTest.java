@@ -25,39 +25,39 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \else}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ElseTest extends ExTeXLauncher {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ElseTest.class);
-    }
+    (new JUnitCore()).run( ElseTest.class );
+  }
 
 
-    public ElseTest() {
+  public ElseTest() {
 
-    }
+  }
 
-    /**
-     * <testcase primitive="\else"> Test case checking that a lonely
-     * {@code \else} leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testConst0() throws Exception {
+  /**
+   * <testcase primitive="\else"> Test case checking that a lonely
+   * {@code \else} leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testConst0() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\else",
-            // --- log message ---
-            "Extra \\else");
-    }
+    assertFailure(// --- input code ---
+                  "\\else",
+                  // --- log message ---
+                  "Extra \\else" );
+  }
 
 }

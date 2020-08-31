@@ -26,16 +26,17 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \mathinner}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathinnerTest extends AbstractOperatorTester {
 
-    public MathinnerTest() {
-        setPrimitive("mathinner");
-    }
+  public MathinnerTest() {
+    setPrimitive( "mathinner" );
+  }
 
-    @Test
-    @Ignore
-    public void testChardef1() {}
+  @Test
+  @Ignore
+  public void testChardef1() {
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

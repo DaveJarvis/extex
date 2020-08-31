@@ -25,20 +25,19 @@ import java.io.Writer;
  * This interface describes the ability to manipulate an
  * {@link java.io.Writer Writer} by attaching additional processing units in a
  * pipe manner.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface WriterInterceptor {
 
-    /**
-     * Attach a processor to a writer. If the interceptor decides that no
-     * additional pipe element is required it should simply return the writer
-     * passed in as argument.
-     * 
-     * @param writer the writer to add some processing unit to
-     * 
-     * @return the new writer. This value should never be {@code null}.
-     */
-    Writer pipe(Writer writer);
+  /**
+   * Attach a processor to a writer. If the interceptor decides that no
+   * additional pipe element is required it should simply return the writer
+   * passed in as argument.
+   *
+   * @param writer the writer to add some processing unit to
+   * @return the new writer. This value should never be {@code null}.
+   */
+  Writer pipe( Writer writer );
 
 }

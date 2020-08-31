@@ -24,190 +24,189 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \nativedef}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
 
-    public NativedefTest() {
+  public NativedefTest() {
 
-        setPrimitive("nativedef");setArguments("{java}\\t{org.extex.unit.base.Relax}");
-        setConfig("native-test");
-    }
+    setPrimitive( "nativedef" );
+    setArguments( "{java}\\t{org.extex.unit.base.Relax}" );
+    setConfig( "native-test" );
+  }
 
-    /**
-     * <testcase primitive="\nativedef"> Test case checking that
-     * {@code \nativedef} needs a token to assign. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError0() throws Exception {
+  /**
+   * <testcase primitive="\nativedef"> Test case checking that
+   * {@code \nativedef} needs a token to assign.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError0() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\nativedef",
-            // --- log message ---
-            "File ended while scanning text of \\nativedef");
-    }
+        DEFINE_BRACES + "\\nativedef",
+        // --- log message ---
+        "File ended while scanning text of \\nativedef" );
+  }
 
-    /**
-     * <testcase primitive="\nativedef"> Test case checking that
-     * {@code \nativedef} needs a token to assign. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\nativedef"> Test case checking that
+   * {@code \nativedef} needs a token to assign.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\nativedef{java}a",
-            // --- log message ---
-            "Missing control sequence inserted");
-    }
+        DEFINE_BRACES + "\\nativedef{java}a",
+        // --- log message ---
+        "Missing control sequence inserted" );
+  }
 
-    /**
-     * <testcase primitive="\nativedef"> Test case checking that
-     * {@code \nativedef} needs a token to assign. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\nativedef"> Test case checking that
+   * {@code \nativedef} needs a token to assign.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\nativedef{java}2",
-            // --- log message ---
-            "Missing control sequence inserted");
-    }
+        DEFINE_BRACES + "\\nativedef{java}2",
+        // --- log message ---
+        "Missing control sequence inserted" );
+  }
 
-    /**
-     * <testcase primitive="\nativedef"> Test case checking that
-     * {@code \nativedef} needs a token to assign. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError3() throws Exception {
+  /**
+   * <testcase primitive="\nativedef"> Test case checking that
+   * {@code \nativedef} needs a token to assign.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError3() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\nativedef{java}\\x",
-            // --- log message ---
-            "File ended while scanning text of \\nativedef");
-    }
+        DEFINE_BRACES + "\\nativedef{java}\\x",
+        // --- log message ---
+        "File ended while scanning text of \\nativedef" );
+  }
 
-    /**
-     * <testcase primitive="\nativedef"> Test case checking that
-     * {@code \nativedef} can assign a Java class to a control sequence.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\nativedef"> Test case checking that
+   * {@code \nativedef} can assign a Java class to a control sequence.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\nativedef{java}"
-                    + "\\t{org.extex.unit.tex.info.The}" + "\\t\\count42"
-                    + " \\end",
-            // --- log message ---
-            "0" + TERM);
-    }
+        DEFINE_BRACES + "\\nativedef{java}"
+            + "\\t{org.extex.unit.tex.info.The}" + "\\t\\count42"
+            + " \\end",
+        // --- log message ---
+        "0" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\nativedef"> Test case checking that
-     * {@code \nativedef} can assign a Java class to an active character.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\nativedef"> Test case checking that
+   * {@code \nativedef} can assign a Java class to an active character.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\catcode`\\~=13 "
-                    + "\\nativedef{java}~{org.extex.unit.tex.info.The}"
-                    + "~\\count42" + " \\end",
-            // --- log message ---
-            "0" + TERM);
-    }
+        DEFINE_BRACES + "\\catcode`\\~=13 "
+            + "\\nativedef{java}~{org.extex.unit.tex.info.The}"
+            + "~\\count42" + " \\end",
+        // --- log message ---
+        "0" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\nativedef"> Test case checking that
-     * {@code \nativedef} respects the global keyword. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal1() throws Exception {
+  /**
+   * <testcase primitive="\nativedef"> Test case checking that
+   * {@code \nativedef} respects the global keyword.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\begingroup" + "\\global\\nativedef{java}"
-                    + "\\t{org.extex.unit.tex.info.The}" + "\\endgroup"
-                    + "\\t\\count42" + " \\end",
-            // --- log message ---
-            "0" + TERM);
-    }
+        DEFINE_BRACES + "\\begingroup" + "\\global\\nativedef{java}"
+            + "\\t{org.extex.unit.tex.info.The}" + "\\endgroup"
+            + "\\t\\count42" + " \\end",
+        // --- log message ---
+        "0" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\nativedef"> Test case checking that
-     * {@code \nativedef} respects the \global keyword. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal2() throws Exception {
+  /**
+   * <testcase primitive="\nativedef"> Test case checking that
+   * {@code \nativedef} respects the \global keyword.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal2() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\begingroup" + "\\nativedef{java}"
-                    + "\\t{org.extex.unit.tex.info.The}" + "\\endgroup"
-                    + "\\t\\count42" + " \\end",
-            // --- log message ---
-            "Undefined control sequence \\t");
-    }
+        DEFINE_BRACES + "\\begingroup" + "\\nativedef{java}"
+            + "\\t{org.extex.unit.tex.info.The}" + "\\endgroup"
+            + "\\t\\count42" + " \\end",
+        // --- log message ---
+        "Undefined control sequence \\t" );
+  }
 
-    /**
-     * <testcase primitive="\nativedef"> Test case checking that
-     * {@code \nativedef} respects \globaldefs. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal3() throws Exception {
+  /**
+   * <testcase primitive="\nativedef"> Test case checking that
+   * {@code \nativedef} respects \globaldefs.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal3() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\globaldefs=1 " + "\\begingroup"
-                    + "\\nativedef{java}" + "\\t{org.extex.unit.tex.info.The}"
-                    + "\\endgroup" + "\\t\\count42" + " \\end",
-            // --- log message ---
-            "0" + TERM);
-    }
+        DEFINE_BRACES + "\\globaldefs=1 " + "\\begingroup"
+            + "\\nativedef{java}" + "\\t{org.extex.unit.tex.info.The}"
+            + "\\endgroup" + "\\t\\count42" + " \\end",
+        // --- log message ---
+        "0" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\nativedef"> Test case checking that
-     * {@code \nativedef} respects \afterassignment. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAfterassignment1() throws Exception {
+  /**
+   * <testcase primitive="\nativedef"> Test case checking that
+   * {@code \nativedef} respects \afterassignment.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAfterassignment1() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\afterassignment\\x " + "\\begingroup"
-                    + "\\nativedef{java}" + "\\t{org.extex.unit.tex.info.The}"
-                    + "\\endgroup",
-            // --- log message ---
-            "Undefined control sequence \\x");
-    }
+        DEFINE_BRACES + "\\afterassignment\\x " + "\\begingroup"
+            + "\\nativedef{java}" + "\\t{org.extex.unit.tex.info.The}"
+            + "\\endgroup",
+        // --- log message ---
+        "Undefined control sequence \\x" );
+  }
 
 }

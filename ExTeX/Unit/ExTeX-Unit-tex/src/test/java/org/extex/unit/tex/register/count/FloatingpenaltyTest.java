@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \floatingpenalty}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class FloatingpenaltyTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(FloatingpenaltyTest.class);
-    }
+    (new JUnitCore()).run( FloatingpenaltyTest.class );
+  }
 
 
-    public FloatingpenaltyTest() {
+  public FloatingpenaltyTest() {
 
-        super("floatingpenalty", "", "0");
-    }
+    super( "floatingpenalty", "", "0" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

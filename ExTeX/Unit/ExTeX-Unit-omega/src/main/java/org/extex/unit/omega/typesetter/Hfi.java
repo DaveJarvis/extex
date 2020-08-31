@@ -35,7 +35,7 @@ import org.extex.unit.tex.typesetter.spacing.HorizontalSkip;
 
 /**
  * This class provides an implementation for the primitive {@code \hfi}.
- * 
+ *
  * <p>The Primitive {@code \hfi}</p>
  * <p>
  * The primitive {@code \hfi} inserts a new infinite glue into the output. The
@@ -47,69 +47,69 @@ import org.extex.unit.tex.typesetter.spacing.HorizontalSkip;
  * <p>
  * This quantity has been introduced by  Omega.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;hfi&rang;
  *        &rarr; {@code \hfi}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \hfi  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
 
-    /**
-     * The field {@code FIL} contains the glue to insert for this primitive.
-     */
-    private static final Glue FI = new Glue(Dimen.ZERO, GlueComponent.ONE_FI,
-        GlueComponent.ZERO);
+  /**
+   * The field {@code FIL} contains the glue to insert for this primitive.
+   */
+  private static final Glue FI = new Glue( Dimen.ZERO, GlueComponent.ONE_FI,
+                                           GlueComponent.ZERO );
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Hfi(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Hfi( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        switchToHorizontalMode(typesetter);
-        typesetter.add(FI);
-    }
+    switchToHorizontalMode( typesetter );
+    typesetter.add( FI );
+  }
 
-    /**
-     * This method acquires horizontal glue.
-     * 
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public FixedGlue getGlue(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * This method acquires horizontal glue.
+   * <p>
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public FixedGlue getGlue( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        return FI;
-    }
+    return FI;
+  }
 
 }

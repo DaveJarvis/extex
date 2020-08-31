@@ -26,31 +26,32 @@ import org.extex.typesetter.output.OutputRoutine;
 
 /**
  * This class provides a factory for the output routines.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OutputRoutineFactory extends AbstractFactory<OutputRoutine> {
 
 
-    public OutputRoutineFactory() {
+  public OutputRoutineFactory() {
 
-    }
+  }
 
-    /**
-     * Create a new output routine.
-     * 
-     * @param interpreter the current interpreter. This interpreter can be used
-     *        to run the output routine in; alternatively it can be used to
-     *        access all information necessary
-     * 
-     * @return the output routine
-     * 
-     * @throws ConfigurationException in case of a configuration error
-     */
-    public OutputRoutine newInstance(Interpreter interpreter)
-            throws ConfigurationException {
+  /**
+   * Create a new output routine.
+   *
+   * @param interpreter the current interpreter. This interpreter can be used
+   *                    to run the output routine in; alternatively it can 
+   *                    be used to
+   *                    access all information necessary
+   * @return the output routine
+   * @throws ConfigurationException in case of a configuration error
+   */
+  public OutputRoutine newInstance( Interpreter interpreter )
+      throws ConfigurationException {
 
-        return createInstanceForConfiguration(getConfiguration(),
-            OutputRoutine.class, Interpreter.class, interpreter);
-    }
+    return createInstanceForConfiguration( getConfiguration(),
+                                           OutputRoutine.class,
+                                           Interpreter.class,
+                                           interpreter );
+  }
 }

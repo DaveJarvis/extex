@@ -21,26 +21,26 @@ package org.extex.exindex.lisp.exception;
 
 /**
  * This exception signals that an undefined flag has been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LUndefinedFlagException extends LException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param argName the name of the argument
-     * @param function the function
-     */
-    public LUndefinedFlagException(String argName, String function) {
+  /**
+   * Creates a new object.
+   *
+   * @param argName  the name of the argument
+   * @param function the function
+   */
+  public LUndefinedFlagException( String argName, String function ) {
 
-        super(argName + " / " + function);
-    }
+    super( argName + " / " + function );
+  }
 
 }

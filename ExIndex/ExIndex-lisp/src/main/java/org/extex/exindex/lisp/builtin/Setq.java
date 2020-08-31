@@ -28,60 +28,55 @@ import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * Set the binding of a symbol.
- * 
+ *
  *
  * <p>The Command {@code setq}</p>
- * 
+ *
  * <p>
  * The command {@code setq} can be used to assign a value to a symbol.
  * </p>
- * 
+ *
  * <pre>
  *  (setq
  *     <i>symbol</i>
  *     <i>value</i>
  *  )  </pre>
- * 
+ *
  * <p>
  * The command has as arguments a symbol and a value. The binding of the symbol
  * is set to the value.
  * </p>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Setq extends LFunction {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the name of the function
-     * 
-     * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
-     * @throws SecurityException in case a security problem occurred
-     */
-    public Setq(String name) throws SecurityException, NoSuchMethodException {
+  /**
+   * Creates a new object.
+   *
+   * @param name the name of the function
+   * @throws NoSuchMethodException in case that no method corresponding to the
+   *                               argument specification could be found
+   * @throws SecurityException     in case a security problem occurred
+   */
+  public Setq( String name ) throws SecurityException, NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.QSYMBOL, Arg.QVALUE});
-    }
+    super( name, new Arg[]{Arg.QSYMBOL, Arg.QVALUE} );
+  }
 
-    /**
-     * Apply setq.
-     * 
-     * @param interpreter the interpreter
-     * @param name the quoted name
-     * @param value the value
-     * 
-     * @return the quoted term
-     * 
-     * @throws LSettingConstantException in case of an error
-     */
-    public LValue evaluate(LInterpreter interpreter, LSymbol name, LValue value)
-            throws LSettingConstantException {
+  /**
+   * Apply setq.
+   *
+   * @param interpreter the interpreter
+   * @param name        the quoted name
+   * @param value       the value
+   * @return the quoted term
+   * @throws LSettingConstantException in case of an error
+   */
+  public LValue evaluate( LInterpreter interpreter, LSymbol name, LValue value )
+      throws LSettingConstantException {
 
-        interpreter.setq(name, value);
-        return value;
-    }
+    interpreter.setq( name, value );
+    return value;
+  }
 }

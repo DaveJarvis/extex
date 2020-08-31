@@ -27,59 +27,57 @@ import org.junit.Test;
 
 /**
  * This is a test suite for a CsfSorter.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CsfSorterTest {
 
-    /**
-     *  start() terminates immediately if the resource is null.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testStart1() throws Exception {
+  /**
+   * start() terminates immediately if the resource is null.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testStart1() throws Exception {
 
-        new CsfSorter(null).start();
-    }
+    new CsfSorter( null ).start();
+  }
 
-    /**
-     * start() terminates immediately if the resource is the empty string
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testStart2() throws Exception {
+  /**
+   * start() terminates immediately if the resource is the empty string
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testStart2() throws Exception {
 
-        new CsfSorter("").start();
-    }
+    new CsfSorter( "" ).start();
+  }
 
-    /**
-     *  start() throws an exception if the resource can not be found.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibCsfNotFoundException.class)
-    public void testStart3() throws Exception {
+  /**
+   * start() throws an exception if the resource can not be found.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibCsfNotFoundException.class)
+  public void testStart3() throws Exception {
 
-        CsfSorter csfSorter = new CsfSorter("abc");
-        csfSorter.setResourceFinder(new ResourceFinder() {
+    CsfSorter csfSorter = new CsfSorter( "abc" );
+    csfSorter.setResourceFinder( new ResourceFinder() {
 
-            @Override
-            public NamedInputStream findResource(String name, String type)
-                    throws ConfigurationException {
+      @Override
+      public NamedInputStream findResource( String name, String type )
+          throws ConfigurationException {
 
-                return null;
-            }
+        return null;
+      }
 
-            @Override
-            public void enableTracing(boolean flag) {
+      @Override
+      public void enableTracing( boolean flag ) {
 
-            }
-        });
-        csfSorter.start();
-    }
+      }
+    } );
+    csfSorter.start();
+  }
 
 }

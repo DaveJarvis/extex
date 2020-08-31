@@ -26,47 +26,48 @@ import java.io.FileWriter;
 
 /**
  * Read a text file and store each line in the java string syntax.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Text2String {
 
-    /**
-     * main.
-     * 
-     * @param args The command line.
-     * @throws Exception if an error occurred.
-     */
-    public static void main(String[] args) throws Exception {
+  /**
+   * main.
+   *
+   * @param args The command line.
+   * @throws Exception if an error occurred.
+   */
+  public static void main( String[] args ) throws Exception {
 
-        if (args.length != 1) {
-            System.err.println("call org.extex.fontinst.Text2String <file>");
-            System.exit(1);
-        }
-
-        BufferedReader in = new BufferedReader(new FileReader(args[0]));
-        BufferedWriter out =
-                new BufferedWriter(new FileWriter(args[0] + ".javatxt"));
-
-        String line;
-        boolean firstline = true;
-        while ((line = in.readLine()) != null) {
-            if (!firstline) {
-                out.write(" + ");
-            } else {
-                out.write("String text = ");
-            }
-            firstline = false;
-            out.write('"');
-            String xline = line.replaceAll("\\\\", "\\\\\\\\");
-            xline = xline.replaceAll("\\\"", "\\\\\"");
-            out.write(xline);
-            out.write("\\n\"\n");
-        }
-        out.write(";");
-
-        in.close();
-        out.close();
+    if( args.length != 1 ) {
+      System.err.println( "call org.extex.fontinst.Text2String <file>" );
+      System.exit( 1 );
     }
+
+    BufferedReader in = new BufferedReader( new FileReader( args[ 0 ] ) );
+    BufferedWriter out =
+        new BufferedWriter( new FileWriter( args[ 0 ] + ".javatxt" ) );
+
+    String line;
+    boolean firstline = true;
+    while( (line = in.readLine()) != null ) {
+      if( !firstline ) {
+        out.write( " + " );
+      }
+      else {
+        out.write( "String text = " );
+      }
+      firstline = false;
+      out.write( '"' );
+      String xline = line.replaceAll( "\\\\", "\\\\\\\\" );
+      xline = xline.replaceAll( "\\\"", "\\\\\"" );
+      out.write( xline );
+      out.write( "\\n\"\n" );
+    }
+    out.write( ";" );
+
+    in.close();
+    out.close();
+  }
 
 }

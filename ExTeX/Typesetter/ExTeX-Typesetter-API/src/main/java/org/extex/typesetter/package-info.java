@@ -17,7 +17,7 @@
  */
 
 /**
- *Contains typesetter definitions for εχTeX. The typesetter
+ * Contains typesetter definitions for εχTeX. The typesetter
  * has the aim of building lists of nodes and
  * compute their optimal distribution.
  *

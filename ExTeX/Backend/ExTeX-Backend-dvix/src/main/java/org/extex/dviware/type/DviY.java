@@ -19,48 +19,45 @@
 
 package org.extex.dviware.type;
 
+import org.extex.dviware.Dvi;
+
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.extex.dviware.Dvi;
 
 /**
  * This class represents the DVI instruction {@code y}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviY extends AbstractDviCode {
 
-    /**
-     * The field {@code value} contains the value.
-     */
-    private final int value;
+  /**
+   * The field {@code value} contains the value.
+   */
+  private final int value;
 
-    /**
-     * Creates a new object.
-     *
-     * @param value the value
-     */
-    public DviY(int value) {
+  /**
+   * Creates a new object.
+   *
+   * @param value the value
+   */
+  public DviY( int value ) {
 
-        super("y" + variant(value));
-        this.value = value;
-    }
+    super( "y" + variant( value ) );
+    this.value = value;
+  }
 
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
 
-        return opcodeSigned(Dvi.Y1, value, stream);
-    }
+    return opcodeSigned( Dvi.Y1, value, stream );
+  }
 
 }

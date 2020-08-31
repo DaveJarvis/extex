@@ -22,30 +22,30 @@ package org.extex.font.format.pfb;
  * Exception for the pfb parser: Start marker is missing.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class PfbStartMarkerMissingException extends PfbException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new object.
-     */
-    public PfbStartMarkerMissingException() {
+  /**
+   * Create a new object.
+   */
+  public PfbStartMarkerMissingException() {
 
-    }
+  }
 
-    /**
-     * Create a new object.
-     *
-     * @param message   the message
-     */
-    public PfbStartMarkerMissingException(String message) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   */
+  public PfbStartMarkerMissingException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 }

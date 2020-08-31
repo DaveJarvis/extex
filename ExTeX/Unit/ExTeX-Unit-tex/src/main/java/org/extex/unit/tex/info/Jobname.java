@@ -31,7 +31,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \jobname}.
- * 
+ *
  * <p>The Primitive {@code \jobname}</p>
  * <p>
  * The primitive {@code \jobname} expands to the name of the job currently
@@ -39,67 +39,67 @@ import org.extex.typesetter.exception.TypesetterException;
  * can not be determined &ndash; e.g. because the input is not coming from a
  * file &ndash; then the fallback {@code texput} is usd as default value.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;jobname&rang;
  *      &rarr; {@code \jobname}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \jobname  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Jobname extends AbstractCode implements ExpandableCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The constant {@code JOBNAME} contains the name of the token register
-     * to carry the job name.
-     */
-    public static final String JOBNAME = "jobname";
+  /**
+   * The constant {@code JOBNAME} contains the name of the token register
+   * to carry the job name.
+   */
+  public static final String JOBNAME = "jobname";
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Jobname(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Jobname( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        source.push(context.getToks(JOBNAME));
-    }
+    source.push( context.getToks( JOBNAME ) );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter ) throws HelpingException {
 
-        source.push(context.getToks(JOBNAME));
-    }
+    source.push( context.getToks( JOBNAME ) );
+  }
 
 }

@@ -26,137 +26,137 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \lastbox}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LastboxTest extends ExTeXLauncher {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LastboxTest.class);
-    }
+    (new JUnitCore()).run( LastboxTest.class );
+  }
 
 
-    public LastboxTest() {
+  public LastboxTest() {
 
-    }
+  }
 
-    /**
-     * <testcase primitive="\lastbox"> Test case showing that the primitive can
-     * not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVerticalMode1() throws Exception {
+  /**
+   * <testcase primitive="\lastbox"> Test case showing that the primitive can
+   * not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testVerticalMode1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\lastbox",
-            // --- error channel ---
-            "You can't use `\\lastbox' in vertical mode");
-    }
+    assertFailure(// --- input code ---
+                  "\\lastbox",
+                  // --- error channel ---
+                  "You can't use `\\lastbox' in vertical mode" );
+  }
 
-    /**
-     * <testcase primitive="\lastbox"> Test case showing that the primitive can
-     * not be used in math mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMathMode1() throws Exception {
+  /**
+   * <testcase primitive="\lastbox"> Test case showing that the primitive can
+   * not be used in math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMathMode1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_CATCODES + "$\\lastbox$\\end",
-            // --- error channel ---
-            "You can't use `\\lastbox' in math mode");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_CATCODES + "$\\lastbox$\\end",
+                  // --- error channel ---
+                  "You can't use `\\lastbox' in math mode" );
+  }
 
-    /**
-     * <testcase primitive="\lastbox"> Test case showing that the primitive can
-     * not be used in display math mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testDisplayMathMode1() throws Exception {
+  /**
+   * <testcase primitive="\lastbox"> Test case showing that the primitive can
+   * not be used in display math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testDisplayMathMode1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_CATCODES + "$$\\lastbox$$\\end",
-            // --- error channel ---
-            "You can't use `\\lastbox' in displaymath mode");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_CATCODES + "$$\\lastbox$$\\end",
+                  // --- error channel ---
+                  "You can't use `\\lastbox' in displaymath mode" );
+  }
 
-    /**
-     * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
-     * can not be used in math mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr1() throws Exception {
+  /**
+   * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
+   * can not be used in math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr1() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS
-                    + "$\\setbox0=\\lastbox $",
-            // --- error channel ---
-            "You can't use `\\lastbox' in math mode");
-    }
+        DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS
+            + "$\\setbox0=\\lastbox $",
+        // --- error channel ---
+        "You can't use `\\lastbox' in math mode" );
+  }
 
-    /**
-     * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
-     * can not be used in math mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr2() throws Exception {
+  /**
+   * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
+   * can not be used in math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr2() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS + "$\\lastbox $",
-            // --- error channel ---
-            "You can't use `\\lastbox' in math mode");
-    }
+        DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS + "$\\lastbox $",
+        // --- error channel ---
+        "You can't use `\\lastbox' in math mode" );
+  }
 
-    /**
-     * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
-     * can not be used in display math mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr11() throws Exception {
+  /**
+   * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
+   * can not be used in display math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr11() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS
-                    + "$$\\setbox0=\\lastbox $$",
-            // --- error channel ---
-            "You can't use `\\lastbox' in displaymath mode");
-    }
+        DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS
+            + "$$\\setbox0=\\lastbox $$",
+        // --- error channel ---
+        "You can't use `\\lastbox' in displaymath mode" );
+  }
 
-    /**
-     * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
-     * can not be used in display math mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr12() throws Exception {
+  /**
+   * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
+   * can not be used in display math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr12() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS
-                    + "$$\\lastbox $$",
-            // --- error channel ---
-            "You can't use `\\lastbox' in displaymath mode");
-    }
+        DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS
+            + "$$\\lastbox $$",
+        // --- error channel ---
+        "You can't use `\\lastbox' in displaymath mode" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

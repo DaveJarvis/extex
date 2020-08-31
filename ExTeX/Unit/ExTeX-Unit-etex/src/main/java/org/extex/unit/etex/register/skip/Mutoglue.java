@@ -33,65 +33,64 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \mutoglue}.
- * 
+ *
  * <p>The Primitive {@code \mutoglue}</p>
  * <p>
  * The primitive {@code \mutoglue} converts a muglue specification to a glue
  * specification. For this conversion 1mu=1pt is assumed. This primitive can be
  * used wherever a glue is expected.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;mutoglue&rang;
  *      &rarr; {@code \mutoglue} &lang;muglue&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \skip0=\mutoglue1mu  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \skip0=\glueexpr\mutoglue1mu\relax  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Mutoglue extends AbstractCode implements GlueConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Mutoglue(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Mutoglue( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Glue convertGlue(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Glue convertGlue( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Muskip muskip =
-                (Muskip) source
-                    .parse(Muskip.class, context, source, typesetter);
+    Muskip muskip =
+        (Muskip) source
+            .parse( Muskip.class, context, source, typesetter );
 
-        return new Glue(muskip.getLength(), muskip.getStretch(), muskip
-            .getShrink());
-    }
+    return new Glue( muskip.getLength(), muskip.getStretch(), muskip
+        .getShrink() );
+  }
 
 }

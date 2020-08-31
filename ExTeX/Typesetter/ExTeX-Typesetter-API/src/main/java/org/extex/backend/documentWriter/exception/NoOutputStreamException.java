@@ -24,21 +24,20 @@ package org.extex.backend.documentWriter.exception;
  * calling shipout.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
-*/
+ */
 public class NoOutputStreamException extends DocumentWriterException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Creates a new {@code NoOutputStreamException} instance.
-     *
-     */
-    public NoOutputStreamException() {
+  /**
+   * Creates a new {@code NoOutputStreamException} instance.
+   */
+  public NoOutputStreamException() {
 
-        super("");
-    }
+    super( "" );
+  }
 
 }

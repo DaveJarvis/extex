@@ -25,28 +25,29 @@ import java.io.IOException;
  * Exception: not a operator
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2NotAOperatorException extends IOException {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new object
-     */
-    public T2NotAOperatorException() {
+  /**
+   * Create a new object
+   */
+  public T2NotAOperatorException() {
 
-    }
+  }
 
-    /**
-     * Create a new object
-     * @param s the message
-     */
-    public T2NotAOperatorException(String s) {
+  /**
+   * Create a new object
+   *
+   * @param s the message
+   */
+  public T2NotAOperatorException( String s ) {
 
-        super(s);
-    }
+    super( s );
+  }
 }

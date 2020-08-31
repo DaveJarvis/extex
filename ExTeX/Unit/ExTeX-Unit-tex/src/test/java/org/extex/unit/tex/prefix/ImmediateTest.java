@@ -26,82 +26,82 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \immediate}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ImmediateTest extends PrefixTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ImmediateTest.class);
-    }
+    (new JUnitCore()).run( ImmediateTest.class );
+  }
 
 
-    public ImmediateTest() {
+  public ImmediateTest() {
 
-        super("immediate");
-    }
+    super( "immediate" );
+  }
 
-    /**
-     * <testcase primitive="\immediate"> Test case checking that \immediate sets
-     * the immediate flag.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test10() throws Exception {
+  /**
+   * <testcase primitive="\immediate"> Test case checking that \immediate sets
+   * the immediate flag.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test10() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\immediate\\showprefix\\end",
-            // --- error channel ---
-            "immediate\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\immediate\\showprefix\\end",
+                  // --- error channel ---
+                  "immediate\n",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\immediate"> Test case checking that double
-     * {@code \immediate} has the same effect as one.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test11() throws Exception {
+  /**
+   * <testcase primitive="\immediate"> Test case checking that double
+   * {@code \immediate} has the same effect as one.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test11() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\immediate\\immediate\\showprefix\\end",
-            // --- error channel ---
-            "immediate\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\immediate\\immediate\\showprefix\\end",
+                  // --- error channel ---
+                  "immediate\n",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\immediate"> Test case checking that immediate does
-     * not interfere with \long.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test12() throws Exception {
+  /**
+   * <testcase primitive="\immediate"> Test case checking that immediate does
+   * not interfere with \long.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test12() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\immediate\\long\\showprefix\\end",
-            // --- error channel ---
-            "long and immediate\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\immediate\\long\\showprefix\\end",
+                  // --- error channel ---
+                  "long and immediate\n",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

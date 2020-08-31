@@ -25,130 +25,128 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \lastkern}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LastkernTest.class);
-    }
+    (new JUnitCore()).run( LastkernTest.class );
+  }
 
 
-    public LastkernTest() {
+  public LastkernTest() {
 
-        super("lastkern", "", "0.0pt");
-    }
+    super( "lastkern", "", "0.0pt" );
+  }
 
-    /**
-     * Test case checking that {@code \lastkern} on an empty list returns 0pt
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * Test case checking that {@code \lastkern} on an empty list returns 0pt
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertOutput(
+    assertOutput(
         // --- input code ---
-            "\\showthe\\lastkern\\end",
-            // --- output channel ---
-            "> 0.0pt.\n",
+        "\\showthe\\lastkern\\end",
+        // --- output channel ---
+        "> 0.0pt.\n",
 
-            null);
-    }
+        null );
+  }
 
-    /**
-     *  Test case checking that {@code \lastkern} is showable.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test case checking that {@code \lastkern} is showable.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertOutput(
+    assertOutput(
         // --- input code ---
-            "a\\kern123pt\\showthe\\lastkern\\end",
-            // --- output channel ---
-            "> 123.0pt.\n",
+        "a\\kern123pt\\showthe\\lastkern\\end",
+        // --- output channel ---
+        "> 123.0pt.\n",
 
-            null);
-    }
+        null );
+  }
 
-    /**
-     *  Test case checking that \relax does not produce a node.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * Test case checking that \relax does not produce a node.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertOutput(
+    assertOutput(
         // --- input code ---
-            "a\\kern123pt\\relax\\showthe\\lastkern\\end",
-            // --- output channel ---
-            "> 123.0pt.\n",
+        "a\\kern123pt\\relax\\showthe\\lastkern\\end",
+        // --- output channel ---
+        "> 123.0pt.\n",
 
-            null);
-    }
+        null );
+  }
 
-    /**
-     * Test case checking that {@code \lastkern} returns 0pt if the last node is not a kern node
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * Test case checking that {@code \lastkern} returns 0pt if the last node
+   * is not a kern node
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertOutput(
+    assertOutput(
         // --- input code ---
-            "a\\showthe\\lastkern\\end",
-            // --- output channel ---
-            "> 0.0pt.\n",
+        "a\\showthe\\lastkern\\end",
+        // --- output channel ---
+        "> 0.0pt.\n",
 
-            null);
-    }
+        null );
+  }
 
-    /**
-     *  Test case checking that {@code \lastkern} is a dimen value.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test10() throws Exception {
+  /**
+   * Test case checking that {@code \lastkern} is a dimen value.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test10() throws Exception {
 
-        assertOutput(
+    assertOutput(
         // --- input code ---
-            "a\\kern123pt\\dimen0=\\lastkern x\\showthe\\dimen0\\end",
-            // --- output channel ---
-            "> 123.0pt.\n",
+        "a\\kern123pt\\dimen0=\\lastkern x\\showthe\\dimen0\\end",
+        // --- output channel ---
+        "> 123.0pt.\n",
 
-            null);
-    }
+        null );
+  }
 
-    /**
-     * Test case checking that {@code \lastkern} is count convertible
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test11() throws Exception {
+  /**
+   * Test case checking that {@code \lastkern} is count convertible
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test11() throws Exception {
 
-        assertOutput(
+    assertOutput(
         // --- input code ---
-            "a\\kern123pt\\count0=\\lastkern x\\showthe\\count0\\end",
-            // --- output channel ---
-            "> 8060928.\n",
+        "a\\kern123pt\\count0=\\lastkern x\\showthe\\count0\\end",
+        // --- output channel ---
+        "> 8060928.\n",
 
-            null);
-    }
+        null );
+  }
 
 }

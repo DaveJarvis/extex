@@ -26,29 +26,29 @@ import java.util.List;
  * StemSnapH.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T1StemSnapH extends T1DictDelta {
 
-    /**
-     * Create a new object.
-     *
-     * @param stack the stack
-     * @throws IOException if an IO.error occurs.
-     */
-    public T1StemSnapH(List<T2Number> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO.error occurs.
+   */
+  public T1StemSnapH( List<T2Number> stack ) throws IOException {
 
-        super(stack, new short[]{STEM_SNAP_H});
-    }
+    super( stack, new short[]{STEM_SNAP_H} );
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
-     */
-    @Override
-    public String getName() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
+   */
+  @Override
+  public String getName() {
 
-        return "StemSnapH";
-    }
+    return "StemSnapH";
+  }
 
 }

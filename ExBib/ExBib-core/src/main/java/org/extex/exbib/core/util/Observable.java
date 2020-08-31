@@ -22,22 +22,21 @@ package org.extex.exbib.core.util;
 /**
  * An observable is an object which has the feature to register an observer to
  * be invoked upon certain actions.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Observable {
 
-    /**
-     * This method registers an Observer for a named action. The name is used to
-     * distinguish several actions to be monitored.
-     * 
-     * @param name the name of the action to be observed
-     * @param observer the Observer to be invoked
-     * 
-     * @throws NotObservableException in case that the name does not match any
-     *         of the observable actions.
-     */
-    void registerObserver(String name, Observer observer)
-            throws NotObservableException;
+  /**
+   * This method registers an Observer for a named action. The name is used to
+   * distinguish several actions to be monitored.
+   *
+   * @param name     the name of the action to be observed
+   * @param observer the Observer to be invoked
+   * @throws NotObservableException in case that the name does not match any
+   *                                of the observable actions.
+   */
+  void registerObserver( String name, Observer observer )
+      throws NotObservableException;
 
 }

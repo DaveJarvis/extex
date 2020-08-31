@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \lastnodetype}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LastnodetypeTest extends AbstractReadonlyCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LastnodetypeTest.class);
-    }
+    (new JUnitCore()).run( LastnodetypeTest.class );
+  }
 
 
-    public LastnodetypeTest() {
+  public LastnodetypeTest() {
 
-        super("lastnodetype", "", "-1");
-        setConfig("etex-test");
-    }
+    super( "lastnodetype", "", "-1" );
+    setConfig( "etex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

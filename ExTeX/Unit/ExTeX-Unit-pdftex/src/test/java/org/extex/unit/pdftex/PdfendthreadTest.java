@@ -25,16 +25,16 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
  * This is a test suite for the primitive {@code \pdfendthread}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfendthreadTest extends NoFlagsButProtectedPrimitiveTester {
 
 
-    public PdfendthreadTest() {
+  public PdfendthreadTest() {
 
-        super("pdfendthread", "", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfendthread", "", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 
 }

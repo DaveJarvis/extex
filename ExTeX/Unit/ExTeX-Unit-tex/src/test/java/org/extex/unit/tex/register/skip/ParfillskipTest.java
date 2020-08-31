@@ -23,26 +23,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \parfillskip}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ParfillskipTest extends AbstractSkipRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ParfillskipTest.class);
-    }
+    (new JUnitCore()).run( ParfillskipTest.class );
+  }
 
 
-    public ParfillskipTest() {
+  public ParfillskipTest() {
 
-        super("parfillskip", "", "0.0pt");
-    }
+    super( "parfillskip", "", "0.0pt" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

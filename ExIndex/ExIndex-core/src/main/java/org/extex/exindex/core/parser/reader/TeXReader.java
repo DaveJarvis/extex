@@ -42,18 +42,18 @@ import java.io.Reader;
  * <li>Otherwise 64 is subtracted from the code point and the new value is used
  * instead.</li>
  * </ul>
- * 
+ *
  * <p>
  * Examples:
  * </p>
  * <p>
  * The following tables shows some examples of the ^^ notation.
  * </p>
-* <table>
+ * <table>
  * <caption>TBD</caption>
-
+ *
  * <tr>
-* <th>Input</th>
+ * <th>Input</th>
  * <th>Code point</th>
  * <th>Explanation</th>
  * </tr>
@@ -75,91 +75,94 @@ import java.io.Reader;
  * added. This results in 110 which happens to be the letter n.</td>
  * </tr>
  * </table>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TeXReader extends ReaderLocator {
 
-    /**
-     * The field {@code save} contains the saved character or -1 for none.
-     */
-    private int save = -1;
+  /**
+   * The field {@code save} contains the saved character or -1 for none.
+   */
+  private int save = -1;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the name of the resource currently read
-     * @param reader the reader to use for input
-     */
-    public TeXReader(String resource, Reader reader) {
+  /**
+   * Creates a new object.
+   *
+   * @param resource the name of the resource currently read
+   * @param reader   the reader to use for input
+   */
+  public TeXReader( String resource, Reader reader ) {
 
-        super(resource, reader);
+    super( resource, reader );
+  }
+
+  @Override
+  public int read() throws IOException {
+
+    int c;
+    if( save < 0 ) {
+      c = super.read();
+    }
+    else {
+      c = save;
+      save = -1;
+    }
+    if( c != '^' ) {
+      return c;
+    }
+    c = super.read();
+    if( c != '^' ) {
+      save = c;
+      return '^';
+    }
+    int ret = 0;
+    c = super.read();
+    if( '0' <= c && c <= '9' ) {
+      ret = c - '0';
+    }
+    else if( 'a' <= c && c <= 'f' ) {
+      ret = c + 10 - 'a';
+    }
+    else {
+      return (c < 64 ? c + 64 : c - 64);
+    }
+    c = super.read();
+    if( '0' <= c && c <= '9' ) {
+      ret = (ret << 4) + c - '0';
+    }
+    else if( 'a' <= c && c <= 'f' ) {
+      ret = (ret << 4) + c - 'a';
+    }
+    else {
+      save = c;
     }
 
-@Override
-    public int read() throws IOException {
+    return ret;
+  }
 
-        int c;
-        if (save < 0) {
-            c = super.read();
-        } else {
-            c = save;
-            save = -1;
-        }
-        if (c != '^') {
-            return c;
-        }
-        c = super.read();
-        if (c != '^') {
-            save = c;
-            return '^';
-        }
-        int ret = 0;
-        c = super.read();
-        if ('0' <= c && c <= '9') {
-            ret = c - '0';
-        } else if ('a' <= c && c <= 'f') {
-            ret = c + 10 - 'a';
-        } else {
-            return (c < 64 ? c + 64 : c - 64);
-        }
-        c = super.read();
-        if ('0' <= c && c <= '9') {
-            ret = (ret << 4) + c - '0';
-        } else if ('a' <= c && c <= 'f') {
-            ret = (ret << 4) + c - 'a';
-        } else {
-            save = c;
-        }
+  @Override
+  public int read( char[] cbuf, int off, int len ) throws IOException {
 
-        return ret;
+    int i = 0;
+    for( ; i < len; i++ ) {
+      int c = read();
+      if( c < 0 ) {
+        return i == 0 ? -1 : i;
+      }
+      cbuf[ off + i ] = (char) c;
     }
+    return i;
+  }
 
-@Override
-    public int read(char[] cbuf, int off, int len) throws IOException {
+  @Override
+  public long skip( long n ) throws IOException {
 
-        int i = 0;
-        for (; i < len; i++) {
-            int c = read();
-            if (c < 0) {
-                return i == 0 ? -1 : i;
-            }
-            cbuf[off + i] = (char) c;
-        }
+    for( long i = 0; i < n; i++ ) {
+      if( read() < 0 ) {
         return i;
+      }
     }
-
-@Override
-    public long skip(long n) throws IOException {
-
-        for (long i = 0; i < n; i++) {
-            if (read() < 0) {
-                return i;
-            }
-        }
-        return n;
-    }
+    return n;
+  }
 
 }

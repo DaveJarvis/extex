@@ -19,24 +19,24 @@
 
 package org.extex.resource;
 
-import java.io.InputStream;
-
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 import org.extex.resource.io.NamedInputStream;
 
+import java.io.InputStream;
+
 /**
  * This resource finder utilizes the Java class finder to search in the class
  * path. Thus it is possible to find resources inside a jar archive.
- * 
+ *
  * <h2>Configuration</h2>
  * <p>
  * The resource finder can be configured to influence its actions. The following
  * example shows a configuration for a resource finder:
  * </p>
- * 
+ *
  * <pre>
  * &lt;Finder class="org.extex.util.resource.ClasspathFinder"
  *         trace="false"
@@ -54,7 +54,7 @@ import org.extex.resource.io.NamedInputStream;
  *   &lt;/default&gt;
  * &lt;/Finder&gt;
  * </pre>
- * 
+ *
  * <p>
  * Whenever a resource is sought its type is used to find the appropriate
  * parameters for the search. If the sub-configuration with the name of the type
@@ -83,71 +83,69 @@ import org.extex.resource.io.NamedInputStream;
  * needed. The tracing flag can be overwritten at run-time. The attribute
  * {@code trace} is optional.
  * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ClasspathFinder extends AbstractFinder {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param configuration the encapsulated configuration object
-     * 
-     * @throws ConfigurationMissingException in case of an error
-     */
-    public ClasspathFinder(Configuration configuration)
-            throws ConfigurationMissingException {
+  /**
+   * Creates a new object.
+   *
+   * @param configuration the encapsulated configuration object
+   * @throws ConfigurationMissingException in case of an error
+   */
+  public ClasspathFinder( Configuration configuration )
+      throws ConfigurationMissingException {
 
-        super(configuration);
-    }
+    super( configuration );
+  }
 
-    /**
-*      java.lang.String)
-     */
-    public NamedInputStream findResource(String name, String type)
-            throws ConfigurationException {
+  /**
+   * java.lang.String)
+   */
+  public NamedInputStream findResource( String name, String type )
+      throws ConfigurationException {
 
-        ClassLoader classLoader = this.getClass().getClassLoader();
+    ClassLoader classLoader = this.getClass().getClassLoader();
 
-        Configuration configuration = getConfiguration();
-        Configuration cfg = configuration.findConfiguration(type);
-        if (cfg == null) {
-            String t = configuration.getAttribute(ATTR_DEFAULT);
-            if (t == null) {
-                throw new ConfigurationMissingAttributeException(ATTR_DEFAULT,
-                    configuration);
-            }
-            cfg = configuration.getConfiguration(t);
-            if (cfg == null) {
-                return null;
-            }
-        }
-        String t = cfg.getAttribute(ATTR_SKIP);
-        if (t != null && Boolean.valueOf(t).booleanValue()) {
-
-            trace("Skipped", type, null);
-            return null;
-        }
-        String prefix = cfg.getAttribute("prefix");
-        if (prefix == null) {
-            prefix = "";
-        }
-
-        for (String ext : cfg.getValues("extension")) {
-
-            String fullName = prefix + name + ext;
-            fullName = fullName.replaceAll("\\{type\\}", type);
-            trace("Try", fullName, null);
-            InputStream stream = classLoader.getResourceAsStream(fullName);
-
-            if (stream != null) {
-                trace("Found", fullName, null);
-                return new NamedInputStream(stream, "classpath://" + fullName);
-            }
-            trace("NotFound", fullName, null);
-        }
+    Configuration configuration = getConfiguration();
+    Configuration cfg = configuration.findConfiguration( type );
+    if( cfg == null ) {
+      String t = configuration.getAttribute( ATTR_DEFAULT );
+      if( t == null ) {
+        throw new ConfigurationMissingAttributeException( ATTR_DEFAULT,
+                                                          configuration );
+      }
+      cfg = configuration.getConfiguration( t );
+      if( cfg == null ) {
         return null;
+      }
     }
+    String t = cfg.getAttribute( ATTR_SKIP );
+    if( t != null && Boolean.valueOf( t ).booleanValue() ) {
+
+      trace( "Skipped", type, null );
+      return null;
+    }
+    String prefix = cfg.getAttribute( "prefix" );
+    if( prefix == null ) {
+      prefix = "";
+    }
+
+    for( String ext : cfg.getValues( "extension" ) ) {
+
+      String fullName = prefix + name + ext;
+      fullName = fullName.replaceAll( "\\{type\\}", type );
+      trace( "Try", fullName, null );
+      InputStream stream = classLoader.getResourceAsStream( fullName );
+
+      if( stream != null ) {
+        trace( "Found", fullName, null );
+        return new NamedInputStream( stream, "classpath://" + fullName );
+      }
+      trace( "NotFound", fullName, null );
+    }
+    return null;
+  }
 
 }

@@ -24,26 +24,25 @@ import java.util.List;
 
 /**
  * This interface describes a read-only container for rule sets.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface RuleSetContainer {
 
-    /**
-     * Add a named definition of a rule.
-     * 
-     * @param name the name of the rule
-     * @param rule the rule itself
-     */
-    void addRule(String name, List<Rule> rule);
+  /**
+   * Add a named definition of a rule.
+   *
+   * @param name the name of the rule
+   * @param rule the rule itself
+   */
+  void addRule( String name, List<Rule> rule );
 
-    /**
-     * Find the definition of a rule set.
-     * 
-     * @param name the name of the rule set
-     * 
-     * @return the rule set or {@code null} if undefined
-     */
-    List<Rule> lookupRule(String name);
+  /**
+   * Find the definition of a rule set.
+   *
+   * @param name the name of the rule set
+   * @return the rule set or {@code null} if undefined
+   */
+  List<Rule> lookupRule( String name );
 
 }

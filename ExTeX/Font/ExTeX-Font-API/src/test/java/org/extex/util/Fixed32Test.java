@@ -20,44 +20,43 @@
 package org.extex.util;
 
 import junit.framework.TestCase;
-
 import org.extex.font.format.Fixed32;
 import org.junit.runner.JUnitCore;
 
 /**
  * Test for a fixed point format.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Fixed32Test extends TestCase {
 
-    /**
-     * mains
-     * 
-     * @param args The command line
-     */
-    public static void main(String[] args) {
+  /**
+   * mains
+   *
+   * @param args The command line
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(Fixed32Test.class);
-    }
+    (new JUnitCore()).run( Fixed32Test.class );
+  }
 
-    /**
-     * test 0x21998
-     */
-    public void testA1() {
+  /**
+   * test 0x21998
+   */
+  public void testA1() {
 
-        Fixed32 fp = new Fixed32(0x21998);
-        assertEquals(2.09997558594, fp.getDoubleValue(), 0.00000000001);
-    }
+    Fixed32 fp = new Fixed32( 0x21998 );
+    assertEquals( 2.09997558594, fp.getDoubleValue(), 0.00000000001 );
+  }
 
-    /**
-     * test 2.09997558594
-     */
-    public void testB1() {
+  /**
+   * test 2.09997558594
+   */
+  public void testB1() {
 
-        Fixed32 fp = new Fixed32(2.09997558594);
-        assertEquals(0x21998, fp.getFixedPoint());
-    }
+    Fixed32 fp = new Fixed32( 2.09997558594 );
+    assertEquals( 0x21998, fp.getFixedPoint() );
+  }
 
 }

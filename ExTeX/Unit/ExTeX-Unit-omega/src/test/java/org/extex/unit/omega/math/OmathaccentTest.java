@@ -25,16 +25,18 @@ import org.extex.unit.tex.math.AbstractMathTester;
  * This is a test suite for the primitive {@code \omathaccent}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OmathaccentTest extends AbstractMathTester {
 
 
-    public OmathaccentTest() {
+  public OmathaccentTest() {
 
-        setPrimitive("omathaccent");setArguments("12 a");setPrepare("");
-        setConfig("omega-test");
-    }
+    setPrimitive( "omathaccent" );
+    setArguments( "12 a" );
+    setPrepare( "" );
+    setConfig( "omega-test" );
+  }
 
-    //TODO implement the primitive specific test cases
+  //TODO implement the primitive specific test cases
 
 }

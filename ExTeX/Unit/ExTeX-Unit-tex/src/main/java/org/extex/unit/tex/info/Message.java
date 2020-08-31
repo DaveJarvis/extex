@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.info;
 
-import java.util.logging.Logger;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
@@ -32,10 +30,12 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
+import java.util.logging.Logger;
+
 /**
  * This class provides an implementation for the primitive {@code \message}
  * .
- * 
+ *
  * <p>The Primitive {@code \message}</p>
  * <p>
  * The primitive {@code \message} takes as argument a list of tokens enclosed
@@ -45,90 +45,90 @@ import org.extex.typesetter.exception.TypesetterException;
  * If the keywords {@code to log} are given then the message is written to the
  * log file only. This is an extension not present in TeX and friends.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;message&rang;
  *      &rarr; {@code \message} {@code {} &lang;unprotected tokens&rang; {@code }}
  *       |   {@code \message} {@code to} {@code log} {@code {} &lang;unprotected tokens&rang; {@code }}
  *       </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \message{Hello World!}  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \message to log {Hello World!}  </pre>
- * 
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Message extends AbstractCode implements LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the target channel for the message.
-     */
-    private transient Logger logger = null;
+  /**
+   * The field {@code logger} contains the target channel for the message.
+   */
+  private transient Logger logger = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Message(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Message( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Setter for the logger.
+   *
+   * @param log the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+   */
+  public void enableLogging( Logger log ) {
+
+    this.logger = log;
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    boolean log = false;
+
+    if( source.getKeyword( context, "to" ) ) {
+
+      if( source.getKeyword( context, "log" ) ) {
+        log = true;
+      }
+      else {
+        throw new HelpingException( getLocalizer(), "logMissing" );
+      }
     }
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    public void enableLogging(Logger log) {
-
-        this.logger = log;
+    Tokens toks =
+        source.scanUnprotectedTokens( context, true, false, getToken() );
+    if( log ) {
+      logger.fine( " " + toks.toText() );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        boolean log = false;
-
-        if (source.getKeyword(context, "to")) {
-
-            if (source.getKeyword(context, "log")) {
-                log = true;
-            } else {
-                throw new HelpingException(getLocalizer(), "logMissing");
-            }
-        }
-
-        Tokens toks =
-                source.scanUnprotectedTokens(context, true, false, getToken());
-        if (log) {
-            logger.fine(" " + toks.toText());
-        } else {
-            logger.severe(" " + toks.toText());
-        }
+    else {
+      logger.severe( " " + toks.toText() );
     }
+  }
 
 }

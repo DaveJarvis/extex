@@ -242,8 +242,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
-                 *      org.extex.typesetter.type.node.AdjustNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitAdjust(AdjustNode node, Object value)
@@ -254,8 +253,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
-                 *      org.extex.typesetter.type.node.AfterMathNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitAfterMath(AfterMathNode node, Object value)
@@ -265,8 +263,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
-                 *      org.extex.typesetter.type.node.AlignedLeadersNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitAlignedLeaders(AlignedLeadersNode node,
@@ -276,8 +273,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-                 *      org.extex.typesetter.type.node.BeforeMathNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitBeforeMath(BeforeMathNode node, Object value)
@@ -287,8 +283,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
-                 *      org.extex.typesetter.type.node.CenteredLeadersNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitCenteredLeaders(CenteredLeadersNode node,
@@ -298,8 +293,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitChar(
-                 *      org.extex.typesetter.type.node.CharNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitChar(CharNode node, Object code)
@@ -354,8 +348,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
-                 *      org.extex.typesetter.type.node.DiscretionaryNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitDiscretionary(DiscretionaryNode node,
@@ -369,8 +362,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
-                 *      org.extex.typesetter.type.node.ExpandedLeadersNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitExpandedLeaders(ExpandedLeadersNode node,
@@ -380,8 +372,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
-                 *      org.extex.typesetter.type.node.GlueNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitGlue(GlueNode node, Object value)
@@ -392,8 +383,7 @@ public class ItextDocumentWriter
 
                 /**
                  * @see "TTP [619]"
-                 * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
-                 *      org.extex.typesetter.type.node.HorizontalListNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitHorizontalList(HorizontalListNode node,
@@ -425,8 +415,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
-                 *      org.extex.typesetter.type.node.InsertionNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitInsertion(InsertionNode node, Object value)
@@ -437,8 +426,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitKern(
-                 *      org.extex.typesetter.type.node.KernNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitKern(KernNode node, Object value)
@@ -448,8 +436,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
-                 *      org.extex.typesetter.type.node.LigatureNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitLigature(LigatureNode node, Object value)
@@ -459,8 +446,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitMark(
-                 *      org.extex.typesetter.type.node.MarkNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitMark(MarkNode node, Object value)
@@ -471,8 +457,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
-                 *      org.extex.typesetter.type.node.PenaltyNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitPenalty(PenaltyNode node, Object value)
@@ -483,8 +468,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitRule(
-                 *      org.extex.typesetter.type.node.RuleNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitRule(RuleNode node, Object code)
@@ -530,8 +514,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
-                 *      org.extex.typesetter.type.node.SpaceNode,
+
                  *      java.lang.Object)
                  */
                 public Boolean visitSpace(SpaceNode node, Object value)

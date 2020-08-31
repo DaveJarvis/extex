@@ -36,101 +36,99 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive {@code \dimen}.
  * It sets the named length register to the value given, and as a side effect
  * all prefixes are zeroed.
- * 
+ *
  * <p>
  * Example
  * </p>
- * 
+ *
  * <pre>
  * \day=345
  * </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DimenParameter extends DimenPrimitive
-        implements
-            InitializableCode,
-            Configurable {
+    implements
+    InitializableCode,
+    Configurable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code key} contains the key.
-     */
-    private String key;
+  /**
+   * The field {@code key} contains the key.
+   */
+  private String key;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public DimenParameter(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public DimenParameter( CodeToken token ) {
 
-        super(token);
-        this.key = token.getName();
+    super( token );
+    this.key = token.getName();
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   * @param key   the key
+   */
+  public DimenParameter( CodeToken token, String key ) {
+
+    super( token );
+    this.key = key;
+  }
+
+  /**
+   * Configure an object according to a given Configuration.
+   *
+   * @param config the configuration object to consider
+   * @throws ConfigurationException in case that something went wrong
+   * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
+   */
+  @Override
+  public void configure( Configuration config ) throws ConfigurationException {
+
+    String k = config.getAttribute( "key" );
+    if( k != null ) {
+      key = k;
     }
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     * @param key the key
-     */
-    public DimenParameter(CodeToken token, String key) {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter ) {
 
-        super(token);
-        this.key = key;
+    return key;
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void init( Context context, TokenSource source, Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
+
+    if( source == null ) {
+      return;
     }
-
-    /**
-     * Configure an object according to a given Configuration.
-     * 
-     * @param config the configuration object to consider
-     * 
-     * @throws ConfigurationException in case that something went wrong
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
-    public void configure(Configuration config) throws ConfigurationException {
-
-        String k = config.getAttribute("key");
-        if (k != null) {
-            key = k;
-        }
+    Token t = source.getNonSpace( context );
+    if( t == null ) {
+      return;
     }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) {
-
-        return key;
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void init(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        if (source == null) {
-            return;
-        }
-        Token t = source.getNonSpace(context);
-        if (t == null) {
-            return;
-        }
-        source.push(t);
-        Dimen d = source.parseDimen(context, source, typesetter);
-        context.setDimen(getKey(context, null, typesetter), d, true);
-    }
+    source.push( t );
+    Dimen d = source.parseDimen( context, source, typesetter );
+    context.setDimen( getKey( context, null, typesetter ), d, true );
+  }
 
 }

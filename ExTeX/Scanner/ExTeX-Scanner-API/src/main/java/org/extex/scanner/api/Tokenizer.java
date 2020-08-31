@@ -27,23 +27,22 @@ import org.extex.scanner.type.Catcode;
  * the category codes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Tokenizer {
 
-    /**
-     * Getter for the category code of a character.
-     *
-     * @param c the Unicode character to analyze
-     *
-     * @return the category code of a character
-     */
-    Catcode getCatcode(UnicodeChar c);
+  /**
+   * Getter for the category code of a character.
+   *
+   * @param c the Unicode character to analyze
+   * @return the category code of a character
+   */
+  Catcode getCatcode( UnicodeChar c );
 
-    /**
-     * Getter for the name space.
-     *
-     * @return the name space
-     */
-    String getNamespace();
+  /**
+   * Getter for the name space.
+   *
+   * @return the name space
+   */
+  String getNamespace();
 
 }

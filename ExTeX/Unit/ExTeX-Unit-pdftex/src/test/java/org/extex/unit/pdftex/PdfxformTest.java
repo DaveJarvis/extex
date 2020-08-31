@@ -26,33 +26,33 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \pdfxform}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
-public class PdfxformTest extends NoFlagsButImmediateAndProtectedPrimitiveTester {
+ */
+public class PdfxformTest
+    extends NoFlagsButImmediateAndProtectedPrimitiveTester {
 
-    /**
-     * Creates a new instance.
-     */
-    public PdfxformTest() {
+  /**
+   * Creates a new instance.
+   */
+  public PdfxformTest() {
 
-        super("pdfxform", "0", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfxform", "0", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    /**
-     * <testcase primitive="\pdfxform">
-     *  Test case checking that ...
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pdfxform">
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfxform b",
-                //--- output message ---
-                "Missing number, treated as zero");
-    }
+    assertFailure(//--- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfxform b",
+                  //--- output message ---
+                  "Missing number, treated as zero" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

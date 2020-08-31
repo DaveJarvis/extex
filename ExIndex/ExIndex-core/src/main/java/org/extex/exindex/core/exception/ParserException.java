@@ -21,36 +21,36 @@ package org.extex.exindex.core.exception;
 
 /**
  * This exception signals a problem with the parser.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ParserException extends IndexerException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param message the message
-     */
-    public ParserException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   */
+  public ParserException( String message ) {
 
-        super(null, message);
-    }
+    super( null, message );
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param message the message
-     * @param cause the cause
-     */
-    public ParserException(String message, Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   * @param cause   the cause
+   */
+  public ParserException( String message, Throwable cause ) {
 
-        super(null, message);
-    }
+    super( null, message );
+  }
 
 }

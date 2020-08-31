@@ -19,19 +19,19 @@
 
 package org.extex.font.format.tfm;
 
+import org.extex.util.file.random.RandomAccessR;
+
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.util.file.random.RandomAccessR;
-
 /**
  * Class for TFM header length table.
- * 
+ *
  * <p>
  * The first 24 bytes of a TFM file contain the lengths of the various
  * subsequent portions of the file. (12 x 16-bit interger) or (6 words x 32 bit)
  * </p>
- * 
+ *
  * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>name</b></td>
@@ -87,276 +87,276 @@ import org.extex.util.file.random.RandomAccessR;
  * <td>number of font parameter words</td>
  * </tr>
  * </table>
- * 
+ *
  * <p>
  * Information from: The DVI Driver Standard, Level 0 The TUG DVI Driver
  * Standards Committee
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TfmHeaderLengths implements Serializable {
 
-    /**
-     * Bytes in the Header of the TFM-file.
-     */
-    private static final int HEADERBYTES = 6;
+  /**
+   * Bytes in the Header of the TFM-file.
+   */
+  private static final int HEADERBYTES = 6;
 
-    /**
-     * max chars.
-     */
-    private static final int MAXCHARS = 255;
+  /**
+   * max chars.
+   */
+  private static final int MAXCHARS = 255;
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * smallest character code in the font.
-     */
-    protected int bc;
+  /**
+   * smallest character code in the font.
+   */
+  protected int bc;
 
-    /**
-     * number of character.
-     */
-    protected int cc;
+  /**
+   * number of character.
+   */
+  protected int cc;
 
-    /**
-     * largest character code in the font.
-     */
-    protected int ec;
+  /**
+   * largest character code in the font.
+   */
+  protected int ec;
 
-    /**
-     * length of the entire file.
-     */
-    protected int lf;
+  /**
+   * length of the entire file.
+   */
+  protected int lf;
 
-    /**
-     * length of the header data.
-     */
-    protected int lh;
+  /**
+   * length of the header data.
+   */
+  protected int lh;
 
-    /**
-     * number of words in the depth table.
-     */
-    protected int nd;
+  /**
+   * number of words in the depth table.
+   */
+  protected int nd;
 
-    /**
-     * number of words in the extensible character table.
-     */
-    protected int ne;
+  /**
+   * number of words in the extensible character table.
+   */
+  protected int ne;
 
-    /**
-     * number of words in the height table.
-     */
-    protected int nh;
+  /**
+   * number of words in the height table.
+   */
+  protected int nh;
 
-    /**
-     * number of words in the italic correction table.
-     */
-    protected int ni;
+  /**
+   * number of words in the italic correction table.
+   */
+  protected int ni;
 
-    /**
-     * number of words in the kern table.
-     */
-    protected int nk;
+  /**
+   * number of words in the kern table.
+   */
+  protected int nk;
 
-    /**
-     * number of words in the lig/kern table.
-     */
-    protected int nl;
+  /**
+   * number of words in the lig/kern table.
+   */
+  protected int nl;
 
-    /**
-     * number of font parameter words.
-     */
-    protected int np;
+  /**
+   * number of font parameter words.
+   */
+  protected int np;
 
-    /**
-     * number of words in the width table.
-     */
-    protected int nw;
+  /**
+   * number of words in the width table.
+   */
+  protected int nw;
 
-    /**
-     * Creates a new object.
-     * 
-     * Only for OfmHeaderLengths
-     */
-    protected TfmHeaderLengths() {
+  /**
+   * Creates a new object.
+   * <p>
+   * Only for OfmHeaderLengths
+   */
+  protected TfmHeaderLengths() {
 
+  }
+
+  /**
+   * Create a new object.
+   *
+   * @param rar the input
+   * @throws IOException if an IO-error occurs.
+   */
+  public TfmHeaderLengths( RandomAccessR rar ) throws IOException {
+
+    lf = rar.readShort();
+    lh = rar.readShort();
+    bc = rar.readShort();
+    ec = rar.readShort();
+    nw = rar.readShort();
+    nh = rar.readShort();
+    nd = rar.readShort();
+    ni = rar.readShort();
+    nl = rar.readShort();
+    nk = rar.readShort();
+    ne = rar.readShort();
+    np = rar.readShort();
+
+    // check
+    if( lf == 0
+        || lf < HEADERBYTES
+        || lh < 2
+        || bc > ec + 1
+        || ec > MAXCHARS
+        || ne > MAXCHARS + 1
+        || (HEADERBYTES + lh + (ec - bc + 1) + nw + nh + nd + ni + nl
+        + nk + ne + np) != lf || nw == 0 || nh == 0 || nd == 0
+        || ni == 0 ) {
+      throw new IOException();
+      // mgn: umbauen
+      // throw new TFMReadFileException();
     }
 
-    /**
-     * Create a new object.
-     * 
-     * @param rar the input
-     * @throws IOException if an IO-error occurs.
-     */
-    public TfmHeaderLengths(RandomAccessR rar) throws IOException {
+    cc = ec + 1 - bc;
 
-        lf = rar.readShort();
-        lh = rar.readShort();
-        bc = rar.readShort();
-        ec = rar.readShort();
-        nw = rar.readShort();
-        nh = rar.readShort();
-        nd = rar.readShort();
-        ni = rar.readShort();
-        nl = rar.readShort();
-        nk = rar.readShort();
-        ne = rar.readShort();
-        np = rar.readShort();
-
-        // check
-        if (lf == 0
-                || lf < HEADERBYTES
-                || lh < 2
-                || bc > ec + 1
-                || ec > MAXCHARS
-                || ne > MAXCHARS + 1
-                || (HEADERBYTES + lh + (ec - bc + 1) + nw + nh + nd + ni + nl
-                        + nk + ne + np) != lf || nw == 0 || nh == 0 || nd == 0
-                || ni == 0) {
-            throw new IOException();
-            // mgn: umbauen
-            // throw new TFMReadFileException();
-        }
-
-        cc = ec + 1 - bc;
-
-        if (cc == 0) {
-            bc = 0;
-        }
+    if( cc == 0 ) {
+      bc = 0;
     }
+  }
 
-    /**
-     * Returns the bc.
-     * 
-     * @return Returns the bc.
-     */
-    public int getBc() {
+  /**
+   * Returns the bc.
+   *
+   * @return Returns the bc.
+   */
+  public int getBc() {
 
-        return bc;
-    }
+    return bc;
+  }
 
-    /**
-     * Returns the cc.
-     * 
-     * @return Returns the cc.
-     */
-    public int getCc() {
+  /**
+   * Returns the cc.
+   *
+   * @return Returns the cc.
+   */
+  public int getCc() {
 
-        return cc;
-    }
+    return cc;
+  }
 
-    /**
-     * Returns the ec.
-     * 
-     * @return Returns the ec.
-     */
-    public int getEc() {
+  /**
+   * Returns the ec.
+   *
+   * @return Returns the ec.
+   */
+  public int getEc() {
 
-        return ec;
-    }
+    return ec;
+  }
 
-    /**
-     * Returns the lf.
-     * 
-     * @return Returns the lf.
-     */
-    public int getLf() {
+  /**
+   * Returns the lf.
+   *
+   * @return Returns the lf.
+   */
+  public int getLf() {
 
-        return lf;
-    }
+    return lf;
+  }
 
-    /**
-     * Returns the lh.
-     * 
-     * @return Returns the lh.
-     */
-    public int getLh() {
+  /**
+   * Returns the lh.
+   *
+   * @return Returns the lh.
+   */
+  public int getLh() {
 
-        return lh;
-    }
+    return lh;
+  }
 
-    /**
-     * Returns the nd.
-     * 
-     * @return Returns the nd.
-     */
-    public int getNd() {
+  /**
+   * Returns the nd.
+   *
+   * @return Returns the nd.
+   */
+  public int getNd() {
 
-        return nd;
-    }
+    return nd;
+  }
 
-    /**
-     * Returns the ne.
-     * 
-     * @return Returns the ne.
-     */
-    public int getNe() {
+  /**
+   * Returns the ne.
+   *
+   * @return Returns the ne.
+   */
+  public int getNe() {
 
-        return ne;
-    }
+    return ne;
+  }
 
-    /**
-     * Returns the nh.
-     * 
-     * @return Returns the nh.
-     */
-    public int getNh() {
+  /**
+   * Returns the nh.
+   *
+   * @return Returns the nh.
+   */
+  public int getNh() {
 
-        return nh;
-    }
+    return nh;
+  }
 
-    /**
-     * Returns the ni.
-     * 
-     * @return Returns the ni.
-     */
-    public int getNi() {
+  /**
+   * Returns the ni.
+   *
+   * @return Returns the ni.
+   */
+  public int getNi() {
 
-        return ni;
-    }
+    return ni;
+  }
 
-    /**
-     * Returns the nk.
-     * 
-     * @return Returns the nk.
-     */
-    public int getNk() {
+  /**
+   * Returns the nk.
+   *
+   * @return Returns the nk.
+   */
+  public int getNk() {
 
-        return nk;
-    }
+    return nk;
+  }
 
-    /**
-     * Returns the nl.
-     * 
-     * @return Returns the nl.
-     */
-    public int getNl() {
+  /**
+   * Returns the nl.
+   *
+   * @return Returns the nl.
+   */
+  public int getNl() {
 
-        return nl;
-    }
+    return nl;
+  }
 
-    /**
-     * Returns the np.
-     * 
-     * @return Returns the np.
-     */
-    public int getNp() {
+  /**
+   * Returns the np.
+   *
+   * @return Returns the np.
+   */
+  public int getNp() {
 
-        return np;
-    }
+    return np;
+  }
 
-    /**
-     * Returns the nw.
-     * 
-     * @return Returns the nw.
-     */
-    public int getNw() {
+  /**
+   * Returns the nw.
+   *
+   * @return Returns the nw.
+   */
+  public int getNw() {
 
-        return nw;
-    }
+    return nw;
+  }
 
 }

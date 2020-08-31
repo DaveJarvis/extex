@@ -22,44 +22,44 @@ package org.extex.exindex.core.type.rules;
 /**
  * This Rule applies a regular expression. The Java means for regular
  * expressions are used.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RegexRule extends Rule {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param pattern the pattern
-     * @param replacement the replacement text
-     * @param again the indicator for repetition
-     */
-    public RegexRule(String pattern, String replacement, boolean again) {
+  /**
+   * Creates a new object.
+   *
+   * @param pattern     the pattern
+   * @param replacement the replacement text
+   * @param again       the indicator for repetition
+   */
+  public RegexRule( String pattern, String replacement, boolean again ) {
 
-        super(pattern, replacement, again);
+    super( pattern, replacement, again );
+  }
+
+  @Override
+  public int apply( StringBuilder word, int index ) {
+
+    // TODO gene: apply unimplemented
+    throw new RuntimeException( "unimplemented" );
+  }
+
+  @Override
+  public String toString() {
+
+    StringBuilder sb = new StringBuilder();
+    sb.append( "#Rule(\"" );
+    sb.append( getPattern() );
+    sb.append( "\" \"" );
+    sb.append( getReplacement() );
+    sb.append( "\"" );
+    if( isAgain() ) {
+      sb.append( " :again" );
     }
-
-@Override
-    public int apply(StringBuilder word, int index) {
-
-        // TODO gene: apply unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-@Override
-    public String toString() {
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("#Rule(\"");
-        sb.append(getPattern());
-        sb.append("\" \"");
-        sb.append(getReplacement());
-        sb.append("\"");
-        if (isAgain()) {
-            sb.append(" :again");
-        }
-        sb.append(" :regex)");
-        return sb.toString();
-    }
+    sb.append( " :regex)" );
+    return sb.toString();
+  }
 
 }

@@ -28,167 +28,162 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for the primitive {@code \currentgrouptype}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
-    /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(CurrentgrouptypeTest.class);
-    }
+    (new JUnitCore()).run( CurrentgrouptypeTest.class );
+  }
 
 
-    public CurrentgrouptypeTest() {
+  public CurrentgrouptypeTest() {
 
-        super("currentgrouptype", "0");
-        setConfig("etex-test");
-    }
+    super( "currentgrouptype", "0" );
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouptype">
-     *  Test case checking that {@code \currentgrouptype} outside any group
-     *  returns 0.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouptype">
+   * Test case checking that {@code \currentgrouptype} outside any group
+   * returns 0.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertSuccess(//--- input code ---
-            "\\the\\currentgrouptype \\end",
-            //--- log message ---
-            "0" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  "\\the\\currentgrouptype \\end",
+                  //--- log message ---
+                  "0" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouptype">
-     *  Test case checking that {@code \currentgrouptype} inside a group
-     *  returns 1.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouptype">
+   * Test case checking that {@code \currentgrouptype} inside a group
+   * returns 1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-            DEFINE_BRACES + "{\\the\\currentgrouptype}\\end",
-            //--- log message ---
-            "1" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES + "{\\the\\currentgrouptype}\\end",
+                  //--- log message ---
+                  "1" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouptype">
-     *  Test case checking that {@code \currentgrouptype} inside a group
-     *  returns 1.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouptype">
+   * Test case checking that {@code \currentgrouptype} inside a group
+   * returns 1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-            DEFINE_BRACES + "\\hbox{\\the\\currentgrouptype}\\end",
-            //--- log message ---
-            "2" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES + "\\hbox{\\the\\currentgrouptype}\\end",
+                  //--- log message ---
+                  "2" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouptype">
-     *  Test case checking that {@code \currentgrouptype} inside a group
-     *  returns 1.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouptype">
+   * Test case checking that {@code \currentgrouptype} inside a group
+   * returns 1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(//--- input code ---
-            DEFINE_BRACES + "\\hbox to 12pt{\\the\\currentgrouptype}\\end",
-            //--- log message ---
-            "3" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES + "\\hbox to 12pt{\\the\\currentgrouptype" +
+                      "}\\end",
+                  //--- log message ---
+                  "3" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouptype">
-     *  Test case checking that {@code \currentgrouptype} inside a vbox
-     *  in a group returns 4.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test4() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouptype">
+   * Test case checking that {@code \currentgrouptype} inside a vbox
+   * in a group returns 4.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test4() throws Exception {
 
-        assertSuccess(//--- input code ---
-            DEFINE_BRACES
-                    + "\\setbox0=\\vbox{\\global\\count0=\\currentgrouptype}\\the\\count0\\end",
-            //--- log message ---
-            "4" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES
+                      + "\\setbox0=\\vbox{\\global\\count0=\\currentgrouptype" +
+                      "}\\the\\count0\\end",
+                  //--- log message ---
+                  "4" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouptype">
-     *  Test case checking that {@code \currentgrouptype} inside a group
-     *  returns 1.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test5() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouptype">
+   * Test case checking that {@code \currentgrouptype} inside a group
+   * returns 1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test5() throws Exception {
 
-        assertSuccess(//--- input code ---
-            DEFINE_BRACES + "\\vtop{\\the\\currentgrouptype}\\end",
-            //--- log message ---
-            "5\n\n" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES + "\\vtop{\\the\\currentgrouptype}\\end",
+                  //--- log message ---
+                  "5\n\n" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouptype">
-     *  Test case checking that {@code \currentgrouptype} inside a vcenter
-     *  in a group returns 12.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test12() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouptype">
+   * Test case checking that {@code \currentgrouptype} inside a vcenter
+   * in a group returns 12.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test12() throws Exception {
 
-        assertSuccess(//--- input code ---
-            DEFINE_BRACES
-                    + DEFINE_MATH
-                    + AbstractMathTester.DEFINE_MATH_FONTS
-                    + "\\hbox{$\\vcenter{\\global\\count0=\\currentgrouptype}$}"
-                    + "\\the\\count0\\end",
-            //--- log message ---
-            "\n12" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES
+                      + DEFINE_MATH
+                      + AbstractMathTester.DEFINE_MATH_FONTS
+                      + "\\hbox{$\\vcenter{\\global\\count0" +
+                      "=\\currentgrouptype}$}"
+                      + "\\the\\count0\\end",
+                  //--- log message ---
+                  "\n12" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouptype">
-     *  Test case checking that {@code \currentgrouptype} inside a group
-     *  in a group returns 2.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test14() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouptype">
+   * Test case checking that {@code \currentgrouptype} inside a group
+   * in a group returns 2.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test14() throws Exception {
 
-        assertSuccess(//--- input code ---
-            DEFINE_BRACES
-                    + "\\begingroup\\the\\currentgrouptype\\endgroup\\end",
-            //--- log message ---
-            "14" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES
+                      + "\\begingroup\\the\\currentgrouptype\\endgroup\\end",
+                  //--- log message ---
+                  "14" + TERM );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

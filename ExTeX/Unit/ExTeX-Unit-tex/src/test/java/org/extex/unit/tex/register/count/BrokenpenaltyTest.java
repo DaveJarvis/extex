@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \brokenpenalty}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BrokenpenaltyTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(BrokenpenaltyTest.class);
-    }
+    (new JUnitCore()).run( BrokenpenaltyTest.class );
+  }
 
 
-    public BrokenpenaltyTest() {
+  public BrokenpenaltyTest() {
 
-        super("brokenpenalty", "", "0");
-    }
+    super( "brokenpenalty", "", "0" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

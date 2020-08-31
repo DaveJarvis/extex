@@ -27,46 +27,46 @@ import org.extex.exbib.core.io.Locator;
  * by a value. For reporting appropriate locations of an error to the user a
  * locator is contained also. Both value and locator are immutable, i.e. they
  * are mandatory in the constructor and no setters are provided.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractCommand implements Command {
 
-    /**
-     * The field {@code locator} contains the locator for the command.
-     */
-    private Locator locator = null;
+  /**
+   * The field {@code locator} contains the locator for the command.
+   */
+  private Locator locator = null;
 
-    /**
-     * The field {@code value} contains the value for the command.
-     */
-    private Token value = null;
+  /**
+   * The field {@code value} contains the value for the command.
+   */
+  private Token value = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param value the value
-     * @param locator the locator
-     */
-    public AbstractCommand(Token value, Locator locator) {
+  /**
+   * Creates a new object.
+   *
+   * @param value   the value
+   * @param locator the locator
+   */
+  public AbstractCommand( Token value, Locator locator ) {
 
-        this.value = value;
-        this.locator = locator;
-    }
+    this.value = value;
+    this.locator = locator;
+  }
 
-    /**
-     * Getter for the Locator.
-     * 
-     * @return the locator
-     */
-    public Locator getLocator() {
+  /**
+   * Getter for the Locator.
+   *
+   * @return the locator
+   */
+  public Locator getLocator() {
 
-        return locator;
-    }
+    return locator;
+  }
 
-public Token getValue() {
+  public Token getValue() {
 
-        return value;
-    }
+    return value;
+  }
 
 }

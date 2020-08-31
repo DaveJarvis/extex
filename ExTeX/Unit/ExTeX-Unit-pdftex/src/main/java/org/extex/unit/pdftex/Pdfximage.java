@@ -35,89 +35,97 @@ import org.extex.typesetter.type.node.RuleNode;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdfximage}.
- * 
+ *
  * <p>The Primitive {@code \pdfximage}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;pdfximage&rang;
  *       &rarr; {@code \pdfximage} ... </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \pdfximage {abc.png}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdfximage extends AbstractPdftexCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdfximage(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdfximage( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
+
+    PdftexSupport writer = ensurePdftex( context, typesetter );
+
+    FixedDimen width = Dimen.ONE_PT; // TODO gene:provide correct default
+    FixedDimen height = Dimen.ONE_PT; // TODO gene:provide correct default
+    FixedDimen depth = Dimen.ONE_PT; // TODO gene:provide correct default
+    String attr = null;
+    long page = 0;
+
+    for( ; ; ) {
+      if( source.getKeyword( context, "width" ) ) {
+        width = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "height" ) ) {
+        height = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "depth" ) ) {
+        depth = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "attr" ) ) {
+        attr = source.scanTokensAsString( context, getToken() );
+      }
+      else if( source.getKeyword( context, "page" ) ) {
+        page = source.parseInteger( context, source, typesetter );
+      }
+      else {
+        break;
+      }
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+    String resource = source.scanTokensAsString( context, getToken() );
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
+    PdfRefXImage image =
+        writer.getXImage( resource, new RuleNode( width,
+                                                  height,
+                                                  depth,
+                                                  context.getTypesettingContext(),
+                                                  true ), attr, page,
+                          prefix.isImmediate() );
 
-        FixedDimen width = Dimen.ONE_PT; // TODO gene:provide correct default
-        FixedDimen height = Dimen.ONE_PT; // TODO gene:provide correct default
-        FixedDimen depth = Dimen.ONE_PT; // TODO gene:provide correct default
-        String attr = null;
-        long page = 0;
+    typesetter.add( image );
 
-        for (;;) {
-            if (source.getKeyword(context, "width")) {
-                width = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "height")) {
-                height = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "depth")) {
-                depth = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "attr")) {
-                attr = source.scanTokensAsString(context, getToken());
-            } else if (source.getKeyword(context, "page")) {
-                page = source.parseInteger(context, source, typesetter);
-            } else {
-                break;
-            }
-        }
-
-        String resource = source.scanTokensAsString(context, getToken());
-
-        PdfRefXImage image =
-                writer.getXImage(resource, new RuleNode(width, height, depth,
-                    context.getTypesettingContext(), true), attr, page,
-                    prefix.isImmediate());
-
-        typesetter.add(image);
-
-        prefix.clearImmediate();
-    }
+    prefix.clearImmediate();
+  }
 
 }

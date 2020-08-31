@@ -37,92 +37,94 @@ import org.extex.typesetter.tc.font.Font;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdffontobjnum}.
- * 
+ *
  * <p>The PDF Primitive {@code \pdffontobjnum}</p>
  * <p>
  * This primitive provides a read-only count register containing... TODO missing
  * documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;pdffontobjnum&rang;
  *       &rarr; {@code \pdffontobjnum} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context, CodeToken)
  *          &lang;font&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \font\f cmr12
  *    \pdffontobjnum \f  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdffontobjnum extends AbstractPdftexCode
-        implements
-            Theable,
-            CountConvertible,
-            TokensConvertible {
+    implements
+    Theable,
+    CountConvertible,
+    TokensConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdffontobjnum(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdffontobjnum( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    PdftexSupport writer = ensurePdftex( context, typesetter );
+
+    Font font = source.getFont( context, getToken() );
+
+    return writer.pdffontobjnum( font );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens convertTokens( Context context, TokenSource source,
+                               Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    try {
+      return context.getTokenFactory().toTokens(
+          convertCount( context, source, typesetter ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
+    return convertTokens( context, source, typesetter );
 
-        Font font = source.getFont(context, getToken());
-
-        return writer.pdffontobjnum(font);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens convertTokens(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        try {
-            return context.getTokenFactory().toTokens(
-                convertCount(context, source, typesetter));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        return convertTokens(context, source, typesetter);
-
-    }
+  }
 
 }

@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \everymathend}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EverymathendTest extends AbstractToksRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(EverymathendTest.class);
-    }
+    (new JUnitCore()).run( EverymathendTest.class );
+  }
 
 
-    public EverymathendTest() {
+  public EverymathendTest() {
 
-        super("everymathend", "", "");
-        setConfig("extex-test");
-    }
+    super( "everymathend", "", "" );
+    setConfig( "extex-test" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

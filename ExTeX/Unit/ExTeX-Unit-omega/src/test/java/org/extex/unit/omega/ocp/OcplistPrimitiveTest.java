@@ -25,56 +25,56 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \ocplist}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OcplistPrimitiveTest extends ExTeXLauncher {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(OcplistPrimitiveTest.class);
-    }
+    (new JUnitCore()).run( OcplistPrimitiveTest.class );
+  }
 
 
-    public OcplistPrimitiveTest() {
+  public OcplistPrimitiveTest() {
 
-        setConfig("omega-test");
-    }
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\ocplist"> Test case checking that {@code \ocplist}
-     * can not be used in a normal mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\ocplist"> Test case checking that {@code \ocplist}
+   * can not be used in a normal mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ocplist",
-            // --- output channel ---
-            "Missing control sequence inserted");
-    }
+    assertFailure(// --- input code ---
+                  "\\ocplist",
+                  // --- output channel ---
+                  "Missing control sequence inserted" );
+  }
 
-    /**
-     * <testcase primitive="\ocplist"> Test case checking that {@code \ocplist}
-     * \relax is no ocp list
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\ocplist"> Test case checking that {@code \ocplist}
+   * \relax is no ocp list
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ocplist\\x = \\relax ",
-            // --- output channel ---
-            "Bad ocp list specification");
-    }
+    assertFailure(// --- input code ---
+                  "\\ocplist\\x = \\relax ",
+                  // --- output channel ---
+                  "Bad ocp list specification" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

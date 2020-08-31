@@ -23,105 +23,110 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \def}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DefTest extends AbstractDefTester {
 
 
-    public DefTest() {
+  public DefTest() {
 
-        super("def");
-    }
+    super( "def" );
+  }
 
-    /**
-     * <testcase primitive="\def"> Test case checking that {@code \def}
-     * respects {@code \global}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal0() throws Exception {
+  /**
+   * <testcase primitive="\def"> Test case checking that {@code \def}
+   * respects {@code \global}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal0() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\def\\aaa{AAA}" + "{\\def\\aaa{BBB}}"
-                    + "--\\aaa--\\end",
-            // --- output message ---
-            "--AAA--" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\def\\aaa{AAA}" + "{\\def\\aaa{BBB}}"
+                      + "--\\aaa--\\end",
+                  // --- output message ---
+                  "--AAA--" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\def"> Test case checking that {@code \def}
-     * respects {@code \global}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal1() throws Exception {
+  /**
+   * <testcase primitive="\def"> Test case checking that {@code \def}
+   * respects {@code \global}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\def\\aaa{AAA}" + "{\\global\\def\\aaa{BBB}}"
-                    + "--\\aaa--\\end",
-            // --- output message ---
-            "--BBB--" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\def\\aaa{AAA}" + "{\\global\\def\\aaa" +
+                      "{BBB}}"
+                      + "--\\aaa--\\end",
+                  // --- output message ---
+                  "--BBB--" + TERM );
+  }
 
-    /**
-     * Test case checking that {@code \def} with a single argument accepts a single token
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testHashArgument3() throws Exception {
+  /**
+   * Test case checking that {@code \def} with a single argument accepts a 
+   * single token
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testHashArgument3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
-                    + "\\a{\\def\\b##1{B}}" + "\\a \\b2\\end",
-            // --- output channel ---
-            "B" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
+                      + "\\a{\\def\\b##1{B}}" + "\\a \\b2\\end",
+                  // --- output channel ---
+                  "B" + TERM );
+  }
 
-    /**
-     * Test case checking that {@code \def} with a single argument inserts the actual value
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testHashArgument4() throws Exception {
+  /**
+   * Test case checking that {@code \def} with a single argument inserts 
+   * the actual value
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testHashArgument4() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
-                    + "\\a{\\def\\b##1{B##1B}}" + "\\a \\b2\\end",
-            // --- output channel ---
-            "B2B" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
+                      + "\\a{\\def\\b##1{B##1B}}" + "\\a \\b2\\end",
+                  // --- output channel ---
+                  "B2B" + TERM );
+  }
 
-    /**
-     * Test case checking that {@code \def} with one argument needs something to fill in
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMacroError1() throws Exception {
+  /**
+   * Test case checking that {@code \def} with one argument needs something
+   * to fill in
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMacroError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#1{}" + "\\a",
-            // --- output channel ---
-            "File ended while scanning use of \\a");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#1{}" + "\\a",
+                  // --- output channel ---
+                  "File ended while scanning use of \\a" );
+  }
 
-    /**
-     * Test case checking that {@code \def} with one argument needs something complete to fill in
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMacroError2() throws Exception {
+  /**
+   * Test case checking that {@code \def} with one argument needs something
+   * complete to fill in
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMacroError2() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#1{}" + "\\a{",
-            // --- output channel ---
-            "File ended while scanning use of \\a");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#1{}" + "\\a{",
+                  // --- output channel ---
+                  "File ended while scanning use of \\a" );
+  }
 
 }

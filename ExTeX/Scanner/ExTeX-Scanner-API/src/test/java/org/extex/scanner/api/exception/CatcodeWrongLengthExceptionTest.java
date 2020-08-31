@@ -19,43 +19,43 @@
 
 package org.extex.scanner.api.exception;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test suite for the exception.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CatcodeWrongLengthExceptionTest {
 
-    /**
-     * Test method for
-     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
-     * .
-     */
-    @Test
-    public final void testGetLocalizedMessage1() {
+  /**
+   * Test method for
+   * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
+   * .
+   */
+  @Test
+  public final void testGetLocalizedMessage1() {
 
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Expecting a single character instead of xxx",
-            new CatcodeWrongLengthException("xxx").getLocalizedMessage());
-    }
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Expecting a single character instead of xxx",
+                  new CatcodeWrongLengthException( "xxx" ).getLocalizedMessage() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
-     * .
-     */
-    @Test
-    public final void testGetLocalizedMessage2() {
+  /**
+   * Test method for
+   * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
+   * .
+   */
+  @Test
+  public final void testGetLocalizedMessage2() {
 
-        Locale.setDefault(Locale.GERMAN);
-        assertEquals("Einzelnes Zeichen erwartet anstatt xxx",
-            new CatcodeWrongLengthException("xxx").getLocalizedMessage());
-    }
+    Locale.setDefault( Locale.GERMAN );
+    assertEquals( "Einzelnes Zeichen erwartet anstatt xxx",
+                  new CatcodeWrongLengthException( "xxx" ).getLocalizedMessage() );
+  }
 
 }

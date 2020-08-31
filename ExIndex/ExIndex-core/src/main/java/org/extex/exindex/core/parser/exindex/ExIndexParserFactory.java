@@ -19,14 +19,6 @@
 
 package org.extex.exindex.core.parser.exindex;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Properties;
-
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.ParserException;
 import org.extex.exindex.core.parser.RawIndexParser;
@@ -35,98 +27,109 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.resource.ResourceFinder;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Properties;
+
 /**
  * This class is a factory for raw index parsers.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExIndexParserFactory implements RawIndexParserFactory {
 
-    /**
-     * The field {@code LOCALIZER} contains the the localizer.
-     */
-    private static final Localizer LOCALIZER =
-            LocalizerFactory.getLocalizer(ExIndexParserFactory.class);
+  /**
+   * The field {@code LOCALIZER} contains the the localizer.
+   */
+  private static final Localizer LOCALIZER =
+      LocalizerFactory.getLocalizer( ExIndexParserFactory.class );
 
-    /**
-     * The field {@code finder} contains the resource finder.
-     */
-    private ResourceFinder finder;
+  /**
+   * The field {@code finder} contains the resource finder.
+   */
+  private ResourceFinder finder;
 
-    /**
-*      java.lang.String, java.lang.String, Indexer)
-     */
-    public RawIndexParser create(String resource, String charset,
-            Indexer indexer) throws ParserException, IOException {
+  /**
+   * java.lang.String, java.lang.String, Indexer)
+   */
+  public RawIndexParser create( String resource, String charset,
+                                Indexer indexer )
+      throws ParserException, IOException {
 
-        String parser = "xindy";
-        InputStream stream;
-        if (resource == null) {
-            stream = System.in;
-        } else {
-            if (resource.endsWith(".idx")) {
-                stream = null;
-            } else {
-                stream = finder.findResource(resource, "raw");
-            }
-            if (stream == null) {
-                stream = finder.findResource(resource, "idx");
-                parser = "splitindex";
-                if (stream == null) {
-                    return null;
-                }
-            }
+    String parser = "xindy";
+    InputStream stream;
+    if( resource == null ) {
+      stream = System.in;
+    }
+    else {
+      if( resource.endsWith( ".idx" ) ) {
+        stream = null;
+      }
+      else {
+        stream = finder.findResource( resource, "raw" );
+      }
+      if( stream == null ) {
+        stream = finder.findResource( resource, "idx" );
+        parser = "splitindex";
+        if( stream == null ) {
+          return null;
         }
-        Reader reader = new InputStreamReader(stream, charset);
-        stream = getClass().getClassLoader().getResourceAsStream(
-            "org/extex/exindex/parser/" + parser + ".parser");
-        if (stream == null) {
-            throw new ParserException(LOCALIZER.format("ParserMissing", parser));
-        }
-        Properties properties = new Properties();
-        properties.load(stream);
-        String clazz = (String) properties.get("class");
-        if (clazz == null) {
-            throw new ParserException(LOCALIZER.format("ParserMissingClass",
-                parser));
-        }
-
-        try {
-            Constructor<?> cons =
-                    Class.forName(clazz).getConstructor(Reader.class,
-                        String.class, Indexer.class);
-            return (RawIndexParser) cons.newInstance(reader, resource, indexer);
-
-        } catch (SecurityException e) {
-            throw new ParserException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        } catch (NoSuchMethodException e) {
-            throw new ParserException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        } catch (ClassNotFoundException e) {
-            throw new ParserException(LOCALIZER.format("ParserMissingClass",
-                parser));
-        } catch (IllegalArgumentException e) {
-            throw new ParserException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        } catch (InstantiationException e) {
-            throw new ParserException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        } catch (IllegalAccessException e) {
-            throw new ParserException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        } catch (InvocationTargetException e) {
-            throw new ParserException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        }
+      }
+    }
+    Reader reader = new InputStreamReader( stream, charset );
+    stream = getClass().getClassLoader().getResourceAsStream(
+        "org/extex/exindex/parser/" + parser + ".parser" );
+    if( stream == null ) {
+      throw new ParserException( LOCALIZER.format( "ParserMissing", parser ) );
+    }
+    Properties properties = new Properties();
+    properties.load( stream );
+    String clazz = (String) properties.get( "class" );
+    if( clazz == null ) {
+      throw new ParserException( LOCALIZER.format( "ParserMissingClass",
+                                                   parser ) );
     }
 
-    /**
-*      org.extex.resource.ResourceFinder)
-     */
-    public void setResourceFinder(ResourceFinder finder) {
+    try {
+      Constructor<?> cons =
+          Class.forName( clazz ).getConstructor( Reader.class,
+                                                 String.class, Indexer.class );
+      return (RawIndexParser) cons.newInstance( reader, resource, indexer );
 
-        this.finder = finder;
+    } catch( SecurityException e ) {
+      throw new ParserException( LOCALIZER.format( "ParserError", parser, e
+          .toString() ), e );
+    } catch( NoSuchMethodException e ) {
+      throw new ParserException( LOCALIZER.format( "ParserError", parser, e
+          .toString() ), e );
+    } catch( ClassNotFoundException e ) {
+      throw new ParserException( LOCALIZER.format( "ParserMissingClass",
+                                                   parser ) );
+    } catch( IllegalArgumentException e ) {
+      throw new ParserException( LOCALIZER.format( "ParserError", parser, e
+          .toString() ), e );
+    } catch( InstantiationException e ) {
+      throw new ParserException( LOCALIZER.format( "ParserError", parser, e
+          .toString() ), e );
+    } catch( IllegalAccessException e ) {
+      throw new ParserException( LOCALIZER.format( "ParserError", parser, e
+          .toString() ), e );
+    } catch( InvocationTargetException e ) {
+      throw new ParserException( LOCALIZER.format( "ParserError", parser, e
+          .toString() ), e );
     }
+  }
+
+  /**
+   * org.extex.resource.ResourceFinder)
+   */
+  public void setResourceFinder( ResourceFinder finder ) {
+
+    this.finder = finder;
+  }
 
 }

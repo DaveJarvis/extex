@@ -19,8 +19,6 @@
 
 package org.extex.typesetter.type.noad.util;
 
-import java.io.Serializable;
-
 import org.extex.core.exception.ImpossibleException;
 import org.extex.core.muskip.Muskip;
 import org.extex.typesetter.exception.TypesetterException;
@@ -28,163 +26,162 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.StyleNoad;
 import org.extex.typesetter.type.node.GlueNode;
 
+import java.io.Serializable;
+
 /**
  * Thus utility class contains some constants which describe the spacing between
  * elements in math typesetting.
- * 
+ *
  * <p>The Muskip Parameter {@code \thinmuskip}</p>
  * <p>
  * The muskip parameter {@code \thinmuskip} determines the amount of spacing
  * to be inserted where a thin skip is required.
  * </p>
- * 
+ *
  * <p>The Muskip Parameter {@code \medmuskip}</p>
  * <p>
  * The muskip parameter {@code \medmuskip} determines the amount of spacing
  * to be inserted where a medium skip is required.
  * </p>
- * 
+ *
  * <p>The Muskip Parameter {@code \thickmuskip}</p>
  * <p>
  * The muskip parameter {@code \thickmuskip} determines the amount of spacing
  * to be inserted where a thick skip is required.
  * </p>
- * 
- * 
- * @see "TTP [764]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see "TTP [764]"
+ */
 public final class MathSpacing implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code BIN} contains the spacing class for binary operators.
-     */
-    public static final MathSpacing BIN = new MathSpacing(2, "33**3**3");
+  /**
+   * The field {@code BIN} contains the spacing class for binary operators.
+   */
+  public static final MathSpacing BIN = new MathSpacing( 2, "33**3**3" );
 
-    /**
-     * The field {@code CLOSE} contains the spacing class for closing.
-     */
-    public static final MathSpacing CLOSE = new MathSpacing(5, "02340001");
+  /**
+   * The field {@code CLOSE} contains the spacing class for closing.
+   */
+  public static final MathSpacing CLOSE = new MathSpacing( 5, "02340001" );
 
-    /**
-     * The field {@code INNER} contains the spacing class for inner math.
-     */
-    public static final MathSpacing INNER = new MathSpacing(7, "12341011");
+  /**
+   * The field {@code INNER} contains the spacing class for inner math.
+   */
+  public static final MathSpacing INNER = new MathSpacing( 7, "12341011" );
 
-    /**
-     * The field {@code OP} contains the spacing class for operators.
-     */
-    public static final MathSpacing OP = new MathSpacing(1, "22*40001");
+  /**
+   * The field {@code OP} contains the spacing class for operators.
+   */
+  public static final MathSpacing OP = new MathSpacing( 1, "22*40001" );
 
-    /**
-     * The field {@code OPEN} contains the spacing class for opening.
-     */
-    public static final MathSpacing OPEN = new MathSpacing(4, "00*00000");
+  /**
+   * The field {@code OPEN} contains the spacing class for opening.
+   */
+  public static final MathSpacing OPEN = new MathSpacing( 4, "00*00000" );
 
-    /**
-     * The field {@code ORD} contains the spacing class for ordinary
-     * characters.
-     */
-    public static final MathSpacing ORD = new MathSpacing(0, "02340001");
+  /**
+   * The field {@code ORD} contains the spacing class for ordinary
+   * characters.
+   */
+  public static final MathSpacing ORD = new MathSpacing( 0, "02340001" );
 
-    /**
-     * The field {@code PUNCT} contains the spacing class for punctation
-     * marks.
-     */
-    public static final MathSpacing PUNCT = new MathSpacing(6, "11*11111");
+  /**
+   * The field {@code PUNCT} contains the spacing class for punctation
+   * marks.
+   */
+  public static final MathSpacing PUNCT = new MathSpacing( 6, "11*11111" );
 
-    /**
-     * The field {@code REL} contains the spacing class for relation symbols.
-     */
-    public static final MathSpacing REL = new MathSpacing(3, "44*04004");
+  /**
+   * The field {@code REL} contains the spacing class for relation symbols.
+   */
+  public static final MathSpacing REL = new MathSpacing( 3, "44*04004" );
 
-    /**
-     * The field {@code UNDEF} contains the undefined spacing class.
-     */
-    public static final MathSpacing UNDEF = new MathSpacing(-1, null);
+  /**
+   * The field {@code UNDEF} contains the undefined spacing class.
+   */
+  public static final MathSpacing UNDEF = new MathSpacing( -1, null );
 
-    /**
-     * The field {@code id} contains the internal id.
-     */
-    private final int id;
+  /**
+   * The field {@code id} contains the internal id.
+   */
+  private final int id;
 
-    /**
-     * The field {@code spec} contains the specification to determine the
-     * actual distance to be inserted.
-     */
-    private final String spec;
+  /**
+   * The field {@code spec} contains the specification to determine the
+   * actual distance to be inserted.
+   */
+  private final String spec;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param id the internal id
-     * @param spec the string to determine the actual distance to a following
-     *        noad
-     */
-    private MathSpacing(int id, String spec) {
+  /**
+   * Creates a new object.
+   *
+   * @param id   the internal id
+   * @param spec the string to determine the actual distance to a following
+   *             noad
+   */
+  private MathSpacing( int id, String spec ) {
 
-        this.id = id;
-        this.spec = spec;
+    this.id = id;
+    this.spec = spec;
+  }
+
+  /**
+   * Add some spacing to a list of nodes.
+   *
+   * @param previous    the previous spacing class
+   * @param list        the list to add the spacing to
+   * @param mathContext the math context
+   * @throws TypesetterException in case of an error
+   * @see "TTP [766]"
+   */
+  public void addClearance( MathSpacing previous, NodeList list,
+                            MathContext mathContext )
+      throws TypesetterException {
+
+    if( spec == null || previous == null ) {
+      return;
     }
 
-    /**
-     * Add some spacing to a list of nodes.
-     * 
-     * @param previous the previous spacing class
-     * @param list the list to add the spacing to
-     * @param mathContext the math context
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see "TTP [766]"
-     */
-    public void addClearance(MathSpacing previous, NodeList list,
-            MathContext mathContext) throws TypesetterException {
-
-        if (spec == null || previous == null) {
-            return;
-        }
-
-        if (previous.id < 0) { // TODO gene: correct?
-            return;
-        }
-
-        Muskip x = null;
-
-        switch (spec.charAt(previous.id)) {
-            case '0':
-                break;
-            case '1':
-                if (mathContext.getStyle().less(StyleNoad.SCRIPTSTYLE)) {
-                    x = mathContext.getOptions().getMuskip("thinmuskip");
-                }
-                break;
-            case '2':
-                x = mathContext.getOptions().getMuskip("thinmuskip");
-                break;
-            case '3':
-                if (mathContext.getStyle().less(StyleNoad.SCRIPTSTYLE)) {
-                    x = mathContext.getOptions().getMuskip("medmuskip");
-                }
-                break;
-            case '4':
-                if (mathContext.getStyle().less(StyleNoad.SCRIPTSTYLE)) {
-                    x = mathContext.getOptions().getMuskip("thickmuskip");
-                }
-                break;
-            default:
-                throw new ImpossibleException("mlist4");
-        }
-        if (x != null && !x.isZero()) {
-            list.add(new GlueNode(mathContext.convert(x), true));
-        }
+    if( previous.id < 0 ) { // TODO gene: correct?
+      return;
     }
+
+    Muskip x = null;
+
+    switch( spec.charAt( previous.id ) ) {
+      case '0':
+        break;
+      case '1':
+        if( mathContext.getStyle().less( StyleNoad.SCRIPTSTYLE ) ) {
+          x = mathContext.getOptions().getMuskip( "thinmuskip" );
+        }
+        break;
+      case '2':
+        x = mathContext.getOptions().getMuskip( "thinmuskip" );
+        break;
+      case '3':
+        if( mathContext.getStyle().less( StyleNoad.SCRIPTSTYLE ) ) {
+          x = mathContext.getOptions().getMuskip( "medmuskip" );
+        }
+        break;
+      case '4':
+        if( mathContext.getStyle().less( StyleNoad.SCRIPTSTYLE ) ) {
+          x = mathContext.getOptions().getMuskip( "thickmuskip" );
+        }
+        break;
+      default:
+        throw new ImpossibleException( "mlist4" );
+    }
+    if( x != null && !x.isZero() ) {
+      list.add( new GlueNode( mathContext.convert( x ), true ) );
+    }
+  }
 
 }

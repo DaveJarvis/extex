@@ -32,44 +32,43 @@ import org.extex.typesetter.listMaker.math.NoadConsumer;
  * It tries to ensure that the primitive is invoked in math mode only.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractMathCode extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param token the initial token for the primitive
-     */
-    public AbstractMathCode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractMathCode( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Get the current list maker as Noad consumer. If the current list maker is
+   * not of the proper type then an exception is thrown.
+   *
+   * @param context    the interpreter context
+   * @param typesetter the master typesetter
+   * @return the current list maker
+   * @throws MissingMathException in case that the current mode is not a
+   *                              math mode
+   */
+  protected NoadConsumer getListMaker( Context context,
+                                       Typesetter typesetter )
+      throws MissingMathException {
+
+    ListMaker lm = typesetter.getListMaker();
+    if( !(lm instanceof NoadConsumer) ) {
+      throw new MissingMathException( toText( context ) );
     }
-
-    /**
-     * Get the current list maker as Noad consumer. If the current list maker is
-     * not of the proper type then an exception is thrown.
-     *
-     * @param context the interpreter context
-     * @param typesetter the master typesetter
-     *
-     * @return the current list maker
-     *
-     * @throws MissingMathException in case that the current mode is not a
-     *  math mode
-     */
-    protected NoadConsumer getListMaker(Context context,
-            Typesetter typesetter) throws MissingMathException {
-
-        ListMaker lm = typesetter.getListMaker();
-        if (!(lm instanceof NoadConsumer)) {
-            throw new MissingMathException(toText(context));
-        }
-        return (NoadConsumer) lm;
-    }
+    return (NoadConsumer) lm;
+  }
 
 }

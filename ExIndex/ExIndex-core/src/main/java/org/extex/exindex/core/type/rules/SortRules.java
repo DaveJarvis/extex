@@ -24,46 +24,46 @@ import java.util.ArrayList;
 
 /**
  * This class provides a container for sort rules.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SortRules extends ArrayList<Rule> {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code ascending} contains the indicator for ascending
-     * order; the opposite is descending order.
-     */
-    private boolean ascending = true;
+  /**
+   * The field {@code ascending} contains the indicator for ascending
+   * order; the opposite is descending order.
+   */
+  private boolean ascending = true;
 
 
-    public SortRules() {
+  public SortRules() {
 
-    }
+  }
 
-    /**
-     * Getter for ascending.
-     * 
-     * @return the ascending
-     */
-    public boolean isAscending() {
+  /**
+   * Getter for ascending.
+   *
+   * @return the ascending
+   */
+  public boolean isAscending() {
 
-        return ascending;
-    }
+    return ascending;
+  }
 
-    /**
-     * Setter for ascending.
-     * 
-     * @param ascending the ascending to set
-     */
-    public void setAscending(boolean ascending) {
+  /**
+   * Setter for ascending.
+   *
+   * @param ascending the ascending to set
+   */
+  public void setAscending( boolean ascending ) {
 
-        this.ascending = ascending;
-    }
+    this.ascending = ascending;
+  }
 
 }

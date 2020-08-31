@@ -25,68 +25,67 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \or}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OrTest extends ExTeXLauncher {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(OrTest.class);
-    }
+    (new JUnitCore()).run( OrTest.class );
+  }
 
 
-    public OrTest() {
+  public OrTest() {
 
-    }
+  }
 
-    /**
-     * <testcase primitive="\or"> Test case checking that a lonely {@code \or}
-     * leads to an error. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\or"> Test case checking that a lonely {@code \or}
+   * leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\or",
-            // --- log message ---
-            "Extra \\or");
-    }
+    assertFailure(// --- input code ---
+                  "\\or",
+                  // --- log message ---
+                  "Extra \\or" );
+  }
 
-    /**
-     * <testcase primitive="\or"> Test case checking that \or terminates a case.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\or"> Test case checking that \or terminates a case.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifcase\\count0 a\\or b\\fi\\end",
-            // --- output ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifcase\\count0 a\\or b\\fi\\end",
+                  // --- output ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\or"> Test case checking that a lonely {@code \or}
-     * leads to an error. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\or"> Test case checking that a lonely {@code \or}
+   * leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ifcase1\\or\\fi\\or",
-            // --- log message ---
-            "Extra \\or");
-    }
+    assertFailure(// --- input code ---
+                  "\\ifcase1\\or\\fi\\or",
+                  // --- log message ---
+                  "Extra \\or" );
+  }
 }

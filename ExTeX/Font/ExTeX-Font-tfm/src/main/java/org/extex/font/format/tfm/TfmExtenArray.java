@@ -19,63 +19,63 @@
 
 package org.extex.font.format.tfm;
 
+import org.extex.util.file.random.RandomAccessR;
+
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.util.file.random.RandomAccessR;
-
 /**
  * Class for TFM exten array.
- * 
+ *
  * <p>
  * Extensible characters are specified by an extensible_recipe, which consists
  * of four bytes called top, mid, bot, and rep (in this order). These bytes are
  * the character codes of individual pieces used to build up a large symbol.
  * </p>
- * 
+ *
  * <p>
  * Information from: The DVI Driver Standard, Level 0 The TUG DVI Driver
  * Standards Committee
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class TfmExtenArray implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * the array.
-     */
-    private final TfmExtensibleRecipe[] extensiblerecipe;
+  /**
+   * the array.
+   */
+  private final TfmExtensibleRecipe[] extensiblerecipe;
 
-    /**
-     * Create a new object.
-     * 
-     * @param rar the input
-     * @param ne number of words in the extensible character table
-     * @throws IOException if an IO-error occurs.
-     */
-    public TfmExtenArray(RandomAccessR rar, int ne) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param rar the input
+   * @param ne  number of words in the extensible character table
+   * @throws IOException if an IO-error occurs.
+   */
+  public TfmExtenArray( RandomAccessR rar, int ne ) throws IOException {
 
-        extensiblerecipe = new TfmExtensibleRecipe[ne];
-        for (int i = 0; i < ne; i++) {
-            extensiblerecipe[i] = new TfmExtensibleRecipe(rar, i);
-        }
+    extensiblerecipe = new TfmExtensibleRecipe[ ne ];
+    for( int i = 0; i < ne; i++ ) {
+      extensiblerecipe[ i ] = new TfmExtensibleRecipe( rar, i );
     }
+  }
 
-    /**
-     * Returns the extensiblerecipe.
-     * 
-     * @return Returns the extensiblerecipe.
-     */
-    public TfmExtensibleRecipe[] getExtensiblerecipe() {
+  /**
+   * Returns the extensiblerecipe.
+   *
+   * @return Returns the extensiblerecipe.
+   */
+  public TfmExtensibleRecipe[] getExtensiblerecipe() {
 
-        return extensiblerecipe;
-    }
+    return extensiblerecipe;
+  }
 
 }

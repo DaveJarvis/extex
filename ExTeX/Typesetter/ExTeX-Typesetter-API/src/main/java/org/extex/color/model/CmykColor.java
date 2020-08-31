@@ -29,192 +29,188 @@ import org.extex.core.exception.GeneralException;
  * channel.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CmykColor implements Color {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 1L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 1L;
 
-    /**
-     * The field {@code alpha} contains the alpha channel of the color.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     */
-    private final int alpha;
+  /**
+   * The field {@code alpha} contains the alpha channel of the color.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   */
+  private final int alpha;
 
-    /**
-     * The field {@code black} contains the black value of the color.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     */
-    private final int black;
+  /**
+   * The field {@code black} contains the black value of the color.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   */
+  private final int black;
 
-    /**
-     * The field {@code cyan} contains the cyan value of the color.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     */
-    private final int cyan;
+  /**
+   * The field {@code cyan} contains the cyan value of the color.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   */
+  private final int cyan;
 
-    /**
-     * The field {@code magenta} contains the magenta value of the color.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     */
-    private final int magenta;
+  /**
+   * The field {@code magenta} contains the magenta value of the color.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   */
+  private final int magenta;
 
-    /**
-     * The field {@code yellow} contains the value yellow of the color.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     */
-    private final int yellow;
+  /**
+   * The field {@code yellow} contains the value yellow of the color.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   */
+  private final int yellow;
 
-    /**
-     * Creates a new object.
-     *
-     * @param cyan the cyan channel
-     * @param magenta the magenta channel
-     * @param yellow the yellow channel
-     * @param black the black channel
-     * @param alpha the alpha channel
-     */
-    protected CmykColor(int cyan, int magenta, int yellow,
-            int black, int alpha) {
+  /**
+   * Creates a new object.
+   *
+   * @param cyan    the cyan channel
+   * @param magenta the magenta channel
+   * @param yellow  the yellow channel
+   * @param black   the black channel
+   * @param alpha   the alpha channel
+   */
+  protected CmykColor( int cyan, int magenta, int yellow,
+                       int black, int alpha ) {
 
-        this.cyan = (cyan < 0 ? 0 : cyan < MAX_VALUE ? cyan : MAX_VALUE);
-        this.magenta = (magenta < 0 ? 0 : magenta < MAX_VALUE
-                ? magenta
-                : MAX_VALUE);
-        this.yellow = (yellow < 0 ? 0 : yellow < MAX_VALUE ? yellow : MAX_VALUE);
-        this.black = (black < 0 ? 0 : black < MAX_VALUE ? black : MAX_VALUE);
-        this.alpha = (alpha < 0 ? 0 : alpha < MAX_VALUE ? alpha : MAX_VALUE);
+    this.cyan = (cyan < 0 ? 0 : cyan < MAX_VALUE ? cyan : MAX_VALUE);
+    this.magenta = (magenta < 0 ? 0 : magenta < MAX_VALUE
+        ? magenta
+        : MAX_VALUE);
+    this.yellow = (yellow < 0 ? 0 : yellow < MAX_VALUE ? yellow : MAX_VALUE);
+    this.black = (black < 0 ? 0 : black < MAX_VALUE ? black : MAX_VALUE);
+    this.alpha = (alpha < 0 ? 0 : alpha < MAX_VALUE ? alpha : MAX_VALUE);
+  }
+
+  /**
+   * Indicates whether some other object is "equal to" this one.
+   *
+   * @param obj the reference object with which to compare.
+   * @return {@code true} if this object is the same as the obj
+   * argument; {@code false} otherwise.
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals( Object obj ) {
+
+    if( !(obj instanceof CmykColor) ) {
+      return false;
     }
+    CmykColor other = (CmykColor) obj;
+    return cyan == other.getCyan() && magenta == other.getMagenta()
+        && yellow == other.getYellow() && black == other.getBlack()
+        && alpha == other.getAlpha();
+  }
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param   obj   the reference object with which to compare.
-     * @return  {@code true} if this object is the same as the obj
-     *          argument; {@code false} otherwise.
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj) {
+  /**
+   * Getter for the alpha channel.
+   * The range of the value is 0x00 to 0xffff.
+   *
+   * @return the alpha channel
+   * @see org.extex.color.Color#getAlpha()
+   */
+  public int getAlpha() {
 
-        if (!(obj instanceof CmykColor)) {
-            return false;
-        }
-        CmykColor other = (CmykColor) obj;
-        return cyan == other.getCyan() && magenta == other.getMagenta()
-                && yellow == other.getYellow() && black == other.getBlack()
-                && alpha == other.getAlpha();
-    }
+    return alpha;
+  }
 
-    /**
-     * Getter for the alpha channel.
-     * The range of the value is 0x00 to 0xffff.
-     *
-     * @return the alpha channel
-     *
-     * @see org.extex.color.Color#getAlpha()
-     */
-    public int getAlpha() {
+  /**
+   * Getter for the black component.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   *
+   * @return the black component
+   */
+  public int getBlack() {
 
-        return alpha;
-    }
+    return black;
+  }
 
-    /**
-     * Getter for the black component.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     *
-     * @return the black component
-     */
-    public int getBlack() {
+  /**
+   * Getter for the cyan component.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   *
+   * @return the cyan component
+   */
+  public int getCyan() {
 
-        return black;
-    }
+    return cyan;
+  }
 
-    /**
-     * Getter for the cyan component.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     *
-     * @return the cyan component
-     */
-    public int getCyan() {
+  /**
+   * Getter for the magenta component.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   *
+   * @return the magenta component
+   */
+  public int getMagenta() {
 
-        return cyan;
-    }
+    return magenta;
+  }
 
-    /**
-     * Getter for the magenta component.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     *
-     * @return the magenta component
-     */
-    public int getMagenta() {
+  /**
+   * Getter for the yellow component.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   *
+   * @return the yellow component
+   */
+  public int getYellow() {
 
-        return magenta;
-    }
+    return yellow;
+  }
 
-    /**
-     * Getter for the yellow component.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     *
-     * @return the yellow component
-     */
-    public int getYellow() {
+  /**
+   * Returns a hash code value for the object.
+   *
+   * @return a hash code value for this object
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
 
-        return yellow;
-    }
+    return (cyan >> 1) | (magenta >> 2) | (yellow >> 3) | (black >> 4)
+        | (alpha >> 5);
+  }
 
-    /**
-     * Returns a hash code value for the object.
-     *
-     * @return  a hash code value for this object
-     *
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode() {
+  /**
+   * Returns a string representation of the object.
+   *
+   * @return a string representation of the object.
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-        return (cyan >> 1) | (magenta >> 2) | (yellow >> 3) | (black >> 4)
-                | (alpha >> 5);
-    }
+    StringBuilder sb = new StringBuilder();
+    ColorUtil.formatAlpha( sb, alpha );
+    sb.append( "cmyk {" );
+    ColorUtil.formatComponent( sb, cyan );
+    sb.append( " " );
+    ColorUtil.formatComponent( sb, magenta );
+    sb.append( " " );
+    ColorUtil.formatComponent( sb, yellow );
+    sb.append( " " );
+    ColorUtil.formatComponent( sb, black );
+    sb.append( "}" );
+    return sb.toString();
+  }
 
-    /**
-     * Returns a string representation of the object.
-     *
-     * @return  a string representation of the object.
-     *
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.color.Color#visit(
+   *org.extex.color.ColorVisitor,
+   * java.lang.Object)
+   */
+  public Object visit( ColorVisitor visitor, Object value )
+      throws GeneralException {
 
-        StringBuilder sb = new StringBuilder();
-        ColorUtil.formatAlpha(sb, alpha);
-        sb.append("cmyk {");
-        ColorUtil.formatComponent(sb, cyan);
-        sb.append(" ");
-        ColorUtil.formatComponent(sb, magenta);
-        sb.append(" ");
-        ColorUtil.formatComponent(sb, yellow);
-        sb.append(" ");
-        ColorUtil.formatComponent(sb, black);
-        sb.append("}");
-        return sb.toString();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.color.Color#visit(
-     *      org.extex.color.ColorVisitor,
-     *      java.lang.Object)
-     */
-    public Object visit(ColorVisitor visitor, Object value)
-            throws GeneralException {
-
-        return visitor.visitCmyk(this, value);
-    }
+    return visitor.visitCmyk( this, value );
+  }
 
 }

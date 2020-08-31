@@ -28,7 +28,7 @@ import java.io.IOException;
 
 /**
  * List for all LookupTables.
- * 
+ *
  * <p>
  * lookup list table
  * </p>
@@ -41,11 +41,11 @@ import java.io.IOException;
  * glyph substitution and positioning operations. LookupCount specifies the
  * total number of Lookup table offsets in the array.
  * </p>
- * 
+ *
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Type</b></td>
+ * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -63,143 +63,144 @@ import java.io.IOException;
  * </table>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class XtfLookupList implements XMLWriterConvertible {
 
-    /**
-     * lookup count
-     */
-    private final int lookupCount;
+  /**
+   * lookup count
+   */
+  private final int lookupCount;
 
-    /**
-     * lookupFactory
-     */
-    private final LookupTableFactory lookupFactory;
+  /**
+   * lookupFactory
+   */
+  private final LookupTableFactory lookupFactory;
 
-    /**
-     * lookup offsets
-     */
-    private final int[] lookupOffsets;
+  /**
+   * lookup offsets
+   */
+  private final int[] lookupOffsets;
 
-    /**
-     * lookups
-     */
-    private final XtfLookup[] lookups;
+  /**
+   * lookups
+   */
+  private final XtfLookup[] lookups;
 
-    /**
-     * Create a new object
-     * 
-     * @param rar The input.
-     * @param offset The offset.
-     * @param posOffset The offset of the pos table (GPOS, GSUB).
-     * @param lookupFactory The factory for the lookup table.
-     * @param xtfGlyph The glyph name.
-     * @throws IOException if an IO-error occurs
-     */
-    public XtfLookupList(RandomAccessR rar, int posOffset, int offset,
-            LookupTableFactory lookupFactory, XtfGlyphName xtfGlyph)
-            throws IOException {
+  /**
+   * Create a new object
+   *
+   * @param rar           The input.
+   * @param offset        The offset.
+   * @param posOffset     The offset of the pos table (GPOS, GSUB).
+   * @param lookupFactory The factory for the lookup table.
+   * @param xtfGlyph      The glyph name.
+   * @throws IOException if an IO-error occurs
+   */
+  public XtfLookupList( RandomAccessR rar, int posOffset, int offset,
+                        LookupTableFactory lookupFactory,
+                        XtfGlyphName xtfGlyph )
+      throws IOException {
 
-        this.lookupFactory = lookupFactory;
-        rar.seek(offset);
-        lookupCount = rar.readUnsignedShort();
-        lookupOffsets = new int[lookupCount];
-        lookups = new XtfLookup[lookupCount];
-        for (int i = 0; i < lookupCount; i++) {
-            lookupOffsets[i] = rar.readUnsignedShort();
-        }
-        for (int i = 0; i < lookupCount; i++) {
-            lookups[i] =
-                    new XtfLookup(rar, posOffset, offset + lookupOffsets[i],
-                        lookupFactory, i, xtfGlyph);
-        }
+    this.lookupFactory = lookupFactory;
+    rar.seek( offset );
+    lookupCount = rar.readUnsignedShort();
+    lookupOffsets = new int[ lookupCount ];
+    lookups = new XtfLookup[ lookupCount ];
+    for( int i = 0; i < lookupCount; i++ ) {
+      lookupOffsets[ i ] = rar.readUnsignedShort();
     }
-
-    /**
-     * Returns the lookup od {@code null}, if not exists.
-     * 
-     * @param index The index.
-     * @return Returns the lookup.
-     */
-    public XtfLookup getLookup(int index) {
-
-        if (index >= 0 && index < lookups.length) {
-            return lookups[index];
-        }
-        return null;
+    for( int i = 0; i < lookupCount; i++ ) {
+      lookups[ i ] =
+          new XtfLookup( rar, posOffset, offset + lookupOffsets[ i ],
+                         lookupFactory, i, xtfGlyph );
     }
+  }
 
-    /**
-     * Returns the lookup
-     * 
-     * @param feature feature
-     * @param index index
-     * @return Returns the lookup
-     */
-    public XtfLookup getLookup(XtfFeatureList.Feature feature, int index) {
+  /**
+   * Returns the lookup od {@code null}, if not exists.
+   *
+   * @param index The index.
+   * @return Returns the lookup.
+   */
+  public XtfLookup getLookup( int index ) {
 
-        if (feature.getLookupCount() > index) {
-            int i = feature.getLookupListIndex(index);
-            if (i >= 0 && i < lookups.length) {
-                return lookups[i];
-            }
-        }
-        return null;
+    if( index >= 0 && index < lookups.length ) {
+      return lookups[ index ];
     }
+    return null;
+  }
 
-    /**
-     * Returns the lookupCount.
-     * 
-     * @return Returns the lookupCount.
-     */
-    public int getLookupCount() {
+  /**
+   * Returns the lookup
+   *
+   * @param feature feature
+   * @param index   index
+   * @return Returns the lookup
+   */
+  public XtfLookup getLookup( XtfFeatureList.Feature feature, int index ) {
 
-        return lookupCount;
+    if( feature.getLookupCount() > index ) {
+      int i = feature.getLookupListIndex( index );
+      if( i >= 0 && i < lookups.length ) {
+        return lookups[ i ];
+      }
     }
+    return null;
+  }
 
-    /**
-     * Returns the lookupOffsets.
-     * 
-     * @return Returns the lookupOffsets.
-     */
-    public int[] getLookupOffsets() {
+  /**
+   * Returns the lookupCount.
+   *
+   * @return Returns the lookupCount.
+   */
+  public int getLookupCount() {
 
-        return lookupOffsets;
+    return lookupCount;
+  }
+
+  /**
+   * Returns the lookupOffsets.
+   *
+   * @return Returns the lookupOffsets.
+   */
+  public int[] getLookupOffsets() {
+
+    return lookupOffsets;
+  }
+
+  /**
+   * Returns the lookups.
+   *
+   * @return Returns the lookups.
+   */
+  public XtfLookup[] getLookups() {
+
+    return lookups;
+  }
+
+  /**
+   * Returns the info for this class
+   *
+   * @return Returns the info for this class
+   */
+  @Override
+  public String toString() {
+
+    StringBuilder buf = new StringBuilder( "LookupList\n" );
+    buf.append( "   lookup count  : " ).append( lookupCount ).append( '\n' );
+    return buf.toString();
+  }
+
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( "lookuplist" );
+    writer.writeAttribute( "count", lookupCount );
+
+    for( int i = 0; i < lookupCount; i++ ) {
+      XtfLookup lu = lookups[ i ];
+      lu.writeXML( writer );
     }
-
-    /**
-     * Returns the lookups.
-     * 
-     * @return Returns the lookups.
-     */
-    public XtfLookup[] getLookups() {
-
-        return lookups;
-    }
-
-    /**
-     * Returns the info for this class
-     * 
-     * @return Returns the info for this class
-     */
-    @Override
-    public String toString() {
-
-        StringBuilder buf = new StringBuilder("LookupList\n");
-        buf.append("   lookup count  : ").append(lookupCount).append('\n');
-        return buf.toString();
-    }
-
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("lookuplist");
-        writer.writeAttribute("count", lookupCount);
-
-        for (int i = 0; i < lookupCount; i++) {
-            XtfLookup lu = lookups[i];
-            lu.writeXML(writer);
-        }
-        writer.writeEndElement();
-    }
+    writer.writeEndElement();
+  }
 }

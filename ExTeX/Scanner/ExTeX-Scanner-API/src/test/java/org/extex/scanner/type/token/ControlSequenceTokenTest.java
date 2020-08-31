@@ -19,148 +19,145 @@
 
 package org.extex.scanner.type.token;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import static org.junit.Assert.*;
+
 /**
  * Test cases for control sequence tokens.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ControlSequenceTokenTest extends TokenTester {
 
-    /**
-     * The field {@code token} contains the reference token.
-     */
-    private static final ControlSequenceToken token =
-            new ControlSequenceToken(UnicodeChar.get('\\'), "x", "abc");
+  /**
+   * The field {@code token} contains the reference token.
+   */
+  private static final ControlSequenceToken token =
+      new ControlSequenceToken( UnicodeChar.get( '\\' ), "x", "abc" );
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ControlSequenceTokenTest.class);
-    }
+    (new JUnitCore()).run( ControlSequenceTokenTest.class );
+  }
 
 
-    public ControlSequenceTokenTest() {
+  public ControlSequenceTokenTest() {
 
-        setToken(token);
-setCatcode( Catcode.ESCAPE);
-setText( "\\x");
-setStr( "the control sequence \\x");
-    }
+    setToken( token );
+    setCatcode( Catcode.ESCAPE );
+    setText( "\\x" );
+    setStr( "the control sequence \\x" );
+  }
 
-@Test
-    public void testCloneInDefaultNamespace0() {
+  @Test
+  public void testCloneInDefaultNamespace0() {
 
-        CodeToken x = token.cloneInDefaultNamespace();
-        assertNotNull(x);
-        assertEquals("", x.getNamespace());
-        assertEquals(token.getCatcode(), x.getCatcode());
-        assertEquals(token.getChar(), x.getChar());
-    }
+    CodeToken x = token.cloneInDefaultNamespace();
+    assertNotNull( x );
+    assertEquals( "", x.getNamespace() );
+    assertEquals( token.getCatcode(), x.getCatcode() );
+    assertEquals( token.getChar(), x.getChar() );
+  }
 
-@Test
-    public void testCloneInDefaultNamespace1() {
+  @Test
+  public void testCloneInDefaultNamespace1() {
 
-        CodeToken y = token.cloneInNamespace("");
-        CodeToken x = y.cloneInDefaultNamespace();
-        assertNotNull(x);
-        assertTrue("the same", x == y);
-    }
+    CodeToken y = token.cloneInNamespace( "" );
+    CodeToken x = y.cloneInDefaultNamespace();
+    assertNotNull( x );
+    assertTrue( "the same", x == y );
+  }
 
-@Test
-    public void testCloneInNamespace0() {
+  @Test
+  public void testCloneInNamespace0() {
 
-        CodeToken x = token.cloneInNamespace(null);
-        assertNotNull(x);
-        assertEquals(x, token);
-    }
+    CodeToken x = token.cloneInNamespace( null );
+    assertNotNull( x );
+    assertEquals( x, token );
+  }
 
-@Test
-    public void testCloneInNamespace1() {
+  @Test
+  public void testCloneInNamespace1() {
 
-        CodeToken x = token.cloneInNamespace("abc");
-        assertNotNull(x);
-        assertEquals(x, token);
-    }
+    CodeToken x = token.cloneInNamespace( "abc" );
+    assertNotNull( x );
+    assertEquals( x, token );
+  }
 
-@Test
-    public void testCloneInNamespace2() {
+  @Test
+  public void testCloneInNamespace2() {
 
-        CodeToken x = token.cloneInNamespace("xyz");
-        assertNotNull(x);
-        assertEquals("xyz", x.getNamespace());
-        assertEquals(token.getCatcode(), x.getCatcode());
-        assertEquals(token.getChar(), x.getChar());
-    }
+    CodeToken x = token.cloneInNamespace( "xyz" );
+    assertNotNull( x );
+    assertEquals( "xyz", x.getNamespace() );
+    assertEquals( token.getCatcode(), x.getCatcode() );
+    assertEquals( token.getChar(), x.getChar() );
+  }
 
-@Test
-    @Override
-    public void testEq0() {
+  @Test
+  @Override
+  public void testEq0() {
 
-        assertFalse("", token.eq(Catcode.LETTER, "x"));
-    }
+    assertFalse( "", token.eq( Catcode.LETTER, "x" ) );
+  }
 
-@Test
-    @Override
-    public void testEq11() {
+  @Test
+  @Override
+  public void testEq11() {
 
-        assertFalse(token.eq(Catcode.OTHER, 'x'));
-    }
+    assertFalse( token.eq( Catcode.OTHER, 'x' ) );
+  }
 
-@Test
-    @Override
-    public void testEq2() {
+  @Test
+  @Override
+  public void testEq2() {
 
-        assertFalse(token.eq(Catcode.OTHER, "x"));
-    }
+    assertFalse( token.eq( Catcode.OTHER, "x" ) );
+  }
 
-@Test
-    public void testEqualsToken1() {
+  @Test
+  public void testEqualsToken1() {
 
-        Token t1 = new ControlSequenceToken(UnicodeChar.get('\\'), " ", "");
-        Token t2 = new OtherToken(UnicodeChar.get(' '));
-        assertFalse(t1.equals(t2));
-    }
+    Token t1 = new ControlSequenceToken( UnicodeChar.get( '\\' ), " ", "" );
+    Token t2 = new OtherToken( UnicodeChar.get( ' ' ) );
+    assertFalse( t1.equals( t2 ) );
+  }
 
-@Test
-    @Override
-    public void testGetChar0() {
+  @Test
+  @Override
+  public void testGetChar0() {
 
-        UnicodeChar x = token.getChar();
-        assertNotNull(x);
-        assertEquals(92, x.getCodePoint());
-    }
+    UnicodeChar x = token.getChar();
+    assertNotNull( x );
+    assertEquals( 92, x.getCodePoint() );
+  }
 
-@Test
-    public void testGetName1() {
+  @Test
+  public void testGetName1() {
 
-        assertEquals("x", token.getName());
-    }
+    assertEquals( "x", token.getName() );
+  }
 
-@Test
-    public void testGetNamespace1() {
+  @Test
+  public void testGetNamespace1() {
 
-        assertEquals("abc", token.getNamespace());
-    }
+    assertEquals( "abc", token.getNamespace() );
+  }
 
-@Test
-    @Override
-    public void testToTextString0() {
+  @Test
+  @Override
+  public void testToTextString0() {
 
-        assertEquals("x", token.toText(null));
-    }
+    assertEquals( "x", token.toText( null ) );
+  }
 
 }

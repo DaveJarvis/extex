@@ -19,43 +19,43 @@
 
 package org.extex.unit.tex.register.count;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.extex.test.count.AbstractCountRegisterTester;
 import org.junit.runner.JUnitCore;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * This is a test suite for the primitive {@code \month}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MonthTest extends AbstractCountRegisterTester {
 
-    /**
-     * Provide the current month as default value for the comparison.
-     * 
-     * @return the current mont as string
-     */
-    private static String getDefaultValue() {
+  /**
+   * Provide the current month as default value for the comparison.
+   *
+   * @return the current mont as string
+   */
+  private static String getDefaultValue() {
 
-        return new SimpleDateFormat("M").format(new Date());
-    }
+    return new SimpleDateFormat( "M" ).format( new Date() );
+  }
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MonthTest.class);
-    }
+    (new JUnitCore()).run( MonthTest.class );
+  }
 
 
-    public MonthTest() {
+  public MonthTest() {
 
-        super("month", "", getDefaultValue());
-    }
+    super( "month", "", getDefaultValue() );
+  }
 
 }

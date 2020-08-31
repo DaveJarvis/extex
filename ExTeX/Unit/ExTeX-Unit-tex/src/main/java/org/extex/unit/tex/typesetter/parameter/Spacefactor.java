@@ -39,103 +39,105 @@ import org.extex.typesetter.exception.TypesetterUnsupportedException;
 /**
  * This class provides an implementation for the primitive
  * {@code \spacefactor}.
- * 
+ *
  * <p>The Primitive {@code \spacefactor}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;spacefactor&rang;
  *      &rarr; {@code \spacefactor} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \spacefactor 1200  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Spacefactor extends AbstractCode
-        implements
-            CountConvertible,
-            Theable {
+    implements
+    CountConvertible,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Spacefactor(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Spacefactor( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    long spacefactor;
+    try {
+      spacefactor = typesetter.getListMaker().getSpacefactor();
+    } catch( TypesetterUnsupportedException e ) {
+      throw new HelpingException( getLocalizer(), "TTP.ImproperSForPD",
+                                  toText() );
     }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    return spacefactor;
+  }
 
-        long spacefactor;
-        try {
-            spacefactor = typesetter.getListMaker().getSpacefactor();
-        } catch (TypesetterUnsupportedException e) {
-            throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
-                toText());
-        }
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        return spacefactor;
+    source.getOptionalEquals( context );
+    long factor = source.parseInteger( context, source, typesetter );
+
+    try {
+      typesetter.setSpacefactor( new Count( factor ) );
+    } catch( TypesetterUnsupportedException e ) {
+      throw new CantUseInException( toText( context ), typesetter.getMode()
+                                                                 .toString() );
+    } catch( InvalidSpacefactorException e ) {
+      throw new HelpingException( getLocalizer(), "TTP.BadSpaceFactor",
+                                  Long.toString( factor ) );
     }
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        source.getOptionalEquals(context);
-        long factor = source.parseInteger(context, source, typesetter);
-
-        try {
-            typesetter.setSpacefactor(new Count(factor));
-        } catch (TypesetterUnsupportedException e) {
-            throw new CantUseInException(toText(context), typesetter.getMode()
-                .toString());
-        } catch (InvalidSpacefactorException e) {
-            throw new HelpingException(getLocalizer(), "TTP.BadSpaceFactor",
-                Long.toString(factor));
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        return context.getTokenFactory().toTokens(
-            convertCount(context, source, typesetter));
-    }
+    return context.getTokenFactory().toTokens(
+        convertCount( context, source, typesetter ) );
+  }
 
 }

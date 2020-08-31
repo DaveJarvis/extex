@@ -34,65 +34,64 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
 /**
  * This class provides an implementation for the primitive
  * {@code \OutputTranslation}.
- * 
+ *
  * <p>The Primitive {@code \OutputTranslation}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;OutputTranslation&rang;
  *      &rarr; {@code \OutputTranslation} &lang;file&rang; &lang;ocp file&rang;
  *
  *        ...
  *        </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \OutputTranslation 1 unicode8 </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OutputTranslation extends AbstractCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public OutputTranslation(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public OutputTranslation( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String file =
-                AbstractFileCode.scanOutFileKey(context, source, typesetter);
-        String resource = OcpUtil.scanOcpFileName(source, context);
-        OutFile outFile = context.getOutFile(file);
+    String file =
+        AbstractFileCode.scanOutFileKey( context, source, typesetter );
+    String resource = OcpUtil.scanOcpFileName( source, context );
+    OutFile outFile = context.getOutFile( file );
 
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
-    }
+    // TODO gene: unimplemented
+    throw new RuntimeException( "unimplemented" );
+  }
 
 }

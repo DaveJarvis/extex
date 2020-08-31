@@ -25,41 +25,41 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \popocplist}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PopocplistTest extends ExTeXLauncher {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PopocplistTest.class);
-    }
+    (new JUnitCore()).run( PopocplistTest.class );
+  }
 
 
-    public PopocplistTest() {
+  public PopocplistTest() {
 
-        setConfig("omega-test");
-    }
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\popocp"> Test case checking that {@code \popocp}
-     * needs an active ocp list.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\popocp"> Test case checking that {@code \popocp}
+   * needs an active ocp list.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\popocplist",
-            // --- output channel ---
-            "No active ocp lists to be popped");
-    }
+    assertFailure(// --- input code ---
+                  "\\popocplist",
+                  // --- output channel ---
+                  "No active ocp lists to be popped" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

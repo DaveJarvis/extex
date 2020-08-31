@@ -25,55 +25,57 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \endgroup}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EndgroupTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(EndgroupTest.class);
-    }
+    (new JUnitCore()).run( EndgroupTest.class );
+  }
 
 
-    public EndgroupTest() {
+  public EndgroupTest() {
 
-        setPrimitive("endgroup");setArguments("");setPrepare("\\begingroup");
-    }
+    setPrimitive( "endgroup" );
+    setArguments( "" );
+    setPrepare( "\\begingroup" );
+  }
 
-    /**
-     * <testcase primitive="\endgroup"> Test case checking that a lonely
-     * {@code \endgroup} leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\endgroup"> Test case checking that a lonely
+   * {@code \endgroup} leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\endgroup",
-            // --- log message ---
-            "Too many }'s");
-    }
+    assertFailure(// --- input code ---
+                  "\\endgroup",
+                  // --- log message ---
+                  "Too many }'s" );
+  }
 
-    /**
-     * <testcase primitive="\endgroup"> Test case checking that
-     * {@code \endgroup} works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\endgroup"> Test case checking that
+   * {@code \endgroup} works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\begingroup \\endgroup",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\begingroup \\endgroup",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

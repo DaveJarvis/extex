@@ -24,33 +24,33 @@ import java.util.List;
 
 /**
  * FullName.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOFullName extends T2TDOSID {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2TDOFullName(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2TDOFullName( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{CFF_FULLNAME});
-    }
+    super( stack, new short[]{CFF_FULLNAME} );
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return T2TopDICTOperator.TYPE_FULLNAME;
-    }
+    return T2TopDICTOperator.TYPE_FULLNAME;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "fullname";
-    }
+    return "fullname";
+  }
 
 }

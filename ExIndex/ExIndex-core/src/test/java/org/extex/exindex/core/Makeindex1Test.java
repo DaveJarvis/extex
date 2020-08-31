@@ -40,92 +40,91 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * This is a test suite for makeindex compatibility.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Makeindex1Test {
 
-    /**
-     * The field {@code FINDER} contains the resource finder.
-     */
-    private static final ResourceFinder FINDER = new ResourceFinder() {
+  /**
+   * The field {@code FINDER} contains the resource finder.
+   */
+  private static final ResourceFinder FINDER = new ResourceFinder() {
 
-        public void enableTracing(boolean flag) {
+    public void enableTracing( boolean flag ) {
 
-            // nay
-        }
-
-        public NamedInputStream findResource(String name, String type)
-                throws ConfigurationException {
-
-            ClassLoader classLoader = getClass().getClassLoader();
-            return new NamedInputStream(classLoader.getResourceAsStream(name),
-                name + "." + type);
-        }
-
-    };
-
-    /**
-     * Read the contents of a resource.
-     * 
-     * @param referenceFile the name of the reference
-     * 
-     * @return the content of the reference
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    private String readReference(String referenceFile) throws IOException {
-
-        InputStream is =
-                getClass().getClassLoader().getResourceAsStream(referenceFile);
-        if (is == null) {
-            throw new FileNotFoundException("Missing " + referenceFile);
-        }
-        StringBuilder sb = new StringBuilder();
-        try( Reader r = new InputStreamReader( is, UTF_8 ) ) {
-            for( int c = r.read(); c >= 0; c = r.read() ) {
-                sb.append( (char) c );
-            }
-        }
-
-        return sb.toString();
+      // nay
     }
 
-    /**
-     * Test that doc.ist can be read and the index from the users guide can be processed
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test1() throws Exception {
+    public NamedInputStream findResource( String name, String type )
+        throws ConfigurationException {
 
-        Logger logger = Logger.getLogger("test");
-        logger.setUseParentHandlers(false);
-        logger.setLevel(Level.SEVERE);
-        ByteArrayOutputStream log = new ByteArrayOutputStream();
-        Handler handler = new StreamHandler(log, new LogFormatter());
-        handler.setLevel(Level.WARNING);
-        logger.addHandler(handler);
-
-        Indexer indexer = new Indexer();
-        indexer.setResourceFinder(FINDER);
-        ExIndexParserFactory parserFactory = new ExIndexParserFactory();
-        parserFactory.setResourceFinder(FINDER);
-        indexer.setParserFactory(parserFactory);
-        indexer.load("xindy/makeidx.xdy");
-        indexer.load("extex/doc.ist");
-
-        List<String> list = new ArrayList<>();
-        list.add("extex/extex-users.idx");
-        indexer.process(list, logger);
-
-        StringWriter writer = new StringWriter();
-        indexer.markup(writer, logger);
-
-        assertEquals(readReference("extex/extex-users.ind-reference"),
-            writer.toString());
-        // indexer.printBindings(System.out);
+      ClassLoader classLoader = getClass().getClassLoader();
+      return new NamedInputStream( classLoader.getResourceAsStream( name ),
+                                   name + "." + type );
     }
+
+  };
+
+  /**
+   * Read the contents of a resource.
+   *
+   * @param referenceFile the name of the reference
+   * @return the content of the reference
+   * @throws IOException in case of an I/O error
+   */
+  private String readReference( String referenceFile ) throws IOException {
+
+    InputStream is =
+        getClass().getClassLoader().getResourceAsStream( referenceFile );
+    if( is == null ) {
+      throw new FileNotFoundException( "Missing " + referenceFile );
+    }
+    StringBuilder sb = new StringBuilder();
+    try( Reader r = new InputStreamReader( is, UTF_8 ) ) {
+      for( int c = r.read(); c >= 0; c = r.read() ) {
+        sb.append( (char) c );
+      }
+    }
+
+    return sb.toString();
+  }
+
+  /**
+   * Test that doc.ist can be read and the index from the users guide can
+   * be processed
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test1() throws Exception {
+
+    Logger logger = Logger.getLogger( "test" );
+    logger.setUseParentHandlers( false );
+    logger.setLevel( Level.SEVERE );
+    ByteArrayOutputStream log = new ByteArrayOutputStream();
+    Handler handler = new StreamHandler( log, new LogFormatter() );
+    handler.setLevel( Level.WARNING );
+    logger.addHandler( handler );
+
+    Indexer indexer = new Indexer();
+    indexer.setResourceFinder( FINDER );
+    ExIndexParserFactory parserFactory = new ExIndexParserFactory();
+    parserFactory.setResourceFinder( FINDER );
+    indexer.setParserFactory( parserFactory );
+    indexer.load( "xindy/makeidx.xdy" );
+    indexer.load( "extex/doc.ist" );
+
+    List<String> list = new ArrayList<>();
+    list.add( "extex/extex-users.idx" );
+    indexer.process( list, logger );
+
+    StringWriter writer = new StringWriter();
+    indexer.markup( writer, logger );
+
+    assertEquals( readReference( "extex/extex-users.ind-reference" ),
+                  writer.toString() );
+    // indexer.printBindings(System.out);
+  }
 
 }

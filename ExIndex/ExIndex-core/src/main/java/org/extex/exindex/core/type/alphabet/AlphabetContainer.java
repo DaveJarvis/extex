@@ -22,26 +22,25 @@ package org.extex.exindex.core.type.alphabet;
 
 /**
  * This interface describes an container for named alphabets.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface AlphabetContainer {
 
-    /**
-     * Add an alphabet.
-     * 
-     * @param name the name
-     * @param alphabet the alphabet
-     */
-    void addAlphabet(String name, Alphabet alphabet);
+  /**
+   * Add an alphabet.
+   *
+   * @param name     the name
+   * @param alphabet the alphabet
+   */
+  void addAlphabet( String name, Alphabet alphabet );
 
-    /**
-     * Get a named alphabet.
-     * 
-     * @param name the name of the alphabet
-     * 
-     * @return the alphabet or {@code null} if it does not exist
-     */
-    Alphabet lookupAlphabet(String name);
+  /**
+   * Get a named alphabet.
+   *
+   * @param name the name of the alphabet
+   * @return the alphabet or {@code null} if it does not exist
+   */
+  Alphabet lookupAlphabet( String name );
 
 }

@@ -19,46 +19,46 @@
 
 package org.extex.backend.outputStream;
 
-import java.io.OutputStream;
-
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
+
+import java.io.OutputStream;
 
 /**
  * This is the factory for new OutputStreams.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OutputStreamFactory {
 
-    /**
-     * Getter for a new OutputStream.
-     * 
-     * @param name the name segment to characterize the stream externally. This
-     *        segment might be used as part of the output file. If the name is
-     *        {@code null} then it is treated as not given at all.
-     * @param type the type of the stream to acquire. In general this should
-     *        correspond to the extension of a file of this type
-     * 
-     * @return the new OutputStream
-     * @throws DocumentWriterException in case of an error
-     */
-    OutputStream getOutputStream(String name, String type)
-            throws DocumentWriterException;
+  /**
+   * Getter for a new OutputStream.
+   *
+   * @param name the name segment to characterize the stream externally. This
+   *             segment might be used as part of the output file. If the
+   *             name is
+   *             {@code null} then it is treated as not given at all.
+   * @param type the type of the stream to acquire. In general this should
+   *             correspond to the extension of a file of this type
+   * @return the new OutputStream
+   * @throws DocumentWriterException in case of an error
+   */
+  OutputStream getOutputStream( String name, String type )
+      throws DocumentWriterException;
 
-    /**
-     * Register an observer which is invoked to notify about any output stream
-     * requested via a call to getOututStream(),
-     * 
-     * @param observer the observers to register
-     */
-    void register(OutputStreamObserver observer);
+  /**
+   * Register an observer which is invoked to notify about any output stream
+   * requested via a call to getOututStream(),
+   *
+   * @param observer the observers to register
+   */
+  void register( OutputStreamObserver observer );
 
-    /**
-     * Setter for the default extension. The default extension is used when the
-     * type specified is {@code null}.
-     * 
-     * @param extension the default extension
-     */
-    void setExtension(String extension);
+  /**
+   * Setter for the default extension. The default extension is used when the
+   * type specified is {@code null}.
+   *
+   * @param extension the default extension
+   */
+  void setExtension( String extension );
 
 }

@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \maxError}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MaxErrorTest extends AbstractNonGroupIntegerTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MaxErrorTest.class);
-    }
+    (new JUnitCore()).run( MaxErrorTest.class );
+  }
 
 
-    public MaxErrorTest() {
+  public MaxErrorTest() {
 
-        super("maxError", "", "100", DEFINE_BRACES + "\\namespace{system}");
-        setConfig("extex-test");
-    }
+    super( "maxError", "", "100", DEFINE_BRACES + "\\namespace{system}" );
+    setConfig( "extex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

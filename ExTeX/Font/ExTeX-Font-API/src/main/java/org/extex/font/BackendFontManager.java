@@ -19,101 +19,100 @@
 
 package org.extex.font;
 
-import java.util.Iterator;
-
 import org.extex.core.UnicodeChar;
 import org.extex.font.exception.FontException;
 import org.extex.font.manager.ManagerInfo;
+
+import java.util.Iterator;
 
 /**
  * The back-end font manager describes the abilities needed by a back-end to
  * deal with fonts. The procedure assumes that in a first pass all characters of
  * all fonts on a page or in a range of pages are passed to the manager. The
  * manager returns a representation appropriate for the back-end format.
- * 
+ *
  * <p>
  * In a second pass the manager can be asked to return all fonts. Those fonts
  * can be embedded into the output file &ndash; either completely or simply as a
  * list of font names.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface BackendFontManager extends Iterable<ManagerInfo> {
 
-    /**
-     * Get the char info for the most recently recognized pair of font and
-     * character. If invoked before any character has been recognized
-     * successfully then {@code null} is returned.
-     * 
-     * @return the char info for the most recently recognized font/character
-     *         pair
-     */
-    BackendCharacter getRecognizedCharId();
+  /**
+   * Get the char info for the most recently recognized pair of font and
+   * character. If invoked before any character has been recognized
+   * successfully then {@code null} is returned.
+   *
+   * @return the char info for the most recently recognized font/character
+   * pair
+   */
+  BackendCharacter getRecognizedCharId();
 
-    /**
-     * Get the font info for the most recently recognized pair of font and
-     * character. If invoked before any character has been recognized
-     * successfully then {@code null} is returned.
-     * 
-     * @return the font info for the most recently recognized font/character
-     *         pair
-     */
-    BackendFont getRecognizedFont();
+  /**
+   * Get the font info for the most recently recognized pair of font and
+   * character. If invoked before any character has been recognized
+   * successfully then {@code null} is returned.
+   *
+   * @return the font info for the most recently recognized font/character
+   * pair
+   */
+  BackendFont getRecognizedFont();
 
-    /**
-     * Get the new font indicator for the most recently recognized pair of font
-     * and character. If the font has never been recognized before then
-     * {@code true} is returned. The font compared for this test is the
-     * back-end font &ndash; not the font passed in. This means that each time
-     * getRecognizedFont() returns a new font info this method returns
-     * {@code true}.
-     * <p>
-     * If invoked before any character has been recognized successfully then
-     * {@code null} is returned.
-     * </p>
-     * 
-     * @return the font info for the most recently recognized font/character
-     *         pair
-     */
-    boolean isNewRecongnizedFont();
+  /**
+   * Get the new font indicator for the most recently recognized pair of font
+   * and character. If the font has never been recognized before then
+   * {@code true} is returned. The font compared for this test is the
+   * back-end font &ndash; not the font passed in. This means that each time
+   * getRecognizedFont() returns a new font info this method returns
+   * {@code true}.
+   * <p>
+   * If invoked before any character has been recognized successfully then
+   * {@code null} is returned.
+   * </p>
+   *
+   * @return the font info for the most recently recognized font/character
+   * pair
+   */
+  boolean isNewRecongnizedFont();
 
-    /**
-     * Return the iterator for all recognized back-end fonts as
-     * {@link ManagerInfo}. The fonts are sorted by the name.
-     * 
-     * @return the iterator for all recognized back-end font as
-     *         {@link ManagerInfo}.
-     */
-    @Override
-    Iterator<ManagerInfo> iterator();
+  /**
+   * Return the iterator for all recognized back-end fonts as
+   * {@link ManagerInfo}. The fonts are sorted by the name.
+   *
+   * @return the iterator for all recognized back-end font as
+   * {@link ManagerInfo}.
+   */
+  @Override
+  Iterator<ManagerInfo> iterator();
 
-    /**
-     * Take a character and a font and see if they can be managed by this
-     * manager. The internal state is adjusted to report the font and the
-     * character appropriately after the invocation has returned.
-     * 
-     * @param fontKey the font key for the character at hand
-     * @param uc the Unicode character at hand
-     * @throws FontException if a font error occurred.
-     * 
-     * @return {@code true} iff the character is defined in the font given
-     *         and a font of a requested format can be delivered.
-     */
-    boolean recognize(FontKey fontKey, UnicodeChar uc) throws FontException;
+  /**
+   * Take a character and a font and see if they can be managed by this
+   * manager. The internal state is adjusted to report the font and the
+   * character appropriately after the invocation has returned.
+   *
+   * @param fontKey the font key for the character at hand
+   * @param uc      the Unicode character at hand
+   * @return {@code true} iff the character is defined in the font given
+   * and a font of a requested format can be delivered.
+   * @throws FontException if a font error occurred.
+   */
+  boolean recognize( FontKey fontKey, UnicodeChar uc ) throws FontException;
 
-    /**
-     * Rest the internal state to the initial state. Afterwards the instance
-     * does not know anything about recognized fonts and can be used like a
-     * newly created instance.
-     */
-    void reset();
+  /**
+   * Rest the internal state to the initial state. Afterwards the instance
+   * does not know anything about recognized fonts and can be used like a
+   * newly created instance.
+   */
+  void reset();
 
-    /**
-     * Setter for the back-end font factory.
-     * 
-     * @param factory the back-end font factory to set
-     */
-    void setBackendFontFactory(BackendFontFactory factory);
+  /**
+   * Setter for the back-end font factory.
+   *
+   * @param factory the back-end font factory to set
+   */
+  void setBackendFontFactory( BackendFontFactory factory );
 }

@@ -34,198 +34,191 @@ import org.extex.scanner.type.tokens.Tokens;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TokenStreamBaseImpl implements TokenStream {
 
-    /**
-     * The field {@code fileStream} contains the indicator whether or not this
-     * TokenStream is attached to a file.
-     */
-    private final boolean fileStream;
+  /**
+   * The field {@code fileStream} contains the indicator whether or not this
+   * TokenStream is attached to a file.
+   */
+  private final boolean fileStream;
 
-    /**
-     * The field {@code skipSpaces} contains the indicator that spaces should
-     * be ignored before the next token is delivered.
-     */
-    private boolean skipSpaces;
+  /**
+   * The field {@code skipSpaces} contains the indicator that spaces should
+   * be ignored before the next token is delivered.
+   */
+  private boolean skipSpaces;
 
-    /**
-     * The field {@code stack} contains the Token stack for the push-back
-     * operation.
-     */
-    private Tokens stack = new Tokens();
+  /**
+   * The field {@code stack} contains the Token stack for the push-back
+   * operation.
+   */
+  private Tokens stack = new Tokens();
 
-    /**
-     * Creates a new object.
-     *
-     * @param isFile indicator whether or not the token stream is assigned to a
-     *        file
-     */
-    public TokenStreamBaseImpl(boolean isFile) {
+  /**
+   * Creates a new object.
+   *
+   * @param isFile indicator whether or not the token stream is assigned to a
+   *               file
+   */
+  public TokenStreamBaseImpl( boolean isFile ) {
 
-        this.fileStream = isFile;
+    this.fileStream = isFile;
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param isFile indicator whether or not the token stream is assigned to a
+   *               file
+   * @param tokens the tokens to push to the stream initially
+   */
+  public TokenStreamBaseImpl( boolean isFile, Tokens tokens ) {
+
+    this.fileStream = isFile;
+
+    for( int i = tokens.length() - 1; i >= 0; i-- ) {
+      stack.add( tokens.get( i ) );
     }
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param isFile indicator whether or not the token stream is assigned to a
-     *        file
-     * @param tokens the tokens to push to the stream initially
-     */
-    public TokenStreamBaseImpl(boolean isFile, Tokens tokens) {
+  /**
+   * Close this stream if it is a file stream.
+   *
+   * @return {@code true} if the closing was successful
+   * @see org.extex.scanner.api.TokenStream#closeFileStream()
+   */
+  @Override
+  public boolean closeFileStream() {
 
-        this.fileStream = isFile;
+    stack = new Tokens();
+    return fileStream;
+  }
 
-        for (int i = tokens.length() - 1; i >= 0; i--) {
-            stack.add(tokens.get(i));
-        }
+  /**
+   * Get the next token from the token stream. If tokens are on the push-back
+   * stack then those are delivered otherwise new tokens might be extracted
+   * utilizing the token factory and the tokenizer.
+   *
+   * @param factory   the token factory
+   * @param tokenizer the tokenizer
+   * @return the next Token or {@code null} if no more tokens are
+   * available
+   * @throws ScannerException in case of an error
+   * @see org.extex.scanner.api.TokenStream#get(org.extex.scanner.type.token.TokenFactory,
+   * org.extex.scanner.api.Tokenizer)
+   */
+  @Override
+  public Token get( TokenFactory factory, Tokenizer tokenizer )
+      throws ScannerException {
+
+    if( !skipSpaces ) {
+      return (stack.length() > 0 ?
+          stack.removeLast()
+          :
+          getNext( factory, tokenizer ));
     }
+    Token t;
 
-    /**
-     * Close this stream if it is a file stream.
-     *
-     * @return {@code true} if the closing was successful
-     *
-     * @see org.extex.scanner.api.TokenStream#closeFileStream()
-     */
-    @Override
-    public boolean closeFileStream() {
-
-        stack = new Tokens();
-        return fileStream;
-    }
-
-    /**
-     * Get the next token from the token stream. If tokens are on the push-back
-     * stack then those are delivered otherwise new tokens might be extracted
-     * utilizing the token factory and the tokenizer.
-     *
-     * @param factory the token factory
-     * @param tokenizer the tokenizer
-     *
-     * @return the next Token or {@code null} if no more tokens are
-     *         available
-     *
-     * @throws ScannerException in case of an error
-     *
-     * @see org.extex.scanner.api.TokenStream#get(org.extex.scanner.type.token.TokenFactory,
-     *      org.extex.scanner.api.Tokenizer)
-     */
-    @Override
-    public Token get(TokenFactory factory, Tokenizer tokenizer)
-            throws ScannerException {
-
-        if (!skipSpaces) {
-            return (stack.length() > 0 ?
-                    stack.removeLast()
-                    :
-                    getNext(factory, tokenizer));
-        }
-        Token t;
-
-        for (t = stack.removeLast(); t != null; t = stack.removeLast()) {
-            if (!(t instanceof SpaceToken)) {
-                return t;
-            }
-        }
-
-        do {
-            t = getNext(factory, tokenizer);
-        } while (t instanceof SpaceToken);
-
+    for( t = stack.removeLast(); t != null; t = stack.removeLast() ) {
+      if( !(t instanceof SpaceToken) ) {
         return t;
+      }
     }
 
-    /**
-     * Getter for the locator. The locator describes the place the tokens have
-     * been read from in terms of the user. This information is meant for the
-     * end user to track down problems.
-     *
-     * @return the locator
-     *
-     * @see org.extex.scanner.api.TokenStream#getLocator()
-     */
-    @Override
-    public Locator getLocator() {
+    do {
+      t = getNext( factory, tokenizer );
+    } while( t instanceof SpaceToken );
 
-        return new Locator(null, 0, null, 0);
+    return t;
+  }
+
+  /**
+   * Getter for the locator. The locator describes the place the tokens have
+   * been read from in terms of the user. This information is meant for the
+   * end user to track down problems.
+   *
+   * @return the locator
+   * @see org.extex.scanner.api.TokenStream#getLocator()
+   */
+  @Override
+  public Locator getLocator() {
+
+    return new Locator( null, 0, null, 0 );
+  }
+
+  /**
+   * Get the next token when the stack is empty. This method is meant to be
+   * overloaded by derived classes.
+   *
+   * @param factory   the factory for new tokens
+   * @param tokenizer the classifies for characters
+   * @return the next Token or {@code null}
+   * @throws ScannerException in case of an error
+   */
+  protected Token getNext( TokenFactory factory, Tokenizer tokenizer )
+      throws ScannerException {
+
+    return null;
+  }
+
+  /**
+   * Test for end of file.
+   *
+   * @return {@code true} iff the stream is at its end
+   * @throws ScannerException in case of an error
+   */
+  @Override
+  public boolean isEof() throws ScannerException {
+    return stack.length() == 0;
+  }
+
+  /**
+   * Check to see if the token stream is currently at the end of line.
+   *
+   * @return {@code true} if the stream is at end of line
+   */
+  @Override
+  public boolean isEol() {
+    return stack.length() == 0;
+  }
+
+  /**
+   * Check whether the current stream is associated with a file to read from.
+   *
+   * @return {@code true} if the stream is a file stream
+   */
+  @Override
+  public boolean isFileStream() {
+
+    return fileStream;
+  }
+
+  /**
+   * Push back a token into the stream. If the token is {@code null} then
+   * nothing happens: a {@code null} token is not pushed!
+   * <p>
+   * Note that it is up to the implementation to accept tokens not produced
+   * with the token factory for push back. In general the behavior in such a
+   * case is not defined and should be avoided.
+   * </p>
+   *
+   * @param token the token to push back
+   */
+  @Override
+  public void put( Token token ) {
+
+    if( token != null ) {
+      stack.add( token );
     }
+  }
 
-    /**
-     * Get the next token when the stack is empty. This method is meant to be
-     * overloaded by derived classes.
-     *
-     * @param factory the factory for new tokens
-     * @param tokenizer the classifies for characters
-     *
-     * @return the next Token or {@code null}
-     * @throws ScannerException in case of an error
-     */
-    protected Token getNext(TokenFactory factory, Tokenizer tokenizer)
-            throws ScannerException {
+  /**
+   * Enables the skip spaces setting.
+   */
+  public void skipSpaces() {
 
-        return null;
-    }
-
-    /**
-     * Test for end of file.
-     *
-     * @return {@code true} iff the stream is at its end
-     *
-     * @throws ScannerException in case of an error
-     */
-    @Override
-    public boolean isEof() throws ScannerException {
-        return stack.length() == 0;
-    }
-
-    /**
-     * Check to see if the token stream is currently at the end of line.
-     *
-     * @return {@code true} if the stream is at end of line
-     */
-    @Override
-    public boolean isEol() {
-        return stack.length() == 0;
-    }
-
-    /**
-     * Check whether the current stream is associated with a file to read from.
-     *
-     * @return {@code true} if the stream is a file stream
-     */
-    @Override
-    public boolean isFileStream() {
-
-        return fileStream;
-    }
-
-    /**
-     * Push back a token into the stream. If the token is {@code null} then
-     * nothing happens: a {@code null} token is not pushed!
-     * <p>
-     * Note that it is up to the implementation to accept tokens not produced
-     * with the token factory for push back. In general the behavior in such a
-     * case is not defined and should be avoided.
-     * </p>
-     *
-     * @param token the token to push back
-     */
-    @Override
-    public void put(Token token) {
-
-        if (token != null) {
-            stack.add(token);
-        }
-    }
-
-    /**
-     * Enables the skip spaces setting.
-     */
-    public void skipSpaces() {
-
-        this.skipSpaces = true;
-    }
+    this.skipSpaces = true;
+  }
 
 }

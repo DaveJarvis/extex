@@ -25,90 +25,89 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \ifdefined}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IfdefinedTest extends ConditionalTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IfdefinedTest.class);
-    }
+    (new JUnitCore()).run( IfdefinedTest.class );
+  }
 
 
-    public IfdefinedTest() {
+  public IfdefinedTest() {
 
-        super("ifdefined", "\\relax");
-        setConfig("etex-test");
-    }
+    super( "ifdefined", "\\relax" );
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * <testcase primitive="\ifdefined"> Test case checking that
-     * {@code \ifdefined} on \relax expands the then branch.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\ifdefined"> Test case checking that
+   * {@code \ifdefined} on \relax expands the then branch.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifdefined \\relax a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifdefined \\relax a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifdefined"> Test case checking that
-     * {@code \ifdefined} on \par expands the then branch.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\ifdefined"> Test case checking that
+   * {@code \ifdefined} on \par expands the then branch.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifdefined \\par a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifdefined \\par a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifdefined"> Test case checking that
-     * {@code \ifdefined} on an undefined control sequence expands the else
-     * branch.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\ifdefined"> Test case checking that
+   * {@code \ifdefined} on an undefined control sequence expands the else
+   * branch.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifdefined \\x a\\else b\\fi \\end",
-            // --- output channel ---
-            "b" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifdefined \\x a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "b" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifdefined"> Test case checking that
-     * {@code \ifdefined} on a defined macro expands the then branch.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\ifdefined"> Test case checking that
+   * {@code \ifdefined} on a defined macro expands the then branch.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\def\\x{}\\ifdefined \\x a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+        DEFINE_BRACES + "\\def\\x{}\\ifdefined \\x a\\else b\\fi \\end",
+        // --- output channel ---
+        "a" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

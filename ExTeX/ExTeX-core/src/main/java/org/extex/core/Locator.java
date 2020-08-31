@@ -24,185 +24,183 @@ import java.io.Serializable;
 /**
  * The locator is the container for the information about the name of a resource
  * and the current line number.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Locator implements Serializable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * The field {@code cause} contains the next in the sequence of chained
-     * locators.
-     */
-    private Locator cause = null;
+  /**
+   * The field {@code cause} contains the next in the sequence of chained
+   * locators.
+   */
+  private Locator cause = null;
 
-    /**
-     * The field {@code line} contains the current line of input.
-     */
-    private final String line;
+  /**
+   * The field {@code line} contains the current line of input.
+   */
+  private final String line;
 
-    /**
-     * The field {@code lineNumber} contains the line number.
-     */
-    private final int lineNumber;
+  /**
+   * The field {@code lineNumber} contains the line number.
+   */
+  private final int lineNumber;
 
-    /**
-     * The field {@code linePointer} contains the position in the line the
-     * locator refers to.
-     */
-    private final int linePointer;
+  /**
+   * The field {@code linePointer} contains the position in the line the
+   * locator refers to.
+   */
+  private final int linePointer;
 
-    /**
-     * The field {@code resource} contains the name of the resource.
-     */
-    private final String resource;
+  /**
+   * The field {@code resource} contains the name of the resource.
+   */
+  private final String resource;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the name of the resource; e.g. the file name
-     * @param lineNo the line number
-     * @param currentLine the current line of input
-     * @param currentLinePointer the current position in the line of input
-     */
-    public Locator(String resource, int lineNo, String currentLine,
-            int currentLinePointer) {
+  /**
+   * Creates a new object.
+   *
+   * @param resource           the name of the resource; e.g. the file name
+   * @param lineNo             the line number
+   * @param currentLine        the current line of input
+   * @param currentLinePointer the current position in the line of input
+   */
+  public Locator( String resource, int lineNo, String currentLine,
+                  int currentLinePointer ) {
 
-        this.resource = resource;
-        this.lineNumber = lineNo;
-        this.line = currentLine;
-        this.linePointer = currentLinePointer;
-    }
+    this.resource = resource;
+    this.lineNumber = lineNo;
+    this.line = currentLine;
+    this.linePointer = currentLinePointer;
+  }
 
-    /**
-     * Getter for cause.
-     * 
-     * @return the cause
-     */
-    public final Locator getCause() {
+  /**
+   * Getter for cause.
+   *
+   * @return the cause
+   */
+  public final Locator getCause() {
 
-        return cause;
-    }
+    return cause;
+  }
 
-    /**
-     * Getter for the line.
-     * 
-     * @return the line.
-     */
-    public String getLine() {
+  /**
+   * Getter for the line.
+   *
+   * @return the line.
+   */
+  public String getLine() {
 
-        return line;
-    }
+    return line;
+  }
 
-    /**
-     * Getter for the line number. If the line number is negative then it has
-     * the meaning of an undefined value.
-     * 
-     * @return the line number
-     */
-    public int getLineNumber() {
+  /**
+   * Getter for the line number. If the line number is negative then it has
+   * the meaning of an undefined value.
+   *
+   * @return the line number
+   */
+  public int getLineNumber() {
 
-        return lineNumber;
-    }
+    return lineNumber;
+  }
 
-    /**
-     * Getter for the line pointer. The line pointer is the position within the
-     * line at which something happened.
-     * 
-     * @return the line pointer.
-     */
-    public int getLinePointer() {
+  /**
+   * Getter for the line pointer. The line pointer is the position within the
+   * line at which something happened.
+   *
+   * @return the line pointer.
+   */
+  public int getLinePointer() {
 
-        return linePointer;
-    }
+    return linePointer;
+  }
 
-    /**
-     * Getter for the resource name. The resource name can be unset. In this
-     * case {@code null} is returned.
-     * 
-     * @return the resource name or {@code null}
-     */
-    public String getResourceName() {
+  /**
+   * Getter for the resource name. The resource name can be unset. In this
+   * case {@code null} is returned.
+   *
+   * @return the resource name or {@code null}
+   */
+  public String getResourceName() {
 
-        return resource;
-    }
+    return resource;
+  }
 
-    /**
-     * Setter for cause.
-     * 
-     * @param cause the cause to set
-     */
-    public final void setCause(Locator cause) {
+  /**
+   * Setter for cause.
+   *
+   * @param cause the cause to set
+   */
+  public final void setCause( Locator cause ) {
 
-        this.cause = cause;
-    }
+    this.cause = cause;
+  }
 
-    /**
-     * Return a printable representation of this instance including the cause.
-     * The result contains the file name and the line number separated by colon.
-     * This is the Unix style of presenting a file position. If the file name is
-     * null then it is treated as if it where the empty string.
-     * 
-     * @param causeLimit the limit for the number of causes to be shown. If
-     *        negative then the optional, preceding continuation indicator (..)
-     *        is suppressed
-     * 
-     * @return the printable representation
-     * 
-     * @see #toString()
-     */
-    public String toString(int causeLimit) {
+  /**
+   * Return a printable representation of this instance including the cause.
+   * The result contains the file name and the line number separated by colon.
+   * This is the Unix style of presenting a file position. If the file name is
+   * null then it is treated as if it where the empty string.
+   *
+   * @param causeLimit the limit for the number of causes to be shown. If
+   *                   negative then the optional, preceding continuation
+   *                   indicator (..)
+   *                   is suppressed
+   * @return the printable representation
+   * @see #toString()
+   */
+  public String toString( int causeLimit ) {
 
-        StringBuilder sb = new StringBuilder();
-        if (causeLimit >= 0) {
-            Locator c = cause;
-            for (int i = 0; c != null && i < causeLimit; i++) {
-                if (c.resource != null) {
-                    sb.insert(0, c.resource);
-                }
-                sb.append(';');
-                if (c.lineNumber >= 0) {
-                    sb.append(c.lineNumber);
-                }
-                sb.append(';');
-                sb.insert(0, "..");
-                c = c.cause;
-            }
-            if (c == null) {
-                sb.delete(0, 2);
-            }
+    StringBuilder sb = new StringBuilder();
+    if( causeLimit >= 0 ) {
+      Locator c = cause;
+      for( int i = 0; c != null && i < causeLimit; i++ ) {
+        if( c.resource != null ) {
+          sb.insert( 0, c.resource );
         }
-        if (resource != null) {
-            sb.append(resource);
+        sb.append( ';' );
+        if( c.lineNumber >= 0 ) {
+          sb.append( c.lineNumber );
         }
-        sb.append(':');
-        if (lineNumber >= 0) {
-            sb.append(lineNumber);
-        }
-        sb.append(':');
-        return sb.toString();
+        sb.append( ';' );
+        sb.insert( 0, ".." );
+        c = c.cause;
+      }
+      if( c == null ) {
+        sb.delete( 0, 2 );
+      }
     }
-
-    /**
-     * Return a printable representation of this instance. The result contains
-     * the file name and the line number separated by colon. This is the Unix
-     * style of presenting a file position. If the file name is null then it is
-     * treated as if it where the empty string.
-     * 
-     * @return the printable representation
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        return toString(-1);
+    if( resource != null ) {
+      sb.append( resource );
     }
+    sb.append( ':' );
+    if( lineNumber >= 0 ) {
+      sb.append( lineNumber );
+    }
+    sb.append( ':' );
+    return sb.toString();
+  }
+
+  /**
+   * Return a printable representation of this instance. The result contains
+   * the file name and the line number separated by colon. This is the Unix
+   * style of presenting a file position. If the file name is null then it is
+   * treated as if it where the empty string.
+   *
+   * @return the printable representation
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+
+    return toString( -1 );
+  }
 
 }

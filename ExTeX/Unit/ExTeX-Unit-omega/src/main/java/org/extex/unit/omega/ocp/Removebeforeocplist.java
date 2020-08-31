@@ -34,69 +34,68 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
 /**
  * This class provides an implementation for the primitive
  * {@code \removebeforeocplist}.
- * 
+ *
  * <p>The Primitive {@code \removebeforeocplist}</p>
  * <p>
  * The primitive {@code \removebeforeocplist} can be used to build up an
  * &Omega;PC list. It is valid in the context of the primitive {@code \ocplist}
  * only.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;removebeforeocplist&rang;
  *      &rarr; {@code \removebeforeocplist} &lang;<i>float</i>&rang; &lang;<i>ocp register</i>&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  * \removebeforeocplist  1.5 \myopc </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Removebeforeocplist extends AbstractOcplist {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Removebeforeocplist(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Removebeforeocplist( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public OcpList convertOcplist( Context context, TokenSource source,
+                                 Typesetter typesetter )
+      throws HelpingException {
+
+    long scaled;
+    try {
+      scaled = ScaledNumberParser.parse( context, source, typesetter );
+    } catch( TypesetterException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public OcpList convertOcplist(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
-
-        long scaled;
-        try {
-            scaled = ScaledNumberParser.parse(context, source, typesetter);
-        } catch (TypesetterException e) {
-            throw new NoHelpException(e);
-        }
-        OcpProgram prog =
-                OcpUtil.scanOcpCode(context, source, typesetter,
-                    toText(context));
-        OcpList list = scanOcplist(context, source, typesetter);
-        list.removeBefore(scaled, prog);
-        return list;
-    }
+    OcpProgram prog =
+        OcpUtil.scanOcpCode( context, source, typesetter,
+                             toText( context ) );
+    OcpList list = scanOcplist( context, source, typesetter );
+    list.removeBefore( scaled, prog );
+    return list;
+  }
 
 }

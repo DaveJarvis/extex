@@ -32,7 +32,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \ }.
- * 
+ *
  * <p>The Primitive {@code \ }</p>
  * <p>
  * This primitive inserts an explicit space into the current list. This has an
@@ -41,63 +41,62 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * In contrast to a normal space it is not collapsed with adjacent spaces of
- * any kind. This means that several invocation in row add up extra space. 
+ * any kind. This means that several invocation in row add up extra space.
  * This is not recommended. See the macro {@code \hskip} instead.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;space primitive&rang;
  *        &rarr; {@code \ }  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    123\ 456  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    123\ \  456  </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Space extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The constant {@code SPACEFACTOR} contains the spacefactor for the
-     * space to add.
-     */
-    private static final FixedCount SPACEFACTOR = new CountConstant(1000);
+  /**
+   * The constant {@code SPACEFACTOR} contains the spacefactor for the
+   * space to add.
+   */
+  private static final FixedCount SPACEFACTOR = new CountConstant( 1000 );
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Space(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Space( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        typesetter.addSpace(context.getTypesettingContext(), SPACEFACTOR);
-    }
+    typesetter.addSpace( context.getTypesettingContext(), SPACEFACTOR );
+  }
 
 }

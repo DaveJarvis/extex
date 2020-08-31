@@ -29,88 +29,82 @@ import org.extex.scanner.type.Catcode;
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory} to get an
  * instance of this class.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SpaceToken extends AbstractToken implements Token {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2011L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2011L;
 
-    /**
-     * The Constant {@code SPACE} contains the space character.
-     */
-    private static final UnicodeChar SPACE = UnicodeChar.get(' ');
+  /**
+   * The Constant {@code SPACE} contains the space character.
+   */
+  private static final UnicodeChar SPACE = UnicodeChar.get( ' ' );
 
-    /**
-     * Creates a new object.
-     * 
-     * @param value the actual value
-     * 
-     * @see "The TeXbook [Chapter 8; p.47]"
-     */
-    protected SpaceToken(String value) {
+  /**
+   * Creates a new object.
+   *
+   * @param value the actual value
+   * @see "The TeXbook [Chapter 8; p.47]"
+   */
+  protected SpaceToken( String value ) {
 
-        super(SPACE);
-    }
+    super( SPACE );
+  }
 
-    /**
-     * Getter for the catcode.
-     * 
-     * @return the catcode
-     * 
-     * @see org.extex.scanner.type.token.Token#getCatcode()
-     */
-    @Override
-    public Catcode getCatcode() {
+  /**
+   * Getter for the catcode.
+   *
+   * @return the catcode
+   * @see org.extex.scanner.type.token.Token#getCatcode()
+   */
+  @Override
+  public Catcode getCatcode() {
 
-        return Catcode.SPACE;
-    }
+    return Catcode.SPACE;
+  }
 
-    /**
-     * Get the string representation of this object for debugging purposes.
-     * 
-     * @return the string representation
-*/
-    @Override
-    public String toString() {
+  /**
+   * Get the string representation of this object for debugging purposes.
+   *
+   * @return the string representation
+   */
+  @Override
+  public String toString() {
 
-        return getLocalizer().format("SpaceToken.Text", super.toString());
-    }
+    return getLocalizer().format( "SpaceToken.Text", super.toString() );
+  }
 
-    /**
-     * Print the token into a StringBuilder.
-     * 
-     * @param sb the target string builder
-     * 
-     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
-     */
-    @Override
-    public void toString(StringBuilder sb) {
+  /**
+   * Print the token into a StringBuilder.
+   *
+   * @param sb the target string builder
+   * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
+   */
+  @Override
+  public void toString( StringBuilder sb ) {
 
-        sb.append(getLocalizer().format("SpaceToken.Text", super.toString()));
-    }
+    sb.append( getLocalizer().format( "SpaceToken.Text", super.toString() ) );
+  }
 
-    /**
-     * Invoke the appropriate visit method for the current class.
-     * 
-     * @param visitor the calling visitor
-     * @param arg1 the first argument to pass
-     * 
-     * @return the result object
-     * 
-     * @throws Exception in case of an error
-     * 
-     * @see org.extex.scanner.type.token.Token#visit(org.extex.scanner.type.token.TokenVisitor,
-     *      java.lang.Object)
-     */
-    @Override
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(TokenVisitor visitor, Object arg1) throws Exception {
+  /**
+   * Invoke the appropriate visit method for the current class.
+   *
+   * @param visitor the calling visitor
+   * @param arg1    the first argument to pass
+   * @return the result object
+   * @throws Exception in case of an error
+   * @see org.extex.scanner.type.token.Token#visit(org.extex.scanner.type.token.TokenVisitor,
+   * java.lang.Object)
+   */
+  @Override
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public Object visit( TokenVisitor visitor, Object arg1 ) throws Exception {
 
-        return visitor.visitSpace(this, arg1);
-    }
+    return visitor.visitSpace( this, arg1 );
+  }
 
 }

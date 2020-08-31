@@ -24,36 +24,36 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \sfcode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SfcodeTest extends AbstractCharMapTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SfcodeTest.class);
-    }
+    (new JUnitCore()).run( SfcodeTest.class );
+  }
 
 
-    public SfcodeTest() {
+  public SfcodeTest() {
 
-        super("sfcode", "65", "999", "32767");
-    }
+    super( "sfcode", "65", "999", "32767" );
+  }
 
-    /**
-     * Get he message for a bad character code.
-     * 
-     * @return the message
-     */
-    @Override
-    protected String badCodeMessage() {
+  /**
+   * Get he message for a bad character code.
+   *
+   * @return the message
+   */
+  @Override
+  protected String badCodeMessage() {
 
-        return "Invalid code (-123), should be in the range 0..32767";
-    }
+    return "Invalid code (-123), should be in the range 0..32767";
+  }
 
 }

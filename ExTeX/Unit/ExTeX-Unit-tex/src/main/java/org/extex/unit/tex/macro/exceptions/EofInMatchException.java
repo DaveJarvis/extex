@@ -25,26 +25,26 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception signals that the end of file has been encountered in the
  * definition of a macro.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EofInMatchException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param primitive the mane of the primitive
-     */
-    public EofInMatchException(String primitive) {
+  /**
+   * Creates a new object.
+   *
+   * @param primitive the mane of the primitive
+   */
+  public EofInMatchException( String primitive ) {
 
-        super(LocalizerFactory.getLocalizer(EofInMatchException.class),
-            "TTP.EofInMatch", primitive);
-    }
+    super( LocalizerFactory.getLocalizer( EofInMatchException.class ),
+           "TTP.EofInMatch", primitive );
+  }
 
 }

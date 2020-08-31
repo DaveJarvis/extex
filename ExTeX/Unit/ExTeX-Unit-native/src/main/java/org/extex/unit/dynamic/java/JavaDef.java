@@ -38,23 +38,23 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * This primitive provides a binding of a macro or active character to Java
  * code. This code implements the primitive {@code \javadef}.
- * 
+ *
  * <p>The Primitive {@code \javadef}</p>
  * <p>
  * The primitive {@code \javadef} attaches a definition to a macro or active
  * character. This is done in a similar way as {@code \def} works. The
  * difference is that the definition has to be provided in form of a Java class.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The general form of this primitive is
- * 
+ * The general form of this primitive is
+ *
  * <pre class="syntax">
  *   &lang;javadef&rang;
  *       &rarr; {@code \javadef} {@linkplain
  *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *       &lang;control sequence&rang;} <i>&lang;tokens&rang;</i> </pre>
- * 
+ *
  * <p>
  * The <i>&lang;control sequence&rang;</i> is any macro or active character. If
  * this token is missing or of the wrong type then an error is raised.
@@ -72,7 +72,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * <pre class="TeXSample">
  *   \javadef\abc{org.extex.interpreter.primitive.Relax} </pre>
- * 
+ *
  * <p>
  * The primitive {@code \javadef} is local to the enclosing group as is
  * {@code \def}. And similar to {@code \def} the modifier {@code \global} can
@@ -83,7 +83,7 @@ import java.lang.reflect.InvocationTargetException;
  * <pre class="TeXSample">
  *   \global\javadef\abc{org.extex.interpreter.primitive.Relax}
  * </pre>
- * 
+ *
  * <p>
  * The primitive {@code \javadef} also respects the count register
  * {@code \globaldefs} to enable general global assignment.
@@ -92,9 +92,9 @@ import java.lang.reflect.InvocationTargetException;
  * Since the primitive is classified as assignment the value of
  * {@code \afterassignment} is applied.
  * </p>
- * 
+ *
  * <p>Java Implementation</p>
-
+ *
  * <p>
  * Now we come to the Java side of the definition. The class given as
  * <i>&lang;tokens&rang;</i> must implement the interface
@@ -135,88 +135,90 @@ import java.lang.reflect.InvocationTargetException;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class JavaDef extends AbstractAssignment implements Definer {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object. This method is needed for the nativedef wrapper.
-     */
-    public JavaDef() {
+  /**
+   * Creates a new object. This method is needed for the nativedef wrapper.
+   */
+  public JavaDef() {
 
-        super(null);
+    super( null );
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public JavaDef( CodeToken token ) {
+
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    define( prefix, context, source, typesetter );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void define( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    CodeToken cs = source.getControlSequence( context, typesetter );
+    String classname;
+    try {
+      classname = source.getTokens( context, source, typesetter ).toText();
+    } catch( EofException e ) {
+      throw new EofInToksException( toText( context ) );
+    }
+    if( "".equals( classname ) || classname.matches( ".*[^a-zA-Z0-9_.$].*" ) ) {
+      throw new HelpingException( getLocalizer(), "InvalidClassName",
+                                  classname );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public JavaDef(CodeToken token) {
+    try {
+      Code code = (Code) (Class.forName( classname ).getConstructor(
+          new Class[]{CodeToken.class} ).newInstance( cs ));
+      context.setCode( cs, code, prefix.clearGlobal() );
 
-        super(token);
+    } catch( IllegalArgumentException e ) {
+      throw new NoHelpException( e );
+    } catch( SecurityException e ) {
+      throw new NoHelpException( e );
+    } catch( InstantiationException e ) {
+      throw new NoHelpException( e );
+    } catch( IllegalAccessException e ) {
+      throw new NoHelpException( e );
+    } catch( InvocationTargetException e ) {
+      throw new NoHelpException( e );
+    } catch( NoSuchMethodException e ) {
+      throw new HelpingException( getLocalizer(), "MethodNotFound",
+                                  e.getMessage() );
+    } catch( ClassNotFoundException e ) {
+      throw new HelpingException( getLocalizer(), "ClassNotFound",
+                                  classname );
+    } catch( ClassCastException e ) {
+      throw new HelpingException( getLocalizer(), "ClassCast", classname,
+                                  Code.class.getName() );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        define(prefix, context, source, typesetter);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void define(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        String classname;
-        try {
-            classname = source.getTokens(context, source, typesetter).toText();
-        } catch (EofException e) {
-            throw new EofInToksException(toText(context));
-        }
-        if ("".equals(classname) || classname.matches(".*[^a-zA-Z0-9_.$].*")) {
-            throw new HelpingException(getLocalizer(), "InvalidClassName",
-                classname);
-        }
-
-        try {
-            Code code = (Code) (Class.forName(classname).getConstructor(
-                new Class[]{CodeToken.class}).newInstance(cs));
-            context.setCode(cs, code, prefix.clearGlobal());
-
-        } catch (IllegalArgumentException e) {
-            throw new NoHelpException(e);
-        } catch (SecurityException e) {
-            throw new NoHelpException(e);
-        } catch (InstantiationException e) {
-            throw new NoHelpException(e);
-        } catch (IllegalAccessException e) {
-            throw new NoHelpException(e);
-        } catch (InvocationTargetException e) {
-            throw new NoHelpException(e);
-        } catch (NoSuchMethodException e) {
-            throw new HelpingException(getLocalizer(), "MethodNotFound",
-                e.getMessage());
-        } catch (ClassNotFoundException e) {
-            throw new HelpingException(getLocalizer(), "ClassNotFound",
-                classname);
-        } catch (ClassCastException e) {
-            throw new HelpingException(getLocalizer(), "ClassCast", classname,
-                Code.class.getName());
-        }
-    }
+  }
 
 }

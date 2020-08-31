@@ -36,116 +36,109 @@ import org.extex.typesetter.tc.font.Font;
  * options.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface TypesetterOptions {
 
-    /**
-     * Getter for a count register.
-     *
-     * @param name the name of the register
-     *
-     * @return the content of the count register
-     */
-    FixedCount getCountOption(String name);
+  /**
+   * Getter for a count register.
+   *
+   * @param name the name of the register
+   * @return the content of the count register
+   */
+  FixedCount getCountOption( String name );
 
-    /**
-     * Getter for a dimen register.
-     *
-     * @param name the name of the register
-     *
-     * @return the content of the dimen register
-     */
-    FixedDimen getDimenOption(String name);
+  /**
+   * Getter for a dimen register.
+   *
+   * @param name the name of the register
+   * @return the content of the dimen register
+   */
+  FixedDimen getDimenOption( String name );
 
-    /**
-     * Getter for a current font register.
-     *
-     * @param name the name or the number of the register
-     *
-     * @return the named font register or {@code null} if none is set
-     */
-    Font getFont(String name);
+  /**
+   * Getter for a current font register.
+   *
+   * @param name the name or the number of the register
+   * @return the named font register or {@code null} if none is set
+   */
+  Font getFont( String name );
 
-    /**
-     * Getter for a glue register.
-     *
-     * @param name the name of the register
-     *
-     * @return the content of the glue register
-     */
-    FixedGlue getGlueOption(String name);
+  /**
+   * Getter for a glue register.
+   *
+   * @param name the name of the register
+   * @return the content of the glue register
+   */
+  FixedGlue getGlueOption( String name );
 
-    /**
-     * Getter for a muskip register.
-     *
-     * @param name the name of the register
-     *
-     * @return the muskip register value
-     */
-    Muskip getMuskip(String name);
+  /**
+   * Getter for a muskip register.
+   *
+   * @param name the name of the register
+   * @return the muskip register value
+   */
+  Muskip getMuskip( String name );
 
-    /**
-     * Getter for the lccode mapping of upper case characters to their
-     * lower case equivalent.
-     *
-     * @param uc the upper case character
-     *
-     * @return the lower case equivalent or null if none exists
-     */
-    UnicodeChar getLccode(UnicodeChar uc);
+  /**
+   * Getter for the lccode mapping of upper case characters to their
+   * lower case equivalent.
+   *
+   * @param uc the upper case character
+   * @return the lower case equivalent or null if none exists
+   */
+  UnicodeChar getLccode( UnicodeChar uc );
 
-    /**
-     * Getter for the current name space.
-     *
-     * @return the current name space
-     */
-    String getNamespace();
+  /**
+   * Getter for the current name space.
+   *
+   * @return the current name space
+   */
+  String getNamespace();
 
-    /**
-     * Getter for the paragraph shape.
-     *
-     * @return the paragraph shape or {@code null} if no special shape
-     *   is present
-     */
-    ParagraphShape getParshape();
+  /**
+   * Getter for the paragraph shape.
+   *
+   * @return the paragraph shape or {@code null} if no special shape
+   * is present
+   */
+  ParagraphShape getParshape();
 
-    /**
-     * Getter for the token factory. The token factory can be used to get new
-     * tokens of some kind.
-     *
-     * @return the token factory
-     */
-    TokenFactory getTokenFactory();
+  /**
+   * Getter for the token factory. The token factory can be used to get new
+   * tokens of some kind.
+   *
+   * @return the token factory
+   */
+  TokenFactory getTokenFactory();
 
-    /**
-     * Getter for the typesetting context.
-     *
-     * @return the typesetting context
-     */
-    TypesettingContext getTypesettingContext();
+  /**
+   * Getter for the typesetting context.
+   *
+   * @return the typesetting context
+   */
+  TypesettingContext getTypesettingContext();
 
-    /**
-     * Getter for the typesetting context factory.
-     *
-     * @return the typesetting context factory
-     */
-    TypesettingContextFactory getTypesettingContextFactory();
+  /**
+   * Getter for the typesetting context factory.
+   *
+   * @return the typesetting context factory
+   */
+  TypesettingContextFactory getTypesettingContextFactory();
 
-    /**
-     * Setter for the paragraph shape.
-     *
-     * @param shape the new paragraph shape
-     */
-    void setParshape(ParagraphShape shape);
+  /**
+   * Setter for the paragraph shape.
+   *
+   * @param shape the new paragraph shape
+   */
+  void setParshape( ParagraphShape shape );
 
-    /**
-     * Setter for a count register.
-     *
-     * @param name the name of the register
-     * @param value the value
-     *
-     * @throws GeneralException in case of an error
-     */
-    void setCountOption(String name, long value) throws GeneralException;
+  /**
+   * Setter for a count register.
+   *
+   * @param name  the name of the register
+   * @param value the value
+   * @throws GeneralException in case of an error
+   */
+  void setCountOption( String name, long value ) throws GeneralException;
 
 }

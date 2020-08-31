@@ -19,46 +19,47 @@
 
 package org.extex.exindex.core.type.raw;
 
-import java.util.List;
-import java.util.logging.Logger;
-
 import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * This interface describes an open location specification.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OpenLocationReference extends LocationReference {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locref the location
-     * @param layer the layer
-     */
-    public OpenLocationReference(String layer, String... locref) {
+  /**
+   * Creates a new object.
+   *
+   * @param locref the location
+   * @param layer  the layer
+   */
+  public OpenLocationReference( String layer, String... locref ) {
 
-        super(layer, locref);
-    }
+    super( layer, locref );
+  }
 
-    /**
-*      java.util.logging.Logger,
-     *      org.extex.exindex.core.type.raw.RawIndexentry,
-     *      StructuredIndex,
-     *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
-     *      org.extex.exindex.core.type.attribute.AttributesContainer)
-     */
-    @Override
-    public boolean check(Logger logger, RawIndexentry entry, StructuredIndex index,
-            LocationClassContainer crossrefClass,
-            List<OpenLocationReference> openPages,
-            AttributesContainer attributes) {
+  /**
+   * java.util.logging.Logger,
+   * org.extex.exindex.core.type.raw.RawIndexentry,
+   * StructuredIndex,
+   * org.extex.exindex.core.type.LocationClassContainer, java.util.List,
+   * org.extex.exindex.core.type.attribute.AttributesContainer)
+   */
+  @Override
+  public boolean check( Logger logger, RawIndexentry entry,
+                        StructuredIndex index,
+                        LocationClassContainer crossrefClass,
+                        List<OpenLocationReference> openPages,
+                        AttributesContainer attributes ) {
 
-        openPages.add(this);
-        return super.check(logger, entry, index, crossrefClass, openPages,
-            attributes);
-    }
+    openPages.add( this );
+    return super.check( logger, entry, index, crossrefClass, openPages,
+                        attributes );
+  }
 }

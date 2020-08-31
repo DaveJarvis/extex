@@ -30,100 +30,92 @@ import org.extex.color.model.RgbColor;
  * dummy which forces that colors are always given in the target color space.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoColorConverter implements ColorConverter {
 
 
-    public NoColorConverter() {
+  public NoColorConverter() {
+
+  }
+
+  /**
+   * Convert an arbitrary color to the CMYK model.
+   * If an conversion is not supported then {@code null} is returned.
+   *
+   * @param color the color to convert
+   * @return the corresponding color in the CMYK model or {@code null}
+   * if a conversion is not supported.
+   * @see org.extex.color.ColorConverter#toCmyk(
+   *org.extex.color.Color)
+   */
+  public CmykColor toCmyk( Color color ) {
+
+    if( color instanceof CmykColor ) {
+      return (CmykColor) color;
 
     }
 
-    /**
-     * Convert an arbitrary color to the CMYK model.
-     * If an conversion is not supported then {@code null} is returned.
-     *
-     * @param color the color to convert
-     *
-     * @return the corresponding color in the CMYK model or {@code null}
-     *  if a conversion is not supported.
-     *
-     * @see org.extex.color.ColorConverter#toCmyk(
-     *      org.extex.color.Color)
-     */
-    public CmykColor toCmyk(Color color) {
+    return null;
+  }
 
-        if (color instanceof CmykColor) {
-            return (CmykColor) color;
+  /**
+   * Convert an arbitrary color to the RGB model.
+   * If an conversion is not supported then {@code null} is returned.
+   *
+   * @param color the color to convert
+   * @return the corresponding color in the RGB model or {@code null} if
+   * a conversion is not supported.
+   * @see org.extex.color.ColorConverter#toGrayscale(
+   *org.extex.color.Color)
+   */
+  public GrayscaleColor toGrayscale( Color color ) {
 
-        }
+    if( color instanceof GrayscaleColor ) {
+      return (GrayscaleColor) color;
 
-        return null;
     }
 
-    /**
-     * Convert an arbitrary color to the RGB model.
-     * If an conversion is not supported then {@code null} is returned.
-     *
-     * @param color the color to convert
-     *
-     * @return the corresponding color in the RGB model or {@code null} if
-     *  a conversion is not supported.
-     *
-     * @see org.extex.color.ColorConverter#toGrayscale(
-     *      org.extex.color.Color)
-     */
-    public GrayscaleColor toGrayscale(Color color) {
+    return null;
+  }
 
-        if (color instanceof GrayscaleColor) {
-            return (GrayscaleColor) color;
+  /**
+   * Convert an arbitrary color to the HSV model.
+   * If an conversion is not supported then {@code null} is returned.
+   *
+   * @param color the color to convert
+   * @return the corresponding color in the HSV model or {@code null} if
+   * a conversion is not supported.
+   * @see org.extex.color.ColorConverter#toHsv(
+   *org.extex.color.Color)
+   */
+  public HsvColor toHsv( Color color ) {
 
-        }
+    if( color instanceof HsvColor ) {
+      return (HsvColor) color;
 
-        return null;
     }
 
-    /**
-     * Convert an arbitrary color to the HSV model.
-     * If an conversion is not supported then {@code null} is returned.
-     *
-     * @param color the color to convert
-     *
-     * @return the corresponding color in the HSV model or {@code null} if
-     *  a conversion is not supported.
-     *
-     * @see org.extex.color.ColorConverter#toHsv(
-     *      org.extex.color.Color)
-     */
-    public HsvColor toHsv(Color color) {
+    return null;
+  }
 
-        if (color instanceof HsvColor) {
-            return (HsvColor) color;
+  /**
+   * Convert an arbitrary color to the RGB model.
+   * If an conversion is not supported then {@code null} is returned.
+   *
+   * @param color the color to convert
+   * @return the corresponding color in the RGB model or {@code null} if
+   * a conversion is not supported.
+   * @see org.extex.color.ColorConverter#toRgb(
+   *org.extex.color.Color)
+   */
+  public RgbColor toRgb( Color color ) {
 
-        }
+    if( color instanceof RgbColor ) {
+      return (RgbColor) color;
 
-        return null;
     }
 
-    /**
-     * Convert an arbitrary color to the RGB model.
-     * If an conversion is not supported then {@code null} is returned.
-     *
-     * @param color the color to convert
-     *
-     * @return the corresponding color in the RGB model or {@code null} if
-     *  a conversion is not supported.
-     *
-     * @see org.extex.color.ColorConverter#toRgb(
-     *      org.extex.color.Color)
-     */
-    public RgbColor toRgb(Color color) {
-
-        if (color instanceof RgbColor) {
-            return (RgbColor) color;
-
-        }
-
-        return null;
-    }
+    return null;
+  }
 
 }

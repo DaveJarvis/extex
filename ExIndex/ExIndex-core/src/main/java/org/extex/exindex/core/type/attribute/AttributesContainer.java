@@ -21,35 +21,33 @@ package org.extex.exindex.core.type.attribute;
 
 /**
  * This interface provides reading access to a container of defined attributes.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface AttributesContainer {
 
-    /**
-     * Define an attribute
-     * 
-     * @param attribute the name of the attribute
-     * @param attributeData the information
-     */
-    void defineAttribute(String attribute, Attribute attributeData);
+  /**
+   * Define an attribute
+   *
+   * @param attribute     the name of the attribute
+   * @param attributeData the information
+   */
+  void defineAttribute( String attribute, Attribute attributeData );
 
-    /**
-     * Check whether an attribute is defined.
-     * 
-     * @param attribute the name of the attribute
-     * 
-     * @return {@code true} iff the attribute is defined
-     */
-    boolean isAttributeDefined(String attribute);
+  /**
+   * Check whether an attribute is defined.
+   *
+   * @param attribute the name of the attribute
+   * @return {@code true} iff the attribute is defined
+   */
+  boolean isAttributeDefined( String attribute );
 
-    /**
-     * Getter for a named attribute
-     * 
-     * @param attribute the name of the attribute
-     * 
-     * @return the named attribute or {@code null} if not defined
-     */
-    Attribute lookupAttribute(String attribute);
+  /**
+   * Getter for a named attribute
+   *
+   * @param attribute the name of the attribute
+   * @return the named attribute or {@code null} if not defined
+   */
+  Attribute lookupAttribute( String attribute );
 
 }

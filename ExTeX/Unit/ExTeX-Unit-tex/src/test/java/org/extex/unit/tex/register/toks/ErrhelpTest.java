@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \errhelp}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ErrhelpTest extends AbstractToksRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ErrhelpTest.class);
-    }
+    (new JUnitCore()).run( ErrhelpTest.class );
+  }
 
 
-    public ErrhelpTest() {
+  public ErrhelpTest() {
 
-        super("errhelp", "", "");
-    }
+    super( "errhelp", "", "" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

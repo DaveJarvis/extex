@@ -23,26 +23,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \abovedisplayshortskip}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AbovedisplayshortskipTest extends AbstractSkipRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(AbovedisplayshortskipTest.class);
-    }
+    (new JUnitCore()).run( AbovedisplayshortskipTest.class );
+  }
 
 
-    public AbovedisplayshortskipTest() {
+  public AbovedisplayshortskipTest() {
 
-        super("abovedisplayshortskip", "", "0.0pt");
-    }
+    super( "abovedisplayshortskip", "", "0.0pt" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

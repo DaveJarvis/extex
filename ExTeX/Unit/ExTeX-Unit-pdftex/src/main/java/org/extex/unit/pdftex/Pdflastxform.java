@@ -36,87 +36,89 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdflastxform}.
- * 
+ *
  * <p>The PDF Primitive {@code \pdflastxform}</p>
  * <p>
  * This primitive provides a read-only count register containing the number of
  * the last xform. If none is present then 0 is returned.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;pdflastxform&rang;
  *       &rarr; {@code \pdflastxform}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \count0=\pdflastxform  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdflastxform extends AbstractPdftexCode
-        implements
-            Theable,
-            CountConvertible,
-            TokensConvertible {
+    implements
+    Theable,
+    CountConvertible,
+    TokensConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdflastxform(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdflastxform( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    PdftexSupport writer = ensurePdftex( context, typesetter );
+
+    return writer.pdflastxform();
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens convertTokens( Context context, TokenSource source,
+                               Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    try {
+      return context.getTokenFactory().toTokens(
+          convertCount( context, source, typesetter ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
+    return convertTokens( context, source, typesetter );
 
-        return writer.pdflastxform();
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens convertTokens(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        try {
-            return context.getTokenFactory().toTokens(
-                convertCount(context, source, typesetter));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        return convertTokens(context, source, typesetter);
-
-    }
+  }
 
 }

@@ -29,17 +29,17 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \gdef}.
- * 
+ *
  * <p>The Primitive {@code \gdef}</p>
  * <p>
  * This primitive is an abbreviation for {@code \global}{@code \def}.
  * Thus the description of {@code \def} can be consulted for details.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;gdef&rang;
  *       &rarr; &lang;prefix&rang; {@code \gdef} {@linkplain
@@ -52,44 +52,44 @@ import org.extex.typesetter.exception.TypesetterException;
  *       | {@code \long} &lang;prefix&rang;
  *       | {@code \outer} &lang;prefix&rang;
  *       | {@code \proteced} &lang;prefix&rang;</pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \gdef#1{--#1--}  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Gdef extends Def {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Gdef(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Gdef( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        prefix.setGlobal();
-        super.assign(prefix, context, source, typesetter);
-    }
+    prefix.setGlobal();
+    super.assign( prefix, context, source, typesetter );
+  }
 
 }

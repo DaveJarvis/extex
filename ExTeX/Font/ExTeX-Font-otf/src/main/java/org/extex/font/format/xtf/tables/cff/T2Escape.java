@@ -19,47 +19,47 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessR;
 
+import java.io.IOException;
+
 /**
  * Escape.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2Escape extends T2CharString {
 
-    /**
-     * Create a new object.
-     */
-    T2Escape() {
+  /**
+   * Create a new object.
+   */
+  T2Escape() {
 
-    }
+  }
 
-@Override
-    public boolean isEscape() {
+  @Override
+  public boolean isEscape() {
 
-        return true;
-    }
+    return true;
+  }
 
-@Override
-    public short[] getBytes() {
+  @Override
+  public short[] getBytes() {
 
-        return new short[]{ESCAPE_BYTE};
-    }
+    return new short[]{ESCAPE_BYTE};
+  }
 
-    /**
-*      org.extex.font.format.xtf.tables.OtfTableCFF, int,
-     *      org.extex.font.format.xtf.tables.cff.CffFont)
-     */
-    @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
-            CffFont cffFont) throws IOException {
+  /**
+   * org.extex.font.format.xtf.tables.OtfTableCFF, int,
+   * org.extex.font.format.xtf.tables.cff.CffFont)
+   */
+  @Override
+  public void init( RandomAccessR rar, OtfTableCFF cff, int baseoffset,
+                    CffFont cffFont ) throws IOException {
 
 
-    }
+  }
 
 }

@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \xleaders}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class XleadersTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(XleadersTest.class);
-    }
+    (new JUnitCore()).run( XleadersTest.class );
+  }
 
 
-    public XleadersTest() {
+  public XleadersTest() {
 
-        setPrimitive("xleaders");setArguments("\\vrule\\vfill");setPrepare("");
-    }
+    setPrimitive( "xleaders" );
+    setArguments( "\\vrule\\vfill" );
+    setPrepare( "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

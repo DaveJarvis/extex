@@ -25,250 +25,238 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \gluestretchorder}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(GluestretchorderTest.class);
-    }
+    (new JUnitCore()).run( GluestretchorderTest.class );
+  }
 
 
-    public GluestretchorderTest() {
+  public GluestretchorderTest() {
 
-        super("gluestretchorder", "\\skip0 ", "0");
-        setConfig("etex-test");
-    }
+    super( "gluestretchorder", "\\skip0 ", "0" );
+    setConfig( "etex-test" );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a fixed stretch. In addition it shows that
-     * {@code \gluestretchorder} is applicable to {@code \the}.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a fixed stretch. In addition it shows that
+   * {@code \gluestretchorder} is applicable to {@code \the}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3pt"
-                    + "\\the\\gluestretchorder\\skip0 " + "\\end",
-            // --- output channel ---
-            "0" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3pt"
+                      + "\\the\\gluestretchorder\\skip0 " + "\\end",
+                  // --- output channel ---
+                  "0" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a fixed stretch. In addition it shows that
-     * {@code \gluestretchorder} is assignable to a dimen register.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a fixed stretch. In addition it shows that
+   * {@code \gluestretchorder} is assignable to a dimen register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3pt"
-                    + "\\dimen0=\\gluestretchorder\\skip0 " + "\\the\\dimen0"
-                    + "\\end",
-            // --- output channel ---
-            "0.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3pt"
+                      + "\\dimen0=\\gluestretchorder\\skip0 " + "\\the\\dimen0"
+                      + "\\end",
+                  // --- output channel ---
+                  "0.0pt" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a fixed stretch. In addition it shows that
-     * {@code \gluestretchorder} is assignable to a count register.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a fixed stretch. In addition it shows that
+   * {@code \gluestretchorder} is assignable to a count register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3pt"
-                    + "\\count0=\\gluestretchorder\\skip0 " + "\\the\\count0"
-                    + "\\end",
-            // --- output channel ---
-            "0" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3pt"
+                      + "\\count0=\\gluestretchorder\\skip0 " + "\\the\\count0"
+                      + "\\end",
+                  // --- output channel ---
+                  "0" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a fil stretch. In addition it shows that
-     * {@code \gluestretchorder} is applicable to {@code \the}.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test11() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a fil stretch. In addition it shows that
+   * {@code \gluestretchorder} is applicable to {@code \the}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test11() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2fil minus 3fil"
-                    + "\\the\\gluestretchorder\\skip0 " + "\\end",
-            // --- output channel ---
-            "1" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2fil minus 3fil"
+                      + "\\the\\gluestretchorder\\skip0 " + "\\end",
+                  // --- output channel ---
+                  "1" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a fil stretch. In addition it shows that
-     * {@code \gluestretchorder} is assignable to a dimen register.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test12() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a fil stretch. In addition it shows that
+   * {@code \gluestretchorder} is assignable to a dimen register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test12() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2fil minus 3fil"
-                    + "\\dimen0=\\gluestretchorder\\skip0 " + "\\the\\dimen0"
-                    + "\\end",
-            // --- output channel ---
-            "0.00002pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2fil minus 3fil"
+                      + "\\dimen0=\\gluestretchorder\\skip0 " + "\\the\\dimen0"
+                      + "\\end",
+                  // --- output channel ---
+                  "0.00002pt" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a fil stretch. In addition it shows that
-     * {@code \gluestretchorder} is assignable to a count register.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test13() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a fil stretch. In addition it shows that
+   * {@code \gluestretchorder} is assignable to a count register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test13() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2fil minus 3fil"
-                    + "\\count0=\\gluestretchorder\\skip0 " + "\\the\\count0"
-                    + "\\end",
-            // --- output channel ---
-            "1" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2fil minus 3fil"
+                      + "\\count0=\\gluestretchorder\\skip0 " + "\\the\\count0"
+                      + "\\end",
+                  // --- output channel ---
+                  "1" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a fill stretch. In addition it shows that
-     * {@code \gluestretchorder} is applicable to {@code \the}.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test21() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a fill stretch. In addition it shows that
+   * {@code \gluestretchorder} is applicable to {@code \the}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test21() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2fill minus 3fill"
-                    + "\\the\\gluestretchorder\\skip0 " + "\\end",
-            // --- output channel ---
-            "2" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2fill minus 3fill"
+                      + "\\the\\gluestretchorder\\skip0 " + "\\end",
+                  // --- output channel ---
+                  "2" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a fill stretch. In addition it shows that
-     * {@code \gluestretchorder} is assignable to a dimen register.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test22() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a fill stretch. In addition it shows that
+   * {@code \gluestretchorder} is assignable to a dimen register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test22() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2fill minus 3fill"
-                    + "\\dimen0=\\gluestretchorder\\skip0 " + "\\the\\dimen0"
-                    + "\\end",
-            // --- output channel ---
-            "0.00003pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2fill minus 3fill"
+                      + "\\dimen0=\\gluestretchorder\\skip0 " + "\\the\\dimen0"
+                      + "\\end",
+                  // --- output channel ---
+                  "0.00003pt" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a fill stretch. In addition it shows that
-     * {@code \gluestretchorder} is assignable to a count register.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test23() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a fill stretch. In addition it shows that
+   * {@code \gluestretchorder} is assignable to a count register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test23() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2fill minus 3fill"
-                    + "\\count0=\\gluestretchorder\\skip0 " + "\\the\\count0"
-                    + "\\end",
-            // --- output channel ---
-            "2" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2fill minus 3fill"
+                      + "\\count0=\\gluestretchorder\\skip0 " + "\\the\\count0"
+                      + "\\end",
+                  // --- output channel ---
+                  "2" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a filll stretch. In addition it shows that
-     * {@code \gluestretchorder} is applicable to {@code \the}.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test31() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a filll stretch. In addition it shows that
+   * {@code \gluestretchorder} is applicable to {@code \the}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test31() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2filll minus 3filll"
-                    + "\\the\\gluestretchorder\\skip0 " + "\\end",
-            // --- output channel ---
-            "3" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2filll minus 3filll"
+                      + "\\the\\gluestretchorder\\skip0 " + "\\end",
+                  // --- output channel ---
+                  "3" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a filll stretch. In addition it shows that
-     * {@code \gluestretchorder} is assignable to a dimen register.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test32() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a filll stretch. In addition it shows that
+   * {@code \gluestretchorder} is assignable to a dimen register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test32() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2filll minus 3filll"
-                    + "\\dimen0=\\gluestretchorder\\skip0 " + "\\the\\dimen0"
-                    + "\\end",
-            // --- output channel ---
-            "0.00005pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2filll minus 3filll"
+                      + "\\dimen0=\\gluestretchorder\\skip0 " + "\\the\\dimen0"
+                      + "\\end",
+                  // --- output channel ---
+                  "0.00005pt" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretchorder} extracts
-     * the correct value from a filll stretch. In addition it shows that
-     * {@code \gluestretchorder} is assignable to a count register.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test33() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretchorder} extracts
+   * the correct value from a filll stretch. In addition it shows that
+   * {@code \gluestretchorder} is assignable to a count register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test33() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2filll minus 3filll"
-                    + "\\count0=\\gluestretchorder\\skip0 " + "\\the\\count0"
-                    + "\\end",
-            // --- output channel ---
-            "3" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2filll minus 3filll"
+                      + "\\count0=\\gluestretchorder\\skip0 " + "\\the\\count0"
+                      + "\\end",
+                  // --- output channel ---
+                  "3" + TERM );
+  }
 
 }

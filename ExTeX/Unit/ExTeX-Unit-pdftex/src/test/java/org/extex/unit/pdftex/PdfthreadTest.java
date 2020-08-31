@@ -24,33 +24,33 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \pdfthread}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfthreadTest
-        extends
-            NoFlagsButImmediateAndProtectedPrimitiveTester {
+    extends
+    NoFlagsButImmediateAndProtectedPrimitiveTester {
 
 
-    public PdfthreadTest() {
+  public PdfthreadTest() {
 
-        super("pdfthread", " name {a}{}", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfthread", " name {a}{}", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    /**
-     * <testcase primitive="\pdfthread"> Test case checking that ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pdfthread"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfthread name b",
-            // --- output message ---
-            "Missing `{' inserted");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfthread name b",
+                  // --- output message ---
+                  "Missing `{' inserted" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

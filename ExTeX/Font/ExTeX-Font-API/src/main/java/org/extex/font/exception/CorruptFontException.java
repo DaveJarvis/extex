@@ -25,38 +25,38 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * Font exception if problems occurred during reading the font file.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class CorruptFontException extends FontException {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * The font key.
-     */
-    private final FontKey key;
+  /**
+   * The font key.
+   */
+  private final FontKey key;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param key the font key.
-     * @param msg the message.
-     */
-    public CorruptFontException(FontKey key, String msg) {
+  /**
+   * Creates a new object.
+   *
+   * @param key the font key.
+   * @param msg the message.
+   */
+  public CorruptFontException( FontKey key, String msg ) {
 
-        super(msg);
-        this.key = key;
-    }
+    super( msg );
+    this.key = key;
+  }
 
-@Override
-    public String getLocalizedMessage() {
+  @Override
+  public String getLocalizedMessage() {
 
-        Localizer localizer = LocalizerFactory.getLocalizer(this.getClass());
-        return localizer.format("Message", key.toString(), getMessage());
-    }
+    Localizer localizer = LocalizerFactory.getLocalizer( this.getClass() );
+    return localizer.format( "Message", key.toString(), getMessage() );
+  }
 
 }

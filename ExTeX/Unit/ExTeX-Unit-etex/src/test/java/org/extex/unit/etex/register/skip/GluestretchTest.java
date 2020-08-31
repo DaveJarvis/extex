@@ -25,107 +25,112 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \gluestretch}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class GluestretchTest extends ExTeXLauncher {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(GluestretchTest.class);
-    }
+    (new JUnitCore()).run( GluestretchTest.class );
+  }
 
 
-    public GluestretchTest() {
+  public GluestretchTest() {
 
-        setConfig("etex-test");
-    }
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * Test case showing that {@code \gluestretch} can not be used to assign something to it
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr1() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretch} can not be used to assign 
+   * something to it
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\gluestretch\\skip0=1pt ",
-            // --- error channel ---
-                      "You can't use `\\gluestretch' in vertical mode" );
-    }
+    assertFailure(// --- input code ---
+                  "\\gluestretch\\skip0=1pt ",
+                  // --- error channel ---
+                  "You can't use `\\gluestretch' in vertical mode" );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretch} extracts the
-     * correct value. In addition it shows that {@code \gluestretch} is
-     * applicable to {@code \the}. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretch} extracts the
+   * correct value. In addition it shows that {@code \gluestretch} is
+   * applicable to {@code \the}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3pt" + "\\the\\gluestretch\\skip0 "
-                    + "\\end",
-            // --- output channel ---
-            "2.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3pt" + "\\the\\gluestretch" +
+                      "\\skip0 "
+                      + "\\end",
+                  // --- output channel ---
+                  "2.0pt" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretch} extracts the
-     * correct value. In addition it shows that {@code \gluestretch} is
-     * assignable to a dimen register. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretch} extracts the
+   * correct value. In addition it shows that {@code \gluestretch} is
+   * assignable to a dimen register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3pt" + "\\dimen0=\\gluestretch\\skip0 "
-                    + "\\the\\dimen0" + "\\end",
-            // --- output channel ---
-            "2.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3pt" + "\\dimen0=\\gluestretch" +
+                      "\\skip0 "
+                      + "\\the\\dimen0" + "\\end",
+                  // --- output channel ---
+                  "2.0pt" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretch} extracts the
-     * correct value. In addition it shows that {@code \gluestretch} is
-     * assignable to a count register. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretch} extracts the
+   * correct value. In addition it shows that {@code \gluestretch} is
+   * assignable to a count register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3pt" + "\\count0=\\gluestretch\\skip0 "
-                    + "\\the\\count0" + "\\end",
-            // --- output channel ---
-            "196608" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3pt" + "\\count0=\\gluestretch" +
+                      "\\skip0 "
+                      + "\\the\\count0" + "\\end",
+                  // --- output channel ---
+                  "196608" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \gluestretch} extracts the
-     * correct value from an infinite glue. In addition it shows that
-     * {@code \gluestretch} is applicable to {@code \the}. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test10() throws Exception {
+  /**
+   * Test case showing that {@code \gluestretch} extracts the
+   * correct value from an infinite glue. In addition it shows that
+   * {@code \gluestretch} is applicable to {@code \the}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test10() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3fill" + "\\the\\gluestretch\\skip0 "
-                    + "\\end",
-            // --- output channel ---
-            "2.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3fill" + "\\the\\gluestretch" +
+                      "\\skip0 "
+                      + "\\end",
+                  // --- output channel ---
+                  "2.0pt" + TERM );
+  }
 
 }

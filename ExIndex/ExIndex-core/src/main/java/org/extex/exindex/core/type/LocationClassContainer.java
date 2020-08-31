@@ -26,50 +26,46 @@ import org.extex.exindex.lisp.exception.LException;
 /**
  * This interface describes the capability to read information for a location
  * class from a container.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface LocationClassContainer {
 
-    /**
-     * Add a location class to the ones defined. An already defined location
-     * class for the same key is silently overwritten.
-     * 
-     * @param name the name
-     * @param locationClass the location class
-     * 
-     * @return {@code true} iff the location class is new and has been
-     *         defined
-     */
-    boolean addLocationClass(String name, LocationClass locationClass);
+  /**
+   * Add a location class to the ones defined. An already defined location
+   * class for the same key is silently overwritten.
+   *
+   * @param name          the name
+   * @param locationClass the location class
+   * @return {@code true} iff the location class is new and has been
+   * defined
+   */
+  boolean addLocationClass( String name, LocationClass locationClass );
 
-    /**
-     * Get a named location class.
-     * 
-     * @param name the name
-     * 
-     * @return the location class or {@code null}
-     */
-    LocationClass lookupLocationClass(String name);
+  /**
+   * Get a named location class.
+   *
+   * @param name the name
+   * @return the location class or {@code null}
+   */
+  LocationClass lookupLocationClass( String name );
 
-    /**
-     * Create a page reference for this location class.
-     * 
-     * @param encap the encapsulation
-     * @param page the page
-     * 
-     * @return the page reference
-     */
-    PageReference makePageReference(String encap, String page);
+  /**
+   * Create a page reference for this location class.
+   *
+   * @param encap the encapsulation
+   * @param page  the page
+   * @return the page reference
+   */
+  PageReference makePageReference( String encap, String page );
 
-    /**
-     * Order the location classes according to the given list. The other
-     * location classes follow in the original order.
-     * 
-     * @param list the list of location class names
-     * 
-     * @throws LException in case that a location class name is not defined
-     */
-    void orderLocationClasses(String[] list) throws LException;
+  /**
+   * Order the location classes according to the given list. The other
+   * location classes follow in the original order.
+   *
+   * @param list the list of location class names
+   * @throws LException in case that a location class name is not defined
+   */
+  void orderLocationClasses( String[] list ) throws LException;
 
 }

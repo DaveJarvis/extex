@@ -24,39 +24,40 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals the unexpected end of file.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RawIndexEofException extends RawIndexException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     */
-    public RawIndexEofException(ResourceLocator locator) {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   */
+  public RawIndexEofException( ResourceLocator locator ) {
 
-        super(locator, LocalizerFactory
-            .getLocalizer(RawIndexEofException.class).format("Message"));
-    }
+    super( locator, LocalizerFactory
+        .getLocalizer( RawIndexEofException.class ).format( "Message" ) );
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     * @param c the character which was expected when the EOF occured
-     */
-    public RawIndexEofException(ResourceLocator locator, char c) {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   * @param c       the character which was expected when the EOF occured
+   */
+  public RawIndexEofException( ResourceLocator locator, char c ) {
 
-        super(locator, LocalizerFactory
-            .getLocalizer(RawIndexEofException.class).format("MessageChar",
-                Character.toString(c)));
-    }
+    super( locator, LocalizerFactory
+        .getLocalizer( RawIndexEofException.class ).format( "MessageChar",
+                                                            Character.toString(
+                                                                c ) ) );
+  }
 
 }

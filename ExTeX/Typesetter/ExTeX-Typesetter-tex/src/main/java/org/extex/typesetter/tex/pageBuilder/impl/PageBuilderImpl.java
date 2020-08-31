@@ -36,158 +36,160 @@ import org.extex.typesetter.type.page.PageFactory;
 
 /**
  * This is a first reference implementation of a page builder.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PageBuilderImpl implements PageBuilder {
 
-    /**
-     * The field {@code context} contains the interpreter context.
-     */
-    private Context context = null;
+  /**
+   * The field {@code context} contains the interpreter context.
+   */
+  private Context context = null;
 
-    /**
-     * The field {@code documentWriter} contains the document writer to
-     * receive the pages.
-     */
-    private BackendDriver backendDriver = null;
+  /**
+   * The field {@code documentWriter} contains the document writer to
+   * receive the pages.
+   */
+  private BackendDriver backendDriver = null;
 
-    /**
-     * The field {@code options} contains the options to control the
-     * behavior.
-     */
-    private TypesetterOptions options = null;
+  /**
+   * The field {@code options} contains the options to control the
+   * behavior.
+   */
+  private TypesetterOptions options = null;
 
-    /**
-     * The field {@code output} contains the output routine.
-     */
-    private OutputRoutine outputRoutine = null;
+  /**
+   * The field {@code output} contains the output routine.
+   */
+  private OutputRoutine outputRoutine = null;
 
-    /**
-     * The field {@code pageFactory} contains the page factory to use.
-     */
-    private PageFactory pageFactory = null;
+  /**
+   * The field {@code pageFactory} contains the page factory to use.
+   */
+  private PageFactory pageFactory = null;
 
 
-    public PageBuilderImpl() {
+  public PageBuilderImpl() {
 
+  }
+
+  public void close() throws TypesetterException {
+
+    try {
+      backendDriver.close();
+    } catch( GeneralException e ) {
+      throw new TypesetterException( e );
     }
 
-public void close() throws TypesetterException {
+  }
 
-        try {
-            backendDriver.close();
-        } catch (GeneralException e) {
-            throw new TypesetterException(e);
-        }
+  /**
+   * org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
+   */
+  public void flush( NodeList nodes, Typesetter typesetter )
+      throws TypesetterException {
 
+    if( nodes.size() <= 0 ) {
+      return;
     }
 
-    /**
-*      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
-     */
-    public void flush(NodeList nodes, Typesetter typesetter)
-            throws TypesetterException {
+    try {
+      Page page = pageFactory.newInstance( nodes, context, typesetter );
 
-        if (nodes.size() <= 0) {
-            return;
-        }
-
-        try {
-            Page page = pageFactory.newInstance(nodes, context, typesetter);
-
-            if (page == null) {
-                // fall through
-            } else if (this.outputRoutine != null) {
-                this.outputRoutine.output(page, backendDriver);
-            } else {
-                backendDriver.shipout(page);
-            }
-        } catch (GeneralException e) {
-            throw new TypesetterException(e);
-        }
+      if( page == null ) {
+        // fall through
+      }
+      else if( this.outputRoutine != null ) {
+        this.outputRoutine.output( page, backendDriver );
+      }
+      else {
+        backendDriver.shipout( page );
+      }
+    } catch( GeneralException e ) {
+      throw new TypesetterException( e );
     }
+  }
 
-    /**
-*      org.extex.typesetter.type.node.VerticalListNode,
-     *      org.extex.typesetter.Typesetter)
-     */
-    public void inspectAndBuild(VerticalListNode nodes, Typesetter typesetter)
-            throws TypesetterException {
+  /**
+   * org.extex.typesetter.type.node.VerticalListNode,
+   * org.extex.typesetter.Typesetter)
+   */
+  public void inspectAndBuild( VerticalListNode nodes, Typesetter typesetter )
+      throws TypesetterException {
 
-        FixedDimen d = nodes.getVerticalSize();
-        if (d.ge(options.getDimenOption("vsize"))) {
+    FixedDimen d = nodes.getVerticalSize();
+    if( d.ge( options.getDimenOption( "vsize" ) ) ) {
 
-            flush(nodes, typesetter);
-            nodes.clear(); // TODO gene: split off the appropriate amount and
-            // leave the rest
-        }
+      flush( nodes, typesetter );
+      nodes.clear(); // TODO gene: split off the appropriate amount and
+      // leave the rest
     }
+  }
 
-    /**
-*      org.extex.typesetter.PageContext)
-     */
-    public void setContext(PageContext context) {
+  /**
+   * org.extex.typesetter.PageContext)
+   */
+  public void setContext( PageContext context ) {
 
-        if (!(context instanceof Context)) {
-            //TODO gene: setContext unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-        this.context = (Context) context;
+    if( !(context instanceof Context) ) {
+      //TODO gene: setContext unimplemented
+      throw new RuntimeException( "unimplemented" );
     }
+    this.context = (Context) context;
+  }
 
-    /**
-*      org.extex.backend.BackendDriver)
-     */
-    public void setBackend(BackendDriver backend) {
+  /**
+   * org.extex.backend.BackendDriver)
+   */
+  public void setBackend( BackendDriver backend ) {
 
-        this.backendDriver = backend;
+    this.backendDriver = backend;
+  }
+
+  /**
+   * Setter for options.
+   *
+   * @param options the options to set
+   */
+  public void setOptions( TypesetterOptions options ) {
+
+    this.options = options;
+  }
+
+  /**
+   * org.extex.typesetter.output.OutputRoutine)
+   */
+  public void setOutputRoutine( OutputRoutine output ) {
+
+    this.outputRoutine = output;
+  }
+
+  /**
+   * org.extex.typesetter.type.page.PageFactory)
+   */
+  public void setPageFactory( PageFactory factory ) {
+
+    pageFactory = factory;
+  }
+
+  /**
+   * org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
+   */
+  public void shipout( NodeList nodes, Typesetter typesetter )
+      throws TypesetterException {
+
+    if( nodes.size() <= 0 ) {
+      return;
     }
+    try {
+      Page page = pageFactory.newInstance( nodes, context, typesetter );
+      if( page != null ) {
+        backendDriver.shipout( page );
+      }
 
-    /**
-     * Setter for options.
-     * 
-     * @param options the options to set
-     */
-    public void setOptions(TypesetterOptions options) {
-
-        this.options = options;
+    } catch( GeneralException e ) {
+      throw new TypesetterException( e );
     }
-
-    /**
-*      org.extex.typesetter.output.OutputRoutine)
-     */
-    public void setOutputRoutine(OutputRoutine output) {
-
-        this.outputRoutine = output;
-    }
-
-    /**
-*      org.extex.typesetter.type.page.PageFactory)
-     */
-    public void setPageFactory(PageFactory factory) {
-
-        pageFactory = factory;
-    }
-
-    /**
-*      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
-     */
-    public void shipout(NodeList nodes, Typesetter typesetter)
-            throws TypesetterException {
-
-        if (nodes.size() <= 0) {
-            return;
-        }
-        try {
-            Page page = pageFactory.newInstance(nodes, context, typesetter);
-            if (page != null) {
-                backendDriver.shipout(page);
-            }
-
-        } catch (GeneralException e) {
-            throw new TypesetterException(e);
-        }
-    }
+  }
 
 }

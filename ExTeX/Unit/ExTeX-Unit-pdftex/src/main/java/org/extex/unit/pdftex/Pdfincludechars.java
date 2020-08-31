@@ -32,68 +32,68 @@ import org.extex.typesetter.tc.font.Font;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdfincludechars}.
- * 
+ *
  * <p>The PDF Primitive {@code \pdfincludechars}</p>
  * <p>
  * This primitive tells the PDF back-end to include certain characters from a
  * font into the generated output. This should overwrite any partial font
  * downloading in effect.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;pdfincludechars&rang;
  *       &rarr; {@code \pdfincludechars} {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,CodeToken)
+ *          org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context, CodeToken)
  *          &lang;font&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context, boolean, boolean, CodeToken)
  *          &lang;general text&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \font\f cmr12
  *    \pdfincludechars \f {abc} </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdfincludechars extends AbstractPdftexCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdfincludechars(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdfincludechars( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
+    PdftexSupport writer = ensurePdftex( context, typesetter );
 
-        Font font = source.getFont(context, getToken());
-        String text = source.scanTokensAsString(context, getToken());
+    Font font = source.getFont( context, getToken() );
+    String text = source.scanTokensAsString( context, getToken() );
 
-        writer.pdfincludechars(font, text);
-    }
+    writer.pdfincludechars( font, text );
+  }
 
 }

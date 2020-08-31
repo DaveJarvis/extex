@@ -25,40 +25,42 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \moveright}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MoverightTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MoverightTest.class);
-    }
+    (new JUnitCore()).run( MoverightTest.class );
+  }
 
 
-    public MoverightTest() {
+  public MoverightTest() {
 
-        setPrimitive("moveright");setArguments("1pt\\hbox{}");setPrepare("");
-    }
+    setPrimitive( "moveright" );
+    setArguments( "1pt\\hbox{}" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\moveright"> Test case checking that
-     * {@code \moveright} on a void box works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVoid1() throws Exception {
+  /**
+   * <testcase primitive="\moveright"> Test case checking that
+   * {@code \moveright} on a void box works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testVoid1() throws Exception {
 
-        assertSuccess(DEFINE_BRACES + "\\moveright1pt\\box0 \\end",
+    assertSuccess( DEFINE_BRACES + "\\moveright1pt\\box0 \\end",
 
-            "");
-    }
+                   "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

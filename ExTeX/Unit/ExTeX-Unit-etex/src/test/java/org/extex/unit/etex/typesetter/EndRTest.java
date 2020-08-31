@@ -25,15 +25,17 @@ import org.extex.test.NoFlagsPrimitiveTester;
  * This is a test suite for the primitive {@code \endR}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EndRTest extends NoFlagsPrimitiveTester {
 
 
-    public EndRTest() {
+  public EndRTest() {
 
-        setPrimitive("endR");setArguments("");setPrepare("\\TeXXeTstate=1\\beginR");
-        setConfig("etex-test");
-    }
+    setPrimitive( "endR" );
+    setArguments( "" );
+    setPrepare( "\\TeXXeTstate=1\\beginR" );
+    setConfig( "etex-test" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

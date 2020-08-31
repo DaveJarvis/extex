@@ -23,60 +23,60 @@ import java.util.ArrayList;
 
 /**
  * This class provides a type-safe list of observers for the open file event.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class OpenStringObserverList extends ArrayList<OpenStringObserver>
-        implements
-            OpenStringObserver {
+    implements
+    OpenStringObserver {
 
-    /**
-     * The field {@code serialVersionUID} contains th version number for
-     * serialization
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains th version number for
+   * serialization
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Take a list and add an observer. If the list is {@code null} then
-     * a new one is created.
-     * 
-     * @param list the input list or {@code null}
-     * @param observer the observer to add
-     * 
-     * @return the input list or a new one with the observer added
-     */
-    public static OpenStringObserver register(OpenStringObserver list,
-            OpenStringObserver observer) {
+  /**
+   * Take a list and add an observer. If the list is {@code null} then
+   * a new one is created.
+   *
+   * @param list     the input list or {@code null}
+   * @param observer the observer to add
+   * @return the input list or a new one with the observer added
+   */
+  public static OpenStringObserver register( OpenStringObserver list,
+                                             OpenStringObserver observer ) {
 
-        if (list instanceof OpenStringObserverList) {
-            ((OpenStringObserverList) list).add(observer);
-        } else if (list == null) {
-            OpenStringObserverList result = new OpenStringObserverList();
-            result.add(observer);
-            return result;
-        } else {
-            OpenStringObserverList result = new OpenStringObserverList();
-            result.add(list);
-            result.add(observer);
-            return result;
-        }
-        return list;
+    if( list instanceof OpenStringObserverList ) {
+      ((OpenStringObserverList) list).add( observer );
     }
-
-    /**
-     * Invoke all observers on the list to inform them of the character sequence
-     * which has been opened.
-     * 
-     * @param string the contents to be processed
-     * 
-     * @see org.extex.scanner.stream.observer.string.OpenStringObserver#update(
-     *      java.lang.CharSequence)
-     */
-    public void update(CharSequence string) {
-
-        for (OpenStringObserver obs : this) {
-            obs.update(string);
-        }
+    else if( list == null ) {
+      OpenStringObserverList result = new OpenStringObserverList();
+      result.add( observer );
+      return result;
     }
+    else {
+      OpenStringObserverList result = new OpenStringObserverList();
+      result.add( list );
+      result.add( observer );
+      return result;
+    }
+    return list;
+  }
+
+  /**
+   * Invoke all observers on the list to inform them of the character sequence
+   * which has been opened.
+   *
+   * @param string the contents to be processed
+   * @see org.extex.scanner.stream.observer.string.OpenStringObserver#update(
+   *java.lang.CharSequence)
+   */
+  public void update( CharSequence string ) {
+
+    for( OpenStringObserver obs : this ) {
+      obs.update( string );
+    }
+  }
 
 }

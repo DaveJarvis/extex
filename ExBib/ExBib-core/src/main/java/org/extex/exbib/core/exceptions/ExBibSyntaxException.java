@@ -26,38 +26,38 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This Exception is thrown when a syntax error during the parsing of the input
  * or some String has been detected.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibSyntaxException extends ExBibException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     * @param locator the locator
-     */
-    public ExBibSyntaxException(String message, Locator locator) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   * @param locator the locator
+   */
+  public ExBibSyntaxException( String message, Locator locator ) {
 
-        super(message, locator);
-    }
+    super( message, locator );
+  }
 
-    /**
-     * Provides the message for this Exception.
-     * 
-     * @return the message for this exception
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * Provides the message for this Exception.
+   *
+   * @return the message for this exception
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        Localizer localizer =
-                LocalizerFactory.getLocalizer(ExBibSyntaxException.class);
-        return localizer.format("Message", super.getMessage());
-    }
+    Localizer localizer =
+        LocalizerFactory.getLocalizer( ExBibSyntaxException.class );
+    return localizer.format( "Message", super.getMessage() );
+  }
 }

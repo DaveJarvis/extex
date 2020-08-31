@@ -28,29 +28,25 @@ import org.extex.language.hyphenation.exception.HyphenationException;
  * creating a new one.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface LanguageCreator {
 
-    /**
-     * Create a new instance for the given index if required.
-     *
-     * @param name the symbolic name of the language
-     *
-     * @return the new instance
-     *
-     * @throws HyphenationException in case of an error
-     */
-    Language createLanguageInstance(String name) throws HyphenationException;
+  /**
+   * Create a new instance for the given index if required.
+   *
+   * @param name the symbolic name of the language
+   * @return the new instance
+   * @throws HyphenationException in case of an error
+   */
+  Language createLanguageInstance( String name ) throws HyphenationException;
 
-    /**
-     * Load or create a new instance for the given index if required.
-     *
-     * @param name the symbolic name of the language
-     *
-     * @return the new instance
-     *
-     * @throws HyphenationException in case of an error
-     */
-    Language loadLanguageInstance(String name) throws HyphenationException;
+  /**
+   * Load or create a new instance for the given index if required.
+   *
+   * @param name the symbolic name of the language
+   * @return the new instance
+   * @throws HyphenationException in case of an error
+   */
+  Language loadLanguageInstance( String name ) throws HyphenationException;
 
 }

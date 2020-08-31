@@ -24,48 +24,48 @@ import org.extex.exbib.core.io.Locator;
 /**
  * This Exception is thrown when a syntax error during the parsing of the input
  * or some String has been detected.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibUnexpectedException extends ExBibSyntaxException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * The field {@code expected} contains the expected characters or
-     * {@code null} for none.
-     */
-    private final String expected;
+  /**
+   * The field {@code expected} contains the expected characters or
+   * {@code null} for none.
+   */
+  private final String expected;
 
-    /**
-     * Create a new object.
-     * 
-     * @param found the found entity; it can be {@code null} for EOF
-     * @param expected the expected characters
-     * @param locator the locator
-     */
-    public ExBibUnexpectedException(String found, String expected,
-            Locator locator) {
+  /**
+   * Create a new object.
+   *
+   * @param found    the found entity; it can be {@code null} for EOF
+   * @param expected the expected characters
+   * @param locator  the locator
+   */
+  public ExBibUnexpectedException( String found, String expected,
+                                   Locator locator ) {
 
-        super(found, locator);
-        this.expected = expected;
-    }
+    super( found, locator );
+    this.expected = expected;
+  }
 
-@Override
-    public String getLocalizedMessage() {
+  @Override
+  public String getLocalizedMessage() {
 
-        String found = super.getMessage();
-        String fmt =
-                "Message"
-                        + (found == null ? "Eof" : "")
-                        + (expected == null ? "None" : expected.length() == 1
-                                ? "One"
-                                : "");
-        return getLocalizer().format(fmt, found, expected);
-    }
+    String found = super.getMessage();
+    String fmt =
+        "Message"
+            + (found == null ? "Eof" : "")
+            + (expected == null ? "None" : expected.length() == 1
+            ? "One"
+            : "");
+    return getLocalizer().format( fmt, found, expected );
+  }
 
 }

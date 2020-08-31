@@ -24,46 +24,45 @@ import java.util.List;
 
 /**
  * This class provides an ordered list of {@link Observer Observers}s.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ObserverList implements Observer {
 
-    /**
-     * The field {@code list} contains the internal list of observers.
-     */
-    private final List<Observer> list = new ArrayList<Observer>();
+  /**
+   * The field {@code list} contains the internal list of observers.
+   */
+  private final List<Observer> list = new ArrayList<Observer>();
 
-    /**
-     * Creates a new object containing no elements.
-     */
-    public ObserverList() {
+  /**
+   * Creates a new object containing no elements.
+   */
+  public ObserverList() {
 
+  }
+
+  /**
+   * Add an observer to the list. It is not checked that whether the observer
+   * is already contained, i.e. it is possible to have the same observer in
+   * the list multiple times.
+   *
+   * @param observer the observer to add
+   */
+  public void add( Observer observer ) {
+
+    list.add( observer );
+  }
+
+  /**
+   * The update methods of all contained observers are invoked in turn with
+   * the same arguments.
+   */
+  @Override
+  public void update( Observable source, Object object ) {
+
+    for( Observer obs : list ) {
+      obs.update( source, object );
     }
-
-    /**
-     * Add an observer to the list. It is not checked that whether the observer
-     * is already contained, i.e. it is possible to have the same observer in
-     * the list multiple times.
-     * 
-     * @param observer the observer to add
-     */
-    public void add(Observer observer) {
-
-        list.add(observer);
-    }
-
-    /**
-     * The update methods of all contained observers are invoked in turn with
-     * the same arguments.
-     * 
-*/
-    @Override
-    public void update(Observable source, Object object) {
-
-        for (Observer obs : list) {
-            obs.update(source, object);
-        }
-    }
+  }
 
 }

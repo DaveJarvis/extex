@@ -38,7 +38,7 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 /**
  * This class provides an implementation for the primitive {@code \relax}.
- * 
+ *
  * <p>The Primitive {@code \parshapeindent}</p>
  * <p>
  * The primitive {@code \parshapeindent} gives access to the settings for the
@@ -47,94 +47,96 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  * is returned. The line numbering starts with 1. If the argument is less than 1
  * then 0 is returned.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;parshapeindent&rang;
  *        &rarr; {@code \parshapeindent} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \dimen2=\parshapeindent 3  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \dimen2=\parshapeindent -3  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Parshapeindent extends AbstractCode
-        implements
-            CountConvertible,
-            DimenConvertible,
-            Theable {
+    implements
+    CountConvertible,
+    DimenConvertible,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Parshapeindent(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Parshapeindent( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    return convertDimen( context, source, typesetter );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertDimen( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    long l = source.parseInteger( context, source, typesetter );
+    int n = (l < Integer.MAX_VALUE ? (int) l : Integer.MAX_VALUE);
+    ParagraphShape parshape = context.getParshape();
+    return (parshape == null || n < 0 ? 0 : parshape.getIndent( n )
+                                                    .getValue());
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
+
+    long l = source.parseInteger( context, source, typesetter );
+    int n = (l < Integer.MAX_VALUE ? (int) l : Integer.MAX_VALUE);
+    ParagraphShape parshape = context.getParshape();
+    FixedDimen d = (parshape == null || n < 0)
+        ? Dimen.ZERO_PT
+        : parshape.getIndent( n );
+
+    try {
+      return context.getTokenFactory().toTokens( d.toString() );
+    } catch( GeneralException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        return convertDimen(context, source, typesetter);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        long l = source.parseInteger(context, source, typesetter);
-        int n = (l < Integer.MAX_VALUE ? (int) l : Integer.MAX_VALUE);
-        ParagraphShape parshape = context.getParshape();
-        return (parshape == null || n < 0 ? 0 : parshape.getIndent(n)
-            .getValue());
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        long l = source.parseInteger(context, source, typesetter);
-        int n = (l < Integer.MAX_VALUE ? (int) l : Integer.MAX_VALUE);
-        ParagraphShape parshape = context.getParshape();
-        FixedDimen d = (parshape == null || n < 0)
-                ? Dimen.ZERO_PT
-                : parshape.getIndent(n);
-
-        try {
-            return context.getTokenFactory().toTokens(d.toString());
-        } catch (GeneralException e) {
-            throw new NoHelpException(e);
-        }
-    }
+  }
 
 }

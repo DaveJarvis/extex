@@ -34,7 +34,7 @@ import org.extex.unit.tex.math.AbstractMathCode;
 /**
  * This class provides an implementation for the primitive
  * {@code \scriptstyle}.
- * 
+ *
  * <p>The Math Primitive {@code \scriptstyle}</p>
  * <p>
  * The math primitive {@code \scriptstyle} arranges that the following
@@ -49,55 +49,54 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * <p>
  * If used outside of math mode an error is raised.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;scriptstyle&rang;
  *       &rarr; {@code \scriptstyle}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \scriptstyle  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Scriptstyle extends AbstractMathCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Scriptstyle(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Scriptstyle( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException,
-                ConfigurationException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException,
+      ConfigurationException,
+      TypesetterException {
 
-        NoadConsumer nc = getListMaker(context, typesetter);
-        nc.add(StyleNoad.SCRIPTSTYLE);
-    }
+    NoadConsumer nc = getListMaker( context, typesetter );
+    nc.add( StyleNoad.SCRIPTSTYLE );
+  }
 
 }

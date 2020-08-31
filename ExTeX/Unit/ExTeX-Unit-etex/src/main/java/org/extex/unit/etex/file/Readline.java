@@ -19,8 +19,6 @@
 
 package org.extex.unit.etex.file;
 
-import java.util.logging.Logger;
-
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.logger.LogEnabled;
@@ -41,10 +39,12 @@ import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.tex.macro.util.MacroCode;
 import org.extex.unit.tex.macro.util.MacroPattern;
 
+import java.util.logging.Logger;
+
 /**
  * This class provides an implementation for the primitive
  * {@code \readline}.
- * 
+ *
  * <p>The Primitive {@code \readline}</p>
  * <p>
  * The primitive {@code \readline} read characters from an input stream until
@@ -54,14 +54,14 @@ import org.extex.unit.tex.macro.util.MacroPattern;
  * {@link org.extex.unit.tex.register.CatcodePrimitive {@code \catcode}}. The
  * resulting token list is bound to the control sequence given.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;readline&rang;
  *      &rarr; &lang;optional prefix&rang; {@code \readline} {@linkplain
- *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
+ *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context, TokenSource, Typesetter)
  *        &lang;infile&nbsp;name&rang;} {@code to} {@linkplain
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;}
@@ -69,144 +69,144 @@ import org.extex.unit.tex.macro.util.MacroPattern;
  *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  {@code \global} &lang;optional prefix&rang; </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  * \openin3= abc.def
  * \readline3 to \line
  * \closein3 </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Readline extends AbstractAssignment implements LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
+
+  /**
+   * The field {@code TOKENIZER} contains the tokenizer to use for this
+   * primitive.
+   */
+  private static final Tokenizer TOKENIZER = new Tokenizer() {
 
     /**
-     * The field {@code TOKENIZER} contains the tokenizer to use for this
-     * primitive.
-     */
-    private static final Tokenizer TOKENIZER = new Tokenizer() {
-
-        /**
-         * Getter for the category code of a character.
-         * 
-         * @param c the Unicode character to analyze
-         * 
-         * @return the category code of a character
-         * 
-         * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
-         */
-        @Override
-        public Catcode getCatcode(UnicodeChar c) {
-
-            return (c.getCodePoint() == ' ' ? Catcode.SPACE : Catcode.OTHER);
-        }
-
-        /**
-         * Getter for the name space.
-         * 
-         * @return the name space
-         * 
-         * @see org.extex.scanner.api.Tokenizer#getNamespace()
-         */
-        @Override
-        public String getNamespace() {
-
-            return Namespace.DEFAULT_NAMESPACE;
-        }
-
-    };
-
-    /**
-     * The field {@code logger} contains the target channel for the message.
-     */
-    private transient Logger logger = null;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Readline(CodeToken token) {
-
-        super(token);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     * Getter for the category code of a character.
+     *
+     * @param c the Unicode character to analyze
+     *
+     * @return the category code of a character
+     *
+     * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
      */
     @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    public Catcode getCatcode( UnicodeChar c ) {
 
-        String key =
-                AbstractFileCode.scanInFileKey(context, source, typesetter);
-
-        if (!source.getKeyword(context, "to")) {
-            throw new HelpingException(getLocalizer(), "TTP.MissingToForRead",
-                toText());
-        }
-        CodeToken cs = source.getControlSequence(context, typesetter);
-
-        InFile file = context.getInFile(key);
-
-        if (file == null || !file.isOpen()) {
-            file = context.getInFile(null);
-            if (file == null || !file.isOpen()) {
-                throw new HelpingException(getLocalizer(), "TTP.EOFinRead",
-                    toText());
-            }
-        }
-        if (!file.isFileStream()) {
-            Interaction interaction = context.getInteraction();
-            if (interaction != Interaction.ERRORSTOPMODE) {
-                throw new HelpingException(getLocalizer(), "TTP.NoTermRead",
-                    toText());
-            }
-        }
-
-        if (file.isStandardStream()) {
-            logger.severe(cs.toText(context.escapechar()) + "=");
-        }
-
-        Tokens toks = file.read(context.getTokenFactory(), TOKENIZER);
-
-        if (toks == null) {
-            throw new HelpingException(getLocalizer(), "TTP.EOFinRead");
-        }
-
-        boolean longP = prefix.clearLong();
-        boolean outerP = prefix.clearOuter();
-        context.setCode(cs, new MacroCode(cs, prefix, false,
-            MacroPattern.EMPTY, toks), prefix.clearGlobal());
-        if (longP) {
-            prefix.setLong();
-        }
-        if (outerP) {
-            prefix.setOuter();
-        }
+      return (c.getCodePoint() == ' ' ? Catcode.SPACE : Catcode.OTHER);
     }
 
     /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+     * Getter for the name space.
+     *
+     * @return the name space
+     *
+     * @see org.extex.scanner.api.Tokenizer#getNamespace()
      */
     @Override
-    public void enableLogging(Logger log) {
+    public String getNamespace() {
 
-        this.logger = log;
+      return Namespace.DEFAULT_NAMESPACE;
     }
+
+  };
+
+  /**
+   * The field {@code logger} contains the target channel for the message.
+   */
+  private transient Logger logger = null;
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Readline( CodeToken token ) {
+
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key =
+        AbstractFileCode.scanInFileKey( context, source, typesetter );
+
+    if( !source.getKeyword( context, "to" ) ) {
+      throw new HelpingException( getLocalizer(), "TTP.MissingToForRead",
+                                  toText() );
+    }
+    CodeToken cs = source.getControlSequence( context, typesetter );
+
+    InFile file = context.getInFile( key );
+
+    if( file == null || !file.isOpen() ) {
+      file = context.getInFile( null );
+      if( file == null || !file.isOpen() ) {
+        throw new HelpingException( getLocalizer(), "TTP.EOFinRead",
+                                    toText() );
+      }
+    }
+    if( !file.isFileStream() ) {
+      Interaction interaction = context.getInteraction();
+      if( interaction != Interaction.ERRORSTOPMODE ) {
+        throw new HelpingException( getLocalizer(), "TTP.NoTermRead",
+                                    toText() );
+      }
+    }
+
+    if( file.isStandardStream() ) {
+      logger.severe( cs.toText( context.escapechar() ) + "=" );
+    }
+
+    Tokens toks = file.read( context.getTokenFactory(), TOKENIZER );
+
+    if( toks == null ) {
+      throw new HelpingException( getLocalizer(), "TTP.EOFinRead" );
+    }
+
+    boolean longP = prefix.clearLong();
+    boolean outerP = prefix.clearOuter();
+    context.setCode( cs,
+                     new MacroCode( cs, prefix, false,
+                                    MacroPattern.EMPTY, toks ),
+                     prefix.clearGlobal() );
+    if( longP ) {
+      prefix.setLong();
+    }
+    if( outerP ) {
+      prefix.setOuter();
+    }
+  }
+
+  /**
+   * Setter for the logger.
+   *
+   * @param log the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+   */
+  @Override
+  public void enableLogging( Logger log ) {
+
+    this.logger = log;
+  }
 
 }

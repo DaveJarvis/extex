@@ -26,29 +26,29 @@ import java.util.List;
  * FamilyOtherBlues.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T1FamilyOtherBlues extends T1DictDelta {
 
-    /**
-     * Create a new object.
-     *
-     * @param stack the stack
-     * @throws IOException if an IO.error occurs.
-     */
-    public T1FamilyOtherBlues(List<T2Number> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO.error occurs.
+   */
+  public T1FamilyOtherBlues( List<T2Number> stack ) throws IOException {
 
-        super(stack, new short[]{FAMILY_OTHER_BLUES});
-    }
+    super( stack, new short[]{FAMILY_OTHER_BLUES} );
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
-     */
-    @Override
-    public String getName() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
+   */
+  @Override
+  public String getName() {
 
-        return "FamilyOtherBlues";
-    }
+    return "FamilyOtherBlues";
+  }
 
 }

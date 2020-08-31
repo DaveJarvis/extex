@@ -31,62 +31,63 @@ import org.extex.typesetter.listMaker.AlignmentList;
 
 /**
  * This class provides an implementation for the primitive {@code \crcr}.
- * 
+ *
  * <p>The Primitive {@code \crcr}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;crcr&rang;
  *       &rarr; {@code \crcr}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \crcr  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Crcr extends Cr {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Crcr(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Crcr( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    ListMaker maker = typesetter.getListMaker();
+    if( maker instanceof AlignmentList ) {
+      ((AlignmentList) maker).crcr( context, source, typesetter );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        ListMaker maker = typesetter.getListMaker();
-        if (maker instanceof AlignmentList) {
-            ((AlignmentList) maker).crcr(context, source, typesetter);
-        } else {
-            throw new HelpingException(getLocalizer(), "TTP.MisplacedCrSpan",
-                toText(context));
-        }
+    else {
+      throw new HelpingException( getLocalizer(), "TTP.MisplacedCrSpan",
+                                  toText( context ) );
     }
+  }
 
 }

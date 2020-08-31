@@ -24,38 +24,38 @@ import java.util.logging.Logger;
 /**
  * The tracing observer prints a message to the given writer prefixed by a
  * String.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  */
 public class TracingObserver implements Observer {
 
-    /**
-     * The field {@code prefix} contains the prefix for the tracing line.
-     */
-    private final String prefix;
+  /**
+   * The field {@code prefix} contains the prefix for the tracing line.
+   */
+  private final String prefix;
 
-    /**
-     * The field {@code writer} contains the writer for the output produced.
-     */
-    private final Logger logger;
+  /**
+   * The field {@code writer} contains the writer for the output produced.
+   */
+  private final Logger logger;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param logger the target writer
-     * @param prefix the prefix
-     */
-    public TracingObserver(Logger logger, String prefix) {
+  /**
+   * Creates a new object.
+   *
+   * @param logger the target writer
+   * @param prefix the prefix
+   */
+  public TracingObserver( Logger logger, String prefix ) {
 
-        this.logger = logger;
-        this.prefix = prefix;
-    }
+    this.logger = logger;
+    this.prefix = prefix;
+  }
 
-    /**
-*      org.extex.exbib.core.util.Observable, java.lang.Object)
-     */
-    public void update(Observable source, Object obj) {
+  /**
+   * org.extex.exbib.core.util.Observable, java.lang.Object)
+   */
+  public void update( Observable source, Object obj ) {
 
-        logger.info(prefix + " " + (obj != null ? obj.toString() : "") + "\n");
-    }
+    logger.info( prefix + " " + (obj != null ? obj.toString() : "") + "\n" );
+  }
 }

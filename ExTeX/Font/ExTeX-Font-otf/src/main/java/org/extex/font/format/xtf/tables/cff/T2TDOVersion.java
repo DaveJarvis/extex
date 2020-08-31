@@ -24,33 +24,33 @@ import java.util.List;
 
 /**
  * Version.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOVersion extends T2TDOSID {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO.error occurs.
-     */
-    public T2TDOVersion(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO.error occurs.
+   */
+  public T2TDOVersion( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{CFF_VERSION});
-    }
+    super( stack, new short[]{CFF_VERSION} );
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return T2TopDICTOperator.TYPE_VERSION;
-    }
+    return T2TopDICTOperator.TYPE_VERSION;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "version";
-    }
+    return "version";
+  }
 
 }

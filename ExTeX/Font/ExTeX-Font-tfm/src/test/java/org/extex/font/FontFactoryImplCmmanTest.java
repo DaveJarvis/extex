@@ -19,92 +19,90 @@
 
 package org.extex.font;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import org.extex.core.UnicodeChar;
 import org.extex.font.exception.FontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 /**
  * Test for the font factory (with font logosl9).
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
 
-    /**
-     * The font.
-     */
-    private static ExtexFont font;
+  /**
+   * The font.
+   */
+  private static ExtexFont font;
 
-    /**
-     * The font key.
-     */
-    private static FontKey key;
+  /**
+   * The font key.
+   */
+  private static FontKey key;
 
-    /**
-     * Creates a new object.
-     * 
-     * @throws ConfigurationException from the configuration system.
-     * @throws FontException if a font error occurred.
-     */
-    public FontFactoryImplCmmanTest()
-            throws ConfigurationException,
-                FontException {
+  /**
+   * Creates a new object.
+   *
+   * @throws ConfigurationException from the configuration system.
+   * @throws FontException          if a font error occurred.
+   */
+  public FontFactoryImplCmmanTest()
+      throws ConfigurationException,
+      FontException {
 
-        if (key == null) {
-            CoreFontFactory factory = makeFontFactory();
-            key = factory.getFontKey("cmman");
-            font = factory.getInstance(key);
-        }
+    if( key == null ) {
+      CoreFontFactory factory = makeFontFactory();
+      key = factory.getFontKey( "cmman" );
+      font = factory.getInstance( key );
     }
+  }
 
-    /**
-     * test 0
-     */
-    @Test
-    public void test0() {
+  /**
+   * test 0
+   */
+  @Test
+  public void test0() {
 
-        assertNotNull(key);
-        assertNotNull(font);
-    }
+    assertNotNull( key );
+    assertNotNull( font );
+  }
 
-    /**
-     * test cmman Char h defined
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testcmmanh() throws Exception {
+  /**
+   * test cmman Char h defined
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testcmmanh() throws Exception {
 
-        assertTrue(font.hasGlyph(UnicodeChar.get('h')));
-    }
+    assertTrue( font.hasGlyph( UnicodeChar.get( 'h' ) ) );
+  }
 
-    /**
-     * test cmman ligature
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testcmmanLig() throws Exception {
+  /**
+   * test cmman ligature
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testcmmanLig() throws Exception {
 
-        UnicodeChar ligature =
-                font.getLigature(UnicodeChar.get('h'), UnicodeChar.get('h'));
-        assertNull(ligature);
-    }
+    UnicodeChar ligature =
+        font.getLigature( UnicodeChar.get( 'h' ), UnicodeChar.get( 'h' ) );
+    assertNull( ligature );
+  }
 
-    /**
-     * test cmman Char T defined
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testcmmanT() throws Exception {
+  /**
+   * test cmman Char T defined
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testcmmanT() throws Exception {
 
-        assertTrue(font.hasGlyph(UnicodeChar.get('T')));
-    }
+    assertTrue( font.hasGlyph( UnicodeChar.get( 'T' ) ) );
+  }
 
 }

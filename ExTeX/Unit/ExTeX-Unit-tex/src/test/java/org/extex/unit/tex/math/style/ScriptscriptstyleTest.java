@@ -25,14 +25,16 @@ import org.extex.unit.tex.math.AbstractMathTester;
  * This is a test suite for the primitive {@code \scriptscriptstyle}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ScriptscriptstyleTest extends AbstractMathTester {
 
 
-    public ScriptscriptstyleTest() {
+  public ScriptscriptstyleTest() {
 
-        setPrimitive("scriptscriptstyle");setArguments("");setPrepare("");
-    }
+    setPrimitive( "scriptscriptstyle" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

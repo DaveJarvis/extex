@@ -19,301 +19,300 @@
 
 package org.extex.font.format.tfm;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.io.FileInputStream;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.junit.Test;
 
+import java.io.FileInputStream;
+
+import static org.junit.Assert.*;
+
 /**
  * Test cases for the {@link TfmReader}.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TfmReaderTest {
 
-    /**
-     * Dimen for 10pt
-     */
-    private static final Dimen DIM10 = new Dimen(Dimen.ONE * 10);
+  /**
+   * Dimen for 10pt
+   */
+  private static final Dimen DIM10 = new Dimen( Dimen.ONE * 10 );
 
-    /**
-     * The tfm reader.
-     */
-    private final TfmReader reader;
+  /**
+   * The tfm reader.
+   */
+  private final TfmReader reader;
 
-    /**
-     * Creates a new object.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public TfmReaderTest() throws Exception {
+  /**
+   * Creates a new object.
+   *
+   * @throws Exception if an error occurred.
+   */
+  public TfmReaderTest() throws Exception {
 
-        reader =
-                new TfmReader(new FileInputStream(
-                    "../../../texmf/src/texmf/fonts/tfm/public/cm/cmr10.tfm"),
-                    "cmr10");
-    }
+    reader =
+        new TfmReader( new FileInputStream(
+            "../../../texmf/src/texmf/fonts/tfm/public/cm/cmr10.tfm" ),
+                       "cmr10" );
+  }
 
-    /**
-     * test depth
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testDepth01() throws Exception {
+  /**
+   * test depth
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testDepth01() throws Exception {
 
-        TfmFixWord d = reader.getDepth(-1);
-        assertNull(d);
-    }
+    TfmFixWord d = reader.getDepth( -1 );
+    assertNull( d );
+  }
 
-    /**
-     * test depth
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testDepth02() throws Exception {
+  /**
+   * test depth
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testDepth02() throws Exception {
 
-        TfmFixWord d = reader.getDepth(0);
-        assertNotNull(d);
-        assertTrue(d.toString(), new Dimen(0).eq(d.toDimen(DIM10)));
+    TfmFixWord d = reader.getDepth( 0 );
+    assertNotNull( d );
+    assertTrue( d.toString(), new Dimen( 0 ).eq( d.toDimen( DIM10 ) ) );
 
-    }
+  }
 
-    /**
-     * test depth
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testDepth03() throws Exception {
+  /**
+   * test depth
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testDepth03() throws Exception {
 
-        TfmFixWord d = reader.getDepth(0x100);
-        assertNull(d);
+    TfmFixWord d = reader.getDepth( 0x100 );
+    assertNull( d );
 
-    }
+  }
 
-    /**
-     * test depth
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testDepth04() throws Exception {
+  /**
+   * test depth
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testDepth04() throws Exception {
 
-        TfmFixWord d = reader.getDepth(17);
-        assertNotNull(d);
-        assertTrue(d.toString(), new Dimen(127431).eq(d.toDimen(DIM10)));
+    TfmFixWord d = reader.getDepth( 17 );
+    assertNotNull( d );
+    assertTrue( d.toString(), new Dimen( 127431 ).eq( d.toDimen( DIM10 ) ) );
 
-    }
+  }
 
-    // {"SLANT", "SPACE", "STRETCH",
-    // "SHRINK", "XHEIGHT", "QUAD", "EXTRASPACE"}
+  // {"SLANT", "SPACE", "STRETCH",
+  // "SHRINK", "XHEIGHT", "QUAD", "EXTRASPACE"}
 
-    /**
-     * Test method for
-     * {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testGetParamString01() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testGetParamString01() throws Exception {
 
-        FixedDimen ex = reader.getParam("XHEIGHT");
-        assertNotNull(ex);
-        assertTrue(ex.toString(), new Dimen(282168).eq(ex));
-    }
+    FixedDimen ex = reader.getParam( "XHEIGHT" );
+    assertNotNull( ex );
+    assertTrue( ex.toString(), new Dimen( 282168 ).eq( ex ) );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testGetParamString02() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testGetParamString02() throws Exception {
 
-        FixedDimen ex = reader.getParam("xheight");
-        assertNotNull(ex);
-        assertTrue(ex.toString(), new Dimen(282168).eq(ex));
-    }
+    FixedDimen ex = reader.getParam( "xheight" );
+    assertNotNull( ex );
+    assertTrue( ex.toString(), new Dimen( 282168 ).eq( ex ) );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testGetParamString03() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testGetParamString03() throws Exception {
 
-        FixedDimen ex = reader.getParam("5");
-        assertNotNull(ex);
-        assertTrue(ex.toString(), new Dimen(Dimen.ONE * 430555 / 100000).eq(ex));
-    }
+    FixedDimen ex = reader.getParam( "5" );
+    assertNotNull( ex );
+    assertTrue( ex.toString(),
+                new Dimen( Dimen.ONE * 430555 / 100000 ).eq( ex ) );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testGetParamString04() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testGetParamString04() throws Exception {
 
-        FixedDimen ex = reader.getParam("45");
-        assertNotNull(ex);
-        assertTrue(ex.toString(), Dimen.ZERO_PT.eq(ex));
-    }
+    FixedDimen ex = reader.getParam( "45" );
+    assertNotNull( ex );
+    assertTrue( ex.toString(), Dimen.ZERO_PT.eq( ex ) );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testGetParamString05() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testGetParamString05() throws Exception {
 
-        FixedDimen ex = reader.getParam(null);
-        assertNotNull(ex);
-        assertTrue(ex.toString(), Dimen.ZERO_PT.eq(ex));
-    }
+    FixedDimen ex = reader.getParam( null );
+    assertNotNull( ex );
+    assertTrue( ex.toString(), Dimen.ZERO_PT.eq( ex ) );
+  }
 
-    /**
-     * test width
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testHeight01() throws Exception {
+  /**
+   * test width
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testHeight01() throws Exception {
 
-        TfmFixWord h = reader.getHeight(-1);
-        assertNull(h);
-    }
+    TfmFixWord h = reader.getHeight( -1 );
+    assertNull( h );
+  }
 
-    /**
-     * test width
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testHeight02() throws Exception {
+  /**
+   * test width
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testHeight02() throws Exception {
 
-        TfmFixWord h = reader.getHeight(0);
-        assertNotNull(h);
-        assertTrue(h.toString(), new Dimen(447828).eq(h.toDimen(DIM10)));
+    TfmFixWord h = reader.getHeight( 0 );
+    assertNotNull( h );
+    assertTrue( h.toString(), new Dimen( 447828 ).eq( h.toDimen( DIM10 ) ) );
 
-    }
+  }
 
-    /**
-     * test width
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testHeight03() throws Exception {
+  /**
+   * test width
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testHeight03() throws Exception {
 
-        TfmFixWord h = reader.getWidth(0x100);
-        assertNull(h);
+    TfmFixWord h = reader.getWidth( 0x100 );
+    assertNull( h );
 
-    }
+  }
 
-    /**
-     * test italic correction
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testItalic01() throws Exception {
+  /**
+   * test italic correction
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testItalic01() throws Exception {
 
-        TfmFixWord i = reader.getItalicCorrection(-1);
-        assertNull(i);
-    }
+    TfmFixWord i = reader.getItalicCorrection( -1 );
+    assertNull( i );
+  }
 
-    /**
-     * test italic correction
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testItalic02() throws Exception {
+  /**
+   * test italic correction
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testItalic02() throws Exception {
 
-        TfmFixWord i = reader.getItalicCorrection(0);
-        assertNotNull(i);
-        assertTrue(i.toString(), new Dimen(0).eq(i.toDimen(DIM10)));
+    TfmFixWord i = reader.getItalicCorrection( 0 );
+    assertNotNull( i );
+    assertTrue( i.toString(), new Dimen( 0 ).eq( i.toDimen( DIM10 ) ) );
 
-    }
+  }
 
-    /**
-     * test italic correction
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testItalic03() throws Exception {
+  /**
+   * test italic correction
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testItalic03() throws Exception {
 
-        TfmFixWord i = reader.getItalicCorrection(0x100);
-        assertNull(i);
+    TfmFixWord i = reader.getItalicCorrection( 0x100 );
+    assertNull( i );
 
-    }
+  }
 
-    /**
-     * test italic correction
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testItalic04() throws Exception {
+  /**
+   * test italic correction
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testItalic04() throws Exception {
 
-        TfmFixWord i = reader.getItalicCorrection(86);
-        assertNotNull(i);
-        assertTrue(i.toString(), new Dimen(9101).eq(i.toDimen(DIM10)));
+    TfmFixWord i = reader.getItalicCorrection( 86 );
+    assertNotNull( i );
+    assertTrue( i.toString(), new Dimen( 9101 ).eq( i.toDimen( DIM10 ) ) );
 
-    }
+  }
 
-    /**
-     * test width
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testWidth01() throws Exception {
+  /**
+   * test width
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testWidth01() throws Exception {
 
-        TfmFixWord w = reader.getWidth(-1);
-        assertNull(w);
-    }
+    TfmFixWord w = reader.getWidth( -1 );
+    assertNull( w );
+  }
 
-    /**
-     * test width
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testWidth02() throws Exception {
+  /**
+   * test width
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testWidth02() throws Exception {
 
-        TfmFixWord w = reader.getWidth(0);
-        assertNotNull(w);
-        assertTrue(w.toString(), new Dimen(409601).eq(w.toDimen(DIM10)));
+    TfmFixWord w = reader.getWidth( 0 );
+    assertNotNull( w );
+    assertTrue( w.toString(), new Dimen( 409601 ).eq( w.toDimen( DIM10 ) ) );
 
-    }
+  }
 
-    /**
-     * test width
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testWidth03() throws Exception {
+  /**
+   * test width
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testWidth03() throws Exception {
 
-        TfmFixWord w = reader.getWidth(0x100);
-        assertNull(w);
+    TfmFixWord w = reader.getWidth( 0x100 );
+    assertNull( w );
 
-    }
+  }
 
 }

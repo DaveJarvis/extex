@@ -22,20 +22,20 @@ package org.extex.backend.exception;
 /**
  * This exception signals that an attempt to redefine an existing document
  * writer has been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BackendDocumentWriterDefinedException extends BackendException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
 
-    public BackendDocumentWriterDefinedException() {
+  public BackendDocumentWriterDefinedException() {
 
-    }
+  }
 
 }

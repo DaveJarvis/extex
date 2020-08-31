@@ -26,226 +26,227 @@ import java.util.List;
  * This class is a validator for page numbers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PageManager {
 
-    /**
-     * This interface describes a validator.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-    */
-    private interface Validator {
-
-        /**
-         * Check that the number is contained a valid page.
-         *
-         * @param page the page number to check
-         *
-         * @return {@code true} iff the number is a valid page number.
-         */
-        boolean valid(int page);
-    }
+  /**
+   * This interface describes a validator.
+   *
+   * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+   */
+  private interface Validator {
 
     /**
-     * This class provides a container for a pair of integers.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-    */
-    private static class Range implements Validator {
-
-        /**
-         * The field {@code max} contains the highest value.
-         */
-        private final int max;
-
-        /**
-         * The field {@code min} contains the lowest value.
-         */
-        private final int min;
-
-        /**
-         * Creates a new object.
-         *
-         * @param min the lowest value
-         * @param max the highest value
-         */
-        public Range(int min, int max) {
-
-            this.min = min;
-            this.max = max;
-        }
-
-        /**
-         * Check that the number is contained in the range.
-         *
-         * @param page the page number to check
-         *
-         * @return {@code true} iff the number is contained in the range.
-         */
-        public boolean valid(int page) {
-
-            return page >= min && page <= max;
-        }
-    }
-
-    /**
-     * The field {@code pages} contains the list of validators. If the value is
-     * {@code null} then all pages are selected.
-     */
-    private List<Range> pages = null;
-
-
-    public PageManager() {
-
-    }
-
-    /**
-     * Add some pages to be accepted.
-     * The specification is a comma separated list of single pages or ranges of
-     * pages.
-     *
-     * <p>
-     *  Examples
-     * </p>
-     * <pre>
-     *  2
-     *  2-5
-     *  -12
-     *  12-
-     *  2-4,7-12
-     *  2-4,12,28-
-     * </pre>
-     *
-     * @param spec the comma separated list of page ranges
-     *
-     * @throws IllegalArgumentException in case of a parse error
-     */
-    public void addPages(CharSequence spec) throws IllegalArgumentException {
-
-        if (pages == null) {
-            pages = new ArrayList<Range>();
-        }
-
-        int len = spec.length();
-        int start;
-
-        for (int i = 0; i < len; i++) {
-            start = i;
-            while (i < len && spec.charAt(i) != ',') {
-                i++;
-            }
-            addPages(spec, start, i);
-        }
-    }
-
-    /**
-     * Add a set of pages to be acceptable.
-     *
-     * @param spec the specification
-     * @param start the start index
-     * @param end the index of the first character not to be considered
-     */
-    private void addPages(CharSequence spec, int start,
-            int end) {
-
-        int i = skipSpace(spec, start, end);
-        if (i >= end) {
-            return;
-        }
-        int min;
-        int c = spec.charAt(i);
-        if (c == '-') {
-            min = Integer.MIN_VALUE;
-        } else if (c >= '0' && c <= '9') {
-            min = c - '0';
-            while (++i < end) {
-                c = spec.charAt(i);
-                if (c < '0' || c > '9') {
-                    break;
-                }
-                min = 10 * min + c - '0';
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
-
-        i = skipSpace(spec, i, end);
-
-        int max;
-        if (i >= end) {
-            max = min;
-        } else if (c == '-') {
-            i = skipSpace(spec, i + 1, end);
-
-            if (i >= end) {
-                max = Integer.MAX_VALUE;
-            } else {
-                c = spec.charAt(i);
-                if (c >= '0' && c <= '9') {
-                    max = c - '0';
-                    while (++i < end) {
-                        c = spec.charAt(i);
-                        if (c < '0' || c > '9') {
-                            break;
-                        }
-                        max = 10 * max + c - '0';
-                    }
-                } else {
-                    throw new IllegalArgumentException();
-                }
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
-
-        if (skipSpace(spec, i, end) != end) {
-            throw new IllegalArgumentException();
-        }
-
-        pages.add(new Range(min, max));
-    }
-
-    /**
-     * Find the index of the first character which is not a space character.
-     *
-     * @param spec the specification
-     * @param start the start index
-     * @param end the index of the first character not to be considered
-     *
-     * @return the index of the first character after the spaces
-     */
-    private int skipSpace(CharSequence spec, int start,
-            int end) {
-
-        int i = start;
-        while (i < end) {
-            if (!Character.isSpaceChar(spec.charAt(i))) {
-                return i;
-            }
-            i++;
-        }
-        return i;
-    }
-
-    /**
-     * Check whether the given page number is in a selected range.
+     * Check that the number is contained a valid page.
      *
      * @param page the page number to check
-     *
-     * @return {@code true} iff the page is in a selected range
+     * @return {@code true} iff the number is a valid page number.
      */
-    public boolean isSelected(int page) {
+    boolean valid( int page );
+  }
 
-        if (pages == null) {
-            return true;
-        }
+  /**
+   * This class provides a container for a pair of integers.
+   *
+   * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+   */
+  private static class Range implements Validator {
 
-        for (int i = pages.size() - 1; i >= 0; i--) {
-            if (((Validator) pages.get(i)).valid(page)) {
-                return true;
-            }
-        }
-        return false;
+    /**
+     * The field {@code max} contains the highest value.
+     */
+    private final int max;
+
+    /**
+     * The field {@code min} contains the lowest value.
+     */
+    private final int min;
+
+    /**
+     * Creates a new object.
+     *
+     * @param min the lowest value
+     * @param max the highest value
+     */
+    public Range( int min, int max ) {
+
+      this.min = min;
+      this.max = max;
     }
+
+    /**
+     * Check that the number is contained in the range.
+     *
+     * @param page the page number to check
+     * @return {@code true} iff the number is contained in the range.
+     */
+    public boolean valid( int page ) {
+
+      return page >= min && page <= max;
+    }
+  }
+
+  /**
+   * The field {@code pages} contains the list of validators. If the value is
+   * {@code null} then all pages are selected.
+   */
+  private List<Range> pages = null;
+
+
+  public PageManager() {
+
+  }
+
+  /**
+   * Add some pages to be accepted.
+   * The specification is a comma separated list of single pages or ranges of
+   * pages.
+   *
+   * <p>
+   * Examples
+   * </p>
+   * <pre>
+   *  2
+   *  2-5
+   *  -12
+   *  12-
+   *  2-4,7-12
+   *  2-4,12,28-
+   * </pre>
+   *
+   * @param spec the comma separated list of page ranges
+   * @throws IllegalArgumentException in case of a parse error
+   */
+  public void addPages( CharSequence spec ) throws IllegalArgumentException {
+
+    if( pages == null ) {
+      pages = new ArrayList<Range>();
+    }
+
+    int len = spec.length();
+    int start;
+
+    for( int i = 0; i < len; i++ ) {
+      start = i;
+      while( i < len && spec.charAt( i ) != ',' ) {
+        i++;
+      }
+      addPages( spec, start, i );
+    }
+  }
+
+  /**
+   * Add a set of pages to be acceptable.
+   *
+   * @param spec  the specification
+   * @param start the start index
+   * @param end   the index of the first character not to be considered
+   */
+  private void addPages( CharSequence spec, int start,
+                         int end ) {
+
+    int i = skipSpace( spec, start, end );
+    if( i >= end ) {
+      return;
+    }
+    int min;
+    int c = spec.charAt( i );
+    if( c == '-' ) {
+      min = Integer.MIN_VALUE;
+    }
+    else if( c >= '0' && c <= '9' ) {
+      min = c - '0';
+      while( ++i < end ) {
+        c = spec.charAt( i );
+        if( c < '0' || c > '9' ) {
+          break;
+        }
+        min = 10 * min + c - '0';
+      }
+    }
+    else {
+      throw new IllegalArgumentException();
+    }
+
+    i = skipSpace( spec, i, end );
+
+    int max;
+    if( i >= end ) {
+      max = min;
+    }
+    else if( c == '-' ) {
+      i = skipSpace( spec, i + 1, end );
+
+      if( i >= end ) {
+        max = Integer.MAX_VALUE;
+      }
+      else {
+        c = spec.charAt( i );
+        if( c >= '0' && c <= '9' ) {
+          max = c - '0';
+          while( ++i < end ) {
+            c = spec.charAt( i );
+            if( c < '0' || c > '9' ) {
+              break;
+            }
+            max = 10 * max + c - '0';
+          }
+        }
+        else {
+          throw new IllegalArgumentException();
+        }
+      }
+    }
+    else {
+      throw new IllegalArgumentException();
+    }
+
+    if( skipSpace( spec, i, end ) != end ) {
+      throw new IllegalArgumentException();
+    }
+
+    pages.add( new Range( min, max ) );
+  }
+
+  /**
+   * Find the index of the first character which is not a space character.
+   *
+   * @param spec  the specification
+   * @param start the start index
+   * @param end   the index of the first character not to be considered
+   * @return the index of the first character after the spaces
+   */
+  private int skipSpace( CharSequence spec, int start,
+                         int end ) {
+
+    int i = start;
+    while( i < end ) {
+      if( !Character.isSpaceChar( spec.charAt( i ) ) ) {
+        return i;
+      }
+      i++;
+    }
+    return i;
+  }
+
+  /**
+   * Check whether the given page number is in a selected range.
+   *
+   * @param page the page number to check
+   * @return {@code true} iff the page is in a selected range
+   */
+  public boolean isSelected( int page ) {
+
+    if( pages == null ) {
+      return true;
+    }
+
+    for( int i = pages.size() - 1; i >= 0; i-- ) {
+      if( ((Validator) pages.get( i )).valid( page ) ) {
+        return true;
+      }
+    }
+    return false;
+  }
 
 }

@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \predisplaydirection}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PredisplaydirectionTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PredisplaydirectionTest.class);
-    }
+    (new JUnitCore()).run( PredisplaydirectionTest.class );
+  }
 
 
-    public PredisplaydirectionTest() {
+  public PredisplaydirectionTest() {
 
-        super("predisplaydirection", "", "0");
-        setConfig("etex-test");
-    }
+    super( "predisplaydirection", "", "0" );
+    setConfig( "etex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

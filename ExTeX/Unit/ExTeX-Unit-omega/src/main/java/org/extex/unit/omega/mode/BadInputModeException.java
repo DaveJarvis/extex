@@ -25,22 +25,22 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception signals that an invalid specification for an input mode has
  * been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BadInputModeException extends HelpingException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
 
-    public BadInputModeException() {
+  public BadInputModeException() {
 
-        super(LocalizerFactory.getLocalizer(BadInputModeException.class),
-            "Omega.BadMode");
-    }
+    super( LocalizerFactory.getLocalizer( BadInputModeException.class ),
+           "Omega.BadMode" );
+  }
 
 }

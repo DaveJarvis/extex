@@ -28,7 +28,8 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code =}
  * <p>
  * This function pops two arguments from the stack and compares them. If the
@@ -45,56 +46,56 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *     output.state mid.sentence =
  *     { "number" }
  *     { "Number" }
  *   if$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <p>
  * <i> Pops the top two (integer) literals, compares them, and pushes the
  * integer 1 they're equal, 0 otherwise. </i>
  * </p>
- * 
+ * <p>
  * The {@code built_in} function {@code =} pops the top two (integer
  * or string) literals, compares them, and pushes the integer 1 if they're
  * equal, 0 otherwise. If they're not either both string or both integer, it
  * complains and pushes the integer 0.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Eq extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public Eq() {
+  /**
+   * Create a new object.
+   */
+  public Eq() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Eq(String name) {
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Eq( String name ) {
 
-        super(name);
-    }
+    super( name );
+  }
 
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
 
-        String a = processor.pop(locator).getValue();
-        String b = processor.pop(locator).getValue();
-        processor.push(a.equals(b) ? TokenFactory.T_ONE : TokenFactory.T_ZERO);
-    }
+    String a = processor.pop( locator ).getValue();
+    String b = processor.pop( locator ).getValue();
+    processor.push( a.equals( b ) ? TokenFactory.T_ONE : TokenFactory.T_ZERO );
+  }
 
 }

@@ -19,53 +19,54 @@
 
 package org.extex.exindex.core.type.raw;
 
-import java.util.List;
-import java.util.logging.Logger;
-
 import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * This interface describes a close location specification.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CloseLocationReference extends LocationReference {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param location the location
-     * @param layer the layer
-     */
-    public CloseLocationReference(String layer, String... location) {
+  /**
+   * Creates a new object.
+   *
+   * @param location the location
+   * @param layer    the layer
+   */
+  public CloseLocationReference( String layer, String... location ) {
 
-        super(layer, location);
+    super( layer, location );
+  }
+
+  /**
+   * java.util.logging.Logger,
+   * org.extex.exindex.core.type.raw.RawIndexentry,
+   * StructuredIndex,
+   * org.extex.exindex.core.type.LocationClassContainer, java.util.List,
+   * org.extex.exindex.core.type.attribute.AttributesContainer)
+   */
+  @Override
+  public boolean check( Logger logger, RawIndexentry entry,
+                        StructuredIndex index,
+                        LocationClassContainer crossrefClass,
+                        List<OpenLocationReference> openPages,
+                        AttributesContainer attributes ) {
+
+    for( int i = openPages.size() - 1; i > 0; i-- ) {
+
+      if( getLocation().equals( openPages.get( i ).getLocation() ) ) {
+        openPages.remove( i );
+        return super.check( logger, entry, index, crossrefClass,
+                            openPages, attributes );
+      }
     }
-
-    /**
-*      java.util.logging.Logger,
-     *      org.extex.exindex.core.type.raw.RawIndexentry,
-     *      StructuredIndex,
-     *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
-     *      org.extex.exindex.core.type.attribute.AttributesContainer)
-     */
-    @Override
-    public boolean check(Logger logger, RawIndexentry entry, StructuredIndex index,
-            LocationClassContainer crossrefClass,
-            List<OpenLocationReference> openPages,
-            AttributesContainer attributes) {
-
-        for (int i = openPages.size() - 1; i > 0; i--) {
-
-            if (getLocation().equals(openPages.get(i).getLocation())) {
-                openPages.remove(i);
-                return super.check(logger, entry, index, crossrefClass,
-                    openPages, attributes);
-            }
-        }
-        // TODO
-        return false;
-    }
+    // TODO
+    return false;
+  }
 }

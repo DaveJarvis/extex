@@ -38,83 +38,83 @@ import org.extex.unit.omega.ocp.util.OmegaOcpException;
 /**
  * This class provides an implementation for the primitive
  * {@code \nullocplist}.
- * 
+ *
  * <p>The Primitive {@code \nullocplist}</p>
  * <p>
  * The primitive {@code \nullocplist} can be used to build up an &Omega;PC
  * list. It is valid in the context of the primitive {@code \ocplist} only.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;nullocplist&rang;
  *      &rarr; {@code \nullocplist}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  * \nullocplist </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Nullocplist extends AbstractCode
-        implements
-            Showable,
-            OcplistConvertible {
+    implements
+    Showable,
+    OcplistConvertible {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Nullocplist(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Nullocplist( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    throw new OmegaOcpException( toText() );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context)
+   */
+  public Tokens show( Context context ) throws HelpingException {
+
+    try {
+      return context.getTokenFactory().toTokens( "select ocp list " );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public OcpList convertOcplist( Context context, TokenSource source,
+                                 Typesetter typesetter )
+      throws HelpingException {
 
-        throw new OmegaOcpException(toText());
-    }
-
-    /**
-*      org.extex.interpreter.context.Context)
-     */
-    public Tokens show(Context context) throws HelpingException {
-
-        try {
-            return context.getTokenFactory().toTokens("select ocp list ");
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public OcpList convertOcplist(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
-
-        return new OcpList(null);
-    }
+    return new OcpList( null );
+  }
 
 }

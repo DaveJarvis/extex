@@ -19,19 +19,19 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
 /**
  * The 'loca' table stores the offsets to the locations of the glyphs in the
  * font relative to the beginning of the 'glyf' table. Its purpose is to provide
  * quick access to the data for a particular character.
- * 
+ *
  *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Glyph Index</b></td>
@@ -71,7 +71,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td></td>
  * </tr>
  * </table>
- * 
+ *
  * <p>
  * {@code 'loca'} short version
  * </p>
@@ -90,11 +90,11 @@ import org.extex.util.xml.XMLWriterConvertible;
  * in the maximum profile table.</td>
  * </tr>
  * </table>
- * 
+ *
  * <p>
  * {@code 'loca'} long version
  * </p>
- * 
+ *
  *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
@@ -110,130 +110,131 @@ import org.extex.util.xml.XMLWriterConvertible;
  * maximum profile table.</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTableLOCA extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
 
-    private byte[] buf;
+  private byte[] buf;
 
-    /**
-     * factor.
-     * <p>
-     * short : 2
-     * </p>
-     * <p>
-     * long : 1
-     * </p>
-     */
-    private short factor;
+  /**
+   * factor.
+   * <p>
+   * short : 2
+   * </p>
+   * <p>
+   * long : 1
+   * </p>
+   */
+  private short factor;
 
-    /**
-     * offsets.
-     */
-    private int[] offsets;
+  /**
+   * offsets.
+   */
+  private int[] offsets;
 
-    /**
-     * Create a new object.
-     * 
-     * @param tablemap the tablemap
-     * @param de entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public TtfTableLOCA(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param tablemap the tablemap
+   * @param de       entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public TtfTableLOCA( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap);
-        rar.seek(de.getOffset());
-        buf = new byte[de.getLength()];
-        rar.readFully(buf);
+    super( tablemap );
+    rar.seek( de.getOffset() );
+    buf = new byte[ de.getLength() ];
+    rar.readFully( buf );
+  }
+
+  @Override
+  public int getInitOrder() {
+
+    return 1;
+  }
+
+  /**
+   * Returns the offset.
+   *
+   * @param i index
+   * @return Returns the offset
+   */
+  public int getOffset( int i ) {
+
+    if( offsets == null ) {
+      return 0;
+    }
+    return offsets[ i ] * factor;
+  }
+
+  public String getShortcut() {
+
+    return "loca";
+  }
+
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
+
+    return XtfReader.LOCA;
+  }
+
+  @Override
+  public void init() {
+
+    TtfTableHEAD head = (TtfTableHEAD) getTableMap().get( XtfReader.HEAD );
+    TtfTableMAXP maxp = (TtfTableMAXP) getTableMap().get( XtfReader.MAXP );
+    if( head == null || maxp == null ) {
+      return;
+    }
+    int numGlyphs = maxp.getNumGlyphs();
+    boolean shortEntries = head.getIndexToLocFormat() == 0;
+
+    if( buf == null ) {
+      return;
     }
 
-@Override
-    public int getInitOrder() {
-
-        return 1;
+    offsets = new int[ numGlyphs + 1 ];
+    ByteArrayInputStream bais = new ByteArrayInputStream( buf );
+    if( shortEntries ) {
+      factor = 2;
+      for( int i = 0; i <= numGlyphs; i++ ) {
+        offsets[ i ] = (bais.read() << 8 | bais.read());
+      }
     }
-
-    /**
-     * Returns the offset.
-     * 
-     * @param i index
-     * @return Returns the offset
-     */
-    public int getOffset(int i) {
-
-        if (offsets == null) {
-            return 0;
-        }
-        return offsets[i] * factor;
+    else {
+      factor = 1;
+      for( int i = 0; i <= numGlyphs; i++ ) {
+        offsets[ i ] =
+            (bais.read() << 24 | bais.read() << 16
+                | bais.read() << 8 | bais.read());
+      }
     }
+    buf = null;
+  }
 
-public String getShortcut() {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        return "loca";
+    writeStartElement( writer );
+    for( int i = 0; i < offsets.length; i++ ) {
+      writer.writeStartElement( "offset" );
+      writer.writeAttribute( "id", String.valueOf( i ) );
+      writer.writeAttribute( "value", String.valueOf( getOffset( i ) ) );
+      writer.writeEndElement();
     }
-
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.LOCA;
-    }
-
-@Override
-    public void init() {
-
-        TtfTableHEAD head = (TtfTableHEAD) getTableMap().get(XtfReader.HEAD);
-        TtfTableMAXP maxp = (TtfTableMAXP) getTableMap().get(XtfReader.MAXP);
-        if (head == null || maxp == null) {
-            return;
-        }
-        int numGlyphs = maxp.getNumGlyphs();
-        boolean shortEntries = head.getIndexToLocFormat() == 0;
-
-        if (buf == null) {
-            return;
-        }
-
-        offsets = new int[numGlyphs + 1];
-        ByteArrayInputStream bais = new ByteArrayInputStream(buf);
-        if (shortEntries) {
-            factor = 2;
-            for (int i = 0; i <= numGlyphs; i++) {
-                offsets[i] = (bais.read() << 8 | bais.read());
-            }
-        } else {
-            factor = 1;
-            for (int i = 0; i <= numGlyphs; i++) {
-                offsets[i] =
-                        (bais.read() << 24 | bais.read() << 16
-                                | bais.read() << 8 | bais.read());
-            }
-        }
-        buf = null;
-    }
-
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writeStartElement(writer);
-        for (int i = 0; i < offsets.length; i++) {
-            writer.writeStartElement("offset");
-            writer.writeAttribute("id", String.valueOf(i));
-            writer.writeAttribute("value", String.valueOf(getOffset(i)));
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-    }
+    writer.writeEndElement();
+  }
 
 }

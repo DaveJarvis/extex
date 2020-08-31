@@ -19,51 +19,50 @@
 
 package org.extex.scanner.type.token;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import static org.junit.Assert.assertNotEquals;
+
 /**
  * Test cases for superscript mark tokens.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SupMarkTokenTest extends TokenTester {
 
-    /**
-     * The field {@code t} contains the reference token.
-     */
-    private static final Token token = new SupMarkToken( UnicodeChar.get( 'x'));
+  /**
+   * The field {@code t} contains the reference token.
+   */
+  private static final Token token = new SupMarkToken( UnicodeChar.get( 'x' ) );
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SupMarkTokenTest.class);
-    }
+    (new JUnitCore()).run( SupMarkTokenTest.class );
+  }
 
 
-    public SupMarkTokenTest() {
+  public SupMarkTokenTest() {
 
-        setToken(token);
-setCatcode( Catcode.SUPMARK);
-setText( "x");
-setStr( "superscript character x");
-    }
+    setToken( token );
+    setCatcode( Catcode.SUPMARK );
+    setText( "x" );
+    setStr( "superscript character x" );
+  }
 
-@Test
-    public void testEqualsToken1() {
+  @Test
+  public void testEqualsToken1() {
 
-        Token t1 = new SupMarkToken(UnicodeChar.get(' '));
-        Token t2 = new SpaceToken(" ");
-        assertNotEquals( t1, t2 );
-    }
+    Token t1 = new SupMarkToken( UnicodeChar.get( ' ' ) );
+    Token t2 = new SpaceToken( " " );
+    assertNotEquals( t1, t2 );
+  }
 
 }

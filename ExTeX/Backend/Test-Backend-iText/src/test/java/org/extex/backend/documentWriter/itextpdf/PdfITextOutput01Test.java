@@ -30,76 +30,76 @@ import org.junit.Test;
 
 /**
  * Test for the xml backend.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class PdfITextOutput01Test extends ExTeXLauncher {
 
-    /**
-     * The properties.
-     */
-    private static Properties prop = null;
+  /**
+   * The properties.
+   */
+  private static Properties prop = null;
 
 
-    public PdfITextOutput01Test() {
+  public PdfITextOutput01Test() {
 
-        // delete temp files after the test
-        new File("texput.log").deleteOnExit();
+    // delete temp files after the test
+    new File( "texput.log" ).deleteOnExit();
 
-    }
+  }
 
-    /**
-     * TODO
-     * 
-     * @throws Exception
-     */
-    @Before
-    public void setUp() throws Exception {
+  /**
+   * TODO
+   *
+   * @throws Exception
+   */
+  @Before
+  public void setUp() throws Exception {
 
-        prop = new Properties(System.getProperties());
-        prop.setProperty("extex.output", "itext");
-    }
+    prop = new Properties( System.getProperties() );
+    prop.setProperty( "extex.output", "itext" );
+  }
 
-    /**
-     * Test: use default output with afm font 'fxlr'.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testDefaultOutput() throws Exception {
+  /**
+   * Test: use default output with afm font 'fxlr'.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testDefaultOutput() throws Exception {
 
-        // use default output
-        prop.remove("extex.output");
-        assertOutput(prop, // --- input code ---
-            "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
-            /* logValidator */null, /* outputValidator */
-            new EqualityValidator("test", "Hugo" + TERM));
+    // use default output
+    prop.remove( "extex.output" );
+    assertOutput( prop, // --- input code ---
+                  "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
+        /* logValidator */null, /* outputValidator */
+                  new EqualityValidator( "test", "Hugo" + TERM ) );
 
-    }
+  }
 
-    /**
-     * Test: use default output with afm font 'fxlr'.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testOutput() throws Exception {
+  /**
+   * Test: use default output with afm font 'fxlr'.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testOutput() throws Exception {
 
-        assertOutput(prop, // --- input code ---
-            "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
-            /* logValidator */
-            new Validator() {
+    assertOutput( prop, // --- input code ---
+                  "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
+        /* logValidator */
+                  new Validator() {
 
-                @Override
-                public boolean validate(String s) {
+                    @Override
+                    public boolean validate( String s ) {
 
-                    System.out.println(s);
-                    return true;
-                }
+                      System.out.println( s );
+                      return true;
+                    }
 
-            }, /* outputValidator */
-            null);
+                  }, /* outputValidator */
+                  null );
 
-    }
+  }
 
 }

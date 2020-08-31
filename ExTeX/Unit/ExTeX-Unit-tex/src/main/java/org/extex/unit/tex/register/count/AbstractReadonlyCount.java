@@ -35,54 +35,56 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This abstract base class provides the methods an read only count primitive.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
-*/
+ */
 public abstract class AbstractReadonlyCount extends AbstractCode
-        implements
-            CountConvertible,
-            Theable {
+    implements
+    CountConvertible,
+    Theable {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractReadonlyCount(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractReadonlyCount( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        throw new CantUseInException(toText(context), typesetter.getMode()
-            .toString());
-    }
+    throw new CantUseInException( toText( context ), typesetter.getMode()
+                                                               .toString() );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        long value = convertCount(context, source, typesetter);
-        return context.getTokenFactory().toTokens(value);
-    }
+    long value = convertCount( context, source, typesetter );
+    return context.getTokenFactory().toTokens( value );
+  }
 
 }

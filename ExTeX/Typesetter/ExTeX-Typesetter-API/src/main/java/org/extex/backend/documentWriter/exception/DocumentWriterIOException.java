@@ -23,43 +23,43 @@ package org.extex.backend.documentWriter.exception;
  * DocumentWriter: IOException.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class DocumentWriterIOException extends DocumentWriterException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the error message
-     */
-    public DocumentWriterIOException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the error message
+   */
+  public DocumentWriterIOException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     * @param cause the cause
-     */
-    public DocumentWriterIOException(String message, Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   * @param cause   the cause
+   */
+  public DocumentWriterIOException( String message, Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the cause
-     */
-    public DocumentWriterIOException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause
+   */
+  public DocumentWriterIOException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 }

@@ -19,82 +19,83 @@
 
 package org.extex.unit.omega.dir;
 
-import static org.junit.Assert.assertEquals;
-
 import org.extex.interpreter.Interpreter;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * This is a test suite for the primitive {@code textdir}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(TextdirTest.class);
-    }
+    (new JUnitCore()).run( TextdirTest.class );
+  }
 
 
-    public TextdirTest() {
+  public TextdirTest() {
 
-        setPrimitive("textdir");setArguments(" LRL");
-        setConfig("omega-test");
-    }
+    setPrimitive( "textdir" );
+    setArguments( " LRL" );
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\textdir"> Test case checking that {@code \textdir}
-     * sets the test direction i the context.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\textdir"> Test case checking that {@code \textdir}
+   * sets the test direction i the context.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        Interpreter in = assertSuccess(// --- input code ---
-            "\\textdir LRL" + "\\end",
-            // --- output channel ---
-            "");
-        assertEquals("LRL", in.getContext().getTypesettingContext()
-            .getDirection().toString());
-    }
+    Interpreter in = assertSuccess(// --- input code ---
+                                   "\\textdir LRL" + "\\end",
+                                   // --- output channel ---
+                                   "" );
+    assertEquals( "LRL", in.getContext().getTypesettingContext()
+                           .getDirection().toString() );
+  }
 
-    /**
-     * <testcase primitive="\textdir"> Test case checking that {@code \textdir}
-     * needs a direction as argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr1() throws Exception {
+  /**
+   * <testcase primitive="\textdir"> Test case checking that {@code \textdir}
+   * needs a direction as argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\textdir" + "\\end",
-            // --- output channel ---
-            "Bad direction");
-    }
+    assertFailure(// --- input code ---
+                  "\\textdir" + "\\end",
+                  // --- output channel ---
+                  "Bad direction" );
+  }
 
-    /**
-     * <testcase primitive="\textdir"> Test case checking that {@code \textdir}
-     * needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError0() throws Exception {
+  /**
+   * <testcase primitive="\textdir"> Test case checking that {@code \textdir}
+   * needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError0() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\textdir",
-            // --- output channel ---
-            "Unexpected end of file");
-    }
+    assertFailure(// --- input code ---
+                  "\\textdir",
+                  // --- output channel ---
+                  "Unexpected end of file" );
+  }
 
 }

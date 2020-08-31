@@ -19,140 +19,142 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
-import java.io.IOException;
-import java.util.List;
-
 import org.extex.font.format.xtf.tables.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessInputArray;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
+import java.io.IOException;
+import java.util.List;
+
 /**
  * Subrs.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T1Subrs extends T1DictNumber {
 
-    /**
-     * The array of the char strings.
-     */
-    private CharString[] chars;
+  /**
+   * The array of the char strings.
+   */
+  private CharString[] chars;
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO.error occurs.
-     */
-    public T1Subrs(List<T2Number> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO.error occurs.
+   */
+  public T1Subrs( List<T2Number> stack ) throws IOException {
 
-        super(stack, new short[]{SUBRS});
+    super( stack, new short[]{SUBRS} );
+  }
+
+  /**
+   * Returns the {@link CharString} with the index or {@code null}, if
+   * not found.
+   *
+   * @param idx The index.
+   * @return Returns the {@link CharString} with the index or
+   * {@code null}, if not found.
+   */
+  public CharString getCharString( int idx ) {
+
+    if( chars != null && idx >= 0 && idx < chars.length ) {
+      return chars[ idx ];
     }
+    return null;
+  }
 
-    /**
-     * Returns the {@link CharString} with the index or {@code null}, if
-     * not found.
-     * 
-     * @param idx The index.
-     * @return Returns the {@link CharString} with the index or
-     *         {@code null}, if not found.
-     */
-    public CharString getCharString(int idx) {
+  @Override
+  public String getName() {
 
-        if (chars != null && idx >= 0 && idx < chars.length) {
-            return chars[idx];
-        }
-        return null;
-    }
+    return "Subrs";
+  }
 
-@Override
-    public String getName() {
+  /**
+   * Read the subrs.
+   *
+   * @param rar               The input.
+   * @param cff               The cff object.
+   * @param privateDictOffset The offset.
+   * @param cffFont           The cff font.
+   * @throws IOException if a IO-error occurred.
+   */
+  public void readSubrs( RandomAccessR rar, OtfTableCFF cff,
+                         int privateDictOffset, CffFont cffFont )
+      throws IOException {
 
-        return "Subrs";
-    }
+    // The local subrs offset is relative to the beginning of the Private
+    // DICT data.
+    int offset = getInteger();
 
-    /**
-     * Read the subrs.
-     * 
-     * @param rar The input.
-     * @param cff The cff object.
-     * @param privateDictOffset The offset.
-     * @param cffFont The cff font.
-     * @throws IOException if a IO-error occurred.
-     */
-    public void readSubrs(RandomAccessR rar, OtfTableCFF cff,
-            int privateDictOffset, CffFont cffFont) throws IOException {
+    if( offset > 0 ) {
+      rar.seek( privateDictOffset + offset );
 
-        // The local subrs offset is relative to the beginning of the Private
-        // DICT data.
-        int offset = getInteger();
+      int[] offsetarray = cff.readOffsets( rar );
 
-        if (offset > 0) {
-            rar.seek(privateDictOffset + offset);
+      chars = new CharString[ offsetarray.length - 1 ];
 
-            int[] offsetarray = cff.readOffsets(rar);
+      // get data
+      for( int i = 0; i < offsetarray.length - 1; i++ ) {
 
-            chars = new CharString[offsetarray.length - 1];
+        byte[] data =
+            cff.readDataFromIndex( offsetarray[ i ],
+                                   offsetarray[ i + 1 ], rar );
 
-            // get data
-            for (int i = 0; i < offsetarray.length - 1; i++) {
+        chars[ i ] = new CharString( cffFont, i, true );
 
-                byte[] data =
-                        cff.readDataFromIndex(offsetarray[i],
-                            offsetarray[i + 1], rar);
-
-                chars[i] = new CharString(cffFont, i, true);
-
-                RandomAccessInputArray arar = new RandomAccessInputArray(data);
-                try {
-                    while (true) {
-                        // read until eof
-                        T2Operator op = T2Operator.newInstance(arar, chars[i]);
-                        chars[i].add(op);
-                        if (arar.isEOF()) {
-                            break;
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    // TODO change to EOFException ignore
-                }
-                chars[i].checkWidth();
+        RandomAccessInputArray arar = new RandomAccessInputArray( data );
+        try {
+          while( true ) {
+            // read until eof
+            T2Operator op = T2Operator.newInstance( arar, chars[ i ] );
+            chars[ i ].add( op );
+            if( arar.isEOF() ) {
+              break;
             }
+          }
+        } catch( IOException e ) {
+          e.printStackTrace();
+          // TODO change to EOFException ignore
         }
+        chars[ i ].checkWidth();
+      }
     }
+  }
 
-    /**
-     * Returns the size of the {@link CharString} array.
-     * 
-     * @return Returns the size of the {@link CharString} array.
-     */
-    public int size() {
+  /**
+   * Returns the size of the {@link CharString} array.
+   *
+   * @return Returns the size of the {@link CharString} array.
+   */
+  public int size() {
 
-        if (chars != null) {
-            return chars.length;
-        }
-        return 0;
+    if( chars != null ) {
+      return chars.length;
     }
+    return 0;
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writer.writeStartElement(getName());
-        if (chars != null) {
-            writer.writeAttribute("count", chars.length);
-            for (int i = 0; i < chars.length; i++) {
-                chars[i].writeXML(writer);
-            }
-        } else {
-            writer.writeComment("no charstrings");
-        }
-        writer.writeEndElement();
-
+    writer.writeStartElement( getName() );
+    if( chars != null ) {
+      writer.writeAttribute( "count", chars.length );
+      for( int i = 0; i < chars.length; i++ ) {
+        chars[ i ].writeXML( writer );
+      }
     }
+    else {
+      writer.writeComment( "no charstrings" );
+    }
+    writer.writeEndElement();
+
+  }
 
 }

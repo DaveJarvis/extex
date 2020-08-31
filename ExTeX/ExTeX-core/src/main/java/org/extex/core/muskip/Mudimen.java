@@ -19,110 +19,110 @@
 
 package org.extex.core.muskip;
 
-import java.io.Serializable;
-
 import org.extex.core.dimen.Dimen;
+
+import java.io.Serializable;
 
 /**
  * This class provides a dimen value with a length which is a multiple of math
  * units (mu).
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Mudimen implements Serializable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code length} contains the the natural length.
-     */
-    private final Dimen length = new Dimen( 0);
+  /**
+   * The field {@code length} contains the the natural length.
+   */
+  private final Dimen length = new Dimen( 0 );
 
-    /**
-     * Creates a new object. All components are 0.
-     */
-    public Mudimen() {
+  /**
+   * Creates a new object. All components are 0.
+   */
+  public Mudimen() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param len the length
-     */
-    public Mudimen(long len) {
+  /**
+   * Creates a new object.
+   *
+   * @param len the length
+   */
+  public Mudimen( long len ) {
 
-        length.set(len);
-    }
+    length.set( len );
+  }
 
-    /**
-     * Add some other length to the current value.
-     * 
-     * @param value the value to add
-     */
-    public void add(long value) {
+  /**
+   * Add some other length to the current value.
+   *
+   * @param value the value to add
+   */
+  public void add( long value ) {
 
-        this.length.add(value);
-    }
+    this.length.add( value );
+  }
 
-    /**
-     * Getter for length.
-     * 
-     * @return the length
-     */
-    public Dimen getLength() {
+  /**
+   * Getter for length.
+   *
+   * @return the length
+   */
+  public Dimen getLength() {
 
-        return this.length;
-    }
+    return this.length;
+  }
 
-    /**
-     * Check for a zero value.
-     * 
-     * @return {@code true} iff the length is zero
-     */
-    public boolean isZero() {
+  /**
+   * Check for a zero value.
+   *
+   * @return {@code true} iff the length is zero
+   */
+  public boolean isZero() {
 
-        return length.eq(Dimen.ZERO);
-    }
+    return length.eq( Dimen.ZERO );
+  }
 
-    /**
-     * Multiply the value by an integer fraction.
-     * <p>
-     * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
-     * </p>
-     * 
-     * @param nom nominator
-     * @param denom denominator
-     */
-    public void multiply(long nom, long denom) {
+  /**
+   * Multiply the value by an integer fraction.
+   * <p>
+   * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
+   * </p>
+   *
+   * @param nom   nominator
+   * @param denom denominator
+   */
+  public void multiply( long nom, long denom ) {
 
-        length.multiply(nom, denom);
-    }
+    length.multiply( nom, denom );
+  }
 
-    /**
-     * Return the string representation of the instance.
-     * 
-     * @return the string representation of this glue
-*/
-    @Override
-    public String toString() {
+  /**
+   * Return the string representation of the instance.
+   *
+   * @return the string representation of this glue
+   */
+  @Override
+  public String toString() {
 
-        StringBuilder sb = new StringBuilder();
-        toString(sb);
-        return sb.toString();
-    }
+    StringBuilder sb = new StringBuilder();
+    toString( sb );
+    return sb.toString();
+  }
 
-    /**
-     * Append the string representation of the instance to a string buffer.
-     * 
-     * @param sb the target string buffer
-     */
-    public void toString(StringBuilder sb) {
+  /**
+   * Append the string representation of the instance to a string buffer.
+   *
+   * @param sb the target string buffer
+   */
+  public void toString( StringBuilder sb ) {
 
-        length.toString(sb, 'm', 'u');
-    }
+    length.toString( sb, 'm', 'u' );
+  }
 
 }

@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \outputpenalty}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OutputpenaltyTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(OutputpenaltyTest.class);
-    }
+    (new JUnitCore()).run( OutputpenaltyTest.class );
+  }
 
 
-    public OutputpenaltyTest() {
+  public OutputpenaltyTest() {
 
-        super("outputpenalty", "", "0");
-    }
+    super( "outputpenalty", "", "0" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

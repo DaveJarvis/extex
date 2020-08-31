@@ -27,49 +27,49 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \discretionary}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DiscretionaryTest extends NoFlagsPrimitiveTester {
 
 
-    public DiscretionaryTest() {
+  public DiscretionaryTest() {
 
-        setPrimitive("discretionary");setArguments("{-}{}{}");setPrepare(DEFINE_BRACES);
-    }
+    setPrimitive( "discretionary" );
+    setArguments( "{-}{}{}" );
+    setPrepare( DEFINE_BRACES );
+  }
 
-    /**
-     * <testcase primitive="\discretionary">
-     *  Test case checking that {@code \discretionary} ...
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testDisc1() throws Exception {
+  /**
+   * <testcase primitive="\discretionary">
+   * Test case checking that {@code \discretionary} ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testDisc1() throws Exception {
 
-        assertSuccess(//--- input code ---
-            DEFINE_BRACES + "\\hsize=123pt " + "\\discretionary{a}{b}{c}"
-                    + "\\end ",
-            //--- output channel ---
-            "--" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES + "\\hsize=123pt " + "\\discretionary{a}{b}{c}"
+                      + "\\end ",
+                  //--- output channel ---
+                  "--" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\discretionary">
-     *  Test case checking that {@code \discretionary} ...
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testMath1() throws Exception {
+  /**
+   * <testcase primitive="\discretionary">
+   * Test case checking that {@code \discretionary} ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testMath1() throws Exception {
 
-        assertSuccess(//--- input code ---
-            "\\catcode`{=1 " + "\\catcode`}=2 " + "\\catcode`$=3 "
-                    + "\\hsize=123pt " + "$\\discretionary{a}{b}{c}$"
-                    + "\\end ",
-            //--- output channel ---
-            ""); //TODO check
-    }
+    assertSuccess(//--- input code ---
+                  "\\catcode`{=1 " + "\\catcode`}=2 " + "\\catcode`$=3 "
+                      + "\\hsize=123pt " + "$\\discretionary{a}{b}{c}$"
+                      + "\\end ",
+                  //--- output channel ---
+                  "" ); //TODO check
+  }
 
 }

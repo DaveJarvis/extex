@@ -19,9 +19,6 @@
 
 package org.extex.unit.etex.conditional.analyze;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.core.count.Count;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Conditional;
@@ -38,28 +35,15 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.etex.conditional.Ifcsname;
 import org.extex.unit.etex.conditional.Ifdefined;
 import org.extex.unit.etex.conditional.Iffontchar;
-import org.extex.unit.tex.conditional.If;
-import org.extex.unit.tex.conditional.Ifcase;
-import org.extex.unit.tex.conditional.Ifcat;
-import org.extex.unit.tex.conditional.Ifdim;
-import org.extex.unit.tex.conditional.Ifeof;
-import org.extex.unit.tex.conditional.Iffalse;
-import org.extex.unit.tex.conditional.Ifhbox;
-import org.extex.unit.tex.conditional.Ifhmode;
-import org.extex.unit.tex.conditional.Ifinner;
-import org.extex.unit.tex.conditional.Ifmmode;
-import org.extex.unit.tex.conditional.Ifnum;
-import org.extex.unit.tex.conditional.Ifodd;
-import org.extex.unit.tex.conditional.Iftrue;
-import org.extex.unit.tex.conditional.Ifvbox;
-import org.extex.unit.tex.conditional.Ifvmode;
-import org.extex.unit.tex.conditional.Ifvoid;
-import org.extex.unit.tex.conditional.Ifx;
+import org.extex.unit.tex.conditional.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class provides an implementation for the primitive
  * {@code \currentiftype}.
- * 
+ *
  * <p>The Primitive {@code \currentiftype}</p>
  * <p>
  * The primitive {@code \currentiftype} is an internal count register. It
@@ -67,10 +51,10 @@ import org.extex.unit.tex.conditional.Ifx;
  * is active then {@code 0} is returned. The following table lists the return
  * values for the different types of conditionals:
  * </p>
-* <table>
+ * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td>{@code /if}</td>
+ * <td>{@code /if}</td>
  * <td>1</td>
  * </tr>
  * <tr>
@@ -154,104 +138,105 @@ import org.extex.unit.tex.conditional.Ifx;
  * The value returned by the primitive is negated if the expansion appears in
  * the else branch.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ *
  * <p>
  * The formal description of this primitive is the following:
  * </p>
- * 
+ *
  * <pre class="syntax">
  *    &lang;currentiftype&rang;
  *     &rarr; {@code \currentiftype} </pre>
- * 
- * 
+ *
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \count0=\currentiftype  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Currentiftype extends AbstractCode
-        implements
-            CountConvertible,
-            Theable {
+    implements
+    CountConvertible,
+    Theable {
 
-    /**
-     * The field {@code map} contains the map from \if implementations to long
-     * values.
-     */
-    private static final Map<Class<?>, Count> MAP =
-            new HashMap<Class<?>, Count>();
+  /**
+   * The field {@code map} contains the map from \if implementations to long
+   * values.
+   */
+  private static final Map<Class<?>, Count> MAP =
+      new HashMap<Class<?>, Count>();
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    {
-        MAP.put(If.class, new Count(1));
-        MAP.put(Ifcat.class, new Count(2));
-        MAP.put(Ifnum.class, new Count(3));
-        MAP.put(Ifdim.class, new Count(4));
-        MAP.put(Ifodd.class, new Count(5));
-        MAP.put(Ifvmode.class, new Count(6));
-        MAP.put(Ifhmode.class, new Count(7));
-        MAP.put(Ifmmode.class, new Count(8));
-        MAP.put(Ifinner.class, new Count(9));
-        MAP.put(Ifvoid.class, new Count(10));
-        MAP.put(Ifhbox.class, new Count(11));
-        MAP.put(Ifvbox.class, new Count(12));
-        MAP.put(Ifx.class, new Count(13));
-        MAP.put(Ifeof.class, new Count(14));
-        MAP.put(Iftrue.class, new Count(15));
-        MAP.put(Iffalse.class, new Count(16));
-        MAP.put(Ifcase.class, new Count(17));
-        MAP.put(Ifdefined.class, new Count(18));
-        MAP.put(Ifcsname.class, new Count(19));
-        MAP.put(Iffontchar.class, new Count(20));
+  {
+    MAP.put( If.class, new Count( 1 ) );
+    MAP.put( Ifcat.class, new Count( 2 ) );
+    MAP.put( Ifnum.class, new Count( 3 ) );
+    MAP.put( Ifdim.class, new Count( 4 ) );
+    MAP.put( Ifodd.class, new Count( 5 ) );
+    MAP.put( Ifvmode.class, new Count( 6 ) );
+    MAP.put( Ifhmode.class, new Count( 7 ) );
+    MAP.put( Ifmmode.class, new Count( 8 ) );
+    MAP.put( Ifinner.class, new Count( 9 ) );
+    MAP.put( Ifvoid.class, new Count( 10 ) );
+    MAP.put( Ifhbox.class, new Count( 11 ) );
+    MAP.put( Ifvbox.class, new Count( 12 ) );
+    MAP.put( Ifx.class, new Count( 13 ) );
+    MAP.put( Ifeof.class, new Count( 14 ) );
+    MAP.put( Iftrue.class, new Count( 15 ) );
+    MAP.put( Iffalse.class, new Count( 16 ) );
+    MAP.put( Ifcase.class, new Count( 17 ) );
+    MAP.put( Ifdefined.class, new Count( 18 ) );
+    MAP.put( Ifcsname.class, new Count( 19 ) );
+    MAP.put( Iffontchar.class, new Count( 20 ) );
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Currentiftype( CodeToken token ) {
+
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Conditional conditional = context.getConditional();
+    if( conditional == null ) {
+      return 0;
     }
+    Count l = MAP.get( conditional.getPrimitive().getClass() );
+    return (l == null ? 0 :
+        conditional.isNeg() ? -l.getValue() : l.getValue());
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Currentiftype(CodeToken token) {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        super(token);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Conditional conditional = context.getConditional();
-        if (conditional == null) {
-            return 0;
-        }
-        Count l = MAP.get(conditional.getPrimitive().getClass());
-        return (l == null ? 0 :
-                conditional.isNeg() ? -l.getValue() : l.getValue());
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        return context.getTokenFactory().toTokens(
-            convertCount(context, source, typesetter));
-    }
+    return context.getTokenFactory().toTokens(
+        convertCount( context, source, typesetter ) );
+  }
 
 }

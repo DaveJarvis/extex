@@ -19,58 +19,60 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.XtfGlyphName;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
+import java.io.IOException;
+
 /**
  * XtfGSUBChainingTable.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class XtfGSUBChainingTable extends XtfLookupTable {
 
-    /**
-     * Create a new object.
-     * 
-     * @param format the format
-     * @param xtfGlyp The glyph name.
-     */
-    XtfGSUBChainingTable(int format, XtfGlyphName xtfGlyp) {
+  /**
+   * Create a new object.
+   *
+   * @param format  the format
+   * @param xtfGlyp The glyph name.
+   */
+  XtfGSUBChainingTable( int format, XtfGlyphName xtfGlyp ) {
 
-        super(format, xtfGlyp);
+    super( format, xtfGlyp );
 
-    }
+  }
 
-    /**
-     * Create a new Instance.
-     * 
-     * @param rar the input
-     * @param offset the offset
-     * @param xtfGlyph The glyph name.
-     * @return Returns the new instance.
-     * @throws IOException if an IO-error occurs
-     */
-    public static XtfGSUBChainingTable newInstance(RandomAccessR rar,
-            int offset, XtfGlyphName xtfGlyph) throws IOException {
+  /**
+   * Create a new Instance.
+   *
+   * @param rar      the input
+   * @param offset   the offset
+   * @param xtfGlyph The glyph name.
+   * @return Returns the new instance.
+   * @throws IOException if an IO-error occurs
+   */
+  public static XtfGSUBChainingTable newInstance( RandomAccessR rar,
+                                                  int offset,
+                                                  XtfGlyphName xtfGlyph )
+      throws IOException {
 
-        // XtfGSUBSingleTable s = null;
-        // rar.seek(offset);
-        // int format = rar.readUnsignedShort();
-        // if (format == 1) {
-        // s = new SingleTableFormat1(rar, offset);
-        // } else if (format == 2) {
-        // s = new SingleTableFormat2(rar, offset);
-        // }
-        return new XtfGSUBChainingTable(0, xtfGlyph);
-    }
+    // XtfGSUBSingleTable s = null;
+    // rar.seek(offset);
+    // int format = rar.readUnsignedShort();
+    // if (format == 1) {
+    // s = new SingleTableFormat1(rar, offset);
+    // } else if (format == 2) {
+    // s = new SingleTableFormat2(rar, offset);
+    // }
+    return new XtfGSUBChainingTable( 0, xtfGlyph );
+  }
 
-public void writeXML(XMLStreamWriter writer) throws IOException {
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writer.writeStartElement("chainingtable");
-        writer.writeEndElement();
-    }
+    writer.writeStartElement( "chainingtable" );
+    writer.writeEndElement();
+  }
 
 }

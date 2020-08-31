@@ -26,90 +26,93 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \hss}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HssTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(HssTest.class);
-    }
+    (new JUnitCore()).run( HssTest.class );
+  }
 
 
-    public HssTest() {
+  public HssTest() {
 
-        setPrimitive("hss");setArguments("");setPrepare("");
-    }
+    setPrimitive( "hss" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    /**
-     *  Test case showing that the natural width of \hss is 0pt.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testHbox1() throws Exception {
+  /**
+   * Test case showing that the natural width of \hss is 0pt.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testHbox1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\hbox{a\\hss b} \\end",
-            // --- error channel ---
-            "ab" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\hbox{a\\hss b} \\end",
+                  // --- error channel ---
+                  "ab" + TERM );
+  }
 
-    /**
-     * Test case checking that {@code \hfi*} is ignored at the beginning of a paragraph
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIgnore1() throws Exception {
+  /**
+   * Test case checking that {@code \hfi*} is ignored at the beginning of a
+   * paragraph
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testIgnore1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "\\hss\\end ",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "\\hss\\end ",
+                   // --- output channel ---
+                   "" );
+  }
 
-    /**
-     * Test case checking that {@code \hfi*} is ignored at the beginning of a paragraph
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testIgnore2() throws Exception {
+  /**
+   * Test case checking that {@code \hfi*} is ignored at the beginning of a
+   * paragraph
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testIgnore2() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "\\font\\f cmr10 \\f\\hsize=100pt \\hss x\\end ",
-            // --- output channel ---
-            "\\vbox(4.30554pt+0.0pt)x100.0pt\n"
-                    + ".\\hbox(4.30554pt+0.0pt)x100.0pt\n"
-                    + "..\\glue0.0pt plus 1.0fil minus 1.0fil\n" + "..x\n" + "");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "\\font\\f cmr10 \\f\\hsize=100pt \\hss x\\end ",
+                   // --- output channel ---
+                   "\\vbox(4.30554pt+0.0pt)x100.0pt\n"
+                       + ".\\hbox(4.30554pt+0.0pt)x100.0pt\n"
+                       + "..\\glue0.0pt plus 1.0fil minus 1.0fil\n" + "..x\n" +
+                       "" );
+  }
 
-    /**
-     *  Test case showing that \hss expands to the width needed.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVbox1() throws Exception {
+  /**
+   * Test case showing that \hss expands to the width needed.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testVbox1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\vbox to 12pt{a\\hss b} \\end",
-            // --- error channel ---
-            "a b\n\n" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\vbox to 12pt{a\\hss b} \\end",
+                  // --- error channel ---
+                  "a b\n\n" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 
 }

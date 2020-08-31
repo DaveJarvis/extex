@@ -35,64 +35,65 @@ import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
 /**
  * This is the abstract base class for &Omega;CP lists.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractOcplist extends AbstractCode
-        implements
-            OcplistConvertible {
+    implements
+    OcplistConvertible {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Scan an &Omega;CP list.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the &Omega;CP list
-     *
-     * @throws HelpingException in case of an error
-     */
-    public static OcpList scanOcplist(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+  /**
+   * Scan an &Omega;CP list.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the &Omega;CP list
+   * @throws HelpingException in case of an error
+   */
+  public static OcpList scanOcplist( Context context, TokenSource source,
+                                     Typesetter typesetter )
+      throws HelpingException {
 
-        CodeToken t = source.getControlSequence(context, typesetter);
-        Code code = context.getCode(t);
-        if (!(code instanceof OcplistConvertible)) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(AbstractOcplist.class), "Message");
-        }
-        OcpList list =
-                ((OcplistConvertible) code).convertOcplist(context, source,
-                    typesetter);
-        return list;
+    CodeToken t = source.getControlSequence( context, typesetter );
+    Code code = context.getCode( t );
+    if( !(code instanceof OcplistConvertible) ) {
+      throw new HelpingException( LocalizerFactory
+                                      .getLocalizer( AbstractOcplist.class ),
+                                  "Message" );
     }
+    OcpList list =
+        ((OcplistConvertible) code).convertOcplist( context, source,
+                                                    typesetter );
+    return list;
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractOcplist(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractOcplist( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        throw new OmegaOcpException(toText());
-    }
+    throw new OmegaOcpException( toText() );
+  }
 
 }

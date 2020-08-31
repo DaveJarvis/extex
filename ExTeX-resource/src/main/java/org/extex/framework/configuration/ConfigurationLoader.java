@@ -24,20 +24,18 @@ import java.io.IOException;
 /**
  * This interface describes the ability to load a {link Configuration} from an
  * external source.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ConfigurationLoader {
 
-    /**
-     * Load a resource from an external source.
-     * 
-     * @param resource the resource to load
-     * 
-     * @return the configuration found or null if none could be found
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    Configuration loadConfiguration(String resource) throws IOException;
+  /**
+   * Load a resource from an external source.
+   *
+   * @param resource the resource to load
+   * @return the configuration found or null if none could be found
+   * @throws IOException in case of an I/O error
+   */
+  Configuration loadConfiguration( String resource ) throws IOException;
 
 }

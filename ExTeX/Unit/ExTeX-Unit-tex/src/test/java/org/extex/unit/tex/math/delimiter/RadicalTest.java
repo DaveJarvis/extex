@@ -25,14 +25,16 @@ import org.extex.unit.tex.math.AbstractMathTester;
  * This is a test suite for the primitive {@code \radical}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RadicalTest extends AbstractMathTester {
 
 
-    public RadicalTest() {
+  public RadicalTest() {
 
-        setPrimitive("radical");setArguments("12 32");setPrepare("");
-    }
+    setPrimitive( "radical" );
+    setArguments( "12 32" );
+    setPrepare( "" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

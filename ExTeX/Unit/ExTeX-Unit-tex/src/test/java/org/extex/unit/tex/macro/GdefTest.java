@@ -23,13 +23,13 @@ package org.extex.unit.tex.macro;
  * This is a test suite for the primitive {@code \gdef}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class GdefTest extends AbstractDefTester {
 
 
-    public GdefTest() {
+  public GdefTest() {
 
-        super("gdef");
-    }
+    super( "gdef" );
+  }
 
 }

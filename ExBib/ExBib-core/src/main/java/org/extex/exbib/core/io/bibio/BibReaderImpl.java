@@ -1,25 +1,22 @@
 /*
  * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.io.bibio;
-
-import java.io.FileNotFoundException;
-import java.util.regex.Pattern;
 
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.db.DB;
@@ -31,6 +28,9 @@ import org.extex.exbib.core.exceptions.ExBibMissingKeyException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
+
+import java.io.FileNotFoundException;
+import java.util.regex.Pattern;
 
 /**
  * This is a reader for BibTeX files. It extends the reader for the BibTeX 0
@@ -45,173 +45,173 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <li>{@literal @include}</li>
  * <li>{@literal @modify}</li>
  * </ul>
- * 
+ * <p>
  * The {@literal @alias} Instruction
- * 
+ *
  * <p>
  * Define an alias for an existing entry. It has a new key and inherits all
  * fields form the other one. Aliased entries are includes at most once into the
  * output.
  * </p>
- * 
+ *
  * <pre>
  * {@literal @alias}{abc=xyz}
  * </pre>
- * 
+ * <p>
  * The {@literal @include} Instructions
- * 
+ *
  * <p>
  * Include the named resource as if its contents where at the place of the
  * include instruction.
  * </p>
- * 
+ *
  * <pre>
  * {@literal @include}{some_resource}
  * </pre>
- *
+ * <p>
  * The {@literal @modify} Instruction
- * 
+ *
  * <pre>
  * {@literal @modify}{abc,
  *         title={The Title}}
  * </pre>
- * 
+ * <p>
  * The {@literal @comment} Instruction
- * 
+ *
  * <p>
  * The {@literal @comment} is modified to take an argument in braces. Whatever
  * contained in this argument is ignored.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BibReaderImpl extends BibReader099Impl {
 
-    /**
-     * The field {@code filenamePattern} contains the pattern for file names.
-     */
-    private static final Pattern filenamePattern = Pattern.compile( "[^{}]*");
+  /**
+   * The field {@code filenamePattern} contains the pattern for file names.
+   */
+  private static final Pattern filenamePattern = Pattern.compile( "[^{}]*" );
 
-    /**
-     * Creates a new object.
-     * 
-     * @throws ConfigurationException in case that the configuration is invalid
-     */
-    public BibReaderImpl() throws ConfigurationException {
+  /**
+   * Creates a new object.
+   *
+   * @throws ConfigurationException in case that the configuration is invalid
+   */
+  public BibReaderImpl() throws ConfigurationException {
 
+  }
+
+  /**
+   * This is the extension mechanism to define handlers for special items in
+   * the file.
+   * <p>
+   * Any item name is passed to this handler to be processed.
+   * </p>
+   * <p>
+   * This method is meant to be overwritten in derived classes to implement
+   * additional special items. As an example consider the following code:
+   * </p>
+   *
+   * <pre>
+   *   protected boolean handle(String tag, DB db, Processor processor,
+   *                            String brace) throws ExBibException {
+   *     if (super.handle(tag,db,processor,brace)) {
+   *     } else if ("new_tag".equals(tag)) {
+   *       . . .
+   *     }
+   *   }
+   * </pre>
+   *
+   * @param tag     the name of the item encountered. This String has been
+   *                converted to lower case already.
+   * @param db      the database to store the information in
+   * @param brace   the String expected as terminating brace, i.e. ')' or '}'
+   *                depending in the opening brace
+   * @param locator the locator
+   * @return {@code true} iff the item is special and has been handled
+   * successfully.
+   * @throws ExBibException in case of an syntax error
+   */
+  @Override
+  protected boolean handle( String tag, DB db, String brace, Locator locator )
+      throws ExBibException {
+
+    if( "include".equals( tag ) ) {
+      String source = parseToken( filenamePattern );
+      expect( brace );
+      try {
+        db.load( source, null );
+      } catch( FileNotFoundException e ) {
+        throw new ExBibFileNotFoundException( source, locator );
+      }
+
+      return true;
     }
+    else if( "alias".equals( tag ) ) {
+      KeyValue pair = parseAssign();
+      expect( brace );
+      db.storeAlias( pair.getKey(), pair.getValue().toString(),
+                     getLocator() );
 
-    /**
-     * This is the extension mechanism to define handlers for special items in
-     * the file.
-     * <p>
-     * Any item name is passed to this handler to be processed.
-     * </p>
-     * <p>
-     * This method is meant to be overwritten in derived classes to implement
-     * additional special items. As an example consider the following code:
-     * </p>
-     * 
-     * <pre>
-     *   protected boolean handle(String tag, DB db, Processor processor,
-     *                            String brace) throws ExBibException {
-     *     if (super.handle(tag,db,processor,brace)) {
-     *     } else if ("new_tag".equals(tag)) {
-     *       . . .
-     *     }
-     *   }
-     * </pre>
-     * 
-     * @param tag the name of the item encountered. This String has been
-     *        converted to lower case already.
-     * @param db the database to store the information in
-     * @param brace the String expected as terminating brace, i.e. ')' or '}'
-     *        depending in the opening brace
-     * @param locator the locator
-     * 
-     * @return {@code true} iff the item is special and has been handled
-     *         successfully.
-     * 
-     * @throws ExBibException in case of an syntax error
-     */
-    @Override
-    protected boolean handle(String tag, DB db, String brace, Locator locator)
-            throws ExBibException {
+      return true;
+    }
+    else if( "modify".equals( tag ) ) {
+      String key = parseKey();
 
-        if ("include".equals(tag)) {
-            String source = parseToken(filenamePattern);
-            expect(brace);
-            try {
-                db.load(source, null);
-            } catch (FileNotFoundException e) {
-                throw new ExBibFileNotFoundException(source, locator);
-            }
+      if( key == null || "".equals( key ) ) {
+        throw new ExBibMissingKeyException( null, getLocator() );
+      }
 
-            return true;
-        } else if ("alias".equals(tag)) {
-            KeyValue pair = parseAssign();
-            expect(brace);
-            db.storeAlias(pair.getKey(), pair.getValue().toString(),
-                getLocator());
+      Entry entry = db.getEntry( key );
+      if( entry == null ) {
+        throw new ExBibMissingEntryException( key, getLocator() );
+      }
 
-            return true;
-        } else if ("modify".equals(tag)) {
-            String key = parseKey();
+      char c;
 
-            if (key == null || "".equals(key)) {
-                throw new ExBibMissingKeyException(null, getLocator());
-            }
+      for( c = parseNextNonSpace( false ); c == ','; c =
+          parseNextNonSpace( false ) ) {
+        c = parseNextNonSpace( true );
 
-            Entry entry = db.getEntry(key);
-            if (entry == null) {
-                throw new ExBibMissingEntryException(key, getLocator());
-            }
-
-            char c;
-
-            for (c = parseNextNonSpace(false); c == ','; c =
-                    parseNextNonSpace(false)) {
-                c = parseNextNonSpace(true);
-
-                if (c == '}' || c == ')') {
-                    break;
-                }
-
-                KeyValue pair = parseAssign();
-                entry.set(pair.getKey(), pair.getValue());
-            }
-
-            if (c != brace.charAt(0)) {
-                throw new ExBibUnexpectedException(
-                    (c > 0 ? Character.toString(c) : null), brace, getLocator());
-            }
-
-            return true;
+        if( c == '}' || c == ')' ) {
+          break;
         }
 
-        return super.handle(tag, db, brace, locator);
+        KeyValue pair = parseAssign();
+        entry.set( pair.getKey(), pair.getValue() );
+      }
+
+      if( c != brace.charAt( 0 ) ) {
+        throw new ExBibUnexpectedException(
+            (c > 0 ? Character.toString( c ) : null), brace, getLocator() );
+      }
+
+      return true;
     }
 
-    /**
-*      java.lang.String)
-     */
-    @Override
-    protected void handleComment(StringBuilder comment, String tag)
-            throws ExBibException {
+    return super.handle( tag, db, brace, locator );
+  }
 
-        comment.append('@');
-        comment.append(tag);
-        char c = parseNextNonSpace(true);
-        if (c != '{') {
-            if (c != '@') {
-                comment.append(' ');
-            }
-            return;
-        }
-        parseNextNonSpace(false);
-        comment.append('{');
-        comment.append(parseBlock(0));
-        comment.append('}');
+  /**
+   * java.lang.String)
+   */
+  @Override
+  protected void handleComment( StringBuilder comment, String tag )
+      throws ExBibException {
+
+    comment.append( '@' );
+    comment.append( tag );
+    char c = parseNextNonSpace( true );
+    if( c != '{' ) {
+      if( c != '@' ) {
+        comment.append( ' ' );
+      }
+      return;
     }
+    parseNextNonSpace( false );
+    comment.append( '{' );
+    comment.append( parseBlock( 0 ) );
+    comment.append( '}' );
+  }
 
 }

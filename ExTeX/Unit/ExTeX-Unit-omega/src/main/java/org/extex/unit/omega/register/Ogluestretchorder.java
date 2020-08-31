@@ -35,7 +35,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \gluestretchorder}.
- * 
+ *
  * <p>The Primitive {@code \gluestretchorder}</p>
  * <p>
  * The primitive {@code \gluestretchorder} determines the order of the glue
@@ -45,72 +45,72 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * Note that the glue specification of 1&nbsp;fi has been introduced by
- *  Omega.
+ * Omega.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;gluestretchorder&rang;
  *      &rarr; {@code \gluestretchorder} {@linkplain
  *        org.extex.interpreter.parser.GlueParser#parseGlue(
- *        org.extex.interpreter.context.Context,
+ *org.extex.interpreter.context.Context,
  *        org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
  *        &lang;glue&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \gluestretchorder\skip1  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Ogluestretchorder extends AbstractCode
-        implements
-            CountConvertible,
-            Theable {
+    implements
+    CountConvertible,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Ogluestretchorder(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Ogluestretchorder( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Glue glue = source.parseGlue(context, source, typesetter);
-        return glue.getStretch().getOrder();
-    }
+    Glue glue = source.parseGlue( context, source, typesetter );
+    return glue.getStretch().getOrder();
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        return context.getTokenFactory().toTokens(
-            convertCount(context, source, typesetter));
-    }
+    return context.getTokenFactory().toTokens(
+        convertCount( context, source, typesetter ) );
+  }
 
 }

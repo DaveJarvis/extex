@@ -19,93 +19,93 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * Abstract class for all array-values.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public abstract class T2TDOArray extends T2TopDICTOperator {
 
-    /**
-     * bytes
-     */
-    private final short[] bytes;
+  /**
+   * bytes
+   */
+  private final short[] bytes;
 
-    /**
-     * value
-     */
-    private final T2Number[] value;
+  /**
+   * value
+   */
+  private final T2Number[] value;
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @param id the operator-id for the value
-     * @throws IOException if an IO.error occurs.
-     */
-    protected T2TDOArray(List<T2CharString> stack, short[] id)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @param id    the operator-id for the value
+   * @throws IOException if an IO.error occurs.
+   */
+  protected T2TDOArray( List<T2CharString> stack, short[] id )
+      throws IOException {
 
-        if (stack.size() < 1) {
-            throw new T2MissingNumberException();
-        }
-
-        bytes = convertStackaddID(stack, id);
-
-        value = new T2Number[stack.size()];
-        for (int i = 0; i < stack.size(); i++) {
-            value[i] = (T2Number) stack.get(i);
-        }
+    if( stack.size() < 1 ) {
+      throw new T2MissingNumberException();
     }
 
-@Override
-    public short[] getBytes() {
+    bytes = convertStackaddID( stack, id );
 
-        return bytes;
+    value = new T2Number[ stack.size() ];
+    for( int i = 0; i < stack.size(); i++ ) {
+      value[ i ] = (T2Number) stack.get( i );
     }
+  }
 
-@Override
-    public Object getValue() {
+  @Override
+  public short[] getBytes() {
 
-        return value;
+    return bytes;
+  }
+
+  @Override
+  public Object getValue() {
+
+    return value;
+  }
+
+  /**
+   * Check, if the object is a array.
+   *
+   * @return Returns {@code true}, if the object is a array.
+   */
+  @Override
+  public boolean isArray() {
+
+    return true;
+  }
+
+  @Override
+  public String toString() {
+
+    StringBuilder buf = new StringBuilder();
+    for( int i = 0; i < value.length; i++ ) {
+      buf.append( value[ i ].toString() ).append( ' ' );
     }
+    return buf.toString();
+  }
 
-    /**
-     * Check, if the object is a array.
-     * 
-     * @return Returns {@code true}, if the object is a array.
-     */
-    @Override
-    public boolean isArray() {
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        return true;
+    writer.writeStartElement( getName() );
+    for( int i = 0; i < value.length; i++ ) {
+      writer.writeAttribute( "value_" + i, value[ i ].toString() );
     }
+    writer.writeEndElement();
 
-@Override
-    public String toString() {
-
-        StringBuilder buf = new StringBuilder();
-        for (int i = 0; i < value.length; i++) {
-            buf.append(value[i].toString()).append(' ');
-        }
-        return buf.toString();
-    }
-
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        for (int i = 0; i < value.length; i++) {
-            writer.writeAttribute("value_" + i, value[i].toString());
-        }
-        writer.writeEndElement();
-
-    }
+  }
 
 }

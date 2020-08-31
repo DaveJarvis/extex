@@ -19,6 +19,11 @@
 
 package org.extex.dviware.type;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.dviware.Dvi;
+import org.extex.typesetter.tc.font.Font;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -26,191 +31,182 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.FixedDimen;
-import org.extex.dviware.Dvi;
-import org.extex.typesetter.tc.font.Font;
-
 /**
  * This class represents the DVI instruction {@code post} and the contents
  * up to the terminating {@code post_post}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviPostamble extends AbstractDviCode {
 
-    /**
-     * The field {@code bop} contains the offset for the last bop instruction.
-     */
-    private int bop = -1;
+  /**
+   * The field {@code bop} contains the offset for the last bop instruction.
+   */
+  private int bop = -1;
 
-    /**
-     * The field {@code fontMap} contains the fonts and their mapping to
-     * indexes.
-     */
-    private final Map<Font, Long> fontMap = new HashMap<Font, Long>();
+  /**
+   * The field {@code fontMap} contains the fonts and their mapping to
+   * indexes.
+   */
+  private final Map<Font, Long> fontMap = new HashMap<Font, Long>();
 
-    /**
-     * The field {@code fonts} contains the list of the font def instructions
-     * to be written out at the end.
-     */
-    private final List<DviFntDef> fonts = new ArrayList<DviFntDef>();
+  /**
+   * The field {@code fonts} contains the list of the font def instructions
+   * to be written out at the end.
+   */
+  private final List<DviFntDef> fonts = new ArrayList<DviFntDef>();
 
-    /**
-     * The field {@code mag} contains the magnification in permille.
-     */
-    private final int mag;
+  /**
+   * The field {@code mag} contains the magnification in permille.
+   */
+  private final int mag;
 
-    /**
-     * The field {@code maxHeight} contains the maximal height.
-     */
-    private final Dimen maxHeight = new Dimen( 0);
+  /**
+   * The field {@code maxHeight} contains the maximal height.
+   */
+  private final Dimen maxHeight = new Dimen( 0 );
 
-    /**
-     * The field {@code maxWidth} contains the maximal width.
-     */
-    private final Dimen maxWidth = new Dimen( 0);
+  /**
+   * The field {@code maxWidth} contains the maximal width.
+   */
+  private final Dimen maxWidth = new Dimen( 0 );
 
-    /**
-     * The field {@code numberOfPages} contains the number of pages.
-     */
-    private int numberOfPages = 0;
+  /**
+   * The field {@code numberOfPages} contains the number of pages.
+   */
+  private int numberOfPages = 0;
 
-    /**
-     * The field {@code bopOffset} contains the index of the last BOP
-     * instruction in the output stream.
-     */
-    private int bopOffset;
+  /**
+   * The field {@code bopOffset} contains the index of the last BOP
+   * instruction in the output stream.
+   */
+  private int bopOffset;
 
-    /**
-     * The field {@code stackDepth} contains the stack depth needed to process
-     * all push and pop operations.
-     */
-    private int stackDepth = 0;
+  /**
+   * The field {@code stackDepth} contains the stack depth needed to process
+   * all push and pop operations.
+   */
+  private int stackDepth = 0;
 
-    /**
-     * Creates a new object.
-     *
-     * @param mag the magnification factor in permille
-     */
-    public DviPostamble(int mag) {
+  /**
+   * Creates a new object.
+   *
+   * @param mag the magnification factor in permille
+   */
+  public DviPostamble( int mag ) {
 
-        super("post");
-        this.mag = mag;
+    super( "post" );
+    this.mag = mag;
+  }
+
+  /**
+   * Determine the font index and insert a font definition into the output
+   * list if required. As a side effect the font is remembered for writing
+   * the postamble.
+   *
+   * @param fnt  the font to resolve
+   * @param list the list to add the font definition to
+   * @return the index in the font table to use
+   */
+  public int mapFont( Font fnt, List<DviCode> list ) {
+
+    Long idx = fontMap.get( fnt );
+    if( idx != null ) {
+      return idx.intValue();
+    }
+    int index = fonts.size();
+    fontMap.put( fnt, new Long( index ) );
+    DviFntDef dviFntDef = new DviFntDef( index, fnt );
+    list.add( dviFntDef );
+    fonts.add( dviFntDef );
+    return index;
+  }
+
+  /**
+   * See a page and remember everything needed to be written out at the end.
+   *
+   * @param height    the height of the page
+   * @param depth     the depth of the page
+   * @param width     the width of the page
+   * @param stacksize the stack size needed to process the push and pop
+   *                  operations of the current page
+   */
+  public void recognizePage( FixedDimen height, FixedDimen depth,
+                             FixedDimen width, int stacksize ) {
+
+    numberOfPages++;
+
+    Dimen x = new Dimen( height );
+    x.add( depth );
+
+    if( maxHeight.lt( x ) ) {
+      maxHeight.set( x );
     }
 
-    /**
-     * Determine the font index and insert a font definition into the output
-     * list if required. As a side effect the font is remembered for writing
-     * the postamble.
-     *
-     * @param fnt the font to resolve
-     * @param list the list to add the font definition to
-     *
-     * @return the index in the font table to use
-     */
-    public int mapFont(Font fnt, List<DviCode> list) {
-
-        Long idx = fontMap.get(fnt);
-        if (idx != null) {
-            return idx.intValue();
-        }
-        int index = fonts.size();
-        fontMap.put(fnt, new Long(index));
-        DviFntDef dviFntDef = new DviFntDef(index, fnt);
-        list.add(dviFntDef);
-        fonts.add(dviFntDef);
-        return index;
+    if( maxWidth.lt( width ) ) {
+      maxWidth.set( width );
     }
 
-    /**
-     * See a page and remember everything needed to be written out at the end.
-     *
-     * @param height the height of the page
-     * @param depth the depth of the page
-     * @param width the width of the page
-     * @param stacksize the stack size needed to process the push and pop
-     *  operations of the current page
-     */
-    public void recognizePage(FixedDimen height, FixedDimen depth,
-            FixedDimen width, int stacksize) {
+    if( stacksize > stackDepth ) {
+      stackDepth = stacksize;
+    }
+  }
 
-        numberOfPages++;
+  /**
+   * Setter for the bop index.
+   *
+   * @param bopPointer the pointer to the last BOP
+   */
+  public void setBop( int bopPointer ) {
 
-        Dimen x = new Dimen(height);
-        x.add(depth);
+    this.bop = bopPointer;
+  }
 
-        if (maxHeight.lt(x)) {
-            maxHeight.set(x);
-        }
+  /**
+   * Setter for the offset of the last bop instruction.
+   *
+   * @param pointer the offset for the last bop instruction
+   */
+  public void setOffset( int pointer ) {
 
-        if (maxWidth.lt(width)) {
-            maxWidth.set(width);
-        }
+    this.bopOffset = pointer;
+  }
 
-        if (stacksize > stackDepth) {
-            stackDepth = stacksize;
-        }
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
+
+    int n = 39;
+    stream.write( Dvi.POST );
+    write4( stream, bop );
+    write4( stream, Dvi.DVI_UNIT_NUMERATOR );
+    write4( stream, Dvi.DVI_UNIT_DENOMINATOR );
+    write4( stream, mag );
+    write4( stream, (int) maxHeight.getValue() );
+    write4( stream, (int) maxWidth.getValue() );
+    write2( stream, stackDepth );
+    write2( stream, numberOfPages );
+
+    for( int i = 0; i < fonts.size(); i++ ) {
+      n += fonts.get( i ).write( stream );
     }
 
-    /**
-     * Setter for the bop index.
-     *
-     * @param bopPointer the pointer to the last BOP
-     */
-    public void setBop(int bopPointer) {
+    stream.write( Dvi.POST_POST );
+    write4( stream, bopOffset );
+    stream.write( Dvi.DVI_ID );
 
-        this.bop = bopPointer;
-    }
+    stream.write( Dvi.PADDING_BYTE );
+    stream.write( Dvi.PADDING_BYTE );
+    stream.write( Dvi.PADDING_BYTE );
+    stream.write( Dvi.PADDING_BYTE );
 
-    /**
-     * Setter for the offset of the last bop instruction.
-     *
-     * @param pointer the offset for the last bop instruction
-     */
-    public void setOffset(int pointer) {
-
-        this.bopOffset = pointer;
-    }
-
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
-
-        int n = 39;
-        stream.write(Dvi.POST);
-        write4(stream, bop);
-        write4(stream, Dvi.DVI_UNIT_NUMERATOR);
-        write4(stream, Dvi.DVI_UNIT_DENOMINATOR);
-        write4(stream, mag);
-        write4(stream, (int) maxHeight.getValue());
-        write4(stream, (int) maxWidth.getValue());
-        write2(stream, stackDepth);
-        write2(stream, numberOfPages);
-
-        for (int i = 0; i < fonts.size(); i++) {
-            n += fonts.get(i).write(stream);
-        }
-
-        stream.write(Dvi.POST_POST);
-        write4(stream, bopOffset);
-        stream.write(Dvi.DVI_ID);
-
-        stream.write(Dvi.PADDING_BYTE);
-        stream.write(Dvi.PADDING_BYTE);
-        stream.write(Dvi.PADDING_BYTE);
-        stream.write(Dvi.PADDING_BYTE);
-
-        return n;
-    }
+    return n;
+  }
 
 }

@@ -24,26 +24,26 @@ import java.util.List;
 
 /**
  * LanguageGroup.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T1LanguageGroup extends T1DictNumber {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO.error occurs.
-     */
-    public T1LanguageGroup(List<T2Number> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO.error occurs.
+   */
+  public T1LanguageGroup( List<T2Number> stack ) throws IOException {
 
-        super(stack, new short[]{LANGUAGE_GROUP});
-    }
+    super( stack, new short[]{LANGUAGE_GROUP} );
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "LanguageGroup";
-    }
+    return "LanguageGroup";
+  }
 
 }

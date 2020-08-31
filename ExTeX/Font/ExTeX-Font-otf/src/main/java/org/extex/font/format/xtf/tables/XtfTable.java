@@ -23,44 +23,44 @@ import java.io.IOException;
 
 /**
  * Interface for all TTF/OTF table.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface XtfTable {
 
-    /**
-     * Returns the table-type.
-     * 
-     * @return Returns the table-type.
-     */
-    int getType();
+  /**
+   * Returns the table-type.
+   *
+   * @return Returns the table-type.
+   */
+  int getType();
 
-    /**
-     * Returns the table shortcut.
-     * 
-     * @return Returns the table shortcut.
-     */
-    String getShortcut();
+  /**
+   * Returns the table shortcut.
+   *
+   * @return Returns the table shortcut.
+   */
+  String getShortcut();
 
-    /**
-     * Returns a order number to sort the tables for the init process.
-     * 
-     * @return Returns the order number.
-     */
-    int getInitOrder();
+  /**
+   * Returns a order number to sort the tables for the init process.
+   *
+   * @return Returns the order number.
+   */
+  int getInitOrder();
 
-    /**
-     * Returns the table map with all tables.
-     * 
-     * @return Returns the table map with all tables.
-     */
-    XtfTableMap getTableMap();
+  /**
+   * Returns the table map with all tables.
+   *
+   * @return Returns the table map with all tables.
+   */
+  XtfTableMap getTableMap();
 
-    /**
-     * Initialize the table.
-     * 
-     * @throws IOException if a IO-error is occurred.
-     */
-    void init() throws IOException;
+  /**
+   * Initialize the table.
+   *
+   * @throws IOException if a IO-error is occurred.
+   */
+  void init() throws IOException;
 
 }

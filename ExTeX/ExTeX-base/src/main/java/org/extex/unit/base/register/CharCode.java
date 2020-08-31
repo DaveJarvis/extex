@@ -43,118 +43,122 @@ import org.extex.typesetter.exception.TypesetterException;
  * character. The code is executable, expandable, and convertible into a count
  * register. The token returned by expansion depends on the category code at the
  * time of expansion.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CharCode extends AbstractCode
-        implements
-            ExpandableCode,
-            CountConvertible,
-            Showable,
-            Theable {
+    implements
+    ExpandableCode,
+    CountConvertible,
+    Showable,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code character} contains the encapsulated Unicode character.
-     */
-    private final UnicodeChar character;
+  /**
+   * The field {@code character} contains the encapsulated Unicode character.
+   */
+  private final UnicodeChar character;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     * @param uc the Unicode character to encapsulate
-     */
-    public CharCode(CodeToken token, UnicodeChar uc) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   * @param uc    the Unicode character to encapsulate
+   */
+  public CharCode( CodeToken token, UnicodeChar uc ) {
 
-        super(token);
-        this.character = uc;
+    super( token );
+    this.character = uc;
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    return character.getCodePoint();
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    expand( prefix, context, source, typesetter );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter ) throws HelpingException {
+
+    try {
+      Token t =
+          context.getTokenFactory().createToken( Catcode.OTHER,
+                                                 character,
+                                                 context.getNamespace() );
+      source.push( t );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * Getter for character.
+   *
+   * @return the character
+   */
+  public UnicodeChar getCharacter() {
 
-        return character.getCodePoint();
+    return this.character;
+  }
+
+  @Override
+  public Tokens show( Context context ) throws HelpingException {
+
+    try {
+      return context.getTokenFactory().toTokens(
+          context.esc( "char" )
+              + "\""
+              + Integer.toHexString( getCharacter().getCodePoint() )
+                       .toUpperCase() );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        expand(prefix, context, source, typesetter);
-    }
+    return context.getTokenFactory().toTokens(
+        Integer.toString( character.getCodePoint() ) );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+  @Override
+  public String toString() {
 
-        try {
-            Token t =
-                    context.getTokenFactory().createToken(Catcode.OTHER,
-                        character, context.getNamespace());
-            source.push(t);
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-     * Getter for character.
-     * 
-     * @return the character
-     */
-    public UnicodeChar getCharacter() {
-
-        return this.character;
-    }
-
-@Override
-    public Tokens show(Context context) throws HelpingException {
-
-        try {
-            return context.getTokenFactory().toTokens(
-                context.esc("char")
-                        + "\""
-                        + Integer.toHexString(getCharacter().getCodePoint())
-                            .toUpperCase());
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        return context.getTokenFactory().toTokens(
-            Integer.toString(character.getCodePoint()));
-    }
-
-@Override
-    public String toString() {
-
-        return character.toString();
-    }
+    return character.toString();
+  }
 
 }

@@ -24,33 +24,33 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is raised when an arithmetic overflow has been encountered.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code TTP.ArithmeticOverflow}.
+ * The localization format is taken from the Localizer under the key
+ * {@code TTP.ArithmeticOverflow}.
  * </p>
  * <p>
- *  The format takes one argument which is the empty sting or the name of the
- *  macro the problem occurs in.
+ * The format takes one argument which is the empty sting or the name of the
+ * macro the problem occurs in.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ArithmeticOverflowException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param macro the name of the macro in which the eof has been encountered
-     */
-    public ArithmeticOverflowException(String macro) {
+  /**
+   * Creates a new object.
+   *
+   * @param macro the name of the macro in which the eof has been encountered
+   */
+  public ArithmeticOverflowException( String macro ) {
 
-        super(LocalizerFactory.getLocalizer(
-            ArithmeticOverflowException.class),
-            "TTP.ArithmeticOverflow", macro == null ? "" : macro);
-    }
+    super( LocalizerFactory.getLocalizer(
+        ArithmeticOverflowException.class ),
+           "TTP.ArithmeticOverflow", macro == null ? "" : macro );
+  }
 
 }

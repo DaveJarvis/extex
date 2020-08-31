@@ -30,7 +30,7 @@ import org.extex.typesetter.Typesetter;
 /**
  * This class provides an implementation for the primitive
  * {@code \endgroup}.
- * 
+ *
  * <p>The Primitive {@code \endgroup}</p>
  * <p>
  * The primitive {@code \endgroup} closes the current group all properties
@@ -41,9 +41,9 @@ import org.extex.typesetter.Typesetter;
  * <p>
  * If no group has been opened then an error is raised.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ *
  * <p>
  * The formal description of this primitive is the following:
  * </p>
@@ -56,36 +56,36 @@ import org.extex.typesetter.Typesetter;
  *
  * <pre class="TeXSample">
  *    \begingroup 123 \endgroup  </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Endgroup extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Endgroup(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Endgroup( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter ) throws HelpingException {
 
-        context.closeGroup(typesetter, source);
-    }
+    context.closeGroup( typesetter, source );
+  }
 
 }

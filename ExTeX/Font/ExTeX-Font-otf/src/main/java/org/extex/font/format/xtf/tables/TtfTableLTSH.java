@@ -19,16 +19,16 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * The table 'LTSH' (The Linear Threshold Table).
- * 
+ *
  * <p>
  * The LTSH table relates to OpenType fonts containing TrueType outlines. There
  * are noticeable improvements to fonts on the screen when instructions are
@@ -89,105 +89,105 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Note that glyphs which do not have instructions on their sidebearings should
  * have yPels = 1; i.e., always scales linearly.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTableLTSH extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
 
-    /**
-     * the number of glyphs
-     */
-    private final int numGlyphs;
+  /**
+   * the number of glyphs
+   */
+  private final int numGlyphs;
 
-    /**
-     * the version
-     */
-    private final int version;
+  /**
+   * the version
+   */
+  private final int version;
 
-    /**
-     * The vertical pel height at which the glyph can be assumed to scale
-     * linearly. On a per glyph basis.
-     */
-    private final byte[] yPels;
+  /**
+   * The vertical pel height at which the glyph can be assumed to scale
+   * linearly. On a per glyph basis.
+   */
+  private final byte[] yPels;
 
-    /**
-     * Create a new object
-     * 
-     * @param tablemap the table map
-     * @param de entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public TtfTableLTSH(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object
+   *
+   * @param tablemap the table map
+   * @param de       entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public TtfTableLTSH( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap);
-        rar.seek(de.getOffset());
+    super( tablemap );
+    rar.seek( de.getOffset() );
 
-        version = rar.readUnsignedShort();
-        numGlyphs = rar.readUnsignedShort();
-        yPels = new byte[numGlyphs];
-        rar.readFully(yPels);
-    }
+    version = rar.readUnsignedShort();
+    numGlyphs = rar.readUnsignedShort();
+    yPels = new byte[ numGlyphs ];
+    rar.readFully( yPels );
+  }
 
-    /**
-     * Returns the numGlyphs.
-     * 
-     * @return Returns the numGlyphs.
-     */
-    public int getNumGlyphs() {
+  /**
+   * Returns the numGlyphs.
+   *
+   * @return Returns the numGlyphs.
+   */
+  public int getNumGlyphs() {
 
-        return numGlyphs;
-    }
+    return numGlyphs;
+  }
 
-public String getShortcut() {
+  public String getShortcut() {
 
-        return "ltsh";
-    }
+    return "ltsh";
+  }
 
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
 
-        return XtfReader.LTSH;
-    }
+    return XtfReader.LTSH;
+  }
 
-    /**
-     * Returns the version.
-     * 
-     * @return Returns the version.
-     */
-    public int getVersion() {
+  /**
+   * Returns the version.
+   *
+   * @return Returns the version.
+   */
+  public int getVersion() {
 
-        return version;
-    }
+    return version;
+  }
 
-    /**
-     * Returns the yPels.
-     * 
-     * @return Returns the yPels.
-     */
-    public byte[] getYPels() {
+  /**
+   * Returns the yPels.
+   *
+   * @return Returns the yPels.
+   */
+  public byte[] getYPels() {
 
-        return yPels;
-    }
+    return yPels;
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writeStartElement(writer);
-        writer.writeAttribute("version", version);
-        writer.writeAttribute("nummglyphs", numGlyphs);
-        writer.writeByteArray(yPels);
-        writer.writeEndElement();
-    }
+    writeStartElement( writer );
+    writer.writeAttribute( "version", version );
+    writer.writeAttribute( "nummglyphs", numGlyphs );
+    writer.writeByteArray( yPels );
+    writer.writeEndElement();
+  }
 
 }

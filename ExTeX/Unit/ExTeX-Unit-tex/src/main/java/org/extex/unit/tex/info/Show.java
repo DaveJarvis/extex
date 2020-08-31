@@ -43,7 +43,7 @@ import java.util.logging.Logger;
 
 /**
  * This class provides an implementation for the primitive {@code \show}.
- * 
+ *
  * <p>The Primitive {@code \show}</p>
  * <p>
  * The primitive {@code \show} consumes the following token and prints the
@@ -59,149 +59,150 @@ import java.util.logging.Logger;
  * then it is reported with the pattern and expansion text.</li>
  * <li>Otherwise the long descriptive form of the token is reported.</li>
  * </ul>
- * 
+ *
  * <p>Syntax</p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;show&rang;
  *       &rarr; {@code \show} &lang;token&rang;
  * </pre>
- * 
+ *
  * <p>Examples</p>
  *
  * <pre class="TeXSample">
  *    \show\abc
  *    &gt; \abc=undefined
  *  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \show \def
  *    &gt; \def=\def.
  *  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \let\xxx=\def\show \xxx
  *    &gt; \xxx=\def.
  *  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \def\m{abc}\show \m
  *    &gt; \m=macro:
  *    -&gt;abc.
  *  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \show a
  *    &gt; the letter a.
  *  </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Show extends AbstractCode implements LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the target channel for the message.
-     */
-    private transient Logger logger;
+  /**
+   * The field {@code logger} contains the target channel for the message.
+   */
+  private transient Logger logger;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Show(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Show( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Setter for the logger.
+   *
+   * @param log the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+   */
+  @Override
+  public void enableLogging( Logger log ) {
+
+    this.logger = log;
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Token t = source.getToken( context );
+    if( t == null ) {
+      throw new EofException( toText( context ) );
     }
+    logger.info( "\n> " + meaning( t, context ).toText() + ".\n" );
+  }
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
-    public void enableLogging(Logger log) {
+  /**
+   * Get the descriptions of a token as token list.
+   *
+   * @param t       the token to describe
+   * @param context the interpreter context
+   * @return the token list describing the token
+   * @throws HelpingException in case of an error
+   */
+  protected Tokens meaning( Token t, Context context ) throws HelpingException {
 
-        this.logger = log;
+    Tokens toks;
+    try {
+      if( !(t instanceof CodeToken) ) {
+        return context.getTokenFactory().toTokens( t.toString() );
+      }
+
+      if( t instanceof ControlSequenceToken ) {
+
+        toks = context.getTokenFactory().toTokens( context.esc( t ) );
+
+      }
+      else {
+        toks =
+            new Tokens(
+                context.getTokenFactory().createToken(
+                    Catcode.OTHER, t.getChar(),
+                    Namespace.DEFAULT_NAMESPACE ) );
+      }
+
+      toks.add( context.getTokenFactory().toTokens( "=" ) );
+      Code code = context.getCode( (CodeToken) t );
+      if( code == null ) {
+
+        toks.add( context.getTokenFactory().toTokens(
+            getLocalizer().format( "TTP.Undefined" ) ) );
+
+      }
+      else if( (code instanceof Showable) ) {
+
+        toks.add( ((Showable) code).show( context ) );
+
+      }
+      else {
+
+        toks.add( context.getTokenFactory().toTokens(
+            code.getToken().toText( context.escapechar() ) ) );
+
+        // } else {
+
+        // toks.add(new Tokens(context, t.getChar().getCodePoint()));
+      }
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Token t = source.getToken(context);
-        if (t == null) {
-            throw new EofException(toText(context));
-        }
-        logger.info("\n> " + meaning(t, context).toText() + ".\n");
-    }
-
-    /**
-     * Get the descriptions of a token as token list.
-     * 
-     * @param t the token to describe
-     * @param context the interpreter context
-     * 
-     * @return the token list describing the token
-     * 
-     * @throws HelpingException in case of an error
-     */
-    protected Tokens meaning(Token t, Context context) throws HelpingException {
-
-        Tokens toks;
-        try {
-            if (!(t instanceof CodeToken)) {
-                return context.getTokenFactory().toTokens(t.toString());
-            }
-
-            if (t instanceof ControlSequenceToken) {
-
-                toks = context.getTokenFactory().toTokens(context.esc(t));
-
-            } else {
-                toks =
-                        new Tokens(
-                            context.getTokenFactory().createToken(
-                                Catcode.OTHER, t.getChar(),
-                                Namespace.DEFAULT_NAMESPACE));
-            }
-
-            toks.add(context.getTokenFactory().toTokens("="));
-            Code code = context.getCode((CodeToken) t);
-            if (code == null) {
-
-                toks.add(context.getTokenFactory().toTokens(
-                    getLocalizer().format("TTP.Undefined")));
-
-            } else if ((code instanceof Showable)) {
-
-                toks.add(((Showable) code).show(context));
-
-            } else {
-
-                toks.add(context.getTokenFactory().toTokens(
-                    code.getToken().toText(context.escapechar())));
-
-                // } else {
-
-                // toks.add(new Tokens(context, t.getChar().getCodePoint()));
-            }
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-        return toks;
-    }
+    return toks;
+  }
 
 }

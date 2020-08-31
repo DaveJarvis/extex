@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \pdfpageattr}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfpageattrTest extends AbstractToksRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PdfpageattrTest.class);
-    }
+    (new JUnitCore()).run( PdfpageattrTest.class );
+  }
 
 
-    public PdfpageattrTest() {
+  public PdfpageattrTest() {
 
-        super("pdfpageattr", "", "");
-        setConfig("pdftex-test");
-    }
+    super( "pdfpageattr", "", "" );
+    setConfig( "pdftex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

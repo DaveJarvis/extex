@@ -19,6 +19,13 @@
 
 package org.extex.exbib.core.io.auxio;
 
+import org.extex.exbib.core.ProcessorContainer;
+import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.io.AbstractFileReader;
+import org.extex.exbib.core.io.csf.CsfException;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationWrapperException;
+
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.UnsupportedEncodingException;
@@ -27,24 +34,19 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.extex.exbib.core.ProcessorContainer;
-import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.io.AbstractFileReader;
-import org.extex.exbib.core.io.csf.CsfException;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationWrapperException;
-
 /**
  * This is the core of the aux file reading as performed by
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X.
  * <p>
  * The following macros are recognized:
  * </p>
  * <dl>
  * <dt>\citation{keys}</dt>
- * <dd>pass a list of comma separated citation keys to the default bibliography</dd>
+ * <dd>pass a list of comma separated citation keys to the default 
+ * bibliography</dd>
  * <dt>\bibstyle{styles}</dt>
  * <dd>pass a list of comma separated bibliography styles to the default
  * bibliography</dd>
@@ -53,243 +55,241 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * <dt>\@include{auxfile}</dt>
  * <dd>process an additional aux file in the same way</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
 
+  /**
+   * This is the handler for bibdata.
+   */
+  private static final class BibdataHandler implements AuxHandler {
+
     /**
-     * This is the handler for bibdata.
+     * org.extex.exbib.core.ProcessorContainer, java.lang.String,
+     * org.extex.exbib.core.io.auxio.AuxReader)
      */
-    private static final class BibdataHandler implements AuxHandler {
+    public void invoke( String arg, ProcessorContainer bibliographies,
+                        String type, AuxReader engine )
+        throws ConfigurationException,
+        ExBibException {
 
-        /**
-    *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
-         *      org.extex.exbib.core.io.auxio.AuxReader)
-         */
-        public void invoke(String arg, ProcessorContainer bibliographies,
-                String type, AuxReader engine)
-                throws ConfigurationException,
-                    ExBibException {
+      try {
+        bibliographies.findProcessor( type ).addBibliographyDatabase(
+            arg.split( "," ) );
+      } catch( UnsupportedEncodingException e ) {
+        throw new ConfigurationWrapperException( e );
+      } catch( CsfException e ) {
+        throw new ConfigurationWrapperException( e );
+      } catch( IOException e ) {
+        throw new ConfigurationWrapperException( e );
+      }
+    }
+  }
 
-            try {
-                bibliographies.findProcessor(type).addBibliographyDatabase(
-                    arg.split(","));
-            } catch (UnsupportedEncodingException e) {
-                throw new ConfigurationWrapperException(e);
-            } catch (CsfException e) {
-                throw new ConfigurationWrapperException(e);
-            } catch (IOException e) {
-                throw new ConfigurationWrapperException(e);
-            }
+  /**
+   * This is the handler for bibstyle.
+   */
+  private static final class BibstyleHandler implements AuxHandler {
+
+    /**
+     * org.extex.exbib.core.ProcessorContainer, java.lang.String,
+     * org.extex.exbib.core.io.auxio.AuxReader)
+     */
+    public void invoke( String arg, ProcessorContainer bibliographies,
+                        String type, AuxReader engine )
+        throws ConfigurationException,
+        ExBibException {
+
+      try {
+        bibliographies.findProcessor( type ).addBibliographyStyle(
+            arg.split( "," ) );
+      } catch( UnsupportedEncodingException e ) {
+        throw new ConfigurationWrapperException( e );
+      } catch( CsfException e ) {
+        throw new ConfigurationWrapperException( e );
+      } catch( IOException e ) {
+        throw new ConfigurationWrapperException( e );
+      }
+    }
+  }
+
+  /**
+   * This is the handler for citation.
+   */
+  private static final class CitationHandler implements AuxHandler {
+
+    /**
+     * org.extex.exbib.core.ProcessorContainer, java.lang.String,
+     * org.extex.exbib.core.io.auxio.AuxReader)
+     */
+    public void invoke( String arg, ProcessorContainer bibliographies,
+                        String type, AuxReader engine )
+        throws ConfigurationException,
+        ExBibException {
+
+      String[] citations = arg.replaceAll( "[ \t\f]", "" ).split( "," );
+      try {
+        bibliographies.findProcessor( type ).addCitation( citations );
+      } catch( UnsupportedEncodingException e ) {
+        throw new ConfigurationWrapperException( e );
+      } catch( CsfException e ) {
+        throw new ConfigurationWrapperException( e );
+      } catch( IOException e ) {
+        throw new ConfigurationWrapperException( e );
+      }
+    }
+  }
+
+  /**
+   * This is the handler for include.
+   */
+  private final class IncludeHandler implements AuxHandler {
+
+    /**
+     * org.extex.exbib.core.ProcessorContainer, java.lang.String,
+     * org.extex.exbib.core.io.auxio.AuxReader)
+     */
+    public void invoke( String arg, ProcessorContainer bibliographies,
+                        String type, AuxReader engine )
+        throws ConfigurationException,
+        IOException,
+        ExBibException {
+
+      engine.load( bibliographies, arg, encoding );
+    }
+  }
+
+  /**
+   * The constant {@code PATTERN} contains the pattern for the recognized
+   * macros.
+   */
+  protected static final Pattern PATTERN = Pattern
+      .compile( "^\\\\([@cb][a-z]+)\\{([^{}]*)\\}" );
+
+  /**
+   * The constant {@code DEFAULT_TYPE} contains the default type.
+   */
+  protected static final String DEFAULT_TYPE = "bbl";
+
+  /**
+   * The field {@code handlerMap} contains the macro handlers for the aux
+   * file.
+   */
+  private final Map<String, AuxHandler> handlerMap;
+
+  /**
+   * The field {@code observer} contains the observer.
+   */
+  private ResourceObserver observer = null;
+
+  /**
+   * The field {@code encoding} contains the encoding for transporting it to
+   * the registered handler.
+   */
+  private String encoding;
+
+  /**
+   * Creates a new object.
+   *
+   * @throws ConfigurationException in case of a configuration error
+   */
+  public AuxReader099cImpl() throws ConfigurationException {
+
+    handlerMap = new HashMap<String, AuxHandler>();
+    register( "citation", new CitationHandler() );
+    register( "bibstyle", new BibstyleHandler() );
+    register( "bibdata", new BibdataHandler() );
+    register( "@include", new IncludeHandler() );
+  }
+
+  /**
+   * Get a handler for a given key.
+   *
+   * @param key the key
+   * @return the handler or {@code null}
+   */
+  protected AuxHandler getHandler( String key ) {
+
+    return handlerMap.get( key );
+  }
+
+  /**
+   * Getter for observer.
+   *
+   * @return the observer
+   */
+  protected ResourceObserver getObserver() {
+
+    return observer;
+  }
+
+  /**
+   * java.lang.String, java.lang.String)
+   */
+  public void load( ProcessorContainer bibliographies, String resource,
+                    String enc )
+      throws ConfigurationException,
+      IOException,
+      ExBibException {
+
+    this.encoding = enc;
+    LineNumberReader reader = open( resource, "aux", enc );
+    String name = getFilename();
+
+    if( observer != null ) {
+      observer.observeOpen( resource, "aux", name );
+    }
+
+    try {
+      for( String line = reader.readLine(); line != null; line =
+          reader.readLine() ) {
+        Matcher m = PATTERN.matcher( line );
+
+        if( m.matches() ) {
+          AuxHandler handler = handlerMap.get( m.group( 1 ) );
+          if( handler != null ) {
+            handler.invoke( m.group( 2 ), bibliographies,
+                            DEFAULT_TYPE, this );
+          }
         }
+      }
+      if( observer != null ) {
+        observer.observeClose( resource, "aux", name );
+      }
+    } finally {
+      reader.close();
+      close();
     }
+  }
 
-    /**
-     * This is the handler for bibstyle.
-     */
-    private static final class BibstyleHandler implements AuxHandler {
+  public ResourceObserver register( ResourceObserver resourceObserver ) {
 
-        /**
-    *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
-         *      org.extex.exbib.core.io.auxio.AuxReader)
-         */
-        public void invoke(String arg, ProcessorContainer bibliographies,
-                String type, AuxReader engine)
-                throws ConfigurationException,
-                    ExBibException {
+    ResourceObserver obs = this.observer;
+    this.observer = resourceObserver;
+    return obs;
+  }
 
-            try {
-                bibliographies.findProcessor(type).addBibliographyStyle(
-                    arg.split(","));
-            } catch (UnsupportedEncodingException e) {
-                throw new ConfigurationWrapperException(e);
-            } catch (CsfException e) {
-                throw new ConfigurationWrapperException(e);
-            } catch (IOException e) {
-                throw new ConfigurationWrapperException(e);
-            }
-        }
-    }
+  /**
+   * Register a handler for a macro in the aux file.
+   *
+   * @param name    the name
+   * @param handler the handler
+   * @return the old handler or {@code null} for none
+   */
+  public AuxHandler register( String name, AuxHandler handler ) {
 
-    /**
-     * This is the handler for citation.
-     */
-    private static final class CitationHandler implements AuxHandler {
+    return handlerMap.put( name, handler );
+  }
 
-        /**
-    *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
-         *      org.extex.exbib.core.io.auxio.AuxReader)
-         */
-        public void invoke(String arg, ProcessorContainer bibliographies,
-                String type, AuxReader engine)
-                throws ConfigurationException,
-                    ExBibException {
+  /**
+   * Setter for encoding.
+   *
+   * @param encoding the encoding to set
+   */
+  protected void setEncoding( String encoding ) {
 
-            String[] citations = arg.replaceAll("[ \t\f]", "").split(",");
-            try {
-                bibliographies.findProcessor(type).addCitation(citations);
-            } catch (UnsupportedEncodingException e) {
-                throw new ConfigurationWrapperException(e);
-            } catch (CsfException e) {
-                throw new ConfigurationWrapperException(e);
-            } catch (IOException e) {
-                throw new ConfigurationWrapperException(e);
-            }
-        }
-    }
-
-    /**
-     * This is the handler for include.
-     */
-    private final class IncludeHandler implements AuxHandler {
-
-        /**
-    *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
-         *      org.extex.exbib.core.io.auxio.AuxReader)
-         */
-        public void invoke(String arg, ProcessorContainer bibliographies,
-                String type, AuxReader engine)
-                throws ConfigurationException,
-                    IOException,
-                    ExBibException {
-
-            engine.load(bibliographies, arg, encoding);
-        }
-    }
-
-    /**
-     * The constant {@code PATTERN} contains the pattern for the recognized
-     * macros.
-     */
-    protected static final Pattern PATTERN = Pattern
-        .compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
-
-    /**
-     * The constant {@code DEFAULT_TYPE} contains the default type.
-     */
-    protected static final String DEFAULT_TYPE = "bbl";
-
-    /**
-     * The field {@code handlerMap} contains the macro handlers for the aux
-     * file.
-     */
-    private final Map<String, AuxHandler> handlerMap;
-
-    /**
-     * The field {@code observer} contains the observer.
-     */
-    private ResourceObserver observer = null;
-
-    /**
-     * The field {@code encoding} contains the encoding for transporting it to
-     * the registered handler.
-     */
-    private String encoding;
-
-    /**
-     * Creates a new object.
-     * 
-     * @throws ConfigurationException in case of a configuration error
-     */
-    public AuxReader099cImpl() throws ConfigurationException {
-
-        handlerMap = new HashMap<String, AuxHandler>();
-        register("citation", new CitationHandler());
-        register("bibstyle", new BibstyleHandler());
-        register("bibdata", new BibdataHandler());
-        register("@include", new IncludeHandler());
-    }
-
-    /**
-     * Get a handler for a given key.
-     * 
-     * @param key the key
-     * 
-     * @return the handler or {@code null}
-     */
-    protected AuxHandler getHandler(String key) {
-
-        return handlerMap.get(key);
-    }
-
-    /**
-     * Getter for observer.
-     * 
-     * @return the observer
-     */
-    protected ResourceObserver getObserver() {
-
-        return observer;
-    }
-
-    /**
-*      java.lang.String, java.lang.String)
-     */
-    public void load(ProcessorContainer bibliographies, String resource,
-            String enc)
-            throws ConfigurationException,
-                IOException,
-                ExBibException {
-
-        this.encoding = enc;
-        LineNumberReader reader = open(resource, "aux", enc);
-        String name = getFilename();
-
-        if (observer != null) {
-            observer.observeOpen(resource, "aux", name);
-        }
-
-        try {
-            for (String line = reader.readLine(); line != null; line =
-                    reader.readLine()) {
-                Matcher m = PATTERN.matcher(line);
-
-                if (m.matches()) {
-                    AuxHandler handler = handlerMap.get(m.group(1));
-                    if (handler != null) {
-                        handler.invoke(m.group(2), bibliographies,
-                            DEFAULT_TYPE, this);
-                    }
-                }
-            }
-            if (observer != null) {
-                observer.observeClose(resource, "aux", name);
-            }
-        } finally {
-            reader.close();
-            close();
-        }
-    }
-
-public ResourceObserver register(ResourceObserver resourceObserver) {
-
-        ResourceObserver obs = this.observer;
-        this.observer = resourceObserver;
-        return obs;
-    }
-
-    /**
-     * Register a handler for a macro in the aux file.
-     * 
-     * @param name the name
-     * @param handler the handler
-     * 
-     * @return the old handler or {@code null} for none
-     */
-    public AuxHandler register(String name, AuxHandler handler) {
-
-        return handlerMap.put(name, handler);
-    }
-
-    /**
-     * Setter for encoding.
-     * 
-     * @param encoding the encoding to set
-     */
-    protected void setEncoding(String encoding) {
-
-        this.encoding = encoding;
-    }
+    this.encoding = encoding;
+  }
 
 }

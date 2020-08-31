@@ -44,7 +44,7 @@ import java.util.logging.Logger;
 /**
  * This primitive initiates the loading of native code and implements the
  * primitive {@code \ensureloaded}.
- * 
+ *
  * <p>The Primitive {@code \ensureloaded}</p>
  * <p>
  * The primitive {@code \ensureloaded} dynamically requests that a unit of
@@ -53,126 +53,123 @@ import java.util.logging.Logger;
  * <p>
  * A unit consists of primitives and some initializing actions.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The general form of this primitive is
- * 
+ * The general form of this primitive is
+ *
  * <pre class="syntax">
  *   &lang;ensureloaded&rang;
  *       &rarr; {@code \ensureloaded} {@linkplain
- *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context, TokenSource, Typesetter)
  *        &lang;tokens&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \ensureloaded{etex}  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \ensureloaded\toks0  </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EnsureLoaded extends AbstractCode
-        implements
-            OutputStreamConsumer,
-            LogEnabled,
-            ResourceAware {
+    implements
+    OutputStreamConsumer,
+    LogEnabled,
+    ResourceAware {
 
-    /**
-     * The constant {@code CONFIG_UNIT} contains the prefix for the path of the
-     * configuration.
-     */
-    private static final String CONFIG_UNIT = "config/unit/";
+  /**
+   * The constant {@code CONFIG_UNIT} contains the prefix for the path of the
+   * configuration.
+   */
+  private static final String CONFIG_UNIT = "config/unit/";
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the logger to use.
-     */
-    private transient Logger logger = null;
+  /**
+   * The field {@code logger} contains the logger to use.
+   */
+  private transient Logger logger = null;
 
-    /**
-     * The field {@code outFactory} contains the output factory.
-     */
-    private transient OutputStreamFactory outFactory;
+  /**
+   * The field {@code outFactory} contains the output factory.
+   */
+  private transient OutputStreamFactory outFactory;
 
-    /**
-     * The field {@code finder} contains the resource finder.
-     */
-    private transient ResourceFinder finder;
+  /**
+   * The field {@code finder} contains the resource finder.
+   */
+  private transient ResourceFinder finder;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public EnsureLoaded(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public EnsureLoaded( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Setter for the logger.
+   *
+   * @param log the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+   */
+  @Override
+  public void enableLogging( Logger log ) {
+
+    this.logger = log;
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String configName = source.scanTokensAsString( context, getToken() );
+
+    try {
+      Configuration configuration =
+          ConfigurationFactory.newInstance( CONFIG_UNIT + configName );
+      LoadUnit.loadUnit( configuration, context, source, typesetter,
+                         logger, outFactory, finder );
+    } catch( HelpingException e ) {
+      throw e;
+    } catch( GeneralException e ) {
+      throw new NoHelpException( e );
+    } catch( ConfigurationNotFoundException e ) {
+      throw new HelpingException( getLocalizer(), "UnknownUnit",
+                                  configName );
     }
+  }
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
-    public void enableLogging(Logger log) {
+  /**
+   * This method takes an output stream factory for further use.
+   *
+   * @param factory the output stream factory to use
+   * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(org.extex.backend.outputStream.OutputStreamFactory)
+   */
+  @Override
+  public void setOutputStreamFactory( OutputStreamFactory factory ) {
 
-        this.logger = log;
-    }
+    this.outFactory = factory;
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  @Override
+  public void setResourceFinder( ResourceFinder resourceFinder ) {
 
-        String configName = source.scanTokensAsString(context, getToken());
-
-        try {
-            Configuration configuration =
-                    ConfigurationFactory.newInstance(CONFIG_UNIT + configName);
-            LoadUnit.loadUnit(configuration, context, source, typesetter,
-                logger, outFactory, finder);
-        } catch (HelpingException e) {
-            throw e;
-        } catch (GeneralException e) {
-            throw new NoHelpException(e);
-        } catch (ConfigurationNotFoundException e) {
-            throw new HelpingException(getLocalizer(), "UnknownUnit",
-                configName);
-        }
-    }
-
-    /**
-     * This method takes an output stream factory for further use.
-     * 
-     * @param factory the output stream factory to use
-     * 
-     * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(org.extex.backend.outputStream.OutputStreamFactory)
-     */
-    @Override
-    public void setOutputStreamFactory(OutputStreamFactory factory) {
-
-        this.outFactory = factory;
-    }
-
-@Override
-    public void setResourceFinder(ResourceFinder resourceFinder) {
-
-        this.finder = resourceFinder;
-    }
+    this.finder = resourceFinder;
+  }
 
 }

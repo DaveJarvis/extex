@@ -25,169 +25,167 @@ import org.extex.core.glue.WideGlue;
 /**
  * This class represents a break point for the paragraph breaking.
  *
- * @see "TTP [819]"
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see "TTP [819]"
+ */
 public class BreakPoint {
 
-    /**
-     * The field {@code fitness} contains the fitness for the break point.
-     * If this field is {@code null} then this break point is not
-     * active.
-     * <p>
-     * When a list of break points has been constructed, the active flag marks
-     * those breakpoints which are currently considered. The passive break
-     * points are silently ignored for the current pass.
-     * </p>
-     */
-    private Fitness fitness = null;
+  /**
+   * The field {@code fitness} contains the fitness for the break point.
+   * If this field is {@code null} then this break point is not
+   * active.
+   * <p>
+   * When a list of break points has been constructed, the active flag marks
+   * those breakpoints which are currently considered. The passive break
+   * points are silently ignored for the current pass.
+   * </p>
+   */
+  private Fitness fitness = null;
 
-    /**
-     * The field {@code penalty} contains the penalty associated to the
-     * break point.
-     */
-    private final int penalty;
+  /**
+   * The field {@code penalty} contains the penalty associated to the
+   * break point.
+   */
+  private final int penalty;
 
-    /**
-     * The field {@code pointWidth} contains the width to be added in case
-     * that this break point is not active.
-     */
-    private final FixedGlue pointWidth;
+  /**
+   * The field {@code pointWidth} contains the width to be added in case
+   * that this break point is not active.
+   */
+  private final FixedGlue pointWidth;
 
-    /**
-     * The field {@code position} contains the pointer to the first material
-     * in the new line. This material might be skipped. Thus in fact the pointer
-     * indicates the material not contained in the previous line.
-     */
-    private final int position;
+  /**
+   * The field {@code position} contains the pointer to the first material
+   * in the new line. This material might be skipped. Thus in fact the pointer
+   * indicates the material not contained in the previous line.
+   */
+  private final int position;
 
-    /**
-     * The field {@code width} contains the width of the line from the
-     * previous break point to this one.
-     */
-    private final FixedGlue width;
+  /**
+   * The field {@code width} contains the width of the line from the
+   * previous break point to this one.
+   */
+  private final FixedGlue width;
 
-    /**
-     * Creates a new object.
-     *
-     * @param pos the position in the hlist
-     * @param wd the width; i.e. the delta since the previous break point
-     * @param pwd the point width for this break point
-     * @param pen the penalty for this break point
-     */
-    public BreakPoint(int pos, WideGlue wd, WideGlue pwd,
-            int pen) {
+  /**
+   * Creates a new object.
+   *
+   * @param pos the position in the hlist
+   * @param wd  the width; i.e. the delta since the previous break point
+   * @param pwd the point width for this break point
+   * @param pen the penalty for this break point
+   */
+  public BreakPoint( int pos, WideGlue wd, WideGlue pwd,
+                     int pen ) {
 
-        this.position = pos;
-        this.width = wd.toGlue();
-        this.pointWidth = pwd.toGlue();
-        this.penalty = pen;
-    }
+    this.position = pos;
+    this.width = wd.toGlue();
+    this.pointWidth = pwd.toGlue();
+    this.penalty = pen;
+  }
 
-    /**
-     * Getter for fitness.
-     * The fitness is one of the fitness classes defined in Fitness.
-     * The fitness is {@code null} for break points which are not active.
-     *
-     * @return the fitness.
-     */
-    public Fitness getFitness() {
+  /**
+   * Getter for fitness.
+   * The fitness is one of the fitness classes defined in Fitness.
+   * The fitness is {@code null} for break points which are not active.
+   *
+   * @return the fitness.
+   */
+  public Fitness getFitness() {
 
-        return this.fitness;
-    }
+    return this.fitness;
+  }
 
-    /**
-     * Getter for penalty.
-     * The penalty has to be added to the overall penalty in case that this
-     * break point is active.
-     *
-     * @return the penalty.
-     */
-    public int getPenalty() {
+  /**
+   * Getter for penalty.
+   * The penalty has to be added to the overall penalty in case that this
+   * break point is active.
+   *
+   * @return the penalty.
+   */
+  public int getPenalty() {
 
-        return this.penalty;
-    }
+    return this.penalty;
+  }
 
-    /**
-     * Getter for pointWidth.
-     *
-     * @return the pointWidth.
-     */
-    public FixedGlue getPointWidth() {
+  /**
+   * Getter for pointWidth.
+   *
+   * @return the pointWidth.
+   */
+  public FixedGlue getPointWidth() {
 
-        return this.pointWidth;
-    }
+    return this.pointWidth;
+  }
 
-    /**
-     * Getter for position.
-     *
-     * @return the position.
-     */
-    public int getPosition() {
+  /**
+   * Getter for position.
+   *
+   * @return the position.
+   */
+  public int getPosition() {
 
-        return this.position;
-    }
+    return this.position;
+  }
 
-    /**
-     * Getter for width.
-     *
-     * @return the width.
-     */
-    public FixedGlue getWidth() {
+  /**
+   * Getter for width.
+   *
+   * @return the width.
+   */
+  public FixedGlue getWidth() {
 
-        return this.width;
-    }
+    return this.width;
+  }
 
-    /**
-     * Getter for active.
-     *
-     * @return the active.
-     */
-    public boolean isActive() {
+  /**
+   * Getter for active.
+   *
+   * @return the active.
+   */
+  public boolean isActive() {
 
-        return (this.fitness != null);
-    }
+    return (this.fitness != null);
+  }
 
-    /**
-     * Setter for active.
-     */
-    public void setActive() {
+  /**
+   * Setter for active.
+   */
+  public void setActive() {
 
-        this.fitness = Fitness.DECENT;
-    }
+    this.fitness = Fitness.DECENT;
+  }
 
-    /**
-     * Setter for fitness.
-     *
-     * @param fitness the fitness to set.
-     */
-    public void setFitness(Fitness fitness) {
+  /**
+   * Setter for fitness.
+   *
+   * @param fitness the fitness to set.
+   */
+  public void setFitness( Fitness fitness ) {
 
-        this.fitness = fitness;
-    }
+    this.fitness = fitness;
+  }
 
-    /**
-     * Setter for active.
-     */
-    public void setPassive() {
+  /**
+   * Setter for active.
+   */
+  public void setPassive() {
 
-        this.fitness = null;
-    }
+    this.fitness = null;
+  }
 
-    /**
-     * Return the printable representation of the instance.
-     *
-     * @return the string representation
-     *
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
+  /**
+   * Return the printable representation of the instance.
+   *
+   * @return the string representation
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-        return "<" + position + ": "
-                + (width == null ? "null" : width.toString()) + " ++ "
-                + (pointWidth == null ? "null" : pointWidth.toString()) + ">";
-    }
+    return "<" + position + ": "
+        + (width == null ? "null" : width.toString()) + " ++ "
+        + (pointWidth == null ? "null" : pointWidth.toString()) + ">";
+  }
 
 }

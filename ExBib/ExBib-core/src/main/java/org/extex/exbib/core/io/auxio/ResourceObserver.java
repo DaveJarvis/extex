@@ -21,27 +21,27 @@ package org.extex.exbib.core.io.auxio;
 
 /**
  * This observer is triggered when a resource has been opened.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ResourceObserver {
 
-    /**
-     * Invoke this method if a resource has been closed.
-     * 
-     * @param resource the resource requested
-     * @param type the type of the resource
-     * @param filename the resource found
-     */
-    void observeClose(String resource, String type, String filename);
+  /**
+   * Invoke this method if a resource has been closed.
+   *
+   * @param resource the resource requested
+   * @param type     the type of the resource
+   * @param filename the resource found
+   */
+  void observeClose( String resource, String type, String filename );
 
-    /**
-     * Invoke this method if a resource has been opened.
-     * 
-     * @param resource the resource requested
-     * @param type the type of the resource
-     * @param filename the resource found
-     */
-    void observeOpen(String resource, String type, String filename);
+  /**
+   * Invoke this method if a resource has been opened.
+   *
+   * @param resource the resource requested
+   * @param type     the type of the resource
+   * @param filename the resource found
+   */
+  void observeOpen( String resource, String type, String filename );
 
 }

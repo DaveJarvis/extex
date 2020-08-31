@@ -25,55 +25,55 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \closeout}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(CloseoutTest.class);
-    }
+    (new JUnitCore()).run( CloseoutTest.class );
+  }
 
 
-    public CloseoutTest() {
+  public CloseoutTest() {
 
-        super("closeout", "1");
-    }
+    super( "closeout", "1" );
+  }
 
-    /**
-     * <testcase primitive="\closeout"> Test case checking that a
-     * {@code \closeout} works on unopened file handles.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\closeout"> Test case checking that a
+   * {@code \closeout} works on unopened file handles.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\closeout1\\end",
-            // --- output channel ---
-            "\n");
-    }
+    assertSuccess(// --- input code ---
+                  "\\closeout1\\end",
+                  // --- output channel ---
+                  "\n" );
+  }
 
-    /**
-     * <testcase primitive="\closeout"> Test case checking that a
-     * {@code \closeout} works on unopened file handles.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\closeout"> Test case checking that a
+   * {@code \closeout} works on unopened file handles.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\immediate\\closeout1\\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\immediate\\closeout1\\end",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

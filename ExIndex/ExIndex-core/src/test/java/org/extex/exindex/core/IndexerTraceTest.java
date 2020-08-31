@@ -24,39 +24,39 @@ import org.junit.Test;
 /**
  * This is a test suite for the {@link Indexer} checking the markup-trace
  * output.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IndexerTraceTest extends AbstractIndexerTester {
 
-    static {
-        register("XREF.raw",
-            "(indexentry :tkey (\"abc\") :xref (\"IV\") :attr \"see\")");
-        register("style1", "(define-crossref-class \"see\" :unverified)"
-                + "(markup-trace :on)" + "(define-letter-group \"a\")");
-    }
+  static {
+    register( "XREF.raw",
+              "(indexentry :tkey (\"abc\") :xref (\"IV\") :attr \"see\")" );
+    register( "style1", "(define-crossref-class \"see\" :unverified)"
+        + "(markup-trace :on)" + "(define-letter-group \"a\")" );
+  }
 
-    /**
-     *  Check that null values as parameters are accepted.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test01() throws Exception {
+  /**
+   * Check that null values as parameters are accepted.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test01() throws Exception {
 
-        runTest(makeList("style1"), makeList("XREF.raw"), "<INDEX:OPEN>\n"
-                + "<LETTER-GROUP-LIST:OPEN>\n" + "<LETTER-GROUP:OPEN[a]>\n"
-                + "<INDEXENTRY:OPEN[0]>\n" + "<KEYWORD-LIST:OPEN[0]>\n"
-                + "<KEYWORD:OPEN[0]>\n" + "abc<KEYWORD:CLOSE[0]>\n"
-                + "<CROSSREF-LIST:OPEN[see]>\n"
-                + "<CROSSREF-LAYER-LIST:OPEN[see]>\n"
-                + "<CROSSREF-LAYER:OPEN[see]>\n"
-                + "IV<CROSSREF-LAYER:CLOSE[see]>\n"
-                + "<CROSSREF-LAYER-LIST:CLOSE[see]>\n"
-                + "<CROSSREF-LIST:CLOSE[see]>\n" + "<KEYWORD-LIST:CLOSE[0]>\n"
-                + "<INDEXENTRY:CLOSE[0]>\n" + "<LETTER-GROUP:CLOSE[a]>\n"
-                + "<LETTER-GROUP-LIST:CLOSE>\n" + "<INDEX:CLOSE>\n",
-            "");
-    }
+    runTest( makeList( "style1" ), makeList( "XREF.raw" ), "<INDEX:OPEN>\n"
+                 + "<LETTER-GROUP-LIST:OPEN>\n" + "<LETTER-GROUP:OPEN[a]>\n"
+                 + "<INDEXENTRY:OPEN[0]>\n" + "<KEYWORD-LIST:OPEN[0]>\n"
+                 + "<KEYWORD:OPEN[0]>\n" + "abc<KEYWORD:CLOSE[0]>\n"
+                 + "<CROSSREF-LIST:OPEN[see]>\n"
+                 + "<CROSSREF-LAYER-LIST:OPEN[see]>\n"
+                 + "<CROSSREF-LAYER:OPEN[see]>\n"
+                 + "IV<CROSSREF-LAYER:CLOSE[see]>\n"
+                 + "<CROSSREF-LAYER-LIST:CLOSE[see]>\n"
+                 + "<CROSSREF-LIST:CLOSE[see]>\n" + "<KEYWORD-LIST:CLOSE[0]>\n"
+                 + "<INDEXENTRY:CLOSE[0]>\n" + "<LETTER-GROUP:CLOSE[a]>\n"
+                 + "<LETTER-GROUP-LIST:CLOSE>\n" + "<INDEX:CLOSE>\n",
+             "" );
+  }
 
 }

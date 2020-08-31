@@ -30,71 +30,71 @@ import java.net.URL;
  * This is a test suite for the primitive {@code \input}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InputTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Derive the location of an empty file.
-     */
-    private final String mEmptyTex = getResourcePath( "tex/empty.tex");
+  /**
+   * Derive the location of an empty file.
+   */
+  private final String mEmptyTex = getResourcePath( "tex/empty.tex" );
 
-    /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
-        (new JUnitCore()).run(InputTest.class);
-    }
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
+    (new JUnitCore()).run( InputTest.class );
+  }
 
-    public InputTest() {
-        setPrimitive( "input" );
-        setArguments( " " + mEmptyTex + " " );
-        setPrepare( "\\nonstopmode" );
-    }
+  public InputTest() {
+    setPrimitive( "input" );
+    setArguments( " " + mEmptyTex + " " );
+    setPrepare( "\\nonstopmode" );
+  }
 
-    /**
-     * <testcase primitive="\input"> Test case checking that a {@code \input}
-     * works. 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\input"> Test case checking that a {@code \input}
+   * works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\input " + mEmptyTex,
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\input " + mEmptyTex,
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\input"> Test case checking that a {@code \input}
-     * works. 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\input"> Test case checking that a {@code \input}
+   * works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\input DoesNotExist",
-            // --- output channel ---
-            "I can't find file `DoesNotExist'");
-    }
+    assertFailure(// --- input code ---
+                  "\\input DoesNotExist",
+                  // --- output channel ---
+                  "I can't find file `DoesNotExist'" );
+  }
 
-    /**
-     * Uses this class's classloader to find the resource with the given name.
-     *
-     * @param filename The file to find.
-     * @return The absolute path to the file.
-     */
-    @SuppressWarnings("SameParameterValue")
-    private String getResourcePath( final String filename ) {
-        final URL url = getClass().getClassLoader().getResource( filename );
-        assert url != null;
+  /**
+   * Uses this class's classloader to find the resource with the given name.
+   *
+   * @param filename The file to find.
+   * @return The absolute path to the file.
+   */
+  @SuppressWarnings("SameParameterValue")
+  private String getResourcePath( final String filename ) {
+    final URL url = getClass().getClassLoader().getResource( filename );
+    assert url != null;
 
-        final File f = new File( url.getFile() );
-        return f.getAbsolutePath();
-    }
+    final File f = new File( url.getFile() );
+    return f.getAbsolutePath();
+  }
 }

@@ -35,78 +35,81 @@ import org.extex.typesetter.type.NodeList;
 
 /**
  * This class provides an implementation for the primitive {@code \cr}.
- * 
+ *
  * <p>The Primitive {@code \cr}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;cr&rang;
  *       &rarr; {@code \cr}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \cr  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Cr extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Cr(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Cr( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        NodeList noalign = null;
-        ListMaker maker = typesetter.getListMaker();
-        if (maker instanceof AlignmentList) {
-            Token token = source.getToken(context); // TODO gene: respect
-            // protected
-            if (token instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) token);
-                if (code instanceof Noalign) {
-                    noalign =
-                            ((Noalign) code).exec(context, source, typesetter,
-                                token);
-                } else {
-                    source.push(token);
-                }
-            } else {
-                source.push(token);
-            }
-
-            ((AlignmentList) maker).cr(context, source, noalign);
-        } else {
-            throw new HelpingException(getLocalizer(), "TTP.MisplacedCrSpan",
-                toText(context));
+    NodeList noalign = null;
+    ListMaker maker = typesetter.getListMaker();
+    if( maker instanceof AlignmentList ) {
+      Token token = source.getToken( context ); // TODO gene: respect
+      // protected
+      if( token instanceof CodeToken ) {
+        Code code = context.getCode( (CodeToken) token );
+        if( code instanceof Noalign ) {
+          noalign =
+              ((Noalign) code).exec( context, source, typesetter,
+                                     token );
         }
+        else {
+          source.push( token );
+        }
+      }
+      else {
+        source.push( token );
+      }
+
+      ((AlignmentList) maker).cr( context, source, noalign );
     }
+    else {
+      throw new HelpingException( getLocalizer(), "TTP.MisplacedCrSpan",
+                                  toText( context ) );
+    }
+  }
 
 }

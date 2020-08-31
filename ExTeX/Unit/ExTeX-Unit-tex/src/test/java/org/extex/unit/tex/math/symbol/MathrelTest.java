@@ -26,16 +26,17 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \mathrel}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathrelTest extends AbstractOperatorTester {
 
-    public MathrelTest() {
-        setPrimitive( "mathrel" );
-    }
+  public MathrelTest() {
+    setPrimitive( "mathrel" );
+  }
 
-    @Test
-    @Ignore
-    public void testChardef1() {}
+  @Test
+  @Ignore
+  public void testChardef1() {
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

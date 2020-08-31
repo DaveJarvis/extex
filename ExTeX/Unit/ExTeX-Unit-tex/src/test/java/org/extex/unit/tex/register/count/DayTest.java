@@ -19,42 +19,43 @@
 
 package org.extex.unit.tex.register.count;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.extex.test.count.AbstractCountRegisterTester;
 import org.junit.runner.JUnitCore;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * This is a test suite for the primitive {@code \day}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DayTest extends AbstractCountRegisterTester {
 
-    /**
-     * Provide the current day as default value for the comparison.
-     *
-     * @return the current day as string
-     */
-    private static String getDefaultValue() {
+  /**
+   * Provide the current day as default value for the comparison.
+   *
+   * @return the current day as string
+   */
+  private static String getDefaultValue() {
 
-        return new SimpleDateFormat("d").format(new Date());
-    }
+    return new SimpleDateFormat( "d" ).format( new Date() );
+  }
 
-    /**
-     * Command line interface.
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DayTest.class);
-    }
+    (new JUnitCore()).run( DayTest.class );
+  }
 
 
-    public DayTest() {
+  public DayTest() {
 
-        super("day", "", getDefaultValue());
-    }
+    super( "day", "", getDefaultValue() );
+  }
 
 }

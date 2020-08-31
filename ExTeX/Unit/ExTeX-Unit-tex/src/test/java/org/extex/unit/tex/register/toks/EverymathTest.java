@@ -26,73 +26,73 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \everymath}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EverymathTest extends AbstractToksRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(EverymathTest.class);
-    }
+    (new JUnitCore()).run( EverymathTest.class );
+  }
 
 
-    public EverymathTest() {
+  public EverymathTest() {
 
-        super("everymath", "", "");
-    }
+    super( "everymath", "", "" );
+  }
 
-    /**
-     * <testcase primitive="\everymath"> Test case showing that the token is
-     * absorbed if no math happens.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\everymath"> Test case showing that the token is
+   * absorbed if no math happens.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + DEFINE_MATH + "\\everymath{x}BC" + "\\end",
-            // --- output channel ---
-            "BC" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + DEFINE_MATH + "\\everymath{x}BC" + "\\end",
+                  // --- output channel ---
+                  "BC" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\everymath"> Test case showing that the token is
-     * absorbed if display math happens.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\everymath"> Test case showing that the token is
+   * absorbed if display math happens.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES + DEFINE_MATH
-                    + "\\everymath{x}B$$  $$C" + "\\end",
-            // --- output channel ---
-            "BC" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES + DEFINE_MATH
+                      + "\\everymath{x}B$$  $$C" + "\\end",
+                  // --- output channel ---
+                  "BC" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\everymath"> Test case showing that the token is
-     * inserted if inline math happens.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test10() throws Exception {
+  /**
+   * <testcase primitive="\everymath"> Test case showing that the token is
+   * inserted if inline math happens.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test10() throws Exception {
 
-        assertSuccess(// --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES + DEFINE_MATH
-                    + "\\everymath{x}BC$ z $" + "\\end",
-            // --- output channel ---
-            "BCxz" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES + DEFINE_MATH
+                      + "\\everymath{x}BC$ z $" + "\\end",
+                  // --- output channel ---
+                  "BCxz" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

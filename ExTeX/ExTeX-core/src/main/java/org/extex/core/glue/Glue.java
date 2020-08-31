@@ -27,429 +27,425 @@ import java.io.Serializable;
 /**
  * This class provides the basic data type of a stretchable and shrinkable
  * quantity of length.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Glue implements Serializable, FixedGlue {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code length} contains the natural length of the glue.
-     */
-    private final Dimen length;
+  /**
+   * The field {@code length} contains the natural length of the glue.
+   */
+  private final Dimen length;
 
-    /**
-     * The field {@code shrink} contains the shrink specification.
-     */
-    private final GlueComponent shrink;
+  /**
+   * The field {@code shrink} contains the shrink specification.
+   */
+  private final GlueComponent shrink;
 
-    /**
-     * The field {@code stretch} contains the stretch specification.
-     */
-    private final GlueComponent stretch;
+  /**
+   * The field {@code stretch} contains the stretch specification.
+   */
+  private final GlueComponent stretch;
 
-    /**
-     * Creates a new object with a zero length.
-     */
-    public Glue() {
+  /**
+   * Creates a new object with a zero length.
+   */
+  public Glue() {
 
-        this.length = new Dimen(0);
-        this.stretch = new GlueComponent(0);
-        this.shrink = new GlueComponent(0);
+    this.length = new Dimen( 0 );
+    this.stretch = new GlueComponent( 0 );
+    this.shrink = new GlueComponent( 0 );
+  }
+
+  /**
+   * Creates a new object with a fixed length.
+   *
+   * @param theLength the natural length
+   */
+  public Glue( FixedDimen theLength ) {
+
+    this.length = new Dimen( theLength );
+    this.stretch = new GlueComponent( 0 );
+    this.shrink = new GlueComponent( 0 );
+  }
+
+  /**
+   * Creates a new object from the three components.
+   *
+   * @param theLength  the natural length
+   * @param theStretch the stretch specification
+   * @param theShrink  the shrink specification
+   */
+  public Glue( FixedDimen theLength, FixedDimen theStretch,
+               FixedDimen theShrink ) {
+
+    this.length = new Dimen( theLength );
+    this.stretch = new GlueComponent( theStretch.getValue() );
+    this.shrink = new GlueComponent( theShrink.getValue() );
+  }
+
+  /**
+   * Creates a new object from the three components.
+   *
+   * @param theLength  the natural length
+   * @param theStretch the stretch specification
+   * @param theShrink  the shrink specification
+   */
+  public Glue( FixedDimen theLength, FixedGlueComponent theStretch,
+               FixedGlueComponent theShrink ) {
+
+    this.length = new Dimen( theLength );
+    this.stretch = new GlueComponent( theStretch );
+    this.shrink = new GlueComponent( theShrink );
+  }
+
+  /**
+   * Creates a new object as copy of another glue. if the given glue is
+   * {@code null} then the new glue is initialized to the glue with
+   * length 0 and no strechability and shrinkability.
+   *
+   * @param glue the glue to clone
+   */
+  public Glue( FixedGlue glue ) {
+
+    if( glue != null ) {
+      this.length = new Dimen( glue.getLength() );
+      this.stretch = new GlueComponent( glue.getStretch() );
+      this.shrink = new GlueComponent( glue.getShrink() );
     }
-
-    /**
-     * Creates a new object with a fixed length.
-     * 
-     * @param theLength the natural length
-     */
-    public Glue(FixedDimen theLength) {
-
-        this.length = new Dimen(theLength);
-        this.stretch = new GlueComponent(0);
-        this.shrink = new GlueComponent(0);
+    else {
+      this.length = new Dimen( 0 );
+      this.stretch = new GlueComponent( 0 );
+      this.shrink = new GlueComponent( 0 );
     }
+  }
 
-    /**
-     * Creates a new object from the three components.
-     * 
-     * @param theLength the natural length
-     * @param theStretch the stretch specification
-     * @param theShrink the shrink specification
-     */
-    public Glue(FixedDimen theLength, FixedDimen theStretch,
-            FixedDimen theShrink) {
+  /**
+   * Creates a new object from a fixed length.
+   *
+   * @param theLength the natural length in scaled point
+   */
+  public Glue( long theLength ) {
 
-        this.length = new Dimen(theLength);
-        this.stretch = new GlueComponent(theStretch.getValue());
-        this.shrink = new GlueComponent(theShrink.getValue());
+    this.length = new Dimen( theLength );
+    this.stretch = new GlueComponent( 0 );
+    this.shrink = new GlueComponent( 0 );
+  }
+
+  /**
+   * Add a dimen to this one glue. The addition is performed independently on
+   * the components.
+   *
+   * @param g the glue to add
+   */
+  public void add( FixedDimen g ) {
+
+    this.length.add( g );
+  }
+
+  /**
+   * Add another glue to this one. The addition is performed independently on
+   * the components.
+   *
+   * @param g the glue to add
+   */
+  public void add( FixedGlue g ) {
+
+    this.length.add( g.getLength() );
+    this.stretch.add( g.getStretch() );
+    this.shrink.add( g.getShrink() );
+  }
+
+  /**
+   * Make a copy of this object.
+   *
+   * @return a new instance with the same internal values
+   */
+  @Override
+  public Glue copy() {
+
+    return new Glue( length.copy(), stretch.copy(), shrink.copy() );
+  }
+
+  /**
+   * Test that the given Glue is equal to a given one. This comparison
+   * involves the comparisons of the length, the stretch component, and the
+   * shrink component.
+   *
+   * @param glue the glue to compare with
+   * @return {@code true} iff they are the same
+   */
+  @Override
+  public boolean eq( FixedGlue glue ) {
+
+    return length.eq( glue.getLength() ) && stretch.eq( glue.getStretch() )
+        && shrink.eq( glue.getShrink() );
+  }
+
+  /**
+   * Compare this value with a given glue and return {@code true} iff the
+   * current length is greater or equal than the given length.
+   *
+   * @param x the value to compare to
+   * @return {@code true} iff the current length is greater or equal than
+   * the given one
+   */
+  public boolean ge( FixedDimen x ) {
+
+    return this.length.ge( x );
+  }
+
+  /**
+   * Getter for the length. Note that the value returned is independent from
+   * the original object. Changing its value does not affect the length of the
+   * glue.
+   *
+   * @return the natural length
+   */
+  @Override
+  public FixedDimen getLength() {
+
+    return new Dimen( length.getValue() );
+  }
+
+  /**
+   * Getter for shrink. Note that the value returned is independent from the
+   * original object. Changing its value does not affect the shrink of the
+   * glue.
+   *
+   * @return the shrink.
+   */
+  @Override
+  public FixedGlueComponent getShrink() {
+
+    return shrink;
+  }
+
+  /**
+   * Getter for stretch. Note that the value returned is independent from the
+   * original object. Changing its value does not affect the stretch of the
+   * glue.
+   *
+   * @return the stretch.
+   */
+  @Override
+  public FixedGlueComponent getStretch() {
+
+    return stretch;
+  }
+
+  /**
+   * Compare this value with a given glue and return {@code true} iff the
+   * current length is greater than the given length.
+   *
+   * @param x the value to compare to
+   * @return {@code true} iff the current length is greater than the
+   * given one
+   */
+  public boolean gt( FixedDimen x ) {
+
+    return this.length.gt( x );
+  }
+
+  /**
+   * Compare this value with a given glue and return {@code true} iff the
+   * current length is less or equal than the given length.
+   *
+   * @param x the value to compare to
+   * @return {@code true} iff the current length is less or equal than
+   * the given one
+   */
+  public boolean le( FixedDimen x ) {
+
+    return this.length.le( x );
+  }
+
+  /**
+   * Compare this value with a given glue and return {@code true} iff the
+   * current length is less than the given length.
+   *
+   * @param x the value to compare to
+   * @return {@code true} iff the current length is less than the given
+   * one
+   */
+  public boolean lt( FixedDimen x ) {
+
+    return this.length.lt( x );
+  }
+
+  /**
+   * Multiply the normal size by an integer fraction.
+   * <p>
+   * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
+   * </p>
+   *
+   * @param nom   nominator
+   * @param denom denominator
+   */
+  public void multiply( long nom, long denom ) {
+
+    this.length.multiply( nom, denom );
+  }
+
+  /**
+   * Multiply all components by an integer fraction.
+   *
+   * @param nom   nominator
+   * @param denom denominator
+   */
+  public void multiplyAll( long nom, long denom ) {
+
+    this.length.multiply( nom, denom );
+    this.shrink.multiply( nom, denom );
+    this.stretch.multiply( nom, denom );
+  }
+
+  /**
+   * Multiply the shrink component by an integer fraction.
+   * <p>
+   * <i>shrink</i> = <i>shrink</i> * <i>nom</i> / <i>denom</i>
+   * </p>
+   *
+   * @param nom   nominator
+   * @param denom denominator
+   */
+  public void multiplyShrink( long nom, long denom ) {
+
+    this.shrink.multiply( nom, denom );
+  }
+
+  /**
+   * Multiply the stretch component by an integer fraction.
+   * <p>
+   * <i>stretch</i> = <i>stretch</i> * <i>nom</i> / <i>denom</i>
+   * </p>
+   *
+   * @param nom   nominator
+   * @param denom denominator
+   */
+  public void multiplyStretch( long nom, long denom ) {
+
+    this.stretch.multiply( nom, denom );
+  }
+
+  @Override
+  public boolean ne( FixedGlue glue ) {
+
+    return length.ne( glue.getLength() ) || stretch.ne( glue.getStretch() )
+        || shrink.ne( glue.getShrink() );
+  }
+
+  /**
+   * Negate the value. This is the same as multiplying with -1.
+   */
+  public void negateLength() {
+    this.length.negate();
+  }
+
+  /**
+   * Set the glue value to a non-stretchable and non-shrinkable length.
+   *
+   * @param theLength the new length
+   */
+  public void set( FixedDimen theLength ) {
+
+    this.length.set( theLength );
+    this.shrink.set( 0 );
+    this.stretch.set( 0 );
+  }
+
+  /**
+   * Set the glue value.
+   *
+   * @param theLength the new length
+   */
+  public void set( FixedGlue theLength ) {
+
+    this.length.set( theLength.getLength() );
+    this.shrink.set( theLength.getShrink() );
+    this.stretch.set( theLength.getStretch() );
+  }
+
+  /**
+   * Setter for the length component
+   *
+   * @param x the new length component
+   */
+  public void setLength( FixedDimen x ) {
+
+    length.set( x );
+  }
+
+  /**
+   * Setter for the shrink component
+   *
+   * @param x the new shrink component
+   */
+  public void setShrink( FixedDimen x ) {
+
+    shrink.set( x );
+  }
+
+  /**
+   * Setter for the stretch component
+   *
+   * @param x the new stretch component
+   */
+  public void setStretch( FixedDimen x ) {
+
+    stretch.set( x );
+  }
+
+  /**
+   * Subtract a Glue component from this glue. The subtraction is performed on
+   * the length only.
+   *
+   * @param g the glue to subtract
+   */
+  public void subtract( FixedDimen g ) {
+
+    this.length.subtract( g );
+  }
+
+  /**
+   * Subtract another glue to this one. The subtraction is performed
+   * independently on the components.
+   *
+   * @param g the glue to add
+   */
+  public void subtract( FixedGlue g ) {
+
+    this.length.add( g.getLength() );
+    this.stretch.add( g.getStretch() );
+    this.shrink.add( g.getShrink() );
+  }
+
+  /**
+   * Determine the printable representation of the object. The value returned
+   * is exactly the string which would be produced by TeX to print the skip 
+   * register.
+   *
+   * @return the string representation of this glue
+   */
+  @Override
+  public String toString() {
+
+    StringBuilder sb = new StringBuilder( length.toString() );
+    if( stretch.getValue() != 0 ) {
+      sb.append( " plus " );
+      sb.append( stretch.toString() );
     }
-
-    /**
-     * Creates a new object from the three components.
-     * 
-     * @param theLength the natural length
-     * @param theStretch the stretch specification
-     * @param theShrink the shrink specification
-     */
-    public Glue(FixedDimen theLength, FixedGlueComponent theStretch,
-            FixedGlueComponent theShrink) {
-
-        this.length = new Dimen(theLength);
-        this.stretch = new GlueComponent(theStretch);
-        this.shrink = new GlueComponent(theShrink);
+    if( shrink.getValue() != 0 ) {
+      sb.append( " minus " );
+      sb.append( shrink.toString() );
     }
-
-    /**
-     * Creates a new object as copy of another glue. if the given glue is
-     * {@code null} then the new glue is initialized to the glue with
-     * length 0 and no strechability and shrinkability.
-     * 
-     * @param glue the glue to clone
-     */
-    public Glue(FixedGlue glue) {
-
-        if (glue != null) {
-            this.length = new Dimen(glue.getLength());
-            this.stretch = new GlueComponent(glue.getStretch());
-            this.shrink = new GlueComponent(glue.getShrink());
-        } else {
-            this.length = new Dimen(0);
-            this.stretch = new GlueComponent(0);
-            this.shrink = new GlueComponent(0);
-        }
-    }
-
-    /**
-     * Creates a new object from a fixed length.
-     * 
-     * @param theLength the natural length in scaled point
-     */
-    public Glue(long theLength) {
-
-        this.length = new Dimen(theLength);
-        this.stretch = new GlueComponent(0);
-        this.shrink = new GlueComponent(0);
-    }
-
-    /**
-     * Add a dimen to this one glue. The addition is performed independently on
-     * the components.
-     * 
-     * @param g the glue to add
-     */
-    public void add(FixedDimen g) {
-
-        this.length.add(g);
-    }
-
-    /**
-     * Add another glue to this one. The addition is performed independently on
-     * the components.
-     * 
-     * @param g the glue to add
-     */
-    public void add(FixedGlue g) {
-
-        this.length.add(g.getLength());
-        this.stretch.add(g.getStretch());
-        this.shrink.add(g.getShrink());
-    }
-
-    /**
-     * Make a copy of this object.
-     * 
-     * @return a new instance with the same internal values
-     */
-    @Override
-    public Glue copy() {
-
-        return new Glue(length.copy(), stretch.copy(), shrink.copy());
-    }
-
-    /**
-     * Test that the given Glue is equal to a given one. This comparison
-     * involves the comparisons of the length, the stretch component, and the
-     * shrink component.
-     * 
-     * @param glue the glue to compare with
-     * 
-     * @return {@code true} iff they are the same
-     */
-    @Override
-    public boolean eq(FixedGlue glue) {
-
-        return length.eq(glue.getLength()) && stretch.eq(glue.getStretch())
-                && shrink.eq(glue.getShrink());
-    }
-
-    /**
-     * Compare this value with a given glue and return {@code true} iff the
-     * current length is greater or equal than the given length.
-     * 
-     * @param x the value to compare to
-     * 
-     * @return {@code true} iff the current length is greater or equal than
-     *         the given one
-     */
-    public boolean ge(FixedDimen x) {
-
-        return this.length.ge(x);
-    }
-
-    /**
-     * Getter for the length. Note that the value returned is independent from
-     * the original object. Changing its value does not affect the length of the
-     * glue.
-     * 
-     * @return the natural length
-     */
-    @Override
-    public FixedDimen getLength() {
-
-        return new Dimen(length.getValue());
-    }
-
-    /**
-     * Getter for shrink. Note that the value returned is independent from the
-     * original object. Changing its value does not affect the shrink of the
-     * glue.
-     * 
-     * @return the shrink.
-     */
-    @Override
-    public FixedGlueComponent getShrink() {
-
-        return shrink;
-    }
-
-    /**
-     * Getter for stretch. Note that the value returned is independent from the
-     * original object. Changing its value does not affect the stretch of the
-     * glue.
-     * 
-     * @return the stretch.
-     */
-    @Override
-    public FixedGlueComponent getStretch() {
-
-        return stretch;
-    }
-
-    /**
-     * Compare this value with a given glue and return {@code true} iff the
-     * current length is greater than the given length.
-     * 
-     * @param x the value to compare to
-     * 
-     * @return {@code true} iff the current length is greater than the
-     *         given one
-     */
-    public boolean gt(FixedDimen x) {
-
-        return this.length.gt(x);
-    }
-
-    /**
-     * Compare this value with a given glue and return {@code true} iff the
-     * current length is less or equal than the given length.
-     * 
-     * @param x the value to compare to
-     * 
-     * @return {@code true} iff the current length is less or equal than
-     *         the given one
-     */
-    public boolean le(FixedDimen x) {
-
-        return this.length.le(x);
-    }
-
-    /**
-     * Compare this value with a given glue and return {@code true} iff the
-     * current length is less than the given length.
-     * 
-     * @param x the value to compare to
-     * 
-     * @return {@code true} iff the current length is less than the given
-     *         one
-     */
-    public boolean lt(FixedDimen x) {
-
-        return this.length.lt(x);
-    }
-
-    /**
-     * Multiply the normal size by an integer fraction.
-     * <p>
-     * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
-     * </p>
-     * 
-     * @param nom nominator
-     * @param denom denominator
-     */
-    public void multiply(long nom, long denom) {
-
-        this.length.multiply(nom, denom);
-    }
-
-    /**
-     * Multiply all components by an integer fraction.
-     * 
-     * @param nom nominator
-     * @param denom denominator
-     */
-    public void multiplyAll(long nom, long denom) {
-
-        this.length.multiply(nom, denom);
-        this.shrink.multiply(nom, denom);
-        this.stretch.multiply(nom, denom);
-    }
-
-    /**
-     * Multiply the shrink component by an integer fraction.
-     * <p>
-     * <i>shrink</i> = <i>shrink</i> * <i>nom</i> / <i>denom</i>
-     * </p>
-     * 
-     * @param nom nominator
-     * @param denom denominator
-     */
-    public void multiplyShrink(long nom, long denom) {
-
-        this.shrink.multiply(nom, denom);
-    }
-
-    /**
-     * Multiply the stretch component by an integer fraction.
-     * <p>
-     * <i>stretch</i> = <i>stretch</i> * <i>nom</i> / <i>denom</i>
-     * </p>
-     * 
-     * @param nom nominator
-     * @param denom denominator
-     */
-    public void multiplyStretch(long nom, long denom) {
-
-        this.stretch.multiply(nom, denom);
-    }
-
-    @Override
-    public boolean ne(FixedGlue glue) {
-
-        return length.ne(glue.getLength()) || stretch.ne(glue.getStretch())
-                || shrink.ne(glue.getShrink());
-    }
-
-    /**
-     * Negate the value. This is the same as multiplying with -1.
-     * 
-     */
-    public void negateLength() {
-        this.length.negate();
-    }
-
-    /**
-     * Set the glue value to a non-stretchable and non-shrinkable length.
-     * 
-     * @param theLength the new length
-     */
-    public void set(FixedDimen theLength) {
-
-        this.length.set(theLength);
-        this.shrink.set(0);
-        this.stretch.set(0);
-    }
-
-    /**
-     * Set the glue value.
-     * 
-     * @param theLength the new length
-     */
-    public void set(FixedGlue theLength) {
-
-        this.length.set(theLength.getLength());
-        this.shrink.set(theLength.getShrink());
-        this.stretch.set(theLength.getStretch());
-    }
-
-    /**
-     * Setter for the length component
-     * 
-     * @param x the new length component
-     */
-    public void setLength(FixedDimen x) {
-
-        length.set(x);
-    }
-
-    /**
-     * Setter for the shrink component
-     * 
-     * @param x the new shrink component
-     */
-    public void setShrink(FixedDimen x) {
-
-        shrink.set(x);
-    }
-
-    /**
-     * Setter for the stretch component
-     * 
-     * @param x the new stretch component
-     */
-    public void setStretch(FixedDimen x) {
-
-        stretch.set(x);
-    }
-
-    /**
-     * Subtract a Glue component from this glue. The subtraction is performed on
-     * the length only.
-     * 
-     * @param g the glue to subtract
-     */
-    public void subtract(FixedDimen g) {
-
-        this.length.subtract(g);
-    }
-
-    /**
-     * Subtract another glue to this one. The subtraction is performed
-     * independently on the components.
-     * 
-     * @param g the glue to add
-     */
-    public void subtract(FixedGlue g) {
-
-        this.length.add(g.getLength());
-        this.stretch.add(g.getStretch());
-        this.shrink.add(g.getShrink());
-    }
-
-    /**
-     * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by TeX to print the skip register.
-     * 
-     * @return the string representation of this glue
-     */
-    @Override
-    public String toString() {
-
-        StringBuilder sb = new StringBuilder(length.toString());
-        if (stretch.getValue() != 0) {
-            sb.append(" plus ");
-            sb.append(stretch.toString());
-        }
-        if (shrink.getValue() != 0) {
-            sb.append(" minus ");
-            sb.append(shrink.toString());
-        }
-        return sb.toString();
-    }
+    return sb.toString();
+  }
 
 }

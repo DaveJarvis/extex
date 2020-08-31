@@ -25,39 +25,39 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \fi}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class FiTest extends ExTeXLauncher {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(FiTest.class);
-    }
+    (new JUnitCore()).run( FiTest.class );
+  }
 
 
-    public FiTest() {
+  public FiTest() {
 
-    }
+  }
 
-    /**
-     * <testcase primitive="\fi"> Test case checking that a lonely {@code \fi}
-     * leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testConst0() throws Exception {
+  /**
+   * <testcase primitive="\fi"> Test case checking that a lonely {@code \fi}
+   * leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testConst0() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\fi",
-            // --- log message ---
-            "Extra \\fi");
-    }
+    assertFailure(// --- input code ---
+                  "\\fi",
+                  // --- log message ---
+                  "Extra \\fi" );
+  }
 
 }

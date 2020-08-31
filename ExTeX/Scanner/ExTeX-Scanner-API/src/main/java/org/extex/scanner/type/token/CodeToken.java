@@ -24,41 +24,41 @@ package org.extex.scanner.type.token;
  * with the ability to retrieve a name space.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface CodeToken extends Token {
 
-    /**
-     * Create a new instance of the token where the name space is the default
-     * name space and the other attributes are the same as for the current token.
-     *
-     * @return the new token
-     */
-    CodeToken cloneInDefaultNamespace();
+  /**
+   * Create a new instance of the token where the name space is the default
+   * name space and the other attributes are the same as for the current
+   * token.
+   *
+   * @return the new token
+   */
+  CodeToken cloneInDefaultNamespace();
 
-    /**
-     * Create a new instance of the token where the name space is the given one
-     * and the other attributes are the same as for the current token.
-     *
-     * @param namespace the name space to use
-     *
-     * @return the new token
-     */
-    CodeToken cloneInNamespace(String namespace);
+  /**
+   * Create a new instance of the token where the name space is the given one
+   * and the other attributes are the same as for the current token.
+   *
+   * @param namespace the name space to use
+   * @return the new token
+   */
+  CodeToken cloneInNamespace( String namespace );
 
-    /**
-     * Getter for the name.
-     * The name is the string representation without the escape character
-     * in front.
-     *
-     * @return the name of the token
-     */
-    String getName();
+  /**
+   * Getter for the name.
+   * The name is the string representation without the escape character
+   * in front.
+   *
+   * @return the name of the token
+   */
+  String getName();
 
-    /**
-     * Getter for the name space.
-     *
-     * @return the name space
-     */
-    String getNamespace();
+  /**
+   * Getter for the name space.
+   *
+   * @return the name space
+   */
+  String getNamespace();
 
 }

@@ -19,76 +19,78 @@
 
 package org.extex.exindex.core.type;
 
-import java.io.IOException;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.raw.LocationReference;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
+import java.io.IOException;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class represents a location reference group.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LocationReferenceList implements LocationClassGroup {
 
-    /**
-     * The field {@code clazz} contains the class.
-     */
-    private final String clazz;
+  /**
+   * The field {@code clazz} contains the class.
+   */
+  private final String clazz;
 
-    /**
-     * The field {@code list} contains the list of location references.
-     */
-    private final List<LocationReference> list = new ArrayList<LocationReference>();
+  /**
+   * The field {@code list} contains the list of location references.
+   */
+  private final List<LocationReference> list =
+      new ArrayList<LocationReference>();
 
-    /**
-     * Creates a new object.
-     * 
-     * @param clazz the class
-     */
-    public LocationReferenceList(String clazz) {
+  /**
+   * Creates a new object.
+   *
+   * @param clazz the class
+   */
+  public LocationReferenceList( String clazz ) {
 
-        this.clazz = clazz;
+    this.clazz = clazz;
+  }
+
+  /**
+   * Store a location reference.
+   *
+   * @param ref the reference
+   */
+  public void store( LocationReference ref ) {
+
+    list.add( ref );
+  }
+
+  /**
+   * org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
+   */
+  public void write( Writer writer, LInterpreter interpreter,
+                     MarkupContainer markupContainer, boolean trace )
+      throws LNonMatchingTypeException,
+      IOException {
+
+    Markup markup = markupContainer.getMarkup( "markup-locref-list" );
+
+    boolean first = true;
+    markup.write( writer, markupContainer, clazz, Markup.OPEN, trace );
+
+    for( LocationReference reference : list ) {
+      if( first ) {
+        first = false;
+      }
+      else {
+        markup.write( writer, markupContainer, clazz, Markup.SEP, trace );
+      }
+
+      reference.write( writer, interpreter, markupContainer, trace );
     }
-
-    /**
-     * Store a location reference.
-     * 
-     * @param ref the reference
-     */
-    public void store(LocationReference ref) {
-
-        list.add(ref);
-    }
-
-    /**
-*      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
-     */
-    public void write(Writer writer, LInterpreter interpreter,
-            MarkupContainer markupContainer, boolean trace)
-            throws LNonMatchingTypeException,
-                IOException {
-
-        Markup markup = markupContainer.getMarkup("markup-locref-list");
-
-        boolean first = true;
-        markup.write(writer, markupContainer, clazz, Markup.OPEN, trace);
-
-        for (LocationReference reference : list) {
-            if (first) {
-                first = false;
-            } else {
-                markup.write(writer, markupContainer, clazz, Markup.SEP, trace);
-            }
-
-            reference.write(writer, interpreter, markupContainer, trace);
-        }
-        markup.write(writer, markupContainer, clazz, Markup.CLOSE, trace);
-    }
+    markup.write( writer, markupContainer, clazz, Markup.CLOSE, trace );
+  }
 
 }

@@ -35,7 +35,7 @@ import org.extex.unit.base.macro.LetCode;
 
 /**
  * This class provides an implementation for the primitive {@code \let}.
- * 
+ *
  * <p>The Primitive {@code \let}</p>
  * <p>
  * The primitive {@code \let} defined a control sequence or active character.
@@ -43,10 +43,10 @@ import org.extex.unit.base.macro.LetCode;
  * control sequence or active character then the meaning is used. If the other
  * definition is changed the newly defined binding remains intact.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;let&rang;
  *      &rarr; {@code \let} {@linkplain
@@ -56,74 +56,73 @@ import org.extex.unit.base.macro.LetCode;
  *      &lang;equals&rang;} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \let\a=\b  </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Let extends AbstractAssignment {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Assign a new meaning to a control sequence. This is the core of the
-     * primitive {@code \let}.
-     * 
-     * @param prefix the flags to consider
-     * @param context the processor context
-     * @param cs the control sequence token to bind
-     * @param t the new meaning of the control sequence token. If this parameter
-     *        is {@code null} then an exception is thrown.
-     * 
-     * @throws HelpingException in case of an error
-     */
-    public static void let(Flags prefix, Context context, CodeToken cs, Token t)
-            throws HelpingException {
+  /**
+   * Assign a new meaning to a control sequence. This is the core of the
+   * primitive {@code \let}.
+   *
+   * @param prefix  the flags to consider
+   * @param context the processor context
+   * @param cs      the control sequence token to bind
+   * @param t       the new meaning of the control sequence token. If this
+   *                parameter
+   *                is {@code null} then an exception is thrown.
+   * @throws HelpingException in case of an error
+   */
+  public static void let( Flags prefix, Context context, CodeToken cs, Token t )
+      throws HelpingException {
 
-        Code code =
-                (t instanceof CodeToken
-                        ? context.getCode((CodeToken) t)
-                        : new LetCode(t));
-        context.setCode(cs, code, prefix.clearGlobal());
+    Code code =
+        (t instanceof CodeToken
+            ? context.getCode( (CodeToken) t )
+            : new LetCode( t ));
+    context.setCode( cs, code, prefix.clearGlobal() );
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Let( CodeToken token ) {
+
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    CodeToken cs = source.getControlSequence( context, typesetter );
+
+    Token t = source.getNonSpace( context );
+    if( t != null && t.eq( Catcode.OTHER, '=' ) ) {
+      t = source.getToken( context );
+    }
+    if( t == null ) {
+      throw new EofException( toText() );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Let(CodeToken token) {
-
-        super(token);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        CodeToken cs = source.getControlSequence(context, typesetter);
-
-        Token t = source.getNonSpace(context);
-        if (t != null && t.eq(Catcode.OTHER, '=')) {
-            t = source.getToken(context);
-        }
-        if (t == null) {
-            throw new EofException(toText());
-        }
-
-        let(prefix, context, cs, t);
-    }
+    let( prefix, context, cs, t );
+  }
 }

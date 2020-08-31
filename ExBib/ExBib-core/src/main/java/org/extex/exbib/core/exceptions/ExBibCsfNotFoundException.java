@@ -22,25 +22,25 @@ package org.extex.exbib.core.exceptions;
 /**
  * This {@link ExBibException ExBibException} is thrown when the CSF could not
  * be opened.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibCsfNotFoundException extends ExBibException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param csf the expected csf
-     */
-    public ExBibCsfNotFoundException(String csf) {
+  /**
+   * Create a new object.
+   *
+   * @param csf the expected csf
+   */
+  public ExBibCsfNotFoundException( String csf ) {
 
-        super(csf);
-    }
+    super( csf );
+  }
 
 }

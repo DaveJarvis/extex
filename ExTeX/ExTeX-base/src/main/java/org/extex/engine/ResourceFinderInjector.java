@@ -29,43 +29,40 @@ import org.extex.resource.ResourceFinder;
  * from a format which needs it.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ResourceFinderInjector implements RegistrarObserver {
 
-    /**
-     * The field {@code finder} contains the resource finder to inject.
-     */
-    private final ResourceFinder finder;
+  /**
+   * The field {@code finder} contains the resource finder to inject.
+   */
+  private final ResourceFinder finder;
 
-    /**
-     * Creates a new object.
-     *
-     * @param finder the resource finder to inject
-     */
-    public ResourceFinderInjector(ResourceFinder finder) {
+  /**
+   * Creates a new object.
+   *
+   * @param finder the resource finder to inject
+   */
+  public ResourceFinderInjector( ResourceFinder finder ) {
 
-        this.finder = finder;
-    }
+    this.finder = finder;
+  }
 
-    /**
-     * Reconnect an object.
-     * It should return the object which should actually be used. This is
-     * normally the object which is passed in as argument. Nevertheless the
-     * as a side effect the object can be attached to an internal list in a
-     * factory or augmented with additional information by invoking some of
-     * its methods.
-     *
-     * @param object the object to reconnect
-     *
-     * @return the object to be actually used
-     *
-     * @throws RegistrarException in case of an error during configuration
-     *
-     * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
-     */
-    public Object reconnect(Object object) throws RegistrarException {
+  /**
+   * Reconnect an object.
+   * It should return the object which should actually be used. This is
+   * normally the object which is passed in as argument. Nevertheless the
+   * as a side effect the object can be attached to an internal list in a
+   * factory or augmented with additional information by invoking some of
+   * its methods.
+   *
+   * @param object the object to reconnect
+   * @return the object to be actually used
+   * @throws RegistrarException in case of an error during configuration
+   * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
+   */
+  public Object reconnect( Object object ) throws RegistrarException {
 
-        ((ResourceAware) object).setResourceFinder(finder);
-        return object;
-    }
+    ((ResourceAware) object).setResourceFinder( finder );
+    return object;
+  }
 }

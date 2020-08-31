@@ -25,59 +25,61 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals that two conflicting flags have been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InconsistentFlagsException extends LException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code locator} contains the resource locator.
-     */
-    private final ResourceLocator locator;
+  /**
+   * The field {@code locator} contains the resource locator.
+   */
+  private final ResourceLocator locator;
 
-    /**
-     * The field {@code flag1} contains the first flag.
-     */
-    private final String flag1;
+  /**
+   * The field {@code flag1} contains the first flag.
+   */
+  private final String flag1;
 
-    /**
-     * The field {@code flag2} contains the second flag.
-     */
-    private final String flag2;
+  /**
+   * The field {@code flag2} contains the second flag.
+   */
+  private final String flag2;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     * @param flag1 the first conflicting flag
-     * @param flag2 the second conflicting flag
-     */
-    public InconsistentFlagsException(ResourceLocator locator, String flag1,
-            String flag2) {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   * @param flag1   the first conflicting flag
+   * @param flag2   the second conflicting flag
+   */
+  public InconsistentFlagsException( ResourceLocator locator, String flag1,
+                                     String flag2 ) {
 
-        super("");
-        this.locator = locator;
-        this.flag1 = flag1;
-        this.flag2 = flag2;
+    super( "" );
+    this.locator = locator;
+    this.flag1 = flag1;
+    this.flag2 = flag2;
+  }
+
+  @Override
+  public String getLocalizedMessage() {
+
+    if( locator != null ) {
+      return LocalizerFactory.getLocalizer(
+          InconsistentFlagsException.class ).format( "LocatedMessage",
+                                                     locator.getResource(),
+                                                     Integer.toString( locator.getLineNumber() ),
+                                                     flag1,
+                                                     flag2 );
     }
-
-@Override
-    public String getLocalizedMessage() {
-
-        if (locator != null) {
-            return LocalizerFactory.getLocalizer(
-                InconsistentFlagsException.class).format("LocatedMessage",
-                locator.getResource(),
-                Integer.toString(locator.getLineNumber()), flag1, flag2);
-        }
-        return LocalizerFactory.getLocalizer(InconsistentFlagsException.class)
-            .format("Message", flag1, flag2);
-    }
+    return LocalizerFactory.getLocalizer( InconsistentFlagsException.class )
+                           .format( "Message", flag1, flag2 );
+  }
 
 }

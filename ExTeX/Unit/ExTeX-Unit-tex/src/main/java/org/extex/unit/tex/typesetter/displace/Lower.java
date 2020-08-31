@@ -32,7 +32,7 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
 
 /**
  * This class provides an implementation for the primitive {@code \lower}.
- * 
+ *
  * <p>The Primitive {@code \lower}</p>
  * <p>
  * The primitive {@code \lower} takes a box and a length and shifts down the
@@ -43,66 +43,64 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
  * The primitive {@code \lower} is the counterpart to
  * {@link org.extex.unit.tex.typesetter.displace.Raise {@code \raise}}.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;lower&rang;
  *      &rarr; {@code \lower} &lang;dimen&rang; {@linkplain
- *        org.extex.interpreter.TokenSource#getBox(org.extex.interpreter.Flags,Context,Typesetter,Token)
+ *        org.extex.interpreter.TokenSource#getBox(org.extex.interpreter.Flags, Context, Typesetter, Token)
  *        &lang;box&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \lower 2em \hbox{abc}  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \lower -1pt \hbox to 120pt {abc}  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \lower 2mm \hbox spread 12pt {abc}  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Lower extends AbstractBoxPrimitive {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Lower(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Lower( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+   * org.extex.scanner.type.token.Token)
+   */
+  public Box getBox( Context context, TokenSource source,
+                     Typesetter typesetter, Token insert )
+      throws HelpingException,
+      TypesetterException {
+
+    Dimen amount = source.parseDimen( context, source, typesetter );
+    Box box = source.getBox( null, context, typesetter, insert );
+    if( box != null && !box.isVoid() ) {
+      amount.add( box.getShift() );
+      box.setShift( amount );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      org.extex.scanner.type.token.Token)
-     */
-    public Box getBox(Context context, TokenSource source,
-            Typesetter typesetter, Token insert)
-            throws HelpingException,
-                TypesetterException {
-
-        Dimen amount = source.parseDimen(context, source, typesetter);
-        Box box = source.getBox(null, context, typesetter, insert);
-        if (box != null && !box.isVoid()) {
-            amount.add(box.getShift());
-            box.setShift(amount);
-        }
-        return box;
-    }
+    return box;
+  }
 
 }

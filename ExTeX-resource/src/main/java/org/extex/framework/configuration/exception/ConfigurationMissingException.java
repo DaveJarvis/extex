@@ -23,59 +23,59 @@ package org.extex.framework.configuration.exception;
  * This Exception is thrown when a configuration is requested with the path
  * {@code null} or the empty string. Alternatively it can be used when some
  * other kind of configuration information is missing.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationMissingException extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2010L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2010L;
 
-    /**
-     * The field {@code item} contains the name of the missing item.
-     */
-    private final String item;
+  /**
+   * The field {@code item} contains the name of the missing item.
+   */
+  private final String item;
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message string
-     */
-    public ConfigurationMissingException(String message) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message string
+   */
+  public ConfigurationMissingException( String message ) {
 
-        super(message, (String) null);
-        this.item = null;
-    }
+    super( message, (String) null );
+    this.item = null;
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param item the message string
-     * @param location the location of the missing configuration item
-     */
-    public ConfigurationMissingException(String item, String location) {
+  /**
+   * Create a new object.
+   *
+   * @param item     the message string
+   * @param location the location of the missing configuration item
+   */
+  public ConfigurationMissingException( String item, String location ) {
 
-        super(null, location);
-        this.item = item;
-    }
+    super( null, location );
+    this.item = item;
+  }
 
-    /**
-     * Getter for the text prefix of this ConfigException. The text is taken
-     * from the resource bundle {@code ConfigurationEception} under the key
-     * {@code ConfigurationMissingException.Text} or
-     * {@code ConfigurationMissingException.Text0}. The latter is used if the
-     * item is {@code null}.
-     * 
-     * @return the text
-     */
-    @Override
-    protected String getText() {
+  /**
+   * Getter for the text prefix of this ConfigException. The text is taken
+   * from the resource bundle {@code ConfigurationEception} under the key
+   * {@code ConfigurationMissingException.Text} or
+   * {@code ConfigurationMissingException.Text0}. The latter is used if the
+   * item is {@code null}.
+   *
+   * @return the text
+   */
+  @Override
+  protected String getText() {
 
-        return getLocalizer().format(
-            item == null
-                    ? "ConfigurationMissingException.Text0"
-                    : "ConfigurationMissingException.Text", item);
-    }
+    return getLocalizer().format(
+        item == null
+            ? "ConfigurationMissingException.Text0"
+            : "ConfigurationMissingException.Text", item );
+  }
 }

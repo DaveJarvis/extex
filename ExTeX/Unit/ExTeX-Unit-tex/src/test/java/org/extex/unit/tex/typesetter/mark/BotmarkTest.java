@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \botmark}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BotmarkTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(BotmarkTest.class);
-    }
+    (new JUnitCore()).run( BotmarkTest.class );
+  }
 
 
-    public BotmarkTest() {
+  public BotmarkTest() {
 
-        setPrimitive("botmark");setArguments("");setPrepare("");
-    }
+    setPrimitive( "botmark" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

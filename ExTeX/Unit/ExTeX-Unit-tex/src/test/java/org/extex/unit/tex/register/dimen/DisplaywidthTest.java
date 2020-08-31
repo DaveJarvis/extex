@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \displaywidth}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DisplaywidthTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DisplaywidthTest.class);
-    }
+    (new JUnitCore()).run( DisplaywidthTest.class );
+  }
 
 
-    public DisplaywidthTest() {
+  public DisplaywidthTest() {
 
-        super("displaywidth", "", "0.0pt");
-    }
+    super( "displaywidth", "", "0.0pt" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

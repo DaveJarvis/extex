@@ -23,8 +23,8 @@ package org.extex.typesetter.type;
  * This interface unites the features of a node list and an oriented node.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OrientedNodeList extends NodeList, OrientedNode {
 
-    // nothing more
+  // nothing more
 }

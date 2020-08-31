@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \pdfthreadvoffset}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfthreadvoffsetTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PdfthreadvoffsetTest.class);
-    }
+    (new JUnitCore()).run( PdfthreadvoffsetTest.class );
+  }
 
 
-    public PdfthreadvoffsetTest() {
+  public PdfthreadvoffsetTest() {
 
-        super("pdfthreadvoffset", "", "0.0pt");
-        setConfig("pdftex-test");
-    }
+    super( "pdfthreadvoffset", "", "0.0pt" );
+    setConfig( "pdftex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

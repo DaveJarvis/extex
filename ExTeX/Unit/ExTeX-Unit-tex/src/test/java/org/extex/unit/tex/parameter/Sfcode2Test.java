@@ -24,26 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \sfcode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Sfcode2Test extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(Sfcode2Test.class);
-    }
+    (new JUnitCore()).run( Sfcode2Test.class );
+  }
 
 
-    public Sfcode2Test() {
+  public Sfcode2Test() {
 
-        setPrimitive("sfcode");setArguments("1 1000");
-    }
+    setPrimitive( "sfcode" );
+    setArguments( "1 1000" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

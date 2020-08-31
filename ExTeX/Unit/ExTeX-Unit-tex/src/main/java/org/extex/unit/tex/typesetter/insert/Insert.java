@@ -34,67 +34,67 @@ import org.extex.typesetter.type.node.InsertionNode;
 
 /**
  * This class provides an implementation for the primitive {@code \insert}.
- * 
+ *
  * <p>The Primitive {@code \insert}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;insert&rang;
  *       &rarr; {@code \insert}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \insert42{abc}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Insert extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Insert(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Insert( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Flags f = prefix.copy();
+    prefix.clear();
+    long index = source.parseNumber( context, source, typesetter );
+    Box box = new Box( context, source, typesetter, false, null,
+                       GroupType.INSERT_GROUP, source.getLastToken() );
+
+    Mode mode = typesetter.getMode();
+    if( mode.isVmode() ) {
+      throw new HelpingException( getLocalizer(), "TTP.MisplacedInsert" );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Flags f = prefix.copy();
-        prefix.clear();
-        long index = source.parseNumber(context, source, typesetter);
-        Box box = new Box(context, source, typesetter, false, null,
-            GroupType.INSERT_GROUP, source.getLastToken());
-
-        Mode mode = typesetter.getMode();
-        if (mode.isVmode()) {
-            throw new HelpingException(getLocalizer(), "TTP.MisplacedInsert");
-        }
-        typesetter.add(new InsertionNode(index, box.getNodes()));
-        prefix.set(f);
-    }
+    typesetter.add( new InsertionNode( index, box.getNodes() ) );
+    prefix.set( f );
+  }
 
 }

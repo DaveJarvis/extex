@@ -41,140 +41,155 @@ import org.extex.typesetter.type.node.AccentKernNode;
 
 /**
  * This class provides an implementation for the primitive {@code \accent}.
- * 
+ *
  * <p>The Primitive {@code \accent}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;accent&rang;
  *    &rarr; {@code \accent} ... </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \accent 13 a  </pre>
- * 
- * 
- * @see "TTP [1123]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see "TTP [1123]"
+ */
 public class Accent extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The constant {@code UNIT} contains the unit amount.
-     */
-    private static final int UNIT = 65536;
+  /**
+   * The constant {@code UNIT} contains the unit amount.
+   */
+  private static final int UNIT = 65536;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Accent(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Accent( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   *
+   * @see "TTP [1123,1124,1125]"
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    if( typesetter.getMode().isMath() ) {
+      throw new HelpingException(
+          getLocalizer(),
+          "TTP.AccentInMathMode", toText( context ),
+          context.esc( "mathaccent" ) );
+    }
+    UnicodeChar accent =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    Token token = source.getToken( context );
+    TypesettingContext tc = context.getTypesettingContext();
+    Font currentFont = tc.getFont();
+    long a = -1;
+    long s = 0;
+    if( currentFont.hasGlyph( accent ) ) {
+      a = currentFont.getWidth( accent ).getLength().getValue();
+      s = currentFont.getItalicCorrection( accent ).getValue(); // TODO
+      // gene:
+      // correct?
+    }
+    long x = currentFont.getEx().getValue();
+
+    if( token == null ) {
+
+      throw new EofException( toText( context ) );
+
+    }
+    else if( token.isa( Catcode.LETTER ) || token.isa( Catcode.OTHER ) ) {
+      UnicodeChar c = token.getChar();
+
+      if( currentFont.hasGlyph( accent ) ) {
+        if( !currentFont.hasGlyph( c ) ) {
+          ((TokenDelegateListMaker) typesetter).letter( accent,
+                                                        tc,
+                                                        context,
+                                                        source,
+                                                        source.getLocator() );
+        }
+        else {
+          Node node = typesetter.getNodeFactory().getNode( tc, accent );
+          if( node == null ) {
+            // TODO gene: undefined character
+            return;
+          }
+          long w = currentFont.getWidth( c ).getLength().getValue();
+          long h = currentFont.getHeight( c ).getLength().getValue();
+          Dimen d = new Dimen();
+          // if (h != x) {
+          // NodeList n = new HorizontalListNode(node);
+          // d.set(x - h);
+          // n.setShift(d);
+          // node = n;
+          // }
+          // compute delta TTP [1125]
+          long delta = (w - a) / 2 + (h - x) * s / UNIT;
+          d.set( delta );
+          typesetter.add( new AccentKernNode( d ) );
+          typesetter.add( node );
+          d.set( -a - delta );
+          typesetter.add( new AccentKernNode( d ) );
+          ((TokenDelegateListMaker) typesetter).letter( c,
+                                                        tc,
+                                                        context,
+                                                        source,
+                                                        source.getLocator() );
+        }
+      }
+      else if( currentFont.hasGlyph( c ) ) {
+        ((TokenDelegateListMaker) typesetter).letter( c,
+                                                      tc,
+                                                      context,
+                                                      source,
+                                                      source.getLocator() );
+      }
+      else {
+        // TODO gene: letter and accent are undefined
+        throw new RuntimeException( "unimplemented" );
+      }
+
+    }
+    else if( token.isa( Catcode.LEFTBRACE ) ) {
+      source.push( token );
+
+      // TODO gene: unimplemented
+      throw new RuntimeException( "unimplemented" );
+
+    }
+    else {
+      // TODO gene: unimplemented
+      throw new RuntimeException( "unimplemented" );
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     * @see "TTP [1123,1124,1125]"
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        if (typesetter.getMode().isMath()) {
-            throw new HelpingException(
-                getLocalizer(),
-                "TTP.AccentInMathMode", toText(context),
-                context.esc("mathaccent"));
-        }
-        UnicodeChar accent =
-                source.scanCharacterCode(context, typesetter, getToken());
-        Token token = source.getToken(context);
-        TypesettingContext tc = context.getTypesettingContext();
-        Font currentFont = tc.getFont();
-        long a = -1;
-        long s = 0;
-        if (currentFont.hasGlyph(accent)) {
-            a = currentFont.getWidth(accent).getLength().getValue();
-            s = currentFont.getItalicCorrection(accent).getValue(); // TODO
-            // gene:
-            // correct?
-        }
-        long x = currentFont.getEx().getValue();
-
-        if (token == null) {
-
-            throw new EofException(toText(context));
-
-        } else if (token.isa(Catcode.LETTER) || token.isa(Catcode.OTHER)) {
-            UnicodeChar c = token.getChar();
-
-            if (currentFont.hasGlyph(accent)) {
-                if (!currentFont.hasGlyph(c)) {
-                    ((TokenDelegateListMaker) typesetter).letter(accent, tc,
-                        context, source, source.getLocator());
-                } else {
-                    Node node = typesetter.getNodeFactory().getNode(tc, accent);
-                    if (node == null) {
-                        // TODO gene: undefined character
-                        return;
-                    }
-                    long w = currentFont.getWidth(c).getLength().getValue();
-                    long h = currentFont.getHeight(c).getLength().getValue();
-                    Dimen d = new Dimen();
-                    // if (h != x) {
-                    // NodeList n = new HorizontalListNode(node);
-                    // d.set(x - h);
-                    // n.setShift(d);
-                    // node = n;
-                    // }
-                    // compute delta TTP [1125]
-                    long delta = (w - a) / 2 + (h - x) * s / UNIT;
-                    d.set(delta);
-                    typesetter.add(new AccentKernNode(d));
-                    typesetter.add(node);
-                    d.set(-a - delta);
-                    typesetter.add(new AccentKernNode(d));
-                    ((TokenDelegateListMaker) typesetter).letter(c, tc,
-                        context, source, source.getLocator());
-                }
-            } else if (currentFont.hasGlyph(c)) {
-                ((TokenDelegateListMaker) typesetter).letter(c, tc, context,
-                    source, source.getLocator());
-            } else {
-                // TODO gene: letter and accent are undefined
-                throw new RuntimeException("unimplemented");
-            }
-
-        } else if (token.isa(Catcode.LEFTBRACE)) {
-            source.push(token);
-
-            // TODO gene: unimplemented
-            throw new RuntimeException("unimplemented");
-
-        } else {
-            // TODO gene: unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        typesetter.setSpacefactor(Count.THOUSAND);
-    }
+    typesetter.setSpacefactor( Count.THOUSAND );
+  }
 
 }

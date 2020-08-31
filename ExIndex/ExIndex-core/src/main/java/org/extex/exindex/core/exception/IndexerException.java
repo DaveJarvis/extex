@@ -26,62 +26,63 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals that an error in the indexer has been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IndexerException extends LException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code locator} contains the name and line of the resource.
-     */
-    private final ResourceLocator locator;
+  /**
+   * The field {@code locator} contains the name and line of the resource.
+   */
+  private final ResourceLocator locator;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     */
-    public IndexerException(ResourceLocator locator) {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   */
+  public IndexerException( ResourceLocator locator ) {
 
-        super((String) null);
-        this.locator = locator;
+    super( (String) null );
+    this.locator = locator;
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   * @param message the message
+   */
+  public IndexerException( ResourceLocator locator, String message ) {
+
+    super( message );
+    this.locator = locator;
+  }
+
+  @Override
+  public String getLocalizedMessage() {
+
+    String message = getMessage();
+    Localizer localizer =
+        LocalizerFactory.getLocalizer( IndexerException.class );
+
+    if( locator != null ) {
+      return localizer.format( (message == null
+                                   ? "LocatedNoMessage"
+                                   : "LocatedMessage"),
+                               locator.getResource(),
+                               Integer.toString( locator.getLineNumber() ),
+                               message );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     * @param message the message
-     */
-    public IndexerException(ResourceLocator locator, String message) {
-
-        super(message);
-        this.locator = locator;
-    }
-
-@Override
-    public String getLocalizedMessage() {
-
-        String message = getMessage();
-        Localizer localizer =
-                LocalizerFactory.getLocalizer(IndexerException.class);
-
-        if (locator != null) {
-            return localizer.format((message == null
-                    ? "LocatedNoMessage"
-                    : "LocatedMessage"),
-                locator.getResource(),
-                Integer.toString(locator.getLineNumber()), message);
-        }
-
-        return localizer.format((message == null ? "NoMessage" : "Message"),
-            message);
-    }
+    return localizer.format( (message == null ? "NoMessage" : "Message"),
+                             message );
+  }
 
 }

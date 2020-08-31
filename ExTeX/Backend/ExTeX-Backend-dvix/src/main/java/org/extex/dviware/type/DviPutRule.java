@@ -19,63 +19,59 @@
 
 package org.extex.dviware.type;
 
+import org.extex.dviware.Dvi;
+
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.extex.dviware.Dvi;
 
 /**
  * This class represents the DVI instruction {@code put_rule}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviPutRule extends AbstractDviCode {
 
-    /**
-     * The field {@code a} contains the first parameter.
-     */
-    private final int a;
+  /**
+   * The field {@code a} contains the first parameter.
+   */
+  private final int a;
 
-    /**
-     * The field {@code b} contains the second parameter.
-     */
-    private final int b;
+  /**
+   * The field {@code b} contains the second parameter.
+   */
+  private final int b;
 
-    /**
-     * Creates a new object.
-     *
-     * @param a the first parameter
-     * @param b the second parameter
-     */
-    public DviPutRule(int a, int b) {
+  /**
+   * Creates a new object.
+   *
+   * @param a the first parameter
+   * @param b the second parameter
+   */
+  public DviPutRule( int a, int b ) {
 
-        super("put_rule");
-        this.a = a;
-        this.b = b;
+    super( "put_rule" );
+    this.a = a;
+    this.b = b;
+  }
+
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
+
+    if( a == 0 && b == 0 ) {
+      return 0;
     }
-
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
-
-        if (a == 0 && b == 0) {
-            return 0;
-        }
-        stream.write(Dvi.PUT_RULE);
-        write4(stream, a);
-        write4(stream, b);
-        return 1 + 4 + 4;
-    }
+    stream.write( Dvi.PUT_RULE );
+    write4( stream, a );
+    write4( stream, b );
+    return 1 + 4 + 4;
+  }
 
 }

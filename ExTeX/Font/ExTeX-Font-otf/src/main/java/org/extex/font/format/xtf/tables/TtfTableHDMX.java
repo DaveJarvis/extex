@@ -19,16 +19,16 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * The table 'hdmx' (Horizontal Device Metrics).
- * 
+ *
  * <p>
  * The hdmx table relates to OpenType fonts with TrueType outlines. The
  * Horizontal Device Metrics table stores integer advance widths scaled to
@@ -51,7 +51,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * performance can be improved by including the 'hdmx' table with one or more
  * important DeviceRecord's for important sizes.
  * </p>
- * 
+ *
  * <p>
  * hdmx Header
  * </p>
@@ -84,7 +84,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Array of device records.</td>
  * </tr>
  * </table>
- * 
+ *
  * <p>
  * Device Record
  * </p>
@@ -111,234 +111,234 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Array of widths (numGlyphs is from the 'maxp' table).</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTableHDMX extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
+
+  /**
+   * the device record
+   */
+  public class DeviceRecord implements XMLWriterConvertible {
 
     /**
-     * the device record
+     * teh maximum width
      */
-    public class DeviceRecord implements XMLWriterConvertible {
+    private final int maxWidth;
 
-        /**
-         * teh maximum width
-         */
-        private final int maxWidth;
+    /**
+     * the pixel size
+     */
+    private final int pixelSize;
 
-        /**
-         * the pixel size
-         */
-        private final int pixelSize;
+    /**
+     * the widths
+     */
+    private final byte[] widths;
 
-        /**
-         * the widths
-         */
-        private final byte[] widths;
+    /**
+     * Create a new object.
+     *
+     * @param rar            the input
+     * @param numberOfGlyphs the number of glyphs
+     * @throws IOException if an IO-error occurred.
+     */
+    public DeviceRecord( RandomAccessR rar, int numberOfGlyphs )
+        throws IOException {
 
-        /**
-         * Create a new object.
-         * 
-         * @param rar the input
-         * @param numberOfGlyphs the number of glyphs
-         * @throws IOException if an IO-error occurred.
-         */
-        public DeviceRecord(RandomAccessR rar, int numberOfGlyphs)
-                throws IOException {
+      pixelSize = rar.readByteAsInt();
+      maxWidth = rar.readByteAsInt();
+      widths = new byte[ numberOfGlyphs ];
+      rar.readFully( widths );
+    }
 
-            pixelSize = rar.readByteAsInt();
-            maxWidth = rar.readByteAsInt();
-            widths = new byte[numberOfGlyphs];
-            rar.readFully(widths);
+    /**
+     * Returns the maxWidth.
+     *
+     * @return Returns the maxWidth.
+     */
+    public int getMaxWidth() {
+
+      return maxWidth;
+    }
+
+    /**
+     * Returns the pixelSize.
+     *
+     * @return Returns the pixelSize.
+     */
+    public int getPixelSize() {
+
+      return pixelSize;
+    }
+
+    /**
+     * Returns the widths.
+     *
+     * @return Returns the widths.
+     */
+    public byte[] getWidths() {
+
+      return widths;
+    }
+
+    /**
+     * org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+      writer.writeStartElement( "devicerecord" );
+      writer.writeAttribute( "maxwidth", String.valueOf( maxWidth ) );
+      writer.writeAttribute( "pixelsize", String.valueOf( pixelSize ) );
+      writer.writeByteArray( widths );
+      writer.writeEndElement();
+    }
+  }
+
+  /**
+   * the device record array
+   */
+  private DeviceRecord[] deviceRecord;
+
+  /**
+   * number of records
+   */
+  private int numRecords;
+
+  /**
+   * the offset in the input
+   */
+  private final int offset;
+
+  /**
+   * the input
+   */
+  private RandomAccessR rarinput;
+
+  /**
+   * Size of a device record
+   */
+  private int sizeDeviceRecord;
+
+  /**
+   * version
+   */
+  private int version;
+
+  /**
+   * Create a new object
+   *
+   * @param tablemap the tablemap
+   * @param de       entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public TtfTableHDMX( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
+
+    super( tablemap );
+
+    offset = de.getOffset();
+    rarinput = rar;
+  }
+
+  /**
+   * Returns the deviceRecord.
+   *
+   * @return Returns the deviceRecord.
+   */
+  public DeviceRecord[] getDeviceRecord() {
+
+    return deviceRecord;
+  }
+
+  /**
+   * Returns the numRecords.
+   *
+   * @return Returns the numRecords.
+   */
+  public int getNumRecords() {
+
+    return numRecords;
+  }
+
+  public String getShortcut() {
+
+    return "hdmx";
+  }
+
+  /**
+   * Returns the sizeDeviceRecord.
+   *
+   * @return Returns the sizeDeviceRecord.
+   */
+  public int getSizeDeviceRecord() {
+
+    return sizeDeviceRecord;
+  }
+
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
+
+    return XtfReader.HDMX;
+  }
+
+  /**
+   * Returns the version.
+   *
+   * @return Returns the version.
+   */
+  public int getVersion() {
+
+    return version;
+  }
+
+  @Override
+  public void init() throws IOException {
+
+    if( rarinput != null ) {
+      rarinput.seek( offset );
+
+      version = rarinput.readUnsignedShort();
+      numRecords = rarinput.readUnsignedShort();
+      sizeDeviceRecord = rarinput.readInt();
+
+      TtfTableMAXP maxp =
+          (TtfTableMAXP) getTableMap().get( XtfReader.MAXP );
+      if( maxp != null ) {
+        int numberOfGlyphs = maxp.getNumGlyphs();
+
+        deviceRecord = new DeviceRecord[ numRecords ];
+        for( int i = 0; i < numRecords; i++ ) {
+          deviceRecord[ i ] =
+              new DeviceRecord( rarinput, numberOfGlyphs );
         }
-
-        /**
-         * Returns the maxWidth.
-         * 
-         * @return Returns the maxWidth.
-         */
-        public int getMaxWidth() {
-
-            return maxWidth;
-        }
-
-        /**
-         * Returns the pixelSize.
-         * 
-         * @return Returns the pixelSize.
-         */
-        public int getPixelSize() {
-
-            return pixelSize;
-        }
-
-        /**
-         * Returns the widths.
-         * 
-         * @return Returns the widths.
-         */
-        public byte[] getWidths() {
-
-            return widths;
-        }
-
-        /**
-    *      org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("devicerecord");
-            writer.writeAttribute("maxwidth", String.valueOf(maxWidth));
-            writer.writeAttribute("pixelsize", String.valueOf(pixelSize));
-            writer.writeByteArray(widths);
-            writer.writeEndElement();
-        }
+      }
+      rarinput = null;
     }
+  }
 
-    /**
-     * the device record array
-     */
-    private DeviceRecord[] deviceRecord;
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-    /**
-     * number of records
-     */
-    private int numRecords;
-
-    /**
-     * the offset in the input
-     */
-    private final int offset;
-
-    /**
-     * the input
-     */
-    private RandomAccessR rarinput;
-
-    /**
-     * Size of a device record
-     */
-    private int sizeDeviceRecord;
-
-    /**
-     * version
-     */
-    private int version;
-
-    /**
-     * Create a new object
-     * 
-     * @param tablemap the tablemap
-     * @param de entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public TtfTableHDMX(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
-
-        super(tablemap);
-
-        offset = de.getOffset();
-        rarinput = rar;
+    writeStartElement( writer );
+    writer.writeAttribute( "version", String.valueOf( version ) );
+    writer.writeAttribute( "numrecords", String.valueOf( numRecords ) );
+    writer.writeAttribute( "sizedevicerecord", String
+        .valueOf( sizeDeviceRecord ) );
+    for( int i = 0; i < deviceRecord.length; i++ ) {
+      deviceRecord[ i ].writeXML( writer );
     }
-
-    /**
-     * Returns the deviceRecord.
-     * 
-     * @return Returns the deviceRecord.
-     */
-    public DeviceRecord[] getDeviceRecord() {
-
-        return deviceRecord;
-    }
-
-    /**
-     * Returns the numRecords.
-     * 
-     * @return Returns the numRecords.
-     */
-    public int getNumRecords() {
-
-        return numRecords;
-    }
-
-public String getShortcut() {
-
-        return "hdmx";
-    }
-
-    /**
-     * Returns the sizeDeviceRecord.
-     * 
-     * @return Returns the sizeDeviceRecord.
-     */
-    public int getSizeDeviceRecord() {
-
-        return sizeDeviceRecord;
-    }
-
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.HDMX;
-    }
-
-    /**
-     * Returns the version.
-     * 
-     * @return Returns the version.
-     */
-    public int getVersion() {
-
-        return version;
-    }
-
-@Override
-    public void init() throws IOException {
-
-        if (rarinput != null) {
-            rarinput.seek(offset);
-
-            version = rarinput.readUnsignedShort();
-            numRecords = rarinput.readUnsignedShort();
-            sizeDeviceRecord = rarinput.readInt();
-
-            TtfTableMAXP maxp =
-                    (TtfTableMAXP) getTableMap().get(XtfReader.MAXP);
-            if (maxp != null) {
-                int numberOfGlyphs = maxp.getNumGlyphs();
-
-                deviceRecord = new DeviceRecord[numRecords];
-                for (int i = 0; i < numRecords; i++) {
-                    deviceRecord[i] =
-                            new DeviceRecord(rarinput, numberOfGlyphs);
-                }
-            }
-            rarinput = null;
-        }
-    }
-
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writeStartElement(writer);
-        writer.writeAttribute("version", String.valueOf(version));
-        writer.writeAttribute("numrecords", String.valueOf(numRecords));
-        writer.writeAttribute("sizedevicerecord", String
-            .valueOf(sizeDeviceRecord));
-        for (int i = 0; i < deviceRecord.length; i++) {
-            deviceRecord[i].writeXML(writer);
-        }
-        writer.writeEndElement();
-    }
+    writer.writeEndElement();
+  }
 
 }

@@ -21,29 +21,29 @@ package org.extex.font.format.dvi;
 
 /**
  * Values for dvi.
- * 
+ *
  * <p>
  * The values of {@code h}, {@code v}, {@code w}, {@code x},
  * {@code y}, and {@code z} are signed integers having up to 32 bits,
  * including the sign.
  * </p>
- * 
+ *
  * <p>
  * Since they represent physical distances, there is a small unit of measurement
  * such that increasing {@code h} by 1 means moving a certain tiny distance
  * to the right. The actual unit of measurement is variable.
  * </p>
- * 
+ *
  * <p>
  * The current font {@code f} is an integer; this value is changed only by
  * {@code fnt} and {@code fnt_num} commands.
  * </p>
- * 
+ *
  * <p>
  * The current position on the page is given by two numbers called the
  * horizontal and vertical coordinates, {@code h} and {@code v}.
  * </p>
- * 
+ *
  * <p>
  * Both coordinates are zero at the upper left corner of the page; moving to the
  * right corresponds to increasing the horizontal coordinate, and moving down
@@ -51,275 +51,275 @@ package org.extex.font.format.dvi;
  * essentially Cartesian, except that vertical directions are flipped; the
  * Cartesian version of {@code (h,v)} would be {@code (h,-v)}.
  * </p>
- * 
+ *
  * <p>
  * The current spacing amounts are given by four numbers {@code w},
  * {@code x}, {@code y}, and {@code z}, where {@code w} and
  * {@code x} are used for horizontal spacing and where {@code y} and
  * {@code z} are used for vertical spacing.
  * </p>
- * 
+ *
  * <p>
  * There is a stack containing {@code (h,v,w,x,y,z)} values; the DVI
  * commands {@code push} and {@code pop} are used to change the
  * current level of operation. Note that the current font {@code f} is not
  * pushed and popped; the stack contains only information about positioning.
  * <p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviValues {
 
-    /**
-     * f: the font number
-     */
-    private int f;
+  /**
+   * f: the font number
+   */
+  private int f;
 
-    /**
-     * h: horizontal
-     */
-    private int h;
+  /**
+   * h: horizontal
+   */
+  private int h;
 
-    /**
-     * v: vertical
-     */
-    private int v;
+  /**
+   * v: vertical
+   */
+  private int v;
 
-    /**
-     * w: horizontal spacing
-     */
-    private int w;
+  /**
+   * w: horizontal spacing
+   */
+  private int w;
 
-    /**
-     * x: horizontal spacing
-     */
-    private int x;
+  /**
+   * x: horizontal spacing
+   */
+  private int x;
 
-    /**
-     * y: vertical spacing
-     */
-    private int y;
+  /**
+   * y: vertical spacing
+   */
+  private int y;
 
-    /**
-     * z: vertical spacing
-     */
-    private int z;
+  /**
+   * z: vertical spacing
+   */
+  private int z;
 
-    /**
-     * Create a new object.
-     */
-    public DviValues() {
+  /**
+   * Create a new object.
+   */
+  public DviValues() {
 
-        clear();
-    }
+    clear();
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param val the new values.
-     */
-    public DviValues(final DviValues val) {
+  /**
+   * Create a new object.
+   *
+   * @param val the new values.
+   */
+  public DviValues( final DviValues val ) {
 
-        h = val.h;
-        v = val.v;
-        w = val.w;
-        x = val.x;
-        y = val.y;
-        z = val.z;
-    }
+    h = val.h;
+    v = val.v;
+    w = val.w;
+    x = val.x;
+    y = val.y;
+    z = val.z;
+  }
 
-    /**
-     * @param ah The h to add.
-     */
-    public void addH(final int ah) {
+  /**
+   * @param ah The h to add.
+   */
+  public void addH( final int ah ) {
 
-        h += ah;
-    }
+    h += ah;
+  }
 
-    /**
-     * @param av The v to add.
-     */
-    public void addV(final int av) {
+  /**
+   * @param av The v to add.
+   */
+  public void addV( final int av ) {
 
-        v += av;
-    }
+    v += av;
+  }
 
-    /**
-     * clear all values (without f!).
-     */
-    public void clear() {
+  /**
+   * clear all values (without f!).
+   */
+  public void clear() {
 
-        h = 0;
-        v = 0;
-        w = 0;
-        x = 0;
-        y = 0;
-        z = 0;
-    }
+    h = 0;
+    v = 0;
+    w = 0;
+    x = 0;
+    y = 0;
+    z = 0;
+  }
 
-    /**
-     * Returns the f.
-     * 
-     * @return Returns the f.
-     */
-    public int getF() {
+  /**
+   * Returns the f.
+   *
+   * @return Returns the f.
+   */
+  public int getF() {
 
-        return f;
-    }
+    return f;
+  }
 
-    /**
-     * Returns the h.
-     * 
-     * @return Returns the h.
-     */
-    public int getH() {
+  /**
+   * Returns the h.
+   *
+   * @return Returns the h.
+   */
+  public int getH() {
 
-        return h;
-    }
+    return h;
+  }
 
-    /**
-     * Returns the v.
-     * 
-     * @return Returns the v.
-     */
-    public int getV() {
+  /**
+   * Returns the v.
+   *
+   * @return Returns the v.
+   */
+  public int getV() {
 
-        return v;
-    }
+    return v;
+  }
 
-    /**
-     * Returns the w.
-     * 
-     * @return Returns the w.
-     */
-    public int getW() {
+  /**
+   * Returns the w.
+   *
+   * @return Returns the w.
+   */
+  public int getW() {
 
-        return w;
-    }
+    return w;
+  }
 
-    /**
-     * Returns the x.
-     * 
-     * @return Returns the x.
-     */
-    public int getX() {
+  /**
+   * Returns the x.
+   *
+   * @return Returns the x.
+   */
+  public int getX() {
 
-        return x;
-    }
+    return x;
+  }
 
-    /**
-     * Returns the y.
-     * 
-     * @return Returns the y.
-     */
-    public int getY() {
+  /**
+   * Returns the y.
+   *
+   * @return Returns the y.
+   */
+  public int getY() {
 
-        return y;
-    }
+    return y;
+  }
 
-    /**
-     * Returns the z.
-     * 
-     * @return Returns the z.
-     */
-    public int getZ() {
+  /**
+   * Returns the z.
+   *
+   * @return Returns the z.
+   */
+  public int getZ() {
 
-        return z;
-    }
+    return z;
+  }
 
-    /**
-     * Check, if the values (h,v,w,x,z,z) all zero.
-     * 
-     * @return Returns {@code true}, if all values are zero.
-     */
-    public boolean isClear() {
+  /**
+   * Check, if the values (h,v,w,x,z,z) all zero.
+   *
+   * @return Returns {@code true}, if all values are zero.
+   */
+  public boolean isClear() {
 
-        return h == 0 && v == 0 && w == 0 && x == 0 && y == 0 && z == 0;
-    }
+    return h == 0 && v == 0 && w == 0 && x == 0 && y == 0 && z == 0;
+  }
 
-    /**
-     * @param af The f to set.
-     */
-    public void setF(final int af) {
+  /**
+   * @param af The f to set.
+   */
+  public void setF( final int af ) {
 
-        f = af;
-    }
+    f = af;
+  }
 
-    /**
-     * @param ah The h to set.
-     */
-    public void setH(final int ah) {
+  /**
+   * @param ah The h to set.
+   */
+  public void setH( final int ah ) {
 
-        h = ah;
-    }
+    h = ah;
+  }
 
-    /**
-     * @param av The v to set.
-     */
-    public void setV(final int av) {
+  /**
+   * @param av The v to set.
+   */
+  public void setV( final int av ) {
 
-        v = av;
-    }
+    v = av;
+  }
 
-    /**
-     * set the values (without f!)
-     * 
-     * @param val the new values
-     */
-    public void setValues(final DviValues val) {
+  /**
+   * set the values (without f!)
+   *
+   * @param val the new values
+   */
+  public void setValues( final DviValues val ) {
 
-        h = val.h;
-        v = val.v;
-        w = val.w;
-        x = val.x;
-        y = val.y;
-        z = val.z;
-    }
+    h = val.h;
+    v = val.v;
+    w = val.w;
+    x = val.x;
+    y = val.y;
+    z = val.z;
+  }
 
-    /**
-     * @param aw The w to set.
-     */
-    public void setW(final int aw) {
+  /**
+   * @param aw The w to set.
+   */
+  public void setW( final int aw ) {
 
-        w = aw;
-    }
+    w = aw;
+  }
 
-    /**
-     * @param ax The x to set.
-     */
-    public void setX(final int ax) {
+  /**
+   * @param ax The x to set.
+   */
+  public void setX( final int ax ) {
 
-        x = ax;
-    }
+    x = ax;
+  }
 
-    /**
-     * @param ay The y to set.
-     */
-    public void setY(final int ay) {
+  /**
+   * @param ay The y to set.
+   */
+  public void setY( final int ay ) {
 
-        y = ay;
-    }
+    y = ay;
+  }
 
-    /**
-     * @param az The z to set.
-     */
-    public void setZ(final int az) {
+  /**
+   * @param az The z to set.
+   */
+  public void setZ( final int az ) {
 
-        z = az;
-    }
+    z = az;
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        StringBuilder buf = new StringBuilder();
-        buf.append("f=").append(f);
-        buf.append(" h=").append(h);
-        buf.append(" v=").append(v);
-        buf.append(" w=").append(w);
-        buf.append(" x=").append(x);
-        buf.append(" y=").append(y);
-        buf.append(" z=").append(z);
-        return buf.toString();
-    }
+    StringBuilder buf = new StringBuilder();
+    buf.append( "f=" ).append( f );
+    buf.append( " h=" ).append( h );
+    buf.append( " v=" ).append( v );
+    buf.append( " w=" ).append( w );
+    buf.append( " x=" ).append( x );
+    buf.append( " y=" ).append( y );
+    buf.append( " z=" ).append( z );
+    return buf.toString();
+  }
 }

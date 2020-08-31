@@ -25,182 +25,185 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \advance}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(AdvanceTest.class);
-    }
+    (new JUnitCore()).run( AdvanceTest.class );
+  }
 
 
-    public AdvanceTest() {
+  public AdvanceTest() {
 
-        setPrimitive("advance");setArguments("\\count0 1 ");
-    }
+    setPrimitive( "advance" );
+    setArguments( "\\count0 1 " );
+  }
 
-    /**
-     * <testcase primitive="\advance"> Test case checking that {@code \advance}
-     * needs one arguments.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\advance"> Test case checking that {@code \advance}
+   * needs one arguments.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\advance ",
-            // --- log message ---
-            "Unexpected end of file while processing \\advance");
-    }
+    assertFailure(// --- input code ---
+                  "\\advance ",
+                  // --- log message ---
+                  "Unexpected end of file while processing \\advance" );
+  }
 
-    /**
-     * <testcase primitive="\advance"> Test case checking that {@code \advance}
-     * needs a defined control sequence as first argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testUndef1() throws Exception {
+  /**
+   * <testcase primitive="\advance"> Test case checking that {@code \advance}
+   * needs a defined control sequence as first argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testUndef1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\advance \\x ",
-            // --- log message ---
-            "Undefined control sequence \\x");
-    }
+    assertFailure(// --- input code ---
+                  "\\advance \\x ",
+                  // --- log message ---
+                  "Undefined control sequence \\x" );
+  }
 
-    /**
-     * <testcase primitive="\advance"> Test case checking that {@code \advance}
-     * on a letter leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLetter1() throws Exception {
+  /**
+   * <testcase primitive="\advance"> Test case checking that {@code \advance}
+   * on a letter leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLetter1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\advance a",
-            // --- log message ---
-                      "You can't use `the letter a' after \\advance" );
-    }
+    assertFailure(// --- input code ---
+                  "\\advance a",
+                  // --- log message ---
+                  "You can't use `the letter a' after \\advance" );
+  }
 
-    /**
-     * <testcase primitive="\advance"> Test case checking that {@code \advance}
-     * on a other token leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testOther1() throws Exception {
+  /**
+   * <testcase primitive="\advance"> Test case checking that {@code \advance}
+   * on a other token leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testOther1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\advance 12 ",
-            // --- log message ---
-                      "You can't use `the character 1' after \\advance" );
-    }
+    assertFailure(// --- input code ---
+                  "\\advance 12 ",
+                  // --- log message ---
+                  "You can't use `the character 1' after \\advance" );
+  }
 
-    /**
-     * <testcase primitive="\advance"> Test case checking that {@code \advance}
-     * on a macro parameter token leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMacro1() throws Exception {
+  /**
+   * <testcase primitive="\advance"> Test case checking that {@code \advance}
+   * on a macro parameter token leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMacro1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\catcode`#=6 " + "\\advance #2 ",
-            // --- log message ---
-                      "You can't use `macro parameter character #' after " +
-                          "\\advance" );
-    }
+    assertFailure(// --- input code ---
+                  "\\catcode`#=6 " + "\\advance #2 ",
+                  // --- log message ---
+                  "You can't use `macro parameter character #' after " +
+                      "\\advance" );
+  }
 
-    /**
-     * <testcase primitive="\advance"> Test case checking that {@code \advance}
-     * on a non-advancable primitive (\\relax) leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testRelax1() throws Exception {
+  /**
+   * <testcase primitive="\advance"> Test case checking that {@code \advance}
+   * on a non-advancable primitive (\\relax) leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testRelax1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\advance \\relax ",
-            // --- log message ---
-                      "You can't use `the control sequence \\relax' after " +
-                          "\\advance" );
-    }
+    assertFailure(// --- input code ---
+                  "\\advance \\relax ",
+                  // --- log message ---
+                  "You can't use `the control sequence \\relax' after " +
+                      "\\advance" );
+  }
 
-    /**
-     * <testcase primitive="\advance"> Test case checking that {@code \advance}
-     * on a count register name works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCount1() throws Exception {
+  /**
+   * <testcase primitive="\advance"> Test case checking that {@code \advance}
+   * on a count register name works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCount1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\count1 5 " + "\\advance \\count1 123 " + "\\the\\count1 \\end",
-            // --- output channel ---
-            "128" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\count1 5 " + "\\advance \\count1 123 " + "\\the\\count1 " +
+                      "\\end",
+                  // --- output channel ---
+                  "128" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\advance"> Test case checking that {@code \advance}
-     * on a count register name works with a global flag.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCount2() throws Exception {
+  /**
+   * <testcase primitive="\advance"> Test case checking that {@code \advance}
+   * on a count register name works with a global flag.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCount2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\count1 5 "
-                    + "\\begingroup\\global\\advance \\count1 123 \\endgroup "
-                    + "\\the\\count1 \\end",
-            // --- output channel ---
-            "128" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\count1 5 "
+                      + "\\begingroup\\global\\advance \\count1 123 \\endgroup "
+                      + "\\the\\count1 \\end",
+                  // --- output channel ---
+                  "128" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\advance"> Test case checking that {@code \advance}
-     * on a dimen register name works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testDimen1() throws Exception {
+  /**
+   * <testcase primitive="\advance"> Test case checking that {@code \advance}
+   * on a dimen register name works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testDimen1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\dimen1 5pt " + "\\advance \\dimen1 123pt "
-                    + "\\the\\dimen1 \\end",
-            // --- output channel ---
-            "128.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\dimen1 5pt " + "\\advance \\dimen1 123pt "
+                      + "\\the\\dimen1 \\end",
+                  // --- output channel ---
+                  "128.0pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\advance"> Test case checking that {@code \advance}
-     * on a dimen register name works with a global flag.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testDimen2() throws Exception {
+  /**
+   * <testcase primitive="\advance"> Test case checking that {@code \advance}
+   * on a dimen register name works with a global flag.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testDimen2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\dimen1 5pt "
-                    + "\\begingroup\\global\\advance \\dimen1 123pt \\endgroup "
-                    + "\\the\\dimen1 \\end",
-            // --- output channel ---
-            "128.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\dimen1 5pt "
+                      + "\\begingroup\\global\\advance \\dimen1 123pt " +
+                      "\\endgroup "
+                      + "\\the\\dimen1 \\end",
+                  // --- output channel ---
+                  "128.0pt" + TERM );
+  }
 
 }

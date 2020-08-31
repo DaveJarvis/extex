@@ -19,27 +19,27 @@
 
 package org.extex.font.format.vf.command;
 
-import java.io.IOException;
-
 import org.extex.font.exception.FontException;
 import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.framework.i18n.Localizer;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
+import java.io.IOException;
+
 /**
  * VfCommand: pre
- * 
+ *
  * <p>
  * A preamble appears at the beginning, followed by a sequence of character
  * definitions, followed by a postamble. More precisely, the first byte of every
  * VF file must be the first byte of the following 'preamble command':
  * </p>
- * 
+ *
  * <pre>
  *    pre   247  i[1]  k[1]  x[k]  cs[4]  ds[4]
  * </pre>
- * 
+ *
  * <p>
  * Here {@code i} is the identification byte of VF, currently 202. The
  * string {@code x} is merely a comment, usually indicating the source of
@@ -47,130 +47,130 @@ import org.extex.util.xml.XMLStreamWriter;
  * the check sum and the design size of the virtual font; they should match the
  * first two words in the header of the TFM file.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class VfCommandPre extends VfCommand {
 
-    /**
-     * the checksum
-     */
-    private final int checksum;
+  /**
+   * the checksum
+   */
+  private final int checksum;
 
-    /**
-     * the comment
-     */
-    private final String comment;
+  /**
+   * the comment
+   */
+  private final String comment;
 
-    /**
-     * the designsize
-     */
-    private final TfmFixWord designsize;
+  /**
+   * the designsize
+   */
+  private final TfmFixWord designsize;
 
-    /**
-     * the identification
-     */
-    private final int identification;
+  /**
+   * the identification
+   */
+  private final int identification;
 
-    /**
-     * Create e new object.
-     * 
-     * @param localizer The localizer for the messages.
-     * @param rar the input.
-     * @param ccode the command code.
-     * @throws IOException if a IO-error occurred.
-     * @throws FontException if a error reading the font.
-     */
-    public VfCommandPre(Localizer localizer, RandomAccessR rar, int ccode)
-            throws IOException,
-                FontException {
+  /**
+   * Create e new object.
+   *
+   * @param localizer The localizer for the messages.
+   * @param rar       the input.
+   * @param ccode     the command code.
+   * @throws IOException   if a IO-error occurred.
+   * @throws FontException if a error reading the font.
+   */
+  public VfCommandPre( Localizer localizer, RandomAccessR rar, int ccode )
+      throws IOException,
+      FontException {
 
-        super(localizer, ccode);
+    super( localizer, ccode );
 
-        if (ccode != PRE) {
-            throw new FontException(getLocalizer().format("VF.WrongCode",
-                String.valueOf(ccode)));
-        }
-
-        identification = rar.readByteAsInt();
-        comment = readString(rar);
-        checksum = rar.readInt();
-        designsize =
-                new TfmFixWord(rar.readInt(), TfmFixWord.FIXWORDDENOMINATOR);
+    if( ccode != PRE ) {
+      throw new FontException( getLocalizer().format( "VF.WrongCode",
+                                                      String.valueOf( ccode ) ) );
     }
 
-    /**
-     * Returns the checksum.
-     * 
-     * @return Returns the checksum.
-     */
-    public int getChecksum() {
+    identification = rar.readByteAsInt();
+    comment = readString( rar );
+    checksum = rar.readInt();
+    designsize =
+        new TfmFixWord( rar.readInt(), TfmFixWord.FIXWORDDENOMINATOR );
+  }
 
-        return checksum;
+  /**
+   * Returns the checksum.
+   *
+   * @return Returns the checksum.
+   */
+  public int getChecksum() {
+
+    return checksum;
+  }
+
+  /**
+   * Returns the comment.
+   *
+   * @return Returns the comment.
+   */
+  public String getComment() {
+
+    return comment;
+  }
+
+  /**
+   * Returns the designsize.
+   *
+   * @return Returns the designsize.
+   */
+  public TfmFixWord getDesignsize() {
+
+    return designsize;
+  }
+
+  /**
+   * Returns the identification.
+   *
+   * @return Returns the identification.
+   */
+  public int getIdentification() {
+
+    return identification;
+  }
+
+  /**
+   * Reads a character string from the header.
+   *
+   * @param rar the input
+   * @return the string
+   * @throws IOException if an I/O error occurred.
+   */
+  private String readString( final RandomAccessR rar ) throws IOException {
+
+    int len = rar.readByteAsInt();
+    StringBuilder buf = new StringBuilder( len );
+    for( int i = 0; i < len; i++ ) {
+      buf.append( (char) rar.readByteAsInt() );
     }
+    return buf.toString();
+  }
 
-    /**
-     * Returns the comment.
-     * 
-     * @return Returns the comment.
-     */
-    public String getComment() {
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        return comment;
+    writer.writeStartElement( "preamble" );
+    writer.writeAttribute( "opcode", String.valueOf( getCommandCode() ) );
+    writer.writeAttribute( "identification", String.valueOf( identification ) );
+    writer.writeAttribute( "checksum", String.valueOf( checksum ) );
+    writer.writeAttribute( "designsize", designsize.toString() );
+    if( comment != null && comment.trim().length() > 0 ) {
+      writer.writeStartElement( "comment" );
+      writer.writeCharacters( comment );
+      writer.writeEndElement();
     }
+    writer.writeEndElement();
 
-    /**
-     * Returns the designsize.
-     * 
-     * @return Returns the designsize.
-     */
-    public TfmFixWord getDesignsize() {
-
-        return designsize;
-    }
-
-    /**
-     * Returns the identification.
-     * 
-     * @return Returns the identification.
-     */
-    public int getIdentification() {
-
-        return identification;
-    }
-
-    /**
-     * Reads a character string from the header.
-     * 
-     * @param rar the input
-     * @return the string
-     * @throws IOException if an I/O error occurred.
-     */
-    private String readString(final RandomAccessR rar) throws IOException {
-
-        int len = rar.readByteAsInt();
-        StringBuilder buf = new StringBuilder(len);
-        for (int i = 0; i < len; i++) {
-            buf.append((char) rar.readByteAsInt());
-        }
-        return buf.toString();
-    }
-
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("preamble");
-        writer.writeAttribute("opcode", String.valueOf(getCommandCode()));
-        writer.writeAttribute("identification", String.valueOf(identification));
-        writer.writeAttribute("checksum", String.valueOf(checksum));
-        writer.writeAttribute("designsize", designsize.toString());
-        if (comment != null && comment.trim().length() > 0) {
-            writer.writeStartElement("comment");
-            writer.writeCharacters(comment);
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-
-    }
+  }
 }

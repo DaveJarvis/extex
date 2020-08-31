@@ -24,37 +24,37 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This Exception is thrown when an Observer fopr a non-observable action is
  * requested to be registered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NotObservableException extends Exception {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     */
-    public NotObservableException(String message) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   */
+  public NotObservableException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Provides the message for this Exception.
-     * 
-     * @return the message for this exception
-     */
-    @Override
-    public String getMessage() {
+  /**
+   * Provides the message for this Exception.
+   *
+   * @return the message for this exception
+   */
+  @Override
+  public String getMessage() {
 
-        return LocalizerFactory.getLocalizer(getClass()).format("Message",
-            super.getMessage());
-    }
+    return LocalizerFactory.getLocalizer( getClass() ).format( "Message",
+                                                               super.getMessage() );
+  }
 
 }

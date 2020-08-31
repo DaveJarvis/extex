@@ -30,95 +30,96 @@ import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class holds an input file from which tokens can be read.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InputFile implements InFile {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code standardStream} contains the indicator that the
-     * current stream is the standard stream.
-     */
-    private final boolean standardStream;
+  /**
+   * The field {@code standardStream} contains the indicator that the
+   * current stream is the standard stream.
+   */
+  private final boolean standardStream;
 
-    /**
-     * The field {@code stream} contains the stream.
-     */
-    private transient TokenStream stream = null;
+  /**
+   * The field {@code stream} contains the stream.
+   */
+  private transient TokenStream stream = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param inStream the token stream to read from
-     * @param isStandard the stream is the standard input stream
-     */
-    public InputFile(TokenStream inStream, boolean isStandard) {
+  /**
+   * Creates a new object.
+   *
+   * @param inStream   the token stream to read from
+   * @param isStandard the stream is the standard input stream
+   */
+  public InputFile( TokenStream inStream, boolean isStandard ) {
 
-        this.stream = inStream;
-        this.standardStream = isStandard;
+    this.stream = inStream;
+    this.standardStream = isStandard;
+  }
+
+  public void close() {
+
+    stream = null;
+  }
+
+  public boolean isEof() throws NoHelpException {
+
+    try {
+      return (stream == null || stream.isEof());
+    } catch( ScannerException e ) {
+      throw new NoHelpException( e );
+    }
+  }
+
+  public boolean isFileStream() {
+
+    return stream != null && this.stream.isFileStream();
+  }
+
+  public boolean isOpen() {
+
+    return (stream != null);
+  }
+
+  public boolean isStandardStream() {
+
+    return this.standardStream;
+  }
+
+  /**
+   * org.extex.scanner.api.Tokenizer)
+   */
+  public Tokens read( TokenFactory factory, Tokenizer tokenizer )
+      throws NoHelpException {
+
+    if( stream == null ) {
+      return null;
     }
 
-public void close() {
+    Tokens toks = new Tokens();
+    Token t;
 
-        stream = null;
-    }
-
-public boolean isEof() throws NoHelpException {
-
-        try {
-            return (stream == null || stream.isEof());
-        } catch (ScannerException e) {
-            throw new NoHelpException(e);
+    try {
+      for( ; ; ) {
+        t = stream.get( factory, tokenizer );
+        if( t == null ) {
+          return (toks.length() > 0 ? toks : null);
         }
-    }
-
-public boolean isFileStream() {
-
-        return stream != null && this.stream.isFileStream();
-    }
-
-public boolean isOpen() {
-
-        return (stream != null);
-    }
-
-public boolean isStandardStream() {
-
-        return this.standardStream;
-    }
-
-    /**
-*      org.extex.scanner.api.Tokenizer)
-     */
-    public Tokens read(TokenFactory factory, Tokenizer tokenizer)
-            throws NoHelpException {
-
-        if (stream == null) {
-            return null;
+        else if( stream.isEol() ) {
+          return toks;
         }
-
-        Tokens toks = new Tokens();
-        Token t;
-
-        try {
-            for (;;) {
-                t = stream.get(factory, tokenizer);
-                if (t == null) {
-                    return (toks.length() > 0 ? toks : null);
-                } else if (stream.isEol()) {
-                    return toks;
-                }
-                toks.add(t);
-            }
-        } catch (ScannerException e) {
-            throw new NoHelpException(e);
-        }
+        toks.add( t );
+      }
+    } catch( ScannerException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
 }

@@ -41,77 +41,79 @@ import java.util.Iterator;
  * function tags which are used to set up the functions of the processor. Each
  * one needs to have the attributes {@code name} and {@code class}.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BstInterpreter extends BstInterpreterCore {
 
-    /**
-     * Create a new object.
-     * 
-     * @throws ExBibException in case of an error
-     */
-    public BstInterpreter() throws ExBibException {
+  /**
+   * Create a new object.
+   *
+   * @throws ExBibException in case of an error
+   */
+  public BstInterpreter() throws ExBibException {
 
-    }
+  }
 
-    /**
-     * Configure an object according to a given Configuration.
-     * 
-     * @param config the configuration object to consider
-     * 
-     * @throws ConfigurationException in case that something went wrong
-     */
-    @Override
-    public void configure(Configuration config) throws ConfigurationException {
+  /**
+   * Configure an object according to a given Configuration.
+   *
+   * @param config the configuration object to consider
+   * @throws ConfigurationException in case that something went wrong
+   */
+  @Override
+  public void configure( Configuration config ) throws ConfigurationException {
 
-        super.configure(config);
+    super.configure( config );
 
-        Iterator<Configuration> iterator = config.iterator("function");
+    Iterator<Configuration> iterator = config.iterator( "function" );
 
-        while (iterator.hasNext()) {
-            Configuration builtin = iterator.next();
-            String name = builtin.getAttribute("name");
-            if (name == null || "".equals(name)) {
-                throw new ConfigurationMissingException("name");
-            }
-            String className = builtin.getAttribute("class");
-            if (className == null || "".equals(className)) {
-                throw new ConfigurationMissingException("class");
-            }
-            try {
-                Code code = (Code) Class.forName(className).newInstance();
-                code.setName(name);
-                if (code instanceof Configurable) {
-                    ((Configurable) code).configure(builtin);
-                }
-                addFunction(name, code, new Locator(config.toString(), 0));
-            } catch (ExBibException e) {
-                throw new ConfigurationWrapperException(e);
-            } catch (InstantiationException e) {
-                throw new ConfigurationWrapperException(e);
-            } catch (IllegalAccessException e) {
-                throw new ConfigurationWrapperException(e);
-            } catch (ClassNotFoundException e) {
-                throw new ConfigurationWrapperException(e);
-            }
+    while( iterator.hasNext() ) {
+      Configuration builtin = iterator.next();
+      String name = builtin.getAttribute( "name" );
+      if( name == null || "".equals( name ) ) {
+        throw new ConfigurationMissingException( "name" );
+      }
+      String className = builtin.getAttribute( "class" );
+      if( className == null || "".equals( className ) ) {
+        throw new ConfigurationMissingException( "class" );
+      }
+      try {
+        Code code = (Code) Class.forName( className ).newInstance();
+        code.setName( name );
+        if( code instanceof Configurable ) {
+          ((Configurable) code).configure( builtin );
         }
+        addFunction( name, code, new Locator( config.toString(), 0 ) );
+      } catch( ExBibException e ) {
+        throw new ConfigurationWrapperException( e );
+      } catch( InstantiationException e ) {
+        throw new ConfigurationWrapperException( e );
+      } catch( IllegalAccessException e ) {
+        throw new ConfigurationWrapperException( e );
+      } catch( ClassNotFoundException e ) {
+        throw new ConfigurationWrapperException( e );
+      }
     }
+  }
 
-@Override
-    public void reset() {
+  @Override
+  public void reset() {
 
-        super.reset();
-        Locator locator = new Locator(getClass().getName() + "#reset()", 0);
-        try {
-            addFunction("locator.resource$", new TLocalLocator(
-                "locator.resource$", locator,
-                TLocalLocator.LocatorField.RESOURCE), locator);
-            addFunction("locator.line$", new TLocalLocator("locator.line$",
-                locator, TLocalLocator.LocatorField.RESOURCE), locator);
-        } catch (ExBibException e) {
-            throw new ConfigurationWrapperException(e);
-        }
+    super.reset();
+    Locator locator = new Locator( getClass().getName() + "#reset()", 0 );
+    try {
+      addFunction( "locator.resource$", new TLocalLocator(
+          "locator.resource$", locator,
+          TLocalLocator.LocatorField.RESOURCE ), locator );
+      addFunction( "locator.line$",
+                   new TLocalLocator( "locator.line$",
+                                      locator,
+                                      TLocalLocator.LocatorField.RESOURCE ),
+                   locator );
+    } catch( ExBibException e ) {
+      throw new ConfigurationWrapperException( e );
     }
+  }
 
 }

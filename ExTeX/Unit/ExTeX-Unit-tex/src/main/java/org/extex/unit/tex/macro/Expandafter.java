@@ -35,7 +35,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \expandafter}.
- * 
+ *
  * <p>The Primitive {@code \expandafter}</p>
  * <p>
  * The primitive {@code \expandafter} reverses the expansion of the following
@@ -48,11 +48,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * <p>
  * Any prefix argument is saved for the expansion of the following token.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;expandafter&rang;
  *     &rarr; {@code \expandafter} {@linkplain
@@ -60,69 +60,69 @@ import org.extex.typesetter.exception.TypesetterException;
  *         &lang;token&rang;} {@linkplain
  *         org.extex.interpreter.TokenSource#getToken(Context)
  *         &lang;token&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \expandafter ab  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Expandafter extends AbstractCode
-        implements
-            ExpandableCode,
-            PrefixCode {
+    implements
+    ExpandableCode,
+    PrefixCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Expandafter(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Expandafter( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Token t = source.getToken( context );
+    Token token = source.getToken( context );
+    if( t == null || token == null ) {
+      throw new EofException( toText( context ) );
     }
+    source.execute( token, context, typesetter );
+    source.push( t );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Token t = source.getToken(context);
-        Token token = source.getToken(context);
-        if (t == null || token == null) {
-            throw new EofException(toText(context));
-        }
-        source.execute(token, context, typesetter);
-        source.push(t);
+    Token t = source.getToken( context );
+    Token token = source.getToken( context );
+    if( t == null || token == null ) {
+      throw new EofException( toText( context ) );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Token t = source.getToken(context);
-        Token token = source.getToken(context);
-        if (t == null || token == null) {
-            throw new EofException(toText(context));
-        }
-        source.push(source.expand(token, context, typesetter));
-        source.push(t);
-    }
+    source.push( source.expand( token, context, typesetter ) );
+    source.push( t );
+  }
 
 }

@@ -21,130 +21,132 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: character.
- * 
+ *
  * <p>
  * Typeset character number 0..x from font f such that the reference point of
  * the character is at (h, v). Then increase h by the width of that character.
  * Note that a character may have zero or negative width, so one cannot be sure
  * that h will advance after this command; but h usually does increase.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviChar extends DviCommand {
 
-    /**
-     * MIN_SET_CHAR
-     */
-    private static final int MIN_SET_CHAR = 0;
+  /**
+   * MIN_SET_CHAR
+   */
+  private static final int MIN_SET_CHAR = 0;
 
-    /**
-     * MAX_SET_CHAR
-     */
-    private static final int MAX_SET_CHAR = 127;
+  /**
+   * MAX_SET_CHAR
+   */
+  private static final int MAX_SET_CHAR = 127;
 
-    /**
-     * MIN_SET
-     */
-    private static final int MIN_SET = 128;
+  /**
+   * MIN_SET
+   */
+  private static final int MIN_SET = 128;
 
-    /**
-     * MAX_SET
-     */
-    private static final int MAX_SET = 131;
+  /**
+   * MAX_SET
+   */
+  private static final int MAX_SET = 131;
 
-    /**
-     * MIN_PUT
-     */
-    private static final int MIN_PUT = 133;
+  /**
+   * MIN_PUT
+   */
+  private static final int MIN_PUT = 133;
 
-    /**
-     * MAX_PUT
-     */
-    private static final int MAX_PUT = 136;
+  /**
+   * MAX_PUT
+   */
+  private static final int MAX_PUT = 136;
 
-    /**
-     * the character
-     */
-    private final int ch;
+  /**
+   * the character
+   */
+  private final int ch;
 
-    /**
-     * put-mode (The 'put' commands are exactly like the 'set' commands, except
-     * that they simply put out a character or a rule without moving the
-     * reference point afterwards.)
-     */
-    private final boolean put;
+  /**
+   * put-mode (The 'put' commands are exactly like the 'set' commands, except
+   * that they simply put out a character or a rule without moving the
+   * reference point afterwards.)
+   */
+  private final boolean put;
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param c the character
-     */
-    public DviChar(final int opc, final int sp, final int c) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param c   the character
+   */
+  public DviChar( final int opc, final int sp, final int c ) {
 
-        this(opc, sp, c, false);
+    this( opc, sp, c, false );
+  }
+
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param c   the character
+   * @param pm  the put-mode
+   */
+  public DviChar( final int opc, final int sp, final int c, final boolean pm ) {
+
+    super( opc, sp );
+    ch = c;
+    put = pm;
+  }
+
+  /**
+   * Returns the ch.
+   *
+   * @return Returns the ch.
+   */
+  public int getCh() {
+
+    return ch;
+  }
+
+  @Override
+  public String getName() {
+
+    StringBuilder buf = new StringBuilder();
+    if( getOpcode() >= MIN_SET_CHAR && getOpcode() <= MAX_SET_CHAR ) {
+      buf.append( "setchar" ).append( getOpcode() );
     }
-
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param c the character
-     * @param pm the put-mode
-     */
-    public DviChar(final int opc, final int sp, final int c, final boolean pm) {
-
-        super(opc, sp);
-        ch = c;
-        put = pm;
+    else if( getOpcode() >= MIN_SET && getOpcode() <= MAX_SET ) {
+      buf.append( "set" ).append( getOpcode() - MAX_SET_CHAR );
     }
-
-    /**
-     * Returns the ch.
-     * 
-     * @return Returns the ch.
-     */
-    public int getCh() {
-
-        return ch;
+    else {
+      buf.append( "put" ).append( getOpcode() - MIN_PUT + 1 );
     }
+    return buf.toString();
+  }
 
-@Override
-    public String getName() {
+  /**
+   * Returns the put.
+   *
+   * @return Returns the put.
+   */
+  public boolean isPut() {
 
-        StringBuilder buf = new StringBuilder();
-        if (getOpcode() >= MIN_SET_CHAR && getOpcode() <= MAX_SET_CHAR) {
-            buf.append("setchar").append(getOpcode());
-        } else if (getOpcode() >= MIN_SET && getOpcode() <= MAX_SET) {
-            buf.append("set").append(getOpcode() - MAX_SET_CHAR);
-        } else {
-            buf.append("put").append(getOpcode() - MIN_PUT + 1);
-        }
-        return buf.toString();
-    }
+    return put;
+  }
 
-    /**
-     * Returns the put.
-     * 
-     * @return Returns the put.
-     */
-    public boolean isPut() {
+  /**
+   * Returns {@code true}, if the command ist setx oder putx.
+   *
+   * @return Returns {@code true}, if the command ist setx oder putx.
+   */
+  public boolean isSetPut() {
 
-        return put;
-    }
-
-    /**
-     * Returns {@code true}, if the command ist setx oder putx.
-     * 
-     * @return Returns {@code true}, if the command ist setx oder putx.
-     */
-    public boolean isSetPut() {
-
-      return (getOpcode() >= MIN_SET && getOpcode() <= MAX_SET)
-          || (getOpcode() >= MIN_PUT && getOpcode() <= MAX_PUT);
-    }
+    return (getOpcode() >= MIN_SET && getOpcode() <= MAX_SET)
+        || (getOpcode() >= MIN_PUT && getOpcode() <= MAX_PUT);
+  }
 }

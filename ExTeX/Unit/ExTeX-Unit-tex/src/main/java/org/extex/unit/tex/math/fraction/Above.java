@@ -33,7 +33,7 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive {@code \above}.
- * 
+ *
  * <p>The Math Primitive {@code \above}</p>
  * <p>
  * The math primitive {@code \above} arranges that the material in the math
@@ -50,56 +50,56 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * <p>
  * If the primitive is used outside of math mode then an error is raised.
  * </p>
- * 
- * <p>Syntax</p>
  *
+ * <p>Syntax</p>
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;above&rang;
  *       &rarr; &lang;math material&rang; {@code \above} &lang;dimen&rang; &lang;math material&rang;
  * </pre>
- * 
+ *
  * <p>Examples</p>
  *
  * <pre class="TeXSample">
  *    {a \above.1pt b}  </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Above extends AbstractMathCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Above(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Above( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException,
-                ConfigurationException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException,
+      ConfigurationException,
+      TypesetterException {
 
-        NoadConsumer nc = getListMaker(context, typesetter);
-        Dimen d = source.parseDimen(context, source, typesetter);
+    NoadConsumer nc = getListMaker( context, typesetter );
+    Dimen d = source.parseDimen( context, source, typesetter );
 
-        nc.switchToFraction(null, null, d, context.getTypesettingContext());
-    }
+    nc.switchToFraction( null, null, d, context.getTypesettingContext() );
+  }
 
 }

@@ -19,11 +19,6 @@
 
 package org.extex.backend.documentWriter.pdf;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.SingleDocumentStream;
@@ -53,354 +48,361 @@ import org.pdfbox.pdmodel.PDPage;
 import org.pdfbox.pdmodel.common.PDRectangle;
 import org.pdfbox.pdmodel.edit.PDPageContentStream;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Implementation of a pdf document writer.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:Rolf.Niepraschk@ptb.de">Rolf Niepraschk</a>
-*/
+ */
 public class PdfDocumentWriter
-        implements
-            PdftexSupport,
-            DocumentWriter,
-            SingleDocumentStream {
+    implements
+    PdftexSupport,
+    DocumentWriter,
+    SingleDocumentStream {
 
-    /**
-     * width A4 in bp.
-     */
-    public static final int WIDTH_A4_BP = 595;
+  /**
+   * width A4 in bp.
+   */
+  public static final int WIDTH_A4_BP = 595;
 
-    /**
-     * height A4 in bp.
-     */
-    public static final int HEIGHT_A4_BP = 842;
+  /**
+   * height A4 in bp.
+   */
+  public static final int HEIGHT_A4_BP = 842;
 
-    /**
-     * the output.
-     */
-    private OutputStream out = null;
+  /**
+   * the output.
+   */
+  private OutputStream out = null;
 
-    /**
-     * the number of page which are shipped out.
-     */
-    private int shippedPages = 0;
+  /**
+   * the number of page which are shipped out.
+   */
+  private int shippedPages = 0;
 
-    /**
-     * document writer options.
-     */
-    private final DocumentWriterOptions docoptions;
+  /**
+   * document writer options.
+   */
+  private final DocumentWriterOptions docoptions;
 
-    /**
-     * the PDFDocument.
-     */
-    private PDDocument document = null;
+  /**
+   * the PDFDocument.
+   */
+  private PDDocument document = null;
 
-    /**
-     * map for the parameters.
-     */
-    private final Map<String, String> param = new HashMap<String, String>();
+  /**
+   * map for the parameters.
+   */
+  private final Map<String, String> param = new HashMap<String, String>();
 
-    /**
-     * paper width.
-     */
-    private final Dimen paperwidth = new Dimen();
+  /**
+   * paper width.
+   */
+  private final Dimen paperwidth = new Dimen();
 
-    /**
-     * paper height.
-     */
-    private final Dimen paperheight = new Dimen();
+  /**
+   * paper height.
+   */
+  private final Dimen paperheight = new Dimen();
 
-    /**
-     * paper height in BP.
-     */
-    private float phBP = HEIGHT_A4_BP;
+  /**
+   * paper height in BP.
+   */
+  private float phBP = HEIGHT_A4_BP;
 
-    /**
-     * current x position.
-     */
-    private final Dimen currentX = new Dimen();
+  /**
+   * current x position.
+   */
+  private final Dimen currentX = new Dimen();
 
-    /**
-     * current y position.
-     */
-    private final Dimen currentY = new Dimen();
+  /**
+   * current y position.
+   */
+  private final Dimen currentY = new Dimen();
 
-    /**
-     * the pdf node visitor.
-     */
-    private PdfNodeVisitor nodeVisitor;
+  /**
+   * the pdf node visitor.
+   */
+  private PdfNodeVisitor nodeVisitor;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param cfg the configuration
-     * @param options the options
-     */
-    public PdfDocumentWriter(Configuration cfg, DocumentWriterOptions options) {
+  /**
+   * Creates a new object.
+   *
+   * @param cfg     the configuration
+   * @param options the options
+   */
+  public PdfDocumentWriter( Configuration cfg, DocumentWriterOptions options ) {
 
-        docoptions = options;
+    docoptions = options;
 
-        // if (cfg != null) {
-        // String tmp = cfg.getAttribute("encoding");
-        // if (tmp != null && !tmp.equals("")) {
-        // encoding = tmp;
-        // }
-        // }
-    }
+    // if (cfg != null) {
+    // String tmp = cfg.getAttribute("encoding");
+    // if (tmp != null && !tmp.equals("")) {
+    // encoding = tmp;
+    // }
+    // }
+  }
 
-@Override
-    public void close() throws DocumentWriterException {
+  @Override
+  public void close() throws DocumentWriterException {
 
-        if (out != null) {
-            try {
-                if (document != null) {
-                    System.err.println("\nSAVE\n");
-                    document.save(out);
-                    document.close();
-                }
-                out.close();
-            } catch (IOException e) {
-                new DocumentWriterIOException(e);
-            } catch (COSVisitorException e) {
-                new DocumentWriterPdfException(e);
-            }
-            out = null;
-        } else {
-            throw new DocumentWriterClosedChannelException("closed channel");
+    if( out != null ) {
+      try {
+        if( document != null ) {
+          System.err.println( "\nSAVE\n" );
+          document.save( out );
+          document.close();
         }
+        out.close();
+      } catch( IOException e ) {
+        new DocumentWriterIOException( e );
+      } catch( COSVisitorException e ) {
+        new DocumentWriterPdfException( e );
+      }
+      out = null;
     }
-
-    /**
-*      java.lang.String)
-     */
-    @Override
-    public PdfAnnotation getAnnotation(RuleNode node, String annotation)
-            throws HelpingException {
-
-        // TODO getAnnotation unimplemented
-        return null;
+    else {
+      throw new DocumentWriterClosedChannelException( "closed channel" );
     }
+  }
 
-@Override
-    public String getExtension() {
+  /**
+   * java.lang.String)
+   */
+  @Override
+  public PdfAnnotation getAnnotation( RuleNode node, String annotation )
+      throws HelpingException {
 
-        return "pdf";
-    }
+    // TODO getAnnotation unimplemented
+    return null;
+  }
 
-    /**
-*      java.lang.String)
-     */
-    @Override
-    public PdfObject getObject(String attr, boolean isStream, String text)
-            throws HelpingException {
+  @Override
+  public String getExtension() {
 
-        // TODO getObject unimplemented
-        return null;
-    }
+    return "pdf";
+  }
 
-    /**
-*      java.lang.String, org.extex.typesetter.type.NodeList)
-     */
-    @Override
-    public PdfXForm getXForm(String attr, String resources, NodeList list)
-            throws HelpingException {
+  /**
+   * java.lang.String)
+   */
+  @Override
+  public PdfObject getObject( String attr, boolean isStream, String text )
+      throws HelpingException {
 
-        // TODO gene: getXForm unimplemented
-        return null;
-    }
+    // TODO getObject unimplemented
+    return null;
+  }
 
-    /**
-*      org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
-     *      boolean)
-     */
-    @Override
-    public PdfRefXImage getXImage(String resource, RuleNode rule, String attr,
-            long page, boolean immediate) throws HelpingException {
+  /**
+   * java.lang.String, org.extex.typesetter.type.NodeList)
+   */
+  @Override
+  public PdfXForm getXForm( String attr, String resources, NodeList list )
+      throws HelpingException {
 
-        // TODO getXImage unimplemented
-        return null;
-    }
+    // TODO gene: getXForm unimplemented
+    return null;
+  }
 
-    /**
-*      org.extex.pdf.api.action.ActionSpec)
-     */
-    @Override
-    public void pdfcatalog(String text, ActionSpec action) {
+  /**
+   * org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
+   * boolean)
+   */
+  @Override
+  public PdfRefXImage getXImage( String resource, RuleNode rule, String attr,
+                                 long page, boolean immediate )
+      throws HelpingException {
 
-        // TODO pdfcatalog unimplemented
+    // TODO getXImage unimplemented
+    return null;
+  }
 
-    }
+  /**
+   * org.extex.pdf.api.action.ActionSpec)
+   */
+  @Override
+  public void pdfcatalog( String text, ActionSpec action ) {
 
-@Override
-    public String pdffontname(Font font) {
+    // TODO pdfcatalog unimplemented
 
-        // TODO pdffontname unimplemented
-        return null;
-    }
+  }
 
-@Override
-    public long pdffontobjnum(Font font) {
+  @Override
+  public String pdffontname( Font font ) {
 
-        // TODO pdffontobjnum unimplemented
-        return 0;
-    }
+    // TODO pdffontname unimplemented
+    return null;
+  }
 
-    /**
-*      java.lang.String)
-     */
-    @Override
-    public void pdfincludechars(Font font, String text) {
+  @Override
+  public long pdffontobjnum( Font font ) {
 
-        // TODO pdfincludechars unimplemented
+    // TODO pdffontobjnum unimplemented
+    return 0;
+  }
 
-    }
+  /**
+   * java.lang.String)
+   */
+  @Override
+  public void pdfincludechars( Font font, String text ) {
 
-@Override
-    public void pdfinfo(String text) {
+    // TODO pdfincludechars unimplemented
 
-        // TODO pdfinfo unimplemented
+  }
 
-    }
+  @Override
+  public void pdfinfo( String text ) {
 
-@Override
-    public long pdflastannot() {
+    // TODO pdfinfo unimplemented
 
-        // TODO pdflastannot unimplemented
-        return 0;
-    }
+  }
 
-@Override
-    public long pdflastobj() {
+  @Override
+  public long pdflastannot() {
 
-        // TODO pdflastobj unimplemented
-        return 0;
-    }
+    // TODO pdflastannot unimplemented
+    return 0;
+  }
 
-@Override
-    public long pdflastxform() {
+  @Override
+  public long pdflastobj() {
 
-        // TODO pdflastxform unimplemented
-        return 0;
-    }
+    // TODO pdflastobj unimplemented
+    return 0;
+  }
 
-@Override
-    public long pdflastximage() {
+  @Override
+  public long pdflastxform() {
 
-        // TODO pdflastximage unimplemented
-        return 0;
-    }
+    // TODO pdflastxform unimplemented
+    return 0;
+  }
 
-@Override
-    public void pdfnames(String text) {
+  @Override
+  public long pdflastximage() {
 
-        // TODO pdfnames unimplemented
+    // TODO pdflastximage unimplemented
+    return 0;
+  }
 
-    }
+  @Override
+  public void pdfnames( String text ) {
 
-    /**
-*      long, java.lang.String)
-     */
-    @Override
-    public void pdfoutline(ActionSpec action, long count, String text) {
+    // TODO pdfnames unimplemented
 
-        // TODO pdfoutline unimplemented
+  }
 
-    }
+  /**
+   * long, java.lang.String)
+   */
+  @Override
+  public void pdfoutline( ActionSpec action, long count, String text ) {
 
-@Override
-    public void setOutputStream(OutputStream outStream) {
+    // TODO pdfoutline unimplemented
 
-        out = outStream;
-    }
+  }
 
-    /**
-*      java.lang.String)
-     */
-    @Override
-    public void setParameter(String name, String value) {
+  @Override
+  public void setOutputStream( OutputStream outStream ) {
 
-        param.put(name, value);
-    }
+    out = outStream;
+  }
 
-@Override
-    public int shipout(Page p) throws DocumentWriterException {
+  /**
+   * java.lang.String)
+   */
+  @Override
+  public void setParameter( String name, String value ) {
 
-        NodeList nodes = p.getNodes();
-        try {
+    param.put( name, value );
+  }
 
-            if (document == null) {
-                document = new PDDocument();
-            }
-            PDPage page = new PDPage();
-            PDPageContentStream contentStream =
-                    new PDPageContentStream(document, page);
+  @Override
+  public int shipout( Page p ) throws DocumentWriterException {
 
-            document.addPage(page);
-            nodeVisitor =
-                    new PdfNodeVisitor(document, contentStream, currentX,
-                        currentY);
+    NodeList nodes = p.getNodes();
+    try {
 
-            shippedPages++;
-            // System.err.print("[" + shippedPages + "]");
+      if( document == null ) {
+        document = new PDDocument();
+      }
+      PDPage page = new PDPage();
+      PDPageContentStream contentStream =
+          new PDPageContentStream( document, page );
 
-            // TeX primitives should set the papersize in any way:
-            // o \paperwidth / \paperheight,
-            // o \pdfpagewidth / \pdfpageheight <-- pdfTeX
-            // o \mediawidth / \mediaheight <-- VTeX
-            Unit.setDimenFromCM(paperwidth, WIDTH_A4_BP);
-            Unit.setDimenFromCM(paperheight, HEIGHT_A4_BP);
-            if (docoptions != null) {
-                FixedDimen w = docoptions.getDimenOption("paperwidth");
-                FixedDimen h = docoptions.getDimenOption("paperheight");
-                if (!(h.getValue() == 0 || w.getValue() == 0)) {
-                    paperheight.set(h);
-                    paperwidth.set(w);
-                    phBP = Unit.getDimenAsBP(paperheight);
-                    if (nodeVisitor != null) {
-                        nodeVisitor.setPaperheight(paperheight);
-                    }
-                }
-            }
+      document.addPage( page );
+      nodeVisitor =
+          new PdfNodeVisitor( document, contentStream, currentX,
+                              currentY );
 
-            // set page size and margin
-            PDRectangle pagesize =
-                    new PDRectangle(Unit.getDimenAsBP(paperwidth),
-                        Unit.getDimenAsBP(paperheight));
-            page.setMediaBox(pagesize);
+      shippedPages++;
+      // System.err.print("[" + shippedPages + "]");
 
-            // set start point
-            currentX.set(Dimen.ONE_INCH);
-            currentY.set(Dimen.ONE_INCH);
-
-            // -------------------------------------
-            // cb.setColorStroke(Color.RED);
-            // cb.moveTo(0, phBP);
-            // cb.lineTo(0, 0);
-            // cb.stroke();
-            // cb.setColorStroke(Color.GREEN);
-            // cb.moveTo(0, phBP);
-            // cb.lineTo(pagesize.width(), phBP);
-            // cb.stroke();
-            // cb.setColorStroke(Color.BLUE);
-            // cb.moveTo(pagesize.width(), phBP);
-            // cb.lineTo(pagesize.width(), 0);
-            // cb.stroke();
-            // cb.setColorStroke(Color.YELLOW);
-            // cb.moveTo(0, 0);
-            // cb.lineTo(pagesize.width(), 0);
-            // cb.stroke();
-            // --------------------------------------
-
-            nodes.visit(nodeVisitor, nodes);
-
-            contentStream.close();
-
-        } catch (IOException e) {
-            throw new DocumentWriterIOException(e);
-        } catch (GeneralException e) {
-            throw new DocumentWriterException(e);
+      // TeX primitives should set the papersize in any way:
+      // o \paperwidth / \paperheight,
+      // o \pdfpagewidth / \pdfpageheight <-- pdfTeX
+      // o \mediawidth / \mediaheight <-- VTeX
+      Unit.setDimenFromCM( paperwidth, WIDTH_A4_BP );
+      Unit.setDimenFromCM( paperheight, HEIGHT_A4_BP );
+      if( docoptions != null ) {
+        FixedDimen w = docoptions.getDimenOption( "paperwidth" );
+        FixedDimen h = docoptions.getDimenOption( "paperheight" );
+        if( !(h.getValue() == 0 || w.getValue() == 0) ) {
+          paperheight.set( h );
+          paperwidth.set( w );
+          phBP = Unit.getDimenAsBP( paperheight );
+          if( nodeVisitor != null ) {
+            nodeVisitor.setPaperheight( paperheight );
+          }
         }
-        return 1;
+      }
+
+      // set page size and margin
+      PDRectangle pagesize =
+          new PDRectangle( Unit.getDimenAsBP( paperwidth ),
+                           Unit.getDimenAsBP( paperheight ) );
+      page.setMediaBox( pagesize );
+
+      // set start point
+      currentX.set( Dimen.ONE_INCH );
+      currentY.set( Dimen.ONE_INCH );
+
+      // -------------------------------------
+      // cb.setColorStroke(Color.RED);
+      // cb.moveTo(0, phBP);
+      // cb.lineTo(0, 0);
+      // cb.stroke();
+      // cb.setColorStroke(Color.GREEN);
+      // cb.moveTo(0, phBP);
+      // cb.lineTo(pagesize.width(), phBP);
+      // cb.stroke();
+      // cb.setColorStroke(Color.BLUE);
+      // cb.moveTo(pagesize.width(), phBP);
+      // cb.lineTo(pagesize.width(), 0);
+      // cb.stroke();
+      // cb.setColorStroke(Color.YELLOW);
+      // cb.moveTo(0, 0);
+      // cb.lineTo(pagesize.width(), 0);
+      // cb.stroke();
+      // --------------------------------------
+
+      nodes.visit( nodeVisitor, nodes );
+
+      contentStream.close();
+
+    } catch( IOException e ) {
+      throw new DocumentWriterIOException( e );
+    } catch( GeneralException e ) {
+      throw new DocumentWriterException( e );
     }
+    return 1;
+  }
 
 }

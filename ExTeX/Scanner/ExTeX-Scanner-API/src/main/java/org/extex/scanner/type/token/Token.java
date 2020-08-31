@@ -19,10 +19,10 @@
 
 package org.extex.scanner.type.token;
 
-import java.io.Serializable;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+
+import java.io.Serializable;
 
 /**
  * This is the interface for a token. A token is a pair of catcode and value. In
@@ -32,119 +32,111 @@ import org.extex.scanner.type.Catcode;
  * <p>
  * Tokens are immutable. Thus no setters for the attributes are provided.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface Token extends Serializable {
 
-    /**
-     * Compare the current token with a pair of catcode and character value.
-     * This pair constitutes a virtual token. They are the same if the catcode
-     * and the value are the same.
-     * 
-     * @param cc the catcode
-     * @param c the value
-     * 
-     * @return {@code true} iff the tokens are equal
-     */
-    boolean eq(Catcode cc, char c);
+  /**
+   * Compare the current token with a pair of catcode and character value.
+   * This pair constitutes a virtual token. They are the same if the catcode
+   * and the value are the same.
+   *
+   * @param cc the catcode
+   * @param c  the value
+   * @return {@code true} iff the tokens are equal
+   */
+  boolean eq( Catcode cc, char c );
 
-    /**
-     * Compare the current token with a pair of catcode and String value. This
-     * pair constitutes a virtual token. They are the same if the catcode and
-     * the value are the same.
-     * 
-     * @param cc the catcode
-     * @param s the value
-     * 
-     * @return {@code true} iff the tokens are equal
-     */
-    boolean eq(Catcode cc, String s);
+  /**
+   * Compare the current token with a pair of catcode and String value. This
+   * pair constitutes a virtual token. They are the same if the catcode and
+   * the value are the same.
+   *
+   * @param cc the catcode
+   * @param s  the value
+   * @return {@code true} iff the tokens are equal
+   */
+  boolean eq( Catcode cc, String s );
 
-    /**
-     * Compare the current token with a character value. They are the same if
-     * the values are the same.
-     * 
-     * @param c the value
-     * 
-     * @return {@code true} iff the tokens are equal
-     */
-    boolean eq(char c);
+  /**
+   * Compare the current token with a character value. They are the same if
+   * the values are the same.
+   *
+   * @param c the value
+   * @return {@code true} iff the tokens are equal
+   */
+  boolean eq( char c );
 
-    /**
-     * Compare the current token to another token. They are the same if the
-     * catcode and the value are the same.
-     * 
-     * @param t the token to compare to
-     * 
-     * @return {@code true} iff the tokens are equal
-     */
-    @Override
-    boolean equals(Object t);
+  /**
+   * Compare the current token to another token. They are the same if the
+   * catcode and the value are the same.
+   *
+   * @param t the token to compare to
+   * @return {@code true} iff the tokens are equal
+   */
+  @Override
+  boolean equals( Object t );
 
-    /**
-     * Getter for the catcode.
-     * 
-     * @return the catcode
-     */
-    Catcode getCatcode();
+  /**
+   * Getter for the catcode.
+   *
+   * @return the catcode
+   */
+  Catcode getCatcode();
 
-    /**
-     * Getter for the value.
-     * 
-     * @return the value
-     */
-    UnicodeChar getChar();
+  /**
+   * Getter for the value.
+   *
+   * @return the value
+   */
+  UnicodeChar getChar();
 
-    /**
-     * Check if the current token has a specified catcode.
-     * 
-     * @param cc the catcode to compare against
-     * 
-     * @return {@code true} iff the category codes coincide
-     */
-    boolean isa(Catcode cc);
+  /**
+   * Check if the current token has a specified catcode.
+   *
+   * @param cc the catcode to compare against
+   * @return {@code true} iff the category codes coincide
+   */
+  boolean isa( Catcode cc );
 
-    /**
-     * Print the token into a StringBuilder.
-     * 
-     * @param sb the target string builder
-     */
-    void toString(StringBuilder sb);
+  /**
+   * Print the token into a StringBuilder.
+   *
+   * @param sb the target string builder
+   */
+  void toString( StringBuilder sb );
 
-    /**
-     * This method returns the textual representation for the Token. This
-     * textual representation might not contain the full information but can be
-     * used as an abbreviated form to be shown to the end user. A representation
-     * with more complete information can be received with the method
-     * {@link java.lang.Object#toString() toString()}.
-     * 
-     * @return the textual representation
-     */
-    String toText();
+  /**
+   * This method returns the textual representation for the Token. This
+   * textual representation might not contain the full information but can be
+   * used as an abbreviated form to be shown to the end user. A representation
+   * with more complete information can be received with the method
+   * {@link java.lang.Object#toString() toString()}.
+   *
+   * @return the textual representation
+   */
+  String toText();
 
-    /**
-     * Return the printable representation of this token as it can be read back
-     * in.
-     * 
-     * @param esc the escape character
-     * 
-     * @return the printable representation
-     */
-    String toText(UnicodeChar esc);
+  /**
+   * Return the printable representation of this token as it can be read back
+   * in.
+   *
+   * @param esc the escape character
+   * @return the printable representation
+   */
+  String toText( UnicodeChar esc );
 
-    /**
-     * Invoke the appropriate visit method for the current class.
-     * 
-     * @param visitor the calling visitor
-     * @param arg1 the first argument to pass
-     * 
-     * @return the result object
-     * 
-     * @throws Exception in case of an error
-     */
-    @SuppressWarnings("rawtypes")
-    Object visit(TokenVisitor visitor, Object arg1) throws Exception;
+  /**
+   * Invoke the appropriate visit method for the current class.
+   *
+   * @param visitor the calling visitor
+   * @param arg1    the first argument to pass
+   * @return the result object
+   * @throws Exception in case of an error
+   */
+  @SuppressWarnings("rawtypes")
+  Object visit( TokenVisitor visitor, Object arg1 ) throws Exception;
 
 }

@@ -37,7 +37,7 @@ import org.extex.typesetter.type.node.PenaltyNode;
 /**
  * This class provides an implementation for the primitive
  * {@code \lastpenalty}.
- * 
+ *
  * <p>The Primitive {@code \lastpenalty}</p>
  * <p>
  * TODO missing documentation
@@ -48,71 +48,74 @@ import org.extex.typesetter.type.node.PenaltyNode;
  *
  * <pre class="TeXSample">
  *    \count1=\lastpenalty  </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Lastpenalty extends AbstractCode
-        implements
-            CountConvertible,
-            DimenConvertible,
-            Theable {
+    implements
+    CountConvertible,
+    DimenConvertible,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Lastpenalty(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Lastpenalty( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Node node = typesetter.getLastNode();
-        return (node instanceof PenaltyNode
-                ? ((PenaltyNode) node).getPenalty()
-                : 0);
-    }
+    Node node = typesetter.getLastNode();
+    return (node instanceof PenaltyNode
+        ? ((PenaltyNode) node).getPenalty()
+        : 0);
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertDimen( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Node node = typesetter.getLastNode();
-        return (node instanceof PenaltyNode
-                ? ((PenaltyNode) node).getPenalty()
-                : 0);
-    }
+    Node node = typesetter.getLastNode();
+    return (node instanceof PenaltyNode
+        ? ((PenaltyNode) node).getPenalty()
+        : 0);
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        Node node = typesetter.getLastNode();
-        long penalty =
-                (node instanceof PenaltyNode ? ((PenaltyNode) node)
-                    .getPenalty() : 0);
-        return context.getTokenFactory().toTokens(penalty);
-    }
+    Node node = typesetter.getLastNode();
+    long penalty =
+        (node instanceof PenaltyNode ? ((PenaltyNode) node)
+            .getPenalty() : 0);
+    return context.getTokenFactory().toTokens( penalty );
+  }
 
 }

@@ -19,63 +19,63 @@
 
 package org.extex.exbib.core.util;
 
-import java.util.logging.Logger;
-
 import org.extex.exbib.core.io.auxio.ResourceObserver;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
+import java.util.logging.Logger;
+
 /**
  * This class implements a logging {@link ResourceObserverImpl}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ResourceObserverImpl implements ResourceObserver {
 
-    /**
-     * The constant {@code localizer} contains the localizer. It is not
-     * static to allow the modification of the default locale at run time.
-     */
-    private final Localizer localizer;
+  /**
+   * The constant {@code localizer} contains the localizer. It is not
+   * static to allow the modification of the default locale at run time.
+   */
+  private final Localizer localizer;
 
-    /**
-     * The field {@code logger} contains the logger.
-     */
-    private final Logger logger;
+  /**
+   * The field {@code logger} contains the logger.
+   */
+  private final Logger logger;
 
-    /**
-     * The field {@code level} contains the level of inclusion.
-     */
-    private int level = 0;
+  /**
+   * The field {@code level} contains the level of inclusion.
+   */
+  private int level = 0;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param logger the logger
-     */
-    public ResourceObserverImpl(Logger logger) {
+  /**
+   * Creates a new object.
+   *
+   * @param logger the logger
+   */
+  public ResourceObserverImpl( Logger logger ) {
 
-        this.logger = logger;
-        this.localizer =
-                LocalizerFactory.getLocalizer(ResourceObserverImpl.class);
-    }
+    this.logger = logger;
+    this.localizer =
+        LocalizerFactory.getLocalizer( ResourceObserverImpl.class );
+  }
 
-    /**
-*      java.lang.String, java.lang.String, java.lang.String)
-     */
-    public void observeClose(String resource, String type, String filename) {
+  /**
+   * java.lang.String, java.lang.String, java.lang.String)
+   */
+  public void observeClose( String resource, String type, String filename ) {
 
-        level--;
-    }
+    level--;
+  }
 
-    /**
-*      java.lang.String, java.lang.String, java.lang.String)
-     */
-    public void observeOpen(String resource, String type, String filename) {
+  /**
+   * java.lang.String, java.lang.String, java.lang.String)
+   */
+  public void observeOpen( String resource, String type, String filename ) {
 
-        logger.info(localizer.format(level == 0 ? "message0" : "message",
-            filename, Integer.toString(level)));
-        level++;
-    }
+    logger.info( localizer.format( level == 0 ? "message0" : "message",
+                                   filename, Integer.toString( level ) ) );
+    level++;
+  }
 
 }

@@ -23,26 +23,25 @@ import org.extex.exindex.core.type.markup.Markup;
 
 /**
  * This interface describes a container for markup information.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface MarkupContainer {
 
-    /**
-     * Getter for a named markup.
-     * 
-     * @param name the make of the markup
-     * 
-     * @return the markup for the name or {@code null}
-     */
-    Markup getMarkup(String name);
+  /**
+   * Getter for a named markup.
+   *
+   * @param name the make of the markup
+   * @return the markup for the name or {@code null}
+   */
+  Markup getMarkup( String name );
 
-    /**
-     * Setter for a named markup.
-     * 
-     * @param name the make of the markup
-     * @param m the markup to add
-     */
-    void setMarkup(String name, Markup m);
+  /**
+   * Setter for a named markup.
+   *
+   * @param name the make of the markup
+   * @param m    the markup to add
+   */
+  void setMarkup( String name, Markup m );
 
 }

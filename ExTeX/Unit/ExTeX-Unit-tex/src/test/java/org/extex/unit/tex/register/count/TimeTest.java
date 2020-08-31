@@ -19,50 +19,51 @@
 
 package org.extex.unit.tex.register.count;
 
-import java.util.Calendar;
-
 import org.extex.test.count.AbstractCountRegisterTester;
 import org.junit.runner.JUnitCore;
 
+import java.util.Calendar;
+
 /**
  * This is a test suite for the primitive {@code \time}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TimeTest extends AbstractCountRegisterTester {
 
-    /**
-     * The constant {@code MINUTES_PER_HOUR} contains the number of minutes
-     * per hour.
-     */
-    private static final int MINUTES_PER_HOUR = 60;
+  /**
+   * The constant {@code MINUTES_PER_HOUR} contains the number of minutes
+   * per hour.
+   */
+  private static final int MINUTES_PER_HOUR = 60;
 
-    /**
-     * Provide the current time as default value for the comparison.
-     * 
-     * @return the current time as string
-     */
-    private static String getDefaultValue() {
+  /**
+   * Provide the current time as default value for the comparison.
+   *
+   * @return the current time as string
+   */
+  private static String getDefaultValue() {
 
-        Calendar cal = Calendar.getInstance();
-        return java.lang.Integer.toString(cal.get(Calendar.HOUR_OF_DAY)
-                * MINUTES_PER_HOUR + cal.get(Calendar.MINUTE));
-    }
+    Calendar cal = Calendar.getInstance();
+    return java.lang.Integer.toString( cal.get( Calendar.HOUR_OF_DAY )
+                                           * MINUTES_PER_HOUR + cal.get(
+        Calendar.MINUTE ) );
+  }
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(TimeTest.class);
-    }
+    (new JUnitCore()).run( TimeTest.class );
+  }
 
 
-    public TimeTest() {
+  public TimeTest() {
 
-        super("time", "", getDefaultValue());
-    }
+    super( "time", "", getDefaultValue() );
+  }
 
 }

@@ -24,14 +24,14 @@ package org.extex.typesetter.type;
  * NodeVisitors.  This can be used for debugging.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
-*/
+ */
 public interface InspectableNodeVisitor extends NodeVisitor<Object, Object> {
 
-    /**
-     * Set visitor for nested nodes.
-     *
-     * @param visitor to use
-     */
-    void setVisitor(NodeVisitor<Object, Object> visitor);
+  /**
+   * Set visitor for nested nodes.
+   *
+   * @param visitor to use
+   */
+  void setVisitor( NodeVisitor<Object, Object> visitor );
 
 }

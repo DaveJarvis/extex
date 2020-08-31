@@ -33,7 +33,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \export}.
- * 
+ *
  * <p>The Primitive {@code \export}</p>
  * <p>
  * The primitive {@code \export} takes a list of tokens and saves them away for
@@ -58,65 +58,63 @@ import org.extex.typesetter.exception.TypesetterException;
  * εχTeX. The central primitive for this purpose is
  * {@code \namespace}.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;export&rang;
  *      &rarr; &lang;prefix&rang; {@code \export} {@linkplain
- *      org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *      org.extex.interpreter.TokenSource#getTokens(Context, TokenSource, Typesetter)
  *      &lang;replacement text&rang;}
  *
  *    &lang;prefix&rang;
  *      &rarr;
  *       |  {@code \global}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \export{\a\b}  </pre>
- * 
  *
- * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @see org.extex.unit.namespace.Namespace
  * @see org.extex.unit.namespace.Import
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Export extends AbstractAssignment {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Export(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Export( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Tokens export;
+    try {
+      export = source.getTokens( context, source, typesetter );
+    } catch( EofException e ) {
+      throw new EofInToksException( toText() );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Tokens export;
-        try {
-            export = source.getTokens(context, source, typesetter);
-        } catch (EofException e) {
-            throw new EofInToksException(toText());
-        }
-        context.setToks(context.getNamespace() + "\bexport", export, true);
-    }
+    context.setToks( context.getNamespace() + "\bexport", export, true );
+  }
 
 }

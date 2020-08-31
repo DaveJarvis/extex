@@ -25,40 +25,42 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \lower}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LowerTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LowerTest.class);
-    }
+    (new JUnitCore()).run( LowerTest.class );
+  }
 
 
-    public LowerTest() {
+  public LowerTest() {
 
-        setPrimitive("lower");setArguments("1pt\\hbox{} ");setPrepare("");
-    }
+    setPrimitive( "lower" );
+    setArguments( "1pt\\hbox{} " );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\lower"> Test case checking that {@code \lower}
-     * on a void box works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVoid1() throws Exception {
+  /**
+   * <testcase primitive="\lower"> Test case checking that {@code \lower}
+   * on a void box works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testVoid1() throws Exception {
 
-        assertSuccess(DEFINE_BRACES + "\\lower1pt\\box0 \\end",
+    assertSuccess( DEFINE_BRACES + "\\lower1pt\\box0 \\end",
 
-            "");
-    }
+                   "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

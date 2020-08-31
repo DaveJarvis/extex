@@ -19,39 +19,36 @@
 
 package org.extex.dviware.type;
 
+import org.extex.dviware.Dvi;
+
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.extex.dviware.Dvi;
 
 /**
  * This class represents the DVI instruction {@code z0}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviZ0 extends AbstractDviCode {
 
 
-    public DviZ0() {
+  public DviZ0() {
 
-        super("z0");
-    }
+    super( "z0" );
+  }
 
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
 
-        stream.write(Dvi.Z0);
-        return 1;
-    }
+    stream.write( Dvi.Z0 );
+    return 1;
+  }
 
 }

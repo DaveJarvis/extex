@@ -26,69 +26,69 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is raised when an unexpected character code is encountered.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code UnexpectedEofIn}.
+ * The localization format is taken from the Localizer under the key
+ * {@code UnexpectedEofIn}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InvalidCharacterException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * The field {@code cc} contains the invalid character.
-     */
-    private String cc;
+  /**
+   * The field {@code cc} contains the invalid character.
+   */
+  private String cc;
 
-    /**
-     * Creates a new object.
-     *
-     * @param uc the invalid character
-     */
-    public InvalidCharacterException(UnicodeChar uc) {
+  /**
+   * Creates a new object.
+   *
+   * @param uc the invalid character
+   */
+  public InvalidCharacterException( UnicodeChar uc ) {
 
-        super(LocalizerFactory.getLocalizer(InvalidCharacterException.class),
-            "TTP.InvalidChar", uc.toString());
-        cc = uc.toString();
-    }
+    super( LocalizerFactory.getLocalizer( InvalidCharacterException.class ),
+           "TTP.InvalidChar", uc.toString() );
+    cc = uc.toString();
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param uc the invalid character
-     */
-    public InvalidCharacterException(String uc) {
+  /**
+   * Creates a new object.
+   *
+   * @param uc the invalid character
+   */
+  public InvalidCharacterException( String uc ) {
 
-        super(LocalizerFactory.getLocalizer(InvalidCharacterException.class),
-            "TTP.InvalidChar", uc);
-        cc = uc;
-    }
+    super( LocalizerFactory.getLocalizer( InvalidCharacterException.class ),
+           "TTP.InvalidChar", uc );
+    cc = uc;
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param localizer the localizer
-     * @param messageTag the message tag
-     * @param arg the argument
-     */
-    public InvalidCharacterException(Localizer localizer,
-            String messageTag, String arg) {
+  /**
+   * Creates a new object.
+   *
+   * @param localizer  the localizer
+   * @param messageTag the message tag
+   * @param arg        the argument
+   */
+  public InvalidCharacterException( Localizer localizer,
+                                    String messageTag, String arg ) {
 
-        super(localizer, messageTag, arg);
-    }
+    super( localizer, messageTag, arg );
+  }
 
-    /**
-     * Getter for cc.
-     *
-     * @return the cc
-     */
-    public String getChar() {
+  /**
+   * Getter for cc.
+   *
+   * @return the cc
+   */
+  public String getChar() {
 
-        return this.cc;
-    }
+    return this.cc;
+  }
 
 }

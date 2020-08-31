@@ -26,40 +26,40 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * needed.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MissingResourceFinderException extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * The field {@code message} contains the message of this exception.
-     */
-    private final String message;
+  /**
+   * The field {@code message} contains the message of this exception.
+   */
+  private final String message;
 
-    /**
-     * Create a new object.
-     *
-     * @param aMessage the message string
-     */
-    public MissingResourceFinderException(String aMessage) {
+  /**
+   * Create a new object.
+   *
+   * @param aMessage the message string
+   */
+  public MissingResourceFinderException( String aMessage ) {
 
-        super(aMessage, (String) null);
-        this.message = aMessage;
-    }
+    super( aMessage, (String) null );
+    this.message = aMessage;
+  }
 
-    /**
-     * Getter for the text prefix of this ConfigException.
-     *
-     * @return the text
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * Getter for the text prefix of this ConfigException.
+   *
+   * @return the text
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        return getLocalizer().format(
-                "ConfigurationMissingFileFinderException.Text", message);
-    }
+    return getLocalizer().format(
+        "ConfigurationMissingFileFinderException.Text", message );
+  }
 
 }

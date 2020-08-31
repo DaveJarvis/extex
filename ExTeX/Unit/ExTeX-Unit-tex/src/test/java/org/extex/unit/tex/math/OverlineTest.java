@@ -26,40 +26,41 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \overline}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OverlineTest extends AbstractMathTester {
 
 
-    public OverlineTest() {
+  public OverlineTest() {
 
-        setPrimitive("overline");setArguments(" x");setPrepare("");
-    }
+    setPrimitive( "overline" );
+    setArguments( " x" );
+    setPrepare( "" );
+  }
 
-    /**
-     *
-     *  Test case checking that ...
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test1() throws Exception {
+  /**
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
-                + "$\\overline x$ \\end",
-                //--- output channel ---
-                "\\vbox(6.30544pt+0.0pt)x3000.0pt\n"
-                + ".\\hbox(6.30544pt+0.0pt)x3000.0pt\n"
-                + "..\\vbox(6.30544pt+0.0pt)x5.71527pt\n"
-                + "...\\kern0.0pt\n"
-                + "...\\rule0.39998pt+0.0ptx5.71527pt\n"
-                + "...\\kern0.0pt\n"
-                + "...\\hbox(4.30554pt+0.0pt)x5.71527pt\n"
-                + "....x\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   //--- input code ---
+                   AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
+                       + "$\\overline x$ \\end",
+                   //--- output channel ---
+                   "\\vbox(6.30544pt+0.0pt)x3000.0pt\n"
+                       + ".\\hbox(6.30544pt+0.0pt)x3000.0pt\n"
+                       + "..\\vbox(6.30544pt+0.0pt)x5.71527pt\n"
+                       + "...\\kern0.0pt\n"
+                       + "...\\rule0.39998pt+0.0ptx5.71527pt\n"
+                       + "...\\kern0.0pt\n"
+                       + "...\\hbox(4.30554pt+0.0pt)x5.71527pt\n"
+                       + "....x\n" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 
 }

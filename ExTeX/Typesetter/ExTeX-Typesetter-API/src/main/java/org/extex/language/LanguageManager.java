@@ -19,53 +19,48 @@
 
 package org.extex.language;
 
-import java.io.Serializable;
-
 import org.extex.framework.configuration.exception.ConfigurationException;
+
+import java.io.Serializable;
 
 /**
  * This class manages the {@code HyphenationTable}s. It is a container
  * which can be asked to provide an appropriate instance. This instance is
  * either taken from existing instances or a new instance is created.
- * 
+ *
  * <h2>Configuration</h2>
- * 
+ * <p>
  * This instance is configurable. The configuration is used to select the
  * appropriate class and optional parameters for a requested instance. In this
  * respect this class makes best use of the infrastructure of the
  * {@link org.extex.framework.AbstractFactory AbstractFactory}.
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface LanguageManager extends Serializable {
 
-    /**
-     * Return the {@code Language} for a given name.
-     * <p>
-     * If there is no language present with the given name then a new one is
-     * created or loaded.
-     * </p>
-     * <p>
-     * The index in TeX is the language number as {@code String}. This
-     * implementation does not have this restriction. The name can be any
-     * string.
-     * </p>
-     * <p>
-     * The proposal is to use a natural number for backward compatibility and
-     * ISO language codes otherwise.
-     * </p>
-     * 
-     * @param index the name for which the language is requested
-     * 
-     * @return the language for the given name
-     * 
-     * @throws ConfigurationException in case of an error in the configuration
-     * 
-     * @see org.extex.language.LanguageManager#getLanguage(java.lang.String)
-     */
-    Language getLanguage(String index) throws ConfigurationException;
+  /**
+   * Return the {@code Language} for a given name.
+   * <p>
+   * If there is no language present with the given name then a new one is
+   * created or loaded.
+   * </p>
+   * <p>
+   * The index in TeX is the language number as {@code String}. This
+   * implementation does not have this restriction. The name can be any
+   * string.
+   * </p>
+   * <p>
+   * The proposal is to use a natural number for backward compatibility and
+   * ISO language codes otherwise.
+   * </p>
+   *
+   * @param index the name for which the language is requested
+   * @return the language for the given name
+   * @throws ConfigurationException in case of an error in the configuration
+   * @see org.extex.language.LanguageManager#getLanguage(java.lang.String)
+   */
+  Language getLanguage( String index ) throws ConfigurationException;
 
 }

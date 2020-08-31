@@ -25,25 +25,24 @@ import org.extex.core.dimen.Dimen;
  * This class provides the same functionality as
  * {@link org.extex.typesetter.type.node.KernNode KernNode} but is
  * distinguishable for the sake of some fine differentiations in TeX.
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AccentKernNode extends AbstractKernNode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param kern the natural size
-     */
-    public AccentKernNode(Dimen kern) {
+  /**
+   * Creates a new object.
+   *
+   * @param kern the natural size
+   */
+  public AccentKernNode( Dimen kern ) {
 
-        super(kern, true);
-    }
+    super( kern, true );
+  }
 
 }

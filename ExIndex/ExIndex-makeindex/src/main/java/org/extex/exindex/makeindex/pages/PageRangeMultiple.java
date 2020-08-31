@@ -19,67 +19,68 @@
 
 package org.extex.exindex.makeindex.pages;
 
+import org.extex.exindex.core.type.page.PageReference;
+
 import java.io.IOException;
 import java.io.Writer;
 
-import org.extex.exindex.core.type.page.PageReference;
-
 /**
  * This class represents a list of two pages.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PageRangeMultiple extends Pages {
 
-    /**
-     * The field {@code to} contains the end page.
-     */
-    private PageReference to;
+  /**
+   * The field {@code to} contains the end page.
+   */
+  private PageReference to;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param pages the first page
-     * @param to the other page
-     */
-    public PageRangeMultiple(Pages pages, PageReference to) {
+  /**
+   * Creates a new object.
+   *
+   * @param pages the first page
+   * @param to    the other page
+   */
+  public PageRangeMultiple( Pages pages, PageReference to ) {
 
-        super(pages.getFrom(), pages.getEncap());
-        this.to = to;
+    super( pages.getFrom(), pages.getEncap() );
+    this.to = to;
+  }
+
+  /**
+   * Getter for the to.
+   *
+   * @return the to
+   */
+  public PageReference getTo() {
+
+    return to;
+  }
+
+  /**
+   * Setter for the to.
+   *
+   * @param to the to to set
+   */
+  public void setTo( PageReference to ) {
+
+    this.to = to;
+  }
+
+  /**
+   * java.lang.String[], java.lang.String)
+   */
+  @Override
+  protected void writeCore( Writer writer, String[] pageParams,
+                            String fromPage )
+      throws IOException {
+
+    String toPage = to.getPage();
+    if( !toPage.equals( fromPage ) ) {
+      writer.write( pageParams[ 4 ] );
+      writer.write( toPage );
     }
-
-    /**
-     * Getter for the to.
-     * 
-     * @return the to
-     */
-    public PageReference getTo() {
-
-        return to;
-    }
-
-    /**
-     * Setter for the to.
-     * 
-     * @param to the to to set
-     */
-    public void setTo(PageReference to) {
-
-        this.to = to;
-    }
-
-    /**
-*      java.lang.String[], java.lang.String)
-     */
-    @Override
-    protected void writeCore(Writer writer, String[] pageParams, String fromPage)
-            throws IOException {
-
-        String toPage = to.getPage();
-        if (!toPage.equals(fromPage)) {
-            writer.write(pageParams[4]);
-            writer.write(toPage);
-        }
-    }
+  }
 
 }

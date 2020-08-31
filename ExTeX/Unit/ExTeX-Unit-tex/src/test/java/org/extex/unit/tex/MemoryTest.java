@@ -19,65 +19,66 @@
 
 package org.extex.unit.tex;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.util.Properties;
-
 import org.extex.test.ExTeXLauncher;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import java.io.File;
+import java.util.Properties;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 /**
  * This is a test suite for expansion.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MemoryTest extends ExTeXLauncher {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MemoryTest.class);
+    (new JUnitCore()).run( MemoryTest.class );
+  }
+
+
+  public MemoryTest() {
+
+  }
+
+  /**
+   * Test case checking that an infinite recursion throws an
+   * {@link OutOfMemoryError}
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  // Try to avoid a timeout
+  public void test1() throws Exception {
+
+    Properties properties = getProps();
+    properties.setProperty( "extex.jobname", "job" );
+    properties.setProperty( "extex.output", "dump" );
+
+    try {
+      assertFailure( properties,
+                     // --- input code ---
+                     DEFINE_BRACES + "\\def\\x{\\x}\\x",
+                     // --- output channel ---
+                     "Java heap space" );
+      assertFalse( true );
+    } catch( OutOfMemoryError e ) {
+      assertTrue( true );
+    } finally {
+      new File( "job.log" ).delete();
     }
-
-
-    public MemoryTest() {
-
-    }
-
-    /**
-     * Test case checking that an infinite recursion throws an {@link OutOfMemoryError}
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    // Try to avoid a timeout
-    public void test1() throws Exception {
-
-        Properties properties = getProps();
-        properties.setProperty("extex.jobname", "job");
-        properties.setProperty("extex.output", "dump");
-
-        try {
-            assertFailure(properties,
-            // --- input code ---
-                DEFINE_BRACES + "\\def\\x{\\x}\\x",
-                // --- output channel ---
-                "Java heap space");
-            assertFalse(true);
-        } catch (OutOfMemoryError e) {
-            assertTrue(true);
-        } finally {
-            new File("job.log").delete();
-        }
-    }
+  }
 
 }

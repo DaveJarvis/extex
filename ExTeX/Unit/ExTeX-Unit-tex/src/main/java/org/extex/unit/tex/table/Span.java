@@ -32,62 +32,63 @@ import org.extex.typesetter.listMaker.AlignmentList;
 
 /**
  * This class provides an implementation for the primitive {@code \span}.
- * 
+ *
  * <p>The Primitive {@code \span}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;span&rang;
  *       &rarr; {@code \span}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \span 1  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Span extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Span(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Span( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    ListMaker maker = typesetter.getListMaker();
+    if( maker instanceof AlignmentList ) {
+      ((AlignmentList) maker).span( context, source );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        ListMaker maker = typesetter.getListMaker();
-        if (maker instanceof AlignmentList) {
-            ((AlignmentList) maker).span(context, source);
-        } else {
-            throw new HelpingException(getLocalizer(), "TTP.MisplacedSpan",
-                toText(context));
-        }
+    else {
+      throw new HelpingException( getLocalizer(), "TTP.MisplacedSpan",
+                                  toText( context ) );
     }
+  }
 
 }

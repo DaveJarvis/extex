@@ -35,76 +35,76 @@ import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
 
 /**
  * This class provides an implementation for the primitive {@code \vfi}.
- * 
+ *
  * <p>The Primitive {@code \vfi}</p>
  * <p>
  * The primitive {@code \vfi} inserts vertical glue into the current list. It
  * switches to vertical mode if necessary. The amount of glue inserted has the
  * natural height of 0pt and a stretchability of 1fi.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;vfi&rang;
  *        &rarr; {@code \vfi}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \vfi  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Vfi extends AbstractVerticalCode implements VerticalSkip {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code FIL} contains the amount of 1 fil.
-     */
-    private static final Glue FI = new Glue(Dimen.ZERO, GlueComponent.ONE_FI,
-        GlueComponent.ZERO);
+  /**
+   * The field {@code FIL} contains the amount of 1 fil.
+   */
+  private static final Glue FI = new Glue( Dimen.ZERO, GlueComponent.ONE_FI,
+                                           GlueComponent.ZERO );
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Vfi(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Vfi( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        ensureVerticalMode(typesetter);
-        typesetter.add(FI);
-    }
+    ensureVerticalMode( typesetter );
+    typesetter.add( FI );
+  }
 
-    /**
-     * This method acquires a vertical glue.
-     * 
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public FixedGlue getGlue(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * This method acquires a vertical glue.
+   * <p>
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public FixedGlue getGlue( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        return FI;
-    }
+    return FI;
+  }
 
 }

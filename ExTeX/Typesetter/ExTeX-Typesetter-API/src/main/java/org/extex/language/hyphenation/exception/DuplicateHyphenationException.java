@@ -24,22 +24,22 @@ package org.extex.language.hyphenation.exception;
  * once.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DuplicateHyphenationException extends HyphenationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     */
-    public DuplicateHyphenationException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   */
+  public DuplicateHyphenationException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
 }

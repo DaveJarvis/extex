@@ -25,62 +25,61 @@ import org.extex.scanner.type.tokens.Tokens;
  * This class provides a building block for the preamble of an alignment.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PreambleItem {
 
-    /**
-     * The field {@code post} contains the tokens before the insertion text.
-     */
-    private final Tokens post;
+  /**
+   * The field {@code post} contains the tokens before the insertion text.
+   */
+  private final Tokens post;
 
-    /**
-     * The field {@code pre} contains the tokens after the insertion text.
-     */
-    private final Tokens pre;
+  /**
+   * The field {@code pre} contains the tokens after the insertion text.
+   */
+  private final Tokens pre;
 
-    /**
-     * Creates a new object.
-     *
-     * @param preTokens the tokens before the insertion text
-     * @param postTokens the tokens after the insertion text
-     */
-    public PreambleItem(Tokens preTokens, Tokens postTokens) {
+  /**
+   * Creates a new object.
+   *
+   * @param preTokens  the tokens before the insertion text
+   * @param postTokens the tokens after the insertion text
+   */
+  public PreambleItem( Tokens preTokens, Tokens postTokens ) {
 
-        this.pre = preTokens;
-        this.post = postTokens;
-    }
+    this.pre = preTokens;
+    this.post = postTokens;
+  }
 
-    /**
-     * Getter for the tokens after the insertion text.
-     *
-     * @return the tokens after the insertion text
-     */
-    public Tokens getPost() {
+  /**
+   * Getter for the tokens after the insertion text.
+   *
+   * @return the tokens after the insertion text
+   */
+  public Tokens getPost() {
 
-        return this.post;
-    }
+    return this.post;
+  }
 
-    /**
-     * Getter for the tokens before the insertion text.
-     *
-     * @return the tokens before the insertion text
-     */
-    public Tokens getPre() {
+  /**
+   * Getter for the tokens before the insertion text.
+   *
+   * @return the tokens before the insertion text
+   */
+  public Tokens getPre() {
 
-        return this.pre;
-    }
+    return this.pre;
+  }
 
-    /**
-     * Get the printable representation of this instance.
-     *
-     * @return the printable representation of this instance
-     *
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
+  /**
+   * Get the printable representation of this instance.
+   *
+   * @return the printable representation of this instance
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-        return "\npre = " + pre.toText() + "\npost = " + post.toText() + "\n";
-    }
+    return "\npre = " + pre.toText() + "\npost = " + post.toText() + "\n";
+  }
 
 }

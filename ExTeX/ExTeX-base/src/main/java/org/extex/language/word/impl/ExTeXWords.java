@@ -31,321 +31,322 @@ import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
-import org.extex.typesetter.type.node.CharNode;
-import org.extex.typesetter.type.node.DiscretionaryNode;
-import org.extex.typesetter.type.node.ExplicitKernNode;
-import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.typesetter.type.node.ImplicitKernNode;
-import org.extex.typesetter.type.node.KernNode;
-import org.extex.typesetter.type.node.LigatureNode;
-import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.node.*;
 
 /**
  * This class tokenizes a list of nodes according to the rules of εχTeX.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExTeXWords implements WordTokenizer {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Hyphenate subsequent char nodes from a ligature.
-     * 
-     * <p>
-     * Note that TeX only considers the first hyphenation point in a
-     * ligature. The others are ignored. Nevertheless the ligature builder is
-     * applied to the remaining characters. This might lead to other ligatures
-     * than the ones encoded in the ligature node.
-     * </p>
-     * 
-     * @param list the node list to hyphenate
-     * @param index the index in the hyphen array
-     * @param ligatureBuilder the ligature builder to use
-     * 
-     * @return the hyphenated node list
-     * 
-     * @throws HyphenationException in case of an error
-     */
-    private static NodeList hyphenate(NodeList list, int index,
-            LigatureBuilder ligatureBuilder) throws HyphenationException {
+  /**
+   * Hyphenate subsequent char nodes from a ligature.
+   *
+   * <p>
+   * Note that TeX only considers the first hyphenation point in a
+   * ligature. The others are ignored. Nevertheless the ligature builder is
+   * applied to the remaining characters. This might lead to other ligatures
+   * than the ones encoded in the ligature node.
+   * </p>
+   *
+   * @param list            the node list to hyphenate
+   * @param index           the index in the hyphen array
+   * @param ligatureBuilder the ligature builder to use
+   * @return the hyphenated node list
+   * @throws HyphenationException in case of an error
+   */
+  private static NodeList hyphenate( NodeList list, int index,
+                                     LigatureBuilder ligatureBuilder )
+      throws HyphenationException {
 
-        if (ligatureBuilder != null) {
-            int i = 0;
-            while( i < list.size() ) {
-                i = ligatureBuilder.insertLigatures( list, i );
-            }
-        }
-        return list;
+    if( ligatureBuilder != null ) {
+      int i = 0;
+      while( i < list.size() ) {
+        i = ligatureBuilder.insertLigatures( list, i );
+      }
+    }
+    return list;
+  }
+
+  /**
+   * Process a ligature node.
+   *
+   * @param nodes          the node list to modify
+   * @param insertionPoint the index in the nodes to start with
+   * @param index          the index in the hyphenation list
+   * @param node           the ligature node to split for hyphenation
+   * @param isHyph         array of indicators for hyphenation points
+   * @param hyphenNode     the node to be used to carry the hyphen character
+   * @return the new index in the hyphenation list
+   * @throws HyphenationException in case of an error
+   */
+  private static int insertShyIntoLigature( NodeList nodes,
+                                            int insertionPoint, int index,
+                                            LigatureNode node, boolean[] isHyph,
+                                            CharNode hyphenNode )
+      throws HyphenationException {
+
+    int n = node.countChars();
+    int needHyphen = 0;
+
+    for( int i = 1; i < n; i++ ) {
+      if( isHyph[ index + i ] ) {
+        needHyphen++;
+      }
     }
 
-    /**
-     * Process a ligature node.
-     * 
-     * @param nodes the node list to modify
-     * @param insertionPoint the index in the nodes to start with
-     * @param index the index in the hyphenation list
-     * @param node the ligature node to split for hyphenation
-     * @param isHyph array of indicators for hyphenation points
-     * @param hyphenNode the node to be used to carry the hyphen character
-     * 
-     * @return the new index in the hyphenation list
-     * 
-     * @throws HyphenationException in case of an error
-     */
-    private static int insertShyIntoLigature(NodeList nodes,
-            int insertionPoint, int index, LigatureNode node, boolean[] isHyph,
-            CharNode hyphenNode) throws HyphenationException {
+    if( needHyphen == 0 ) {
+      return index + n;
+    }
+    nodes.remove( insertionPoint );
 
-        int n = node.countChars();
-        int needHyphen = 0;
+    int leftLen = node.getLeft().countChars();
 
-        for (int i = 1; i < n; i++) {
-            if (isHyph[index + i]) {
-                needHyphen++;
-            }
-        }
+    if( needHyphen == 1 && isHyph[ index + leftLen ] ) {
+      nodes.add( insertionPoint,
+                 new DiscretionaryNode(
 
-        if (needHyphen == 0) {
-            return index + n;
-        }
-        nodes.remove(insertionPoint);
-
-        int leftLen = node.getLeft().countChars();
-
-        if (needHyphen == 1 && isHyph[index + leftLen]) {
-            nodes.add(insertionPoint,
-                new DiscretionaryNode(
-
-                    new HorizontalListNode(node.getLeft(), hyphenNode),
-                    new HorizontalListNode(node.getRight()),
-                    new HorizontalListNode(node)));
-            return index + n;
-        }
-
-        // only the first hyphenation mark in a ligature is considered!
-        Node[] chars = node.getChars();
-        NodeList pre = new HorizontalListNode();
-        NodeList post = new HorizontalListNode();
-
-        int i = 0;
-        for (; !isHyph[i]; i++) {
-            pre.add(chars[index + i]);
-        }
-        pre.add(hyphenNode);
-
-        while (i < n) {
-            post.add(chars[i]);
-            i++;
-        }
-
-        nodes.add(
-            insertionPoint,
-            new DiscretionaryNode(pre, hyphenate(post, index + 1, hyphenNode
-                .getTypesettingContext().getLanguage()),
-                new HorizontalListNode(node)));
-
-        return index + n;
+                     new HorizontalListNode( node.getLeft(), hyphenNode ),
+                     new HorizontalListNode( node.getRight() ),
+                     new HorizontalListNode( node ) ) );
+      return index + n;
     }
 
+    // only the first hyphenation mark in a ligature is considered!
+    Node[] chars = node.getChars();
+    NodeList pre = new HorizontalListNode();
+    NodeList post = new HorizontalListNode();
 
-    public ExTeXWords() {
+    int i = 0;
+    for( ; !isHyph[ i ]; i++ ) {
+      pre.add( chars[ index + i ] );
+    }
+    pre.add( hyphenNode );
 
+    while( i < n ) {
+      post.add( chars[ i ] );
+      i++;
     }
 
-    /**
-     * Add the characters extracted from a char node to the word container.
-     * 
-     * @param node the character node to add to the word
-     * @param word the container to add the node to
-     */
-    private void addWord(CharNode node, UnicodeCharList word) {
+    nodes.add(
+        insertionPoint,
+        new DiscretionaryNode( pre, hyphenate( post, index + 1, hyphenNode
+            .getTypesettingContext().getLanguage() ),
+                               new HorizontalListNode( node ) ) );
 
-        if (node instanceof LigatureNode) {
-            LigatureNode ln = (LigatureNode) node;
-            CharNode[] chars = ln.getChars();
-            for( final CharNode aChar : chars ) {
-                word.add( aChar.getCharacter() );
-            }
+    return index + n;
+  }
 
-        } else {
-            word.add((node).getCharacter());
+
+  public ExTeXWords() {
+
+  }
+
+  /**
+   * Add the characters extracted from a char node to the word container.
+   *
+   * @param node the character node to add to the word
+   * @param word the container to add the node to
+   */
+  private void addWord( CharNode node, UnicodeCharList word ) {
+
+    if( node instanceof LigatureNode ) {
+      LigatureNode ln = (LigatureNode) node;
+      CharNode[] chars = ln.getChars();
+      for( final CharNode aChar : chars ) {
+        word.add( aChar.getCharacter() );
+      }
+
+    }
+    else {
+      word.add( (node).getCharacter() );
+    }
+  }
+
+  /**
+   * Collect all characters form a node list that make up a word.
+   *
+   * @param nodes the nodes to process
+   * @param word  the word with hyphenation marks
+   * @param start the start index
+   * @param lang  the language in effect
+   * @return the index of the first node past the ones processed
+   * @throws HyphenationException in case of an error
+   */
+  private int collectWord( NodeList nodes, UnicodeCharList word, int start,
+                           Language lang ) throws HyphenationException {
+
+    int i = start;
+    int size = nodes.size();
+
+    Node n;
+    CharNode cn;
+
+    for( ; i < size; i++ ) {
+      n = nodes.get( i );
+      if( n instanceof CharNode ) {
+        cn = (CharNode) n;
+
+        if( cn.getTypesettingContext().getLanguage() != lang ) {
+          return i;
         }
+
+        addWord( cn, word );
+
+      }
+      else if( n instanceof WhatsItNode ) {
+        // ignored
+      }
+      else if( n instanceof DiscretionaryNode ) {
+        i = collectWord( nodes, word, i + 1, lang );
+        return findWord( nodes, i, word );
+
+      }
+      else if( n instanceof KernNode ) {
+        if( n instanceof ExplicitKernNode ) {
+          break;
+        }
+      }
+      else {
+        break;
+      }
     }
 
-    /**
-     * Collect all characters form a node list that make up a word.
-     * 
-     * @param nodes the nodes to process
-     * @param word the word with hyphenation marks
-     * @param start the start index
-     * @param lang the language in effect
-     * 
-     * @return the index of the first node past the ones processed
-     * 
-     * @throws HyphenationException in case of an error
-     */
-    private int collectWord(NodeList nodes, UnicodeCharList word, int start,
-            Language lang) throws HyphenationException {
+    return i;
+  }
 
-        int i = start;
-        int size = nodes.size();
+  /**
+   * int, org.extex.core.UnicodeCharList)
+   */
+  @Override
+  public int findWord( NodeList nodes, int start, UnicodeCharList word )
+      throws HyphenationException {
 
-        Node n;
-        CharNode cn;
+    int i = start;
+    int size = nodes.size();
+    word.clear();
+    Node n;
 
-        for (; i < size; i++) {
-            n = nodes.get(i);
-            if (n instanceof CharNode) {
-                cn = (CharNode) n;
-
-                if (cn.getTypesettingContext().getLanguage() != lang) {
-                    return i;
-                }
-
-                addWord(cn, word);
-
-            } else if (n instanceof WhatsItNode) {
-                // ignored
-            } else if (n instanceof DiscretionaryNode) {
-                i = collectWord(nodes, word, i + 1, lang);
-                return findWord(nodes, i, word);
-
-            } else if (n instanceof KernNode) {
-                if (n instanceof ExplicitKernNode) {
-                    break;
-                }
-            } else {
-                break;
-            }
-        }
-
+    do {
+      if( i >= size ) {
         return i;
-    }
+      }
+      n = nodes.get( i++ );
+    } while( !(n instanceof CharNode) );
 
-    /**
-*      int, org.extex.core.UnicodeCharList)
-     */
-    @Override
-    public int findWord(NodeList nodes, int start, UnicodeCharList word)
-            throws HyphenationException {
+    addWord( (CharNode) n, word );
 
-        int i = start;
-        int size = nodes.size();
-        word.clear();
-        Node n;
+    return collectWord( nodes, word, i, ((CharNode) n)
+        .getTypesettingContext().getLanguage() );
+  }
 
-        do {
-            if (i >= size) {
-                return i;
-            }
-            n = nodes.get(i++);
-        } while (!(n instanceof CharNode));
+  /**
+   * int, boolean[], org.extex.typesetter.type.node.CharNode)
+   */
+  @Override
+  public void insertShy( NodeList nodes, int insertionPoint, boolean[] spec,
+                         CharNode hyphenNode ) throws HyphenationException {
 
-        addWord((CharNode) n, word);
+    UnicodeChar hyphen = hyphenNode.getCharacter();
+    int insertion = insertionPoint;
+    Node n;
+    NodeList nobreak = null;
+    NodeList post;
+    Node prev = null;
 
-        return collectWord(nodes, word, i, ((CharNode) n)
-            .getTypesettingContext().getLanguage());
-    }
+    for( int si = 0; si < spec.length; ) {
 
-    /**
-*      int, boolean[], org.extex.typesetter.type.node.CharNode)
-     */
-    @Override
-    public void insertShy(NodeList nodes, int insertionPoint, boolean[] spec,
-            CharNode hyphenNode) throws HyphenationException {
-
-        UnicodeChar hyphen = hyphenNode.getCharacter();
-        int insertion = insertionPoint;
-        Node n;
-        NodeList nobreak = null;
-        NodeList post;
-        Node prev = null;
-
-        for (int si = 0; si < spec.length;) {
-
-            for (n = nodes.get(insertion); !(n instanceof CharNode); n =
-                    nodes.get(insertion)) {
-                if (nobreak == null) {
-                    nobreak = new HorizontalListNode(n);
-                } else {
-                    nobreak.add(n);
-                }
-                insertion++;
-            }
-
-            if (nobreak == null) {
-                nobreak = new HorizontalListNode(n);
-            }
-
-            if (spec[si]) {
-
-                if ( prev != null ) {
-                    CharNode charNode = (CharNode) prev;
-                    Font font = charNode.getTypesettingContext().getFont();
-                    UnicodeChar c = charNode.getCharacter();
-                    UnicodeChar lig = font.getLigature(c, hyphen);
-                    if (lig != null) {
-                        nodes.remove(insertion--);
-                        post =
-                                new HorizontalListNode(
-
-                                    new LigatureNode(((CharNode) prev)
-                                        .getTypesettingContext(), lig,
-                                        (CharNode) prev, hyphenNode));
-                        nobreak.add(prev);
-                    } else {
-                        FixedDimen kern = font.getKerning(c, hyphen);
-                        if (kern != null && kern.ne(Dimen.ZERO_PT)) {
-                            post =
-                                    new HorizontalListNode(
-                                        new ImplicitKernNode(kern, true));
-                        } else {
-                            post = new HorizontalListNode();
-                        }
-                        post.add(hyphenNode);
-                    }
-                } else {
-                    post = new HorizontalListNode(hyphenNode);
-                }
-                nodes.add(insertion++,
-                    new DiscretionaryNode(post, null, nobreak));
-                nobreak = null;
-            }
-
-            if (n instanceof LigatureNode) {
-
-                si =
-                        insertShyIntoLigature(nodes, insertion, si,
-                            (LigatureNode) n, spec, hyphenNode);
-                prev = null;
-
-            } else {
-                si++;
-                prev = n;
-            }
-
-            insertion++;
+      for( n = nodes.get( insertion ); !(n instanceof CharNode); n =
+          nodes.get( insertion ) ) {
+        if( nobreak == null ) {
+          nobreak = new HorizontalListNode( n );
         }
-    }
-
-    /**
-*      org.extex.typesetter.TypesetterOptions)
-     */
-    @Override
-    public UnicodeCharList normalize(UnicodeCharList word,
-            TypesetterOptions options) throws HyphenationException {
-
-        UnicodeCharList list = new UnicodeCharList();
-
-        for( UnicodeChar unicodeChar : word ) {
-            list.add( unicodeChar.lower() );
+        else {
+          nobreak.add( n );
         }
+        insertion++;
+      }
 
-        return list;
+      if( nobreak == null ) {
+        nobreak = new HorizontalListNode( n );
+      }
+
+      if( spec[ si ] ) {
+
+        if( prev != null ) {
+          CharNode charNode = (CharNode) prev;
+          Font font = charNode.getTypesettingContext().getFont();
+          UnicodeChar c = charNode.getCharacter();
+          UnicodeChar lig = font.getLigature( c, hyphen );
+          if( lig != null ) {
+            nodes.remove( insertion-- );
+            post =
+                new HorizontalListNode(
+
+                    new LigatureNode( ((CharNode) prev)
+                                          .getTypesettingContext(), lig,
+                                      (CharNode) prev, hyphenNode ) );
+            nobreak.add( prev );
+          }
+          else {
+            FixedDimen kern = font.getKerning( c, hyphen );
+            if( kern != null && kern.ne( Dimen.ZERO_PT ) ) {
+              post =
+                  new HorizontalListNode(
+                      new ImplicitKernNode( kern, true ) );
+            }
+            else {
+              post = new HorizontalListNode();
+            }
+            post.add( hyphenNode );
+          }
+        }
+        else {
+          post = new HorizontalListNode( hyphenNode );
+        }
+        nodes.add( insertion++,
+                   new DiscretionaryNode( post, null, nobreak ) );
+        nobreak = null;
+      }
+
+      if( n instanceof LigatureNode ) {
+
+        si =
+            insertShyIntoLigature( nodes, insertion, si,
+                                   (LigatureNode) n, spec, hyphenNode );
+        prev = null;
+
+      }
+      else {
+        si++;
+        prev = n;
+      }
+
+      insertion++;
     }
+  }
+
+  /**
+   * org.extex.typesetter.TypesetterOptions)
+   */
+  @Override
+  public UnicodeCharList normalize( UnicodeCharList word,
+                                    TypesetterOptions options )
+      throws HyphenationException {
+
+    UnicodeCharList list = new UnicodeCharList();
+
+    for( UnicodeChar unicodeChar : word ) {
+      list.add( unicodeChar.lower() );
+    }
+
+    return list;
+  }
 
 }

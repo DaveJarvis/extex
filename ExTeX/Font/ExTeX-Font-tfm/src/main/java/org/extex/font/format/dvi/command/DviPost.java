@@ -21,166 +21,166 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: post: Beginning of the postamble.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviPost extends DviCommand {
 
-    /**
-     * the den
-     */
-    private final int den;
+  /**
+   * the den
+   */
+  private final int den;
 
-    /**
-     * height-plus-depth of the tallest page
-     */
-    private final int heigthdepth;
+  /**
+   * height-plus-depth of the tallest page
+   */
+  private final int heigthdepth;
 
-    /**
-     * the mag
-     */
-    private final int mag;
+  /**
+   * the mag
+   */
+  private final int mag;
 
-    /**
-     * the num
-     */
-    private final int num;
+  /**
+   * the num
+   */
+  private final int num;
 
-    /**
-     * the pointer of the final page
-     */
-    private final int pointer;
+  /**
+   * the pointer of the final page
+   */
+  private final int pointer;
 
-    /**
-     * the stack depth
-     */
-    private final int stackdepth;
+  /**
+   * the stack depth
+   */
+  private final int stackdepth;
 
-    /**
-     * total pages
-     */
-    private final int totalpage;
+  /**
+   * total pages
+   */
+  private final int totalpage;
 
-    /**
-     * the width of the widest page
-     */
-    private final int width;
+  /**
+   * the width of the widest page
+   */
+  private final int width;
 
-    /**
-     * Create a new object.
-     * 
-     * @param oc the opcode
-     * @param sp the start pointer
-     * @param p the pointer
-     * @param anum the num
-     * @param aden the den
-     * @param amag the mag
-     * @param l the height+depth
-     * @param u the width
-     * @param s the stack depth
-     * @param t the total pages
-     */
-    public DviPost(final int oc, final int sp, final int p, final int anum,
-            final int aden, final int amag, final int l, final int u,
-            final int s, final int t) {
+  /**
+   * Create a new object.
+   *
+   * @param oc   the opcode
+   * @param sp   the start pointer
+   * @param p    the pointer
+   * @param anum the num
+   * @param aden the den
+   * @param amag the mag
+   * @param l    the height+depth
+   * @param u    the width
+   * @param s    the stack depth
+   * @param t    the total pages
+   */
+  public DviPost( final int oc, final int sp, final int p, final int anum,
+                  final int aden, final int amag, final int l, final int u,
+                  final int s, final int t ) {
 
-        super(oc, sp);
-        pointer = p;
-        num = anum;
-        den = aden;
-        mag = amag;
-        heigthdepth = l;
-        width = u;
-        stackdepth = s;
-        totalpage = t;
+    super( oc, sp );
+    pointer = p;
+    num = anum;
+    den = aden;
+    mag = amag;
+    heigthdepth = l;
+    width = u;
+    stackdepth = s;
+    totalpage = t;
 
-    }
+  }
 
-    /**
-     * Returns the den.
-     * 
-     * @return Returns the den.
-     */
-    public int getDen() {
+  /**
+   * Returns the den.
+   *
+   * @return Returns the den.
+   */
+  public int getDen() {
 
-        return den;
-    }
+    return den;
+  }
 
-    /**
-     * Returns the heigthdepth.
-     * 
-     * @return Returns the heigthdepth.
-     */
-    public int getHeigthdepth() {
+  /**
+   * Returns the heigthdepth.
+   *
+   * @return Returns the heigthdepth.
+   */
+  public int getHeigthdepth() {
 
-        return heigthdepth;
-    }
+    return heigthdepth;
+  }
 
-    /**
-     * Returns the mag.
-     * 
-     * @return Returns the mag.
-     */
-    public int getMag() {
+  /**
+   * Returns the mag.
+   *
+   * @return Returns the mag.
+   */
+  public int getMag() {
 
-        return mag;
-    }
+    return mag;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "post";
-    }
+    return "post";
+  }
 
-    /**
-     * Returns the num.
-     * 
-     * @return Returns the num.
-     */
-    public int getNum() {
+  /**
+   * Returns the num.
+   *
+   * @return Returns the num.
+   */
+  public int getNum() {
 
-        return num;
-    }
+    return num;
+  }
 
-    /**
-     * Returns the pointer.
-     * 
-     * @return Returns the pointer.
-     */
-    public int getPointer() {
+  /**
+   * Returns the pointer.
+   *
+   * @return Returns the pointer.
+   */
+  public int getPointer() {
 
-        return pointer;
-    }
+    return pointer;
+  }
 
-    /**
-     * Returns the stackdepth.
-     * 
-     * @return Returns the stackdepth.
-     */
-    public int getStackdepth() {
+  /**
+   * Returns the stackdepth.
+   *
+   * @return Returns the stackdepth.
+   */
+  public int getStackdepth() {
 
-        return stackdepth;
-    }
+    return stackdepth;
+  }
 
-    /**
-     * Returns the totalpage.
-     * 
-     * @return Returns the totalpage.
-     */
-    public int getTotalpage() {
+  /**
+   * Returns the totalpage.
+   *
+   * @return Returns the totalpage.
+   */
+  public int getTotalpage() {
 
-        return totalpage;
-    }
+    return totalpage;
+  }
 
-    /**
-     * Returns the width.
-     * 
-     * @return Returns the width.
-     */
-    public int getWidth() {
+  /**
+   * Returns the width.
+   *
+   * @return Returns the width.
+   */
+  public int getWidth() {
 
-        return width;
-    }
+    return width;
+  }
 
 }

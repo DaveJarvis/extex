@@ -25,61 +25,57 @@ import org.extex.typesetter.type.NodeVisitor;
 /**
  * This node type represents the extension node from the perspective of
  * TeX.
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class WhatsItNode extends AbstractNode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2011L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2011L;
 
 
-    public WhatsItNode() {
+  public WhatsItNode() {
 
-    }
+  }
 
-    /**
-     * This method puts the printable representation into the string buffer.
-     * This is meant to produce a exhaustive form as it is used in tracing
-     * output to the log file.
-     * 
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * @param breadth the breadth of the nodes to display
-     * @param depth the depth of the nodes to display
-     * 
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
-     *      java.lang.String, int, int)
-     */
-    @Override
-    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
+  /**
+   * This method puts the printable representation into the string buffer.
+   * This is meant to produce a exhaustive form as it is used in tracing
+   * output to the log file.
+   *
+   * @param sb      the output string buffer
+   * @param prefix  the prefix string inserted at the beginning of each line
+   * @param breadth the breadth of the nodes to display
+   * @param depth   the depth of the nodes to display
+   * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+   * java.lang.String, int, int)
+   */
+  @Override
+  public void toString( StringBuilder sb, String prefix, int breadth,
+                        int depth ) {
 
-        sb.append("(whatsit )");
-    }
+    sb.append( "(whatsit )" );
+  }
 
-    /**
-     * This method provides an entry point for the visitor pattern.
-     * 
-     * @param visitor the visitor to apply
-     * @param value the argument for the visitor
-     * 
-     * @return the result of the method invocation of the visitor
-     * 
-     * @throws GeneralException in case of an error
-     * 
-     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
-     */
-    @Override
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(NodeVisitor visitor, Object value)
-            throws GeneralException {
+  /**
+   * This method provides an entry point for the visitor pattern.
+   *
+   * @param visitor the visitor to apply
+   * @param value   the argument for the visitor
+   * @return the result of the method invocation of the visitor
+   * @throws GeneralException in case of an error
+   * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+   * java.lang.Object)
+   */
+  @Override
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public Object visit( NodeVisitor visitor, Object value )
+      throws GeneralException {
 
-        return visitor.visitWhatsIt(this, value);
-    }
+    return visitor.visitWhatsIt( this, value );
+  }
 
 }

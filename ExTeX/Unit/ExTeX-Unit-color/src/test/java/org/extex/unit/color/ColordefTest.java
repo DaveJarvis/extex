@@ -24,207 +24,212 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \colordef}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
 
-    public ColordefTest() {
+  public ColordefTest() {
 
-        setPrimitive("colordef");setArguments("\\x{.1 .2 .3}");setPrepare("");
-        setConfig("colorextex-test");
-    }
+    setPrimitive( "colordef" );
+    setArguments( "\\x{.1 .2 .3}" );
+    setPrepare( "" );
+    setConfig( "colorextex-test" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} produces a control sequence which is showable.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} produces a control sequence which is showable.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x {.1 .2 .3} " + "\\showthe\\x \\end",
-            // --- log message ---
-            "> rgb {0.09999237 0.19998474 0.29999238}.\n");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\colordef\\x {.1 .2 .3} " + "\\showthe\\x" +
+                      " \\end",
+                  // --- log message ---
+                  "> rgb {0.09999237 0.19998474 0.29999238}.\n" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} can take as value a color variable.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test20() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} can take as value a color variable.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test20() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x {.1 .2 .3} " + "\\colordef\\y\\x"
-                    + "\\showthe\\y \\end",
-            // --- log message ---
-            "> rgb {0.09999237 0.19998474 0.29999238}.\n");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\colordef\\x {.1 .2 .3} " + "\\colordef" +
+                      "\\y\\x"
+                      + "\\showthe\\y \\end",
+                  // --- log message ---
+                  "> rgb {0.09999237 0.19998474 0.29999238}.\n" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} can take a value as color constant with an implicit
-     * RGB color model.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test30() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} can take a value as color constant with an implicit
+   * RGB color model.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test30() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x {1 1 1} " + "\\showthe\\x \\end",
-            // --- log message ---
-            "> rgb {1.0 1.0 1.0}.\n");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\colordef\\x {1 1 1} " + "\\showthe\\x " +
+                      "\\end",
+                  // --- log message ---
+                  "> rgb {1.0 1.0 1.0}.\n" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} can take a value as color constant with an explicit
-     * RGB color model.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test31() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} can take a value as color constant with an explicit
+   * RGB color model.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test31() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x rgb {1 1 1} " + "\\showthe\\x \\end",
-            // --- log message ---
-            "> rgb {1.0 1.0 1.0}.\n");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\colordef\\x rgb {1 1 1} " + "\\showthe" +
+                      "\\x \\end",
+                  // --- log message ---
+                  "> rgb {1.0 1.0 1.0}.\n" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} can take a value as color constant with an explicit
-     * gray scale color model.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test32() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} can take a value as color constant with an explicit
+   * gray scale color model.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test32() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x gray {1} " + "\\showthe\\x \\end",
-            // --- log message ---
-            "> gray {1.0}.\n");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\colordef\\x gray {1} " + "\\showthe\\x " +
+                      "\\end",
+                  // --- log message ---
+                  "> gray {1.0}.\n" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} can take a value as color constant with an explicit
-     * HSV color model.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test33() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} can take a value as color constant with an explicit
+   * HSV color model.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test33() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x hsv {1 1 1} " + "\\showthe\\x \\end",
-            // --- log message ---
-            "> hsv {1.0 1.0 1.0}.\n");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\colordef\\x hsv {1 1 1} " + "\\showthe" +
+                      "\\x \\end",
+                  // --- log message ---
+                  "> hsv {1.0 1.0 1.0}.\n" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} can take a value as color constant with an explicit
-     * CMYK color model.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test34() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} can take a value as color constant with an explicit
+   * CMYK color model.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test34() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x cmyk {1 1 1 1} "
-                    + "\\showthe\\x \\end",
-            // --- log message ---
-            "> cmyk {1.0 1.0 1.0 1.0}.\n");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\colordef\\x cmyk {1 1 1 1} "
+                      + "\\showthe\\x \\end",
+                  // --- log message ---
+                  "> cmyk {1.0 1.0 1.0 1.0}.\n" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} neds an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError0() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} neds an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError0() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\colordef",
-            // --- log message ---
-            "Missing control sequence inserted");
-    }
+    assertFailure(// --- input code ---
+                  "\\colordef",
+                  // --- log message ---
+                  "Missing control sequence inserted" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} needs a control sequence as first argument.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} needs a control sequence as first argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\colordef rgb",
-            // --- log message ---
-            "Missing control sequence inserted");
-    }
+    assertFailure(// --- input code ---
+                  "\\colordef rgb",
+                  // --- log message ---
+                  "Missing control sequence inserted" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} needs a left brace after the control seqeunce.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} needs a left brace after the control seqeunce.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\colordef\\x undef ",
-            // --- log message ---
-            "Missing left brace for color value");
-    }
+    assertFailure(// --- input code ---
+                  "\\colordef\\x undef ",
+                  // --- log message ---
+                  "Missing left brace for color value" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} needs enough numbers in the braces.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError3() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} needs enough numbers in the braces.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError3() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x {1} ",
-            // --- log message ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\colordef\\x {1} ",
+                  // --- log message ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * {@code \colordef} complains about too large values for the color
-     * components.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError4() throws Exception {
+  /**
+   * <testcase primitive="colordef"> Test case checking that
+   * {@code \colordef} complains about too large values for the color
+   * components.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError4() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x {1 2 3} ",
-            // --- log message ---
-            "Illegal color value");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\colordef\\x {1 2 3} ",
+                  // --- log message ---
+                  "Illegal color value" );
+  }
 
 }

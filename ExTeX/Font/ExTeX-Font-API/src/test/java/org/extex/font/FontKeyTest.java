@@ -19,60 +19,59 @@
 
 package org.extex.font;
 
-import java.util.ArrayList;
-
 import junit.framework.TestCase;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 /**
  * Test suite for the font key.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class FontKeyTest extends TestCase {
 
-    /**
-     * Test method for {@link java.lang.Object#toString()}.
-     */
-    @Test
-    public final void testToString1() {
+  /**
+   * Test method for {@link java.lang.Object#toString()}.
+   */
+  @Test
+  public final void testToString1() {
 
-        FontKey key = new FontKey("cmr10");
-        key.put(FontKey.SIZE, Dimen.ONE_INCH);
+    FontKey key = new FontKey( "cmr10" );
+    key.put( FontKey.SIZE, Dimen.ONE_INCH );
 
-        assertEquals("cmr10 size=72.26999pt", key.toString());
-    }
+    assertEquals( "cmr10 size=72.26999pt", key.toString() );
+  }
 
-    /**
-     * Test method for {@link java.lang.Object#toString()}.
-     */
-    @Test
-    public final void testToString2() {
+  /**
+   * Test method for {@link java.lang.Object#toString()}.
+   */
+  @Test
+  public final void testToString2() {
 
-        FontKey key = new FontKey("cmr10");
-        key.put(FontKey.SIZE, (FixedDimen) null);
+    FontKey key = new FontKey( "cmr10" );
+    key.put( FontKey.SIZE, (FixedDimen) null );
 
-        assertEquals("cmr10 size=null", key.toString());
-    }
+    assertEquals( "cmr10 size=null", key.toString() );
+  }
 
-    /**
-     * Test method for {@link java.lang.Object#toString()}.
-     */
-    @Test
-    public final void testToString3() {
+  /**
+   * Test method for {@link java.lang.Object#toString()}.
+   */
+  @Test
+  public final void testToString3() {
 
-        FontKey key = new FontKey("cmr10");
-        key.put(FontKey.SIZE, (FixedDimen) null);
-        java.util.List<String> list = new ArrayList<String>();
-        list.add("kern");
-        list.add("latn");
-        key.add(list);
+    FontKey key = new FontKey( "cmr10" );
+    key.put( FontKey.SIZE, (FixedDimen) null );
+    java.util.List<String> list = new ArrayList<String>();
+    list.add( "kern" );
+    list.add( "latn" );
+    key.add( list );
 
-        assertEquals("cmr10 size=null kern latn", key.toString());
-    }
+    assertEquals( "cmr10 size=null kern latn", key.toString() );
+  }
 
 }

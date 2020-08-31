@@ -19,12 +19,12 @@
 
 package org.extex.exbib.core.io.auxio;
 
-import java.io.IOException;
-
 import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceAware;
+
+import java.io.IOException;
 
 /**
  * This interface describes the reader for aux files in
@@ -33,53 +33,51 @@ import org.extex.resource.ResourceAware;
  * <p>
  * Some of the internal processing can be observed by registering an observer.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface AuxReader extends ResourceAware {
 
-    /**
-     * Getter for the file name.
-     * 
-     * @return the file name
-     */
-    String getFilename();
+  /**
+   * Getter for the file name.
+   *
+   * @return the file name
+   */
+  String getFilename();
 
-    /**
-     * Parses an aux file and sends the result to a bibliography.
-     * 
-     * @param bibliographies the bibliography to send the result to
-     * @param resource the resource to be processed
-     * @param encoding the encoding for reading
-     * 
-     * @throws IOException in case that the file could not be opened for reading
-     * @throws ConfigurationException in case that the configuration is invalid
-     * @throws ExBibException in case of an error
-     */
-    void load(ProcessorContainer bibliographies, String resource,
-            String encoding)
-            throws IOException,
-                ConfigurationException,
-                ExBibException;
+  /**
+   * Parses an aux file and sends the result to a bibliography.
+   *
+   * @param bibliographies the bibliography to send the result to
+   * @param resource       the resource to be processed
+   * @param encoding       the encoding for reading
+   * @throws IOException            in case that the file could not be 
+   * opened for reading
+   * @throws ConfigurationException in case that the configuration is invalid
+   * @throws ExBibException         in case of an error
+   */
+  void load( ProcessorContainer bibliographies, String resource,
+             String encoding )
+      throws IOException,
+      ConfigurationException,
+      ExBibException;
 
-    /**
-     * Register an observer for resource open events. The old observer is
-     * overwritten.
-     * 
-     * @param observer the observer or {@code null} for none
-     * 
-     * @return the old observer or {@code null} for none
-     */
-    ResourceObserver register(ResourceObserver observer);
+  /**
+   * Register an observer for resource open events. The old observer is
+   * overwritten.
+   *
+   * @param observer the observer or {@code null} for none
+   * @return the old observer or {@code null} for none
+   */
+  ResourceObserver register( ResourceObserver observer );
 
-    /**
-     * Register a handler for a macro in the aux file.
-     * 
-     * @param name the name
-     * @param handler the handler
-     * 
-     * @return the old handler or {@code null} for none
-     */
-    AuxHandler register(String name, AuxHandler handler);
+  /**
+   * Register a handler for a macro in the aux file.
+   *
+   * @param name    the name
+   * @param handler the handler
+   * @return the old handler or {@code null} for none
+   */
+  AuxHandler register( String name, AuxHandler handler );
 
 }

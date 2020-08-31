@@ -23,32 +23,32 @@ import org.extex.scanner.api.exception.ScannerException;
 
 /**
  * ScannerException, if a wrong Unicode name is given.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class ScannerNoUnicodeNameException extends ScannerException {
 
-    /**
-     * The field {@code serialVersionUID} contains th version number for
-     * serialization
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains th version number for
+   * serialization
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new Object
-     */
-    public ScannerNoUnicodeNameException() {
+  /**
+   * Create a new Object
+   */
+  public ScannerNoUnicodeNameException() {
 
-    }
+  }
 
-    /**
-     * Create a new Object.
-     * 
-     * @param wrongUnicodeName The wrong name.
-     */
-    public ScannerNoUnicodeNameException(String wrongUnicodeName) {
+  /**
+   * Create a new Object.
+   *
+   * @param wrongUnicodeName The wrong name.
+   */
+  public ScannerNoUnicodeNameException( String wrongUnicodeName ) {
 
-        super(wrongUnicodeName);
-    }
+    super( wrongUnicodeName );
+  }
 }

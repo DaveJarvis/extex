@@ -19,48 +19,48 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 
+import java.io.IOException;
+
 /**
  * The 'EBSC' ... TODO incomplete
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTableEBSC extends AbstractXtfTable implements XtfTable {
 
-    /**
-     * Create a new object
-     * 
-     * @param tablemap the tablemap
-     * @param de entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public TtfTableEBSC(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object
+   *
+   * @param tablemap the tablemap
+   * @param de       entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public TtfTableEBSC( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap);
-        rar.seek(de.getOffset());
+    super( tablemap );
+    rar.seek( de.getOffset() );
 
-        // incomplete
-    }
+    // incomplete
+  }
 
-public String getShortcut() {
+  public String getShortcut() {
 
-        return "ebsc";
-    }
+    return "ebsc";
+  }
 
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
 
-        return XtfReader.EBSC;
-    }
+    return XtfReader.EBSC;
+  }
 
 }

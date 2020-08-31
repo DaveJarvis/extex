@@ -34,78 +34,80 @@ import org.extex.typesetter.type.NodeList;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdfxform}.
- * 
+ *
  * <p>The Primitive {@code \pdfxform}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;pdfxform&rang;
  *       &rarr; {@code \pdfxform} ... </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \pdfxform 42  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdfxform extends AbstractPdftexCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdfxform(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdfxform( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
+
+    PdftexSupport writer = ensurePdftex( context, typesetter );
+
+    String attr = null;
+    String resources = null;
+
+    for( ; ; ) {
+      if( source.getKeyword( context, "attr" ) ) {
+        attr = source.scanTokensAsString( context, getToken() );
+      }
+      else if( source.getKeyword( context, "resources" ) ) {
+        resources = source.scanTokensAsString( context, getToken() );
+      }
+      else {
+        break;
+      }
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+    long b = source.parseInteger( context, source, typesetter );
+    Box box = context.getBox( Long.toString( b ) );
+    NodeList nodes = (box == null ? null : box.getNodes());
+    PdfXForm form = writer.getXForm( attr, resources, nodes );
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
+    typesetter.add( form );
 
-        String attr = null;
-        String resources = null;
-
-        for (;;) {
-            if (source.getKeyword(context, "attr")) {
-                attr = source.scanTokensAsString(context, getToken());
-            } else if (source.getKeyword(context, "resources")) {
-                resources = source.scanTokensAsString(context, getToken());
-            } else {
-                break;
-            }
-        }
-
-        long b = source.parseInteger(context, source, typesetter);
-        Box box = context.getBox(Long.toString(b));
-        NodeList nodes = (box == null ? null : box.getNodes());
-        PdfXForm form = writer.getXForm(attr, resources, nodes);
-
-        typesetter.add(form);
-
-        prefix.clearImmediate();
-    }
+    prefix.clearImmediate();
+  }
 
 }

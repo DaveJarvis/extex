@@ -24,26 +24,26 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception indicates that a group has been tried to define after the
  * groups have been closed.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LetterGroupsClosedException extends RuntimeException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param group the name of the group
-     */
-    public LetterGroupsClosedException(String group) {
+  /**
+   * Creates a new object.
+   *
+   * @param group the name of the group
+   */
+  public LetterGroupsClosedException( String group ) {
 
-        super(LocalizerFactory.getLocalizer(LetterGroupsClosedException.class)
-            .format("Message", group));
-    }
+    super( LocalizerFactory.getLocalizer( LetterGroupsClosedException.class )
+                           .format( "Message", group ) );
+  }
 
 }

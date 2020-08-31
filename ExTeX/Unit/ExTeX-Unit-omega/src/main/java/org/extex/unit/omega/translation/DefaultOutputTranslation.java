@@ -37,14 +37,14 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
 /**
  * This class provides an implementation for the primitive
  * {@code \DefaultOutputTranslation}.
- * 
+ *
  * <p>The Primitive {@code \DefaultOutputTranslation}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;DefaultOutputTranslation&rang;
  *      &rarr; {@code \DefaultOutputTranslation} &lang;mode&rang; &lang;ocp&rang;
@@ -54,62 +54,61 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
  *       |  {@code ebcdic}
  *       |  {@code twobyte}
  *       |  {@code twobyteLE}   </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \DefaultOutputTranslation onebyte \OCPebcdic  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DefaultOutputTranslation extends AbstractModeCode
-        implements
-            ResourceAware {
+    implements
+    ResourceAware {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code finder} contains the resource finder.
-     */
-    private transient ResourceFinder finder;
+  /**
+   * The field {@code finder} contains the resource finder.
+   */
+  private transient ResourceFinder finder;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public DefaultOutputTranslation(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public DefaultOutputTranslation( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        OmegaMode mode = scanOutputMode(context, source);
-        Ocp ocp = OcpUtil.scanOcp(context, source, typesetter, finder);
+    OmegaMode mode = scanOutputMode( context, source );
+    Ocp ocp = OcpUtil.scanOcp( context, source, typesetter, finder );
 
-        context.set(OmegaExtension.NAME,
-            DEFAULT_OUTPUT_TRANSLATION + mode.toString(),
-            ocp, prefix.clearGlobal());
-    }
+    context.set( OmegaExtension.NAME,
+                 DEFAULT_OUTPUT_TRANSLATION + mode.toString(),
+                 ocp, prefix.clearGlobal() );
+  }
 
-@Override
-    public void setResourceFinder(ResourceFinder resourceFinder) {
+  @Override
+  public void setResourceFinder( ResourceFinder resourceFinder ) {
 
-        this.finder = resourceFinder;
-    }
+    this.finder = resourceFinder;
+  }
 
 }

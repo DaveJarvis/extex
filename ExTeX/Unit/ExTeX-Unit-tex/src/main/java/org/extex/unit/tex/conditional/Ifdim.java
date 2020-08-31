@@ -32,17 +32,17 @@ import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive {@code \ifdim}.
- * 
+ *
  * <p>The Primitive {@code \ifdim}</p>
  * <p>
  * The primitive {@code \ifdim} provides a conditional which compares two
  * dimen values. The comparison for equality, greater, and less are possible.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;ifdim&rang;
  *      &rarr; {@code \ifdim} &lang;dimen&rang; &lang;op&rang; &lang;dimen&rang; &lang;true text&rang; {@code \fi}
@@ -52,59 +52,59 @@ import org.extex.unit.base.conditional.AbstractIf;
  *      &rarr; [&lt;]
  *      | [=]
  *      | [&gt;]  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Ifdim extends AbstractIf {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Ifdim(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Ifdim( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public boolean conditional( Context context, TokenSource source,
+                              Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    long x = source.parseDimen( context, source, typesetter ).getValue();
+    Token rel = source.getToken( context );
+    if( rel == null ) {
+      throw new EofException( toText() );
+    }
+    if( rel.getCatcode() == Catcode.OTHER ) {
+      switch( rel.getChar().getCodePoint() ) {
+        case '<':
+          return (x < source.parseDimen( context, source, typesetter )
+                            .getValue());
+        case '=':
+          return (x == source.parseDimen( context, source, typesetter )
+                             .getValue());
+        case '>':
+          return (x > source.parseDimen( context, source, typesetter )
+                            .getValue());
+        default:
+          // Fall through to error handling
+      }
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        long x = source.parseDimen(context, source, typesetter).getValue();
-        Token rel = source.getToken(context);
-        if (rel == null) {
-            throw new EofException(toText());
-        }
-        if (rel.getCatcode() == Catcode.OTHER) {
-            switch (rel.getChar().getCodePoint()) {
-                case '<':
-                    return (x < source.parseDimen(context, source, typesetter)
-                        .getValue());
-                case '=':
-                    return (x == source.parseDimen(context, source, typesetter)
-                        .getValue());
-                case '>':
-                    return (x > source.parseDimen(context, source, typesetter)
-                        .getValue());
-                default:
-                    // Fall through to error handling
-            }
-        }
-
-        throw new HelpingException(getLocalizer(), "TTP.IllegalIfnumOp",
-            toText());
-    }
+    throw new HelpingException( getLocalizer(), "TTP.IllegalIfnumOp",
+                                toText() );
+  }
 
 }

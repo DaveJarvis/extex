@@ -31,135 +31,135 @@ import org.extex.typesetter.type.OrientedNode;
 /**
  * This node represents an expandable leaders node as used by the primitive
  * {@code \xleaders}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExpandedLeadersNode extends AbstractLeadersNode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param node the node or node list to stretch or repeat
-     * @param glue the desired size
-     */
-    public ExpandedLeadersNode(OrientedNode node, FixedGlue glue) {
+  /**
+   * Creates a new object.
+   *
+   * @param node the node or node list to stretch or repeat
+   * @param glue the desired size
+   */
+  public ExpandedLeadersNode( OrientedNode node, FixedGlue glue ) {
 
-        super(node, glue);
+    super( node, glue );
+  }
+
+  /**
+   * The method determines how much horizontal space is left and distributes
+   * it if necessary.
+   * <p>
+   * If there is not enough space for at least one instance then the current
+   * instance is returned. In this case it acts as placeholder to contribute
+   * the dimensions for the update of the current position in the document
+   * writer.
+   * </p>
+   * <p>
+   * Otherwise a hlist is created and filled with appropriately many
+   * references to the repeat material. Optionally each elemnt is preceded by
+   * a kern node to achieve the proper distribution.
+   * </p>
+   * <p>
+   * org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
+   * org.extex.core.dimen.FixedDimen)
+   */
+  @Override
+  protected Node fillHorizontally( long total, Node node, FixedDimen posX,
+                                   FixedDimen posY ) {
+
+    long w = node.getWidth().getValue();
+    if( total < w || w <= 0 ) {
+      return this;
     }
 
-    /**
-     * The method determines how much horizontal space is left and distributes
-     * it if necessary.
-     * <p>
-     * If there is not enough space for at least one instance then the current
-     * instance is returned. In this case it acts as placeholder to contribute
-     * the dimensions for the update of the current position in the document
-     * writer.
-     * </p>
-     * <p>
-     * Otherwise a hlist is created and filled with appropriately many
-     * references to the repeat material. Optionally each elemnt is preceded by
-     * a kern node to achieve the proper distribution.
-     * </p>
-     * 
-*      org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
-     *      org.extex.core.dimen.FixedDimen)
-     */
-    @Override
-    protected Node fillHorizontally(long total, Node node, FixedDimen posX,
-            FixedDimen posY) {
+    long n = total / w;
+    long extra = total - n * w;
+    // Possible improvement: If n==1 && extra == 0 return node?
 
-        long w = node.getWidth().getValue();
-        if (total < w || w <= 0) {
-            return this;
-        }
+    NodeList nl = new HorizontalListNode();
+    long x = 0; // keep track of the current position
 
-        long n = total / w;
-        long extra = total - n * w;
-        // Possible improvement: If n==1 && extra == 0 return node?
-
-        NodeList nl = new HorizontalListNode();
-        long x = 0; // keep track of the current position
-
-        for (long i = 0; i < n; i++) {
-            long pos = i * w + extra * (i + 1) / (n + 1);
-            if (x != pos) {
-                nl.add(new ImplicitKernNode(new Dimen(pos - x), true));
-                x = pos;
-            }
-            nl.add(node);
-            x += w;
-        }
-
-        nl.setDepth(getDepth());
-        nl.setHeight(getHeight());
-        nl.setWidth(getWidth());
-        return nl;
+    for( long i = 0; i < n; i++ ) {
+      long pos = i * w + extra * (i + 1) / (n + 1);
+      if( x != pos ) {
+        nl.add( new ImplicitKernNode( new Dimen( pos - x ), true ) );
+        x = pos;
+      }
+      nl.add( node );
+      x += w;
     }
 
-    /**
-     * The method determines how much vertical space is left and distributes it
-     * if necessary.
-     * <p>
-     * If there is not enough space for at least one instance then the current
-     * instance is returned. In this case it acts as placeholder to contribute
-     * the dimensions for the update of the current position in the document
-     * writer.
-     * </p>
-     * <p>
-     * Otherwise a vlist is created and filled with appropriately many
-     * references to the repeat material. Optionally each element is preceded by
-     * a kern node to achieve the proper distribution.
-     * </p>
-     * 
-*      org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
-     *      org.extex.core.dimen.FixedDimen)
-     */
-    @Override
-    protected Node fillVertically(long total, Node node, FixedDimen posX,
-            FixedDimen posY) {
+    nl.setDepth( getDepth() );
+    nl.setHeight( getHeight() );
+    nl.setWidth( getWidth() );
+    return nl;
+  }
 
-        long h = node.getHeight().getValue() + node.getDepth().getValue();
-        if (total < h || h <= 0) {
-            return this;
-        }
+  /**
+   * The method determines how much vertical space is left and distributes it
+   * if necessary.
+   * <p>
+   * If there is not enough space for at least one instance then the current
+   * instance is returned. In this case it acts as placeholder to contribute
+   * the dimensions for the update of the current position in the document
+   * writer.
+   * </p>
+   * <p>
+   * Otherwise a vlist is created and filled with appropriately many
+   * references to the repeat material. Optionally each element is preceded by
+   * a kern node to achieve the proper distribution.
+   * </p>
+   * <p>
+   * org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
+   * org.extex.core.dimen.FixedDimen)
+   */
+  @Override
+  protected Node fillVertically( long total, Node node, FixedDimen posX,
+                                 FixedDimen posY ) {
 
-        long n = total / h;
-        long extra = total - n * h;
-        // Possible improvement: If n==1 && extra == 0 return node?
-
-        NodeList nl = new VerticalListNode();
-        long x = 0; // keep track of the current position
-
-        for (long i = 0; i < n; i++) {
-            long pos = i * h + extra * (i + 1) / (n + 1);
-            if (x != pos) {
-                nl.add(new ImplicitKernNode(new Dimen(pos - x), false));
-                x = pos;
-            }
-            nl.add(node);
-            x += h;
-        }
-
-        nl.setDepth(getDepth());
-        nl.setHeight(getHeight());
-        nl.setWidth(getWidth());
-        return nl;
+    long h = node.getHeight().getValue() + node.getDepth().getValue();
+    if( total < h || h <= 0 ) {
+      return this;
     }
 
-    /**
-*      java.lang.Object)
-     */
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(NodeVisitor visitor, Object value)
-            throws GeneralException {
+    long n = total / h;
+    long extra = total - n * h;
+    // Possible improvement: If n==1 && extra == 0 return node?
 
-        return visitor.visitExpandedLeaders(this, value);
+    NodeList nl = new VerticalListNode();
+    long x = 0; // keep track of the current position
+
+    for( long i = 0; i < n; i++ ) {
+      long pos = i * h + extra * (i + 1) / (n + 1);
+      if( x != pos ) {
+        nl.add( new ImplicitKernNode( new Dimen( pos - x ), false ) );
+        x = pos;
+      }
+      nl.add( node );
+      x += h;
     }
+
+    nl.setDepth( getDepth() );
+    nl.setHeight( getHeight() );
+    nl.setWidth( getWidth() );
+    return nl;
+  }
+
+  /**
+   * java.lang.Object)
+   */
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public Object visit( NodeVisitor visitor, Object value )
+      throws GeneralException {
+
+    return visitor.visitExpandedLeaders( this, value );
+  }
 
 }

@@ -23,26 +23,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \topskip}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TopskipTest extends AbstractSkipRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(TopskipTest.class);
-    }
+    (new JUnitCore()).run( TopskipTest.class );
+  }
 
 
-    public TopskipTest() {
+  public TopskipTest() {
 
-        super("topskip", "", "0.0pt");
-    }
+    super( "topskip", "", "0.0pt" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

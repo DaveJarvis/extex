@@ -25,39 +25,39 @@ import org.extex.exbib.core.io.Locator;
 /**
  * This Exception is thrown when the program detects that an Entry is used in a
  * context where none is provided.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibMissingEntryException extends ExBibException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     * @param locator the locator
-     */
-    public ExBibMissingEntryException(String message, Locator locator) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   * @param locator the locator
+   */
+  public ExBibMissingEntryException( String message, Locator locator ) {
 
-        super(message, locator);
-    }
+    super( message, locator );
+  }
 
-    /**
-     * Provides the message for this Exception.
-     * 
-     * @return the message for this exception
-     */
-    @Override
-    public String getMessage() {
+  /**
+   * Provides the message for this Exception.
+   *
+   * @return the message for this exception
+   */
+  @Override
+  public String getMessage() {
 
-        String msg = super.getMessage();
-        return getLocalizer().format(msg == null ? "MessageNull" : "Message",
-            msg);
-    }
+    String msg = super.getMessage();
+    return getLocalizer().format( msg == null ? "MessageNull" : "Message",
+                                  msg );
+  }
 
 }

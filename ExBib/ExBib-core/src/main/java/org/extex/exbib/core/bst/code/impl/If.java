@@ -28,7 +28,8 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code if$}
  * <p>
  * This function performs conditional processing. It takes three arguments from
@@ -49,56 +50,57 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *     output.state mid.sentence =
  *     { "number" }
  *     { "Number" }
  *   if$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Pops the top three literals (they are two function literals and an
  * integer literal, in that order); if the integer is greater than 0, it
  * executes the second literal, else it executes the first.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class If extends AbstractCode {
 
 
-    public If() {
+  public If() {
 
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public If( String name ) {
+
+    super( name );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    Token elseToken = processor.pop( locator );
+    Token thenToken = processor.pop( locator );
+    int cond = processor.popInteger( locator ).getInt();
+
+    if( cond > 0 ) {
+      thenToken.execute( processor, entry, locator );
     }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public If(String name) {
-
-        super(name);
+    else {
+      elseToken.execute( processor, entry, locator );
     }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        Token elseToken = processor.pop(locator);
-        Token thenToken = processor.pop(locator);
-        int cond = processor.popInteger(locator).getInt();
-
-        if (cond > 0) {
-            thenToken.execute(processor, entry, locator);
-        } else {
-            elseToken.execute(processor, entry, locator);
-        }
-    }
+  }
 }

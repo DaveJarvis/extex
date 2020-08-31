@@ -28,49 +28,49 @@ import org.extex.core.exception.GeneralException;
 
 /**
  * Color visitor for pdf.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class PdfColorVisitor implements ColorVisitor {
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitCmyk(CmykColor color, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitCmyk( CmykColor color, Object value )
+      throws GeneralException {
 
-        // TODO mgn: visitCmyk unimplemented
-        return null;
-    }
+    // TODO mgn: visitCmyk unimplemented
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitGray(GrayscaleColor color, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitGray( GrayscaleColor color, Object value )
+      throws GeneralException {
 
-        // TODO mgn: visitGray unimplemented
-        return null;
-    }
+    // TODO mgn: visitGray unimplemented
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitHsv(HsvColor color, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitHsv( HsvColor color, Object value )
+      throws GeneralException {
 
-        // TODO mgn: visitHsv unimplemented
-        return null;
-    }
+    // TODO mgn: visitHsv unimplemented
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitRgb(RgbColor color, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitRgb( RgbColor color, Object value )
+      throws GeneralException {
 
-        // TODO mgn: visitRgb unimplemented
-        return null;
-    }
+    // TODO mgn: visitRgb unimplemented
+    return null;
+  }
 
 }

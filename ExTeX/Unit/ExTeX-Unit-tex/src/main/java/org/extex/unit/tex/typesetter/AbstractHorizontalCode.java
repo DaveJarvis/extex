@@ -34,63 +34,61 @@ import org.extex.typesetter.listMaker.HorizontalListMaker;
  * This an abstract base class for primitives in horizontal mode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractHorizontalCode extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param token the initial token for the primitive
-     */
-    public AbstractHorizontalCode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractHorizontalCode( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Check that the current mode is a horizontal mode and throw an exception
+   * if another mode is detected.
+   *
+   * @param typesetter the typesetter to ask for the mode
+   * @throws HelpingException in case of an error
+   */
+  protected void ensureHorizontalMode( Typesetter typesetter )
+      throws HelpingException {
+
+    Mode mode = typesetter.getMode();
+    if( mode.isVmode() ) {
+      throw new HelpingException( LocalizerFactory
+                                      .getLocalizer( AbstractHorizontalCode.class ),
+                                  "TTP.MissingInserted", "}" );
     }
 
-    /**
-     * Check that the current mode is a horizontal mode and throw an exception
-     * if another mode is detected.
-     *
-     * @param typesetter the typesetter to ask for the mode
-     *
-     * @throws HelpingException in case of an error
-     */
-    protected void ensureHorizontalMode(Typesetter typesetter)
-            throws HelpingException {
+  }
 
-        Mode mode = typesetter.getMode();
-        if (mode.isVmode()) {
-            throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractHorizontalCode.class),
-                    "TTP.MissingInserted", "}");
-        }
+  /**
+   * Check that the current mode is a horizontal mode and open a new
+   * list maker if another mode is detected.
+   *
+   * @param typesetter the typesetter to ask for the mode
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  protected void switchToHorizontalMode( Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
+    Mode mode = typesetter.getMode();
+    if( mode.isVmode() ) {
+      ListManager man = typesetter.getManager();
+      ListMaker hlist = new HorizontalListMaker( man, typesetter
+          .getLocator() );
+      man.push( hlist );
     }
-
-    /**
-     * Check that the current mode is a horizontal mode and open a new
-     * list maker if another mode is detected.
-     *
-     * @param typesetter the typesetter to ask for the mode
-     *
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    protected void switchToHorizontalMode(Typesetter typesetter)
-            throws HelpingException, TypesetterException {
-
-        Mode mode = typesetter.getMode();
-        if (mode.isVmode()) {
-            ListManager man = typesetter.getManager();
-            ListMaker hlist = new HorizontalListMaker(man, typesetter
-                    .getLocator());
-            man.push(hlist);
-        }
-    }
+  }
 
 }

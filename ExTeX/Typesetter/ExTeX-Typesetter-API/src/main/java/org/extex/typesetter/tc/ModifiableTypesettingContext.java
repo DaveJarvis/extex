@@ -28,51 +28,47 @@ import org.extex.typesetter.tc.font.Font;
  * appearance of glyphs or other nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ModifiableTypesettingContext extends TypesettingContext {
 
-    /**
-     * Setter for all components. The components color, direction, font,
-     * language, etc are copied from the instance given.
-     *
-     * @param context the context to clone
-     */
-    void set(TypesettingContext context);
+  /**
+   * Setter for all components. The components color, direction, font,
+   * language, etc are copied from the instance given.
+   *
+   * @param context the context to clone
+   */
+  void set( TypesettingContext context );
 
-    /**
-     * Setter for the color.
-     *
-     * @param color the new color
-     *
-     * @see TypesettingContext#getColor()
-     */
-    void setColor(Color color);
+  /**
+   * Setter for the color.
+   *
+   * @param color the new color
+   * @see TypesettingContext#getColor()
+   */
+  void setColor( Color color );
 
-    /**
-     * Setter for the writing direction.
-     *
-     * @param direction the new direction
-     *
-     * @see TypesettingContext#getDirection()
-     */
-    void setDirection(Direction direction);
+  /**
+   * Setter for the writing direction.
+   *
+   * @param direction the new direction
+   * @see TypesettingContext#getDirection()
+   */
+  void setDirection( Direction direction );
 
-    /**
-     * Setter for the font component.
-     *
-     * @param font the font to store
-     *
-     * @see TypesettingContext#getFont()
-     */
-    void setFont(Font font);
+  /**
+   * Setter for the font component.
+   *
+   * @param font the font to store
+   * @see TypesettingContext#getFont()
+   */
+  void setFont( Font font );
 
-    /**
-     * Setter for the hyphenation table.
-     *
-     * @param language the hyphenation table
-     *
-     * @see TypesettingContext#getLanguage()
-     */
-    void setLanguage(Language language);
+  /**
+   * Setter for the hyphenation table.
+   *
+   * @param language the hyphenation table
+   * @see TypesettingContext#getLanguage()
+   */
+  void setLanguage( Language language );
 
 }

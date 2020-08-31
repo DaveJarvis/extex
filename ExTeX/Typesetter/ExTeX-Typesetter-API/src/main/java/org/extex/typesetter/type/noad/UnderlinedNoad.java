@@ -19,8 +19,6 @@
 
 package org.extex.typesetter.type.noad;
 
-import java.util.logging.Logger;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -34,99 +32,98 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 
+import java.util.logging.Logger;
+
 /**
  * This class provides an underlining for the nucleus.
  *
- * @see "TTP [687]"
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see "TTP [687]"
+ */
 public class UnderlinedNoad extends AbstractNucleusNoad {
 
-    /**
-     * Creates a new object.
-     *
-     * @param nucleus the nucleus to be underlined
-     * @param tc the typesetting context for the color
-     */
-    public UnderlinedNoad(Noad nucleus, TypesettingContext tc) {
+  /**
+   * Creates a new object.
+   *
+   * @param nucleus the nucleus to be underlined
+   * @param tc      the typesetting context for the color
+   */
+  public UnderlinedNoad( Noad nucleus, TypesettingContext tc ) {
 
-        super(nucleus, tc);
-    }
+    super( nucleus, tc );
+  }
 
-    /**
-     * Add some information in the middle of the default toString method.
-     *
-     * @param sb the target string buffer
-     * @param depth the recursion depth
-     *
-     * @see "TTP [696]"
-     * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
-     *      StringBuilder,
-     *      int)
-     */
-    @Override
-    protected void toStringAdd(StringBuilder sb, int depth) {
+  /**
+   * Add some information in the middle of the default toString method.
+   *
+   * @param sb    the target string buffer
+   * @param depth the recursion depth
+   * @see "TTP [696]"
+   * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
+   *StringBuilder,
+   * int)
+   */
+  @Override
+  protected void toStringAdd( StringBuilder sb, int depth ) {
 
-        sb.append("underline");
-    }
+    sb.append( "underline" );
+  }
 
-    /**
-     * Translate a Noad into a NodeList.
-     *
-     * @param previousNoad the previous noad
-     * @param noads the list of noads currently processed
-     * @param index the index of the current node in the list
-     * @param list the list to add the nodes to. This list contains the Nodes
-     *  previously typeset. Thus it can be used to look back
-     * @param mathContext the context to consider
-     * @param logger the logger for debugging and tracing information
-     *
-     * @throws TypesetterException in case of a problem
-     * @throws ConfigurationException in case of a configuration problem
-     *
-     * @see "TTP [735]"
-     * @see org.extex.typesetter.type.noad.Noad#typeset(
-     *      org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList,
-     *      int,
-     *      org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.type.noad.util.MathContext,
-     *      java.util.logging.Logger)
-     */
-    public void typeset(Noad previousNoad, NoadList noads,
-            int index, NodeList list,
-            MathContext mathContext, Logger logger)
-            throws TypesetterException,
-                ConfigurationException {
+  /**
+   * Translate a Noad into a NodeList.
+   *
+   * @param previousNoad the previous noad
+   * @param noads        the list of noads currently processed
+   * @param index        the index of the current node in the list
+   * @param list         the list to add the nodes to. This list contains
+   *                     the Nodes
+   *                     previously typeset. Thus it can be used to look back
+   * @param mathContext  the context to consider
+   * @param logger       the logger for debugging and tracing information
+   * @throws TypesetterException    in case of a problem
+   * @throws ConfigurationException in case of a configuration problem
+   * @see "TTP [735]"
+   * @see org.extex.typesetter.type.noad.Noad#typeset(
+   *org.extex.typesetter.type.noad.Noad,
+   * org.extex.typesetter.type.noad.NoadList,
+   * int,
+   * org.extex.typesetter.type.NodeList,
+   * org.extex.typesetter.type.noad.util.MathContext,
+   * java.util.logging.Logger)
+   */
+  public void typeset( Noad previousNoad, NoadList noads,
+                       int index, NodeList list,
+                       MathContext mathContext, Logger logger )
+      throws TypesetterException,
+      ConfigurationException {
 
-        HorizontalListNode hlist = new HorizontalListNode();
-        Noad n = getNucleus();
-        n.typeset(previousNoad, noads, index, hlist, mathContext, logger);
-        setSpacingClass(n.getSpacingClass());
+    HorizontalListNode hlist = new HorizontalListNode();
+    Noad n = getNucleus();
+    n.typeset( previousNoad, noads, index, hlist, mathContext, logger );
+    setSpacingClass( n.getSpacingClass() );
 
-        getSpacingClass().addClearance(
-            (previousNoad != null ? previousNoad.getSpacingClass() : null),
-            list, mathContext);
+    getSpacingClass().addClearance(
+        (previousNoad != null ? previousNoad.getSpacingClass() : null),
+        list, mathContext );
 
-        FixedDimen thickness =
-                mathContext
-                    .mathParameter(MathFontParameter.DEFAULT_RULE_THICKNESS);
-        VerticalListNode vlist = new VerticalListNode();
-        vlist.add(hlist);
-        vlist.add(new ExplicitKernNode(new Dimen(3 * thickness.getValue()),
-            false));
-        vlist.add(new RuleNode(hlist.getWidth(), thickness, Dimen.ZERO_PT,
-            getTypesettingContext(), true));
-        vlist.add(new ExplicitKernNode(thickness, false));
+    FixedDimen thickness =
+        mathContext
+            .mathParameter( MathFontParameter.DEFAULT_RULE_THICKNESS );
+    VerticalListNode vlist = new VerticalListNode();
+    vlist.add( hlist );
+    vlist.add( new ExplicitKernNode( new Dimen( 3 * thickness.getValue() ),
+                                     false ) );
+    vlist.add( new RuleNode( hlist.getWidth(), thickness, Dimen.ZERO_PT,
+                             getTypesettingContext(), true ) );
+    vlist.add( new ExplicitKernNode( thickness, false ) );
 
-        Dimen h = new Dimen(vlist.getHeight());
-        h.add(vlist.getDepth());
-        vlist.setHeight(hlist.getHeight());
-        h.subtract(hlist.getHeight());
-        vlist.setDepth(h);
+    Dimen h = new Dimen( vlist.getHeight() );
+    h.add( vlist.getDepth() );
+    vlist.setHeight( hlist.getHeight() );
+    h.subtract( hlist.getHeight() );
+    vlist.setDepth( h );
 
-        list.add(vlist);
-    }
+    list.add( vlist );
+  }
 
 }

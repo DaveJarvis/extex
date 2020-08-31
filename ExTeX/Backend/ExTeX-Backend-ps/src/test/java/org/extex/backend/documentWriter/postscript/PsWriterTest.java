@@ -19,13 +19,6 @@
 
 package org.extex.backend.documentWriter.postscript;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.util.Properties;
-import java.util.logging.Logger;
-
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -47,196 +40,205 @@ import org.extex.typesetter.type.page.Page;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.util.Properties;
+import java.util.logging.Logger;
+
+import static org.junit.Assert.assertEquals;
+
 /**
  * This is the test suite for the PS writer.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PsWriterTest {
 
-    /**
-     * The constant {@code OPTIONS} contains the document writer options for
-     * the tests.
-     */
-    private static final DocumentWriterOptions OPTIONS =
-            new DocumentWriterOptions() {
+  /**
+   * The constant {@code OPTIONS} contains the document writer options for
+   * the tests.
+   */
+  private static final DocumentWriterOptions OPTIONS =
+      new DocumentWriterOptions() {
 
-                public FixedCount getCountOption(String name) {
+        public FixedCount getCountOption( String name ) {
 
-                    return null;
-                }
+          return null;
+        }
 
-                public FixedDimen getDimenOption(String name) {
+        public FixedDimen getDimenOption( String name ) {
 
-                    return null;
-                }
+          return null;
+        }
 
-                public long getMagnification() {
+        public long getMagnification() {
 
-                    return 1000;
-                }
+          return 1000;
+        }
 
-                public String getTokensOption(String name) {
+        public String getTokensOption( String name ) {
 
-                    return null;
-                }
-            };
+          return null;
+        }
+      };
 
-    /**
-     * Make the test font factory.
-     * 
-     * @return the font factory
-     */
-    private CoreFontFactory makeFontactory() {
+  /**
+   * Make the test font factory.
+   *
+   * @return the font factory
+   */
+  private CoreFontFactory makeFontactory() {
 
-        FontFactoryImpl factory = new FontFactoryImpl();
-        factory.configure(ConfigurationFactory
-            .newInstance("test/font/test-fonts"));
-        factory.setProperties(new Properties());
-        factory.setResourceFinder(new ResourceFinderFactory()
-            .createResourceFinder(
-                ConfigurationFactory.newInstance("path/fontTestFileFinder"), 
-                Logger.getLogger("test"), new Properties(), 
-                new InteractionIndicator() {
+    FontFactoryImpl factory = new FontFactoryImpl();
+    factory.configure( ConfigurationFactory
+                           .newInstance( "test/font/test-fonts" ) );
+    factory.setProperties( new Properties() );
+    factory.setResourceFinder( new ResourceFinderFactory()
+                                   .createResourceFinder(
+                                       ConfigurationFactory.newInstance(
+                                           "path/fontTestFileFinder" ),
+                                       Logger.getLogger( "test" ),
+                                       new Properties(),
+                                       new InteractionIndicator() {
 
-                    public boolean isInteractive() {
+                                         public boolean isInteractive() {
 
-                        return false;
-                    }
-                }));
-        return factory;
-    }
+                                           return false;
+                                         }
+                                       } ) );
+    return factory;
+  }
 
-    /**
-     * Create and initialize a writer to be tested.
-     * 
-     * @param options the options
-     * @param ff the font factory
-     * 
-     * @return the writer to test
-     */
-    private PsWriter makeWriter(DocumentWriterOptions options,
-            CoreFontFactory ff) {
+  /**
+   * Create and initialize a writer to be tested.
+   *
+   * @param options the options
+   * @param ff      the font factory
+   * @return the writer to test
+   */
+  private PsWriter makeWriter( DocumentWriterOptions options,
+                               CoreFontFactory ff ) {
 
-        PsWriter writer = new PsWriter(options);
-        writer.setFontFactory(ff);
-        return writer;
-    }
+    PsWriter writer = new PsWriter( options );
+    writer.setFontFactory( ff );
+    return writer;
+  }
 
-    /**
-     * TODO
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testClose1() throws Exception {
+  /**
+   * TODO
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testClose1() throws Exception {
 
-        PsWriter writer = makeWriter(OPTIONS, makeFontactory());
+    PsWriter writer = makeWriter( OPTIONS, makeFontactory() );
 
-        OutputStream out = new ByteArrayOutputStream();
-        writer.setOutputStream(out);
-        writer.shipout(new PageImpl(new VerticalListNode(), new Count[10]));
-        writer.close();
-        String s = out.toString().replaceAll("\r", "");
-        assertEquals("%!PS-Adobe-2.0\n" 
-                + "%%Creator: ExTeX-Backend-ps\n" 
-                + "%%CreationDate: ", s.substring(0, 59));
-        assertEquals("%%Title: \n" 
-                + "%%Pages: 1\n" 
-                + "%%PageOrder: Ascend\n" 
-                + "%%BoundingBox: 0 0 596 842\n" 
-                + "%%DocumentFonts:\n" 
-                + "%%EndComments\n" 
-                + "/TeXDict 300 dict def\n" + "%%BeginProcSet: Ps.java\n" 
-                + "TeXDict begin /eop{}def end\n" 
-                + "%%EndProcSet\n" 
-                + "%%Page: 1 1\n" 
-                + "TeXDict begin\n eop\nend\n" + "showpage\n" 
-                + "%%EOF\n", 
-            s.substring(79));
-    }
+    OutputStream out = new ByteArrayOutputStream();
+    writer.setOutputStream( out );
+    writer.shipout( new PageImpl( new VerticalListNode(), new Count[ 10 ] ) );
+    writer.close();
+    String s = out.toString().replaceAll( "\r", "" );
+    assertEquals( "%!PS-Adobe-2.0\n"
+                      + "%%Creator: ExTeX-Backend-ps\n"
+                      + "%%CreationDate: ", s.substring( 0, 59 ) );
+    assertEquals( "%%Title: \n"
+                      + "%%Pages: 1\n"
+                      + "%%PageOrder: Ascend\n"
+                      + "%%BoundingBox: 0 0 596 842\n"
+                      + "%%DocumentFonts:\n"
+                      + "%%EndComments\n"
+                      + "/TeXDict 300 dict def\n" + "%%BeginProcSet: Ps.java\n"
+                      + "TeXDict begin /eop{}def end\n"
+                      + "%%EndProcSet\n"
+                      + "%%Page: 1 1\n"
+                      + "TeXDict begin\n eop\nend\n" + "showpage\n"
+                      + "%%EOF\n",
+                  s.substring( 79 ) );
+  }
 
-    /**
-     * TODO
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public final void testClose2() throws Exception {
+  /**
+   * TODO
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public final void testClose2() throws Exception {
 
-        CoreFontFactory fontFactory = makeFontactory();
-        PsWriter writer = makeWriter(OPTIONS, fontFactory);
+    CoreFontFactory fontFactory = makeFontactory();
+    PsWriter writer = makeWriter( OPTIONS, fontFactory );
 
-        OutputStream out = new ByteArrayOutputStream();
-        writer.setOutputStream(out);
-        VerticalListNode vlist = new VerticalListNode();
-        HorizontalListNode hlist = new HorizontalListNode();
-        vlist.add(hlist);
-        TypesettingContextFactory tcf = new TypesettingContextFactory();
-        tcf.configure(ConfigurationFactory.newInstance("test/tc/tc"));
-        TypesettingContext tc =
-                tcf.newInstance(tcf.initial(), new FontImpl(fontFactory
-                    .getInstance(fontFactory.getFontKey("cmr10"))));
-        hlist.add(new CharNode(tc, UnicodeChar.get('A')));
+    OutputStream out = new ByteArrayOutputStream();
+    writer.setOutputStream( out );
+    VerticalListNode vlist = new VerticalListNode();
+    HorizontalListNode hlist = new HorizontalListNode();
+    vlist.add( hlist );
+    TypesettingContextFactory tcf = new TypesettingContextFactory();
+    tcf.configure( ConfigurationFactory.newInstance( "test/tc/tc" ) );
+    TypesettingContext tc =
+        tcf.newInstance( tcf.initial(), new FontImpl( fontFactory
+                                                          .getInstance(
+                                                              fontFactory.getFontKey(
+                                                                  "cmr10" ) ) ) );
+    hlist.add( new CharNode( tc, UnicodeChar.get( 'A' ) ) );
 
-        writer.shipout(new PageImpl(vlist, new Count[10]));
-        writer.close();
+    writer.shipout( new PageImpl( vlist, new Count[ 10 ] ) );
+    writer.close();
 
-        String s = out.toString().replaceAll("\r", "");
-        assertEquals("%!PS-Adobe-2.0\n" 
-                + "%%Creator: ExTeX-Backend-ps\n" 
-                + "%%CreationDate: ", s.substring(0, 59));
-        assertEquals("%%Title: \n" 
-                + "%%Pages: 1\n" 
-                + "%%PageOrder: Ascend\n" 
-                + "%%BoundingBox: 0 0 596 842\n" 
-                + "%%DocumentFonts:\n" 
-                + "%%EndComments\n" 
-                + "/TeXDict 300 dict def\n"
-                + "%%BeginProcSet: Ps.java\n" 
-                + "TeXDict begin /Cg{setgray}def /eop{}def end\n"
-                + "%%EndProcSet\n" 
-                + "%%Page: 1 1\n" 
-                + "TeXDict begin\n" 
-                + " 0.0 Cg A\n" 
-                + "end\n" + "showpage\n" + "%%EOF\n", s.substring(79));
-    }
+    String s = out.toString().replaceAll( "\r", "" );
+    assertEquals( "%!PS-Adobe-2.0\n"
+                      + "%%Creator: ExTeX-Backend-ps\n"
+                      + "%%CreationDate: ", s.substring( 0, 59 ) );
+    assertEquals( "%%Title: \n"
+                      + "%%Pages: 1\n"
+                      + "%%PageOrder: Ascend\n"
+                      + "%%BoundingBox: 0 0 596 842\n"
+                      + "%%DocumentFonts:\n"
+                      + "%%EndComments\n"
+                      + "/TeXDict 300 dict def\n"
+                      + "%%BeginProcSet: Ps.java\n"
+                      + "TeXDict begin /Cg{setgray}def /eop{}def end\n"
+                      + "%%EndProcSet\n"
+                      + "%%Page: 1 1\n"
+                      + "TeXDict begin\n"
+                      + " 0.0 Cg A\n"
+                      + "end\n" + "showpage\n" + "%%EOF\n", s.substring( 79 ) );
+  }
 
-    /**
-     * TODO
-     * 
-     */
-    @Test
-    public final void testgetExtension() {
+  /**
+   * TODO
+   */
+  @Test
+  public final void testgetExtension() {
 
-        assertEquals("ps", new PsWriter(OPTIONS).getExtension());
-    }
+    assertEquals( "ps", new PsWriter( OPTIONS ).getExtension() );
+  }
 
-    /**
-     * TODO
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testShipout1() throws Exception {
+  /**
+   * TODO
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testShipout1() throws Exception {
 
-        PsWriter writer = new PsWriter(OPTIONS);
-        assertEquals(0, writer.shipout(null));
-    }
+    PsWriter writer = new PsWriter( OPTIONS );
+    assertEquals( 0, writer.shipout( null ) );
+  }
 
-    /**
-     * TODO
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testShipout2() throws Exception {
+  /**
+   * TODO
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testShipout2() throws Exception {
 
-        PsWriter writer = new PsWriter(OPTIONS);
-        Page page = new PageImpl(new VerticalListNode(), new Count[10]);
-        assertEquals(1, writer.shipout(page));
-    }
+    PsWriter writer = new PsWriter( OPTIONS );
+    Page page = new PageImpl( new VerticalListNode(), new Count[ 10 ] );
+    assertEquals( 1, writer.shipout( page ) );
+  }
 
-    // TODO implement much more test cases
+  // TODO implement much more test cases
 }

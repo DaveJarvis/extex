@@ -25,30 +25,30 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception is raised when a situation is detected where the continuation
  * is illegal.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code TTP.CantUseAfter}.
+ * The localization format is taken from the Localizer under the key
+ * {@code TTP.CantUseAfter}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CantUseAfterException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the name of the macro in which the condition has been
-     *  encountered
-     * @param predecessor the preceding token
-     */
-    public CantUseAfterException(String cause, String predecessor) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause       the name of the macro in which the condition has been
+   *                    encountered
+   * @param predecessor the preceding token
+   */
+  public CantUseAfterException( String cause, String predecessor ) {
 
-        super(LocalizerFactory.getLocalizer(CantUseAfterException.class),
-                "TTP.CantUseAfter", cause, predecessor);
-    }
+    super( LocalizerFactory.getLocalizer( CantUseAfterException.class ),
+           "TTP.CantUseAfter", cause, predecessor );
+  }
 
 }

@@ -25,50 +25,51 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \vtop}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class VtopTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(VtopTest.class);
-    }
+    (new JUnitCore()).run( VtopTest.class );
+  }
 
 
-    public VtopTest() {
+  public VtopTest() {
 
-        setPrimitive("vtop");setArguments("{}");setPrepare("");
-    }
+    setPrimitive( "vtop" );
+    setArguments( "{}" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\vtop"> Test case checking that {@code \vtop} ...
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\vtop"> Test case checking that {@code \vtop} ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            DEFINE_BRACES + "\\vtop{abc} ",
-            // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n"
-                    + ".\\vbox(8.0pt+0.0pt)x3000.0pt\n"
-                    + "..\\vbox(8.0pt+0.0pt)x3000.0pt\n"
-                    + "...\\hbox(8.0pt+0.0pt)x3000.0pt\n"
-                    + "....a\n"
-                    + "....b\n"
-                    + "....c\n"
-        );
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   DEFINE_BRACES + "\\vtop{abc} ",
+                   // --- output channel ---
+                   "\\vbox(8.0pt+0.0pt)x3000.0pt\n"
+                       + ".\\vbox(8.0pt+0.0pt)x3000.0pt\n"
+                       + "..\\vbox(8.0pt+0.0pt)x3000.0pt\n"
+                       + "...\\hbox(8.0pt+0.0pt)x3000.0pt\n"
+                       + "....a\n"
+                       + "....b\n"
+                       + "....c\n"
+    );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 
 }

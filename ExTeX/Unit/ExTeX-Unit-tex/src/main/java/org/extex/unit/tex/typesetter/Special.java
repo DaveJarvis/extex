@@ -32,7 +32,7 @@ import org.extex.typesetter.type.node.SpecialNode;
 /**
  * This class provides an implementation for the primitive {@code \special}
  * .
- * 
+ *
  * <p>The Primitive {@code \special}</p>
  * <p>
  * This primitive sends a string to the back-end driver. The argument is a
@@ -40,62 +40,63 @@ import org.extex.typesetter.type.node.SpecialNode;
  * string is given in a {@link org.extex.typesetter.type.node.SpecialNode
  * SpecialNode} to the typesetter for passing it down.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;special&rang;
  *        &rarr; {@code \special} {@linkplain
- *           org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
+ *           org.extex.interpreter.TokenSource#scanTokens(Context, boolean, boolean, CodeToken)
  *           &lang;general text&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \special{hello world}  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \special{ps: \abc}  </pre>
- * 
+ *
  * <p>
- * For several back-end drivers for TeX a quasi-standard has emerged which uses a prefix ended by a
+ * For several back-end drivers for TeX a quasi-standard has emerged which
+ * uses a prefix ended by a
  * colon to indicate the back-end driver the special is targeted at.
  * </p>
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Special extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Special(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Special( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String text =
-                source.scanUnprotectedTokens(context, true, false, getToken())
-                    .toText();
-        typesetter.add(new SpecialNode(text));
-    }
+    String text =
+        source.scanUnprotectedTokens( context, true, false, getToken() )
+              .toText();
+    typesetter.add( new SpecialNode( text ) );
+  }
 
 }

@@ -25,48 +25,48 @@ import org.extex.core.exception.GeneralException;
  * This is the base class for all exceptions thrown by the scanner.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ScannerException extends GeneralException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
 
-    public ScannerException() {
+  public ScannerException() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the textual representation
-     */
-    public ScannerException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the textual representation
+   */
+  public ScannerException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the textual representation
-     * @param cause the root of all evil
-     */
-    public ScannerException(String message, Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the textual representation
+   * @param cause   the root of all evil
+   */
+  public ScannerException( String message, Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the root of all evil
-     */
-    public ScannerException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the root of all evil
+   */
+  public ScannerException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
 }

@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -30,46 +30,45 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * This is a derived class to differentiate options from normal integers.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TIntegerOption extends AbstractToken {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     * @param name the name of the option
-     * 
-     * @throws ExBibIllegalValueException in case that the string does not
-     *         contain a valid number
-     */
-    public TIntegerOption(String name, Locator locator)
-            throws ExBibIllegalValueException {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   * @param name    the name of the option
+   * @throws ExBibIllegalValueException in case that the string does not
+   *                                    contain a valid number
+   */
+  public TIntegerOption( String name, Locator locator )
+      throws ExBibIllegalValueException {
 
-        super(name, locator);
+    super( name, locator );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibIllegalValueException {
+
+    Token value = processor.getOption( getValue(), TokenFactory.T_ZERO );
+    if( !(value instanceof TInteger) ) {
+      value = TokenFactory.T_ZERO;
     }
+    processor.push( value );
+  }
 
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibIllegalValueException {
+  /**
+   * java.lang.Object[])
+   */
+  public void visit( TokenVisitor visitor, Object... args )
+      throws ExBibException {
 
-        Token value = processor.getOption(getValue(), TokenFactory.T_ZERO);
-        if (!(value instanceof TInteger)) {
-            value = TokenFactory.T_ZERO;
-        }
-        processor.push(value);
-    }
-
-    /**
-*      java.lang.Object[])
-     */
-    public void visit(TokenVisitor visitor, Object... args)
-            throws ExBibException {
-
-        visitor.visitIntegerOption(this, args);
-    }
+    visitor.visitIntegerOption( this, args );
+  }
 
 }

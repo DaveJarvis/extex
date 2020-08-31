@@ -28,26 +28,26 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 /**
  * This interface describes the ability to convert a Unicode character into a
  * CharNode.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface CharNodeBuilder {
 
-    /**
-     * Create a node for a Unicode character. Note that the result can either be
-     * a simple {@link CharNode} or a
-     * {@link org.extex.typesetter.type.node.VirtualCharNode VirtualCharNode}.
-     * In the latter case a composition of several components can be contained.
-     * 
-     * @param uc the Unicode character
-     * @param tc the default typesetting context to use
-     * @param factory the factory to acquire new nodes from
-     * @param tcFactory the factor for new typesetting contexts
-     * 
-     * @return the node for the character or {@code null} if none can be
-     *         determined
-     */
-    CharNode buildCharNode(UnicodeChar uc, TypesettingContext tc,
-            NodeFactory factory, TypesettingContextFactory tcFactory);
+  /**
+   * Create a node for a Unicode character. Note that the result can either be
+   * a simple {@link CharNode} or a
+   * {@link org.extex.typesetter.type.node.VirtualCharNode VirtualCharNode}.
+   * In the latter case a composition of several components can be contained.
+   *
+   * @param uc        the Unicode character
+   * @param tc        the default typesetting context to use
+   * @param factory   the factory to acquire new nodes from
+   * @param tcFactory the factor for new typesetting contexts
+   * @return the node for the character or {@code null} if none can be
+   * determined
+   */
+  CharNode buildCharNode( UnicodeChar uc, TypesettingContext tc,
+                          NodeFactory factory,
+                          TypesettingContextFactory tcFactory );
 
 }

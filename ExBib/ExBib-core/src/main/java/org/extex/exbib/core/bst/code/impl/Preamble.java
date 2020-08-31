@@ -29,59 +29,60 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code preamble$}
  * <p>
  * This function takes the collected preamble from the database and pushes it as
  * string onto the stack.
  * </p>
  * <img src="doc-files/preamble.png" alt="preamble">
- * 
+ *
  * <pre>
  *   preamble$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation:</dt>
  * <dd>Pushes onto the stack the concatenation of all the
  * {@code {@literal @PREAMBLE}} strings read from the database files.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Preamble extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public Preamble() {
+  /**
+   * Create a new object.
+   */
+  public Preamble() {
 
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Preamble( String name ) {
+
+    super( name );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  @Override
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    StringBuilder sb = new StringBuilder();
+    for( ValueItem item : processor.getDB().getPreamble() ) {
+      item.expand( sb, processor.getDB() );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Preamble(String name) {
-
-        super(name);
-    }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    @Override
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        StringBuilder sb = new StringBuilder();
-        for (ValueItem item : processor.getDB().getPreamble()) {
-            item.expand(sb, processor.getDB());
-        }
-
-        processor.push(new TString(sb.toString(), locator));
-    }
+    processor.push( new TString( sb.toString(), locator ) );
+  }
 }

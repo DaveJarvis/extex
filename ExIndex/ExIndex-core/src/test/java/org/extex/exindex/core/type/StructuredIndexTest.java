@@ -19,10 +19,6 @@
 
 package org.extex.exindex.core.type;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.StringWriter;
-
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.type.markup.MarkupTransform;
@@ -32,172 +28,175 @@ import org.extex.exindex.core.type.transform.Capitalize;
 import org.extex.exindex.core.type.transform.Upcase;
 import org.junit.Test;
 
+import java.io.StringWriter;
+
+import static org.junit.Assert.assertEquals;
+
 /**
  * This is a test suite for {@link StructuredIndex}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class StructuredIndexTest {
 
-    /**
-     * Add an item to an index.
-     * 
-     * @param index the index
-     * @param arg the name of the item to add
-     * 
-     * @throws IndexerException in case of an error
-     */
-    private void fillLetterGroup(StructuredIndex index, String arg)
-            throws IndexerException {
+  /**
+   * Add an item to an index.
+   *
+   * @param index the index
+   * @param arg   the name of the item to add
+   * @throws IndexerException in case of an error
+   */
+  private void fillLetterGroup( StructuredIndex index, String arg )
+      throws IndexerException {
 
-        RawIndexentry ie =
-                new RawIndexentry("", new String[]{arg}, new String[]{arg},
-                    new LocationReference("", "123"));
-        ie.setSortKey(new String[]{arg});
-        index.store(ie);
-    }
+    RawIndexentry ie =
+        new RawIndexentry( "", new String[]{arg}, new String[]{arg},
+                           new LocationReference( "", "123" ) );
+    ie.setSortKey( new String[]{arg} );
+    index.store( ie );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testWrite1() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testWrite1() throws Exception {
 
-        Indexer indexer = new Indexer();
-        indexer.load("src/test/resources/xindy/makeidx.xdy");
+    Indexer indexer = new Indexer();
+    indexer.load( "src/test/resources/xindy/makeidx.xdy" );
 
-        StructuredIndex index = indexer.getContainer().getCurrentIndex();
-        index.defineLetterGroup("a", "a");
-        fillLetterGroup(index, "a");
-        index.defineLetterGroup("b", "b");
-        fillLetterGroup(index, "b");
+    StructuredIndex index = indexer.getContainer().getCurrentIndex();
+    index.defineLetterGroup( "a", "a" );
+    fillLetterGroup( index, "a" );
+    index.defineLetterGroup( "b", "b" );
+    fillLetterGroup( index, "b" );
 
-        StringWriter writer = new StringWriter();
-        index.write(writer, indexer, false);
-        writer.flush();
+    StringWriter writer = new StringWriter();
+    index.write( writer, indexer, false );
+    writer.flush();
 
-        assertEquals("\\begin{theindex}\n\n" + "  \\item a123\n" + "\n"
-                + "  \\indexspace\n\n" + "  \\item b123\n" + "\n"
-                + "\\end{theindex}\n" + "", writer.toString());
-    }
+    assertEquals( "\\begin{theindex}\n\n" + "  \\item a123\n" + "\n"
+                      + "  \\indexspace\n\n" + "  \\item b123\n" + "\n"
+                      + "\\end{theindex}\n" + "", writer.toString() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testWrite2() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testWrite2() throws Exception {
 
-        Indexer indexer = new Indexer();
-        indexer.load("src/test/resources/xindy/makeidx.xdy");
+    Indexer indexer = new Indexer();
+    indexer.load( "src/test/resources/xindy/makeidx.xdy" );
 
-        StructuredIndex index = indexer.getContainer().getCurrentIndex();
-        index.defineLetterGroup("a", "a");
-        fillLetterGroup(index, "a");
-        index.defineLetterGroup("b", "b");
-        fillLetterGroup(index, "b");
+    StructuredIndex index = indexer.getContainer().getCurrentIndex();
+    index.defineLetterGroup( "a", "a" );
+    fillLetterGroup( index, "a" );
+    index.defineLetterGroup( "b", "b" );
+    fillLetterGroup( index, "b" );
 
-        MarkupTransform mt = new MarkupTransform("LETTER-GROUP");
-        mt.set("a", "", "", ">", "", false);
-        index.setMarkup("markup-letter-group", mt);
-        mt.set("b", "", "", ">>", "", false);
-        index.setMarkup("markup-letter-group", mt);
+    MarkupTransform mt = new MarkupTransform( "LETTER-GROUP" );
+    mt.set( "a", "", "", ">", "", false );
+    index.setMarkup( "markup-letter-group", mt );
+    mt.set( "b", "", "", ">>", "", false );
+    index.setMarkup( "markup-letter-group", mt );
 
-        StringWriter writer = new StringWriter();
-        index.write(writer, indexer, false);
-        writer.flush();
+    StringWriter writer = new StringWriter();
+    index.write( writer, indexer, false );
+    writer.flush();
 
-        assertEquals("\\begin{theindex}\n"
-                + ">a\n"
-                + "  \\item a123\n"
-                + "\n" + "  \\indexspace\n"
-                + ">>b\n"
-                + "  \\item b123\n"
-                + "\n"
-                + "\\end{theindex}\n", writer.toString());
-    }
+    assertEquals( "\\begin{theindex}\n"
+                      + ">a\n"
+                      + "  \\item a123\n"
+                      + "\n" + "  \\indexspace\n"
+                      + ">>b\n"
+                      + "  \\item b123\n"
+                      + "\n"
+                      + "\\end{theindex}\n", writer.toString() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testWrite3() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testWrite3() throws Exception {
 
-        Indexer indexer = new Indexer();
-        indexer.load("src/test/resources/xindy/makeidx.xdy");
+    Indexer indexer = new Indexer();
+    indexer.load( "src/test/resources/xindy/makeidx.xdy" );
 
-        StructuredIndex index = indexer.getContainer().getCurrentIndex();
-        index.defineLetterGroup("a", "a");
-        fillLetterGroup(index, "a");
-        index.defineLetterGroup("b", "b");
-        fillLetterGroup(index, "b");
+    StructuredIndex index = indexer.getContainer().getCurrentIndex();
+    index.defineLetterGroup( "a", "a" );
+    fillLetterGroup( index, "a" );
+    index.defineLetterGroup( "b", "b" );
+    fillLetterGroup( index, "b" );
 
-        MarkupTransform mt = new MarkupTransform("LETTER-GROUP");
-        mt.set("a", "", "", ">", "", false);
-        mt.setTransform("a", new Upcase());
-        index.setMarkup("markup-letter-group", mt);
-        mt.set("b", "", "", ">>", "", false);
-        index.setMarkup("markup-letter-group", mt);
+    MarkupTransform mt = new MarkupTransform( "LETTER-GROUP" );
+    mt.set( "a", "", "", ">", "", false );
+    mt.setTransform( "a", new Upcase() );
+    index.setMarkup( "markup-letter-group", mt );
+    mt.set( "b", "", "", ">>", "", false );
+    index.setMarkup( "markup-letter-group", mt );
 
-        StringWriter writer = new StringWriter();
-        index.write(writer, indexer, false);
-        writer.flush();
+    StringWriter writer = new StringWriter();
+    index.write( writer, indexer, false );
+    writer.flush();
 
-        assertEquals("\\begin{theindex}\n"
-                + ">A\n"
-                + "  \\item a123\n"
-                + "\n" + "  \\indexspace\n"
-                + ">>b\n"
-                + "  \\item b123\n"
-                + "\n"
-                + "\\end{theindex}\n", writer.toString());
-    }
+    assertEquals( "\\begin{theindex}\n"
+                      + ">A\n"
+                      + "  \\item a123\n"
+                      + "\n" + "  \\indexspace\n"
+                      + ">>b\n"
+                      + "  \\item b123\n"
+                      + "\n"
+                      + "\\end{theindex}\n", writer.toString() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testWrite4() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testWrite4() throws Exception {
 
-        Indexer indexer = new Indexer();
-        indexer.load("src/test/resources/xindy/makeidx.xdy");
+    Indexer indexer = new Indexer();
+    indexer.load( "src/test/resources/xindy/makeidx.xdy" );
 
-        StructuredIndex index = indexer.getContainer().getCurrentIndex();
-        index.defineLetterGroup("a", "a");
-        fillLetterGroup(index, "a");
-        index.defineLetterGroup("b", "b");
-        fillLetterGroup(index, "b");
+    StructuredIndex index = indexer.getContainer().getCurrentIndex();
+    index.defineLetterGroup( "a", "a" );
+    fillLetterGroup( index, "a" );
+    index.defineLetterGroup( "b", "b" );
+    fillLetterGroup( index, "b" );
 
-        MarkupTransform mt = new MarkupTransform("LETTER-GROUP");
-        mt.set("a", "", "", ">", "", false);
-        mt.setTransform("a", new Capitalize());
-        index.setMarkup("markup-letter-group", mt);
-        mt.set("b", "", "", ">>", "", false);
-        index.setMarkup("markup-letter-group", mt);
+    MarkupTransform mt = new MarkupTransform( "LETTER-GROUP" );
+    mt.set( "a", "", "", ">", "", false );
+    mt.setTransform( "a", new Capitalize() );
+    index.setMarkup( "markup-letter-group", mt );
+    mt.set( "b", "", "", ">>", "", false );
+    index.setMarkup( "markup-letter-group", mt );
 
-        StringWriter writer = new StringWriter();
-        index.write(writer, indexer, false);
+    StringWriter writer = new StringWriter();
+    index.write( writer, indexer, false );
 
-        writer.flush();
-        assertEquals("\\begin{theindex}\n"
-                + ">A\n"
-                + "  \\item a123\n"
-                + "\n" + "  \\indexspace\n"
-                + ">>b\n"
-                + "  \\item b123\n"
-                + "\n"
-                + "\\end{theindex}\n", writer.toString());
-    }
+    writer.flush();
+    assertEquals( "\\begin{theindex}\n"
+                      + ">A\n"
+                      + "  \\item a123\n"
+                      + "\n" + "  \\indexspace\n"
+                      + ">>b\n"
+                      + "  \\item b123\n"
+                      + "\n"
+                      + "\\end{theindex}\n", writer.toString() );
+  }
 
 }

@@ -19,9 +19,6 @@
 
 package org.extex.exbib.core.name;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.exbib.core.bst.exception.ExBibNoNameCommasException;
 import org.extex.exbib.core.bst.exception.ExBibNoNameException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
@@ -29,15 +26,19 @@ import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.framework.i18n.LocalizerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class represents a single name. It also contains utility methods to deal
  * with name lists.
- * 
+ *
  * <h2>Name Components</h2>
- * 
+ *
  * <p>
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X uses four components for names. Any name is analyzed and
  * decomposed into the four parts. The following parts of names are considered:
  * </p>
@@ -55,7 +56,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <dd>The junior part of a name is an addition appended to the name. This part
  * is optional.</dd>
  * </dl>
- * 
+ *
  * <p>
  * The parts are separated by white space. This whitespace is only considered if
  * it occurs at brace level 0. Thus the grouping with braces is honored. It can
@@ -65,18 +66,18 @@ import org.extex.framework.i18n.LocalizerFactory;
  * Any part can consist of several words. Commas can be used to structure a
  * name. Thus we will use the number of commas for the analysis as well.
  * </p>
- * 
+ *
  * <p>No Commas</p>
- * 
+ *
  * <p>
  * If a name does not contain a comma then the following pattern is used to
  * determine the parts of the name:
  * </p>
- * 
+ *
  * <pre>
- *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>first</i>&gt;* &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt;* &lt;<i>jr</i>&gt;* 
+ *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>first</i>&gt;* &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt;* &lt;<i>jr</i>&gt;*
  * </pre>
- * 
+ *
  * <p>
  * The name parts <em>first</em> and <em>last</em> consist of words for which
  * the first letter is an uppercase letter. The name parts <em>von</em> and
@@ -98,22 +99,23 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <span>Donald Ervin</span> <b>Knuth</b><br>
  * <span>Johannes Chrysostomus Wolfgangus Theophilus</span> <b>Mozart</b><br>
  * <span>Ludwig</span> <i>van</i> <b>Beethoven</b><br>
- * <span>Otto Eduard Leopold</span> <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b><br>
+ * <span>Otto Eduard Leopold</span> <i>von</i> <b>Bismarck-Sch&ouml;
+ * nhausen</b><br>
  * <span>Miguel</span> <i>de</i> <b>Cervantes Saavedra</b><br>
  * <span>Sammy</span> <b>Davis</b> <u>jr.</u><br>
  * <span>Don Quixote</span> <i>de la</i> <b>Mancha</b> </div>
- * 
+ *
  * <p>One Comma</p>
  * <p>
  * If a name does not contain a comma then the following pattern is used to
  * determine the parts of the name:
  * </p>
- * 
+ *
  * <pre>
  *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt; {@code ,} &lt;<i>first</i>&gt;*
  *          |  &lt;<i>first</i>&gt;* &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt; {@code ,} &lt;<i>jr</i>&gt;*
  * </pre>
- * 
+ *
  * <p>
  * The name parts <em>first</em> and <em>last</em> consist of words for which
  * the first letter is an uppercase letter. The name parts <em>von</em> and
@@ -129,21 +131,22 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <b>Knuth</b>, <span>Donald Ervin</span> <br>
  * <b>Mozart</b>, <span>Johannes Chrysostomus Wolfgangus Theophilus</span> <br>
  * <b>Beethoven</b>, <span>Ludwig</span> <i>van</i> <br>
- * <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b>, <span>Otto Eduard Leopold</span> <br>
+ * <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b>, <span>Otto Eduard
+ * Leopold</span> <br>
  * <i>de</i> <b>Cervantes Saavedra</b>, <span>Miguel</span> <br>
  * <span>Sammy</span> <b>Davis</b>, <u>Jr.</u> </div>
- * 
+ *
  * <p>Two Commas</p>
  * <p>
  * If a name does contain two commas then the following pattern is used to
  * determine the parts of the name:
  * </p>
- * 
+ *
  * <pre>
  *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>last</i>&gt;* &lt;<i
  *   >von</i>&gt;* {@code ,} &lt;<i>jr</i>&gt;* {@code ,} &lt;<i>first</i>&gt;*
  * </pre>
- * 
+ *
  * <p>
  * The name parts <em>first</em> and <em>last</em> consist of words for which
  * the first letter is an uppercase letter. The name parts <em>von</em> and
@@ -157,13 +160,13 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * <div style="margin-left:2em;"> <b>Davis</b>, <u>Jr.</u>, <span>Sammy</span>
  * </div>
- * 
+ *
  * <p>More Commas</p>
  * <p>
  * More than two commas are not understood by the name parsing in
  * ??Bib.
  * </p>
- * 
+ *
  * <h2>Name Lists</h2>
  * <p>
  * Names usually come in bibliographies as single names or as lists of names.
@@ -189,560 +192,563 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * The formal syntax is as follows:
  * </p>
- * 
+ *
  * <pre>
  *   &lt;<i>name list</i>&gt; &equiv; &lt;<i>name</i>&gt;
  *               | &lt;<i>name list</i>&gt; {@code  and } &lt;<i>name</i>&gt;
  *               | &lt;<i>name list</i>&gt; {@code  and others}
  * </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Name {
 
+  /**
+   * Classify the name constituents.
+   */
+  private enum Type {
     /**
-     * Classify the name constituents.
+     * The field {@code FIRST} contains the type for the first name.
      */
-    private enum Type {
-        /**
-         * The field {@code FIRST} contains the type for the first name.
-         */
-        FIRST {
+    FIRST {
+      /**
+       *      java.util.List, java.util.List, java.util.List,
+       *      java.util.List)
+       */
+      @Override
+      void store( String s, List<String> f, List<String> v,
+                  List<String> l, List<String> j ) {
 
-            /**
-        *      java.util.List, java.util.List, java.util.List,
-             *      java.util.List)
-             */
-            @Override
-            void store(String s, List<String> f, List<String> v,
-                    List<String> l, List<String> j) {
+        f.add( s );
+      }
+    },
+    /**
+     * The field {@code VON} contains the type for the von part.
+     */
+    VON {
+      /**
+       *      java.util.List, java.util.List, java.util.List,
+       *      java.util.List)
+       */
+      @Override
+      void store( String s, List<String> f, List<String> v,
+                  List<String> l, List<String> j ) {
 
-                f.add(s);
-            }
-        },
-        /**
-         * The field {@code VON} contains the type for the von part.
-         */
-        VON {
+        v.add( s );
+      }
+    },
+    /**
+     * The field {@code LAST} contains the type for the last name.
+     */
+    LAST {
+      /**
+       *      java.util.List, java.util.List, java.util.List,
+       *      java.util.List)
+       */
+      @Override
+      void store( String s, List<String> f, List<String> v,
+                  List<String> l, List<String> j ) {
 
-            /**
-        *      java.util.List, java.util.List, java.util.List,
-             *      java.util.List)
-             */
-            @Override
-            void store(String s, List<String> f, List<String> v,
-                    List<String> l, List<String> j) {
+        l.add( s );
+      }
+    },
+    /**
+     * The field {@code JR} contains the type for the jr part.
+     */
+    JR {
+      /**
+       *      java.util.List, java.util.List, java.util.List,
+       *      java.util.List)
+       */
+      @Override
+      void store( String s, List<String> f, List<String> v,
+                  List<String> l, List<String> j ) {
 
-                v.add(s);
-            }
-        },
-        /**
-         * The field {@code LAST} contains the type for the last name.
-         */
-        LAST {
+        j.add( s );
+      }
+    },
+    /**
+     * The field {@code COMMA} contains the type for the comma.
+     */
+    COMMA {
+      /**
+       *      java.util.List, java.util.List, java.util.List,
+       *      java.util.List)
+       */
+      @Override
+      void store( String s, List<String> f, List<String> v,
+                  List<String> l, List<String> j ) {
 
-            /**
-        *      java.util.List, java.util.List, java.util.List,
-             *      java.util.List)
-             */
-            @Override
-            void store(String s, List<String> f, List<String> v,
-                    List<String> l, List<String> j) {
+        // ignore
+      }
+    };
 
-                l.add(s);
-            }
-        },
-        /**
-         * The field {@code JR} contains the type for the jr part.
-         */
-        JR {
-
-            /**
-        *      java.util.List, java.util.List, java.util.List,
-             *      java.util.List)
-             */
-            @Override
-            void store(String s, List<String> f, List<String> v,
-                    List<String> l, List<String> j) {
-
-                j.add(s);
-            }
-        },
-        /**
-         * The field {@code COMMA} contains the type for the comma.
-         */
-        COMMA {
-
-            /**
-        *      java.util.List, java.util.List, java.util.List,
-             *      java.util.List)
-             */
-            @Override
-            void store(String s, List<String> f, List<String> v,
-                    List<String> l, List<String> j) {
-
-                // ignore
-            }
-        };
-
-        /**
-         * Store a value in one of the given lists.
-         * 
-         * @param s the value to store
-         * @param firstPart the list of first parts
-         * @param vonPart the list of von parts
-         * @param lastPart the list of last parts
-         * @param jrPart the list of jr parts
-         */
-        abstract void store(String s, List<String> firstPart,
-                List<String> vonPart, List<String> lastPart, List<String> jrPart);
-    }
+    /**
+     * Store a value in one of the given lists.
+     *
+     * @param s         the value to store
+     * @param firstPart the list of first parts
+     * @param vonPart   the list of von parts
+     * @param lastPart  the list of last parts
+     * @param jrPart    the list of jr parts
+     */
+    abstract void store( String s, List<String> firstPart,
+                         List<String> vonPart, List<String> lastPart,
+                         List<String> jrPart );
+  }
 
   /**
-     * Parses a string of names separated by the string "and" enclosed in
-     * whitespace at brace level 0. The last name can be the string "others"
-     * which is otherwise rejected as name.
-     * 
-     * @param names the string of names to parse
-     * @param locator the locator
-     * 
-     * @return the list of names found
-     * 
-     * @throws ExBibSyntaxException in case that there are too many commas
-     * @throws ExBibNoNameException in case that a substring which should be a
-     *         name could not be parsed as such
-     * @throws ExBibImpossibleException in case that a programming error is
-     *         detected
-     */
-    public static List<Name> parse(String names, Locator locator)
-            throws ExBibSyntaxException,
-                ExBibNoNameException,
-                ExBibImpossibleException {
+   * Parses a string of names separated by the string "and" enclosed in
+   * whitespace at brace level 0. The last name can be the string "others"
+   * which is otherwise rejected as name.
+   *
+   * @param names   the string of names to parse
+   * @param locator the locator
+   * @return the list of names found
+   * @throws ExBibSyntaxException     in case that there are too many commas
+   * @throws ExBibNoNameException     in case that a substring which should be a
+   *                                  name could not be parsed as such
+   * @throws ExBibImpossibleException in case that a programming error is
+   *                                  detected
+   */
+  public static List<Name> parse( String names, Locator locator )
+      throws ExBibSyntaxException,
+      ExBibNoNameException,
+      ExBibImpossibleException {
 
-        List<Name> result = new ArrayList<Name>();
-        int start = 0;
-        int level = 0;
-        int len = names.length();
+    List<Name> result = new ArrayList<Name>();
+    int start = 0;
+    int level = 0;
+    int len = names.length();
 
-        while (start < len && Character.isWhitespace(names.charAt(start))) {
-            start++;
-        }
-
-        for (int i = start; i < len; i++) {
-            char c = names.charAt(i);
-
-            if (Character.isWhitespace(c) && level == 0) {
-                if (i < names.length() - 4
-                        && (names.charAt(i + 1) == 'a' || names.charAt(i + 1) == 'A')
-                        && (names.charAt(i + 2) == 'n' || names.charAt(i + 2) == 'N')
-                        && (names.charAt(i + 3) == 'd' || names.charAt(i + 3) == 'D')
-                        && Character.isWhitespace(names.charAt(i + 4))) {
-                    result.add(new Name(names.substring(start, i), locator));
-                    i += 4;
-                    start = i + 1;
-                }
-            } else if (c == '{') {
-                level++;
-            } else if (c == '}') {
-                level--;
-            }
-        }
-
-        if (start < len) {
-            String s = names.substring(start);
-            if ("others".equals(s)) {
-                result.add(new Name(s));
-            } else {
-                result.add(new Name(s, locator));
-            }
-        }
-        return result;
+    while( start < len && Character.isWhitespace( names.charAt( start ) ) ) {
+      start++;
     }
 
-    /**
-     * The field {@code first} contains the list of first name parts.
-     */
-    private final List<String> first = new ArrayList<String>();
+    for( int i = start; i < len; i++ ) {
+      char c = names.charAt( i );
 
-    /**
-     * The field {@code jr} contains the list of jr name parts.
-     */
-    private final List<String> jr = new ArrayList<String>();
-
-    /**
-     * The field {@code last} contains the list of last name parts.
-     */
-    private final List<String> last = new ArrayList<String>();
-
-    /**
-     * The field {@code von} contains the list of von name parts.
-     */
-    private final List<String> von = new ArrayList<String>();
-
-    /**
-     * Creates a new object and fill the last name with the given string.
-     * 
-     * @param name the complete string representation of the name
-     */
-    private Name(String name) {
-
-        last.add(name);
+      if( Character.isWhitespace( c ) && level == 0 ) {
+        if( i < names.length() - 4
+            && (names.charAt( i + 1 ) == 'a' || names.charAt( i + 1 ) == 'A')
+            && (names.charAt( i + 2 ) == 'n' || names.charAt( i + 2 ) == 'N')
+            && (names.charAt( i + 3 ) == 'd' || names.charAt( i + 3 ) == 'D')
+            && Character.isWhitespace( names.charAt( i + 4 ) ) ) {
+          result.add( new Name( names.substring( start, i ), locator ) );
+          i += 4;
+          start = i + 1;
+        }
+      }
+      else if( c == '{' ) {
+        level++;
+      }
+      else if( c == '}' ) {
+        level--;
+      }
     }
 
-    /**
-     * Creates a new object and fills it with the attributes from a string. For
-     * this purpose the string is parsed to determine its constituents.
-     * 
-     * @param name the complete string representation of the name
-     * @param locator the locator
-     * 
-     * @throws ExBibNoNameException in case that no name could be identified
-     * @throws ExBibSyntaxException in case of a syntax error while parsing a
-     *         name: there are too many commas
-     * @throws ExBibImpossibleException in case that a programming error is
-     *         detected
-     */
-    public Name(String name, Locator locator)
-            throws ExBibNoNameException,
-                ExBibImpossibleException,
-                ExBibSyntaxException {
+    if( start < len ) {
+      String s = names.substring( start );
+      if( "others".equals( s ) ) {
+        result.add( new Name( s ) );
+      }
+      else {
+        result.add( new Name( s, locator ) );
+      }
+    }
+    return result;
+  }
 
-        scan(name, locator);
+  /**
+   * The field {@code first} contains the list of first name parts.
+   */
+  private final List<String> first = new ArrayList<String>();
+
+  /**
+   * The field {@code jr} contains the list of jr name parts.
+   */
+  private final List<String> jr = new ArrayList<String>();
+
+  /**
+   * The field {@code last} contains the list of last name parts.
+   */
+  private final List<String> last = new ArrayList<String>();
+
+  /**
+   * The field {@code von} contains the list of von name parts.
+   */
+  private final List<String> von = new ArrayList<String>();
+
+  /**
+   * Creates a new object and fill the last name with the given string.
+   *
+   * @param name the complete string representation of the name
+   */
+  private Name( String name ) {
+
+    last.add( name );
+  }
+
+  /**
+   * Creates a new object and fills it with the attributes from a string. For
+   * this purpose the string is parsed to determine its constituents.
+   *
+   * @param name    the complete string representation of the name
+   * @param locator the locator
+   * @throws ExBibNoNameException     in case that no name could be identified
+   * @throws ExBibSyntaxException     in case of a syntax error while
+   * parsing a
+   *                                  name: there are too many commas
+   * @throws ExBibImpossibleException in case that a programming error is
+   *                                  detected
+   */
+  public Name( String name, Locator locator )
+      throws ExBibNoNameException,
+      ExBibImpossibleException,
+      ExBibSyntaxException {
+
+    scan( name, locator );
+  }
+
+  /**
+   * Parse a name containing no separating commas. Those follow the following
+   * pattern:
+   *
+   * <pre>
+   *   f*v*l+j*
+   * </pre>
+   *
+   * @param type    the buffer containing the type information of the
+   *                constituents
+   * @param locator the locator
+   * @param name    the name for error messages
+   * @throws ExBibNoNameException in case that the given string list does not
+   *                              constitute a name
+   */
+  private void classify0( List<Type> type, Locator locator, String name )
+      throws ExBibNoNameException {
+
+    int len = type.size();
+    int i;
+
+    if( len == 1 ) {
+      if( type.get( 0 ) == Type.VON ) {
+        throw new ExBibNoNameException( name, locator );
+      }
+      type.set( 0, Type.LAST );
+      return;
     }
 
-    /**
-     * Parse a name containing no separating commas. Those follow the following
-     * pattern:
-     * 
-     * <pre>
-     *   f*v*l+j*
-     * </pre>
-     * 
-     * @param type the buffer containing the type information of the
-     *        constituents
-     * @param locator the locator
-     * @param name the name for error messages
-     * 
-     * @throws ExBibNoNameException in case that the given string list does not
-     *         constitute a name
-     */
-    private void classify0(List<Type> type, Locator locator, String name)
-            throws ExBibNoNameException {
-
-        int len = type.size();
-        int i;
-
-        if (len == 1) {
-            if (type.get(0) == Type.VON) {
-                throw new ExBibNoNameException(name, locator);
-            }
-            type.set(0, Type.LAST);
-            return;
-        }
-
-        for (i = len - 1; i >= 0 && type.get(i) == Type.VON; i--) {
-            type.set(i, Type.JR);
-        }
-
-        i = type.lastIndexOf(Type.VON);
-
-        if (i >= 0) {
-            for (i++; i < len && type.get(i) == Type.FIRST; i++) {
-                type.set(i, Type.LAST);
-            }
-            if (type.get(i - 1) != Type.LAST || type.indexOf(Type.LAST) < 0) {
-                throw new ExBibNoNameException(name, locator);
-            }
-        } else {
-            i = type.lastIndexOf(Type.FIRST);
-
-            if (i < 0) {
-                throw new ExBibNoNameException(name, locator);
-            }
-
-            type.set(i, Type.LAST);
-        }
+    for( i = len - 1; i >= 0 && type.get( i ) == Type.VON; i-- ) {
+      type.set( i, Type.JR );
     }
 
-    /**
-     * Parse a name containing one separating comma. Those follow the following
-     * patterns:
-     * 
-     * <pre>
-     * v*l+,f*
-     * f*v*l+,j*
-     * </pre>
-     * 
-     * @param type the buffer containing the type information of the
-     *        constituents
-     * @param locator the locator
-     * @param name the name for error messages
-     * 
-     * @throws ExBibNoNameException in case that the given string list does not
-     *         constitute a name
-     * @throws ExBibImpossibleException in case the comma is not found
-     */
-    private void classify1(List<Type> type, Locator locator, String name)
-            throws ExBibNoNameException,
-                ExBibImpossibleException {
+    i = type.lastIndexOf( Type.VON );
 
-        int index = type.lastIndexOf(Type.COMMA);
-        int len = type.size();
+    if( i >= 0 ) {
+      for( i++; i < len && type.get( i ) == Type.FIRST; i++ ) {
+        type.set( i, Type.LAST );
+      }
+      if( type.get( i - 1 ) != Type.LAST || type.indexOf( Type.LAST ) < 0 ) {
+        throw new ExBibNoNameException( name, locator );
+      }
+    }
+    else {
+      i = type.lastIndexOf( Type.FIRST );
 
-        if (index < 0) {
-            throw new ExBibImpossibleException(LocalizerFactory.getLocalizer(
-                getClass()).format("Comma.not.found"));
-        } else if (index == len - 1) {
-            throw new ExBibNoNameException(name, locator);
+      if( i < 0 ) {
+        throw new ExBibNoNameException( name, locator );
+      }
 
-        }
+      type.set( i, Type.LAST );
+    }
+  }
 
-        boolean j = false;
-        boolean l = false;
+  /**
+   * Parse a name containing one separating comma. Those follow the following
+   * patterns:
+   *
+   * <pre>
+   * v*l+,f*
+   * f*v*l+,j*
+   * </pre>
+   *
+   * @param type    the buffer containing the type information of the
+   *                constituents
+   * @param locator the locator
+   * @param name    the name for error messages
+   * @throws ExBibNoNameException     in case that the given string list does
+   * not
+   *                                  constitute a name
+   * @throws ExBibImpossibleException in case the comma is not found
+   */
+  private void classify1( List<Type> type, Locator locator, String name )
+      throws ExBibNoNameException,
+      ExBibImpossibleException {
 
-        for (int i = index + 1; i < len; i++) {
-            if (type.get(i) == Type.VON) {
-                j = true;
-            } else {
-                l = true;
-            }
-        }
+    int index = type.lastIndexOf( Type.COMMA );
+    int len = type.size();
 
-        if (j && !l) {
-            for (int i = index + 1; i < len; i++) {
-                type.set(i, Type.JR);
-            }
-            if (type.get(index - 1) != Type.FIRST) {
-                throw new ExBibNoNameException(name, locator);
-            }
-            type.set(index - 1, Type.LAST);
-        } else {
-            for (int i = 0; i < index; i++) {
-                type.set(i, type.get(i) == Type.FIRST ? Type.LAST : Type.VON);
-            }
-        }
+    if( index < 0 ) {
+      throw new ExBibImpossibleException( LocalizerFactory.getLocalizer(
+          getClass() ).format( "Comma.not.found" ) );
+    }
+    else if( index == len - 1 ) {
+      throw new ExBibNoNameException( name, locator );
+
     }
 
-    /**
-     * Parse a name containing two separating commas. Those follow the following
-     * pattern:
-     * 
-     * <pre>
-     * v*l+,j+,f*
-     * </pre>
-     * 
-     * @param type the buffer containing the type information of the
-     *        constituents
-     * @param locator the locator
-     * @param name the name for error messages
-     * 
-     * @throws ExBibNoNameException in case that the given string list does not
-     *         constitute a name
-     * @throws ExBibImpossibleException in case the two commas are not found
-     */
-    private void classify2(List<Type> type, Locator locator, String name)
-            throws ExBibNoNameException,
-                ExBibImpossibleException {
+    boolean j = false;
+    boolean l = false;
 
-        int previous = type.indexOf(Type.COMMA);
-
-        if (previous < 0) {
-            throw new ExBibImpossibleException(LocalizerFactory.getLocalizer(
-                getClass()).format("Comma.not.found"));
-        } else if (type.get(type.size() - 1) == Type.COMMA) {
-            throw new ExBibNoNameException(name, locator);
-        }
-
-        for (int i = 0; i < previous; i++) {
-            Type t = type.get(i);
-            type.set(i, t == Type.FIRST ? Type.LAST : Type.VON);
-        }
-
-        for (int i = previous + 1; type.get(i) != Type.COMMA; i++) {
-            type.set(i, Type.JR);
-        }
+    for( int i = index + 1; i < len; i++ ) {
+      if( type.get( i ) == Type.VON ) {
+        j = true;
+      }
+      else {
+        l = true;
+      }
     }
 
-    /**
-     * Getter for the <i>first</i> components.
-     * 
-     * @return the list of the <i>first</i> components
-     */
-    public List<String> getFirst() {
+    if( j && !l ) {
+      for( int i = index + 1; i < len; i++ ) {
+        type.set( i, Type.JR );
+      }
+      if( type.get( index - 1 ) != Type.FIRST ) {
+        throw new ExBibNoNameException( name, locator );
+      }
+      type.set( index - 1, Type.LAST );
+    }
+    else {
+      for( int i = 0; i < index; i++ ) {
+        type.set( i, type.get( i ) == Type.FIRST ? Type.LAST : Type.VON );
+      }
+    }
+  }
 
-        return first;
+  /**
+   * Parse a name containing two separating commas. Those follow the following
+   * pattern:
+   *
+   * <pre>
+   * v*l+,j+,f*
+   * </pre>
+   *
+   * @param type    the buffer containing the type information of the
+   *                constituents
+   * @param locator the locator
+   * @param name    the name for error messages
+   * @throws ExBibNoNameException     in case that the given string list does
+   * not
+   *                                  constitute a name
+   * @throws ExBibImpossibleException in case the two commas are not found
+   */
+  private void classify2( List<Type> type, Locator locator, String name )
+      throws ExBibNoNameException,
+      ExBibImpossibleException {
+
+    int previous = type.indexOf( Type.COMMA );
+
+    if( previous < 0 ) {
+      throw new ExBibImpossibleException( LocalizerFactory.getLocalizer(
+          getClass() ).format( "Comma.not.found" ) );
+    }
+    else if( type.get( type.size() - 1 ) == Type.COMMA ) {
+      throw new ExBibNoNameException( name, locator );
     }
 
-    /**
-     * Getter for the <i>junior</i> components.
-     * 
-     * @return the list of the <i>j</i> components
-     */
-    public List<String> getJr() {
-
-        return jr;
+    for( int i = 0; i < previous; i++ ) {
+      Type t = type.get( i );
+      type.set( i, t == Type.FIRST ? Type.LAST : Type.VON );
     }
 
-    /**
-     * Getter for the <i>last</i> components.
-     * 
-     * @return the list of the <i>last</i> components
-     */
-    public List<String> getLast() {
-
-        return last;
+    for( int i = previous + 1; type.get( i ) != Type.COMMA; i++ ) {
+      type.set( i, Type.JR );
     }
+  }
 
-    /**
-     * Getter for the <i>von</i> components.
-     * 
-     * @return the list of the <i>von</i> components
-     */
-    public List<String> getVon() {
+  /**
+   * Getter for the <i>first</i> components.
+   *
+   * @return the list of the <i>first</i> components
+   */
+  public List<String> getFirst() {
 
-        return von;
-    }
+    return first;
+  }
 
-    /**
-     * Search for the first letter in the argument and determine whether this
-     * character is in upper case. If no letter is found then {@code false}
-     * is returned.
-     * 
-     * @param s the {@link String} to examine
-     * 
-     * @return {@code true} iff the first letter is upper case
-     */
-    private boolean isUpper(String s) {
+  /**
+   * Getter for the <i>junior</i> components.
+   *
+   * @return the list of the <i>j</i> components
+   */
+  public List<String> getJr() {
 
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
+    return jr;
+  }
 
-            if (Character.isUpperCase(c)) {
-                return true;
-            } else if (Character.isLowerCase(c)) {
-                return false;
-            }
-        }
+  /**
+   * Getter for the <i>last</i> components.
+   *
+   * @return the list of the <i>last</i> components
+   */
+  public List<String> getLast() {
 
+    return last;
+  }
+
+  /**
+   * Getter for the <i>von</i> components.
+   *
+   * @return the list of the <i>von</i> components
+   */
+  public List<String> getVon() {
+
+    return von;
+  }
+
+  /**
+   * Search for the first letter in the argument and determine whether this
+   * character is in upper case. If no letter is found then {@code false}
+   * is returned.
+   *
+   * @param s the {@link String} to examine
+   * @return {@code true} iff the first letter is upper case
+   */
+  private boolean isUpper( String s ) {
+
+    for( int i = 0; i < s.length(); i++ ) {
+      char c = s.charAt( i );
+
+      if( Character.isUpperCase( c ) ) {
+        return true;
+      }
+      else if( Character.isLowerCase( c ) ) {
         return false;
+      }
     }
 
-    /**
-     * Parses a name and store the parts in the appropriate internal lists.
-     * 
-     * @param name the name to parse
-     * @param locator the locator
-     * 
-     * @throws ExBibNoNameException in case that no name could be identified
-     * @throws ExBibSyntaxException in case of a syntax error while parsing a
-     *         name: there are too many commas
-     * @throws ExBibImpossibleException in case that a programming error is
-     *         detected
-     */
-    private void scan(String name, Locator locator)
-            throws ExBibNoNameException,
-                ExBibImpossibleException,
-                ExBibSyntaxException {
+    return false;
+  }
 
-        List<String> list = new ArrayList<String>();
-        List<Type> type = new ArrayList<Type>();
-        int start = 0;
-        int level = 0;
-        int commas = 0;
+  /**
+   * Parses a name and store the parts in the appropriate internal lists.
+   *
+   * @param name    the name to parse
+   * @param locator the locator
+   * @throws ExBibNoNameException     in case that no name could be identified
+   * @throws ExBibSyntaxException     in case of a syntax error while parsing a
+   *                                  name: there are too many commas
+   * @throws ExBibImpossibleException in case that a programming error is
+   *                                  detected
+   */
+  private void scan( String name, Locator locator )
+      throws ExBibNoNameException,
+      ExBibImpossibleException,
+      ExBibSyntaxException {
 
-        while (start < name.length()
-                && Character.isWhitespace(name.charAt(start))) {
-            start++; // skip spaces;
-        }
+    List<String> list = new ArrayList<String>();
+    List<Type> type = new ArrayList<Type>();
+    int start = 0;
+    int level = 0;
+    int commas = 0;
 
-        for (int i = start; i < name.length(); i++) {
-            char c = name.charAt(i);
-
-            if (c == '{') {
-                level++;
-            } else if (level == 0) {
-                if (c == ',') {
-                    if (type.size() == 0 && start == i) {
-                        throw new ExBibNoNameException(name, locator);
-                    } else if (start < i) {
-                        String s = name.substring(start, i);
-                        list.add(s);
-                        type.add(isUpper(s) ? Type.FIRST : Type.VON);
-                    }
-
-                    list.add(",");
-                    type.add(Type.COMMA);
-                    start = i + 1;
-                    commas++;
-                } else if (Character.isWhitespace(c)) {
-                    if (start < i) {
-                        String s = name.substring(start, i);
-                        list.add(s);
-                        type.add(isUpper(s) ? Type.FIRST : Type.VON);
-                    }
-
-                    do {
-                        i++;
-                    } while (i < name.length()
-                            && Character.isWhitespace(name.charAt(i)));
-
-                    start = i--;
-                }
-            } else if (c == '}') {
-                level--;
-            }
-        }
-
-        if (start < name.length()) {
-            String s = name.substring(start);
-            list.add(s);
-            type.add(isUpper(s) ? Type.FIRST : Type.VON);
-        }
-
-        switch (commas) {
-            case 0:
-                classify0(type, locator, name);
-                break;
-            case 1:
-                classify1(type, locator, name);
-                break;
-            case 2:
-                classify2(type, locator, name);
-                break;
-            default:
-                throw new ExBibNoNameCommasException(name, locator);
-        }
-
-        for (int i = 0; i < type.size(); i++) {
-            type.get(i).store(list.get(i), first, von, last, jr);
-        }
+    while( start < name.length()
+        && Character.isWhitespace( name.charAt( start ) ) ) {
+      start++; // skip spaces;
     }
 
-@Override
-    public String toString() {
+    for( int i = start; i < name.length(); i++ ) {
+      char c = name.charAt( i );
 
-        StringBuilder sb = new StringBuilder();
+      if( c == '{' ) {
+        level++;
+      }
+      else if( level == 0 ) {
+        if( c == ',' ) {
+          if( type.size() == 0 && start == i ) {
+            throw new ExBibNoNameException( name, locator );
+          }
+          else if( start < i ) {
+            String s = name.substring( start, i );
+            list.add( s );
+            type.add( isUpper( s ) ? Type.FIRST : Type.VON );
+          }
 
-        for (String s : first) {
-            sb.append(s);
-            sb.append(' ');
+          list.add( "," );
+          type.add( Type.COMMA );
+          start = i + 1;
+          commas++;
         }
-        for (String s : von) {
-            sb.append(s);
-            sb.append(' ');
-        }
-        for (String s : last) {
-            sb.append(s);
-            sb.append(' ');
-        }
-        for (String s : jr) {
-            sb.append(s);
-            sb.append(' ');
-        }
+        else if( Character.isWhitespace( c ) ) {
+          if( start < i ) {
+            String s = name.substring( start, i );
+            list.add( s );
+            type.add( isUpper( s ) ? Type.FIRST : Type.VON );
+          }
 
-        sb.deleteCharAt(sb.length() - 1);
-        return sb.toString();
+          do {
+            i++;
+          } while( i < name.length()
+              && Character.isWhitespace( name.charAt( i ) ) );
+
+          start = i--;
+        }
+      }
+      else if( c == '}' ) {
+        level--;
+      }
     }
+
+    if( start < name.length() ) {
+      String s = name.substring( start );
+      list.add( s );
+      type.add( isUpper( s ) ? Type.FIRST : Type.VON );
+    }
+
+    switch( commas ) {
+      case 0:
+        classify0( type, locator, name );
+        break;
+      case 1:
+        classify1( type, locator, name );
+        break;
+      case 2:
+        classify2( type, locator, name );
+        break;
+      default:
+        throw new ExBibNoNameCommasException( name, locator );
+    }
+
+    for( int i = 0; i < type.size(); i++ ) {
+      type.get( i ).store( list.get( i ), first, von, last, jr );
+    }
+  }
+
+  @Override
+  public String toString() {
+
+    StringBuilder sb = new StringBuilder();
+
+    for( String s : first ) {
+      sb.append( s );
+      sb.append( ' ' );
+    }
+    for( String s : von ) {
+      sb.append( s );
+      sb.append( ' ' );
+    }
+    for( String s : last ) {
+      sb.append( s );
+      sb.append( ' ' );
+    }
+    for( String s : jr ) {
+      sb.append( s );
+      sb.append( ' ' );
+    }
+
+    sb.deleteCharAt( sb.length() - 1 );
+    return sb.toString();
+  }
 
 }

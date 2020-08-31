@@ -33,7 +33,7 @@ import org.extex.typesetter.tc.Direction;
 
 /**
  * This class provides an implementation for the primitive {@code \beginR}.
- * 
+ *
  * <p>The Primitive {@code \beginR}</p>
  * <p>
  * The primitive {@code \beginR} indicates that the following text is typeset
@@ -43,56 +43,55 @@ import org.extex.typesetter.tc.Direction;
  * This primitive is deactivated unless the count register {@code \TeXXeTstate}
  * has a positive value.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
- * 
+ *
+ *
  * <pre class="syntax">
  *    &lang;beginR&rang;
  *     &rarr; {@code \beginR} </pre>
- * 
+ *
  * <p>Example:</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \beginR ... \endR </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BeginR extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public BeginR(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public BeginR( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    if( context.getCount( "TeXXeTstate" ).le( Count.ZERO ) ) {
+      throw new ExtensionDisabledException(
+          toText( context ) );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        if (context.getCount("TeXXeTstate").le(Count.ZERO)) {
-            throw new ExtensionDisabledException(
-                toText(context));
-        }
-        context.pushDirection(context.getTypesettingContext().getDirection());
-        context.set(Direction.RL, false);
-    }
+    context.pushDirection( context.getTypesettingContext().getDirection() );
+    context.set( Direction.RL, false );
+  }
 
 }

@@ -1,25 +1,22 @@
 /*
  * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
@@ -33,230 +30,231 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Test suite for {@code add.period$}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AddPeriodTest {
 
-    /**
-     * The field {@code p} contains the processor.
-     */
-    private BstProcessor p = null;
+  /**
+   * The field {@code p} contains the processor.
+   */
+  private BstProcessor p = null;
 
-    /**
-     * Set-up method.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Before
-    public void setUp() throws Exception {
+  /**
+   * Set-up method.
+   *
+   * @throws Exception in case of an error
+   */
+  @Before
+  public void setUp() throws Exception {
 
-        p = new BstInterpreter099c(new DBImpl(), new NullWriter(), null);
-    }
+    p = new BstInterpreter099c( new DBImpl(), new NullWriter(), null );
+  }
 
-    /**
-     * Tear-down method.
-     */
-    @After
-    public void tearDown() {
+  /**
+   * Tear-down method.
+   */
+  @After
+  public void tearDown() {
 
-        p = null;
-    }
+    p = null;
+  }
 
-    /**
-     *  The empty stack leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibStackEmptyException.class)
-    public void testEmptyStack() throws Exception {
+  /**
+   * The empty stack leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibStackEmptyException.class)
+  public void testEmptyStack() throws Exception {
 
-        new AddPeriod("add.period$").execute(p, null, null);
-    }
+    new AddPeriod( "add.period$" ).execute( p, null, null );
+  }
 
-    /**
-     *  An integer gets a period added.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testInteger() throws Exception {
+  /**
+   * An integer gets a period added.
+   *
+   * @throws Exception in case of an error
+   */
+  public void testInteger() throws Exception {
 
-        p.push(new TInteger(123, null));
-        new AddPeriod("add.period$").execute(p, null, null);
-        assertEquals("123.", p.popString(null).getValue());
-    }
+    p.push( new TInteger( 123, null ) );
+    new AddPeriod( "add.period$" ).execute( p, null, null );
+    assertEquals( "123.", p.popString( null ).getValue() );
+  }
 
-    /**
-     * Run a test case where no period is added.
-     * 
-     * @param in the input (and output) string
-     * 
-     * @throws Exception in case of an error
-     */
-    private void testNoAdd(String in) throws Exception {
+  /**
+   * Run a test case where no period is added.
+   *
+   * @param in the input (and output) string
+   * @throws Exception in case of an error
+   */
+  private void testNoAdd( String in ) throws Exception {
 
-        p.push(new TString(in, null));
-        new AddPeriod("add.period$").execute(p, null, null);
-        assertEquals(in, p.popString(null).getValue());
-    }
+    p.push( new TString( in, null ) );
+    new AddPeriod( "add.period$" ).execute( p, null, null );
+    assertEquals( in, p.popString( null ).getValue() );
+  }
 
-    /**
-     *  No period is added to the empty string.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddEmpty() throws Exception {
+  /**
+   * No period is added to the empty string.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddEmpty() throws Exception {
 
-        testNoAdd("");
-    }
+    testNoAdd( "" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is an exclamation mark
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddExclamationMark1() throws Exception {
+  /**
+   * No period is added if the last non-brace character is an exclamation mark
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddExclamationMark1() throws Exception {
 
-        testNoAdd("abc!");
-    }
+    testNoAdd( "abc!" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is an exclamation mark
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddExclamationMark2() throws Exception {
+  /**
+   * No period is added if the last non-brace character is an exclamation mark
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddExclamationMark2() throws Exception {
 
-        testNoAdd("abc!}");
-    }
+    testNoAdd( "abc!}" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is an exclamation mark
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddExclamationMark3() throws Exception {
+  /**
+   * No period is added if the last non-brace character is an exclamation mark
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddExclamationMark3() throws Exception {
 
-        testNoAdd("abc!}}");
-    }
+    testNoAdd( "abc!}}" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is an exclamation mark
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddExclamationMark4() throws Exception {
+  /**
+   * No period is added if the last non-brace character is an exclamation mark
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddExclamationMark4() throws Exception {
 
-        testNoAdd("abc!}}}");
-    }
+    testNoAdd( "abc!}}}" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is a period
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddPeriod1() throws Exception {
+  /**
+   * No period is added if the last non-brace character is a period
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddPeriod1() throws Exception {
 
-        testNoAdd("abc.");
-    }
+    testNoAdd( "abc." );
+  }
 
-    /**
-     * No period is added if the last non-brace character is a period
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddPeriod2() throws Exception {
+  /**
+   * No period is added if the last non-brace character is a period
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddPeriod2() throws Exception {
 
-        testNoAdd("abc.}");
-    }
+    testNoAdd( "abc.}" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is a period
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddPeriod3() throws Exception {
+  /**
+   * No period is added if the last non-brace character is a period
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddPeriod3() throws Exception {
 
-        testNoAdd("abc.}}");
-    }
+    testNoAdd( "abc.}}" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is a period
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddPeriod4() throws Exception {
+  /**
+   * No period is added if the last non-brace character is a period
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddPeriod4() throws Exception {
 
-        testNoAdd("abc.}}}");
-    }
+    testNoAdd( "abc.}}}" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is a question mark
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddQuestionMark1() throws Exception {
+  /**
+   * No period is added if the last non-brace character is a question mark
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddQuestionMark1() throws Exception {
 
-        testNoAdd("abc?");
-    }
+    testNoAdd( "abc?" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is a question mark
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddQuestionMark2() throws Exception {
+  /**
+   * No period is added if the last non-brace character is a question mark
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddQuestionMark2() throws Exception {
 
-        testNoAdd("abc?}");
-    }
+    testNoAdd( "abc?}" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is a question mark
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddQuestionMark3() throws Exception {
+  /**
+   * No period is added if the last non-brace character is a question mark
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddQuestionMark3() throws Exception {
 
-        testNoAdd("abc?}}");
-    }
+    testNoAdd( "abc?}}" );
+  }
 
-    /**
-     * No period is added if the last non-brace character is a question mark
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoAddQuestionMark4() throws Exception {
+  /**
+   * No period is added if the last non-brace character is a question mark
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoAddQuestionMark4() throws Exception {
 
-        testNoAdd("abc?}}}");
-    }
+    testNoAdd( "abc?}}}" );
+  }
 
-    /**
-     *  A period is added if the input consists of text only.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testString() throws Exception {
+  /**
+   * A period is added if the input consists of text only.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testString() throws Exception {
 
-        p.push(new TString("abc", null));
-        new AddPeriod("add.period$").execute(p, null, null);
-        assertTrue(p.popString(null).getValue().equals("abc."));
-    }
+    p.push( new TString( "abc", null ) );
+    new AddPeriod( "add.period$" ).execute( p, null, null );
+    assertTrue( p.popString( null ).getValue().equals( "abc." ) );
+  }
 
 }

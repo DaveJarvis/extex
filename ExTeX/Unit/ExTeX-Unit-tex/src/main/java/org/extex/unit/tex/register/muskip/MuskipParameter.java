@@ -43,174 +43,179 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive {@code \muskip}.
  * It sets the named dimen register to the value given, and as a side effect all
  * prefixes are zeroed.
- * 
+ *
  * <p>
  * Example
  * </p>
- * 
+ *
  * <pre>
  * \muskip=345pt plus 123em
  * </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MuskipParameter extends AbstractAssignment
-        implements
-            MuskipConvertible,
-            Advanceable,
-            Multiplyable,
-            Divideable,
-            Theable {
+    implements
+    MuskipConvertible,
+    Advanceable,
+    Multiplyable,
+    Divideable,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code key} contains the reference key.
-     */
-    private final String key;
+  /**
+   * The field {@code key} contains the reference key.
+   */
+  private final String key;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public MuskipParameter(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public MuskipParameter( CodeToken token ) {
 
-        super(token);
-        this.key = token.getName();
+    super( token );
+    this.key = token.getName();
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   * @param key   the reference key
+   */
+  public MuskipParameter( CodeToken token, String key ) {
+
+    super( token );
+    this.key = key;
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void advance( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String k = getKey( context, source, typesetter );
+    source.getKeyword( context, "by" );
+    Muskip muskip = (Muskip) source.parse( Muskip.class,
+                                           context, source, typesetter );
+    muskip.add( context.getMuskip( k ) );
+    context.setMuskip( k, muskip, prefix.clearGlobal() );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String k = getKey( context, source, typesetter );
+    source.getOptionalEquals( context );
+    Muskip muskip = (Muskip) source.parse( Muskip.class,
+                                           context, source, typesetter );
+    context.setMuskip( k, muskip, prefix.clearGlobal() );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Muskip convertMuskip( Context context, TokenSource source,
+                               Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String k = getKey( context, source, typesetter );
+    return context.getMuskip( k );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void divide( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String k = getKey( context, source, typesetter );
+    source.getKeyword( context, "by" );
+    long value = source.parseInteger( context, source, null );
+
+    if( value == 0 ) {
+      throw new ArithmeticOverflowException( toText( context ) );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     * @param key the reference key
-     */
-    public MuskipParameter(CodeToken token, String key) {
+    Muskip ms = new Muskip( context.getMuskip( k ) );
+    ms.multiply( 1, value );
+    context.setMuskip( k, ms, prefix.clearGlobal() );
+  }
 
-        super(token);
-        this.key = key;
+  /**
+   * Return the key (the number) for the skip register.
+   *
+   * @param context    the interpreter context to use
+   * @param source     the source for the next tokens &ndash; if required
+   * @param typesetter the typesetter
+   * @return the key for the skip register
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    if( Namespace.SUPPORT_NAMESPACE_MUSKIP ) {
+      return context.getNamespace() + "\b" + key;
     }
+    return key;
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void advance(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void multiply( Flags prefix, Context context, TokenSource source,
+                        Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String k = getKey(context, source, typesetter);
-        source.getKeyword(context, "by");
-        Muskip muskip = (Muskip) source.parse(Muskip.class, 
-            context, source, typesetter);
-        muskip.add(context.getMuskip(k));
-        context.setMuskip(k, muskip, prefix.clearGlobal());
+    String k = getKey( context, source, typesetter );
+    source.getKeyword( context, "by" );
+    long value = source.parseInteger( context, source, null );
+
+    Muskip ms = new Muskip( context.getMuskip( k ) );
+    ms.multiply( value, 1 );
+    context.setMuskip( k, ms, prefix.clearGlobal() );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
+
+    String k = getKey( context, source, typesetter );
+    try {
+      return context.getTokenFactory().toTokens(
+          context.getMuskip( k ).toString() );
+    } catch( GeneralException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String k = getKey(context, source, typesetter);
-        source.getOptionalEquals(context);
-        Muskip muskip = (Muskip) source.parse(Muskip.class, 
-            context, source, typesetter);
-        context.setMuskip(k, muskip, prefix.clearGlobal());
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Muskip convertMuskip(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String k = getKey(context, source, typesetter);
-        return context.getMuskip(k);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void divide(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String k = getKey(context, source, typesetter);
-        source.getKeyword(context, "by");
-        long value = source.parseInteger(context, source, null);
-
-        if (value == 0) {
-            throw new ArithmeticOverflowException(toText(context));
-        }
-
-        Muskip ms = new Muskip(context.getMuskip(k));
-        ms.multiply(1, value);
-        context.setMuskip(k, ms, prefix.clearGlobal());
-    }
-
-    /**
-     * Return the key (the number) for the skip register.
-     * 
-     * @param context the interpreter context to use
-     * @param source the source for the next tokens &ndash; if required
-     * @param typesetter the typesetter
-     * 
-     * @return the key for the skip register
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        if (Namespace.SUPPORT_NAMESPACE_MUSKIP) {
-            return context.getNamespace() + "\b" + key;
-        }
-        return key;
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void multiply(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String k = getKey(context, source, typesetter);
-        source.getKeyword(context, "by");
-        long value = source.parseInteger(context, source, null);
-
-        Muskip ms = new Muskip(context.getMuskip(k));
-        ms.multiply(value, 1);
-        context.setMuskip(k, ms, prefix.clearGlobal());
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        String k = getKey(context, source, typesetter);
-        try {
-            return context.getTokenFactory().toTokens(
-                context.getMuskip(k).toString());
-        } catch (GeneralException e) {
-            throw new NoHelpException(e);
-        }
-    }
+  }
 
 }

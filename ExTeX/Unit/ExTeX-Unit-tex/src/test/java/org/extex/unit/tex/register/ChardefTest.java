@@ -25,148 +25,149 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \chardef}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ChardefTest.class);
-    }
+    (new JUnitCore()).run( ChardefTest.class );
+  }
 
 
-    public ChardefTest() {
+  public ChardefTest() {
 
-        setPrimitive("chardef");setArguments("\\x=123");setPrepare("");
-    }
+    setPrimitive( "chardef" );
+    setArguments( "\\x=123" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
-     * needs a cs.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+   * needs a cs.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure("\\chardef ", 
-            "Missing control sequence inserted");
-    }
+    assertFailure( "\\chardef ",
+                   "Missing control sequence inserted" );
+  }
 
-    /**
-     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
-     * needs a char as second argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof2() throws Exception {
+  /**
+   * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+   * needs a char as second argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof2() throws Exception {
 
-        assertFailure("\\chardef\\x ", 
-            "Missing number, treated as zero");
-    }
+    assertFailure( "\\chardef\\x ",
+                   "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
-     * complains about a bad character code.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+   * complains about a bad character code.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(DEFINE_BRACES + "\\chardef\\x -1 \\x\\end", 
-            "Bad character code (-1)");
-    }
+    assertFailure( DEFINE_BRACES + "\\chardef\\x -1 \\x\\end",
+                   "Bad character code (-1)" );
+  }
 
-    /**
-     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
-     * can be used to define a control sequence carrying a character.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+   * can be used to define a control sequence carrying a character.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess("\\chardef\\x 65 \\x\\end", 
-            "A" + TERM);
-    }
+    assertSuccess( "\\chardef\\x 65 \\x\\end",
+                   "A" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
-     * can be used to define a control sequence which is convertible into a
-     * count.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+   * can be used to define a control sequence which is convertible into a
+   * count.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess("\\chardef\\x 65 \\count0=\\x \\the\\count0\\end", 
-            "65" + TERM);
-    }
+    assertSuccess( "\\chardef\\x 65 \\count0=\\x \\the\\count0\\end",
+                   "65" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
-     * can be used to define a control sequence which is applicable to
-     * {@code \the}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+   * can be used to define a control sequence which is applicable to
+   * {@code \the}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess("\\chardef\\x 65 \\the\\x\\end", 
-            "65" + TERM);
-    }
+    assertSuccess( "\\chardef\\x 65 \\the\\x\\end",
+                   "65" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
-     * can be used to define a control sequence which is applicable to
-     * {@code \show}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test4() throws Exception {
+  /**
+   * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+   * can be used to define a control sequence which is applicable to
+   * {@code \show}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test4() throws Exception {
 
-        assertOutput("\\chardef\\x 65 \\show\\x\\end", 
-            "> \\x=\\char\"41.\n", "");
-    }
+    assertOutput( "\\chardef\\x 65 \\show\\x\\end",
+                  "> \\x=\\char\"41.\n", "" );
+  }
 
-    /**
-     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
-     * respects grouping.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test5() throws Exception {
+  /**
+   * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+   * respects grouping.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test5() throws Exception {
 
-        assertSuccess(DEFINE_BRACES
-                + "\\chardef\\x 65 {\\chardef\\x 66}\\x\\end", 
-            "A" + TERM);
-    }
+    assertSuccess( DEFINE_BRACES
+                       + "\\chardef\\x 65 {\\chardef\\x 66}\\x\\end",
+                   "A" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
-     * consumes the {@code \global} flag.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test6() throws Exception {
+  /**
+   * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+   * consumes the {@code \global} flag.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test6() throws Exception {
 
-        assertSuccess(DEFINE_BRACES
-                + "\\chardef\\x 65 {\\global\\chardef\\x 66}\\x\\end", 
-            "B" + TERM);
-    }
+    assertSuccess( DEFINE_BRACES
+                       + "\\chardef\\x 65 {\\global\\chardef\\x 66}\\x\\end",
+                   "B" + TERM );
+  }
 
 }

@@ -19,8 +19,6 @@
 
 package org.extex.exbib.core.bst.code.impl;
 
-import java.util.logging.Logger;
-
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.token.Token;
@@ -28,67 +26,71 @@ import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
+import java.util.logging.Logger;
+
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code skip$}
  * <p>
  * This function empties the stack and prints its elements to the log file. This
  * function is useful for debugging purposes.
  * </p>
  * <img src="doc-files/stack.png" alt="stack">
- * 
+ *
  * <pre>
  *   stack$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Pops and prints the whole stack; it's meant to be used for style
  * designers while debugging.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Stack extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public Stack() {
+  /**
+   * Create a new object.
+   */
+  public Stack() {
 
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Stack( String name ) {
+
+    super( name );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    Logger logger = processor.getLogger();
+    if( logger != null ) {
+      for( Token t = processor.popUnchecked(); t != null; t =
+          processor.popUnchecked() ) {
+        logger.info( t.toString() + "\n" );
+      }
     }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Stack(String name) {
-
-        super(name);
+    else {
+      Token t;
+      do {
+        t = processor.popUnchecked();
+      } while( t != null );
     }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        Logger logger = processor.getLogger();
-        if (logger != null) {
-            for (Token t = processor.popUnchecked(); t != null; t =
-                    processor.popUnchecked()) {
-                logger.info(t.toString() + "\n");
-            }
-        } else {
-            Token t;
-            do {
-                t = processor.popUnchecked();
-            } while (t != null);
-        }
-    }
+  }
 
 }

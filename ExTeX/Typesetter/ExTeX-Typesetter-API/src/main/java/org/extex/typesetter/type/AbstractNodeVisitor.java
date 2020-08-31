@@ -25,183 +25,183 @@ import org.extex.typesetter.type.node.*;
 /**
  * This abstract class can be used as base for node visitors for which only a
  * few methods carry any functionality.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 @SuppressWarnings("RedundantThrows")
 public abstract class AbstractNodeVisitor
-        implements
-            NodeVisitor<Object, Object> {
+    implements
+    NodeVisitor<Object, Object> {
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitAdjust(AdjustNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitAdjust( AdjustNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitAfterMath(AfterMathNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitAfterMath( AfterMathNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitAlignedLeaders(AlignedLeadersNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitAlignedLeaders( AlignedLeadersNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitBeforeMath(BeforeMathNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitBeforeMath( BeforeMathNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitCenteredLeaders(CenteredLeadersNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitCenteredLeaders( CenteredLeadersNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitChar(CharNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitChar( CharNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitDiscretionary(DiscretionaryNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitDiscretionary( DiscretionaryNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitExpandedLeaders(ExpandedLeadersNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitExpandedLeaders( ExpandedLeadersNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitGlue(GlueNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitGlue( GlueNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitHorizontalList(HorizontalListNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitHorizontalList( HorizontalListNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitInsertion(InsertionNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitInsertion( InsertionNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitKern(KernNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitKern( KernNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitLigature(LigatureNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitLigature( LigatureNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitMark(MarkNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitMark( MarkNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitPenalty(PenaltyNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitPenalty( PenaltyNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitRule(RuleNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitRule( RuleNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitSpace(SpaceNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitSpace( SpaceNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitVerticalList(VerticalListNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitVerticalList( VerticalListNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    public Object visitWhatsIt(WhatsItNode node, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  public Object visitWhatsIt( WhatsItNode node, Object value )
+      throws GeneralException {
 
-        return null;
-    }
+    return null;
+  }
 
 }

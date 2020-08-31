@@ -33,7 +33,7 @@ import org.extex.unit.base.register.CharCode;
 /**
  * This class provides an implementation for the primitive {@code \chardef}
  * .
- * 
+ *
  * <p>The Primitive {@code \chardef}</p>
  * <p>
  * The primitive {@code \chardef} allows you to define a control sequence or
@@ -54,10 +54,10 @@ import org.extex.unit.base.register.CharCode;
  * This primitive is an assignment. All actions around assignments are
  * performed.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;chardef&rang;
  *      &rarr; {@code \chardef} {@linkplain
@@ -65,53 +65,52 @@ import org.extex.unit.base.register.CharCode;
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \chardef\abc=45  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \chardef\abc 33  </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Chardef extends AbstractAssignment {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Chardef(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Chardef( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        source.getOptionalEquals(context);
-        UnicodeChar uc =
-                source.scanCharacterCode(context, typesetter, getToken());
+    CodeToken cs = source.getControlSequence( context, typesetter );
+    source.getOptionalEquals( context );
+    UnicodeChar uc =
+        source.scanCharacterCode( context, typesetter, getToken() );
 
-        context.setCode(cs, new CharCode(cs, uc), prefix.clearGlobal());
-    }
+    context.setCode( cs, new CharCode( cs, uc ), prefix.clearGlobal() );
+  }
 
 }

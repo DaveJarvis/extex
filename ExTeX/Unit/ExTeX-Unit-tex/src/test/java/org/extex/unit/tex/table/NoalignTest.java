@@ -25,39 +25,39 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \noalign}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoalignTest extends ExTeXLauncher {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(NoalignTest.class);
-    }
+    (new JUnitCore()).run( NoalignTest.class );
+  }
 
 
-    public NoalignTest() {
+  public NoalignTest() {
 
-    }
+  }
 
-    /**
-     * <testcase primitive="\noalign"> Test case checking that {@code \noalign}
-     * needs to be used in a tabulating context.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLonelyCr() throws Exception {
+  /**
+   * <testcase primitive="\noalign"> Test case checking that {@code \noalign}
+   * needs to be used in a tabulating context.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLonelyCr() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\noalign" + "\\end ",
-            // --- log message ---
-            "Misplaced \\noalign");
-    }
+    assertFailure(// --- input code ---
+                  "\\noalign" + "\\end ",
+                  // --- log message ---
+                  "Misplaced \\noalign" );
+  }
 
 }

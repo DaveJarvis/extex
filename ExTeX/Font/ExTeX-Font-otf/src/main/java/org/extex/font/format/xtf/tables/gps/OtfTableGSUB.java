@@ -19,8 +19,6 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.font.format.xtf.tables.XtfGlyphName;
 import org.extex.font.format.xtf.tables.XtfTable;
@@ -29,9 +27,11 @@ import org.extex.font.format.xtf.tables.XtfTableMap;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * Glyph substitution (GSUB).
- * 
+ *
  * <p>
  * To access GSUB information, clients should use the following procedure:
  * </p>
@@ -48,74 +48,75 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <li>Assemble all lookups from the set of chosen features, and apply the
  * lookups in the order given in the LookupList table.</li>
  * </ol>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class OtfTableGSUB extends AbstractXtfSFLTable
-        implements
-            XtfTable,
-            LookupTableFactory,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    LookupTableFactory,
+    XMLWriterConvertible {
 
-    /**
-     * Create a new object
-     * 
-     * @param tablemap the table map
-     * @param de directory entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public OtfTableGSUB(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object
+   *
+   * @param tablemap the table map
+   * @param de       directory entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public OtfTableGSUB( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap, de, rar);
+    super( tablemap, de, rar );
+  }
+
+  public String getShortcut() {
+
+    return "gsub";
+  }
+
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
+
+    return XtfReader.GSUB;
+  }
+
+  public String lookupType( int type ) {
+
+    if( type >= 1 && type < XtfLookup.LOOKUP_TYPE_NAMES_GSUB.length - 1 ) {
+      return XtfLookup.LOOKUP_TYPE_NAMES_GSUB[ type - 1 ];
     }
+    return "Unknown";
+  }
 
-public String getShortcut() {
+  /**
+   * int, int, int, org.extex.font.format.xtf.tables.XtfGlyphName)
+   */
+  public XtfLookupTable read( RandomAccessR rar, int posOffset, int type,
+                              int offset, XtfGlyphName xtfGlyph )
+      throws IOException {
 
-        return "gsub";
+    switch( type ) {
+      case XtfLookup.GSUB_1_SINGLE:
+        return XtfGSUBSingleTable.newInstance( rar, offset, this );
+      case XtfLookup.GSUB_2_MULTIPLE:
+        return XtfGSUBMultipleTable.newInstance( rar, offset, this );
+      case XtfLookup.GSUB_3_ALTERNATE:
+        return XtfGSUBAlternateTable.newInstance( rar, offset, this );
+      case XtfLookup.GSUB_4_LIGATURE:
+        return XtfGSUBLigatureTable.newInstance( rar, offset, this );
+      case XtfLookup.GSUB_5_CONTEXT:
+        return XtfGSUBContextTable.newInstance( rar, offset, this );
+      case XtfLookup.GSUB_6_CHAINING_CONTEXTUAL:
+        return XtfGSUBChainingTable.newInstance( rar, offset, this );
+      default:
+        return null;
     }
-
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.GSUB;
-    }
-
-public String lookupType(int type) {
-
-        if (type >= 1 && type < XtfLookup.LOOKUP_TYPE_NAMES_GSUB.length - 1) {
-            return XtfLookup.LOOKUP_TYPE_NAMES_GSUB[type - 1];
-        }
-        return "Unknown";
-    }
-
-    /**
-*      int, int, int, org.extex.font.format.xtf.tables.XtfGlyphName)
-     */
-    public XtfLookupTable read(RandomAccessR rar, int posOffset, int type,
-            int offset, XtfGlyphName xtfGlyph) throws IOException {
-
-        switch (type) {
-            case XtfLookup.GSUB_1_SINGLE:
-                return XtfGSUBSingleTable.newInstance(rar, offset, this);
-            case XtfLookup.GSUB_2_MULTIPLE:
-                return XtfGSUBMultipleTable.newInstance(rar, offset, this);
-            case XtfLookup.GSUB_3_ALTERNATE:
-                return XtfGSUBAlternateTable.newInstance(rar, offset, this);
-            case XtfLookup.GSUB_4_LIGATURE:
-                return XtfGSUBLigatureTable.newInstance(rar, offset, this);
-            case XtfLookup.GSUB_5_CONTEXT:
-                return XtfGSUBContextTable.newInstance(rar, offset, this);
-            case XtfLookup.GSUB_6_CHAINING_CONTEXTUAL:
-                return XtfGSUBChainingTable.newInstance(rar, offset, this);
-            default:
-                return null;
-        }
-    }
+  }
 
 }

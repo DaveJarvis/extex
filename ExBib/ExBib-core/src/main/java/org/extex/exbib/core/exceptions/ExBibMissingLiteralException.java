@@ -23,34 +23,34 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * This exception is thrown when a string is missing.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibMissingLiteralException extends ExBibSyntaxException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param found the entity found; {@code null} means EOF
-     * @param locator the locator
-     */
-    public ExBibMissingLiteralException(String found, Locator locator) {
+  /**
+   * Create a new object.
+   *
+   * @param found   the entity found; {@code null} means EOF
+   * @param locator the locator
+   */
+  public ExBibMissingLiteralException( String found, Locator locator ) {
 
-        super(found, locator);
-    }
+    super( found, locator );
+  }
 
-@Override
-    public String getLocalizedMessage() {
+  @Override
+  public String getLocalizedMessage() {
 
-        String found = super.getMessage();
-        return getLocalizer().format(found != null ? "Message" : "MessageEOF",
-            found);
-    }
+    String found = super.getMessage();
+    return getLocalizer().format( found != null ? "Message" : "MessageEOF",
+                                  found );
+  }
 
 }

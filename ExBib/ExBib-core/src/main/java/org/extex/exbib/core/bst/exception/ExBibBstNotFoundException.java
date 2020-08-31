@@ -24,26 +24,26 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * This Exception is thrown when a bst cound not be found.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibBstNotFoundException extends ExBibException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     * @param locator the locator
-     */
-    public ExBibBstNotFoundException(String message, Locator locator) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   * @param locator the locator
+   */
+  public ExBibBstNotFoundException( String message, Locator locator ) {
 
-        super(message, locator);
-    }
+    super( message, locator );
+  }
 
 }

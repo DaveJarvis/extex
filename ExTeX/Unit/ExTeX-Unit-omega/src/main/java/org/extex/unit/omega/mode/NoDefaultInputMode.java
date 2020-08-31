@@ -30,57 +30,55 @@ import org.extex.unit.omega.OmegaExtension;
 /**
  * This class provides an implementation for the primitive
  * {@code \noDefaultInputMode}.
- * 
+ *
  * <p>The Primitive {@code \write}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;noDefaultInputMode&rang;
  *      &rarr; ...  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  * \noDefaultInputMode </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoDefaultInputMode extends AbstractModeCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public NoDefaultInputMode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public NoDefaultInputMode( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter ) throws TypesetterException {
 
-        context.set(OmegaExtension.NAME, DEFAULT_INPUT_MODE, null,
-            prefix.clearGlobal());
-    }
+    context.set( OmegaExtension.NAME, DEFAULT_INPUT_MODE, null,
+                 prefix.clearGlobal() );
+  }
 
 }

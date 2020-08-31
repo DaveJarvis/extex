@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \spacefactor}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Spacefactor2Test extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(Spacefactor2Test.class);
-    }
+    (new JUnitCore()).run( Spacefactor2Test.class );
+  }
 
 
-    public Spacefactor2Test() {
+  public Spacefactor2Test() {
 
-        setPrimitive("spacefactor");setArguments("42");setPrepare("a");
-    }
+    setPrimitive( "spacefactor" );
+    setArguments( "42" );
+    setPrepare( "a" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

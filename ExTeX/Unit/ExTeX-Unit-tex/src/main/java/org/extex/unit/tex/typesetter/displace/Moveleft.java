@@ -33,7 +33,7 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
 /**
  * This class provides an implementation for the primitive
  * {@code \moveleft}.
- * 
+ *
  * <p>The Primitive {@code \moveleft}</p>
  * <p>
  * The primitive {@code \moveleft} takes a box and a length and moves it
@@ -44,63 +44,63 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
  * The primitive {@code \moveleft} is the counterpart to
  * {@link org.extex.unit.tex.typesetter.displace.Moveright {@code \moveright}}.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;moveleft&rang;
  *      &rarr; {@code \moveleft} &lang;dimen&rang; &lang;box&rang;
  * </pre>
- * 
+ *
  * <p>Examples</p>
  *
  * <pre class="TeXSample">
  *    \moveleft 2em \hbox{abc}  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \moveleft -1pt \hbox to 120pt {abc}  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \moveleft 2mm \hbox spread 12pt {abc}  </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Moveleft extends AbstractBoxPrimitive {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Moveleft(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Moveleft( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+   * org.extex.scanner.type.token.Token)
+   */
+  public Box getBox( Context context, TokenSource source,
+                     Typesetter typesetter, Token insert )
+      throws HelpingException,
+      TypesetterException {
+
+    Dimen move = source.parseDimen( context, source, typesetter );
+    Box box = source.getBox( null, context, typesetter, insert );
+    if( box != null && !box.isVoid() ) {
+      move.negate();
+      move.add( box.getMove() );
+      box.setMove( move );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      org.extex.scanner.type.token.Token)
-     */
-    public Box getBox(Context context, TokenSource source,
-            Typesetter typesetter, Token insert)
-            throws HelpingException,
-                TypesetterException {
-
-        Dimen move = source.parseDimen(context, source, typesetter);
-        Box box = source.getBox(null, context, typesetter, insert);
-        if (box != null && !box.isVoid()) {
-            move.negate();
-            move.add(box.getMove());
-            box.setMove(move);
-        }
-        return box;
-    }
+    return box;
+  }
 
 }

@@ -36,160 +36,156 @@ import org.extex.typesetter.type.page.PageFactory;
 
 /**
  * This is a first reference implementation of a page builder.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TrivialPageBuilder implements PageBuilder {
 
-    /**
-     * The field {@code backend} contains the target to receive the pages.
-     */
-    private BackendDriver backend = null;
+  /**
+   * The field {@code backend} contains the target to receive the pages.
+   */
+  private BackendDriver backend = null;
 
-    /**
-     * The field {@code context} contains the interpreter context.
-     */
-    private Context context = null;
+  /**
+   * The field {@code context} contains the interpreter context.
+   */
+  private Context context = null;
 
-    /**
-     * The field {@code options} contains the options to control the behaviour.
-     */
-    private TypesetterOptions options = null;
+  /**
+   * The field {@code options} contains the options to control the behaviour.
+   */
+  private TypesetterOptions options = null;
 
-    /**
-     * The field {@code pageFactory} contains the page factory to use.
-     */
-    private PageFactory pageFactory = null;
+  /**
+   * The field {@code pageFactory} contains the page factory to use.
+   */
+  private PageFactory pageFactory = null;
 
 
-    public TrivialPageBuilder() {
+  public TrivialPageBuilder() {
 
+  }
+
+  @Override
+  public void close() throws TypesetterException {
+
+    try {
+      backend.close();
+    } catch( GeneralException e ) {
+      throw new TypesetterException( e );
     }
 
-@Override
-    public void close() throws TypesetterException {
+  }
 
-        try {
-            backend.close();
-        } catch (GeneralException e) {
-            throw new TypesetterException(e);
-        }
+  /**
+   * org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void flush( NodeList nodes, Typesetter typesetter )
+      throws TypesetterException {
 
+    if( nodes.size() <= 0 ) {
+      return;
+    }
+    try {
+      Page page = pageFactory.newInstance( nodes, context, typesetter );
+      if( page != null ) {
+        backend.shipout( page );
+      }
+      // nodes.clear();
+    } catch( GeneralException e ) {
+      throw new TypesetterException( e );
     }
 
-    /**
-*      org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void flush(NodeList nodes, Typesetter typesetter)
-            throws TypesetterException {
+  }
 
-        if (nodes.size() <= 0) {
-            return;
-        }
-        try {
-            Page page = pageFactory.newInstance(nodes, context, typesetter);
-            if (page != null) {
-                backend.shipout(page);
-            }
-            // nodes.clear();
-        } catch (GeneralException e) {
-            throw new TypesetterException(e);
-        }
+  /**
+   * This is the entry point for the page builder. Here it receives a complete
+   * node list to be sent to the output writer. It can be assumed that all
+   * values for width, height, and depth of the node lists are properly
+   * filled.
+   *
+   * @param nodes      the nodes to send
+   * @param typesetter the typesetter
+   * @throws TypesetterException in case of an error
+   * @see org.extex.typesetter.pageBuilder.PageBuilder#inspectAndBuild(org.extex.typesetter.type.node.VerticalListNode,
+   * org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void inspectAndBuild( VerticalListNode nodes, Typesetter typesetter )
+      throws TypesetterException {
 
+    FixedDimen d = nodes.getVerticalSize();
+    if( d.ge( options.getDimenOption( "vsize" ) ) ) {
+
+      flush( nodes, typesetter );
+    }
+  }
+
+  /**
+   * Setter for the back-end driver. This has to be provided before the page
+   * builder can be active.
+   *
+   * @param backend the new document writer to use
+   * @see org.extex.typesetter.Typesetter#setBackend(org.extex.backend.BackendDriver)
+   */
+  @Override
+  public void setBackend( BackendDriver backend ) {
+
+    this.backend = backend;
+  }
+
+  @Override
+  public void setContext( PageContext context ) {
+
+    // TODO gene: beware of ClassCastException
+    this.context = (Context) context;
+  }
+
+  /**
+   * Setter for options.
+   *
+   * @param options the options to set
+   * @see org.extex.typesetter.pageBuilder.PageBuilder#setOptions(org.extex.typesetter.TypesetterOptions)
+   */
+  @Override
+  public void setOptions( TypesetterOptions options ) {
+
+    this.options = options;
+  }
+
+  @Override
+  public void setOutputRoutine( OutputRoutine output ) {
+
+    // not supported
+  }
+
+  @Override
+  public void setPageFactory( PageFactory factory ) {
+
+    pageFactory = factory;
+  }
+
+  /**
+   * org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void shipout( NodeList nodes, Typesetter typesetter )
+      throws TypesetterException {
+
+    if( nodes.size() <= 0 ) {
+      return;
+    }
+    try {
+      Page page = pageFactory.newInstance( nodes, context, typesetter );
+      if( page != null ) {
+        backend.shipout( page );
+      }
+      // nodes.clear();
+    } catch( GeneralException e ) {
+      throw new TypesetterException( e );
     }
 
-    /**
-     * This is the entry point for the page builder. Here it receives a complete
-     * node list to be sent to the output writer. It can be assumed that all
-     * values for width, height, and depth of the node lists are properly
-     * filled.
-     * 
-     * @param nodes the nodes to send
-     * @param typesetter the typesetter
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#inspectAndBuild(org.extex.typesetter.type.node.VerticalListNode,
-     *      org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void inspectAndBuild(VerticalListNode nodes, Typesetter typesetter)
-            throws TypesetterException {
-
-        FixedDimen d = nodes.getVerticalSize();
-        if (d.ge(options.getDimenOption("vsize"))) {
-
-            flush(nodes, typesetter);
-        }
-    }
-
-    /**
-     * Setter for the back-end driver. This has to be provided before the page
-     * builder can be active.
-     * 
-     * @param backend the new document writer to use
-     * 
-     * @see org.extex.typesetter.Typesetter#setBackend(org.extex.backend.BackendDriver)
-     */
-    @Override
-    public void setBackend(BackendDriver backend) {
-
-        this.backend = backend;
-    }
-
-@Override
-    public void setContext(PageContext context) {
-
-        // TODO gene: beware of ClassCastException
-        this.context = (Context) context;
-    }
-
-    /**
-     * Setter for options.
-     * 
-     * @param options the options to set
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setOptions(org.extex.typesetter.TypesetterOptions)
-     */
-    @Override
-    public void setOptions(TypesetterOptions options) {
-
-        this.options = options;
-    }
-
-@Override
-    public void setOutputRoutine(OutputRoutine output) {
-
-        // not supported
-    }
-
-@Override
-    public void setPageFactory(PageFactory factory) {
-
-        pageFactory = factory;
-    }
-
-    /**
-*      org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void shipout(NodeList nodes, Typesetter typesetter)
-            throws TypesetterException {
-
-        if (nodes.size() <= 0) {
-            return;
-        }
-        try {
-            Page page = pageFactory.newInstance(nodes, context, typesetter);
-            if (page != null) {
-                backend.shipout(page);
-            }
-            // nodes.clear();
-        } catch (GeneralException e) {
-            throw new TypesetterException(e);
-        }
-
-    }
+  }
 
 }

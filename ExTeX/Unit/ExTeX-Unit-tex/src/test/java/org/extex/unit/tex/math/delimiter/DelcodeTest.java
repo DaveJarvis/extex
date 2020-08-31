@@ -24,26 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \delcode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DelcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DelcodeTest.class);
-    }
+    (new JUnitCore()).run( DelcodeTest.class );
+  }
 
 
-    public DelcodeTest() {
+  public DelcodeTest() {
 
-        setPrimitive("delcode");setArguments("23 32");
-    }
+    setPrimitive( "delcode" );
+    setArguments( "23 32" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

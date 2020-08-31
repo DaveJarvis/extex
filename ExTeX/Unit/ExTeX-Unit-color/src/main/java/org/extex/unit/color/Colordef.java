@@ -32,7 +32,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \colordef}.
- * 
+ *
  * <p>The Primitive {@code \colordef}</p>
  * <p>
  * The primitive {@code \colordef} defines a color variable and assigns it to a
@@ -60,10 +60,10 @@ import org.extex.typesetter.exception.TypesetterException;
  * {@code \global} modifier since the scope has already been specified in the
  * declaration with {@code \colordef}.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;colordef&rang;
  *      &rarr; &lang;optional prefix&rang; {@code \colordef} {@linkplain
@@ -73,112 +73,112 @@ import org.extex.typesetter.exception.TypesetterException;
  *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  {@code \global}   </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \colordef\col alpha .1234 rgb {.2 .3 .4}  </pre>
- * 
+ *
  * <br>
-*
+ *
  * <pre class="TeXSample">
  *    \global\colordef\col\color  </pre>
- * 
+ *
  * <br>
-*
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Colordef extends AbstractAssignment {
 
-    /**
-     * This class carries a color value for storing it as code in the context.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-    */
-    private static class ColorCode extends AbstractColor {
-
-        /**
-         * The field {@code serialVersionUID} contains the version number for
-         * serialization.
-         */
-        protected static final long serialVersionUID = 20060528L;
-
-        /**
-         * The field {@code color} contains the color.
-         */
-        private Color color;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param color the color
-         * @param token the initial token for the primitive
-         */
-        public ColorCode(Color color, CodeToken token) {
-
-            super(token);
-            this.color = color;
-        }
-
-        /**
-    *      org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter)
-         */
-        @Override
-        public void assign(Flags prefix, Context context, TokenSource source,
-                Typesetter typesetter)
-                throws HelpingException,
-                    TypesetterException {
-
-            color = ColorParser.parseColor(context, source, typesetter, 
-                getToken());
-        }
-
-        /**
-    *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter)
-         */
-        @Override
-        public Color convertColor(Context context, TokenSource source,
-                Typesetter typesetter) throws HelpingException {
-
-            return color;
-        }
-
-    }
+  /**
+   * This class carries a color value for storing it as code in the context.
+   *
+   * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+   */
+  private static class ColorCode extends AbstractColor {
 
     /**
      * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 20060528L;
+
+    /**
+     * The field {@code color} contains the color.
+     */
+    private Color color;
 
     /**
      * Creates a new object.
-     * 
+     *
+     * @param color the color
      * @param token the initial token for the primitive
      */
-    public Colordef(CodeToken token) {
+    public ColorCode( Color color, CodeToken token ) {
 
-        super(token);
+      super( token );
+      this.color = color;
     }
 
     /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     * org.extex.interpreter.context.Context,
+     * org.extex.interpreter.TokenSource,
+     * org.extex.typesetter.Typesetter)
      */
     @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    public void assign( Flags prefix, Context context, TokenSource source,
+                        Typesetter typesetter )
+        throws HelpingException,
+        TypesetterException {
 
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        source.getOptionalEquals(context);
-        Color color =
-                ColorParser.parseColor(context, source, typesetter, getToken());
-        context.setCode(cs, new ColorCode(color, cs), prefix.clearGlobal());
+      color = ColorParser.parseColor( context, source, typesetter,
+                                      getToken() );
     }
+
+    /**
+     * org.extex.interpreter.TokenSource,
+     * org.extex.typesetter.Typesetter)
+     */
+    @Override
+    public Color convertColor( Context context, TokenSource source,
+                               Typesetter typesetter ) throws HelpingException {
+
+      return color;
+    }
+
+  }
+
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Colordef( CodeToken token ) {
+
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    CodeToken cs = source.getControlSequence( context, typesetter );
+    source.getOptionalEquals( context );
+    Color color =
+        ColorParser.parseColor( context, source, typesetter, getToken() );
+    context.setCode( cs, new ColorCode( color, cs ), prefix.clearGlobal() );
+  }
 
 }

@@ -19,57 +19,57 @@
 
 package org.extex.scanner.api.exception;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Locale;
-
 import org.extex.core.UnicodeChar;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import java.util.Locale;
+
+import static org.junit.Assert.assertEquals;
+
 /**
  * Test suite for the exception.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InvalidCharacterScannerExceptionTest {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        JUnitCore.runClasses(InvalidCharacterScannerExceptionTest.class);
-    }
+    JUnitCore.runClasses( InvalidCharacterScannerExceptionTest.class );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
-     * .
-     */
-    @Test
-    public final void testGetLocalizedMessage1() {
+  /**
+   * Test method for
+   * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
+   * .
+   */
+  @Test
+  public final void testGetLocalizedMessage1() {
 
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Invalid character x recognized",
-            new InvalidCharacterScannerException(UnicodeChar.get('x'))
-                .getLocalizedMessage());
-    }
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Invalid character x recognized",
+                  new InvalidCharacterScannerException( UnicodeChar.get( 'x' ) )
+                      .getLocalizedMessage() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
-     * .
-     */
-    @Test
-    public final void testGetLocalizedMessage2() {
+  /**
+   * Test method for
+   * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
+   * .
+   */
+  @Test
+  public final void testGetLocalizedMessage2() {
 
-        Locale.setDefault(Locale.GERMAN);
-        assertEquals("Ung\u00fcltiges Zeichen x erkannt",
-            new InvalidCharacterScannerException(UnicodeChar.get('x'))
-                .getLocalizedMessage());
-    }
+    Locale.setDefault( Locale.GERMAN );
+    assertEquals( "Ung\u00fcltiges Zeichen x erkannt",
+                  new InvalidCharacterScannerException( UnicodeChar.get( 'x' ) )
+                      .getLocalizedMessage() );
+  }
 
 }

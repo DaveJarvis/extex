@@ -26,105 +26,102 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \mathchoice}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathchoiceTest extends AbstractMathTester {
 
 
-    public MathchoiceTest() {
+  public MathchoiceTest() {
 
-        setPrimitive("mathchoice");setArguments("{}{}{}{}");setPrepare("");
-    }
+    setPrimitive( "mathchoice" );
+    setArguments( "{}{}{}{}" );
+    setPrepare( "" );
+  }
 
-    /**
-     *
-     *  Test case checking that {@code \mathchoice} selects the correct branch
-     *  in display mode.
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testDisplay1() throws Exception {
+  /**
+   * Test case checking that {@code \mathchoice} selects the correct branch
+   * in display mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testDisplay1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
-                + "$$\\mathchoice{a}{b}{c}{d}$$ \\end",
-                //--- output channel ---
-                "a" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
+                      + "$$\\mathchoice{a}{b}{c}{d}$$ \\end",
+                  //--- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     *
-     *  Test case checking that {@code \mathchoice} selects the correct branch
-     *  in text mode.
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testText1() throws Exception {
+  /**
+   * Test case checking that {@code \mathchoice} selects the correct branch
+   * in text mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testText1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
-                + "$\\mathchoice{a}{b}{c}{d}$ \\end",
-                //--- output channel ---
-                "b" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
+                      + "$\\mathchoice{a}{b}{c}{d}$ \\end",
+                  //--- output channel ---
+                  "b" + TERM );
+  }
 
-    /**
-     *
-     *  Test case checking that {@code \mathchoice} selects the correct branch
-     *  in explicit display mode.
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testDisplay2() throws Exception {
+  /**
+   * Test case checking that {@code \mathchoice} selects the correct branch
+   * in explicit display mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testDisplay2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
-                + "$\\displaystyle\\mathchoice{a}{b}{c}{d}$ \\end",
-                //--- output channel ---
-                "a" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
+                      + "$\\displaystyle\\mathchoice{a}{b}{c}{d}$ \\end",
+                  //--- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     *
-     *  Test case checking that {@code \mathchoice} selects the correct branch
-     *  in explicit script mode.
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testScript1() throws Exception {
+  /**
+   * Test case checking that {@code \mathchoice} selects the correct branch
+   * in explicit script mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testScript1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
-                + "$\\scriptstyle\\mathchoice{a}{b}{c}{d}$ \\end",
-                //--- output channel ---
-                "c" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
+                      + "$\\scriptstyle\\mathchoice{a}{b}{c}{d}$ \\end",
+                  //--- output channel ---
+                  "c" + TERM );
+  }
 
-    /**
-     *
-     *  Test case checking that {@code \mathchoice} selects the correct branch
-     *  in explicit scriptscript mode.
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testScriptScript1() throws Exception {
+  /**
+   * Test case checking that {@code \mathchoice} selects the correct branch
+   * in explicit scriptscript mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testScriptScript1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
-                + "$\\scriptscriptstyle\\mathchoice{a}{b}{c}{d}$ \\end",
-                //--- output channel ---
-                "d" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
+                      + "$\\scriptscriptstyle\\mathchoice{a}{b}{c}{d}$ \\end",
+                  //--- output channel ---
+                  "d" + TERM );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 
 }

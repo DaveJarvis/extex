@@ -24,63 +24,63 @@ import org.extex.framework.configuration.Configuration;
 /**
  * This exception is thrown when a dynamically loaded class does not provide the
  * expected method.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationNoSuchMethodException extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2010L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2010L;
 
-    /**
-     * The field {@code methodName} contains the name of the class which could
-     * not be found.
-     */
-    private String methodName = null;
+  /**
+   * The field {@code methodName} contains the name of the class which could
+   * not be found.
+   */
+  private String methodName = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param methodName the name of the method which could not be found
-     * @param config the configuration in which the exception occurred.
-     */
-    public ConfigurationNoSuchMethodException(String methodName,
-            Configuration config) {
+  /**
+   * Creates a new object.
+   *
+   * @param methodName the name of the method which could not be found
+   * @param config     the configuration in which the exception occurred.
+   */
+  public ConfigurationNoSuchMethodException( String methodName,
+                                             Configuration config ) {
 
-        super(null, config.toString());
-        this.methodName = methodName;
-    }
+    super( null, config.toString() );
+    this.methodName = methodName;
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the next Throwable in the list
-     */
-    public ConfigurationNoSuchMethodException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the next Throwable in the list
+   */
+  public ConfigurationNoSuchMethodException( Throwable cause ) {
 
-        super(null, cause);
-    }
+    super( null, cause );
+  }
 
-    /**
-     * Getter for the text prefix of this ConfigurationException. The text is
-     * taken from the resource bundle {@code ConfigurationEception} under the
-     * key {@code ConfigurationNoSuchMethodException.Text}. The argument {0} is
-     * replaced by the name of the missing method as passed to the constructor.
-     * 
-     * @return the text
-     */
-    @Override
-    protected String getText() {
+  /**
+   * Getter for the text prefix of this ConfigurationException. The text is
+   * taken from the resource bundle {@code ConfigurationEception} under the
+   * key {@code ConfigurationNoSuchMethodException.Text}. The argument {0} is
+   * replaced by the name of the missing method as passed to the constructor.
+   *
+   * @return the text
+   */
+  @Override
+  protected String getText() {
 
-        return getLocalizer().format(
-            "ConfigurationNoSuchMethodException.Text",
-            (methodName != null
-                    ? methodName
-                    : getCause() != null
-                            ? getCause().getLocalizedMessage()
-                            : ""));
-    }
+    return getLocalizer().format(
+        "ConfigurationNoSuchMethodException.Text",
+        (methodName != null
+            ? methodName
+            : getCause() != null
+            ? getCause().getLocalizedMessage()
+            : "") );
+  }
 
 }

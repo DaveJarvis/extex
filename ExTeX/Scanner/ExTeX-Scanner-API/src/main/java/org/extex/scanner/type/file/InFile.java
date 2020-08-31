@@ -19,67 +19,64 @@
 
 package org.extex.scanner.type.file;
 
-import java.io.Serializable;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 
+import java.io.Serializable;
+
 /**
  * This class holds an input file from which tokens can be read.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface InFile extends Serializable {
 
-    /**
-     * Close the current stream. No reading operation is possible afterwards.
-     */
-    void close();
+  /**
+   * Close the current stream. No reading operation is possible afterwards.
+   */
+  void close();
 
-    /**
-     * Checks whether this InFile is at end of file.
-     * 
-     * @return {@code true} iff no further token can be read.
-     * 
-     * @throws HelpingException in case of an error
-     */
-    boolean isEof() throws HelpingException;
+  /**
+   * Checks whether this InFile is at end of file.
+   *
+   * @return {@code true} iff no further token can be read.
+   * @throws HelpingException in case of an error
+   */
+  boolean isEof() throws HelpingException;
 
-    /**
-     * Check if this stream is attached to a file.
-     * 
-     * @return {@code true} if this stream reads from a file
-     */
-    boolean isFileStream();
+  /**
+   * Check if this stream is attached to a file.
+   *
+   * @return {@code true} if this stream reads from a file
+   */
+  boolean isFileStream();
 
-    /**
-     * Check whether this InFile is currently opened for reading.
-     * 
-     * @return {@code true} iff the input stream has still a stream assigned to
-     *         it.
-     */
-    boolean isOpen();
+  /**
+   * Check whether this InFile is currently opened for reading.
+   *
+   * @return {@code true} iff the input stream has still a stream assigned to
+   * it.
+   */
+  boolean isOpen();
 
-    /**
-     * Getter for standardStream.
-     * 
-     * @return the standardStream
-     */
-    boolean isStandardStream();
+  /**
+   * Getter for standardStream.
+   *
+   * @return the standardStream
+   */
+  boolean isStandardStream();
 
-    /**
-     * Read a line of characters into a tokens list.
-     * 
-     * @param factory the factory to request new tokens from
-     * @param tokenizer the tokenizer to use
-     * 
-     * @return the tokens read or {@code null} in case of eof
-     * 
-     * @throws HelpingException in case of an error
-     */
-    Tokens read(TokenFactory factory, Tokenizer tokenizer)
-            throws HelpingException;
+  /**
+   * Read a line of characters into a tokens list.
+   *
+   * @param factory   the factory to request new tokens from
+   * @param tokenizer the tokenizer to use
+   * @return the tokens read or {@code null} in case of eof
+   * @throws HelpingException in case of an error
+   */
+  Tokens read( TokenFactory factory, Tokenizer tokenizer )
+      throws HelpingException;
 
 }

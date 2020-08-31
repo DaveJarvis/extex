@@ -26,20 +26,20 @@ import org.extex.exindex.core.type.alphabet.util.RomanNumber;
  * recognition of roman numbers is rather rough. all legal roman numbers are
  * mapped correctly. This includes the old variant which allow four successive
  * identical letters.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LowerRomanPage extends AbstractPage {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param enc the encapsulator
-     * @param page the page number
-     */
-    public LowerRomanPage(String enc, String page) {
+  /**
+   * Creates a new object.
+   *
+   * @param enc  the encapsulator
+   * @param page the page number
+   */
+  public LowerRomanPage( String enc, String page ) {
 
-        super(enc, page, RomanNumber.computeOrdLower(page));
-    }
+    super( enc, page, RomanNumber.computeOrdLower( page ) );
+  }
 
 }

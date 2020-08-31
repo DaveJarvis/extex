@@ -19,9 +19,6 @@
 
 package org.extex.unit.tex.table;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
@@ -35,122 +32,129 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.unit.tex.table.util.PreambleItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This is the abstract base class for alignments.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractAlign extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractAlign(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractAlign( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Getter for the Localizer.
+   *
+   * @return the localizer
+   */
+  Localizer getMyLocalizer() {
+
+    return LocalizerFactory.getLocalizer( AbstractAlign.class );
+  }
+
+  /**
+   * Get the preamble. The preamble is composed of PreambleItems.
+   *
+   * @param context the interpreter context
+   * @param source  the source for new tokens
+   * @return the preamble as list of PreambleItems
+   * @throws HelpingException in case of an error
+   */
+  protected List<PreambleItem> getPreamble( Context context,
+                                            TokenSource source )
+      throws HelpingException {
+
+    List<PreambleItem> preamble = new ArrayList<PreambleItem>();
+
+    while( addPreambleItem( context, source, preamble ) ) {
+      // nothing more to do
     }
+    return preamble;
+  }
 
-    /**
-     * Getter for the Localizer.
-     * 
-     * @return the localizer
-     */
-    Localizer getMyLocalizer() {
+  /**
+   * Parse an item of a preamble and add it to the given list. If the item is
+   * ended by a & then {@code true} is returned. If the item is ended
+   * by a {@code \cr} then {@code false} is returned.
+   *
+   * @param context  the interpreter context
+   * @param source   the source for new tokens
+   * @param preamble the list to add something to
+   * @return {@code true} iff the item has been ended by {@code &}.
+   * @throws HelpingException in case of an error
+   */
+  private boolean addPreambleItem( Context context, TokenSource source,
+                                   List<PreambleItem> preamble )
+      throws HelpingException {
 
-        return LocalizerFactory.getLocalizer(AbstractAlign.class);
-    }
+    Tokens pre = new Tokens();
+    Tokens post = new Tokens();
 
-    /**
-     * Get the preamble. The preamble is composed of PreambleItems.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * 
-     * @return the preamble as list of PreambleItems
-     * 
-     * @throws HelpingException in case of an error
-     */
-    protected List<PreambleItem> getPreamble(Context context, TokenSource source)
-            throws HelpingException {
+    for( Token t = source.getToken( context ); t != null
+        && !t.isa( Catcode.MACROPARAM ); t = source.getToken( context ) ) {
 
-        List<PreambleItem> preamble = new ArrayList<PreambleItem>();
-
-        while (addPreambleItem(context, source, preamble)) {
-            // nothing more to do
+      if( t.isa( Catcode.TABMARK ) ) {
+        throw new HelpingException( getMyLocalizer(),
+                                    "TTP.MissingSharp", toText() );
+      }
+      else if( t instanceof CodeToken ) {
+        Code code = context.getCode( (CodeToken) t );
+        if( code instanceof Cr ) {
+          throw new HelpingException( getMyLocalizer(),
+                                      "TTP.MissingSharp", toText() );
         }
-        return preamble;
+        else if( code != null && code.isOuter() ) {
+          throw new HelpingException( getMyLocalizer(),
+                                      "TTP.OuterInPreamble", toText() );
+        }
+      }
+      pre.add( t );
     }
 
-    /**
-     * Parse an item of a preamble and add it to the given list. If the item is
-     * ended by a & then {@code true} is returned. If the item is ended
-     * by a {@code \cr} then {@code false} is returned.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param preamble the list to add something to
-     * 
-     * @return {@code true} iff the item has been ended by {@code &}.
-     * 
-     * @throws HelpingException in case of an error
-     */
-    private boolean addPreambleItem(Context context, TokenSource source,
-            List<PreambleItem> preamble) throws HelpingException {
+    for( Token t = source.getToken( context ); t != null; t =
+        source.getToken( context ) ) {
 
-        Tokens pre = new Tokens();
-        Tokens post = new Tokens();
-
-        for (Token t = source.getToken(context); t != null
-                && !t.isa(Catcode.MACROPARAM); t = source.getToken(context)) {
-
-            if (t.isa(Catcode.TABMARK)) {
-                throw new HelpingException(getMyLocalizer(),
-                    "TTP.MissingSharp", toText());
-            } else if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
-                if (code instanceof Cr) {
-                    throw new HelpingException(getMyLocalizer(),
-                        "TTP.MissingSharp", toText());
-                } else if (code != null && code.isOuter()) {
-                    throw new HelpingException(getMyLocalizer(),
-                        "TTP.OuterInPreamble", toText());
-                }
-            }
-            pre.add(t);
+      if( t.isa( Catcode.MACROPARAM ) ) {
+        throw new HelpingException( getMyLocalizer(),
+                                    "TTP.SecondSharpInTab", toText( context ) );
+      }
+      else if( t.isa( Catcode.TABMARK ) ) {
+        preamble.add( new PreambleItem( pre, post ) );
+        return true;
+      }
+      else if( t instanceof CodeToken ) {
+        Code code = context.getCode( (CodeToken) t );
+        if( code instanceof Cr ) {
+          preamble.add( new PreambleItem( pre, post ) );
+          return false;
         }
-
-        for (Token t = source.getToken(context); t != null; t =
-                source.getToken(context)) {
-
-            if (t.isa(Catcode.MACROPARAM)) {
-                throw new HelpingException(getMyLocalizer(),
-                    "TTP.SecondSharpInTab", toText(context));
-            } else if (t.isa(Catcode.TABMARK)) {
-                preamble.add(new PreambleItem(pre, post));
-                return true;
-            } else if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
-                if (code instanceof Cr) {
-                    preamble.add(new PreambleItem(pre, post));
-                    return false;
-                } else if (code != null && code.isOuter()) {
-                    throw new HelpingException(getMyLocalizer(),
-                        "TTP.OuterInPreamble", toText(context));
-                }
-            }
-            post.add(t);
+        else if( code != null && code.isOuter() ) {
+          throw new HelpingException( getMyLocalizer(),
+                                      "TTP.OuterInPreamble",
+                                      toText( context ) );
         }
-
-        throw new HelpingException(getMyLocalizer(), "TTP.EOFinPreamble",
-            toText(context));
+      }
+      post.add( t );
     }
+
+    throw new HelpingException( getMyLocalizer(), "TTP.EOFinPreamble",
+                                toText( context ) );
+  }
 
 }

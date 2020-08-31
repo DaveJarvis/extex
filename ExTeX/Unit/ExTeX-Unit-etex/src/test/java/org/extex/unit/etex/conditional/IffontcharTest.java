@@ -25,121 +25,117 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \iffontchar}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IffontcharTest extends ConditionalTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IffontcharTest.class);
-    }
+    (new JUnitCore()).run( IffontcharTest.class );
+  }
 
 
-    public IffontcharTest() {
+  public IffontcharTest() {
 
-        super("iffontchar", "\\nullfont `x\\else");
-        setConfig("etex-test");
-    }
+    super( "iffontchar", "\\nullfont `x\\else" );
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * <testcase primitive="\iffontchar"> Test case checking that
-     * {@code \iffontchar} needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\iffontchar"> Test case checking that
+   * {@code \iffontchar} needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\iffontchar ",
-            // --- output channel ---
-            "Unexpected end of file while processing \\iffontchar");
-    }
+    assertFailure(// --- input code ---
+                  "\\iffontchar ",
+                  // --- output channel ---
+                  "Unexpected end of file while processing \\iffontchar" );
+  }
 
-    /**
-     * <testcase primitive="\iffontchar"> Test case checking that
-     * {@code \iffontchar} needs a font argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\iffontchar"> Test case checking that
+   * {@code \iffontchar} needs a font argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\iffontchar x",
-            // --- output channel ---
-            "Missing font identifier");
-    }
+    assertFailure(// --- input code ---
+                  "\\iffontchar x",
+                  // --- output channel ---
+                  "Missing font identifier" );
+  }
 
-    /**
-     * <testcase primitive="\iffontchar"> Test case checking that
-     * {@code \iffontchar} needs a character token after the font argument.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError3() throws Exception {
+  /**
+   * <testcase primitive="\iffontchar"> Test case checking that
+   * {@code \iffontchar} needs a character token after the font argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError3() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\iffontchar \\nullfont",
-            // --- output channel ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  "\\iffontchar \\nullfont",
+                  // --- output channel ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\iffontchar"> Test case checking that
-     * {@code \iffontchar} needs a character number after the font argument.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError4() throws Exception {
+  /**
+   * <testcase primitive="\iffontchar"> Test case checking that
+   * {@code \iffontchar} needs a character number after the font argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError4() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\iffontchar \\nullfont \\relax",
-            // --- output channel ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  "\\iffontchar \\nullfont \\relax",
+                  // --- output channel ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\iffontchar"> Test case checking that
-     * {@code \iffontchar} needs a character number after the font argument.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError5() throws Exception {
+  /**
+   * <testcase primitive="\iffontchar"> Test case checking that
+   * {@code \iffontchar} needs a character number after the font argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError5() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\iffontchar \\nullfont x ",
-            // --- output channel ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  "\\iffontchar \\nullfont x ",
+                  // --- output channel ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\iffontchar"> Test case checking that
-     * {@code \iffontchar} expands the then branch for A in cmr10.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\iffontchar"> Test case checking that
+   * {@code \iffontchar} expands the then branch for A in cmr10.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\f cmr10 " + "\\iffontchar \\f 65 a\\else b\\fi\\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\f cmr10 " + "\\iffontchar \\f 65 a\\else b\\fi\\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

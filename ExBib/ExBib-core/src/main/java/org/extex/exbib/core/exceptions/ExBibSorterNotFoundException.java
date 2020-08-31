@@ -20,28 +20,27 @@
 package org.extex.exbib.core.exceptions;
 
 /**
- * 
  * This {@link ExBibException ExBibException} is thrown when the sorter could
  * not be found.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibSorterNotFoundException extends ExBibException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param sorter the expected sorter
-     */
-    public ExBibSorterNotFoundException(String sorter) {
+  /**
+   * Create a new object.
+   *
+   * @param sorter the expected sorter
+   */
+  public ExBibSorterNotFoundException( String sorter ) {
 
-        super(sorter);
-    }
+    super( sorter );
+  }
 
 }

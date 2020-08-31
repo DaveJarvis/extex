@@ -25,40 +25,39 @@ import org.extex.core.exception.GeneralException;
  * This is the base class for all exceptions thrown by the typesetter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TypesetterException extends GeneralException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     *
-     */
-    public TypesetterException() {
+  /**
+   * Creates a new object.
+   */
+  public TypesetterException() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the textual representation
-     */
-    public TypesetterException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the textual representation
+   */
+  public TypesetterException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the root of all evil
-     */
-    public TypesetterException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the root of all evil
+   */
+  public TypesetterException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
 }

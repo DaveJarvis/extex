@@ -34,69 +34,70 @@ import org.extex.unit.tex.register.box.Setbox;
 /**
  * This class provides an implementation for the primitive
  * {@code &#x5c;unhcopy}.
- * 
+ *
  * <p>The Primitive {@code &#x5c;unhcopy}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;unhcopy&rang;
  *       &rarr; {@code &#x5c;unhcopy} {@linkplain
- *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    &#x5c;unhcopy42  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Unhcopy extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Unhcopy(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Unhcopy( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = Setbox.getKey( context, source, typesetter, getToken() );
+    Box b = context.getBox( key );
+    if( b == null || b.isVoid() ) {
+      return;
+    }
+    else if( !b.isHbox() ) {
+      throw new HelpingException( getLocalizer(), "TTP.IncompatibleUnbox" );
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String key = Setbox.getKey(context, source, typesetter, getToken());
-        Box b = context.getBox(key);
-        if (b == null || b.isVoid()) {
-            return;
-        } else if (!b.isHbox()) {
-            throw new HelpingException(getLocalizer(), "TTP.IncompatibleUnbox");
-        }
-
-        NodeList nl = b.getNodes();
-        for (int i = 0; i < nl.size(); i++) {
-            typesetter.add(nl.get(i));
-        }
+    NodeList nl = b.getNodes();
+    for( int i = 0; i < nl.size(); i++ ) {
+      typesetter.add( nl.get( i ) );
     }
+  }
 
 }

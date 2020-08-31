@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \topmark}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TopmarkTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(TopmarkTest.class);
-    }
+    (new JUnitCore()).run( TopmarkTest.class );
+  }
 
 
-    public TopmarkTest() {
+  public TopmarkTest() {
 
-        setPrimitive("topmark");setArguments("");setPrepare("");
-    }
+    setPrimitive( "topmark" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

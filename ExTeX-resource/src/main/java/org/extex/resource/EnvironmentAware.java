@@ -23,16 +23,16 @@ import java.util.Map;
 
 /**
  * This interface describes the ability to receive an environment.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface EnvironmentAware {
 
-    /**
-     * Setter for the environment.
-     * 
-     * @param environment the environment
-     */
-    void setEnvironment(Map<String, String> environment);
+  /**
+   * Setter for the environment.
+   *
+   * @param environment the environment
+   */
+  void setEnvironment( Map<String, String> environment );
 
 }

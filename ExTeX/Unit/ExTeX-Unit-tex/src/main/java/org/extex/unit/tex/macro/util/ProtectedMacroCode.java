@@ -28,33 +28,33 @@ import org.extex.scanner.type.tokens.Tokens;
 /**
  * This class is identical to the super class MacroCode but in addition it
  * implements the marker interface ProtectedCode.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ProtectedMacroCode extends MacroCode implements ProtectedCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 20060405L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 20060405L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     * @param flags the flags controlling the behavior of the macro
-     * @param thePattern the pattern for the acquiring of the arguments
-     * @param theBody the expansion text
-     * @param notLong the indicator that the macro does not allow embedded pars
-     * 
-     * @throws HelpingException in case of an error
-     */
-    public ProtectedMacroCode(CodeToken token, Flags flags, boolean notLong,
-            MacroPattern thePattern, Tokens theBody)
-            throws HelpingException {
+  /**
+   * Creates a new object.
+   *
+   * @param token      the initial token for the primitive
+   * @param flags      the flags controlling the behavior of the macro
+   * @param thePattern the pattern for the acquiring of the arguments
+   * @param theBody    the expansion text
+   * @param notLong    the indicator that the macro does not allow embedded
+   *                  pars
+   * @throws HelpingException in case of an error
+   */
+  public ProtectedMacroCode( CodeToken token, Flags flags, boolean notLong,
+                             MacroPattern thePattern, Tokens theBody )
+      throws HelpingException {
 
-        super(token, flags, notLong, thePattern, theBody);
-    }
+    super( token, flags, notLong, thePattern, theBody );
+  }
 
 }

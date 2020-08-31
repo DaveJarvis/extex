@@ -19,109 +19,109 @@
 
 package org.extex.core;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is the test suite for the class Switch.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SwitchTest {
 
-    /**
-     * Test method for {@link org.extex.core.Switch#isOn()}.
-     */
-    @Test
-    public final void testIsOn1() {
+  /**
+   * Test method for {@link org.extex.core.Switch#isOn()}.
+   */
+  @Test
+  public final void testIsOn1() {
 
-        Switch s = new Switch(true);
-        assertEquals(true, s.isOn());
-    }
+    Switch s = new Switch( true );
+    assertEquals( true, s.isOn() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Switch#isOn()}.
-     */
-    @Test
-    public final void testIsOn2() {
+  /**
+   * Test method for {@link org.extex.core.Switch#isOn()}.
+   */
+  @Test
+  public final void testIsOn2() {
 
-        Switch s = new Switch(false);
-        assertEquals(false, s.isOn());
-    }
+    Switch s = new Switch( false );
+    assertEquals( false, s.isOn() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Switch#set(boolean)}.
-     */
-    @Test
-    public final void testSet1() {
+  /**
+   * Test method for {@link org.extex.core.Switch#set(boolean)}.
+   */
+  @Test
+  public final void testSet1() {
 
-        Switch s = new Switch(true);
-        s.set(false);
-        assertEquals(false, s.isOn());
-    }
+    Switch s = new Switch( true );
+    s.set( false );
+    assertEquals( false, s.isOn() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Switch#set(boolean)}.
-     */
-    @Test
-    public final void testSet2() {
+  /**
+   * Test method for {@link org.extex.core.Switch#set(boolean)}.
+   */
+  @Test
+  public final void testSet2() {
 
-        Switch s = new Switch(true);
-        s.set(true);
-        assertEquals(true, s.isOn());
-    }
+    Switch s = new Switch( true );
+    s.set( true );
+    assertEquals( true, s.isOn() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Switch#set(boolean)}.
-     */
-    @Test
-    public final void testSet3() {
+  /**
+   * Test method for {@link org.extex.core.Switch#set(boolean)}.
+   */
+  @Test
+  public final void testSet3() {
 
-        Switch s = new Switch(false);
-        s.set(false);
-        assertEquals(false, s.isOn());
-    }
+    Switch s = new Switch( false );
+    s.set( false );
+    assertEquals( false, s.isOn() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Switch#set(boolean)}.
-     */
-    @Test
-    public final void testSet4() {
+  /**
+   * Test method for {@link org.extex.core.Switch#set(boolean)}.
+   */
+  @Test
+  public final void testSet4() {
 
-        Switch s = new Switch(false);
-        s.set(true);
-        assertEquals(true, s.isOn());
-    }
+    Switch s = new Switch( false );
+    s.set( true );
+    assertEquals( true, s.isOn() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Switch#toString()}.
-     */
-    @Test
-    public final void testToString1() {
+  /**
+   * Test method for {@link org.extex.core.Switch#toString()}.
+   */
+  @Test
+  public final void testToString1() {
 
-        Switch s = new Switch(false);
-        assertEquals("off", s.toString());
-    }
+    Switch s = new Switch( false );
+    assertEquals( "off", s.toString() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Switch#toString()}.
-     */
-    @Test
-    public final void testToString2() {
+  /**
+   * Test method for {@link org.extex.core.Switch#toString()}.
+   */
+  @Test
+  public final void testToString2() {
 
-        Switch s = new Switch(true);
-        assertEquals("on", s.toString());
-    }
+    Switch s = new Switch( true );
+    assertEquals( "on", s.toString() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Switch#toString()}.
-     */
-    @Test
-    public final void testToString3() {
+  /**
+   * Test method for {@link org.extex.core.Switch#toString()}.
+   */
+  @Test
+  public final void testToString3() {
 
-        Switch s = new Switch(true);
-        s.set(false);
-        assertEquals("off", s.toString());
-    }
+    Switch s = new Switch( true );
+    s.set( false );
+    assertEquals( "off", s.toString() );
+  }
 }

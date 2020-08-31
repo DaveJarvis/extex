@@ -19,87 +19,91 @@
 
 package org.extex.logging;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
-import org.junit.Test;
-import org.junit.runner.JUnitCore;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This class contains test cases for the log formatter.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LogFormatterTest {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LogFormatterTest.class);
-    }
+    (new JUnitCore()).run( LogFormatterTest.class );
+  }
 
 
-    public LogFormatterTest() {
+  public LogFormatterTest() {
 
-    }
+  }
 
-    /**
-     * <testcase class="LogFormatter"> Test case checking that a simple string
-     * comes through.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase class="LogFormatter"> Test case checking that a simple string
+   * comes through.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        StringBuilder res = new StringBuilder();
-        LogFormatter formatter = new LogFormatter();
-        res.append(formatter.format(new LogRecord(Level.ALL, "abc")));
-        assertEquals("abc", res.toString());
-    }
+    StringBuilder res = new StringBuilder();
+    LogFormatter formatter = new LogFormatter();
+    res.append( formatter.format( new LogRecord( Level.ALL, "abc" ) ) );
+    assertEquals( "abc", res.toString() );
+  }
 
-    /**
-     * <testcase class="LogFormatter"> Test case checking that a simple string
-     * comes through.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase class="LogFormatter"> Test case checking that a simple string
+   * comes through.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        StringBuilder res = new StringBuilder();
-        LogFormatter formatter = new LogFormatter();
-        res.append(formatter.format(new LogRecord(Level.ALL, "abc")));
-        res.append(formatter.format(new LogRecord(Level.ALL, "def")));
-        assertEquals("abcdef", res.toString());
-    }
+    StringBuilder res = new StringBuilder();
+    LogFormatter formatter = new LogFormatter();
+    res.append( formatter.format( new LogRecord( Level.ALL, "abc" ) ) );
+    res.append( formatter.format( new LogRecord( Level.ALL, "def" ) ) );
+    assertEquals( "abcdef", res.toString() );
+  }
 
-    /**
-     * <testcase class="LogFormatter"> Test case checking that a simple string
-     * comes through.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase class="LogFormatter"> Test case checking that a simple string
+   * comes through.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        StringBuilder res = new StringBuilder();
-        LogFormatter formatter = new LogFormatter();
-        res.append(formatter.format(new LogRecord(Level.ALL,
-            "abc def ghi jkl mno pqr stu vwx yz "
-                    + "abc def ghi jkl mno pqr stu vwx yz "
-                    + "abc def ghi jkl mno pqr stu vwx yz "
-                    + "abc def ghi jkl mno pqr stu vwx yz ")));
-        assertEquals("abc def ghi jkl mno pqr stu vwx yz "
-                + "abc def ghi jkl mno pqr stu vwx yz "
-                + "abc def\nghi jkl mno pqr stu vwx yz "
-                + "abc def ghi jkl mno pqr stu vwx yz ", res.toString());
-    }
+    StringBuilder res = new StringBuilder();
+    LogFormatter formatter = new LogFormatter();
+    res.append( formatter.format( new LogRecord( Level.ALL,
+                                                 "abc def ghi jkl mno pqr stu" +
+                                                     " vwx yz "
+                                                     + "abc def ghi jkl mno " +
+                                                     "pqr stu vwx yz "
+                                                     + "abc def ghi jkl mno " +
+                                                     "pqr stu vwx yz "
+                                                     + "abc def ghi jkl mno " +
+                                                     "pqr stu vwx yz " ) ) );
+    assertEquals( "abc def ghi jkl mno pqr stu vwx yz "
+                      + "abc def ghi jkl mno pqr stu vwx yz "
+                      + "abc def\nghi jkl mno pqr stu vwx yz "
+                      + "abc def ghi jkl mno pqr stu vwx yz ", res.toString() );
+  }
 
 }

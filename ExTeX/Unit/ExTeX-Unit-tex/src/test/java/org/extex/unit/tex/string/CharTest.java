@@ -25,40 +25,42 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \char}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CharTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(CharTest.class);
-    }
+    (new JUnitCore()).run( CharTest.class );
+  }
 
 
-    public CharTest() {
+  public CharTest() {
 
-        setPrimitive("char");setArguments("65");setPrepare("");
-    }
+    setPrimitive( "char" );
+    setArguments( "65" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\char"> Test case checking that {@code \char} of
-     * 65 produces an A.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\char"> Test case checking that {@code \char} of
+   * 65 produces an A.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\char 65\\end",
-            // --- output channel ---
-            "A" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\char 65\\end",
+                  // --- output channel ---
+                  "A" + TERM );
+  }
 
 }

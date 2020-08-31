@@ -18,21 +18,21 @@
 
 package org.extex.exbib.core.io;
 
-import java.io.IOException;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
 
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+
 /**
  * This class provides some methods to get a new instance of some kind of
  * writer.
- * 
- *  Configuration
+ * <p>
+ * Configuration
  * <p>
  * The configuration of the factory is passed on to the writer created. Thus is
  * can be used to influence their behavior.
@@ -47,189 +47,179 @@ import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncod
  * If the attribute is not present then the default encoding of the current
  * platform is used.</dd>
  * </dl>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class WriterFactory extends AbstractFactory<Writer> {
 
-    /**
-     * The field {@code encoding} contains the encoding to use for writing.
-     */
-    private String encoding = null;
+  /**
+   * The field {@code encoding} contains the encoding to use for writing.
+   */
+  private String encoding = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param config the configuration
-     * 
-     * @throws UnsupportedEncodingException in case of an undefined encoding
-     */
-    public WriterFactory(Configuration config)
-            throws UnsupportedEncodingException {
+  /**
+   * Creates a new object.
+   *
+   * @param config the configuration
+   * @throws UnsupportedEncodingException in case of an undefined encoding
+   */
+  public WriterFactory( Configuration config )
+      throws UnsupportedEncodingException {
 
-        super(config);
+    super( config );
+  }
+
+  @Override
+  public void configure( Configuration configuration )
+      throws ConfigurationException {
+
+    super.configure( configuration );
+    try {
+      setEncoding( configuration.getAttribute( "encoding" ) );
+    } catch( UnsupportedEncodingException e ) {
+      throw new ConfigurationUnsupportedEncodingException( e.getMessage(),
+                                                           configuration.toString() );
+    }
+  }
+
+  /**
+   * Getter for a new writer without an argument.
+   *
+   * @return a new NullWriter
+   * @throws ConfigurationException in case of an configuration error
+   */
+  public Writer newInstance() throws ConfigurationException {
+
+    return new NullWriter();
+  }
+
+  /**
+   * Getter for a new writer from a PrintStream.
+   *
+   * @param stream the PrintStream to write to
+   * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
+   * stream is {@code null}
+   * @throws UnsupportedEncodingException in case of an unknown encoding
+   * @throws ConfigurationException       in case of an configuration error
+   */
+  public Writer newInstance( PrintStream stream )
+      throws UnsupportedEncodingException,
+      ConfigurationException {
+
+    Writer writer =
+        (stream == null
+            ? new NullWriter()
+            : new StreamWriter( stream, encoding ));
+    // if (writer instanceof Configurable) {
+    // ((Configurable) writer).configure(getConfiguration());
+    // }
+    return writer;
+  }
+
+  /**
+   * Getter for a new writer from a file.
+   *
+   * @param file the name of the file to print to
+   * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
+   * file is {@code null}
+   * @throws IOException                  in case that the file could not
+   * be opened
+   * @throws UnsupportedEncodingException in case of an unknown encoding
+   * @throws ConfigurationException       in case of an configuration error
+   */
+  public Writer newInstance( String file )
+      throws IOException,
+      UnsupportedEncodingException,
+      ConfigurationException {
+
+    if( file == null ) {
+      return new NullWriter();
     }
 
-@Override
-    public void configure(Configuration configuration)
-            throws ConfigurationException {
+    Writer writer = new StreamWriter( file, encoding );
+    // if (writer instanceof Configurable) {
+    // ((Configurable) writer).configure(getConfiguration());
+    // }
+    return writer;
+  }
 
-        super.configure(configuration);
-        try {
-            setEncoding(configuration.getAttribute("encoding"));
-        } catch (UnsupportedEncodingException e) {
-            throw new ConfigurationUnsupportedEncodingException(e.getMessage(),
-                configuration.toString());
-        }
+  /**
+   * Getter for a new writer with a StringBuffer.
+   *
+   * @param buffer the StringBuffer to fill
+   * @return a new StringBufferWriter
+   * @throws ConfigurationException in case of an configuration error
+   */
+  public Writer newInstance( StringBuffer buffer )
+      throws ConfigurationException {
+
+    Writer writer = new StringBufferWriter( buffer );
+    // if (writer instanceof Configurable) {
+    // ((Configurable) writer).configure(getConfiguration());
+    // }
+    return writer;
+  }
+
+  /**
+   * Getter for a new writer composed or two others.
+   *
+   * @param a the first writer
+   * @param b the second writer
+   * @return a new multi writer if both writers are not {@code null}; one
+   * of the writers if the other one is {@code null}; a new
+   * {@link NullWriter} if both are {@code null}
+   * @throws UnsupportedEncodingException in case of an unknown encoding
+   * @throws ConfigurationException       in case of an configuration error
+   */
+  public Writer newInstance( Writer a, Writer b )
+      throws UnsupportedEncodingException,
+      ConfigurationException {
+
+    if( a == null ) {
+      return (b == null ? new NullWriter() : b);
+    }
+    else if( b == null ) {
+      return a;
     }
 
-    /**
-     * Getter for a new writer without an argument.
-     * 
-     * @return a new NullWriter
-     * 
-     * @throws ConfigurationException in case of an configuration error
-     */
-    public Writer newInstance() throws ConfigurationException {
+    MultiWriter writer = new MultiWriter( a, b );
+    writer.configure( getConfiguration() );
+    return writer;
+  }
 
-        return new NullWriter();
+  /**
+   * Setter for the encoding. The encoding is one of the supported charset
+   * names of the Java platform. At least the following values are guaranteed
+   * to be supported:
+   * <dl>
+   * <dt>US-ASCII</dt>
+   * <dd>Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the Basic Latin block of
+   * the Unicode character set</dd>
+   * <dt>ISO-8859-1</dt>
+   * <dd>ISO Latin Alphabet No. 1, a.k.a. ISO-LATIN-1</dd>
+   * <dt>UTF-8</dt>
+   * <dd>Eight-bit UCS Transformation Format</dd>
+   * <dt>UTF-16BE</dt>
+   * <dd>Sixteen-bit UCS Transformation Format, big-endian byte order</dd>
+   * <dt>UTF-16LE</dt>
+   * <dd>Sixteen-bit UCS Transformation Format, little-endian byte order</dd>
+   * <dt>UTF-16</dt>
+   * <dd>Sixteen-bit UCS Transformation Format, byte order identified by an
+   * optional byte-order mark</dd>
+   * </dl>
+   *
+   * @param encoding the encoding to set; it can be {@code null} to
+   *                 indicate the platform default encoding
+   * @throws UnsupportedEncodingException in case of an unsupported encoding
+   *                                      name
+   */
+  public void setEncoding( String encoding )
+      throws UnsupportedEncodingException {
+
+    if( encoding != null && !Charset.isSupported( encoding ) ) {
+      throw new UnsupportedEncodingException( encoding );
     }
-
-    /**
-     * Getter for a new writer from a PrintStream.
-     * 
-     * @param stream the PrintStream to write to
-     * 
-     * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
-     *         stream is {@code null}
-     * 
-     * @throws UnsupportedEncodingException in case of an unknown encoding
-     * @throws ConfigurationException in case of an configuration error
-     */
-    public Writer newInstance(PrintStream stream)
-            throws UnsupportedEncodingException,
-                ConfigurationException {
-
-        Writer writer =
-                (stream == null
-                        ? new NullWriter()
-                        : new StreamWriter( stream, encoding));
-        // if (writer instanceof Configurable) {
-        // ((Configurable) writer).configure(getConfiguration());
-        // }
-        return writer;
-    }
-
-    /**
-     * Getter for a new writer from a file.
-     * 
-     * @param file the name of the file to print to
-     * 
-     * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
-     *         file is {@code null}
-     * 
-     * @throws IOException in case that the file could not be opened
-     * @throws UnsupportedEncodingException in case of an unknown encoding
-     * @throws ConfigurationException in case of an configuration error
-     */
-    public Writer newInstance(String file)
-            throws IOException,
-                UnsupportedEncodingException,
-                ConfigurationException {
-
-        if (file == null) {
-            return new NullWriter();
-        }
-
-        Writer writer = new StreamWriter(file, encoding);
-        // if (writer instanceof Configurable) {
-        // ((Configurable) writer).configure(getConfiguration());
-        // }
-        return writer;
-    }
-
-    /**
-     * Getter for a new writer with a StringBuffer.
-     * 
-     * @param buffer the StringBuffer to fill
-     * 
-     * @return a new StringBufferWriter
-     * 
-     * @throws ConfigurationException in case of an configuration error
-     */
-    public Writer newInstance(StringBuffer buffer)
-            throws ConfigurationException {
-
-        Writer writer = new StringBufferWriter(buffer);
-        // if (writer instanceof Configurable) {
-        // ((Configurable) writer).configure(getConfiguration());
-        // }
-        return writer;
-    }
-
-    /**
-     * Getter for a new writer composed or two others.
-     * 
-     * @param a the first writer
-     * @param b the second writer
-     * 
-     * @return a new multi writer if both writers are not {@code null}; one
-     *         of the writers if the other one is {@code null}; a new
-     *         {@link NullWriter} if both are {@code null}
-     * 
-     * @throws UnsupportedEncodingException in case of an unknown encoding
-     * @throws ConfigurationException in case of an configuration error
-     */
-    public Writer newInstance(Writer a, Writer b)
-            throws UnsupportedEncodingException,
-                ConfigurationException {
-
-        if (a == null) {
-            return (b == null ? new NullWriter() : b);
-        } else if (b == null) {
-            return a;
-        }
-
-        MultiWriter writer = new MultiWriter(a, b);
-        writer.configure(getConfiguration());
-        return writer;
-    }
-
-    /**
-     * Setter for the encoding. The encoding is one of the supported charset
-     * names of the Java platform. At least the following values are guaranteed
-     * to be supported:
-     * <dl>
-     * <dt>US-ASCII</dt>
-     * <dd>Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the Basic Latin block of
-     * the Unicode character set</dd>
-     * <dt>ISO-8859-1</dt>
-     * <dd>ISO Latin Alphabet No. 1, a.k.a. ISO-LATIN-1</dd>
-     * <dt>UTF-8</dt>
-     * <dd>Eight-bit UCS Transformation Format</dd>
-     * <dt>UTF-16BE</dt>
-     * <dd>Sixteen-bit UCS Transformation Format, big-endian byte order</dd>
-     * <dt>UTF-16LE</dt>
-     * <dd>Sixteen-bit UCS Transformation Format, little-endian byte order</dd>
-     * <dt>UTF-16</dt>
-     * <dd>Sixteen-bit UCS Transformation Format, byte order identified by an
-     * optional byte-order mark</dd>
-     * </dl>
-     * 
-     * @param encoding the encoding to set; it can be {@code null} to
-     *        indicate the platform default encoding
-     * 
-     * @throws UnsupportedEncodingException in case of an unsupported encoding
-     *         name
-     */
-    public void setEncoding(String encoding)
-            throws UnsupportedEncodingException {
-
-        if (encoding != null && !Charset.isSupported(encoding)) {
-            throw new UnsupportedEncodingException(encoding);
-        }
-        this.encoding = encoding;
-    }
+    this.encoding = encoding;
+  }
 
 }

@@ -20,11 +20,11 @@ package org.extex.font;
 
 /**
  * This interface describes a factory to manage fonts.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface FontFactory extends CoreFontFactory {
 
-    // mgn: loeschen
+  // mgn: loeschen
 }

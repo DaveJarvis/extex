@@ -26,14 +26,14 @@ import org.extex.language.Language;
  * which has a creator assigned.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ManagedLanguage extends Language {
 
-    /**
-     * Setter for the creator.
-     *
-     * @param manager the manager
-     */
-    void setCreator(LanguageCreator manager);
+  /**
+   * Setter for the creator.
+   *
+   * @param manager the manager
+   */
+  void setCreator( LanguageCreator manager );
 
 }

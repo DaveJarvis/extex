@@ -19,125 +19,129 @@
 
 package org.extex.font.type;
 
-import java.io.Serializable;
-
 import org.extex.core.dimen.Dimen;
+
+import java.io.Serializable;
 
 
 /**
  * Container for a BoundingBox.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class BoundingBox implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID} ...
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} ...
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * llx
-     */
-    private Dimen llx;
+  /**
+   * llx
+   */
+  private Dimen llx;
 
-    /**
-     * lly
-     */
-    private Dimen lly;
+  /**
+   * lly
+   */
+  private Dimen lly;
 
-    /**
-     * urx
-     */
-    private Dimen urx;
+  /**
+   * urx
+   */
+  private Dimen urx;
 
-    /**
-     * ury
-     */
-    private Dimen ury;
+  /**
+   * ury
+   */
+  private Dimen ury;
 
-    /**
-     * Create a new object.
-     *
-     * @param lx    the llx
-     * @param ly    the lly
-     * @param rx    the urx
-     * @param ry    the ury
-     */
-    public BoundingBox(Dimen lx, Dimen ly, Dimen rx,
-            Dimen ry) {
+  /**
+   * Create a new object.
+   *
+   * @param lx the llx
+   * @param ly the lly
+   * @param rx the urx
+   * @param ry the ury
+   */
+  public BoundingBox( Dimen lx, Dimen ly, Dimen rx,
+                      Dimen ry ) {
 
-        llx = lx;
-        lly = ly;
-        urx = rx;
-        ury = ry;
-    }
+    llx = lx;
+    lly = ly;
+    urx = rx;
+    ury = ry;
+  }
 
-    /**
-     * Returns the llx.
-     * @return Returns the llx.
-     */
-    public Dimen getLlx() {
+  /**
+   * Returns the llx.
+   *
+   * @return Returns the llx.
+   */
+  public Dimen getLlx() {
 
-        return llx;
-    }
+    return llx;
+  }
 
-    /**
-     * @param lx The llx to set.
-     */
-    public void setLlx(Dimen lx) {
+  /**
+   * @param lx The llx to set.
+   */
+  public void setLlx( Dimen lx ) {
 
-        llx = lx;
-    }
+    llx = lx;
+  }
 
-    /**
-     * Returns the lly.
-     * @return Returns the lly.
-     */
-    public Dimen getLly() {
+  /**
+   * Returns the lly.
+   *
+   * @return Returns the lly.
+   */
+  public Dimen getLly() {
 
-        return lly;
-    }
+    return lly;
+  }
 
-    /**
-     * @param ly The lly to set.
-     */
-    public void setLly(Dimen ly) {
+  /**
+   * @param ly The lly to set.
+   */
+  public void setLly( Dimen ly ) {
 
-        lly = ly;
-    }
+    lly = ly;
+  }
 
-    /**
-     * Returns the urx.
-     * @return Returns the urx.
-     */
-    public Dimen getUrx() {
+  /**
+   * Returns the urx.
+   *
+   * @return Returns the urx.
+   */
+  public Dimen getUrx() {
 
-        return urx;
-    }
+    return urx;
+  }
 
-    /**
-     * @param rx The urx to set.
-     */
-    public void setUrx(Dimen rx) {
+  /**
+   * @param rx The urx to set.
+   */
+  public void setUrx( Dimen rx ) {
 
-        urx = rx;
-    }
+    urx = rx;
+  }
 
-    /**
-     * Returns the ury.
-     * @return Returns the ury.
-     */
-    public Dimen getUry() {
+  /**
+   * Returns the ury.
+   *
+   * @return Returns the ury.
+   */
+  public Dimen getUry() {
 
-        return ury;
-    }
+    return ury;
+  }
 
-    /**
-     * @param ry The ury to set.
-     */
-    public void setUry(Dimen ry) {
+  /**
+   * @param ry The ury to set.
+   */
+  public void setUry( Dimen ry ) {
 
-        ury = ry;
-    }
+    ury = ry;
+  }
 }

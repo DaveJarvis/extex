@@ -19,26 +19,26 @@
 
 package org.extex.exindex.core.type;
 
-import java.util.ArrayList;
-
 import org.extex.exindex.core.type.raw.LocationReference;
+
+import java.util.ArrayList;
 
 /**
  * This class represents an attribute group.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AttributeGroup extends ArrayList<LocationReference> {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
 
-    public AttributeGroup() {
+  public AttributeGroup() {
 
-    }
+  }
 
 }

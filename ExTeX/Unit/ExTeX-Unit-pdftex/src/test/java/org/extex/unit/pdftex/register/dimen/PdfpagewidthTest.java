@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \pdfpagewidth}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfpagewidthTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PdfpagewidthTest.class);
-    }
+    (new JUnitCore()).run( PdfpagewidthTest.class );
+  }
 
 
-    public PdfpagewidthTest() {
+  public PdfpagewidthTest() {
 
-        super("pdfpagewidth", "", "597.50787pt");
-        setConfig("pdftex-test");
-    }
+    super( "pdfpagewidth", "", "597.50787pt" );
+    setConfig( "pdftex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

@@ -25,72 +25,78 @@ import java.io.Reader;
 /**
  * Read a file and map plainTeX as well as double-quote sequences
  * defined in {@code german.sty} to characters.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PlainTeXGermanReader extends PlainTeXReader {
 
-    /**
-     * The field {@code MAP_FROM} contains the source part of the mapping of
-     * characters after ".
-     */
-    private static final String MAP_FROM = "aeiouAEIOUsz";
+  /**
+   * The field {@code MAP_FROM} contains the source part of the mapping of
+   * characters after ".
+   */
+  private static final String MAP_FROM = "aeiouAEIOUsz";
 
-    /**
-     * The field {@code MAP_TO} contains the target part of the mapping of
-     * characters after ".
-     */
-    private static final String MAP_TO =
-            "\u00E4\u00EB\u00EF\u00F6\u00FC\u00C4\u00CB\u00CF\u00D6\u00DC\u00DF\u00DF";
+  /**
+   * The field {@code MAP_TO} contains the target part of the mapping of
+   * characters after ".
+   */
+  private static final String MAP_TO =
+      "\u00E4\u00EB\u00EF\u00F6\u00FC\u00C4\u00CB\u00CF\u00D6\u00DC\u00DF" +
+          "\u00DF";
 
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the name of the resource for error messages
-     * @param reader the reader
-     */
-    public PlainTeXGermanReader(String resource, Reader reader) {
+  /**
+   * Creates a new object.
+   *
+   * @param resource the name of the resource for error messages
+   * @param reader   the reader
+   */
+  public PlainTeXGermanReader( String resource, Reader reader ) {
 
-        super(resource, reader);
-    }
+    super( resource, reader );
+  }
 
-@Override
-    protected boolean fillBuffer() throws IOException {
+  @Override
+  protected boolean fillBuffer() throws IOException {
 
-        resetBuffer();
-        int c = rawRead();
-        while (c >= 0) {
-            if (c == '\\') {
-                c = fillEsc();
-            } else if (c == '"') {
-                c = rawRead();
-                if (c < 0) {
-                    bufferAppend('"');
-                    return true;
-                }
-                int i = MAP_FROM.indexOf(c);
-                if (i >= 0) {
-                    bufferAppend(MAP_TO.charAt(i));
-                } else if (c == 'S') {
-                    bufferAppend('S');
-                    c = 'S';
-                } else if (c == 'Z') {
-                    bufferAppend('S');
-                    c = 'Z';
-                } else {
-                    bufferAppend('"');
-                    bufferAppend((char) c);
-                }
-                c = rawRead();
-            } else {
-                bufferAppend((char) c);
-                if (c == '\n' || c == '\r') {
-                    return true;
-                }
-                c = rawRead();
-            }
+    resetBuffer();
+    int c = rawRead();
+    while( c >= 0 ) {
+      if( c == '\\' ) {
+        c = fillEsc();
+      }
+      else if( c == '"' ) {
+        c = rawRead();
+        if( c < 0 ) {
+          bufferAppend( '"' );
+          return true;
         }
-        return bufferIsNotEmpty();
+        int i = MAP_FROM.indexOf( c );
+        if( i >= 0 ) {
+          bufferAppend( MAP_TO.charAt( i ) );
+        }
+        else if( c == 'S' ) {
+          bufferAppend( 'S' );
+          c = 'S';
+        }
+        else if( c == 'Z' ) {
+          bufferAppend( 'S' );
+          c = 'Z';
+        }
+        else {
+          bufferAppend( '"' );
+          bufferAppend( (char) c );
+        }
+        c = rawRead();
+      }
+      else {
+        bufferAppend( (char) c );
+        if( c == '\n' || c == '\r' ) {
+          return true;
+        }
+        c = rawRead();
+      }
     }
+    return bufferIsNotEmpty();
+  }
 
 }

@@ -19,141 +19,141 @@
 
 package org.extex.exindex.core.type.alphabet;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.page.SomePage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class contains a composed location class.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class VarLocationClass implements LocationClass {
 
+  /**
+   * This inner class represents a separator.
+   */
+  private class Seperator implements LocationClass {
+
     /**
-     * This inner class represents a separator.
+     * The field {@code sep} contains the separator.
      */
-    private class Seperator implements LocationClass {
-
-        /**
-         * The field {@code sep} contains the separator.
-         */
-        private String sep;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param sep the separator
-         */
-        public Seperator(String sep) {
-
-            this.sep = sep;
-        }
-
-        /**
-         * Adder for a separator.
-         * 
-         * @param separator the separator to set
-         */
-        public void addSep(String separator) {
-
-            this.sep = this.sep + separator;
-        }
-
-        /**
-    *      java.lang.String, String)
-         */
-        public PageReference match(String encap, String s) {
-
-            return null;
-        }
-
-        /**
-    *      java.lang.StringBuilder)
-         */
-        public boolean match(StringBuilder s) {
-
-            int j = 0;
-            for (int i = 0; i < sep.length(); i++) {
-                if (s.length() == 0 || s.charAt(j) != sep.charAt(i)) {
-                    return false;
-                }
-                j++;
-            }
-            s.delete(0, j);
-            return true;
-        }
-
-    }
+    private String sep;
 
     /**
-     * The field {@code list} contains the constituents.
-     */
-    private final List<LocationClass> list = new ArrayList<LocationClass>();
-
-
-    public VarLocationClass() {
-
-    }
-
-    /**
-     * Add some location class to the ones already stored.
-     * 
-     * @param loc the location class to add
-     */
-    public void add(LocationClass loc) {
-
-        list.add(loc);
-    }
-
-    /**
-     * Add a separator to the internal list.
-     * 
+     * Creates a new object.
+     *
      * @param sep the separator
      */
-    public void add(String sep) {
+    public Seperator( String sep ) {
 
-        if ("".equals(sep)) {
-            return;
-        }
-        int size = list.size();
-        if (size > 0) {
-            LocationClass last = list.get(size - 1);
-            if (last instanceof Seperator) {
-                ((Seperator) last).addSep(sep);
-                return;
-            }
-        }
-        list.add(new Seperator(sep));
+      this.sep = sep;
     }
 
     /**
-*      String)
+     * Adder for a separator.
+     *
+     * @param separator the separator to set
      */
-    public PageReference match(String encap, String text) {
+    public void addSep( String separator ) {
 
-        StringBuilder sb = new StringBuilder(text);
-        if (match(sb) && sb.length() == 0) {
-
-            return new SomePage(encap, text);
-        }
-        return null;
+      this.sep = this.sep + separator;
     }
 
-public boolean match(StringBuilder s) {
+    /**
+     * java.lang.String, String)
+     */
+    public PageReference match( String encap, String s ) {
 
-        int size = list.size();
-        if (size == 0) {
-            return true;
-        }
-
-        for (LocationClass lc : list) {
-            if (!lc.match(s)) {
-                return false;
-            }
-        }
-        return true;
+      return null;
     }
+
+    /**
+     * java.lang.StringBuilder)
+     */
+    public boolean match( StringBuilder s ) {
+
+      int j = 0;
+      for( int i = 0; i < sep.length(); i++ ) {
+        if( s.length() == 0 || s.charAt( j ) != sep.charAt( i ) ) {
+          return false;
+        }
+        j++;
+      }
+      s.delete( 0, j );
+      return true;
+    }
+
+  }
+
+  /**
+   * The field {@code list} contains the constituents.
+   */
+  private final List<LocationClass> list = new ArrayList<LocationClass>();
+
+
+  public VarLocationClass() {
+
+  }
+
+  /**
+   * Add some location class to the ones already stored.
+   *
+   * @param loc the location class to add
+   */
+  public void add( LocationClass loc ) {
+
+    list.add( loc );
+  }
+
+  /**
+   * Add a separator to the internal list.
+   *
+   * @param sep the separator
+   */
+  public void add( String sep ) {
+
+    if( "".equals( sep ) ) {
+      return;
+    }
+    int size = list.size();
+    if( size > 0 ) {
+      LocationClass last = list.get( size - 1 );
+      if( last instanceof Seperator ) {
+        ((Seperator) last).addSep( sep );
+        return;
+      }
+    }
+    list.add( new Seperator( sep ) );
+  }
+
+  /**
+   * String)
+   */
+  public PageReference match( String encap, String text ) {
+
+    StringBuilder sb = new StringBuilder( text );
+    if( match( sb ) && sb.length() == 0 ) {
+
+      return new SomePage( encap, text );
+    }
+    return null;
+  }
+
+  public boolean match( StringBuilder s ) {
+
+    int size = list.size();
+    if( size == 0 ) {
+      return true;
+    }
+
+    for( LocationClass lc : list ) {
+      if( !lc.match( s ) ) {
+        return false;
+      }
+    }
+    return true;
+  }
 }

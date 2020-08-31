@@ -24,76 +24,73 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \pdfstartlink}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfstartlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
 
-    public PdfstartlinkTest() {
+  public PdfstartlinkTest() {
 
-        super("pdfstartlink", " user{u}", "a " + "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfstartlink", " user{u}", "a " + "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    /**
-     * <testcase primitive="\pdfstartlink"> Test case checking that ...
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pdfstartlink"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\pdfoutput=1 a \\pdfstartlink A",
-            // --- output message ---
-            "pdfTeX error (ext1): action type missing");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 a \\pdfstartlink A",
+                  // --- output message ---
+                  "pdfTeX error (ext1): action type missing" );
+  }
 
-    /**
-     * <testcase primitive="\pdfstartlink"> Test case checking that ...
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\pdfstartlink"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfstartlink thread A",
-            // --- output message ---
-            "pdfTeX error (ext1): identifier type missing");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfstartlink thread" +
+                      " A",
+                  // --- output message ---
+                  "pdfTeX error (ext1): identifier type missing" );
+  }
 
-    /**
-     * <testcase primitive="\pdfstartlink"> Test case checking that ...
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError3() throws Exception {
+  /**
+   * <testcase primitive="\pdfstartlink"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError3() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfstartlink goto A",
-            // --- output message ---
-            "pdfTeX error (ext1): identifier type missing");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfstartlink goto A",
+                  // --- output message ---
+                  "pdfTeX error (ext1): identifier type missing" );
+  }
 
-    /**
-     * <testcase primitive="\pdfstartlink"> Test case checking that ...
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError4() throws Exception {
+  /**
+   * <testcase primitive="\pdfstartlink"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError4() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfstartlink file A",
-            // --- output message ---
-            "pdfTeX error (ext1): action type missing");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfstartlink file A",
+                  // --- output message ---
+                  "pdfTeX error (ext1): action type missing" );
+  }
 
 }

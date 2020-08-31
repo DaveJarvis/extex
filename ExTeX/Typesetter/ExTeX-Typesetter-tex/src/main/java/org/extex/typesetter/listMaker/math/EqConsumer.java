@@ -26,19 +26,19 @@ import org.extex.core.exception.helping.CantUseInException;
  * equation number.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface EqConsumer {
 
-    /**
-     * This method switches the collection of material to the target "equation
-     * number".
-     *
-     * @param left the indicator on which side to produce the equation number.
-     *  A value {@code true} indicates that the left side should be used.
-     *
-     * @throws CantUseInException in case that the EqConsumer is in a mode
-     *  where a switching to the number is not possible
-     */
-    void switchToNumber(boolean left) throws CantUseInException;
+  /**
+   * This method switches the collection of material to the target "equation
+   * number".
+   *
+   * @param left the indicator on which side to produce the equation number.
+   *             A value {@code true} indicates that the left side should
+   *             be used.
+   * @throws CantUseInException in case that the EqConsumer is in a mode
+   *                            where a switching to the number is not possible
+   */
+  void switchToNumber( boolean left ) throws CantUseInException;
 
 }

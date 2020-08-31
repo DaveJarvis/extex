@@ -27,124 +27,120 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \mathchar}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathcharTest extends AbstractMathTester {
 
 
-    public MathcharTest() {
+  public MathcharTest() {
 
-        setPrimitive("mathchar");setArguments("123 ");setPrepare("");
-    }
+    setPrimitive( "mathchar" );
+    setArguments( "123 " );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\mathchar">
-     *  Test case checking that a math char of -1 is not accepted.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testErr1() throws Exception {
+  /**
+   * <testcase primitive="\mathchar">
+   * Test case checking that a math char of -1 is not accepted.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testErr1() throws Exception {
 
-        assertFailure(
+    assertFailure(
         //--- input code ---
-                DEFINE_MATH + "$\\mathchar-1 "
-                        + "\\alpha\\end",
-                //--- output message ---
-                "Bad mathchar (-1)");
-    }
+        DEFINE_MATH + "$\\mathchar-1 "
+            + "\\alpha\\end",
+        //--- output message ---
+        "Bad mathchar (-1)" );
+  }
 
-    /**
-     * <testcase primitive="\mathchar">
-     *  Test case checking that a math char of 32769 is not accepted.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr2() throws Exception {
+  /**
+   * <testcase primitive="\mathchar">
+   * Test case checking that a math char of 32769 is not accepted.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr2() throws Exception {
 
-        assertFailure(
+    assertFailure(
         //--- input code ---
-                DEFINE_MATH + "$\\mathchar32769 ",
-                //--- output message ---
-                "Bad mathchar (32769)");
-    }
+        DEFINE_MATH + "$\\mathchar32769 ",
+        //--- output message ---
+        "Bad mathchar (32769)" );
+  }
 
-    /**
-     * <testcase primitive="\mathchar">
-     *  Test case checking that mathchar in the legal range works.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\mathchar">
+   * Test case checking that mathchar in the legal range works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                        + "$a\\mathchar\"010B b$\\end",
-                //--- output message ---
-                "a\013b" + TERM);
-    }
+        AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+            + "$a\\mathchar\"010B b$\\end",
+        //--- output message ---
+        "a\013b" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\mathchar">
-     *  Test case checking that ...
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testDM1() throws Exception {
+  /**
+   * <testcase primitive="\mathchar">
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testDM1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                        + "$$a\\mathchar\"010B b$$\\end",
-                //--- output message ---
-                "a\013b" + TERM);
-    }
+        AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+            + "$$a\\mathchar\"010B b$$\\end",
+        //--- output message ---
+        "a\013b" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\mathchar">
-     *  Test case checking that ...
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testDMExt1() throws Exception {
+  /**
+   * <testcase primitive="\mathchar">
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testDMExt1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES
-                        + DEFINE_MATH + "$$\\mathchar{ord 1 `A}$$\\end ",
-                //--- output message ---
-                "A" + TERM);
-    }
+        AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES
+            + DEFINE_MATH + "$$\\mathchar{ord 1 `A}$$\\end ",
+        //--- output message ---
+        "A" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\mathchar">
-     *  Test case checking that the extended notation works.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testExt1() throws Exception {
+  /**
+   * <testcase primitive="\mathchar">
+   * Test case checking that the extended notation works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testExt1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES
-                        + DEFINE_MATH + "$\\mathchar{ord 1 `A}$\\end ",
-                //--- output message ---
-                "A" + TERM);
-    }
+        AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES
+            + DEFINE_MATH + "$\\mathchar{ord 1 `A}$\\end ",
+        //--- output message ---
+        "A" + TERM );
+  }
 
 }

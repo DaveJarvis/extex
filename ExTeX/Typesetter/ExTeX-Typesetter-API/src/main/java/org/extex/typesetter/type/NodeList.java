@@ -19,11 +19,11 @@
 
 package org.extex.typesetter.type;
 
-import java.util.Iterator;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
+
+import java.util.Iterator;
 
 /**
  * This interface describes the features of a linear collection of nodes.
@@ -38,145 +38,143 @@ import org.extex.core.glue.FixedGlue;
  * to the attributes. This means that adding a node does not update width,
  * height, or depth.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface NodeList extends Node, Iterable<Node>, Cloneable {
 
-    /**
-     * Add a node to the node list at a given position.
-     * 
-     * @param index the position of insertion
-     * @param node the node to add
-     */
-    void add(int index, Node node);
+  /**
+   * Add a node to the node list at a given position.
+   *
+   * @param index the position of insertion
+   * @param node  the node to add
+   */
+  void add( int index, Node node );
 
-    /**
-     * Add a node to the node list. The other attributes (width, height, depth)
-     * are not modified.
-     * 
-     * @param node the node to add
-     */
-    void add(Node node);
+  /**
+   * Add a node to the node list. The other attributes (width, height, depth)
+   * are not modified.
+   *
+   * @param node the node to add
+   */
+  void add( Node node );
 
-    /**
-     * Add some glue to the node list. The other attributes (width, height,
-     * depth) are not modified.
-     * 
-     * @param glue the glue to add
-     */
-    void addSkip(FixedGlue glue);
+  /**
+   * Add some glue to the node list. The other attributes (width, height,
+   * depth) are not modified.
+   *
+   * @param glue the glue to add
+   */
+  void addSkip( FixedGlue glue );
 
-    /**
-     * Remove all nodes from the list. The list is empty afterwards. The
-     * dimensions are reset to zero unless target sizes are specified. In this
-     * case the target sizes are used.
-     */
-    void clear();
+  /**
+   * Remove all nodes from the list. The list is empty afterwards. The
+   * dimensions are reset to zero unless target sizes are specified. In this
+   * case the target sizes are used.
+   */
+  void clear();
 
-    /**
-     * Clone the current object.
-     * 
-     * @return the copy
-     */
-    NodeList copy();
+  /**
+   * Clone the current object.
+   *
+   * @return the copy
+   */
+  NodeList copy();
 
-    /**
-     * Getter for a node at a given position.
-     * 
-     * @param index the position
-     * 
-     * @return the node at position <i>index</i> of {@code null} if index
-     *         is out of bounds
-     */
-    Node get(int index);
+  /**
+   * Getter for a node at a given position.
+   *
+   * @param index the position
+   * @return the node at position <i>index</i> of {@code null} if index
+   * is out of bounds
+   */
+  Node get( int index );
 
-    /**
-     * Getter for the move value of the node list. The move parameter describes
-     * how far from its original position the box is moved leftwards or
-     * rightwards. Positive values indicate a move rightwards.
-     * 
-     * @return the move value
-     */
-    Dimen getMove();
+  /**
+   * Getter for the move value of the node list. The move parameter describes
+   * how far from its original position the box is moved leftwards or
+   * rightwards. Positive values indicate a move rightwards.
+   *
+   * @return the move value
+   */
+  Dimen getMove();
 
-    /**
-     * Getter for the shift value of the node list. The shift parameter
-     * describes how far from its original position the box is shifted up or
-     * down. Positive values indicate a shift downwards.
-     * 
-     * @return the shift value
-     */
-    Dimen getShift();
+  /**
+   * Getter for the shift value of the node list. The shift parameter
+   * describes how far from its original position the box is shifted up or
+   * down. Positive values indicate a shift downwards.
+   *
+   * @return the shift value
+   */
+  Dimen getShift();
 
-    /**
-     * Test whether the node list is empty.
-     * 
-     * @return {@code true}, if the {@code NodeList} is empty,
-     *         otherwise {@code false}.
-     */
-    boolean isEmpty();
+  /**
+   * Test whether the node list is empty.
+   *
+   * @return {@code true}, if the {@code NodeList} is empty,
+   * otherwise {@code false}.
+   */
+  boolean isEmpty();
 
-    /**
-     * Get a new iterator for all nodes in the list. This method is just
-     * provided for completeness. Consider a conventional loop because of
-     * performance issues.
-     * 
-     * @return the iterator for all nodes in the list
-     */
-    @Override
-    Iterator<Node> iterator();
+  /**
+   * Get a new iterator for all nodes in the list. This method is just
+   * provided for completeness. Consider a conventional loop because of
+   * performance issues.
+   *
+   * @return the iterator for all nodes in the list
+   */
+  @Override
+  Iterator<Node> iterator();
 
-    /**
-     * Remove an element at a given position. The other attributes (width,
-     * height, depth) are not modified.
-     * 
-     * @param index the position
-     * 
-     * @return the element previously located at position <i>index</i>
-     */
-    Node remove(int index);
+  /**
+   * Remove an element at a given position. The other attributes (width,
+   * height, depth) are not modified.
+   *
+   * @param index the position
+   * @return the element previously located at position <i>index</i>
+   */
+  Node remove( int index );
 
-    /**
-     * Setter for the move value of the node list. The move parameter describes
-     * how far from its original position the box is moved leftwards or
-     * rightwards. Positive values indicate a move rightwards.
-     * 
-     * @param d the move value
-     */
-    void setMove(FixedDimen d);
+  /**
+   * Setter for the move value of the node list. The move parameter describes
+   * how far from its original position the box is moved leftwards or
+   * rightwards. Positive values indicate a move rightwards.
+   *
+   * @param d the move value
+   */
+  void setMove( FixedDimen d );
 
-    /**
-     * Setter for the shift value of the node list. The shift parameter
-     * describes how far from its original position the box is shifted up or
-     * down. Positive values indicate a shift downwards.
-     * 
-     * @param d the amount to be shifted
-     */
-    void setShift(FixedDimen d);
+  /**
+   * Setter for the shift value of the node list. The shift parameter
+   * describes how far from its original position the box is shifted up or
+   * down. Positive values indicate a shift downwards.
+   *
+   * @param d the amount to be shifted
+   */
+  void setShift( FixedDimen d );
 
-    /**
-     * Getter for the number of elements of the list.
-     * 
-     * @return the length of the list
-     */
-    int size();
+  /**
+   * Getter for the number of elements of the list.
+   *
+   * @return the length of the list
+   */
+  int size();
 
-    /**
-     * Print the node possibly truncated in breadth and depth.
-     * 
-     * @param sb the target string buffer
-     * @param prefix the string inserted at the beginning of each line
-     * @param depth the depth limit for the pretty printing
-     * @param width the width limit for the pretty printing
-     */
-    void toString(StringBuilder sb, String prefix, int depth, int width);
+  /**
+   * Print the node possibly truncated in breadth and depth.
+   *
+   * @param sb     the target string buffer
+   * @param prefix the string inserted at the beginning of each line
+   * @param depth  the depth limit for the pretty printing
+   * @param width  the width limit for the pretty printing
+   */
+  void toString( StringBuilder sb, String prefix, int depth, int width );
 
-    /**
-     * Provides a string representation of the current instance.
-     * 
-     * @return the String representation of the object
-*/
-    String toText();
+  /**
+   * Provides a string representation of the current instance.
+   *
+   * @return the String representation of the object
+   */
+  String toText();
 
 }

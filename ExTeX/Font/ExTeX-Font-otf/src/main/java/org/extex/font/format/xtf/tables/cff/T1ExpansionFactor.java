@@ -26,29 +26,29 @@ import java.util.List;
  * ExpansionFactor.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T1ExpansionFactor extends T1DictNumber {
 
-    /**
-     * Create a new object.
-     *
-     * @param stack the stack
-     * @throws IOException if an IO.error occurs.
-     */
-    public T1ExpansionFactor(List<T2Number> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO.error occurs.
+   */
+  public T1ExpansionFactor( List<T2Number> stack ) throws IOException {
 
-        super(stack, new short[]{EXPANSION_FACTOR});
-    }
+    super( stack, new short[]{EXPANSION_FACTOR} );
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
-     */
-    @Override
-    public String getName() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
+   */
+  @Override
+  public String getName() {
 
-        return "ExpansionFactor";
-    }
+    return "ExpansionFactor";
+  }
 
 }

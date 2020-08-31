@@ -38,7 +38,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive {@code \catcode}
  * .
- * 
+ *
  * <p>The Primitive {@code \catcode}</p>
  * <p>
  * The primitive {@code \catcode} can be used to influence the tokenizer of
@@ -59,10 +59,10 @@ import org.extex.typesetter.exception.TypesetterException;
  * The following table contains the category codes with their meaning and the
  * mapping to numerical values.
  * </p>
-* <table>
+ * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td>ESCAPE</td>
+ * <td>ESCAPE</td>
  * <td>0</td>
  * <td>This character code signals the beginning of an escape sequence. The
  * following letters are absorbed into the name. If the following token is not a
@@ -154,113 +154,113 @@ import org.extex.typesetter.exception.TypesetterException;
  * <td>This character is invalid and will be dropped.</td>
  * </tr>
  * </table>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;catcode&rang;
  *      &rarr; &lang;optional prefix&rang; {@code \catcode} {@linkplain
- *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *          &lang;4-bit&nbsp;number&rang;}
  *
  *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  &lang;global&rang; &lang;optional prefix&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \catcode `\%=12  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \global\catcode `\%=11  </pre>
- * 
+ *
  * <p>{@code \catcode} as a Count Value</p>
-
- * 
+ *
+ *
  * <p>
  * {@code \catcode} can be used wherever a count value is required.
  * </p>
- * 
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class CatcodePrimitive extends AbstractAssignment
-        implements
-            CountConvertible,
-            Theable {
+    implements
+    CountConvertible,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public CatcodePrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public CatcodePrimitive( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    UnicodeChar charCode =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    source.getOptionalEquals( context );
+    long ccNumber = source.parseInteger( context, source, typesetter );
+
+    try {
+      context.setCatcode( charCode, Catcode.valueOf( (int) ccNumber ),
+                          prefix.clearGlobal() );
+    } catch( CatcodeException e ) {
+      throw new InvalidCodeException( Long.toString( ccNumber ),
+                                      Integer.toString( Catcode.getCatcodeMax() ) );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  }
 
-        UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getToken());
-        source.getOptionalEquals(context);
-        long ccNumber = source.parseInteger(context, source, typesetter);
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        try {
-            context.setCatcode(charCode, Catcode.valueOf((int) ccNumber),
-                prefix.clearGlobal());
-        } catch (CatcodeException e) {
-            throw new InvalidCodeException(Long.toString(ccNumber),
-                Integer.toString(Catcode.getCatcodeMax()));
-        }
+    UnicodeChar charCode =
+        source.scanCharacterCode( context, typesetter, getToken() );
 
-    }
+    return context.getCatcode( charCode ).getCode();
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getToken());
-
-        return context.getCatcode(charCode).getCode();
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        return context.getTokenFactory().toTokens(
-            convertCount(context, source, typesetter));
-    }
+    return context.getTokenFactory().toTokens(
+        convertCount( context, source, typesetter ) );
+  }
 
 }

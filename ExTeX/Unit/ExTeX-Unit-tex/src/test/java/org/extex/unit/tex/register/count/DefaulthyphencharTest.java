@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \defaulthyphenchar}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DefaulthyphencharTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DefaulthyphencharTest.class);
-    }
+    (new JUnitCore()).run( DefaulthyphencharTest.class );
+  }
 
 
-    public DefaulthyphencharTest() {
+  public DefaulthyphencharTest() {
 
-        super("defaulthyphenchar", "", "45");
-    }
+    super( "defaulthyphenchar", "", "45" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

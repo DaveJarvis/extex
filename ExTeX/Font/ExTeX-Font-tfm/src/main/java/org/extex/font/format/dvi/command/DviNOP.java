@@ -21,26 +21,26 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: nop: do nothing.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviNOP extends DviCommand {
 
-    /**
-     * Create a new object.
-     * 
-     * @param oc the opcode
-     * @param sp the start pointer
-     */
-    public DviNOP(final int oc, final int sp) {
+  /**
+   * Create a new object.
+   *
+   * @param oc the opcode
+   * @param sp the start pointer
+   */
+  public DviNOP( final int oc, final int sp ) {
 
-        super(oc, sp);
-    }
+    super( oc, sp );
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "nop";
-    }
+    return "nop";
+  }
 }

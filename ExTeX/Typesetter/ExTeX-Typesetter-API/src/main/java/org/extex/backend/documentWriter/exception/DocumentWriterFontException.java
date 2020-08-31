@@ -23,44 +23,44 @@ package org.extex.backend.documentWriter.exception;
  * DocumentWriter: FontException.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class DocumentWriterFontException extends DocumentWriterException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the error message
-     */
-    public DocumentWriterFontException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the error message
+   */
+  public DocumentWriterFontException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     * @param cause the cause
-     */
-    public DocumentWriterFontException(String message,
-            Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   * @param cause   the cause
+   */
+  public DocumentWriterFontException( String message,
+                                      Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the cause
-     */
-    public DocumentWriterFontException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause
+   */
+  public DocumentWriterFontException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 }

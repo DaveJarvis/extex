@@ -23,7 +23,7 @@ package org.extex.typesetter.type.noad;
  * This is a marker interface for simple Noads.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface SimpleNoad {
 
 

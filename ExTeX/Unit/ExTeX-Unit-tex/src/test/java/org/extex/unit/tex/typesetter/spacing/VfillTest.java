@@ -25,42 +25,44 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \vfill}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class VfillTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(VfillTest.class);
-    }
+    (new JUnitCore()).run( VfillTest.class );
+  }
 
 
-    public VfillTest() {
+  public VfillTest() {
 
-        setPrimitive("vfill");setArguments("");setPrepare("");
-    }
+    setPrimitive( "vfill" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\vfill"> Test case checking that {@code \vfill}
-     * switches to vertical mode and inserts a glue node with 1fill. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\vfill"> Test case checking that {@code \vfill}
+   * switches to vertical mode and inserts a glue node with 1fill.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "\\vfill\\end ",
-            // --- output channel ---
-            "\\vbox(0.0pt+0.0pt)x0.0pt\n" +
-                    ".\\glue0.0pt plus 1.0fill\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "\\vfill\\end ",
+                   // --- output channel ---
+                   "\\vbox(0.0pt+0.0pt)x0.0pt\n" +
+                       ".\\glue0.0pt plus 1.0fill\n" );
+  }
 
 }

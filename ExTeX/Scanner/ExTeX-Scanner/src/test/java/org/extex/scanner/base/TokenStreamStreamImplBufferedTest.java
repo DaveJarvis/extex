@@ -19,87 +19,88 @@
 
 package org.extex.scanner.base;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import org.extex.framework.configuration.Configuration;
 import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.api.exception.ScannerException;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Test cases for the string implementation of a token stream.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TokenStreamStreamImplBufferedTest
-        extends
-            TokenStreamStringImplTest {
+    extends
+    TokenStreamStringImplTest {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(TokenStreamStreamImplBufferedTest.class);
+    (new JUnitCore()).run( TokenStreamStreamImplBufferedTest.class );
+  }
+
+
+  public TokenStreamStreamImplBufferedTest() {
+
+  }
+
+  /**
+   * The field {@code conf} contains the configuration.
+   */
+  private static final Configuration CONF = new MyConfiguration( "16" );
+
+  /**
+   * Create a stream of tokens fed from a string.
+   *
+   * @param line the input string
+   * @return the new token stream
+   * @throws IOException in case of an error
+   */
+  @Override
+  protected TokenStream makeStream( String line ) throws IOException {
+
+    return new TokenStreamImpl( CONF, null, new InputStreamReader(
+        new ByteArrayInputStream( line.getBytes() ) ), Boolean.FALSE, "test" );
+  }
+
+  /**
+   * This test case validates that an IOException is remapped into a
+   * Scanner Exception
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testException1() throws Exception {
+
+    TokenStreamImpl stream =
+        new TokenStreamImpl( new MyConfiguration( "16" ), null,
+                             new InputStreamReader( new InputStream() {
+
+                               @Override
+                               public int read() throws IOException {
+
+                                 throw new IOException();
+                               }
+                             } ), Boolean.FALSE, "test" );
+    try {
+      stream.get( FACTORY, TOKENIZER );
+      assertFalse( true );
+    } catch( ScannerException e ) {
+      assertTrue( true );
     }
-
-
-    public TokenStreamStreamImplBufferedTest() {
-
-    }
-
-    /**
-     * The field {@code conf} contains the configuration.
-     */
-    private static final Configuration CONF = new MyConfiguration("16");
-
-    /**
-     * Create a stream of tokens fed from a string.
-     * 
-     * @param line the input string
-     * @return the new token stream
-     * @throws IOException in case of an error
-     */
-    @Override
-    protected TokenStream makeStream(String line) throws IOException {
-
-        return new TokenStreamImpl(CONF, null, new InputStreamReader(
-            new ByteArrayInputStream(line.getBytes())), Boolean.FALSE, "test");
-    }
-
-    /**
-     * This test case validates that an IOException is remapped into a Scanner Exception
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testException1() throws Exception {
-
-        TokenStreamImpl stream =
-                new TokenStreamImpl(new MyConfiguration("16"), null,
-                    new InputStreamReader(new InputStream() {
-
-                        @Override
-                        public int read() throws IOException {
-
-                            throw new IOException();
-                        }
-                    }), Boolean.FALSE, "test");
-        try {
-            stream.get(FACTORY, TOKENIZER);
-            assertFalse(true);
-        } catch (ScannerException e) {
-            assertTrue(true);
-        }
-    }
+  }
 
 }

@@ -31,86 +31,76 @@ import org.extex.scanner.type.tokens.Tokens;
  * cache some of them and deliver the same token several times.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface TokenFactory {
 
-    /**
-     * Get an instance of a token with a given Catcode and value.
-     *
-     * @param code the catcode
-     * @param esc the Unicode character value of the escape character
-     * @param value the value
-     * @param namespace the name space for the token. This is relevant for
-     *  ACTIVE and ESCAPE category codes only.
-     *
-     * @return the appropriate token
-     *
-     * @throws CatcodeException in case of an error
-     */
-    Token createToken(Catcode code, UnicodeChar esc, String value,
-            String namespace) throws CatcodeException;
+  /**
+   * Get an instance of a token with a given Catcode and value.
+   *
+   * @param code      the catcode
+   * @param esc       the Unicode character value of the escape character
+   * @param value     the value
+   * @param namespace the name space for the token. This is relevant for
+   *                  ACTIVE and ESCAPE category codes only.
+   * @return the appropriate token
+   * @throws CatcodeException in case of an error
+   */
+  Token createToken( Catcode code, UnicodeChar esc, String value,
+                     String namespace ) throws CatcodeException;
 
-    /**
-     * Create a new {@link org.extex.scanner.type.token.Token Token} of the
-     * appropriate kind. Tokens are immutable (no setters) thus the factory
-     * pattern can be applied.
-     *
-     * @param code the category code
-     * @param c the character value
-     * @param namespace the name space to use
-     *
-     * @return the new token
-     *
-     * @throws CatcodeException in case of an error
-     */
-    Token createToken(Catcode code, int c, String namespace)
-            throws CatcodeException;
+  /**
+   * Create a new {@link org.extex.scanner.type.token.Token Token} of the
+   * appropriate kind. Tokens are immutable (no setters) thus the factory
+   * pattern can be applied.
+   *
+   * @param code      the category code
+   * @param c         the character value
+   * @param namespace the name space to use
+   * @return the new token
+   * @throws CatcodeException in case of an error
+   */
+  Token createToken( Catcode code, int c, String namespace )
+      throws CatcodeException;
 
-    /**
-     * Get an instance of a token with a given Catcode and Unicode character
-     * value.
-     *
-     * @param code the catcode
-     * @param c the Unicode character value
-     * @param namespace the name space for the token. This is relevant for
-     *   ACTIVE and ESCAPE category codes only.
-     *
-     * @return the appropriate token
-     *
-     * @throws CatcodeException in case of an error
-     */
-    Token createToken(Catcode code, UnicodeChar c, String namespace)
-            throws CatcodeException;
+  /**
+   * Get an instance of a token with a given Catcode and Unicode character
+   * value.
+   *
+   * @param code      the catcode
+   * @param c         the Unicode character value
+   * @param namespace the name space for the token. This is relevant for
+   *                  ACTIVE and ESCAPE category codes only.
+   * @return the appropriate token
+   * @throws CatcodeException in case of an error
+   */
+  Token createToken( Catcode code, UnicodeChar c, String namespace )
+      throws CatcodeException;
 
-    /**
-     * Convert a character sequence to a list of tokens.
-     * <p>
-     * Each character of the string is converted into a {@code OtherToken}
-     * and added to the internal list. An exception is made for spaces which
-     * are converted into a {@code SpaceToken}.
-     * </p>
-     *
-     * @param s the character sequence to translate to tokens
-     *
-     * @return the token list
-     *
-     * @throws CatcodeException in case of an error
-     */
-    Tokens toTokens(CharSequence s) throws CatcodeException;
+  /**
+   * Convert a character sequence to a list of tokens.
+   * <p>
+   * Each character of the string is converted into a {@code OtherToken}
+   * and added to the internal list. An exception is made for spaces which
+   * are converted into a {@code SpaceToken}.
+   * </p>
+   *
+   * @param s the character sequence to translate to tokens
+   * @return the token list
+   * @throws CatcodeException in case of an error
+   */
+  Tokens toTokens( CharSequence s ) throws CatcodeException;
 
-    /**
-     * Convert a long value into a list of tokens.
-     * <p>
-     * Each character is converted into a {@code OtherToken}
-     * and added to the internal list.
-     * </p>
-     *
-     * @param l the value to convert
-     *
-     * @return the token list
-     *
-     * @throws CatcodeException in case of an error
-     */
-    Tokens toTokens(long l) throws CatcodeException;
+  /**
+   * Convert a long value into a list of tokens.
+   * <p>
+   * Each character is converted into a {@code OtherToken}
+   * and added to the internal list.
+   * </p>
+   *
+   * @param l the value to convert
+   * @return the token list
+   * @throws CatcodeException in case of an error
+   */
+  Tokens toTokens( long l ) throws CatcodeException;
 
 }

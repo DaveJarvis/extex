@@ -23,41 +23,40 @@ package org.extex.backend.pageFilter.selector;
  * A Rule containing an interval of pages.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 class IntervalRule implements Rule {
 
-    /**
-     * The field {@code from} contains the lower limit.
-     */
-    private final int from;
+  /**
+   * The field {@code from} contains the lower limit.
+   */
+  private final int from;
 
-    /**
-     * The field {@code to} contains the upper limit.
-     */
-    private final int to;
+  /**
+   * The field {@code to} contains the upper limit.
+   */
+  private final int to;
 
-    /**
-     * Creates a new object.
-     *
-     * @param from the lower limit
-     * @param to the upper limit
-     */
-    public IntervalRule(int from, int to) {
+  /**
+   * Creates a new object.
+   *
+   * @param from the lower limit
+   * @param to   the upper limit
+   */
+  public IntervalRule( int from, int to ) {
 
-        this.from = from;
-        this.to = to;
-    }
+    this.from = from;
+    this.to = to;
+  }
 
-    /**
-     * Check that a given page is covered by this interval.
-     *
-     * @param value the value to check
-     *
-     * @return {@code true} iff the value is in the interval
-     */
-    public boolean check(int value) {
+  /**
+   * Check that a given page is covered by this interval.
+   *
+   * @param value the value to check
+   * @return {@code true} iff the value is in the interval
+   */
+  public boolean check( int value ) {
 
-        return value >= from && value <= to;
-    }
+    return value >= from && value <= to;
+  }
 
 }

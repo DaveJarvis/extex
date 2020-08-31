@@ -19,95 +19,93 @@
 
 package org.extex.base.type.file;
 
-import java.io.IOException;
-import java.util.logging.Logger;
-
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.tokens.Tokens;
+
+import java.io.IOException;
+import java.util.logging.Logger;
 
 /**
  * This implementation of an OutFile encapsulates a Logger. It outputs the items
  * to the log file only.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LogFile extends OutputFile {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the encapsulated logger.
-     */
-    private transient Logger logger;
+  /**
+   * The field {@code logger} contains the encapsulated logger.
+   */
+  private transient Logger logger;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param logger the target Logger
-     */
-    public LogFile(Logger logger) {
+  /**
+   * Creates a new object.
+   *
+   * @param logger the target Logger
+   */
+  public LogFile( Logger logger ) {
 
-        super(null);
-        this.logger = logger;
+    super( null );
+    this.logger = logger;
+  }
+
+  /**
+   * Close the current file.
+   *
+   * @throws IOException in case of an error
+   * @see org.extex.scanner.type.file.OutFile#close()
+   */
+  @Override
+  public void close() throws IOException {
+
+    this.logger = null;
+  }
+
+  /**
+   * Check whether the output file is open.
+   *
+   * @return {@code true} iff the instance is open
+   * @see org.extex.scanner.type.file.OutFile#isOpen()
+   */
+  @Override
+  public boolean isOpen() {
+
+    return true;
+  }
+
+  @Override
+  public void newline() throws IOException {
+
+    if( logger != null ) {
+      logger.fine( "\n" );
     }
+  }
 
-    /**
-     * Close the current file.
-     * 
-     * @throws IOException in case of an error
-     * 
-     * @see org.extex.scanner.type.file.OutFile#close()
-     */
-    @Override
-    public void close() throws IOException {
+  /**
+   * java.lang.String, TokenStreamFactory)
+   */
+  @Override
+  public void open( String key, String encoding, TokenStreamFactory factory ) {
 
-        this.logger = null;
+    // nothing to do
+  }
+
+  /**
+   * org.extex.scanner.type.tokens.Tokens)
+   */
+  @Override
+  public boolean write( Tokens toks ) throws IOException {
+
+    if( logger != null ) {
+      logger.fine( toks.toText() );
     }
-
-    /**
-     * Check whether the output file is open.
-     * 
-     * @return {@code true} iff the instance is open
-     * 
-     * @see org.extex.scanner.type.file.OutFile#isOpen()
-     */
-    @Override
-    public boolean isOpen() {
-
-        return true;
-    }
-
-@Override
-    public void newline() throws IOException {
-
-        if (logger != null) {
-            logger.fine("\n");
-        }
-    }
-
-    /**
-*      java.lang.String, TokenStreamFactory)
-     */
-    @Override
-    public void open(String key, String encoding, TokenStreamFactory factory) {
-
-        // nothing to do
-    }
-
-    /**
-*      org.extex.scanner.type.tokens.Tokens)
-     */
-    @Override
-    public boolean write(Tokens toks) throws IOException {
-
-        if (logger != null) {
-            logger.fine(toks.toText());
-        }
-        return true;
-    }
+    return true;
+  }
 
 }

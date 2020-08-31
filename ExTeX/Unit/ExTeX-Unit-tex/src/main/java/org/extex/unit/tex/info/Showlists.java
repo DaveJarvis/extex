@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.info;
 
-import java.util.logging.Logger;
-
 import org.extex.core.count.Count;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.logger.LogEnabled;
@@ -32,81 +30,82 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
+import java.util.logging.Logger;
+
 /**
  * This class provides an implementation for the primitive
  * {@code \showlists}.
- * 
+ *
  * <p>The Primitive {@code \showlists}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;showlists&rang;
  *       &rarr; {@code \showlists}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \showlists 1  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Showlists extends AbstractCode implements LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the logger to send information to.
-     */
-    private transient Logger logger;
+  /**
+   * The field {@code logger} contains the logger to send information to.
+   */
+  private transient Logger logger;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Showlists(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Showlists( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
-    public void enableLogging(Logger log) {
+  /**
+   * Setter for the logger.
+   *
+   * @param log the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+   */
+  @Override
+  public void enableLogging( Logger log ) {
 
-        this.logger = log;
-    }
+    this.logger = log;
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Count depth = context.getCount("showboxdepth");
-        Count width = context.getCount("showboxbreadth");
-        StringBuilder sb = new StringBuilder();
+    Count depth = context.getCount( "showboxdepth" );
+    Count width = context.getCount( "showboxbreadth" );
+    StringBuilder sb = new StringBuilder();
 
-        typesetter.showlists(sb, depth.getValue(), width.getValue());
+    typesetter.showlists( sb, depth.getValue(), width.getValue() );
 
-        logger.fine(sb.toString());
-    }
+    logger.fine( sb.toString() );
+  }
 
 }

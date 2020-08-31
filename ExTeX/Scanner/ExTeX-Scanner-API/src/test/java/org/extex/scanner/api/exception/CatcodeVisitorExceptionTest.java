@@ -19,43 +19,43 @@
 
 package org.extex.scanner.api.exception;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test suite for the exception.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CatcodeVisitorExceptionTest {
 
-    /**
-     * Test method for
-     * {@link org.extex.scanner.api.exception.CatcodeVisitorException#getLocalizedMessage()}
-     * .
-     */
-    @Test
-    public final void testGetLocalizedMessage1() {
+  /**
+   * Test method for
+   * {@link org.extex.scanner.api.exception.CatcodeVisitorException#getLocalizedMessage()}
+   * .
+   */
+  @Test
+  public final void testGetLocalizedMessage1() {
 
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Catcode: Neither character not value given",
-            new CatcodeVisitorException().getLocalizedMessage());
-    }
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Catcode: Neither character not value given",
+                  new CatcodeVisitorException().getLocalizedMessage() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.scanner.api.exception.CatcodeVisitorException#getLocalizedMessage()}
-     * .
-     */
-    @Test
-    public final void testGetLocalizedMessage2() {
+  /**
+   * Test method for
+   * {@link org.extex.scanner.api.exception.CatcodeVisitorException#getLocalizedMessage()}
+   * .
+   */
+  @Test
+  public final void testGetLocalizedMessage2() {
 
-        Locale.setDefault(Locale.GERMAN);
-        assertEquals("Catcode: Weder Zeichen noch Wert vorhanden",
-            new CatcodeVisitorException().getLocalizedMessage());
-    }
+    Locale.setDefault( Locale.GERMAN );
+    assertEquals( "Catcode: Weder Zeichen noch Wert vorhanden",
+                  new CatcodeVisitorException().getLocalizedMessage() );
+  }
 
 }

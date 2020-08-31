@@ -23,15 +23,15 @@ package org.extex.font.format.xtf.tables.cff;
  * Conditional.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public abstract class T2Conditional extends T2Operator {
 
-    /**
-     * Create a new object.
-     */
-    protected T2Conditional() {
+  /**
+   * Create a new object.
+   */
+  protected T2Conditional() {
 
-    }
+  }
 
 }

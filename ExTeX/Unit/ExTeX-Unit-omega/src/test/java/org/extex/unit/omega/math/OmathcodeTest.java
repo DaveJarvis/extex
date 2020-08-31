@@ -19,8 +19,6 @@
 
 package org.extex.unit.omega.math;
 
-import static org.junit.Assert.assertEquals;
-
 import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Interpreter;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
@@ -29,395 +27,396 @@ import org.extex.typesetter.type.math.MathCode;
 import org.extex.unit.tex.math.AbstractMathTester;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * This is a test suite for the primitive {@code \omathcode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
 
-    public OmathcodeTest() {
+  public OmathcodeTest() {
 
-        setPrimitive("omathcode");setArguments("12=32 ");
-        setConfig("omega-test");
-    }
+    setPrimitive( "omathcode" );
+    setArguments( "12=32 " );
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} works for an ordinary character definition.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test100() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} works for an ordinary character definition.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test100() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                    + "\\omathcode`. \"41" + "$a.b$\\end",
-            // --- output message ---
-            "aAb" + TERM);
-    }
+        AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+            + "\\omathcode`. \"41" + "$a.b$\\end",
+        // --- output message ---
+        "aAb" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} can be used to define active characters.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testActive1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} can be used to define active characters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testActive1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
-                    + "\\catcode`\\.=13 \\def.{xxx}" + "\\catcode`\\.=12 "
-                    + "\\omathcode`. \"8000000" + "$a.b$\\end",
-            // --- output message ---
-            "axxxb" + TERM);
-    }
+        AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+            + "\\catcode`\\.=13 \\def.{xxx}" + "\\catcode`\\.=12 "
+            + "\\omathcode`. \"8000000" + "$a.b$\\end",
+        // --- output message ---
+        "axxxb" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} complains about an undefined active character
-     * definition.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testActiveErr1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} complains about an undefined active character
+   * definition.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testActiveErr1() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
-                    + "\\omathcode`. \"8000000" + "$a.b$\\end",
-            // --- output message ---
-            "Undefined control sequence .");
-    }
+        AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+            + "\\omathcode`. \"8000000" + "$a.b$\\end",
+        // --- output message ---
+        "Undefined control sequence ." );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} sets the code in the Context for binary characters
-     * correctly.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testBin1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} sets the code in the Context for binary characters
+   * correctly.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testBin1() throws Exception {
 
-        Interpreter interpreter = assertSuccess(
+    Interpreter interpreter = assertSuccess(
         // --- input code ---
-            "\\omathcode`. \"2000041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.BINARY, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
-    }
+        "\\omathcode`. \"2000041" + "\\end",
+        // --- output message ---
+        "" );
+    MathCode mc =
+        interpreter.getContext().getMathcode( UnicodeChar.get( '.' ) );
+    assertEquals( MathClass.BINARY, mc.getMathClass() );
+    assertEquals( 0, mc.getMathGlyph().getFamily() );
+    assertEquals( 65, mc.getMathGlyph().getCharacter().getCodePoint() );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} sets the code in the Context for an closing character
-     * correctly.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testClose1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} sets the code in the Context for an closing character
+   * correctly.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testClose1() throws Exception {
 
-        Interpreter interpreter = assertSuccess(
+    Interpreter interpreter = assertSuccess(
         // --- input code ---
-            "\\omathcode`. \"5000041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.CLOSING, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
-    }
+        "\\omathcode`. \"5000041" + "\\end",
+        // --- output message ---
+        "" );
+    MathCode mc =
+        interpreter.getContext().getMathcode( UnicodeChar.get( '.' ) );
+    assertEquals( MathClass.CLOSING, mc.getMathClass() );
+    assertEquals( 0, mc.getMathGlyph().getFamily() );
+    assertEquals( 65, mc.getMathGlyph().getCharacter().getCodePoint() );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} is convertible into a count.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCount1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} is convertible into a count.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCount1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            "\\omathcode`.=1234567 "
-                    + "\\count0=\\omathcode`.\\the\\count0\\end",
-            // --- output message ---
-            "1234567" + TERM);
-    }
+        "\\omathcode`.=1234567 "
+            + "\\count0=\\omathcode`.\\the\\count0\\end",
+        // --- output message ---
+        "1234567" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError0() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError0() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            "\\omathcode",
-            // --- output message ---
-            "Missing number, treated as zero");
-    }
+        "\\omathcode",
+        // --- output message ---
+        "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} complains about negative values.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} complains about negative values.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            "\\omathcode`. -1 " + " \\end",
-            // --- output message ---
-            "Bad mathchar (-1)");
-    }
+        "\\omathcode`. -1 " + " \\end",
+        // --- output message ---
+        "Bad mathchar (-1)" );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} complains about too large values.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} complains about too large values.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            "\\omathcode`. 999999999" + " \\end",
-            // --- output message ---
-            "Bad mathchar (999999999)");
-    }
+        "\\omathcode`. 999999999" + " \\end",
+        // --- output message ---
+        "Bad mathchar (999999999)" );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} complains about too large values.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError3() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} complains about too large values.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError3() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            "\\omathcode`. \"8000001" + " \\end",
-            // --- output message ---
-            "Bad mathchar (134217729)");
-    }
+        "\\omathcode`. \"8000001" + " \\end",
+        // --- output message ---
+        "Bad mathchar (134217729)" );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} sets the code in the Context for large characters
-     * correctly.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLarge1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} sets the code in the Context for large characters
+   * correctly.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLarge1() throws Exception {
 
-        Interpreter interpreter = assertSuccess(
+    Interpreter interpreter = assertSuccess(
         // --- input code ---
-            "\\omathcode`. \"1000041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.LARGE, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
-    }
+        "\\omathcode`. \"1000041" + "\\end",
+        // --- output message ---
+        "" );
+    MathCode mc =
+        interpreter.getContext().getMathcode( UnicodeChar.get( '.' ) );
+    assertEquals( MathClass.LARGE, mc.getMathClass() );
+    assertEquals( 0, mc.getMathGlyph().getFamily() );
+    assertEquals( 65, mc.getMathGlyph().getCharacter().getCodePoint() );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} sets the code in the Context for an opening character
-     * correctly.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testOpen1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} sets the code in the Context for an opening character
+   * correctly.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testOpen1() throws Exception {
 
-        Interpreter interpreter = assertSuccess(
+    Interpreter interpreter = assertSuccess(
         // --- input code ---
-            "\\omathcode`. \"4000041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.OPENING, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
-    }
+        "\\omathcode`. \"4000041" + "\\end",
+        // --- output message ---
+        "" );
+    MathCode mc =
+        interpreter.getContext().getMathcode( UnicodeChar.get( '.' ) );
+    assertEquals( MathClass.OPENING, mc.getMathClass() );
+    assertEquals( 0, mc.getMathGlyph().getFamily() );
+    assertEquals( 65, mc.getMathGlyph().getCharacter().getCodePoint() );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} sets the code in the Context for ordinary characters
-     * correctly.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testOrdinary1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} sets the code in the Context for ordinary characters
+   * correctly.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testOrdinary1() throws Exception {
 
-        Interpreter interpreter = assertSuccess(
+    Interpreter interpreter = assertSuccess(
         // --- input code ---
-            "\\omathcode`. \"41" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.ORDINARY, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
-    }
+        "\\omathcode`. \"41" + "\\end",
+        // --- output message ---
+        "" );
+    MathCode mc =
+        interpreter.getContext().getMathcode( UnicodeChar.get( '.' ) );
+    assertEquals( MathClass.ORDINARY, mc.getMathClass() );
+    assertEquals( 0, mc.getMathGlyph().getFamily() );
+    assertEquals( 65, mc.getMathGlyph().getCharacter().getCodePoint() );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} sets the code in the Context for a punctation
-     * character correctly.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testPunc1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} sets the code in the Context for a punctation
+   * character correctly.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testPunc1() throws Exception {
 
-        Interpreter interpreter = assertSuccess(
+    Interpreter interpreter = assertSuccess(
         // --- input code ---
-            "\\omathcode`. \"6000041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.PUNCTATION, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
-    }
+        "\\omathcode`. \"6000041" + "\\end",
+        // --- output message ---
+        "" );
+    MathCode mc =
+        interpreter.getContext().getMathcode( UnicodeChar.get( '.' ) );
+    assertEquals( MathClass.PUNCTATION, mc.getMathClass() );
+    assertEquals( 0, mc.getMathGlyph().getFamily() );
+    assertEquals( 65, mc.getMathGlyph().getCharacter().getCodePoint() );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} accepts a value of 0.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testRange0() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} accepts a value of 0.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testRange0() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            "\\omathcode`. 0" + " \\end",
-            // --- output message ---
-            "");
-    }
+        "\\omathcode`. 0" + " \\end",
+        // --- output message ---
+        "" );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} accepts a value of 32767.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testRange1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} accepts a value of 32767.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testRange1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            "\\omathcode`. 32767" + " \\end",
-            // --- output message ---
-            "");
-    }
+        "\\omathcode`. 32767" + " \\end",
+        // --- output message ---
+        "" );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} accepts a value of 32768, i.e. more than TeX
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testRange2() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} accepts a value of 32768, i.e. more than TeX
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testRange2() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            "\\omathcode`. 32768" + " \\end",
-            // --- output message ---
-            "");
-    }
+        "\\omathcode`. 32768" + " \\end",
+        // --- output message ---
+        "" );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} sets the code in the Context for a relational
-     * character correctly.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testRel1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} sets the code in the Context for a relational
+   * character correctly.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testRel1() throws Exception {
 
-        Interpreter interpreter = assertSuccess(
+    Interpreter interpreter = assertSuccess(
         // --- input code ---
-            "\\omathcode`. \"3000041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.RELATION, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
-    }
+        "\\omathcode`. \"3000041" + "\\end",
+        // --- output message ---
+        "" );
+    MathCode mc =
+        interpreter.getContext().getMathcode( UnicodeChar.get( '.' ) );
+    assertEquals( MathClass.RELATION, mc.getMathClass() );
+    assertEquals( 0, mc.getMathGlyph().getFamily() );
+    assertEquals( 65, mc.getMathGlyph().getCharacter().getCodePoint() );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} is theable.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testThe1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} is theable.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testThe1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            "\\omathcode`.=1234567 " + "\\the\\omathcode`.\\end",
-            // --- output message ---
-            "1234567" + TERM);
-    }
+        "\\omathcode`.=1234567 " + "\\the\\omathcode`.\\end",
+        // --- output message ---
+        "1234567" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\omathcode"> Test case checking that
-     * {@code \omathcode} sets the code in the Context for a variable character
-     * correctly.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVar1() throws Exception {
+  /**
+   * <testcase primitive="\omathcode"> Test case checking that
+   * {@code \omathcode} sets the code in the Context for a variable character
+   * correctly.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testVar1() throws Exception {
 
-        Interpreter interpreter = assertSuccess(
+    Interpreter interpreter = assertSuccess(
         // --- input code ---
-            "\\omathcode`. \"7000041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.VARIABLE, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
-    }
+        "\\omathcode`. \"7000041" + "\\end",
+        // --- output message ---
+        "" );
+    MathCode mc =
+        interpreter.getContext().getMathcode( UnicodeChar.get( '.' ) );
+    assertEquals( MathClass.VARIABLE, mc.getMathClass() );
+    assertEquals( 0, mc.getMathGlyph().getFamily() );
+    assertEquals( 65, mc.getMathGlyph().getCharacter().getCodePoint() );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

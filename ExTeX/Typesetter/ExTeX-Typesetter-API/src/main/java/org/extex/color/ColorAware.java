@@ -23,14 +23,14 @@ package org.extex.color;
  * This interface describes the ability to consume a color converter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ColorAware {
 
-    /**
-     * Setter for the color converter.
-     *
-     * @param converter the color converter
-     */
-    void setColorConverter(ColorConverter converter);
+  /**
+   * Setter for the color converter.
+   *
+   * @param converter the color converter
+   */
+  void setColorConverter( ColorConverter converter );
 
 }

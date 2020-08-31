@@ -30,19 +30,18 @@ import org.extex.typesetter.type.page.Page;
  * extension language.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OutputRoutine {
 
-    /**
-     * The output function is invoked to process a vertical list and put the
-     * material on the page. In fact it should find its way to the document
-     * writer &ndash; either immediately or later on.
-     *
-     * @param page the nodes to put onto the page
-     * @param backend the back-end driver to target the nodes to
-     *
-     * @throws GeneralException in case of an error
-     */
-    void output(Page page, BackendDriver backend) throws GeneralException;
+  /**
+   * The output function is invoked to process a vertical list and put the
+   * material on the page. In fact it should find its way to the document
+   * writer &ndash; either immediately or later on.
+   *
+   * @param page    the nodes to put onto the page
+   * @param backend the back-end driver to target the nodes to
+   * @throws GeneralException in case of an error
+   */
+  void output( Page page, BackendDriver backend ) throws GeneralException;
 
 }

@@ -56,7 +56,7 @@ import java.util.List;
  * <pre>
  *   &lt;Scanner class="the.pack.age.TheClass"/&gt;
  * </pre>
- * 
+ *
  * <p>
  * The class given must implement the interface
  * {@link org.extex.scanner.api.TokenStream TokenStream}. In addition an
@@ -67,7 +67,7 @@ import java.util.List;
  *     public TheClass(Configuration config, Reader reader, Boolean isFile,
  *          String theSource) throws IOException
  * </pre>
- * 
+ *
  * <p>
  * If the Token stream is fed from a file then the additional parameter
  * {@code buffersize} is taken into account. This parameter is optional. Its
@@ -96,7 +96,7 @@ import java.util.List;
  *   &lt;Scanner class="the.pack.age.TheClass"
  *         reader="another.pack.age.TheReaderClass"/&gt;
  * </pre>
- * 
+ *
  * <p>
  * Note that the attribute {@code reader} is optional. If none is given or the
  * value is the empty string then {@code java.io.InputStreamReader} is used
@@ -118,420 +118,420 @@ import java.util.List;
  * <dd>This event is triggered by the request for a TokenStream fed from a
  * String. The string is passed as argument to the observer.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TokenStreamFactory extends AbstractFactory<Object>
-        implements
-            OpenFileObservable,
-            OpenStringObservable,
-            OpenReaderObservable,
-            OpenWriterObservable {
+    implements
+    OpenFileObservable,
+    OpenStringObservable,
+    OpenReaderObservable,
+    OpenWriterObservable {
 
-    /**
-     * The constant {@code BUFFERSIZE_ATTRIBUTE} contains the name of the
-     * attribute used to get the buffer size.
-     */
-    private static final String BUFFERSIZE_ATTRIBUTE = "buffersize";
+  /**
+   * The constant {@code BUFFERSIZE_ATTRIBUTE} contains the name of the
+   * attribute used to get the buffer size.
+   */
+  private static final String BUFFERSIZE_ATTRIBUTE = "buffersize";
 
-    /**
-     * The constant {@code CLASS_ATTRIBUTE} contains the name of the attribute
-     * used to get the class name.
-     */
-    private static final String CLASS_ATTRIBUTE = "class";
+  /**
+   * The constant {@code CLASS_ATTRIBUTE} contains the name of the attribute
+   * used to get the class name.
+   */
+  private static final String CLASS_ATTRIBUTE = "class";
 
-    /**
-     * The field {@code bufferSize} contains the buffer size. A value less than
-     * 1 indicates that the default should be used.
-     */
-    private int bufferSize;
+  /**
+   * The field {@code bufferSize} contains the buffer size. A value less than
+   * 1 indicates that the default should be used.
+   */
+  private int bufferSize;
 
-    /**
-     * The field {@code configuration} contains the configuration for this
-     * instance.
-     */
-    private Configuration configuration;
+  /**
+   * The field {@code configuration} contains the configuration for this
+   * instance.
+   */
+  private Configuration configuration;
 
-    /**
-     * The field {@code decorators} contains the list of decorators for input
-     * streams acquired from a resource.
-     */
-    private List<InputStreamInterceptor> inStreamInterceptors;
+  /**
+   * The field {@code decorators} contains the list of decorators for input
+   * streams acquired from a resource.
+   */
+  private List<InputStreamInterceptor> inStreamInterceptors;
 
-    /**
-     * The field {@code interceptors} contains the list of decorators for
-     * readers.
-     */
-    private List<ReaderInterceptor> inReaderInterceptors;
+  /**
+   * The field {@code interceptors} contains the list of decorators for
+   * readers.
+   */
+  private List<ReaderInterceptor> inReaderInterceptors;
 
-    /**
-     * The field {@code openFileObservers} contains the observers registered
-     * for the "file" event.
-     */
-    private OpenFileObserver openFileObservers;
+  /**
+   * The field {@code openFileObservers} contains the observers registered
+   * for the "file" event.
+   */
+  private OpenFileObserver openFileObservers;
 
-    /**
-     * The field {@code openReaderObservers} contains the observers registered
-     * for the "reader" event.
-     */
-    private OpenReaderObserver openReaderObservers;
+  /**
+   * The field {@code openReaderObservers} contains the observers registered
+   * for the "reader" event.
+   */
+  private OpenReaderObserver openReaderObservers;
 
-    /**
-     * The field {@code openStringObservers} contains the observers registered
-     * for the "string" event.
-     */
-    private OpenStringObserver openStringObservers;
+  /**
+   * The field {@code openStringObservers} contains the observers registered
+   * for the "string" event.
+   */
+  private OpenStringObserver openStringObservers;
 
-    /**
-     * The field {@code openWriterObservers} contains the observers registered
-     * for the "writer" event.
-     */
-    private OpenWriterObserver openWriterObservers;
+  /**
+   * The field {@code openWriterObservers} contains the observers registered
+   * for the "writer" event.
+   */
+  private OpenWriterObserver openWriterObservers;
 
-    /**
-     * The field {@code options} contains the options for the token stream.
-     */
-    private TokenStreamOptions options;
+  /**
+   * The field {@code options} contains the options for the token stream.
+   */
+  private TokenStreamOptions options;
 
-    /**
-     * The field {@code readerConstructor} contains the constructor for the
-     * reader variant.
-     */
-    private Constructor<?> readerConstructor;
+  /**
+   * The field {@code readerConstructor} contains the constructor for the
+   * reader variant.
+   */
+  private Constructor<?> readerConstructor;
 
-    /**
-     * The field {@code tag} contains the tag name of the sub-configuration to
-     * use.
-     */
-    private final String tag;
+  /**
+   * The field {@code tag} contains the tag name of the sub-configuration to
+   * use.
+   */
+  private final String tag;
 
-    /**
-     * The field {@code outWriterInterceptors} contains the output writer
-     * interceptor list.
-     */
-    private List<WriterInterceptor> outWriterInterceptors;
+  /**
+   * The field {@code outWriterInterceptors} contains the output writer
+   * interceptor list.
+   */
+  private List<WriterInterceptor> outWriterInterceptors;
 
-    /**
-     * The field {@code outStreamInterceptors} contains the output stream
-     * interceptor list.
-     */
-    private List<OutputStreamInterceptor> outStreamInterceptors;
+  /**
+   * The field {@code outStreamInterceptors} contains the output stream
+   * interceptor list.
+   */
+  private List<OutputStreamInterceptor> outStreamInterceptors;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param tag the tag name of the sub-configuration to use
-     * @throws ConfigurationException in case of an error in the configuration
-     */
-    public TokenStreamFactory(String tag) throws ConfigurationException {
+  /**
+   * Creates a new object.
+   *
+   * @param tag the tag name of the sub-configuration to use
+   * @throws ConfigurationException in case of an error in the configuration
+   */
+  public TokenStreamFactory( String tag ) throws ConfigurationException {
 
-        this.tag = tag;
+    this.tag = tag;
+  }
+
+  @Override
+  public void configure( Configuration config ) throws ConfigurationException {
+
+    super.configure( config );
+    this.configuration = selectConfiguration( tag );
+    String classname = configuration.getAttribute( CLASS_ATTRIBUTE );
+    if( classname == null ) {
+      throw new ConfigurationMissingAttributeException( CLASS_ATTRIBUTE,
+                                                        configuration );
+    }
+    try {
+      readerConstructor =
+          Class.forName( classname ).getConstructor(
+              Configuration.class,
+              TokenStreamOptions.class, Reader.class,
+              Boolean.class, String.class );
+    } catch( SecurityException e ) {
+      throw new ConfigurationInstantiationException( e );
+    } catch( NoSuchMethodException e ) {
+      throw new ConfigurationNoSuchMethodException( e );
+    } catch( ClassNotFoundException e ) {
+      throw new ConfigurationClassNotFoundException( classname,
+                                                     configuration );
+    }
+    String bs = config.getAttribute( BUFFERSIZE_ATTRIBUTE );
+    if( bs != null && bs.matches( "^[0-9]+$" ) ) {
+      bufferSize = Integer.parseInt( bs );
+    }
+    else {
+      bufferSize = 0;
+    }
+  }
+
+  /**
+   * Provide a new instance of a token stream reading from a string.
+   *
+   * @param line the line of input to read from
+   * @return the new instance
+   * @throws ConfigurationException in case of an error in the configuration
+   */
+  public TokenStream getStream( CharSequence line )
+      throws ConfigurationException {
+
+    TokenStream stream = getStream( new StringReader( line.toString() ),
+                                    Boolean.FALSE, "*" );
+
+    if( openStringObservers != null ) {
+      openStringObservers.update( line );
     }
 
-@Override
-    public void configure(Configuration config) throws ConfigurationException {
+    return stream;
+  }
 
-        super.configure(config);
-        this.configuration = selectConfiguration(tag);
-        String classname = configuration.getAttribute(CLASS_ATTRIBUTE);
-        if (classname == null) {
-            throw new ConfigurationMissingAttributeException(CLASS_ATTRIBUTE,
-                configuration);
-        }
-        try {
-            readerConstructor =
-                    Class.forName(classname).getConstructor(
-                        Configuration.class,
-                        TokenStreamOptions.class, Reader.class,
-                        Boolean.class, String.class );
-        } catch (SecurityException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (NoSuchMethodException e) {
-            throw new ConfigurationNoSuchMethodException(e);
-        } catch (ClassNotFoundException e) {
-            throw new ConfigurationClassNotFoundException(classname,
-                configuration);
-        }
-        String bs = config.getAttribute(BUFFERSIZE_ATTRIBUTE);
-        if (bs != null && bs.matches("^[0-9]+$")) {
-            bufferSize = Integer.parseInt(bs);
-        } else {
-            bufferSize = 0;
-        }
+  /**
+   * Provide a new instance of a token stream reading from a Reader.
+   *
+   * @param reader the reader to get new characters from
+   * @return the new instance
+   * @throws ConfigurationException in case of an error in the configuration
+   */
+  public TokenStream getStream( Reader reader ) throws ConfigurationException {
+
+    TokenStream stream = getStream( reader, Boolean.FALSE, "*" );
+
+    if( openReaderObservers != null ) {
+      openReaderObservers.update( reader );
     }
 
-    /**
-     * Provide a new instance of a token stream reading from a string.
-     * 
-     * @param line the line of input to read from
-     * @return the new instance
-     * @throws ConfigurationException in case of an error in the configuration
-     */
-    public TokenStream getStream(CharSequence line)
-            throws ConfigurationException {
+    return stream;
+  }
 
-        TokenStream stream = getStream(new StringReader(line.toString()),
-            Boolean.FALSE, "*");
+  /**
+   * Provide a new instance of a token stream reading from a Reader.
+   *
+   * @param reader the reader to get new characters from
+   * @param isFile the indicator for file readers
+   * @param source the description of the source
+   * @return the new instance
+   * @throws ConfigurationException in case of an error in the configuration
+   */
+  protected TokenStream getStream( Reader reader, Boolean isFile,
+                                   String source )
+      throws ConfigurationException {
 
-        if (openStringObservers != null) {
-            openStringObservers.update(line);
-        }
+    if( reader == null ) {
+      throw new IllegalArgumentException( "reader" );
+    }
+    Reader r = reader;
 
-        return stream;
+    if( inReaderInterceptors != null ) {
+      for( ReaderInterceptor iri : inReaderInterceptors ) {
+        r = iri.pipe( r );
+      }
     }
 
-    /**
-     * Provide a new instance of a token stream reading from a Reader.
-     * 
-     * @param reader the reader to get new characters from
-     * @return the new instance
-     * @throws ConfigurationException in case of an error in the configuration
-     */
-    public TokenStream getStream(Reader reader) throws ConfigurationException {
+    TokenStream stream;
+    try {
 
-        TokenStream stream = getStream(reader, Boolean.FALSE, "*");
+      stream = (TokenStream) readerConstructor.newInstance(
+          new Object[]{configuration, options, r, isFile, source} );
 
-        if (openReaderObservers != null) {
-            openReaderObservers.update(reader);
-        }
-
-        return stream;
+    } catch( final Exception e ) {
+      throw new ConfigurationInstantiationException( e );
     }
 
-    /**
-     * Provide a new instance of a token stream reading from a Reader.
-     * 
-     * @param reader the reader to get new characters from
-     * @param isFile the indicator for file readers
-     * @param source the description of the source
-     * 
-     * @return the new instance
-     * 
-     * @throws ConfigurationException in case of an error in the configuration
-     */
-    protected TokenStream getStream(Reader reader, Boolean isFile, String source)
-            throws ConfigurationException {
+    enableLogging( stream, getLogger() );
 
-        if (reader == null) {
-            throw new IllegalArgumentException("reader");
-        }
-        Reader r = reader;
+    return stream;
+  }
 
-        if (inReaderInterceptors != null) {
-            for (ReaderInterceptor iri : inReaderInterceptors) {
-                r = iri.pipe(r);
-            }
-        }
+  /**
+   * Provide a new instance of a token stream reading from a file or other
+   * resource.
+   *
+   * @param name     the name of the file to be read
+   * @param type     the type of the file to be read
+   * @param encoding the name of the encoding to use
+   * @return the new instance or {@code null} if the resource could not
+   * be located
+   * @throws ConfigurationException in case of an error in the configuration
+   */
+  public TokenStream getStream( String name, String type, String encoding )
+      throws ConfigurationException {
 
-        TokenStream stream;
-        try {
+    ResourceFinder resourceFinder = getResourceFinder();
+    if( resourceFinder == null ) {
+      throw new MissingResourceFinderException( "" );
+    }
+    InputStream istream = resourceFinder.findResource( name, type );
 
-            stream = (TokenStream) readerConstructor.newInstance(
-                new Object[]{configuration, options, r, isFile, source});
-
-        } catch ( final Exception e) {
-            throw new ConfigurationInstantiationException(e);
-        }
-
-        enableLogging(stream, getLogger());
-
-        return stream;
+    if( istream == null ) {
+      return null;
+    }
+    if( bufferSize > 0 ) {
+      istream = new BufferedInputStream( istream, bufferSize );
+    }
+    else {
+      istream = new BufferedInputStream( istream );
     }
 
-    /**
-     * Provide a new instance of a token stream reading from a file or other
-     * resource.
-     * 
-     * @param name the name of the file to be read
-     * @param type the type of the file to be read
-     * @param encoding the name of the encoding to use
-     * 
-     * @return the new instance or {@code null} if the resource could not
-     *         be located
-     * @throws ConfigurationException in case of an error in the configuration
-     */
-    public TokenStream getStream(String name, String type, String encoding)
-            throws ConfigurationException {
-
-        ResourceFinder resourceFinder = getResourceFinder();
-        if (resourceFinder == null) {
-            throw new MissingResourceFinderException("");
-        }
-        InputStream istream = resourceFinder.findResource(name, type);
-
-        if (istream == null) {
-            return null;
-        }
-        if (bufferSize > 0) {
-            istream = new BufferedInputStream(istream, bufferSize);
-        } else {
-            istream = new BufferedInputStream(istream);
-        }
-
-        if (inStreamInterceptors != null) {
-            for (InputStreamInterceptor isi : inStreamInterceptors) {
-                istream = isi.pipe(istream);
-            }
-        }
-
-        TokenStream stream;
-        try {
-            stream =
-                    getStream(encoding == null
-                            ? new InputStreamReader(istream)
-                            : new InputStreamReader(istream, encoding),
-                        Boolean.TRUE, name);
-        } catch (UnsupportedEncodingException e) {
-            throw new ConfigurationUnsupportedEncodingException(encoding,
-                                                                null );
-        }
-
-        if (openFileObservers != null) {
-            openFileObservers.update(name, type, istream);
-        }
-
-        return stream;
+    if( inStreamInterceptors != null ) {
+      for( InputStreamInterceptor isi : inStreamInterceptors ) {
+        istream = isi.pipe( istream );
+      }
     }
 
-    /**
-     * Register an input stream interceptor to be applied for each token stream
-     * originated at a resource.
-     * 
-     * @param interceptor the additional interceptor
-     */
-    public void register(InputStreamInterceptor interceptor) {
-
-        if (inStreamInterceptors == null) {
-            inStreamInterceptors = new ArrayList<>();
-        }
-        inStreamInterceptors.add(interceptor);
+    TokenStream stream;
+    try {
+      stream =
+          getStream( encoding == null
+                         ? new InputStreamReader( istream )
+                         : new InputStreamReader( istream, encoding ),
+                     Boolean.TRUE, name );
+    } catch( UnsupportedEncodingException e ) {
+      throw new ConfigurationUnsupportedEncodingException( encoding,
+                                                           null );
     }
 
-    /**
-     * Register an output stream interceptor to be applied for each output
-     * stream.
-     * 
-     * @param interceptor the additional interceptor
-     */
-    public void register(OutputStreamInterceptor interceptor) {
-
-        if (outStreamInterceptors == null) {
-            outStreamInterceptors = new ArrayList<>();
-        }
-        outStreamInterceptors.add(interceptor);
+    if( openFileObservers != null ) {
+      openFileObservers.update( name, type, istream );
     }
 
-    /**
-     * Register a reader interceptor to be applied for each token stream
-     * originated at a resource.
-     * 
-     * @param interceptor the additional interceptor
-     */
-    public void register(ReaderInterceptor interceptor) {
+    return stream;
+  }
 
-        if (inReaderInterceptors == null) {
-            inReaderInterceptors = new ArrayList<>();
-        }
-        inReaderInterceptors.add(interceptor);
+  /**
+   * Register an input stream interceptor to be applied for each token stream
+   * originated at a resource.
+   *
+   * @param interceptor the additional interceptor
+   */
+  public void register( InputStreamInterceptor interceptor ) {
+
+    if( inStreamInterceptors == null ) {
+      inStreamInterceptors = new ArrayList<>();
+    }
+    inStreamInterceptors.add( interceptor );
+  }
+
+  /**
+   * Register an output stream interceptor to be applied for each output
+   * stream.
+   *
+   * @param interceptor the additional interceptor
+   */
+  public void register( OutputStreamInterceptor interceptor ) {
+
+    if( outStreamInterceptors == null ) {
+      outStreamInterceptors = new ArrayList<>();
+    }
+    outStreamInterceptors.add( interceptor );
+  }
+
+  /**
+   * Register a reader interceptor to be applied for each token stream
+   * originated at a resource.
+   *
+   * @param interceptor the additional interceptor
+   */
+  public void register( ReaderInterceptor interceptor ) {
+
+    if( inReaderInterceptors == null ) {
+      inReaderInterceptors = new ArrayList<>();
+    }
+    inReaderInterceptors.add( interceptor );
+  }
+
+  /**
+   * Register a writer interceptor to be applied for each writer.
+   *
+   * @param interceptor the additional interceptor
+   */
+  public void register( WriterInterceptor interceptor ) {
+
+    if( outWriterInterceptors == null ) {
+      outWriterInterceptors = new ArrayList<>();
+    }
+    outWriterInterceptors.add( interceptor );
+  }
+
+  @Override
+  public void registerObserver( OpenFileObserver observer ) {
+
+    openFileObservers =
+        OpenFileObserverList.register( openFileObservers, observer );
+  }
+
+  @Override
+  public void registerObserver( OpenReaderObserver observer ) {
+
+    openReaderObservers =
+        OpenReaderObserverList.register( openReaderObservers, observer );
+  }
+
+  @Override
+  public void registerObserver( OpenStringObserver observer ) {
+
+    openStringObservers =
+        OpenStringObserverList.register( openStringObservers, observer );
+  }
+
+  @Override
+  public void registerObserver( OpenWriterObserver observer ) {
+
+    openWriterObservers =
+        OpenWriterObserverList.register( openWriterObservers, observer );
+  }
+
+  /**
+   * Setter for options.
+   *
+   * @param options the options to set.
+   */
+  public void setOptions( TokenStreamOptions options ) {
+
+    this.options = options;
+  }
+
+  /**
+   * Construct a Writer for an output stream. This may build up a pipe of
+   * output stream and writers to perform all desirable steps.
+   * <p>
+   * The encoding can be given as a hint.
+   * </p>
+   *
+   * @param stream   the stream to put bytes to
+   * @param key      the name in terms of the interpreter
+   * @param encoding the optional encoding. If the encoding is
+   *                 {@code null} then it is ignored
+   * @return the writer for the task
+   * @throws UnsupportedEncodingException in case of an error with the
+   *                                      encoding
+   */
+  public Writer writerStream( OutputStream stream, String key, String encoding )
+      throws UnsupportedEncodingException {
+
+    OutputStream s = stream;
+
+    if( outStreamInterceptors != null ) {
+      for( OutputStreamInterceptor i : outStreamInterceptors ) {
+        s = i.pipe( s );
+      }
     }
 
-    /**
-     * Register a writer interceptor to be applied for each writer.
-     * 
-     * @param interceptor the additional interceptor
-     */
-    public void register(WriterInterceptor interceptor) {
+    OutputStreamWriter w;
+    if( encoding != null ) {
+      w = new OutputStreamWriter( s, encoding );
+    }
+    else {
+      w = new OutputStreamWriter( stream );
+    }
+    Writer writer = new BufferedWriter( w );
 
-        if (outWriterInterceptors == null) {
-            outWriterInterceptors = new ArrayList<>();
-        }
-        outWriterInterceptors.add(interceptor);
+    if( outWriterInterceptors != null ) {
+      for( WriterInterceptor i : outWriterInterceptors ) {
+        writer = i.pipe( writer );
+      }
     }
 
-@Override
-    public void registerObserver(OpenFileObserver observer) {
-
-        openFileObservers =
-                OpenFileObserverList.register(openFileObservers, observer);
+    if( openWriterObservers != null ) {
+      openWriterObservers.update( writer );
     }
-
-@Override
-    public void registerObserver(OpenReaderObserver observer) {
-
-        openReaderObservers =
-                OpenReaderObserverList.register(openReaderObservers, observer);
-    }
-
-@Override
-    public void registerObserver(OpenStringObserver observer) {
-
-        openStringObservers =
-                OpenStringObserverList.register(openStringObservers, observer);
-    }
-
-@Override
-    public void registerObserver(OpenWriterObserver observer) {
-
-        openWriterObservers =
-                OpenWriterObserverList.register(openWriterObservers, observer);
-    }
-
-    /**
-     * Setter for options.
-     * 
-     * @param options the options to set.
-     */
-    public void setOptions(TokenStreamOptions options) {
-
-        this.options = options;
-    }
-
-    /**
-     * Construct a Writer for an output stream. This may build up a pipe of
-     * output stream and writers to perform all desirable steps.
-     * <p>
-     * The encoding can be given as a hint.
-     * </p>
-     * 
-     * @param stream the stream to put bytes to
-     * @param key the name in terms of the interpreter
-     * @param encoding the optional encoding. If the encoding is
-     *        {@code null} then it is ignored
-     * @return the writer for the task
-     * 
-     * @throws UnsupportedEncodingException in case of an error with the
-     *         encoding
-     */
-    public Writer writerStream(OutputStream stream, String key, String encoding)
-            throws UnsupportedEncodingException {
-
-        OutputStream s = stream;
-
-        if (outStreamInterceptors != null) {
-            for (OutputStreamInterceptor i : outStreamInterceptors) {
-                s = i.pipe(s);
-            }
-        }
-
-        OutputStreamWriter w;
-        if (encoding != null) {
-            w = new OutputStreamWriter(s, encoding);
-        } else {
-            w = new OutputStreamWriter(stream);
-        }
-        Writer writer = new BufferedWriter(w);
-
-        if (outWriterInterceptors != null) {
-            for (WriterInterceptor i : outWriterInterceptors) {
-                writer = i.pipe(writer);
-            }
-        }
-
-        if (openWriterObservers != null) {
-            openWriterObservers.update(writer);
-        }
-        return writer;
-    }
+    return writer;
+  }
 
 }

@@ -31,52 +31,51 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This abstract base class provides the methods to compute the keys for
  * numbered muskip registers.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractMuskip extends AbstractAssignment {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  static final long serialVersionUID = 2007L;
 
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractMuskip(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractMuskip( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Return the key (the name of the primitive) for the numbered muskip
+   * register.
+   *
+   * @param source     the source for new tokens
+   * @param context    the interpreter context to use
+   * @param typesetter the typesetter
+   * @return the key for the current register
+   * @throws HelpingException    in case that a derived class need to throw an
+   *                             Exception this one is declared
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  protected String getKey( TokenSource source, Context context,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String name =
+        source.scanRegisterName( context, source, typesetter, getToken() );
+
+    if( Namespace.SUPPORT_NAMESPACE_SKIP ) {
+      return context.getNamespace() + "muskip#" + name;
     }
-
-    /**
-     * Return the key (the name of the primitive) for the numbered muskip
-     * register.
-     * 
-     * @param source the source for new tokens
-     * @param context the interpreter context to use
-     * @param typesetter the typesetter
-     * 
-     * @return the key for the current register
-     * 
-     * @throws HelpingException in case that a derived class need to throw an
-     *         Exception this one is declared
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    protected String getKey(TokenSource source, Context context,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String name =
-                source.scanRegisterName(context, source, typesetter, getToken());
-
-        if (Namespace.SUPPORT_NAMESPACE_SKIP) {
-            return context.getNamespace() + "muskip#" + name;
-        }
-        return "muskip#" + name;
-    }
+    return "muskip#" + name;
+  }
 
 }

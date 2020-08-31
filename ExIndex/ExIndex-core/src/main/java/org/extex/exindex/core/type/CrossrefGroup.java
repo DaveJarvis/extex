@@ -19,87 +19,88 @@
 
 package org.extex.exindex.core.type;
 
-import java.io.IOException;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.raw.CrossReference;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
+import java.io.IOException;
+import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * This class represents a cross-reference group.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CrossrefGroup implements LocationClassGroup {
 
-    /**
-     * The field {@code map} contains the mapping of layers to a
-     * cross-reference.
-     */
-    private final Map<String[], CrossReference> map =
-            new HashMap<String[], CrossReference>();
+  /**
+   * The field {@code map} contains the mapping of layers to a
+   * cross-reference.
+   */
+  private final Map<String[], CrossReference> map =
+      new HashMap<String[], CrossReference>();
 
-    /**
-     * The field {@code clazz} contains the class.
-     */
-    private final String clazz;
+  /**
+   * The field {@code clazz} contains the class.
+   */
+  private final String clazz;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param clazz the class
-     */
-    public CrossrefGroup(String clazz) {
+  /**
+   * Creates a new object.
+   *
+   * @param clazz the class
+   */
+  public CrossrefGroup( String clazz ) {
 
-        this.clazz = clazz;
+    this.clazz = clazz;
+  }
+
+  /**
+   * Store the keys in the group.
+   *
+   * @param keys  the keys to store
+   * @param layer the class
+   */
+  public void store( String[] keys, String layer ) {
+
+    if( map.get( keys ) != null ) {
+      return;
     }
 
-    /**
-     * Store the keys in the group.
-     * 
-     * @param keys the keys to store
-     * @param layer the class
-     */
-    public void store(String[] keys, String layer) {
+    map.put( keys, new CrossReference( layer, keys ) );
+  }
 
-        if (map.get(keys) != null) {
-            return;
-        }
+  /**
+   * org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
+   */
+  public void write( Writer writer, LInterpreter interpreter,
+                     MarkupContainer markupContainer, boolean trace )
+      throws IOException,
+      LNonMatchingTypeException {
 
-        map.put(keys, new CrossReference(layer, keys));
+    Markup markupCrossrefGroup =
+        markupContainer.getMarkup( "markup-crossref-list" );
+
+    markupCrossrefGroup.write( writer, markupContainer, clazz, Markup.OPEN,
+                               trace );
+    boolean first = true;
+
+    for( CrossReference xref : map.values() ) {
+      if( first ) {
+        first = false;
+      }
+      else {
+        markupCrossrefGroup.write( writer, markupContainer, clazz,
+                                   Markup.SEP, trace );
+      }
+
+      xref.write( writer, interpreter, markupContainer, trace );
     }
-
-    /**
-*      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
-     */
-    public void write(Writer writer, LInterpreter interpreter,
-            MarkupContainer markupContainer, boolean trace)
-            throws IOException,
-                LNonMatchingTypeException {
-
-        Markup markupCrossrefGroup =
-                markupContainer.getMarkup("markup-crossref-list");
-
-        markupCrossrefGroup.write(writer, markupContainer, clazz, Markup.OPEN,
-            trace);
-        boolean first = true;
-
-        for (CrossReference xref : map.values()) {
-            if (first) {
-                first = false;
-            } else {
-                markupCrossrefGroup.write(writer, markupContainer, clazz,
-                    Markup.SEP, trace);
-            }
-
-            xref.write(writer, interpreter, markupContainer, trace);
-        }
-        markupCrossrefGroup.write(writer, markupContainer, clazz,
-            Markup.CLOSE, trace);
-    }
+    markupCrossrefGroup.write( writer, markupContainer, clazz,
+                               Markup.CLOSE, trace );
+  }
 
 }

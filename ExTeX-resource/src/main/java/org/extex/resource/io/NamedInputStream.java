@@ -25,113 +25,113 @@ import java.io.InputStream;
 /**
  * This input stream carries a name to transport the information where the input
  * is coming from.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NamedInputStream extends InputStream {
 
-    /**
-     * The field {@code name} contains the name.
-     */
-    private final String name;
+  /**
+   * The field {@code name} contains the name.
+   */
+  private final String name;
 
-    /**
-     * The field {@code stream} contains the stream.
-     */
-    private final InputStream stream;
+  /**
+   * The field {@code stream} contains the stream.
+   */
+  private final InputStream stream;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param stream the stream
-     * @param name the name
-     */
-    public NamedInputStream(InputStream stream, String name) {
+  /**
+   * Creates a new object.
+   *
+   * @param stream the stream
+   * @param name   the name
+   */
+  public NamedInputStream( InputStream stream, String name ) {
 
-        this.stream = stream;
-        this.name = name;
-    }
+    this.stream = stream;
+    this.name = name;
+  }
 
-@Override
-    public int available() throws IOException {
+  @Override
+  public int available() throws IOException {
 
-        return stream.available();
-    }
+    return stream.available();
+  }
 
-@Override
-    public void close() throws IOException {
+  @Override
+  public void close() throws IOException {
 
-        stream.close();
-    }
+    stream.close();
+  }
 
-@Override
-    public boolean equals(Object obj) {
+  @Override
+  public boolean equals( Object obj ) {
 
-        return stream.equals(obj);
-    }
+    return stream.equals( obj );
+  }
 
-    /**
-     * Getter for name.
-     * 
-     * @return the name
-     */
-    public String getName() {
+  /**
+   * Getter for name.
+   *
+   * @return the name
+   */
+  public String getName() {
 
-        return name;
-    }
+    return name;
+  }
 
-@Override
-    public int hashCode() {
+  @Override
+  public int hashCode() {
 
-        return stream.hashCode();
-    }
+    return stream.hashCode();
+  }
 
-@Override
-    public void mark(int readlimit) {
+  @Override
+  public void mark( int readlimit ) {
 
-        stream.mark(readlimit);
-    }
+    stream.mark( readlimit );
+  }
 
-@Override
-    public boolean markSupported() {
+  @Override
+  public boolean markSupported() {
 
-        return stream.markSupported();
-    }
+    return stream.markSupported();
+  }
 
-@Override
-    public int read() throws IOException {
+  @Override
+  public int read() throws IOException {
 
-        return stream.read();
-    }
+    return stream.read();
+  }
 
-@Override
-    public int read(byte[] b) throws IOException {
+  @Override
+  public int read( byte[] b ) throws IOException {
 
-        return stream.read(b);
-    }
+    return stream.read( b );
+  }
 
-@Override
-    public int read(byte[] b, int off, int len) throws IOException {
+  @Override
+  public int read( byte[] b, int off, int len ) throws IOException {
 
-        return stream.read(b, off, len);
-    }
+    return stream.read( b, off, len );
+  }
 
-@Override
-    public void reset() throws IOException {
+  @Override
+  public void reset() throws IOException {
 
-        stream.reset();
-    }
+    stream.reset();
+  }
 
-@Override
-    public long skip(long n) throws IOException {
+  @Override
+  public long skip( long n ) throws IOException {
 
-        return stream.skip(n);
-    }
+    return stream.skip( n );
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        return stream.toString();
-    }
+    return stream.toString();
+  }
 
 }

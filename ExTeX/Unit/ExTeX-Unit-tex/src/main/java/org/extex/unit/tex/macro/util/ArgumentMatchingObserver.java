@@ -25,18 +25,18 @@ import org.extex.scanner.type.tokens.Tokens;
 /**
  * This interface describes an observer to be informed about the argument
  * matching of a macro invocation.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ArgumentMatchingObserver {
 
-    /**
-     * Observe the acquisition of an argument for a macro invocation.
-     * 
-     * @param index the number of the argument acquired
-     * @param value the value of the argument
-     * @param cs the token for which the expansion is performed
-     */
-    void observeArgument(int index, Tokens value, CodeToken cs);
+  /**
+   * Observe the acquisition of an argument for a macro invocation.
+   *
+   * @param index the number of the argument acquired
+   * @param value the value of the argument
+   * @param cs    the token for which the expansion is performed
+   */
+  void observeArgument( int index, Tokens value, CodeToken cs );
 
 }

@@ -31,60 +31,61 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdfrefobj}.
- * 
+ *
  * <p>The Primitive {@code \pdfrefobj}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
  * <p>
  * The formal description of this primitive is the following:
  * </p>
- * 
+ *
  * <pre class="syntax">
  *    &lang;pdfrefobj&rang;
  *       &rarr; {@code \pdfrefobj} &lang;number&rang;
  * </pre>
- * 
+ *
  * <p>Examples</p>
  *
  * <pre class="TeXSample">
  *    \pdfrefobj 42  </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdfrefobj extends AbstractPdftexCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdfrefobj(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdfrefobj( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
 
-        ensurePdftex(context, typesetter);
+    ensurePdftex( context, typesetter );
 
-        long no = source.parseInteger(context, source, typesetter);
+    long no = source.parseInteger( context, source, typesetter );
 
-        typesetter.add(new PdfRefObj(no));
-    }
+    typesetter.add( new PdfRefObj( no ) );
+  }
 
 }

@@ -19,27 +19,27 @@
 
 package org.extex.scanner.api.exception;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test suite for the exception.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CatcodeExceptionTest {
 
-    /**
-     * Test method for {@link java.lang.Throwable#getLocalizedMessage()}.
-     */
-    @Test
-    public final void testGetLocalizedMessage() {
+  /**
+   * Test method for {@link java.lang.Throwable#getLocalizedMessage()}.
+   */
+  @Test
+  public final void testGetLocalizedMessage() {
 
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("xxx", new CatcodeException("xxx").getLocalizedMessage());
-    }
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "xxx", new CatcodeException( "xxx" ).getLocalizedMessage() );
+  }
 
 }

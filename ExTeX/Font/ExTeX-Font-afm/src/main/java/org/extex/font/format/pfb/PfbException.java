@@ -22,32 +22,32 @@ import org.extex.font.exception.FontException;
 
 /**
  * Exception for the pfb parser.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class PfbException extends FontException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new object.
-     */
-    public PfbException() {
+  /**
+   * Create a new object.
+   */
+  public PfbException() {
 
-    }
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     */
-    public PfbException(String message) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   */
+  public PfbException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 }

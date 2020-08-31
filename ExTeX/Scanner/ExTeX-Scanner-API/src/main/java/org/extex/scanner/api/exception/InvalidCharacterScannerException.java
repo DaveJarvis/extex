@@ -23,61 +23,62 @@ import org.extex.core.UnicodeChar;
 
 /**
  * This exception signals that an invalid character has been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InvalidCharacterScannerException extends ScannerException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code c} contains the invalid character.
-     */
-    private final UnicodeChar c;
+  /**
+   * The field {@code c} contains the invalid character.
+   */
+  private final UnicodeChar c;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param c the character
-     */
-    public InvalidCharacterScannerException(UnicodeChar c) {
+  /**
+   * Creates a new object.
+   *
+   * @param c the character
+   */
+  public InvalidCharacterScannerException( UnicodeChar c ) {
 
-        this.c = c;
+    this.c = c;
+  }
+
+  /**
+   * Getter for the invalid character.
+   *
+   * @return the invalid character
+   */
+  public UnicodeChar getC() {
+
+    return c;
+  }
+
+  /**
+   * Creates a localized description of this throwable.
+   *
+   * @return the localized description of this throwable
+   * @see java.lang.Throwable#getLocalizedMessage()
+   */
+  @Override
+  public String getLocalizedMessage() {
+
+    String s;
+    if( c == null ) {
+      s = "";
     }
-
-    /**
-     * Getter for the invalid character.
-     * 
-     * @return the invalid character
-     */
-    public UnicodeChar getC() {
-
-        return c;
+    else if( c.isPrintable() ) {
+      s = c.toString();
     }
-
-    /**
-     * Creates a localized description of this throwable.
-     * 
-     * @return the localized description of this throwable
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
-
-        String s;
-        if (c == null) {
-            s = "";
-        } else if (c.isPrintable()) {
-            s = c.toString();
-        } else {
-            s = "^^" + c.getCodePoint();
-        }
-        return getLocalizer().format("Text", s);
+    else {
+      s = "^^" + c.getCodePoint();
     }
+    return getLocalizer().format( "Text", s );
+  }
 
 }

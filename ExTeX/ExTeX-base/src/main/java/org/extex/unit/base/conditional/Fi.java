@@ -32,73 +32,73 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \fi}.
- * 
+ *
  * <p>The Primitive {@code \fi}</p>
  * <p>
  * This primitive indicates the end of an conditional. As such it can not appear
  * alone but only in combination with a preceding {@code \if*}.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;fi&rang;
  *     &rarr; {@code \fi}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \fi  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
-public class Fi extends AbstractCode implements ExpandableCode, PrefixCode  {
+ */
+public class Fi extends AbstractCode implements ExpandableCode, PrefixCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Fi(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Fi( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    if( context.popConditional() == null ) {
+      throw new HelpingException( getLocalizer(), "TTP.ExtraOrElseFi",
+                                  toText( context ) );
     }
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter ) throws HelpingException {
 
-        if (context.popConditional() == null) {
-            throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                toText(context));
-        }
+    if( context.popConditional() == null ) {
+      throw new HelpingException( getLocalizer(), "TTP.ExtraOrElseFi",
+                                  toText( context ) );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
-
-        if (context.popConditional() == null) {
-            throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                toText(context));
-        }
-    }
+  }
 
 }

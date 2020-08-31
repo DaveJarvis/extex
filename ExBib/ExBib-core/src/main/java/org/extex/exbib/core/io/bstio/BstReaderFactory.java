@@ -39,36 +39,34 @@ import org.extex.resource.ResourceFinder;
  * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BstReaderFactory extends AbstractFactory<BstReader> {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param configuration the configuration
-     * @param finder the resource finder
-     * 
-     * @throws ConfigurationException in case of an configuration error
-     */
-    public BstReaderFactory(Configuration configuration, ResourceFinder finder)
-            throws ConfigurationException {
+  /**
+   * Creates a new object.
+   *
+   * @param configuration the configuration
+   * @param finder        the resource finder
+   * @throws ConfigurationException in case of an configuration error
+   */
+  public BstReaderFactory( Configuration configuration, ResourceFinder finder )
+      throws ConfigurationException {
 
-        super(configuration);
-        setResourceFinder(finder);
-    }
+    super( configuration );
+    setResourceFinder( finder );
+  }
 
-    /**
-     * Return a new instance of a BstReader.
-     * 
-     * @return the new instance of a BstReader
-     * 
-     * @throws ConfigurationException in case that the configuration is invalid
-     */
-    public synchronized BstReader newInstance() throws ConfigurationException {
+  /**
+   * Return a new instance of a BstReader.
+   *
+   * @return the new instance of a BstReader
+   * @throws ConfigurationException in case that the configuration is invalid
+   */
+  public synchronized BstReader newInstance() throws ConfigurationException {
 
-        BstReader reader = createInstance(BstReader.class);
-        reader.setResourceFinder(getResourceFinder());
-        return reader;
-    }
+    BstReader reader = createInstance( BstReader.class );
+    reader.setResourceFinder( getResourceFinder() );
+    return reader;
+  }
 
 }

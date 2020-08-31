@@ -24,34 +24,34 @@ import java.util.List;
 
 /**
  * T2: vstem: x dx {dxa dxb}* vstem (3).
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2Vstem extends T2HintCmd {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @param ch The char string.
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2Vstem(List<T2CharString> stack, CharString ch) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @param ch    The char string.
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2Vstem( List<T2CharString> stack, CharString ch ) throws IOException {
 
-        super(stack, new short[]{T2VSTEM}, ch);
+    super( stack, new short[]{T2VSTEM}, ch );
 
-    }
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return TYPE_VSTEM;
-    }
+    return TYPE_VSTEM;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "vstem";
-    }
+    return "vstem";
+  }
 
 }

@@ -30,7 +30,7 @@ import static org.junit.Assert.assertEquals;
  * This is a test suite for ExIndex.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MakeIndexTest {
 
   private final static String DIR_TARGET = "build";
@@ -231,14 +231,15 @@ public class MakeIndexTest {
               + " \\indexGroup{W}\n"
               + "  \\item Windows\\dotfill\\hyperpage{12}, \\hyperpage{14}\n"
               + "\n" + "\\end{theindex}\n",
-          "Scanning style file "+DIR_TARGET+"/test1.ist...done (7 attributes " +
+          "Scanning style file " + DIR_TARGET + "/test1.ist...done (7 " +
+              "attributes " +
               "redefined, 0\n"
               + "ignored).\n" + "Starting the processing phase.\n"
-              + "Reading "+DIR_TARGET+"/test1.idx.\n"
+              + "Reading " + DIR_TARGET + "/test1.idx.\n"
               + "Starting the pre-processing phase.\n"
               + "Generating output...Starting the markup phase.\n"
               + "Output written.\n"
-              + "Transcript written in "+DIR_TARGET+"/test1.ilg.\n" );
+              + "Transcript written in " + DIR_TARGET + "/test1.ilg.\n" );
     } finally {
       ist.deleteOnExit();
       idx.deleteOnExit();

@@ -19,10 +19,10 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.XtfConstants;
 import org.extex.util.file.random.RandomAccessR;
+
+import java.io.IOException;
 
 /**
  * SID.
@@ -32,82 +32,82 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2SID extends T2Number {
 
-    /**
-     * Create a new object.
-     *
-     * @param rar   the input
-     * @throws IOException if an IO-error occurs.
-     */
-    T2SID(RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param rar the input
+   * @throws IOException if an IO-error occurs.
+   */
+  T2SID( RandomAccessR rar ) throws IOException {
 
-        value = rar.readUnsignedShort();
-    }
+    value = rar.readUnsignedShort();
+  }
 
-    /**
-     * the value.
-     */
-    private final int value;
+  /**
+   * the value.
+   */
+  private final int value;
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
-    public short[] getBytes() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
+   */
+  @Override
+  public short[] getBytes() {
 
-        short[] bytes = new short[2];
-        bytes[0] = (short) (value >> XtfConstants.SHIFT8);
-        bytes[1] = (short) (value & XtfConstants.CONSTXFF);
-        return bytes;
-    }
+    short[] bytes = new short[ 2 ];
+    bytes[ 0 ] = (short) (value >> XtfConstants.SHIFT8);
+    bytes[ 1 ] = (short) (value & XtfConstants.CONSTXFF);
+    return bytes;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#isInteger()
-     */
-    @Override
-    public boolean isInteger() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T2CharString#isInteger()
+   */
+  @Override
+  public boolean isInteger() {
 
-        return true;
-    }
+    return true;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getDouble()
-     */
-    @Override
-    public double getDouble() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T2Number#getDouble()
+   */
+  @Override
+  public double getDouble() {
 
-        return value;
-    }
+    return value;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getInteger()
-     */
-    @Override
-    public int getInteger() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T2Number#getInteger()
+   */
+  @Override
+  public int getInteger() {
 
-        return value;
-    }
+    return value;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-        return String.valueOf(value);
-    }
+    return String.valueOf( value );
+  }
 
 }

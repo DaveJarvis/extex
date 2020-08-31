@@ -24,15 +24,15 @@ package org.extex.scanner.stream.observer.string;
  * a new string-based stream has been opened.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OpenStringObserver {
 
-    /**
-     * This method is meant to be invoked just after a new string based-stream
-     * has been opened.
-     *
-     * @param string the contents to be processed
-     */
-    void update(CharSequence string);
+  /**
+   * This method is meant to be invoked just after a new string based-stream
+   * has been opened.
+   *
+   * @param string the contents to be processed
+   */
+  void update( CharSequence string );
 
 }

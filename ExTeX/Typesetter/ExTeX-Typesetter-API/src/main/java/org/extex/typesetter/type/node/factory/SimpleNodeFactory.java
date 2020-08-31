@@ -29,56 +29,54 @@ import org.extex.typesetter.type.node.VirtualCharNode;
 /**
  * This is a factory for {@link org.extex.typesetter.type.node.CharNode
  * CharNode}s and virtual chars.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class SimpleNodeFactory implements NodeFactory {
 
 
-    public SimpleNodeFactory() {
+  public SimpleNodeFactory() {
 
+  }
+
+  /**
+   * Create a new instance for the node. If the character is not defined in
+   * the font given then {@code null} is returned instead.
+   *
+   * @param typesettingContext the typographic context for the node
+   * @param uc                 the Unicode character
+   * @return the new character node
+   * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(org.extex.typesetter.tc.TypesettingContext,
+   * org.extex.core.UnicodeChar)
+   */
+  public Node getNode( TypesettingContext typesettingContext, UnicodeChar uc ) {
+
+    if( typesettingContext == null ) {
+      return null;
+    }
+    Font font = typesettingContext.getFont();
+
+    if( font == null || !font.hasGlyph( uc ) ) {
+      return null;
     }
 
-    /**
-     * Create a new instance for the node. If the character is not defined in
-     * the font given then {@code null} is returned instead.
-     * 
-     * @param typesettingContext the typographic context for the node
-     * @param uc the Unicode character
-     * 
-     * @return the new character node
-     * 
-     * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.UnicodeChar)
-     */
-    public Node getNode(TypesettingContext typesettingContext, UnicodeChar uc) {
+    return new CharNode( typesettingContext, uc );
+  }
 
-        if (typesettingContext == null) {
-            return null;
-        }
-        Font font = typesettingContext.getFont();
+  /**
+   * org.extex.core.UnicodeChar)
+   */
+  public VirtualCharNode getVirtualCharNode(
+      TypesettingContext typesettingContext, UnicodeChar uc ) {
 
-        if (font == null || !font.hasGlyph(uc)) {
-            return null;
-        }
+    Font font = typesettingContext.getFont();
 
-        return new CharNode(typesettingContext, uc);
+    if( !font.hasGlyph( uc ) ) {
+      return null;
     }
 
-    /**
-*      org.extex.core.UnicodeChar)
-     */
-    public VirtualCharNode getVirtualCharNode(
-            TypesettingContext typesettingContext, UnicodeChar uc) {
-
-        Font font = typesettingContext.getFont();
-
-        if (!font.hasGlyph(uc)) {
-            return null;
-        }
-
-        return new VirtualCharNode(typesettingContext, uc);
-    }
+    return new VirtualCharNode( typesettingContext, uc );
+  }
 
 }

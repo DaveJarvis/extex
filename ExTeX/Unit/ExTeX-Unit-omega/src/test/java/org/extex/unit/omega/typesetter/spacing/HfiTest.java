@@ -23,16 +23,16 @@ import org.extex.test.AbstractHfillTester;
 
 /**
  * This is a test suite for the primitive {@code \hfi}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HfiTest extends AbstractHfillTester {
 
-    public HfiTest() {
-        setPrimitive( "hfi" );
-        setFil( "1.0fi" );
-        setConfig( "omega-test" );
-    }
+  public HfiTest() {
+    setPrimitive( "hfi" );
+    setFil( "1.0fi" );
+    setConfig( "omega-test" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

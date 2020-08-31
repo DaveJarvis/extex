@@ -32,59 +32,57 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides a Box parameter implementation.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * 
-*/
+ */
 public class BoxParameter extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public BoxParameter(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public BoxParameter( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = getKey( source, context );
+    source.getOptionalEquals( context );
+    Box box = source.getBox( prefix, context, typesetter, null );
+    context.setBox( key, box, prefix.clearGlobal() );
+  }
+
+  /**
+   * Return the key (the name of the primitive) for the register.
+   *
+   * @param source  the source for new tokens &ndash; if required
+   * @param context the interpreter context to use
+   * @return the key for the box register
+   * @throws HelpingException in case of an error
+   */
+  protected String getKey( TokenSource source, Context context )
+      throws HelpingException {
+
+    if( Namespace.SUPPORT_NAMESPACE_BOX ) {
+      return context.getNamespace() + "\b" + getName();
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String key = getKey(source, context);
-        source.getOptionalEquals(context);
-        Box box = source.getBox(prefix, context, typesetter, null);
-        context.setBox(key, box, prefix.clearGlobal());
-    }
-
-    /**
-     * Return the key (the name of the primitive) for the register.
-     * 
-     * @param source the source for new tokens &ndash; if required
-     * @param context the interpreter context to use
-     * 
-     * @return the key for the box register
-     * 
-     * @throws HelpingException in case of an error
-     */
-    protected String getKey(TokenSource source, Context context)
-            throws HelpingException {
-
-        if (Namespace.SUPPORT_NAMESPACE_BOX) {
-            return context.getNamespace() + "\b" + getName();
-        }
-        return getName();
-    }
+    return getName();
+  }
 
 }

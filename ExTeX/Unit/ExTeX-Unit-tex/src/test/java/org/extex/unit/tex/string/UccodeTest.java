@@ -23,26 +23,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code &#x5c;uccode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class UccodeTest extends AbstractCharMapTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(UccodeTest.class);
-    }
+    (new JUnitCore()).run( UccodeTest.class );
+  }
 
 
-    public UccodeTest() {
+  public UccodeTest() {
 
-        super("uccode", "65", "65", "1114111");
-    }
+    super( "uccode", "65", "65", "1114111" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

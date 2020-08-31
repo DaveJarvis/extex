@@ -25,15 +25,15 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
  * This is a test suite for the primitive {@code \pdflastxform}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdflastxformTest extends AbstractReadonlyCountRegisterTester {
 
 
-    public PdflastxformTest() {
+  public PdflastxformTest() {
 
-        super("pdflastxform", "", "0", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdflastxform", "", "0", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

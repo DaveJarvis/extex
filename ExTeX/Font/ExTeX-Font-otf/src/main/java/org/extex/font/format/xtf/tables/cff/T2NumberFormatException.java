@@ -25,28 +25,29 @@ import java.io.IOException;
  * Exception: not a number (parse error)
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2NumberFormatException extends IOException {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new object
-     */
-    public T2NumberFormatException() {
+  /**
+   * Create a new object
+   */
+  public T2NumberFormatException() {
 
-    }
+  }
 
-    /**
-     * Create a new object
-     * @param s the message
-     */
-    public T2NumberFormatException(String s) {
+  /**
+   * Create a new object
+   *
+   * @param s the message
+   */
+  public T2NumberFormatException( String s ) {
 
-        super(s);
-    }
+    super( s );
+  }
 }

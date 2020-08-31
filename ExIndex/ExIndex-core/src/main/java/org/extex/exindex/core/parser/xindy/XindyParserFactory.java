@@ -19,52 +19,53 @@
 
 package org.extex.exindex.core.parser.xindy;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.RawIndexParserFactory;
 import org.extex.resource.ResourceFinder;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
 /**
  * This class is a factory for raw index parsers which delivers a
  * {@link XindyParser}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class XindyParserFactory implements RawIndexParserFactory {
 
-    /**
-     * The field {@code finder} contains the resource finder.
-     */
-    private ResourceFinder finder = null;
+  /**
+   * The field {@code finder} contains the resource finder.
+   */
+  private ResourceFinder finder = null;
 
-    /**
-*      java.lang.String, java.lang.String, Indexer)
-     */
-    public RawIndexParser create(String resource, String charset,
-            Indexer indexer) throws RawIndexException, IOException {
+  /**
+   * java.lang.String, java.lang.String, Indexer)
+   */
+  public RawIndexParser create( String resource, String charset,
+                                Indexer indexer )
+      throws RawIndexException, IOException {
 
-        InputStream stream = finder.findResource(resource, "raw");
-        if (stream == null) {
-            return null;
-        }
-        Reader reader =
-                (charset == null || charset.equals("") ? new InputStreamReader(
-                    stream) : new InputStreamReader(stream, charset));
-        return new XindyParser(reader, resource, indexer);
+    InputStream stream = finder.findResource( resource, "raw" );
+    if( stream == null ) {
+      return null;
     }
+    Reader reader =
+        (charset == null || charset.equals( "" ) ? new InputStreamReader(
+            stream ) : new InputStreamReader( stream, charset ));
+    return new XindyParser( reader, resource, indexer );
+  }
 
-    /**
-*      org.extex.resource.ResourceFinder)
-     */
-    public void setResourceFinder(ResourceFinder finder) {
+  /**
+   * org.extex.resource.ResourceFinder)
+   */
+  public void setResourceFinder( ResourceFinder finder ) {
 
-        this.finder = finder;
-    }
+    this.finder = finder;
+  }
 
 }

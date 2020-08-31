@@ -19,58 +19,55 @@
 
 package org.extex.dviware.type;
 
+import org.extex.dviware.Dvi;
+
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.extex.dviware.Dvi;
 
 /**
  * This class represents the DVI instruction {@code right}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviRight extends AbstractDviCode {
 
-    /**
-     * The field {@code dist} contains the the distance to move rightwards.
-     */
-    private int dist;
+  /**
+   * The field {@code dist} contains the the distance to move rightwards.
+   */
+  private int dist;
 
-    /**
-     * Creates a new object.
-     *
-     * @param dist the distance to move rightwards
-     */
-    public DviRight(int dist) {
+  /**
+   * Creates a new object.
+   *
+   * @param dist the distance to move rightwards
+   */
+  public DviRight( int dist ) {
 
-        super("right" + variant(dist));
-        this.dist = dist;
-    }
+    super( "right" + variant( dist ) );
+    this.dist = dist;
+  }
 
-    /**
-     * Add some value to the move distance.
-     *
-     * @param x the value to add
-     */
-    public void add(int x) {
+  /**
+   * Add some value to the move distance.
+   *
+   * @param x the value to add
+   */
+  public void add( int x ) {
 
-        dist += x;
-    }
+    dist += x;
+  }
 
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
 
-        return opcodeSigned(Dvi.RIGHT1, dist, stream);
-    }
+    return opcodeSigned( Dvi.RIGHT1, dist, stream );
+  }
 
 }

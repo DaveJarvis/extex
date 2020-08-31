@@ -19,100 +19,96 @@
 
 package org.extex.backend.pageFilter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.backend.exception.BackendException;
 import org.extex.backend.exception.BackendMissingTargetException;
 import org.extex.typesetter.type.page.Page;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This page filter reverses the order of the pages shipped out.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PageReverser implements PagePipe {
 
-    /**
-     * The field {@code out} contains the output target.
-     */
-    private PagePipe out = null;
+  /**
+   * The field {@code out} contains the output target.
+   */
+  private PagePipe out = null;
 
-    /**
-     * The field {@code pages} contains the pages.
-     */
-    private final List<Page> pages = new ArrayList<Page>();
+  /**
+   * The field {@code pages} contains the pages.
+   */
+  private final List<Page> pages = new ArrayList<Page>();
 
-    /**
-     * Creates a new object.
-     *
-     */
-    public PageReverser() {
+  /**
+   * Creates a new object.
+   */
+  public PageReverser() {
 
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.backend.pageFilter.PagePipe#close()
+   */
+  public void close() throws BackendException {
+
+    if( out == null ) {
+      throw new BackendMissingTargetException();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.backend.pageFilter.PagePipe#close()
-     */
-    public void close() throws BackendException {
-
-        if (out == null) {
-            throw new BackendMissingTargetException();
-        }
-
-        for (int i = pages.size() - 1; i >= 0; i--) {
-            out.shipout(pages.get(i));
-        }
-        out.close();
+    for( int i = pages.size() - 1; i >= 0; i-- ) {
+      out.shipout( pages.get( i ) );
     }
+    out.close();
+  }
 
-    /**
-     * Setter for the output node pipe.
-     *
-     * @param pipe the output node pipe
-     *
-     * @see org.extex.backend.pageFilter.PagePipe#setOutput(
-     *     org.extex.backend.pageFilter.PagePipe)
-     */
-    public void setOutput(PagePipe pipe) {
+  /**
+   * Setter for the output node pipe.
+   *
+   * @param pipe the output node pipe
+   * @see org.extex.backend.pageFilter.PagePipe#setOutput(
+   *org.extex.backend.pageFilter.PagePipe)
+   */
+  public void setOutput( PagePipe pipe ) {
 
-        this.out = pipe;
-    }
+    this.out = pipe;
+  }
 
-    /**
-     * Setter for a named parameter.
-     * Parameters are a general mechanism to influence the behavior of the
-     * document writer. Any parameter not known by the document writer has to
-     * be ignored.
-     *
-     * @param name the name of the parameter
-     * @param value the value of the parameter
-     *
-     * @see org.extex.backend.pageFilter.PagePipe#setParameter(
-     *     java.lang.String, java.lang.String)
-     */
-    public void setParameter(String name, String value) {
+  /**
+   * Setter for a named parameter.
+   * Parameters are a general mechanism to influence the behavior of the
+   * document writer. Any parameter not known by the document writer has to
+   * be ignored.
+   *
+   * @param name  the name of the parameter
+   * @param value the value of the parameter
+   * @see org.extex.backend.pageFilter.PagePipe#setParameter(
+   *java.lang.String, java.lang.String)
+   */
+  public void setParameter( String name, String value ) {
 
-        //not needed
-    }
+    //not needed
+  }
 
-    /**
-     * This is the entry point for the document writer. Here it receives a
-     * complete node list to be sent to the output writer. It can be assumed
-     * that all values for width, height, and depth of the node lists are
-     * properly filled. Thus all information should be present to place the
-     * ink on the paper.
-     *
-     * @param page the page to send
-     *
-     * @see org.extex.backend.pageFilter.PagePipe#shipout(
-     *      org.extex.typesetter.type.page.Page)
-     */
-    public void shipout(Page page) {
+  /**
+   * This is the entry point for the document writer. Here it receives a
+   * complete node list to be sent to the output writer. It can be assumed
+   * that all values for width, height, and depth of the node lists are
+   * properly filled. Thus all information should be present to place the
+   * ink on the paper.
+   *
+   * @param page the page to send
+   * @see org.extex.backend.pageFilter.PagePipe#shipout(
+   *org.extex.typesetter.type.page.Page)
+   */
+  public void shipout( Page page ) {
 
-        pages.add(page);
-    }
+    pages.add( page );
+  }
 
 }

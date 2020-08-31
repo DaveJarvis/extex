@@ -24,28 +24,28 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is raised when an unexpected character code is encountered.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code UnexpectedEofIn}.
+ * The localization format is taken from the Localizer under the key
+ * {@code UnexpectedEofIn}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InvalidCharacterNameException extends InvalidCharacterException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param uc the invalid character
-     */
-    public InvalidCharacterNameException(String uc) {
+  /**
+   * Creates a new object.
+   *
+   * @param uc the invalid character
+   */
+  public InvalidCharacterNameException( String uc ) {
 
-        super(LocalizerFactory.getLocalizer(
-                InvalidCharacterNameException.class), "InvalidChar", uc);
-    }
+    super( LocalizerFactory.getLocalizer(
+        InvalidCharacterNameException.class ), "InvalidChar", uc );
+  }
 
 }

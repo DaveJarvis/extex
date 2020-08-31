@@ -19,36 +19,37 @@
 
 package org.extex.exindex.makeindex.pages;
 
+import org.extex.exindex.core.type.page.PageReference;
+
 import java.io.IOException;
 import java.io.Writer;
 
-import org.extex.exindex.core.type.page.PageReference;
-
 /**
  * This class represents an opening page range indicator. It is not closed yet.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PageRangeOpen extends Pages {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param page the page
-     * @param encap the encapsulator or {@code null}
-     */
-    public PageRangeOpen(PageReference page, String encap) {
+  /**
+   * Creates a new object.
+   *
+   * @param page  the page
+   * @param encap the encapsulator or {@code null}
+   */
+  public PageRangeOpen( PageReference page, String encap ) {
 
-        super(page, encap);
-    }
+    super( page, encap );
+  }
 
-    /**
-*      java.lang.String[], java.lang.String)
-     */
-    @Override
-    protected void writeCore(Writer writer, String[] pageParams, String fromPage)
-            throws IOException {
+  /**
+   * java.lang.String[], java.lang.String)
+   */
+  @Override
+  protected void writeCore( Writer writer, String[] pageParams,
+                            String fromPage )
+      throws IOException {
 
-    }
+  }
 
 }

@@ -19,116 +19,114 @@
 
 package org.extex.framework.configuration.exception;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import org.junit.Test;
 
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * This is a test suite for {@link ConfigurationMissingException}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationMissingExceptionTest {
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetLocalizedMessage1() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetLocalizedMessage1() {
 
-        ConfigurationMissingException e =
-                new ConfigurationMissingException("abc", "def");
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Missing configuration abc in def",
-            e.getLocalizedMessage());
-    }
+    ConfigurationMissingException e =
+        new ConfigurationMissingException( "abc", "def" );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Missing configuration abc in def",
+                  e.getLocalizedMessage() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetLocalizedMessage2() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetLocalizedMessage2() {
 
-        ConfigurationMissingException e =
-                new ConfigurationMissingException("abc");
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Missing configuration abc", e.getLocalizedMessage());
-    }
+    ConfigurationMissingException e =
+        new ConfigurationMissingException( "abc" );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Missing configuration abc", e.getLocalizedMessage() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetLocalizer() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetLocalizer() {
 
-        ConfigurationMissingException e =
-                new ConfigurationMissingException(null, "def");
-        Locale.setDefault(Locale.ENGLISH);
-        assertNotNull(e.getLocalizer());
-    }
+    ConfigurationMissingException e =
+        new ConfigurationMissingException( null, "def" );
+    Locale.setDefault( Locale.ENGLISH );
+    assertNotNull( e.getLocalizer() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetMessage1() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetMessage1() {
 
-        ConfigurationMissingException e =
-                new ConfigurationMissingException(null, "def");
-        Locale.setDefault(Locale.ENGLISH);
-        assertNull(e.getMessage());
-    }
+    ConfigurationMissingException e =
+        new ConfigurationMissingException( null, "def" );
+    Locale.setDefault( Locale.ENGLISH );
+    assertNull( e.getMessage() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetMessage2() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetMessage2() {
 
-        ConfigurationMissingException e =
-                new ConfigurationMissingException(null, "def");
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals(null, e.getMessage());
-    }
+    ConfigurationMissingException e =
+        new ConfigurationMissingException( null, "def" );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( null, e.getMessage() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetSource() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetSource() {
 
-        ConfigurationMissingException e =
-                new ConfigurationMissingException(null, "def");
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("def", e.getSource());
-    }
+    ConfigurationMissingException e =
+        new ConfigurationMissingException( null, "def" );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "def", e.getSource() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetText0() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetText0() {
 
-        ConfigurationMissingException e =
-                new ConfigurationMissingException(null, "def");
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Missing configuration", e.getText());
-    }
+    ConfigurationMissingException e =
+        new ConfigurationMissingException( null, "def" );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Missing configuration", e.getText() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetText1() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetText1() {
 
-        ConfigurationMissingException e =
-                new ConfigurationMissingException("abc", "def");
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Missing configuration abc", e.getText());
-    }
+    ConfigurationMissingException e =
+        new ConfigurationMissingException( "abc", "def" );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Missing configuration abc", e.getText() );
+  }
 
 }

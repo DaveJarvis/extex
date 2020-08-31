@@ -23,20 +23,19 @@ package org.extex.typesetter.exception;
  * This exception signals an unsupported operation in a typesetting environment.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InvalidSpacefactorException extends TypesetterException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     *
-     */
-    public InvalidSpacefactorException() {
+  /**
+   * Creates a new object.
+   */
+  public InvalidSpacefactorException() {
 
-    }
+  }
 
 }

@@ -40,7 +40,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \lccode}.
- * 
+ *
  * <p>The Primitive {@code \lccode}</p>
  * <p>
  * The primitive {@code \lccode} provides access to the mapping from characters
@@ -50,121 +50,124 @@ import org.extex.typesetter.exception.TypesetterException;
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;lccode&rang;
  *        &rarr; {@code \lccode} {@linkplain
- *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \lccode 65=65  </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Lccode extends AbstractAssignment
-        implements
-            ExpandableCode,
-            Theable,
-            CountConvertible,
-            DimenConvertible {
+    implements
+    ExpandableCode,
+    Theable,
+    CountConvertible,
+    DimenConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Lccode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Lccode( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    UnicodeChar ucCode =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    source.getOptionalEquals( context );
+    try {
+      UnicodeChar lcCode =
+          source.scanCharacterCode( context, typesetter, getToken() );
+      context.setLccode( ucCode, lcCode, prefix.clearGlobal() );
+    } catch( InvalidCharacterException e ) {
+      throw new InvalidCodeException( e.getChar(),
+                                      Integer.toString( UnicodeChar.MAX_VALUE ) );
     }
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        UnicodeChar ucCode =
-                source.scanCharacterCode(context, typesetter, getToken());
-        source.getOptionalEquals(context);
-        try {
-            UnicodeChar lcCode =
-                    source.scanCharacterCode(context, typesetter, getToken());
-            context.setLccode(ucCode, lcCode, prefix.clearGlobal());
-        } catch (InvalidCharacterException e) {
-            throw new InvalidCodeException(e.getChar(),
-                Integer.toString(UnicodeChar.MAX_VALUE));
-        }
+    UnicodeChar ucCode =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    return context.getLccode( ucCode ).getCodePoint();
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertDimen( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    return convertCount( context, source, typesetter );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    try {
+      source.push( the( context, source, typesetter ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        UnicodeChar ucCode =
-                source.scanCharacterCode(context, typesetter, getToken());
-        return context.getLccode(ucCode).getCodePoint();
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        return convertCount(context, source, typesetter);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        try {
-            source.push(the(context, source, typesetter));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        return context.getTokenFactory().toTokens(
-            convertCount(context, source, typesetter));
-    }
+    return context.getTokenFactory().toTokens(
+        convertCount( context, source, typesetter ) );
+  }
 
 }

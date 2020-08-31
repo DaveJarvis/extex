@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \predisplaypenalty}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PredisplaypenaltyTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PredisplaypenaltyTest.class);
-    }
+    (new JUnitCore()).run( PredisplaypenaltyTest.class );
+  }
 
 
-    public PredisplaypenaltyTest() {
+  public PredisplaypenaltyTest() {
 
-        super("predisplaypenalty", "", "0");
-    }
+    super( "predisplaypenalty", "", "0" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

@@ -23,21 +23,20 @@ package org.extex.backend.exception;
  * The back-end exception signaling that the output target is missing.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BackendMissingTargetException extends BackendException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2005L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     *
-     */
-    public BackendMissingTargetException() {
+  /**
+   * Creates a new object.
+   */
+  public BackendMissingTargetException() {
 
-    }
+  }
 
 }

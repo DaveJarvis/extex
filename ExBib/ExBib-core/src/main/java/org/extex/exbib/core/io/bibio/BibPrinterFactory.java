@@ -40,34 +40,32 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BibPrinterFactory extends AbstractFactory<BibPrinter> {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param configuration the configuration
-     */
-    public BibPrinterFactory(Configuration configuration) {
+  /**
+   * Creates a new object.
+   *
+   * @param configuration the configuration
+   */
+  public BibPrinterFactory( Configuration configuration ) {
 
-        super(configuration);
-    }
+    super( configuration );
+  }
 
-    /**
-     * Create a new instance of a BibPrinter and return it. This BibPrinter is
-     * set up to print to a given writer.
-     * 
-     * @param type the type
-     * @param writer the writer to print to
-     * 
-     * @return the new BibPrinter
-     * 
-     * @throws ConfigurationException in case that the configuration is invalid
-     */
-    public BibPrinter newInstance(String type, Writer writer)
-            throws ConfigurationException {
+  /**
+   * Create a new instance of a BibPrinter and return it. This BibPrinter is
+   * set up to print to a given writer.
+   *
+   * @param type   the type
+   * @param writer the writer to print to
+   * @return the new BibPrinter
+   * @throws ConfigurationException in case that the configuration is invalid
+   */
+  public BibPrinter newInstance( String type, Writer writer )
+      throws ConfigurationException {
 
-        return createInstance(type, BibPrinter.class, Writer.class, writer);
-    }
+    return createInstance( type, BibPrinter.class, Writer.class, writer );
+  }
 
 }

@@ -28,7 +28,8 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code -}
  * <p>
  * This function pops two numeric arguments from the stack and pushes back the
@@ -42,49 +43,49 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *   namesleft #1 - 'namesleft :=
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Pops the top two (integer) literals and pushes their difference (the
  * first subtracted from the second).</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Minus extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public Minus() {
+  /**
+   * Create a new object.
+   */
+  public Minus() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Minus(String name) {
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Minus( String name ) {
 
-        super(name);
-    }
+    super( name );
+  }
 
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
 
-        int a = processor.popInteger(locator).getInt();
-        int b = processor.popInteger(locator).getInt();
-        processor.push(new TInteger(b - a, locator));
-    }
+    int a = processor.popInteger( locator ).getInt();
+    int b = processor.popInteger( locator ).getInt();
+    processor.push( new TInteger( b - a, locator ) );
+  }
 
 }

@@ -19,103 +19,101 @@
 
 package org.extex.framework.configuration.exception;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import org.junit.Test;
 
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * This is a test suite for {@link ConfigurationInstantiationException}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationInstantiationExceptionTest {
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetLocalizedMessage() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetLocalizedMessage() {
 
-        ConfigurationInstantiationException e =
-                new ConfigurationInstantiationException(new Exception("abc"));
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Instantiation error abc \n\tcaused by abc",
-            e.getLocalizedMessage());
-    }
+    ConfigurationInstantiationException e =
+        new ConfigurationInstantiationException( new Exception( "abc" ) );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Instantiation error abc \n\tcaused by abc",
+                  e.getLocalizedMessage() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetLocalizer() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetLocalizer() {
 
-        ConfigurationInstantiationException e =
-                new ConfigurationInstantiationException(null);
-        Locale.setDefault(Locale.ENGLISH);
-        assertNotNull(e.getLocalizer());
-    }
+    ConfigurationInstantiationException e =
+        new ConfigurationInstantiationException( null );
+    Locale.setDefault( Locale.ENGLISH );
+    assertNotNull( e.getLocalizer() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetMessage() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetMessage() {
 
-        ConfigurationInstantiationException e =
-                new ConfigurationInstantiationException(new Exception("abc"));
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("", e.getMessage());
-    }
+    ConfigurationInstantiationException e =
+        new ConfigurationInstantiationException( new Exception( "abc" ) );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "", e.getMessage() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetSource1() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetSource1() {
 
-        ConfigurationInstantiationException e =
-                new ConfigurationInstantiationException(null);
-        Locale.setDefault(Locale.ENGLISH);
-        assertNull(e.getSource());
-    }
+    ConfigurationInstantiationException e =
+        new ConfigurationInstantiationException( null );
+    Locale.setDefault( Locale.ENGLISH );
+    assertNull( e.getSource() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetSource2() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetSource2() {
 
-        ConfigurationInstantiationException e =
-                new ConfigurationInstantiationException(new Exception("abc"));
-        Locale.setDefault(Locale.ENGLISH);
-        assertNull(e.getSource());
-    }
+    ConfigurationInstantiationException e =
+        new ConfigurationInstantiationException( new Exception( "abc" ) );
+    Locale.setDefault( Locale.ENGLISH );
+    assertNull( e.getSource() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetText1() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetText1() {
 
-        ConfigurationInstantiationException e =
-                new ConfigurationInstantiationException(null);
-        assertEquals("Instantiation error ", e.getText());
-    }
+    ConfigurationInstantiationException e =
+        new ConfigurationInstantiationException( null );
+    assertEquals( "Instantiation error ", e.getText() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetText2() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetText2() {
 
-        ConfigurationInstantiationException e =
-                new ConfigurationInstantiationException(new Exception("abc"));
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Instantiation error abc", e.getText());
-    }
+    ConfigurationInstantiationException e =
+        new ConfigurationInstantiationException( new Exception( "abc" ) );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Instantiation error abc", e.getText() );
+  }
 
 }

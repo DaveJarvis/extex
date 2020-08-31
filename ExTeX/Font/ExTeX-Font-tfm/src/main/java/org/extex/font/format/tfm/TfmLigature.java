@@ -26,114 +26,114 @@ import java.io.Serializable;
  * <p>
  * Ligature instruction
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TfmLigature extends TfmLigKern implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Character code representing the ligature character to be added between
-     * the current and next character in the text if this instruction is
-     * activated.
-     */
-    private final short addingChar;
+  /**
+   * Character code representing the ligature character to be added between
+   * the current and next character in the text if this instruction is
+   * activated.
+   */
+  private final short addingChar;
 
-    /**
-     * Indication that the current character should not be removed.
-     */
-    private final boolean keepLeft;
+  /**
+   * Indication that the current character should not be removed.
+   */
+  private final boolean keepLeft;
 
-    /**
-     * If some of the following flags are not set, the corresponding character
-     * in the text is removed after inserting the ligature character (in the
-     * process of constituing of ligatures).
-     */
+  /**
+   * If some of the following flags are not set, the corresponding character
+   * in the text is removed after inserting the ligature character (in the
+   * process of constituing of ligatures).
+   */
 
-    /**
-     * Indication that the next character should not be removed.
-     */
-    private final boolean keepRight;
+  /**
+   * Indication that the next character should not be removed.
+   */
+  private final boolean keepRight;
 
-    /**
-     * Tells how many characters from the current position in the text should be
-     * skiped over after performing this instruction.
-     */
-    private final byte stepOver;
+  /**
+   * Tells how many characters from the current position in the text should be
+   * skiped over after performing this instruction.
+   */
+  private final byte stepOver;
 
-    /**
-     * Create a new object.
-     * 
-     * @param skip the skip amount to the next instruction.
-     * @param next the code of the next character.
-     * @param a character code of ligature character to be inserted.
-     * @param l indication that the current character should not be removed.
-     * @param r indication that the next character should not be removed.
-     * @param s number of characters from the current one to be stepped over
-     *        after performing of this instruction.
-     */
-    public TfmLigature(int skip, short next, short a, boolean l, boolean r,
-            byte s) {
+  /**
+   * Create a new object.
+   *
+   * @param skip the skip amount to the next instruction.
+   * @param next the code of the next character.
+   * @param a    character code of ligature character to be inserted.
+   * @param l    indication that the current character should not be removed.
+   * @param r    indication that the next character should not be removed.
+   * @param s    number of characters from the current one to be stepped over
+   *             after performing of this instruction.
+   */
+  public TfmLigature( int skip, short next, short a, boolean l, boolean r,
+                      byte s ) {
 
-        super(skip, next);
-        addingChar = a;
-        keepLeft = l;
-        keepRight = r;
-        stepOver = s;
-    }
+    super( skip, next );
+    addingChar = a;
+    keepLeft = l;
+    keepRight = r;
+    stepOver = s;
+  }
 
-    /**
-     * Returns the addingChar.
-     * 
-     * @return Returns the addingChar.
-     */
-    public short getAddingChar() {
+  /**
+   * Returns the addingChar.
+   *
+   * @return Returns the addingChar.
+   */
+  public short getAddingChar() {
 
-        return addingChar;
-    }
+    return addingChar;
+  }
 
-    /**
-     * Returns the stepOver.
-     * 
-     * @return Returns the stepOver.
-     */
-    public byte getStepOver() {
+  /**
+   * Returns the stepOver.
+   *
+   * @return Returns the stepOver.
+   */
+  public byte getStepOver() {
 
-        return stepOver;
-    }
+    return stepOver;
+  }
 
-    /**
-     * Returns the keepLeft.
-     * 
-     * @return Returns the keepLeft.
-     */
-    public boolean isKeepLeft() {
+  /**
+   * Returns the keepLeft.
+   *
+   * @return Returns the keepLeft.
+   */
+  public boolean isKeepLeft() {
 
-        return keepLeft;
-    }
+    return keepLeft;
+  }
 
-    /**
-     * Returns the keepRight.
-     * 
-     * @return Returns the keepRight.
-     */
-    public boolean isKeepRight() {
+  /**
+   * Returns the keepRight.
+   *
+   * @return Returns the keepRight.
+   */
+  public boolean isKeepRight() {
 
-        return keepRight;
-    }
+    return keepRight;
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        StringBuilder buf = new StringBuilder(super.toString());
-        buf.append(" addingchar=").append(addingChar);
-        buf.append(" keepleft=").append(keepLeft);
-        buf.append(" keepright=").append(keepRight);
-        buf.append(" stepover=").append(stepOver);
-        return buf.toString();
-    }
+    StringBuilder buf = new StringBuilder( super.toString() );
+    buf.append( " addingchar=" ).append( addingChar );
+    buf.append( " keepleft=" ).append( keepLeft );
+    buf.append( " keepright=" ).append( keepRight );
+    buf.append( " stepover=" ).append( stepOver );
+    return buf.toString();
+  }
 }

@@ -23,110 +23,102 @@ package org.extex.core.glue;
  * This interface describes the features of a
  * {@link org.extex.core.glue.GlueComponent GlueComponent} which do not modify
  * the value.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface FixedGlueComponent {
 
-    /**
-     * Create a copy of this instance with the same order and value.
-     * 
-     * @return a new copy of this instance
-     */
-    FixedGlueComponent copy();
+  /**
+   * Create a copy of this instance with the same order and value.
+   *
+   * @return a new copy of this instance
+   */
+  FixedGlueComponent copy();
 
-    /**
-     * Compares the current instance with another GlueComponent for equality.
-     * 
-     * @param d the other GlueComponent to compare to. If this parameter is
-     *        {@code null} then the comparison fails.
-     * 
-     * @return {@code true} iff |this| == |d| and ord(this) ==
-     *         ord(d)
-     */
-    boolean eq(FixedGlueComponent d);
+  /**
+   * Compares the current instance with another GlueComponent for equality.
+   *
+   * @param d the other GlueComponent to compare to. If this parameter is
+   *          {@code null} then the comparison fails.
+   * @return {@code true} iff |this| == |d| and ord(this) ==
+   * ord(d)
+   */
+  boolean eq( FixedGlueComponent d );
 
-    /**
-     * Compares the current instance with another GlueComponent.
-     * 
-     * @param d the other GlueComponent to compare to
-     * 
-     * @return {@code true} iff this is greater or equal to d
-     */
-    boolean ge(FixedGlueComponent d);
+  /**
+   * Compares the current instance with another GlueComponent.
+   *
+   * @param d the other GlueComponent to compare to
+   * @return {@code true} iff this is greater or equal to d
+   */
+  boolean ge( FixedGlueComponent d );
 
-    /**
-     * Getter for order.
-     * 
-     * @return the order.
-     */
-    byte getOrder();
+  /**
+   * Getter for order.
+   *
+   * @return the order.
+   */
+  byte getOrder();
 
-    /**
-     * Getter for the value in scaled points (sp).
-     * 
-     * @return the value in internal units of scaled points (sp)
-     */
-    long getValue();
+  /**
+   * Getter for the value in scaled points (sp).
+   *
+   * @return the value in internal units of scaled points (sp)
+   */
+  long getValue();
 
-    /**
-     * Compares the current instance with another GlueComponent.
-     * 
-     * @param d the other GlueComponent to compare to
-     * 
-      * @return {@code true} iff ord(this) == ord(d) &amp;&amp; |this| &gt;
-     *         |d| or ord(this) &gt; ord(d)
-     */
-    boolean gt(FixedGlueComponent d);
+  /**
+   * Compares the current instance with another GlueComponent.
+   *
+   * @param d the other GlueComponent to compare to
+   * @return {@code true} iff ord(this) == ord(d) &amp;&amp; |this| &gt;
+   * |d| or ord(this) &gt; ord(d)
+   */
+  boolean gt( FixedGlueComponent d );
 
-    /**
-     * Compares the current instance with another GlueComponent.
-     * 
-     * @param d the other GlueComponent to compare to
-     * 
-     * @return {@code true} iff this is less or equal to d
-     */
-    boolean le(FixedGlueComponent d);
+  /**
+   * Compares the current instance with another GlueComponent.
+   *
+   * @param d the other GlueComponent to compare to
+   * @return {@code true} iff this is less or equal to d
+   */
+  boolean le( FixedGlueComponent d );
 
-    /**
-     * Compares the current instance with another GlueComponent.
-     * 
-     * @param d the other GlueComponent to compare to
-     * 
-      * @return {@code true} iff ord(this) == ord(d) &amp;&amp; |this| &lt;
-     *         |d| or ord(this) &lt; ord(d)
-     */
-    boolean lt(FixedGlueComponent d);
+  /**
+   * Compares the current instance with another GlueComponent.
+   *
+   * @param d the other GlueComponent to compare to
+   * @return {@code true} iff ord(this) == ord(d) &amp;&amp; |this| &lt;
+   * |d| or ord(this) &lt; ord(d)
+   */
+  boolean lt( FixedGlueComponent d );
 
-    /**
-     * Compares the current instance with another GlueComponent for equality.
-     * 
-     * @param d the other GlueComponent to compare to. If this parameter is
-     *        {@code null} then the comparison fails.
-     * 
-     * @return {@code false} iff |this| == |d| and ord(this) ==
-     *         ord(d)
-     */
-    boolean ne(FixedGlueComponent d);
+  /**
+   * Compares the current instance with another GlueComponent for equality.
+   *
+   * @param d the other GlueComponent to compare to. If this parameter is
+   *          {@code null} then the comparison fails.
+   * @return {@code false} iff |this| == |d| and ord(this) ==
+   * ord(d)
+   */
+  boolean ne( FixedGlueComponent d );
 
-    /**
-     * Determine the printable representation of the object.
-     * 
-     * @return the printable representation
-     * 
-     * @see #toString(StringBuilder)
-     */
-    @Override
-    String toString();
+  /**
+   * Determine the printable representation of the object.
+   *
+   * @return the printable representation
+   * @see #toString(StringBuilder)
+   */
+  @Override
+  String toString();
 
-    /**
-     * Determine the printable representation of the object and append it to the
-     * given StringBuilder.
-     * 
-     * @param sb the output string buffer
-     * 
-     * @see #toString()
-     */
-    void toString(StringBuilder sb);
+  /**
+   * Determine the printable representation of the object and append it to the
+   * given StringBuilder.
+   *
+   * @param sb the output string buffer
+   * @see #toString()
+   */
+  void toString( StringBuilder sb );
 
 }

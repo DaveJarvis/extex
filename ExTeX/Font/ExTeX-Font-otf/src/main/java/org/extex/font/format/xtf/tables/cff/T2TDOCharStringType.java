@@ -24,33 +24,33 @@ import java.util.List;
 
 /**
  * CharStringType.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOCharStringType extends T2TDONumber {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2TDOCharStringType(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2TDOCharStringType( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{ESCAPE_BYTE, CFF_CHARSTRINGTYPE});
-    }
+    super( stack, new short[]{ESCAPE_BYTE, CFF_CHARSTRINGTYPE} );
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return T2TopDICTOperator.TYPE_CHARSTRINGTYPE;
-    }
+    return T2TopDICTOperator.TYPE_CHARSTRINGTYPE;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "charstringtype";
-    }
+    return "charstringtype";
+  }
 
 }

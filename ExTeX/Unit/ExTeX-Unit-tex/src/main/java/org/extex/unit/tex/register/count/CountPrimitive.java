@@ -42,179 +42,183 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive {@code \count}.
  * It sets the named count register to the value given, and as a side effect all
  * prefixes are zeroed.
- * 
+ *
  * <p>The Primitive {@code \count}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;count&rang;
  *      &rarr; &lang;optional prefix&rang; {@code \count} {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context, TokenSource, Typesetter, CodeToken)
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;}
  *
  *   &lang;optional prefix&rang;
  *     &rarr;
  *      |  {@code \global} &lang;optional prefix&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \count23=-456  </pre>
- * 
  *
- * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @see org.extex.interpreter.type.code.Advanceable
  * @see org.extex.interpreter.type.code.Divideable
  * @see org.extex.interpreter.type.code.Multiplyable
  * @see org.extex.interpreter.type.Theable
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class CountPrimitive extends AbstractCount
-        implements
-            ExpandableCode,
-            Advanceable,
-            Multiplyable,
-            Divideable,
-            Theable,
-            CountConvertible {
+    implements
+    ExpandableCode,
+    Advanceable,
+    Multiplyable,
+    Divideable,
+    Theable,
+    CountConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public CountPrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public CountPrimitive( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void advance( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = getKey( context, source, typesetter );
+    source.getKeyword( context, "by" );
+
+    long value = source.parseInteger( context, source, typesetter );
+    value += context.getCount( key ).getValue();
+
+    context.setCount( key, value, prefix.clearGlobal() );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = getKey( context, source, typesetter );
+    source.getOptionalEquals( context );
+
+    long value = source.parseInteger( context, source, typesetter );
+    context.setCount( key, value, prefix.clearGlobal() );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = getKey( context, source, typesetter );
+    Count c = context.getCount( key );
+    return (c != null ? c.getValue() : 0);
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void divide( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = getKey( context, source, typesetter );
+    source.getKeyword( context, "by" );
+
+    long value = source.parseInteger( context, source, typesetter );
+
+    if( value == 0 ) {
+      throw new ArithmeticOverflowException( toText( context ) );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void advance(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    value = context.getCount( key ).getValue() / value;
+    context.setCount( key, value, prefix.clearGlobal() );
+  }
 
-        String key = getKey(context, source, typesetter);
-        source.getKeyword(context, "by");
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        long value = source.parseInteger(context, source, typesetter);
-        value += context.getCount(key).getValue();
-
-        context.setCount(key, value, prefix.clearGlobal());
+    String key = getKey( context, source, typesetter );
+    try {
+      source.push( context.getTokenFactory().toTokens(
+          context.getCount( key ).getValue() ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void multiply( Flags prefix, Context context, TokenSource source,
+                        Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String key = getKey(context, source, typesetter);
-        source.getOptionalEquals(context);
+    String key = getKey( context, source, typesetter );
+    source.getKeyword( context, "by" );
 
-        long value = source.parseInteger(context, source, typesetter);
-        context.setCount(key, value, prefix.clearGlobal());
-    }
+    long value = source.parseInteger( context, source, typesetter );
+    value *= context.getCount( key ).getValue();
+    context.setCount( key, value, prefix.clearGlobal() );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        String key = getKey(context, source, typesetter);
-        Count c = context.getCount(key);
-        return (c != null ? c.getValue() : 0);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void divide(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String key = getKey(context, source, typesetter);
-        source.getKeyword(context, "by");
-
-        long value = source.parseInteger(context, source, typesetter);
-
-        if (value == 0) {
-            throw new ArithmeticOverflowException(toText(context));
-        }
-
-        value = context.getCount(key).getValue() / value;
-        context.setCount(key, value, prefix.clearGlobal());
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String key = getKey(context, source, typesetter);
-        try {
-            source.push(context.getTokenFactory().toTokens(
-                context.getCount(key).getValue()));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void multiply(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String key = getKey(context, source, typesetter);
-        source.getKeyword(context, "by");
-
-        long value = source.parseInteger(context, source, typesetter);
-        value *= context.getCount(key).getValue();
-        context.setCount(key, value, prefix.clearGlobal());
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        String key = getKey(context, source, typesetter);
-        return context.getTokenFactory().toTokens(
-            context.getCount(key).getValue());
-    }
+    String key = getKey( context, source, typesetter );
+    return context.getTokenFactory().toTokens(
+        context.getCount( key ).getValue() );
+  }
 
 }

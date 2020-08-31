@@ -19,49 +19,48 @@
 
 package org.extex.exindex.core.parser;
 
-import java.io.IOException;
-
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.ParserException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.resource.ResourceFinder;
 
+import java.io.IOException;
+
 /**
  * This interface describes a factory for raw index parsers. The task of the
  * factory is to resolve a resource name and create an appropriate parser for
  * the resource found.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface RawIndexParserFactory {
 
-    /**
-     * Create a parser for the raw index from a resource name. Usually a
-     * resource finder is used to find the resource.
-     * 
-     * @param resource the name of the resource
-     * @param charset the name of the character set; a value of
-     *        {@code null} or the empty string uses the platform default
-     *        for the character set
-     * @param indexer the interpreter
-     * 
-     * @return the parser or {@code null} if the resource could not be
-     *         found
-     * 
-     * @throws RawIndexException in case of an error
-     * @throws IOException in case of an I/O error
-     * @throws ParserException in case of an error
-     */
-    RawIndexParser create(String resource, String charset, Indexer indexer)
-            throws RawIndexException,
-                IOException,
-                ParserException;
+  /**
+   * Create a parser for the raw index from a resource name. Usually a
+   * resource finder is used to find the resource.
+   *
+   * @param resource the name of the resource
+   * @param charset  the name of the character set; a value of
+   *                 {@code null} or the empty string uses the platform
+   *                 default
+   *                 for the character set
+   * @param indexer  the interpreter
+   * @return the parser or {@code null} if the resource could not be
+   * found
+   * @throws RawIndexException in case of an error
+   * @throws IOException       in case of an I/O error
+   * @throws ParserException   in case of an error
+   */
+  RawIndexParser create( String resource, String charset, Indexer indexer )
+      throws RawIndexException,
+      IOException,
+      ParserException;
 
-    /**
-     * Setter for the resource finder.
-     * 
-     * @param finder the resource finder
-     */
-    void setResourceFinder(ResourceFinder finder);
+  /**
+   * Setter for the resource finder.
+   *
+   * @param finder the resource finder
+   */
+  void setResourceFinder( ResourceFinder finder );
 
 }

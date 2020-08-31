@@ -21,77 +21,78 @@ package org.extex.font.format.xtf.tables.cff;
 
 /**
  * A pair of two {@link T2Number},
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2PairNumber {
 
-    /**
-     * The value a.
-     */
-    private T2Number a;
+  /**
+   * The value a.
+   */
+  private T2Number a;
 
-    /**
-     * The value b.
-     */
-    private T2Number b;
+  /**
+   * The value b.
+   */
+  private T2Number b;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param a The value a.
-     * @param b The value b.
-     */
-    public T2PairNumber(T2Number a, T2Number b) {
+  /**
+   * Creates a new object.
+   *
+   * @param a The value a.
+   * @param b The value b.
+   */
+  public T2PairNumber( T2Number a, T2Number b ) {
 
-        this.a = a;
-        this.b = b;
-    }
+    this.a = a;
+    this.b = b;
+  }
 
-    /**
-     * Getter for a.
-     * 
-     * @return the a
-     */
-    public T2Number getA() {
+  /**
+   * Getter for a.
+   *
+   * @return the a
+   */
+  public T2Number getA() {
 
-        return a;
-    }
+    return a;
+  }
 
-    /**
-     * Getter for b.
-     * 
-     * @return the b
-     */
-    public T2Number getB() {
+  /**
+   * Getter for b.
+   *
+   * @return the b
+   */
+  public T2Number getB() {
 
-        return b;
-    }
+    return b;
+  }
 
-    /**
-     * Setter for a.
-     * 
-     * @param a the a to set
-     */
-    public void setA(T2Number a) {
+  /**
+   * Setter for a.
+   *
+   * @param a the a to set
+   */
+  public void setA( T2Number a ) {
 
-        this.a = a;
-    }
+    this.a = a;
+  }
 
-    /**
-     * Setter for b.
-     * 
-     * @param b the b to set
-     */
-    public void setB(T2Number b) {
+  /**
+   * Setter for b.
+   *
+   * @param b the b to set
+   */
+  public void setB( T2Number b ) {
 
-        this.b = b;
-    }
+    this.b = b;
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        return new StringBuilder(a.toString()).append(' ').append(b.toString())
-            .toString();
-    }
+    return new StringBuilder( a.toString() ).append( ' ' )
+                                            .append( b.toString() )
+                                            .toString();
+  }
 }

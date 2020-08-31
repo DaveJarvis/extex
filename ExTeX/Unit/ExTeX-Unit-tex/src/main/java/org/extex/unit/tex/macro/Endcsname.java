@@ -31,7 +31,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \endcsname}.
- * 
+ *
  * <p>The Primitive {@code \endcsname}</p>
  * <p>
  * The macro {@code \endcsname} is used in combination with the macro
@@ -39,60 +39,58 @@ import org.extex.typesetter.exception.TypesetterException;
  * {@code \endcsname} is seen alone it must be an error. Thus thus primitive
  * produces an error message in any case.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;endcsname&rang;
  *      &rarr; {@code \endscsname}  </pre>
- * 
+ *
  * <p>Examples</p>
-
+ *
  * <p>
  * The following example shows a complicated way to invoke the macro
  * {@code abc}. Here the primitive {@code \endcsname} is legal. It is
  * consumed by the primitive {@code \csname} and not expanded on its own.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *   \csname abc\endcsname  </pre>
- * 
  *
- * 
- * @see "TTP [1134]"
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see "TTP [1134]"
+ */
 public class Endcsname extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Endcsname(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Endcsname( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        throw new HelpingException(getLocalizer(), "TTP.ExtraEndcsname",
-            toText(context));
-    }
+    throw new HelpingException( getLocalizer(), "TTP.ExtraEndcsname",
+                                toText( context ) );
+  }
 
 }

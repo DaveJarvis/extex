@@ -69,56 +69,56 @@ import java.io.IOException;
  * <td>Array of glyph ranges-ordered by Start GlyphID</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class CoverageTable2 extends CoverageTable {
 
-    /**
-     * The range record array.
-     */
-    private final RangeRecord[] rangeRecord;
+  /**
+   * The range record array.
+   */
+  private final RangeRecord[] rangeRecord;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param format The format.
-     * @param rar The input.
-     * @throws IOException if a io-error occuured.
-     */
-    protected CoverageTable2(int format, RandomAccessR rar) throws IOException {
+  /**
+   * Creates a new object.
+   *
+   * @param format The format.
+   * @param rar    The input.
+   * @throws IOException if a io-error occuured.
+   */
+  protected CoverageTable2( int format, RandomAccessR rar ) throws IOException {
 
-        super(format);
+    super( format );
 
-        int rangeCount = rar.readUnsignedShort();
+    int rangeCount = rar.readUnsignedShort();
 
-        rangeRecord = new RangeRecord[rangeCount];
-        for (int i = 0; i < rangeCount; i++) {
-            rangeRecord[i] = new RangeRecord(rar);
-        }
+    rangeRecord = new RangeRecord[ rangeCount ];
+    for( int i = 0; i < rangeCount; i++ ) {
+      rangeRecord[ i ] = new RangeRecord( rar );
     }
+  }
 
-    /**
-     * Getter for rangeRecord.
-     * 
-     * @return the rangeRecord
-     */
-    public RangeRecord[] getRangeRecord() {
+  /**
+   * Getter for rangeRecord.
+   *
+   * @return the rangeRecord
+   */
+  public RangeRecord[] getRangeRecord() {
 
-        return rangeRecord;
+    return rangeRecord;
+  }
+
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( "covertable" );
+    writer.writeAttribute( "format", getCoverageFormat() );
+    for( int i = 0; i < rangeRecord.length; i++ ) {
+      rangeRecord[ i ].writeXML( writer );
     }
-
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("covertable");
-        writer.writeAttribute("format", getCoverageFormat());
-        for (int i = 0; i < rangeRecord.length; i++) {
-            rangeRecord[i].writeXML(writer);
-        }
-        writer.writeEndElement();
-    }
+    writer.writeEndElement();
+  }
 
 }

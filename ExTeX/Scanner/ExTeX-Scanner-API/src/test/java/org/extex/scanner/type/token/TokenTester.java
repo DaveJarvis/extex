@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
  * Test class for ActiveCharacterToken.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 @SuppressWarnings("unused")
 public abstract class TokenTester {
 
@@ -432,7 +432,7 @@ public abstract class TokenTester {
   }
 
   /**
-   *  Test that the corrct visit method is invoked.
+   * Test that the corrct visit method is invoked.
    *
    * @ in case of an error
    */

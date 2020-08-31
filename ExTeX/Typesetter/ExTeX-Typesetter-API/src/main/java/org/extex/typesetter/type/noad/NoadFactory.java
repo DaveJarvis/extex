@@ -27,122 +27,119 @@ import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This class is a factory for CharNoades.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoadFactory {
 
-    /**
-     * The constant {@code VISITOR} contains the math class visitor.
-     */
-    private static final MathClassVisitor<Noad, Noad, TypesettingContext> VISITOR =
-            new MathClassVisitor<Noad, Noad, TypesettingContext>() {
+  /**
+   * The constant {@code VISITOR} contains the math class visitor.
+   */
+  private static final MathClassVisitor<Noad, Noad, TypesettingContext> VISITOR =
+      new MathClassVisitor<Noad, Noad, TypesettingContext>() {
 
-                /**
-            *      java.lang.Object, java.lang.Object)
-                 */
-                public Noad visitBinary(Noad noad, TypesettingContext arg) {
+        /**
+         *      java.lang.Object, java.lang.Object)
+         */
+        public Noad visitBinary( Noad noad, TypesettingContext arg ) {
 
-                    return new BinaryNoad(noad, arg);
-                }
+          return new BinaryNoad( noad, arg );
+        }
 
-                /**
-            *      java.lang.Object, java.lang.Object)
-                 */
-                public Noad visitClosing(Noad noad, TypesettingContext arg) {
+        /**
+         *      java.lang.Object, java.lang.Object)
+         */
+        public Noad visitClosing( Noad noad, TypesettingContext arg ) {
 
-                    return new CloseNoad(noad, arg);
-                }
+          return new CloseNoad( noad, arg );
+        }
 
-                /**
-            *      java.lang.Object, java.lang.Object)
-                 */
-                public Noad visitLarge(Noad noad, TypesettingContext arg) {
+        /**
+         *      java.lang.Object, java.lang.Object)
+         */
+        public Noad visitLarge( Noad noad, TypesettingContext arg ) {
 
-                    if (arg instanceof MathDelimiter) {
-                        return new CharNoad(((MathDelimiter) noad)
-                            .getLargeChar(), arg);
-                    }
-                    // TODO gene: visitLarge() partially unimplemented
-                    throw new RuntimeException("unimplemented");
-                }
+          if( arg instanceof MathDelimiter ) {
+            return new CharNoad( ((MathDelimiter) noad)
+                                     .getLargeChar(), arg );
+          }
+          // TODO gene: visitLarge() partially unimplemented
+          throw new RuntimeException( "unimplemented" );
+        }
 
-                /**
-            *      java.lang.Object, java.lang.Object)
-                 */
-                public Noad visitOpening(Noad noad, TypesettingContext arg) {
+        /**
+         *      java.lang.Object, java.lang.Object)
+         */
+        public Noad visitOpening( Noad noad, TypesettingContext arg ) {
 
-                    return new OpenNoad(noad, arg);
-                }
+          return new OpenNoad( noad, arg );
+        }
 
-                /**
-            *      java.lang.Object, java.lang.Object)
-                 */
-                public Noad visitOrdinary(Noad noad, TypesettingContext arg) {
+        /**
+         *      java.lang.Object, java.lang.Object)
+         */
+        public Noad visitOrdinary( Noad noad, TypesettingContext arg ) {
 
-                    return new CharNoad((MathGlyph) noad, arg);
-                }
+          return new CharNoad( (MathGlyph) noad, arg );
+        }
 
-                /**
-            *      java.lang.Object, java.lang.Object)
-                 */
-                public Noad visitPunctation(Noad noad, TypesettingContext arg) {
+        /**
+         *      java.lang.Object, java.lang.Object)
+         */
+        public Noad visitPunctation( Noad noad, TypesettingContext arg ) {
 
-                    return new PunctationNoad(noad, arg);
-                }
+          return new PunctationNoad( noad, arg );
+        }
 
-                /**
-            *      java.lang.Object, java.lang.Object)
-                 */
-                public Noad visitRelation(Noad noad, TypesettingContext arg) {
+        /**
+         *      java.lang.Object, java.lang.Object)
+         */
+        public Noad visitRelation( Noad noad, TypesettingContext arg ) {
 
-                    return new RelationNoad(noad, arg);
-                }
+          return new RelationNoad( noad, arg );
+        }
 
-                /**
-            *      java.lang.Object, java.lang.Object)
-                 */
-                public Noad visitVariable(Noad noad, TypesettingContext arg) {
+        /**
+         *      java.lang.Object, java.lang.Object)
+         */
+        public Noad visitVariable( Noad noad, TypesettingContext arg ) {
 
-                    // TODO gene: difference to ordinary ??
-                    return new CharNoad((MathGlyph) noad, arg);
-                }
-            };
+          // TODO gene: difference to ordinary ??
+          return new CharNoad( (MathGlyph) noad, arg );
+        }
+      };
 
-    /**
-     * Creates a new object.
-     * 
-     */
-    public NoadFactory() {
+  /**
+   * Creates a new object.
+   */
+  public NoadFactory() {
 
-    }
+  }
 
-    /**
-     * Provides an instance of a {@link Noad Noad} of the appropriate type.
-     * 
-     * @param mc the code of the character to use
-     * @param tc the typesetting context
-     * 
-     * @return an instance of a CharNoad
-     */
-    public Noad getNoad(MathCode mc, TypesettingContext tc) {
+  /**
+   * Provides an instance of a {@link Noad Noad} of the appropriate type.
+   *
+   * @param mc the code of the character to use
+   * @param tc the typesetting context
+   * @return an instance of a CharNoad
+   */
+  public Noad getNoad( MathCode mc, TypesettingContext tc ) {
 
-        return (Noad) mc.getMathClass().visit(VISITOR, mc.getMathGlyph(), tc);
-    }
+    return (Noad) mc.getMathClass().visit( VISITOR, mc.getMathGlyph(), tc );
+  }
 
-    /**
-     * Provides an instance of a {@link Noad Noad} of the appropriate type.
-     * 
-     * @param mathClass the math class
-     * @param glyph the character
-     * @param tc the typesetting context
-     * 
-     * @return an instance of a CharNoad
-     */
-    public Noad getNoad(MathClass mathClass, MathGlyph glyph,
-            TypesettingContext tc) {
+  /**
+   * Provides an instance of a {@link Noad Noad} of the appropriate type.
+   *
+   * @param mathClass the math class
+   * @param glyph     the character
+   * @param tc        the typesetting context
+   * @return an instance of a CharNoad
+   */
+  public Noad getNoad( MathClass mathClass, MathGlyph glyph,
+                       TypesettingContext tc ) {
 
-        return (Noad) mathClass.visit(VISITOR, glyph, tc);
-    }
+    return (Noad) mathClass.visit( VISITOR, glyph, tc );
+  }
 
 }

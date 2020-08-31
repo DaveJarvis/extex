@@ -25,14 +25,16 @@ import org.extex.unit.tex.math.AbstractMathTester;
  * This is a test suite for the primitive {@code \atopwithdelims}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AtopwithdelimsTest extends AbstractMathTester {
 
 
-    public AtopwithdelimsTest() {
+  public AtopwithdelimsTest() {
 
-        setPrimitive("atopwithdelims");setArguments(" 123 456 a$");setPrepare("b");
-    }
+    setPrimitive( "atopwithdelims" );
+    setArguments( " 123 456 a$" );
+    setPrepare( "b" );
+  }
 
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

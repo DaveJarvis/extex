@@ -24,59 +24,54 @@ import java.io.IOException;
 /**
  * This interface provides methods for the different possible subtypes of a
  * {@link Value Value}. This interface is used as part of the visitor pattern.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ValueVisitor {
 
-    /**
-     * This is a method which is invoked when a block is visited.
-     * 
-     * @param value the block encountered
-     * @param db the database context
-     * 
-     * @throws IOException just in case
-     */
-    void visitBlock(VBlock value, DB db) throws IOException;
+  /**
+   * This is a method which is invoked when a block is visited.
+   *
+   * @param value the block encountered
+   * @param db    the database context
+   * @throws IOException just in case
+   */
+  void visitBlock( VBlock value, DB db ) throws IOException;
 
-    /**
-     * This is a method which is invoked when a macro is visited.
-     * 
-     * @param value the macro encountered
-     * @param db the database context
-     * 
-     * @throws IOException just in case
-     */
-    void visitMacro(VMacro value, DB db) throws IOException;
+  /**
+   * This is a method which is invoked when a macro is visited.
+   *
+   * @param value the macro encountered
+   * @param db    the database context
+   * @throws IOException just in case
+   */
+  void visitMacro( VMacro value, DB db ) throws IOException;
 
-    /**
-     * This is a method which is invoked when a number is visited.
-     * 
-     * @param value the number encountered
-     * @param db the database context
-     * 
-     * @throws IOException just in case
-     */
-    void visitNumber(VNumber value, DB db) throws IOException;
+  /**
+   * This is a method which is invoked when a number is visited.
+   *
+   * @param value the number encountered
+   * @param db    the database context
+   * @throws IOException just in case
+   */
+  void visitNumber( VNumber value, DB db ) throws IOException;
 
-    /**
-     * This is a method which is invoked when a string is visited.
-     * 
-     * @param value the string encountered
-     * @param db the database context
-     * 
-     * @throws IOException just in case
-     */
-    void visitString(VString value, DB db) throws IOException;
+  /**
+   * This is a method which is invoked when a string is visited.
+   *
+   * @param value the string encountered
+   * @param db    the database context
+   * @throws IOException just in case
+   */
+  void visitString( VString value, DB db ) throws IOException;
 
-    /**
-     * This is a method which is invoked when a value is visited.
-     * 
-     * @param value the value encountered
-     * @param db the database context
-     * 
-     * @throws IOException just in case
-     */
-    void visitValue(Value value, DB db) throws IOException;
+  /**
+   * This is a method which is invoked when a value is visited.
+   *
+   * @param value the value encountered
+   * @param db    the database context
+   * @throws IOException just in case
+   */
+  void visitValue( Value value, DB db ) throws IOException;
 
 }

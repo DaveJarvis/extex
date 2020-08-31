@@ -19,45 +19,45 @@
 
 package org.extex.font.format.vf.command;
 
-import java.io.IOException;
-
 import org.extex.font.exception.FontException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
+import java.io.IOException;
+
 /**
  * VfCommand: post
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class VfCommandPost extends VfCommand {
 
-    /**
-     * Create e new object.
-     * 
-     * @param localizer TODO
-     * @param rar the input
-     * @param ccode the command code
-     * 
-     * @throws FontException if a font error occurred.
-     */
-    public VfCommandPost(Localizer localizer, RandomAccessR rar, final int ccode)
-            throws FontException {
+  /**
+   * Create e new object.
+   *
+   * @param localizer TODO
+   * @param rar       the input
+   * @param ccode     the command code
+   * @throws FontException if a font error occurred.
+   */
+  public VfCommandPost( Localizer localizer, RandomAccessR rar,
+                        final int ccode )
+      throws FontException {
 
-        super(localizer, ccode);
+    super( localizer, ccode );
 
-        if (ccode != POST) {
-            throw new FontException(getLocalizer().format("VF.WrongCode",
-                String.valueOf(ccode)));
-        }
+    if( ccode != POST ) {
+      throw new FontException( getLocalizer().format( "VF.WrongCode",
+                                                      String.valueOf( ccode ) ) );
     }
+  }
 
-public void writeXML(XMLStreamWriter writer) throws IOException {
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writer.writeStartElement("post");
-        writer.writeAttribute("opcode", getCommandCode());
-        writer.writeEndElement();
-    }
+    writer.writeStartElement( "post" );
+    writer.writeAttribute( "opcode", getCommandCode() );
+    writer.writeEndElement();
+  }
 }

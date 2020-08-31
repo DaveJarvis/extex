@@ -35,67 +35,67 @@ import org.extex.typesetter.type.node.AdjustNode;
 
 /**
  * This class provides an implementation for the primitive {@code \vadjust}.
- * 
+ *
  * <p>The Primitive {@code \vadjust}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;vadjust&rang;
  *       &rarr; {@code \vadjust} ... </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \vadjust{\kern2pt}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Vadjust extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Vadjust(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Vadjust( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Mode mode = typesetter.getMode();
+    if( !mode.isHmode() ) {
+      throw new CantUseInException( toText( context ),
+                                    mode.toString() );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Mode mode = typesetter.getMode();
-        if (!mode.isHmode()) {
-            throw new CantUseInException(toText(context),
-                mode.toString());
-        }
-        Flags flags = prefix.copy();
-        prefix.clear();
-        Box box;
-        box = new Box(context, source, typesetter, false, null,
-            GroupType.VBOX_GROUP, source.getLastToken());
-        typesetter.add(new AdjustNode(box.getNodes()));
-        prefix.set(flags);
-    }
+    Flags flags = prefix.copy();
+    prefix.clear();
+    Box box;
+    box = new Box( context, source, typesetter, false, null,
+                   GroupType.VBOX_GROUP, source.getLastToken() );
+    typesetter.add( new AdjustNode( box.getNodes() ) );
+    prefix.set( flags );
+  }
 
 }

@@ -26,40 +26,40 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * found.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoTokenStreamFactoryException extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code message} contains the message of this exception.
-     */
-    private final String message;
+  /**
+   * The field {@code message} contains the message of this exception.
+   */
+  private final String message;
 
-    /**
-     * Create a new object.
-     *
-     * @param aMessage the message string
-     */
-    public NoTokenStreamFactoryException(String aMessage) {
+  /**
+   * Create a new object.
+   *
+   * @param aMessage the message string
+   */
+  public NoTokenStreamFactoryException( String aMessage ) {
 
-        super(aMessage, (String) null);
-        this.message = aMessage;
-    }
+    super( aMessage, (String) null );
+    this.message = aMessage;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        return getLocalizer().format(
-            "ConfigurationNoTokenStreamFactoryException.Text", message);
-    }
+    return getLocalizer().format(
+        "ConfigurationNoTokenStreamFactoryException.Text", message );
+  }
 
 }

@@ -24,29 +24,29 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is raised when an illegal code has been encoutered.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code UnusedPrefix}.
+ * The localization format is taken from the Localizer under the key
+ * {@code UnusedPrefix}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InvalidCodeException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param code the code actually found
-     * @param max the maximal allowed value
-     */
-    public InvalidCodeException(String code, String max) {
+  /**
+   * Creates a new object.
+   *
+   * @param code the code actually found
+   * @param max  the maximal allowed value
+   */
+  public InvalidCodeException( String code, String max ) {
 
-        super(LocalizerFactory.getLocalizer(
-                InvalidCodeException.class), "TTP.InvalidCode", code, max);
-    }
+    super( LocalizerFactory.getLocalizer(
+        InvalidCodeException.class ), "TTP.InvalidCode", code, max );
+  }
 
 }

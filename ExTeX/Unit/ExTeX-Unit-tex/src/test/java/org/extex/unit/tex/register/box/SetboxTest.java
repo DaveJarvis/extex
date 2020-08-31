@@ -25,179 +25,181 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \setbox}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SetboxTest.class);
-    }
+    (new JUnitCore()).run( SetboxTest.class );
+  }
 
 
-    public SetboxTest() {
+  public SetboxTest() {
 
-        setPrimitive("setbox");setArguments("1=\\hbox{}");setPrepare("0");
-    }
+    setPrimitive( "setbox" );
+    setArguments( "1=\\hbox{}" );
+    setPrepare( "0" );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * needs a key.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * needs a key.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure("\\setbox ",
-            "Missing number, treated as zero");
-    }
+    assertFailure( "\\setbox ",
+                   "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * needs a box.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof2() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * needs a box.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof2() throws Exception {
 
-        assertFailure("\\setbox 1",
-            "A <box> was supposed to be here");
-    }
+    assertFailure( "\\setbox 1",
+                   "A <box> was supposed to be here" );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * respects groups.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGroup1() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * respects groups.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGroup1() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "{\\setbox1=\\hbox{abc}}\\box1\\end ",
-            "");
-    }
+    assertSuccess(
+        DEFINE_BRACES + "{\\setbox1=\\hbox{abc}}\\box1\\end ",
+        "" );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * respects \global.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGroup2() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * respects \global.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGroup2() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "{\\global\\setbox1=\\hbox{abc}}\\box1\\end ",
-            "abc" + TERM);
-    }
+    assertSuccess(
+        DEFINE_BRACES + "{\\global\\setbox1=\\hbox{abc}}\\box1\\end ",
+        "abc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * respects \globaldefs.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGroup3() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * respects \globaldefs.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGroup3() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\globaldefs=1{\\setbox1=\\hbox{abc}}\\box1\\end ",
-            "abc" + TERM);
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\globaldefs=1{\\setbox1=\\hbox{abc}}\\box1\\end ",
+        "abc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * respects \everyhbox.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEveryhbox1() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * respects \everyhbox.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEveryhbox1() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\everyhbox{x}-\\setbox1=\\hbox{abc}\\box1\\end ",
-            "-xabc" + TERM);
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\everyhbox{x}-\\setbox1=\\hbox{abc}\\box1\\end ",
+        "-xabc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * respects \afterassignment.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAfterassignment1() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * respects \afterassignment.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAfterassignment1() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES
-                    + "\\afterassignment x-\\setbox1=\\hbox{abc}\\box1\\end ",
-            "-xabc" + TERM);
-    }
+    assertSuccess(
+        DEFINE_BRACES
+            + "\\afterassignment x-\\setbox1=\\hbox{abc}\\box1\\end ",
+        "-xabc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * takes some kind of a box.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAssign1() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * takes some kind of a box.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAssign1() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\setbox1=\\box0\\end ",
-            "");
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\setbox1=\\box0\\end ",
+        "" );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * takes some kind of a box.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAssign2() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * takes some kind of a box.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAssign2() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\setbox1=\\copy0\\end ",
-            "");
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\setbox1=\\copy0\\end ",
+        "" );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * takes some kind of a box.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAssign3() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * takes some kind of a box.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAssign3() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\setbox1=\\lastbox\\end ",
-            "");
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\setbox1=\\lastbox\\end ",
+        "" );
+  }
 
-    /**
-     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
-     * assigns without the =.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAssign4() throws Exception {
+  /**
+   * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+   * assigns without the =.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAssign4() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\setbox1\\hbox{abc}--\\box1\\end ",
-            "--abc" + TERM);
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\setbox1\\hbox{abc}--\\box1\\end ",
+        "--abc" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

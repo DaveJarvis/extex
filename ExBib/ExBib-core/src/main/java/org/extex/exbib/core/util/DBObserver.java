@@ -24,46 +24,46 @@ import java.util.logging.Logger;
 
 /**
  * Observer which counts the databases read and prints messages to a writer.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DBObserver implements Observer {
 
-    /**
-     * The field {@code logger} contains the logger for the output produced.
-     */
-    private final Logger logger;
+  /**
+   * The field {@code logger} contains the logger for the output produced.
+   */
+  private final Logger logger;
 
-    /**
-     * The field {@code dbCount} contains the counter for invocations of
-     * update().
-     */
-    private int dbCount = 0;
+  /**
+   * The field {@code dbCount} contains the counter for invocations of
+   * update().
+   */
+  private int dbCount = 0;
 
-    /**
-     * The field {@code pattern} contains the pattern for the messages.
-     */
-    private final String pattern;
+  /**
+   * The field {@code pattern} contains the pattern for the messages.
+   */
+  private final String pattern;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param logger the target logger
-     * @param pattern the pattern for the messages
-     */
-    public DBObserver(Logger logger, String pattern) {
+  /**
+   * Creates a new object.
+   *
+   * @param logger  the target logger
+   * @param pattern the pattern for the messages
+   */
+  public DBObserver( Logger logger, String pattern ) {
 
-        this.logger = logger;
-        this.pattern = pattern;
-    }
+    this.logger = logger;
+    this.pattern = pattern;
+  }
 
-    /**
-*      org.extex.exbib.core.util.Observable, java.lang.Object)
-     */
-    public void update(Observable source, Object db) {
+  /**
+   * org.extex.exbib.core.util.Observable, java.lang.Object)
+   */
+  public void update( Observable source, Object db ) {
 
-        logger.info(MessageFormat.format(pattern, Integer.toString(++dbCount),
-            db));
-    }
+    logger.info( MessageFormat.format( pattern, Integer.toString( ++dbCount ),
+                                       db ) );
+  }
 
 }

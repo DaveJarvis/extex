@@ -35,63 +35,63 @@ import org.extex.typesetter.type.noad.Noad;
 /**
  * This class provides an implementation for the primitive
  * {@code \mathaccent}.
- * 
+ *
  * <p>The Math Primitive {@code \mathaccent}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;mathaccent&rang;
  *       &rarr; {@code \mathaccent}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \mathaccent ... </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Mathaccent extends AbstractTeXMathCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Mathaccent(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Mathaccent( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        NoadConsumer nc = getListMaker(context, typesetter);
+    NoadConsumer nc = getListMaker( context, typesetter );
 
-        MathCode accent =
-                parseMathCode(context, source, typesetter, getToken());
+    MathCode accent =
+        parseMathCode( context, source, typesetter, getToken() );
 
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
-            getToken(), GroupType.MATH_GROUP);
-        nc.add(new AccentNoad(accent, noad, context.getTypesettingContext()));
-    }
+    Noad noad = nc.scanNoad( prefix, context, source, typesetter,
+                             getToken(), GroupType.MATH_GROUP );
+    nc.add( new AccentNoad( accent, noad, context.getTypesettingContext() ) );
+  }
 
 }

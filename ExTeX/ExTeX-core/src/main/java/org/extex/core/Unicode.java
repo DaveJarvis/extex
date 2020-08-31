@@ -21,15 +21,15 @@ package org.extex.core;
 
 /**
  * Central utility class for Unicode compatibility in εχTeX.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class Unicode {
 
-    /**
-     * The constant {@code OFFSET} contains the offset for shifting code points
-     * to a private Unicode area.
-     */
-    public static final int OFFSET = 0xEE00;
+  /**
+   * The constant {@code OFFSET} contains the offset for shifting code points
+   * to a private Unicode area.
+   */
+  public static final int OFFSET = 0xEE00;
 
 }

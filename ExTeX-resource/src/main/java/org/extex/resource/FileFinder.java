@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -18,29 +18,25 @@
 
 package org.extex.resource;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 import org.extex.resource.io.NamedInputStream;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.*;
+
 /**
  * This file finder searches for the file in different directories and with
  * several extensions.
- * 
+ *
  * <h2>Configuration</h2> The file finder can be configured to influence its
  * actions. The following example shows a configuration for a file finder:
- * 
+ *
  * <pre>
  * &lt;Finder class="org.extex.resource.FileFinder"
  *         trace="false"
@@ -73,7 +69,7 @@ import org.extex.resource.io.NamedInputStream;
  *   &lt;/default&gt;
  * &lt;/Finder&gt;
  * </pre>
- * 
+ *
  * <p>
  * Whenever a resource is sought its type is used to find the appropriate
  * parameters for the search. If the sub-configuration with the name of the type
@@ -126,188 +122,186 @@ import org.extex.resource.io.NamedInputStream;
  * needed. The tracing flag can be overwritten at run-time. The attribute
  * {@code trace} is optional.
  * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class FileFinder extends AbstractFinder
-        implements
-            PropertyAware,
-            EnvironmentAware {
+    implements
+    PropertyAware,
+    EnvironmentAware {
 
-    /**
-     * The constant {@code PATH_TAG} contains the name of the tag to get the
-     * path information.
-     */
-    private static final String PATH_TAG = "path";
+  /**
+   * The constant {@code PATH_TAG} contains the name of the tag to get the
+   * path information.
+   */
+  private static final String PATH_TAG = "path";
 
-    /**
-     * The field {@code properties} contains the properties instance to use.
-     */
-    private Properties properties = new Properties();
+  /**
+   * The field {@code properties} contains the properties instance to use.
+   */
+  private Properties properties = new Properties();
 
-    /**
-     * The field {@code environment} contains the environment.
-     */
-    private Map<String, String> environment = System.getenv();
+  /**
+   * The field {@code environment} contains the environment.
+   */
+  private Map<String, String> environment = System.getenv();
 
-    /**
-     * Creates a new object.
-     * 
-     * @param configuration the encapsulated configuration object
-     * 
-     * @throws ConfigurationMissingException in case of an error
-     */
-    public FileFinder(Configuration configuration)
-            throws ConfigurationMissingException {
+  /**
+   * Creates a new object.
+   *
+   * @param configuration the encapsulated configuration object
+   * @throws ConfigurationMissingException in case of an error
+   */
+  public FileFinder( Configuration configuration )
+      throws ConfigurationMissingException {
 
-        super(configuration);
+    super( configuration );
+  }
+
+  /**
+   * Try to find a file on some paths by adding extensions.
+   *
+   * @param name  the name of the file to find
+   * @param paths a list of paths to explore
+   * @param cfg   the configuration
+   * @param type  the current type
+   * @return the input stream for the file or {@code null} if none was
+   * found.
+   */
+  private NamedInputStream find( String name, List<String> paths,
+                                 Configuration cfg, String type ) {
+
+    for( String p : paths ) {
+      NamedInputStream stream = find( name, p, cfg, type );
+      if( stream != null ) {
+        return stream;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Try to find a file by adding extensions.
+   *
+   * @param name the name of the file to find
+   * @param path the path of the file to find
+   * @param cfg  the configuration
+   * @param type the current type
+   * @return the input stream for the file or {@code null} if none was
+   * found.
+   */
+  private NamedInputStream find( String name, String path, Configuration cfg,
+                                 String type ) {
+
+    String p = path.replaceAll( "\\{type\\}", type );
+
+    for( String ext : cfg.getValues( EXTENSION_TAG ) ) {
+
+      String n = (name + ext).replaceAll( "\\{type\\}", type );
+      File file = ("".equals( p ) ? new File( n ) : new File( p, n ));
+
+      trace( "Try", file.toString(), null );
+      if( file.canRead() ) {
+        try {
+          InputStream stream = new FileInputStream( file );
+          trace( "Found", file.toString(), null );
+          return new NamedInputStream( stream, file.toString() );
+        } catch( FileNotFoundException e ) {
+          // Ignore unreadable files.
+          // This should not happen since it has already been
+          // tested before.
+          trace( "NotFound", file.toString(), null );
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * java.lang.String)
+   */
+  public NamedInputStream findResource( String name, String type )
+      throws ConfigurationException {
+
+    trace( "Searching", name, type );
+
+    NamedInputStream stream = null;
+    Configuration config = getConfiguration();
+    Configuration cfg = config.findConfiguration( type );
+    if( cfg == null ) {
+      String t = config.getAttribute( "default" );
+      if( t == null ) {
+        throw new ConfigurationMissingAttributeException( "default",
+                                                          config );
+      }
+      cfg = config.getConfiguration( t );
+
+      trace( "ConfigurationNotFound", type, t );
     }
 
-    /**
-     * Try to find a file on some paths by adding extensions.
-     * 
-     * @param name the name of the file to find
-     * @param paths a list of paths to explore
-     * @param cfg the configuration
-     * @param type the current type
-     * 
-     * @return the input stream for the file or {@code null} if none was
-     *         found.
-     */
-    private NamedInputStream find(String name, List<String> paths,
-            Configuration cfg, String type) {
+    if( new File( name ).isAbsolute() ) {
 
-        for (String p : paths) {
-            NamedInputStream stream = find(name, p, cfg, type);
-            if (stream != null) {
-                return stream;
-            }
-        }
-        return null;
+      return find( name, "", cfg, type );
     }
 
-    /**
-     * Try to find a file by adding extensions.
-     * 
-     * @param name the name of the file to find
-     * @param path the path of the file to find
-     * @param cfg the configuration
-     * @param type the current type
-     * 
-     * @return the input stream for the file or {@code null} if none was
-     *         found.
-     */
-    private NamedInputStream find(String name, String path, Configuration cfg,
-            String type) {
-
-        String p = path.replaceAll("\\{type\\}", type);
-
-        for (String ext : cfg.getValues(EXTENSION_TAG)) {
-
-            String n = (name + ext).replaceAll("\\{type\\}", type);
-            File file = ("".equals(p) ? new File(n) : new File(p, n));
-
-            trace("Try", file.toString(), null);
-            if (file.canRead()) {
-                try {
-                    InputStream stream = new FileInputStream(file);
-                    trace("Found", file.toString(), null);
-                    return new NamedInputStream(stream, file.toString());
-                } catch (FileNotFoundException e) {
-                    // Ignore unreadable files.
-                    // This should not happen since it has already been
-                    // tested before.
-                    trace("NotFound", file.toString(), null);
-                }
-            }
+    Iterator<Configuration> iterator = cfg.iterator( PATH_TAG );
+    while( iterator.hasNext() ) {
+      Configuration c = iterator.next();
+      String path = null;
+      String p = c.getAttribute( "property" );
+      if( p != null ) {
+        path = properties.getProperty( p, null );
+        if( path == null ) {
+          trace( "UndefinedProperty", p, null );
+          continue;
         }
-        return null;
-    }
-
-    /**
-*      java.lang.String)
-     */
-    public NamedInputStream findResource(String name, String type)
-            throws ConfigurationException {
-
-        trace("Searching", name, type);
-
-        NamedInputStream stream = null;
-        Configuration config = getConfiguration();
-        Configuration cfg = config.findConfiguration(type);
-        if (cfg == null) {
-            String t = config.getAttribute("default");
-            if (t == null) {
-                throw new ConfigurationMissingAttributeException("default",
-                    config);
-            }
-            cfg = config.getConfiguration(t);
-
-            trace("ConfigurationNotFound", type, t);
+      }
+      else {
+        String env = c.getAttribute( "env" );
+        if( env != null ) {
+          path = environment.get( env );
+          if( path == null ) {
+            trace( "UndefinedEnv", env, null );
+            continue;
+          }
         }
-
-        if (new File(name).isAbsolute()) {
-
-            return find(name, "", cfg, type);
-        }
-
-        Iterator<Configuration> iterator = cfg.iterator(PATH_TAG);
-        while (iterator.hasNext()) {
-            Configuration c = iterator.next();
-            String path = null;
-            String p = c.getAttribute("property");
-            if (p != null) {
-                path = properties.getProperty(p, null);
-                if (path == null) {
-                    trace("UndefinedProperty", p, null);
-                    continue;
-                }
-            } else {
-                String env = c.getAttribute("env");
-                if (env != null) {
-                    path = environment.get(env);
-                    if (path == null) {
-                        trace("UndefinedEnv", env, null);
-                        continue;
-                    }
-                }
-            }
-            if (path != null) {
-                List<String> list = new ArrayList<String>();
-                for (String s : path.split(System.getProperty("path.separator",
-                    ":"))) {
-                    list.add(s);
-                }
-
-                stream = find(name, list, cfg, type);
-            } else {
-                stream = find(name, c.getValue(), cfg, type);
-            }
-            if (stream != null) {
-                return stream;
-            }
+      }
+      if( path != null ) {
+        List<String> list = new ArrayList<String>();
+        for( String s : path.split( System.getProperty( "path.separator",
+                                                        ":" ) ) ) {
+          list.add( s );
         }
 
-        trace("Failed", name, null);
-
-        return null;
+        stream = find( name, list, cfg, type );
+      }
+      else {
+        stream = find( name, c.getValue(), cfg, type );
+      }
+      if( stream != null ) {
+        return stream;
+      }
     }
 
-    /**
-     * Setter for the environment. The default for the environment is the system
-     * environment.
-     * 
-     * @param environment the environment
-     */
-    public void setEnvironment(Map<String, String> environment) {
+    trace( "Failed", name, null );
 
-        this.environment = environment;
-    }
+    return null;
+  }
 
-public void setProperties(Properties properties) {
+  /**
+   * Setter for the environment. The default for the environment is the system
+   * environment.
+   *
+   * @param environment the environment
+   */
+  public void setEnvironment( Map<String, String> environment ) {
 
-        this.properties = properties;
-    }
+    this.environment = environment;
+  }
+
+  public void setProperties( Properties properties ) {
+
+    this.properties = properties;
+  }
 
 }

@@ -19,9 +19,6 @@
 
 package org.extex.exindex.core.type;
 
-import java.io.IOException;
-import java.io.Writer;
-
 import org.extex.exindex.core.command.LMarkupRange;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.raw.LocationReference;
@@ -30,63 +27,65 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.value.LBoolean;
 import org.extex.exindex.lisp.type.value.LValue;
 
+import java.io.IOException;
+import java.io.Writer;
+
 /**
  * This class represents a range of location references.
- * 
- * @see LMarkupRange
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see LMarkupRange
+ */
 public class Range implements Location {
 
-    /**
-     * The field {@code from} contains the starting location.
-     */
-    private final LocationReference from;
+  /**
+   * The field {@code from} contains the starting location.
+   */
+  private final LocationReference from;
 
-    /**
-     * The field {@code to} contains the terminating location.
-     */
-    private final LocationReference to;
+  /**
+   * The field {@code to} contains the terminating location.
+   */
+  private final LocationReference to;
 
-    /**
-     * The field {@code clazz} contains the the current class.
-     */
-    private final String clazz;
+  /**
+   * The field {@code clazz} contains the the current class.
+   */
+  private final String clazz;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param from the starting location
-     * @param to the terminating location
-     * @param clazz the current class
-     */
-    public Range(LocationReference from, LocationReference to, String clazz) {
+  /**
+   * Creates a new object.
+   *
+   * @param from  the starting location
+   * @param to    the terminating location
+   * @param clazz the current class
+   */
+  public Range( LocationReference from, LocationReference to, String clazz ) {
 
-        this.from = from;
-        this.to = to;
-        this.clazz = clazz;
+    this.from = from;
+    this.to = to;
+    this.clazz = clazz;
+  }
+
+  /**
+   * org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
+   */
+  public void write( Writer writer, LInterpreter interpreter,
+                     MarkupContainer markupContainer, boolean trace )
+      throws IOException,
+      LNonMatchingTypeException {
+
+    Markup markupRange = markupContainer.getMarkup( "markup-range" );
+
+    markupRange.write( writer, markupContainer, clazz, Markup.OPEN, trace );
+
+    from.write( writer, interpreter, markupContainer, trace );
+    markupRange.write( writer, markupContainer, clazz, Markup.SEP, trace );
+    LValue value = interpreter.get( "markup:range-" + clazz + "-ignore-end" );
+    if( value != LBoolean.TRUE ) {
+      to.write( writer, interpreter, markupContainer, trace );
     }
-
-    /**
-*      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
-     */
-    public void write(Writer writer, LInterpreter interpreter,
-            MarkupContainer markupContainer, boolean trace)
-            throws IOException,
-                LNonMatchingTypeException {
-
-        Markup markupRange = markupContainer.getMarkup("markup-range");
-
-        markupRange.write(writer, markupContainer, clazz, Markup.OPEN, trace);
-
-        from.write(writer, interpreter, markupContainer, trace);
-        markupRange.write(writer, markupContainer, clazz, Markup.SEP, trace);
-        LValue value = interpreter.get("markup:range-" + clazz + "-ignore-end");
-        if (value != LBoolean.TRUE) {
-            to.write(writer, interpreter, markupContainer, trace);
-        }
-        markupRange.write(writer, markupContainer, clazz, Markup.CLOSE, trace);
-    }
+    markupRange.write( writer, markupContainer, clazz, Markup.CLOSE, trace );
+  }
 
 }

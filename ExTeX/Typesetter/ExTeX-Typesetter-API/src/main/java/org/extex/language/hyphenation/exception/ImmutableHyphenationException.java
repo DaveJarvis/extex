@@ -24,22 +24,22 @@ package org.extex.language.hyphenation.exception;
  * which already has a hyphenation code assigned to it.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ImmutableHyphenationException extends HyphenationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     */
-    public ImmutableHyphenationException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   */
+  public ImmutableHyphenationException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
 }

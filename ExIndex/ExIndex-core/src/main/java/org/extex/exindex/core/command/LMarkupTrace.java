@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -30,67 +30,67 @@ import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * This is the adapter for the L system to trace the markup.
- * 
-*
+ *
+ *
  * <p>The Command {@code markup-trace}</p>
- * 
+ *
  * <p>
  * The command {@code markup-trace} can be used to control the tracing of the
  * markup. The tracing acts globally and can not be customized on an per index
  * base.
  * </p>
- * 
+ *
  * <pre>
  *  (markup-trace
  *     [:on]
  *     [:open <i>open-markup</i>]
  *     [:close <i>close-markup</i>]
  *  )   </pre>
- * 
+ *
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
- * 
+ *
  * <pre>
  *  (markup-trace :on)   </pre>
- * 
+ *
  * <p>
  * The tracing is initially off. With the argument {@code :on} it can be turned
  * on. When the tracing is on the description of the markup is printed on the
  * output stream in addition to the contents of the structured index.
  * </p>
- * 
+ *
  * <pre>
  *  (markup-trace :on :open "&gt;" :close "&lt;")   </pre>
- * 
+ *
  * <p>
  * The arguments {@code :open} and {@code :close} can be used to specify the
  * strings which should precede and follow the symbolic name. The default for
  * {@code :open} is {@code &lt;} and the default for {@code :close} is
  * {@code &gt;}.
  * </p>
- * 
+ *
  * <pre>
  *  (markup-trace :on :open "%  &lt;" :close "&gt;~n")   </pre>
- * 
+ *
  * <p>
  * To neutralize the effect on the processed output {@code :open} and
  * {@code :close} can be defined to include the tracing information as comment
  * into the generated sources of the structured index.
  * </p>
- * 
+ *
  * <p>
  * The result of tracing may look like following example:
  * </p>
- * 
+ *
  * <pre>
  * &lt;INDEX:OPEN&gt;
  *   &lt;LETTER-GROUP-LIST:OPEN&gt;
  *   &hellip;
  *   &lt;LETTER-GROUP-LIST:CLOSE&gt;
  * &lt;INDEX:CLOSE&gt;   </pre>
- * 
- * 
+ *
+ *
  * <p>Parameters</p>
  * <p>
  * The parameters defined with this command are stored in the L system.
@@ -104,60 +104,56 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <dt>markup:trace</dt>
  * <dd>The trace indicator is stored in the L system.</dd>
  * </dl>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LMarkupTrace extends LFunction {
 
-    /**
-     * The field {@code container} contains the container for indices.
-     */
-    private final IndexContainer container;
+  /**
+   * The field {@code container} contains the container for indices.
+   */
+  private final IndexContainer container;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the name of the function
-     * @param container the container for indices
-     * 
-     * @throws NoSuchMethodException in case that no method corresponding to the
-     * argument specification could be found
-     * @throws SecurityException in case a security problem occurred
-     */
-    public LMarkupTrace(String name, IndexContainer container)
-            throws SecurityException,
-                NoSuchMethodException {
+  /**
+   * Creates a new object.
+   *
+   * @param name      the name of the function
+   * @param container the container for indices
+   * @throws NoSuchMethodException in case that no method corresponding to the
+   *                               argument specification could be found
+   * @throws SecurityException     in case a security problem occurred
+   */
+  public LMarkupTrace( String name, IndexContainer container )
+      throws SecurityException,
+      NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_BOOLEAN(":on", Boolean.FALSE),
-                Arg.OPT_STRING(":open", "<"),
-                Arg.OPT_STRING(":close", ">\n")});
-        this.container = container;
+    super( name, new Arg[]{Arg.OPT_BOOLEAN( ":on", Boolean.FALSE ),
+        Arg.OPT_STRING( ":open", "<" ),
+        Arg.OPT_STRING( ":close", ">\n" )} );
+    this.container = container;
+  }
+
+  /**
+   * Take a sort rule and store it.
+   *
+   * @param interpreter the interpreter
+   * @param on          the indicator for tracing
+   * @param open        the opening markup
+   * @param close       the closing markup
+   * @return {@code null}
+   * @throws LSettingConstantException should not happen
+   */
+  public LValue evaluate( LInterpreter interpreter, Boolean on, String open,
+                          String close ) throws LSettingConstantException {
+
+    interpreter.setq( "markup:trace", LBoolean.valueOf( on.booleanValue() ) );
+    Markup markup = container.getMarkup( "markup-trace" );
+    if( markup == null ) {
+      markup = new Markup( "TRACE" );
+      container.setMarkup( "markup:trace", markup );
     }
-
-    /**
-     * Take a sort rule and store it.
-     * 
-     * @param interpreter the interpreter
-     * @param on the indicator for tracing
-     * @param open the opening markup
-     * @param close the closing markup
-     * 
-     * @return {@code null}
-     * 
-     * @throws LSettingConstantException should not happen
-     */
-    public LValue evaluate(LInterpreter interpreter, Boolean on, String open,
-            String close) throws LSettingConstantException {
-
-        interpreter.setq("markup:trace", LBoolean.valueOf(on.booleanValue()));
-        Markup markup = container.getMarkup("markup-trace");
-        if (markup == null) {
-            markup = new Markup("TRACE");
-            container.setMarkup("markup:trace", markup);
-        }
-        markup.setDefault(open, close);
-        return null;
-    }
+    markup.setDefault( open, close );
+    return null;
+  }
 
 }

@@ -24,9 +24,9 @@ import org.extex.typesetter.type.OrientedNode;
 
 /**
  * This is a test suite for centered leaders nodes.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AlignedLeadersNodeTest extends LeadersNodeTester {
 
 //    /**
@@ -48,15 +48,15 @@ public class AlignedLeadersNodeTest extends LeadersNodeTester {
 //        V_LIST.setDepth(Dimen.ONE_SP);
 //    }
 
-    /**
-*      org.extex.typesetter.type.OrientedNode,
-     *      org.extex.core.glue.FixedGlue)
-     */
-    @Override
-    protected AbstractLeadersNode makeNode(OrientedNode node, FixedGlue glue) {
+  /**
+   * org.extex.typesetter.type.OrientedNode,
+   * org.extex.core.glue.FixedGlue)
+   */
+  @Override
+  protected AbstractLeadersNode makeNode( OrientedNode node, FixedGlue glue ) {
 
-        return new AlignedLeadersNode(node, glue);
-    }
+    return new AlignedLeadersNode( node, glue );
+  }
 
-    // TODO implement some test cases
+  // TODO implement some test cases
 }

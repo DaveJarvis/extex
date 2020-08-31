@@ -19,10 +19,10 @@
 
 package org.extex.font.format.tfm;
 
+import org.extex.util.file.random.RandomAccessR;
+
 import java.io.IOException;
 import java.io.Serializable;
-
-import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Class for extensible recipe.
@@ -41,90 +41,95 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class TfmExtensibleRecipe implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * bot.
-     */
-    private final short bot;
+  /**
+   * bot.
+   */
+  private final short bot;
 
-    /**
-     * the id.
-     */
-    private final int etid;
+  /**
+   * the id.
+   */
+  private final int etid;
 
-    /**
-     * mid.
-     */
-    private final short mid;
+  /**
+   * mid.
+   */
+  private final short mid;
 
-    /**
-     * rep.
-     */
-    private final short rep;
+  /**
+   * rep.
+   */
+  private final short rep;
 
-    /**
-     * top.
-     */
-    private final short top;
+  /**
+   * top.
+   */
+  private final short top;
 
-    /**
-     * Create a new object.
-     * @param rar   the input
-     * @param id    the id
-     * @throws IOException if an IO-error occurs.
-     */
-    public TfmExtensibleRecipe(RandomAccessR rar, int id)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param rar the input
+   * @param id  the id
+   * @throws IOException if an IO-error occurs.
+   */
+  public TfmExtensibleRecipe( RandomAccessR rar, int id )
+      throws IOException {
 
-        etid = id;
-        top = (short) rar.readByteAsInt();
-        mid = (short) rar.readByteAsInt();
-        bot = (short) rar.readByteAsInt();
-        rep = (short) rar.readByteAsInt();
-    }
+    etid = id;
+    top = (short) rar.readByteAsInt();
+    mid = (short) rar.readByteAsInt();
+    bot = (short) rar.readByteAsInt();
+    rep = (short) rar.readByteAsInt();
+  }
 
-    /**
-     * Returns the bot.
-     * @return Returns the bot.
-     */
-    public short getBot() {
+  /**
+   * Returns the bot.
+   *
+   * @return Returns the bot.
+   */
+  public short getBot() {
 
-        return bot;
-    }
+    return bot;
+  }
 
-    /**
-     * Returns the mid.
-     * @return Returns the mid.
-     */
-    public short getMid() {
+  /**
+   * Returns the mid.
+   *
+   * @return Returns the mid.
+   */
+  public short getMid() {
 
-        return mid;
-    }
+    return mid;
+  }
 
-    /**
-     * Returns the rep.
-     * @return Returns the rep.
-     */
-    public short getRep() {
+  /**
+   * Returns the rep.
+   *
+   * @return Returns the rep.
+   */
+  public short getRep() {
 
-        return rep;
-    }
+    return rep;
+  }
 
-    /**
-     * Returns the top.
-     * @return Returns the top.
-     */
-    public short getTop() {
+  /**
+   * Returns the top.
+   *
+   * @return Returns the top.
+   */
+  public short getTop() {
 
-        return top;
-    }
+    return top;
+  }
 
 }

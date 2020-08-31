@@ -27,7 +27,8 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code skip$}
  * <p>
  * This function does simply nothing. In other languages this might be called a
@@ -35,46 +36,46 @@ import org.extex.exbib.core.io.Locator;
  * should be done.
  * </p>
  * <img src="doc-files/skip.png" alt="skip">
- * 
+ *
  * <pre>
  *   skip$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Is a no-op.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Skip extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public Skip() {
+  /**
+   * Create a new object.
+   */
+  public Skip() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Skip(String name) {
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Skip( String name ) {
 
-        super(name);
-    }
+    super( name );
+  }
 
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
 
-        // nothing to do
-    }
+    // nothing to do
+  }
 
 }

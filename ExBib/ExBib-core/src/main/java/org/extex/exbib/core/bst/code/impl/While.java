@@ -28,7 +28,8 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code while$}
  * <p>
  * This function is a loop construction. It takes two arguments form the stack.
@@ -46,68 +47,68 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *     { namesleft #0 &gt; }
  *     { s nameptr "{ff~}{vv~}{ll}{, jj}" format.name$ 't :=
- * 
+ *
  *       % some more action
- * 
+ *
  *       nameptr #1 + 'nameptr :=
  *       namesleft #1 - 'namesleft :=
  *     }
  *   while$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Pops the top two (function) literals, and keeps executing the second as
  * long as the (integer) literal left on the stack by executing the first is
  * greater than 0.</dd>
  * </dl>
- * 
+ *
  * <dl>
  * <dt>BibTeX web documentation:</dt>
  * <dd>
  * TBD
  * </dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class While extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public While() {
+  /**
+   * Create a new object.
+   */
+  public While() {
 
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public While( String name ) {
+
+    super( name );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    Token body = processor.pop( locator );
+    Token cond = processor.pop( locator );
+
+    for( cond.execute( processor, entry, locator ); processor.popInteger(
+        locator ).getInt() > 0; cond.execute( processor, entry, locator ) ) {
+      body.execute( processor, entry, locator );
     }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public While(String name) {
-
-        super(name);
-    }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        Token body = processor.pop(locator);
-        Token cond = processor.pop(locator);
-
-        for (cond.execute(processor, entry, locator); processor.popInteger(
-            locator).getInt() > 0; cond.execute(processor, entry, locator)) {
-            body.execute(processor, entry, locator);
-        }
-    }
+  }
 }

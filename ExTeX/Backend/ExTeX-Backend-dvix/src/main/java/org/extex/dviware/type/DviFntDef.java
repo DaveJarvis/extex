@@ -19,66 +19,63 @@
 
 package org.extex.dviware.type;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
 import org.extex.dviware.Dvi;
 import org.extex.typesetter.tc.font.Font;
+
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * This class represents the DVI instruction {@code fnt_def}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviFntDef extends AbstractDviCode {
 
-    /**
-     * The field {@code font} contains the associated font.
-     */
-    private final Font font;
+  /**
+   * The field {@code font} contains the associated font.
+   */
+  private final Font font;
 
-    /**
-     * The field {@code index} contains the number of the font in the font
-     * table.
-     */
-    private final int index;
+  /**
+   * The field {@code index} contains the number of the font in the font
+   * table.
+   */
+  private final int index;
 
-    /**
-     * Creates a new object.
-     *
-     * @param index the number of the font in the font table
-     * @param font the font
-     */
-    public DviFntDef(int index, Font font) {
+  /**
+   * Creates a new object.
+   *
+   * @param index the number of the font in the font table
+   * @param font  the font
+   */
+  public DviFntDef( int index, Font font ) {
 
-        super("fnt_def" + variant(index));
-        this.index = index;
-        this.font = font;
-    }
+    super( "fnt_def" + variant( index ) );
+    this.index = index;
+    this.font = font;
+  }
 
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
 
-        int n = opcode(Dvi.FNT_DEF1, index, stream);
-        write4(stream, font.getCheckSum());
-        write4(stream, (int) font.getActualSize().getValue());
-        write4(stream, (int) font.getDesignSize().getValue());
-        stream.write(0); // no directory part; just the name
-        byte[] bytes = font.getFontName().getBytes();
-        stream.write(bytes.length);
-        stream.write(bytes);
+    int n = opcode( Dvi.FNT_DEF1, index, stream );
+    write4( stream, font.getCheckSum() );
+    write4( stream, (int) font.getActualSize().getValue() );
+    write4( stream, (int) font.getDesignSize().getValue() );
+    stream.write( 0 ); // no directory part; just the name
+    byte[] bytes = font.getFontName().getBytes();
+    stream.write( bytes.length );
+    stream.write( bytes );
 
-        return n + bytes.length + 14;
-    }
+    return n + bytes.length + 14;
+  }
 
 }

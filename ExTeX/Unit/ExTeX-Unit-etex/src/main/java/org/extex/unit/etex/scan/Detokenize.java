@@ -40,94 +40,92 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  * <p>The Primitive {@code \detokenize}</p>
  * <p>
- *  The primitive {@code \detokenize} ...
+ * The primitive {@code \detokenize} ...
  * </p>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
  *
  * <p>Syntax</p>
-
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * <p>
+ * The formal description of this primitive is the following:
+ * <pre class="syntax">
  *    &lang;detokenize&rang;
  *      &rarr; {@code \detokenize} </pre>
  *
  * <p>Examples</p>
-
- *  <pre class="TeXSample">
+ *
+ * <pre class="TeXSample">
  *    \detokenize...  </pre>
  *
- *
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Detokenize extends AbstractCode implements ExpandableCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param token the initial token for the primitive
-     */
-    public Detokenize(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Detokenize( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.interpreter.type.AbstractCode#execute(
+   *org.extex.interpreter.Flags,
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource,
+   * org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context,
+                       TokenSource source, Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Tokens tokens;
+    try {
+      tokens = source.getTokens( context, source, typesetter );
+      source.push( context.getTokenFactory().toTokens( tokens.toText() ) );
+    } catch( EofException e ) {
+      throw new EofInToksException( toText( context ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.interpreter.type.ExpandableCode#expand(
+   *org.extex.interpreter.Flags,
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource,
+   * org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context,
+                      TokenSource source, Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Tokens tokens;
-        try {
-            tokens = source.getTokens(context, source, typesetter);
-            source.push(context.getTokenFactory().toTokens(tokens.toText()));
-        } catch (EofException e) {
-            throw new EofInToksException(toText(context));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
+    Tokens tokens;
+    try {
+      tokens = source.getTokens( context, source, typesetter );
+    } catch( EofException e ) {
+      throw new EofInToksException( toText( context ) );
     }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
-
-        Tokens tokens;
-        try {
-            tokens = source.getTokens(context, source, typesetter);
-        } catch (EofException e) {
-            throw new EofInToksException(toText(context));
-        }
-        try {
-            source.push(context.getTokenFactory().toTokens(tokens.toText()));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
+    try {
+      source.push( context.getTokenFactory().toTokens( tokens.toText() ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
 }

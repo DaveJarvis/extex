@@ -34,17 +34,17 @@ import org.extex.typesetter.type.node.RuleNode;
 
 /**
  * This class provides an implementation for the primitive {@code \hrule}.
- * 
+ *
  * <p>The Primitive {@code \hrule}</p>
  * <p>
  * This primitive produces a horizontal rule. This is a rectangular area of
  * specified dimensions. If not overwritten the width and depth are 0pt and the
  * height is 0.4&nbsp;pt (26214&nbsp;sp).
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;hrule&rang;
  *        &rarr; {@code \hrule} &lang;rule specification&rang;
@@ -58,7 +58,7 @@ import org.extex.typesetter.type.node.RuleNode;
  *         |  {@code height} &lang;dimen&rang;
  *         |  {@code depth} &lang;dimen&rang;
  * </pre>
- * 
+ *
  * <p>
  * The color from the typographic context is taken as foreground color for the
  * rule. The default color is black.
@@ -67,79 +67,84 @@ import org.extex.typesetter.type.node.RuleNode;
  *
  * <pre class="TeXSample">
  *    \hrule  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \hrule width 2pt  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \hrule width 2pt depth 3mm height \dimen4  </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Hrule extends AbstractCode implements RuleConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The constant {@code DEFAULT_RULE} contains the equivalent to 0.4pt.
-     */
-    private static final long DEFAULT_RULE = 26214;
+  /**
+   * The constant {@code DEFAULT_RULE} contains the equivalent to 0.4pt.
+   */
+  private static final long DEFAULT_RULE = 26214;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Hrule(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Hrule( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    typesetter.add( getRule( context, source, typesetter ) );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public RuleNode getRule( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Mode mode = typesetter.getMode();
+    if( mode.isHmode() ) {
+      typesetter.par();
+      // throw new HelpingException(getLocalizer(), "TTP.CantUseHrule",
+      // printableControlSequence(context));
+    }
+    Dimen width = new Dimen( 0 );
+    Dimen height = new Dimen( DEFAULT_RULE );
+    Dimen depth = new Dimen( 0 );
+
+    for( ; ; ) {
+      if( source.getKeyword( context, "width" ) ) {
+        width = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "height" ) ) {
+        height = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "depth" ) ) {
+        depth = source.parseDimen( context, source, typesetter );
+      }
+      else {
+        break;
+      }
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        typesetter.add(getRule(context, source, typesetter));
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public RuleNode getRule(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Mode mode = typesetter.getMode();
-        if (mode.isHmode()) {
-            typesetter.par();
-            // throw new HelpingException(getLocalizer(), "TTP.CantUseHrule",
-            // printableControlSequence(context));
-        }
-        Dimen width = new Dimen(0);
-        Dimen height = new Dimen(DEFAULT_RULE);
-        Dimen depth = new Dimen(0);
-
-        for (;;) {
-            if (source.getKeyword(context, "width")) {
-                width = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "height")) {
-                height = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "depth")) {
-                depth = source.parseDimen(context, source, typesetter);
-            } else {
-                break;
-            }
-        }
-
-        return new RuleNode(width, height, depth, 
-            context.getTypesettingContext(), true);
-    }
+    return new RuleNode( width, height, depth,
+                         context.getTypesettingContext(), true );
+  }
 
 }

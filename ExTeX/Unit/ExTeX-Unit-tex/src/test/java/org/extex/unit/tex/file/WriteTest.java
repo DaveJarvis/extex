@@ -25,148 +25,147 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \write}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(WriteTest.class);
-    }
+    (new JUnitCore()).run( WriteTest.class );
+  }
 
 
-    public WriteTest() {
+  public WriteTest() {
 
-        super("write", "1 {abc}");
-    }
+    super( "write", "1 {abc}" );
+  }
 
-    /**
-     * <testcase primitive="\write"> Test case checking that a lonely
-     * {@code \write} leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\write"> Test case checking that a lonely
+   * {@code \write} leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\write ",
-            // --- log message ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  "\\write ",
+                  // --- log message ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\write"> Test case checking that a lonely
-     * {@code \write} with an index leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof2() throws Exception {
+  /**
+   * <testcase primitive="\write"> Test case checking that a lonely
+   * {@code \write} with an index leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\write 2",
-            // --- log message ---
-            "File ended while scanning text of \\write");
-    }
+    assertFailure(// --- input code ---
+                  "\\write 2",
+                  // --- log message ---
+                  "File ended while scanning text of \\write" );
+  }
 
-    /**
-     * <testcase primitive="\write"> Test case checking that a lonely
-     * {@code \write} leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof3() throws Exception {
+  /**
+   * <testcase primitive="\write"> Test case checking that a lonely
+   * {@code \write} leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof3() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\immediate\\write ",
-            // --- log message ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  "\\immediate\\write ",
+                  // --- log message ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\write"> Test case checking that a lonely
-     * {@code \write} with an index leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof4() throws Exception {
+  /**
+   * <testcase primitive="\write"> Test case checking that a lonely
+   * {@code \write} with an index leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof4() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\immediate\\write 2",
-            // --- log message ---
-            "Unexpected end of file while processing \\write");
-    }
+    assertFailure(// --- input code ---
+                  "\\immediate\\write 2",
+                  // --- log message ---
+                  "Unexpected end of file while processing \\write" );
+  }
 
-    /**
-     * <testcase primitive="\write"> Test case checking that {@code \write}
-     * takes {@code \immediate}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testImmediate1() throws Exception {
+  /**
+   * <testcase primitive="\write"> Test case checking that {@code \write}
+   * takes {@code \immediate}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testImmediate1() throws Exception {
 
-        assertOutput(// --- input code ---
-            DEFINE_BRACES + "\\immediate\\write 2{abc} \\end",
-            // --- log message ---
-            "abc\n", "");
-    }
+    assertOutput(// --- input code ---
+                 DEFINE_BRACES + "\\immediate\\write 2{abc} \\end",
+                 // --- log message ---
+                 "abc\n", "" );
+  }
 
-    /**
-     * <testcase primitive="\write"> Test case checking that {@code \write}
-     * complains about undefined active characters in the argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\write"> Test case checking that {@code \write}
+   * complains about undefined active characters in the argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\catcode`\\~=13" + "x\\write 2{a~c} \\end",
-            // --- log message ---
-            "Undefined control sequence ~\n");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\catcode`\\~=13" + "x\\write 2{a~c} \\end",
+                  // --- log message ---
+                  "Undefined control sequence ~\n" );
+  }
 
-    /**
-     * <testcase primitive="\write"> Test case checking that {@code \write}
-     * expands active characters in the argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\write"> Test case checking that {@code \write}
+   * expands active characters in the argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertOutput(// --- input code ---
-            DEFINE_BRACES + "\\catcode`\\~=13 \\def~{xyz} "
-                    + "x\\write 2{a~c} \\end",
-            // --- log message ---
-            "axyzc", "x" + TERM);
-    }
+    assertOutput(// --- input code ---
+                 DEFINE_BRACES + "\\catcode`\\~=13 \\def~{xyz} "
+                     + "x\\write 2{a~c} \\end",
+                 // --- log message ---
+                 "axyzc", "x" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\write"> Test case checking that {@code \write}
-     * writes active characters mapped to primitives in the argument.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\write"> Test case checking that {@code \write}
+   * writes active characters mapped to primitives in the argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertOutput(// --- input code ---
-            DEFINE_BRACES + "\\catcode`\\~=13 \\let~\\penalty "
-                    + "x\\write 2{a~c} \\end",
-            // --- log message ---
-            "a~c", "x" + TERM);
-    }
+    assertOutput(// --- input code ---
+                 DEFINE_BRACES + "\\catcode`\\~=13 \\let~\\penalty "
+                     + "x\\write 2{a~c} \\end",
+                 // --- log message ---
+                 "a~c", "x" + TERM );
+  }
 
 }

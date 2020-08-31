@@ -21,26 +21,26 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: push: Push the values onto the stack.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviPush extends DviCommand {
 
-    /**
-     * Create a new object.
-     * 
-     * @param oc the opcode
-     * @param sp the start pointer
-     */
-    public DviPush(final int oc, final int sp) {
+  /**
+   * Create a new object.
+   *
+   * @param oc the opcode
+   * @param sp the start pointer
+   */
+  public DviPush( final int oc, final int sp ) {
 
-        super(oc, sp);
-    }
+    super( oc, sp );
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "push";
-    }
+    return "push";
+  }
 }

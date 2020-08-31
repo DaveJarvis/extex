@@ -37,7 +37,7 @@ import org.extex.unit.base.register.toks.AbstractToks;
  * This class provides an implementation for the primitive {@code \toks}.
  * It sets the named tokens register to the value given, and as a side effect
  * all prefixes are zeroed.
- * 
+ *
  * <p>The Primitive {@code \toks}</p>
  * <p>
  * The primitive {@code \toks} provides access to the named tokens register.
@@ -53,104 +53,106 @@ import org.extex.unit.base.register.toks.AbstractToks;
  * Since the primitive is classified as assignment the value of
  * {@code \afterassignment} is applied.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;toks&rang;
  *      &rarr; {@code \toks} {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context, TokenSource, Typesetter, CodeToken)
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context, TokenSource, Typesetter)
  *        &lang;tokens&rang;}  </pre>
- * 
+ *
  * <p>
  * In TeX the register name is a number in the range 0 to 255.
- * Extensions to this are defined in ε-TeX and  Omega where the limitation of the range is
+ * Extensions to this are defined in ε-TeX and  Omega where the limitation of
+ * the range is
  * raised. In εχTeX this limit can be configured. In addition tokens can be
  * used to address named token registers.
  * </p>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \toks2={UTF-8}  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \toks42={UTF-8}  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \toks42=\toks0  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \toks{abc}={Hello world}  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class ToksPrimitive extends AbstractToks
-        implements
-            TokensConvertible,
-            Theable {
+    implements
+    TokensConvertible,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public ToksPrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public ToksPrimitive( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = getKey( context, source, typesetter );
+    source.getOptionalEquals( context );
+    Tokens toks;
+    try {
+      toks = source.getTokens( context, source, typesetter );
+    } catch( EofException e ) {
+      throw new EofInToksException( toText() );
     }
+    context.setToks( key, toks, prefix.clearGlobal() );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens convertTokens( Context context, TokenSource source,
+                               Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String key = getKey(context, source, typesetter);
-        source.getOptionalEquals(context);
-        Tokens toks;
-        try {
-            toks = source.getTokens(context, source, typesetter);
-        } catch (EofException e) {
-            throw new EofInToksException(toText());
-        }
-        context.setToks(key, toks, prefix.clearGlobal());
-    }
+    String key = getKey( context, source, typesetter );
+    return context.getToks( key );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens convertTokens(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
 
-        String key = getKey(context, source, typesetter);
-        return context.getToks(key);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        return context.getToks(getKey(context, source, typesetter));
-    }
+    return context.getToks( getKey( context, source, typesetter ) );
+  }
 
 }

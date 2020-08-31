@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \splitdiscards}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SplitdiscardsTest extends AbstractCountArrayTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SplitdiscardsTest.class);
-    }
+    (new JUnitCore()).run( SplitdiscardsTest.class );
+  }
 
 
-    public SplitdiscardsTest() {
+  public SplitdiscardsTest() {
 
-        super("splitdiscards", "255", "0");
-        setConfig("etex-test");
-    }
+    super( "splitdiscards", "255", "0" );
+    setConfig( "etex-test" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

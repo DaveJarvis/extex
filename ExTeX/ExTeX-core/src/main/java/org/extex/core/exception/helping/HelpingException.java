@@ -38,7 +38,7 @@ import org.extex.framework.i18n.Localizer;
  * Consider the following lines in the resource (properties) file for the
  * localizer:
  * </p>
- * 
+ *
  * <pre>
  * abc.def = This is the message
  * abc.def.help = This is the help text. \
@@ -52,14 +52,14 @@ import org.extex.framework.i18n.Localizer;
  * <pre>
  *     throw new HelpingException(localizer, "abc.def");
  * </pre>
- * 
+ *
  * <p>
  * With this exception up to three arguments can be used. The String value of
  * those arguments are inserted into the message string for the placeholders
  * {@code {0}}, {@code {1}}, and {@code {2}}. Consider the following format
  * definition in the resource of the localizer:
  * </p>
- * 
+ *
  * <pre>
  * ghi = This is the {0} message: {2}
  * </pre>
@@ -75,11 +75,11 @@ import org.extex.framework.i18n.Localizer;
  * <p>
  * will produce an exception with the following localized message:
  * </p>
- * 
+ *
  * <pre>
  * This is the first message: third
  * </pre>
- * 
+ *
  * <p>
  * Note that some special rules hold for strings in resource bundles:
  * </p>
@@ -94,162 +94,163 @@ import org.extex.framework.i18n.Localizer;
  * </ul>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HelpingException extends GeneralException {
 
-    /**
-     * The constant {@code DEFAULT_ARGUMENT} contains the argument if none is
-     * given.
-     */
-    private static final String DEFAULT_ARGUMENT = "?";
+  /**
+   * The constant {@code DEFAULT_ARGUMENT} contains the argument if none is
+   * given.
+   */
+  private static final String DEFAULT_ARGUMENT = "?";
 
-    /**
-     * The constant {@code DEFAULT_TAG} contains the tag to be used if none is
-     * given.
-     */
-    private static final String DEFAULT_TAG = "GeneralDetailedException.help";
+  /**
+   * The constant {@code DEFAULT_TAG} contains the tag to be used if none is
+   * given.
+   */
+  private static final String DEFAULT_TAG = "GeneralDetailedException.help";
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code arg1} contains the first argument.
-     */
-    private String arg1;
+  /**
+   * The field {@code arg1} contains the first argument.
+   */
+  private String arg1;
 
-    /**
-     * The field {@code arg2} contains the second argument.
-     */
-    private String arg2;
+  /**
+   * The field {@code arg2} contains the second argument.
+   */
+  private String arg2;
 
-    /**
-     * The field {@code arg3} contains the third argument.
-     */
-    private String arg3;
+  /**
+   * The field {@code arg3} contains the third argument.
+   */
+  private String arg3;
 
-    /**
-     * The field {@code localizer} contains the localizer.
-     */
-    private Localizer localizer;
+  /**
+   * The field {@code localizer} contains the localizer.
+   */
+  private Localizer localizer;
 
-    /**
-     * The field {@code tag} contains the name of the message to show.
-     */
-    private String tag;
+  /**
+   * The field {@code tag} contains the name of the message to show.
+   */
+  private String tag;
 
 
-    protected HelpingException() {
+  protected HelpingException() {
 
-        this(null, DEFAULT_TAG);
+    this( null, DEFAULT_TAG );
+  }
+
+  /**
+   * Creates a new object without variable arguments.
+   *
+   * @param messageTag   the message
+   * @param theLocalizer the localizer to use
+   */
+  public HelpingException( Localizer theLocalizer, String messageTag ) {
+
+    super( "" );
+    this.tag = messageTag;
+    this.localizer = theLocalizer;
+    this.arg1 = DEFAULT_ARGUMENT;
+    this.arg2 = DEFAULT_ARGUMENT;
+    this.arg3 = DEFAULT_ARGUMENT;
+  }
+
+  /**
+   * Creates a new object with one variable argument.
+   *
+   * @param messageTag   the message
+   * @param a1           the first argument
+   * @param theLocalizer the localizer to use
+   */
+  public HelpingException( Localizer theLocalizer, String messageTag,
+                           String a1 ) {
+
+    super( "" );
+    this.tag = messageTag;
+    this.localizer = theLocalizer;
+    this.arg1 = a1;
+    this.arg2 = DEFAULT_ARGUMENT;
+    this.arg3 = DEFAULT_ARGUMENT;
+  }
+
+  /**
+   * Creates a new object with two variable arguments.
+   *
+   * @param messageTag   the message
+   * @param a1           the first argument
+   * @param a2           the second argument
+   * @param theLocalizer the localizer to use
+   */
+  public HelpingException( Localizer theLocalizer, String messageTag,
+                           String a1, String a2 ) {
+
+    super( "" );
+    this.tag = messageTag;
+    this.localizer = theLocalizer;
+    this.arg1 = a1;
+    this.arg2 = a2;
+    this.arg3 = DEFAULT_ARGUMENT;
+  }
+
+  /**
+   * Creates a new object with three variable arguments.
+   *
+   * @param messageTag   the message
+   * @param a1           the first argument
+   * @param a2           the second argument
+   * @param a3           the third argument
+   * @param theLocalizer the localizer to use
+   */
+  public HelpingException( Localizer theLocalizer, String messageTag,
+                           String a1, String a2, String a3 ) {
+
+    super( "" );
+    this.tag = messageTag;
+    this.localizer = theLocalizer;
+    this.arg1 = a1;
+    this.arg2 = a2;
+    this.arg3 = a3;
+  }
+
+  /**
+   * Getter for further help information.
+   *
+   * @return the help information
+   */
+  @Override
+  public String getHelp() {
+
+    return localizer.format( tag + ".help", arg1, arg2, arg3 );
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause
+   */
+  protected HelpingException( Throwable cause ) {
+
+    super( cause );
+  }
+
+  /**
+   * Getter for further help information.
+   *
+   * @return the help information
+   */
+  @Override
+  public String getLocalizedMessage() {
+
+    if( localizer == null ) {
+      return "???";
     }
-
-    /**
-     * Creates a new object without variable arguments.
-     * 
-     * @param messageTag the message
-     * @param theLocalizer the localizer to use
-     */
-    public HelpingException(Localizer theLocalizer, String messageTag) {
-
-        super("");
-        this.tag = messageTag;
-        this.localizer = theLocalizer;
-        this.arg1 = DEFAULT_ARGUMENT;
-        this.arg2 = DEFAULT_ARGUMENT;
-        this.arg3 = DEFAULT_ARGUMENT;
-    }
-
-    /**
-     * Creates a new object with one variable argument.
-     * 
-     * @param messageTag the message
-     * @param a1 the first argument
-     * @param theLocalizer the localizer to use
-     */
-    public HelpingException(Localizer theLocalizer, String messageTag, String a1) {
-
-        super("");
-        this.tag = messageTag;
-        this.localizer = theLocalizer;
-        this.arg1 = a1;
-        this.arg2 = DEFAULT_ARGUMENT;
-        this.arg3 = DEFAULT_ARGUMENT;
-    }
-
-    /**
-     * Creates a new object with two variable arguments.
-     * 
-     * @param messageTag the message
-     * @param a1 the first argument
-     * @param a2 the second argument
-     * @param theLocalizer the localizer to use
-     */
-    public HelpingException(Localizer theLocalizer, String messageTag,
-            String a1, String a2) {
-
-        super("");
-        this.tag = messageTag;
-        this.localizer = theLocalizer;
-        this.arg1 = a1;
-        this.arg2 = a2;
-        this.arg3 = DEFAULT_ARGUMENT;
-    }
-
-    /**
-     * Creates a new object with three variable arguments.
-     * 
-     * @param messageTag the message
-     * @param a1 the first argument
-     * @param a2 the second argument
-     * @param a3 the third argument
-     * @param theLocalizer the localizer to use
-     */
-    public HelpingException(Localizer theLocalizer, String messageTag,
-            String a1, String a2, String a3) {
-
-        super("");
-        this.tag = messageTag;
-        this.localizer = theLocalizer;
-        this.arg1 = a1;
-        this.arg2 = a2;
-        this.arg3 = a3;
-    }
-
-    /**
-     * Getter for further help information.
-     * 
-     * @return the help information
-     */
-    @Override
-    public String getHelp() {
-
-        return localizer.format(tag + ".help", arg1, arg2, arg3);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the cause
-     */
-    protected HelpingException(Throwable cause) {
-
-        super(cause);
-    }
-
-    /**
-     * Getter for further help information.
-     * 
-     * @return the help information
-     */
-    @Override
-    public String getLocalizedMessage() {
-
-        if (localizer == null) {
-            return "???";
-        }
-        return localizer.format(tag, arg1, arg2, arg3);
-    }
+    return localizer.format( tag, arg1, arg2, arg3 );
+  }
 
 }

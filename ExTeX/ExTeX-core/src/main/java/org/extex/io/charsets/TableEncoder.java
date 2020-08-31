@@ -27,64 +27,65 @@ import java.nio.charset.CoderResult;
 
 /**
  * This class provides a table-based {@link CharsetEncoder}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TableEncoder extends CharsetEncoder {
 
-    /**
-     * The field {@code table} contains the table.
-     */
-    private final char[] table;
+  /**
+   * The field {@code table} contains the table.
+   */
+  private final char[] table;
 
-    /**
-     * The field {@code reverse} contains the reverse table.
-     */
-    private final byte[] reverse = new byte[256];
+  /**
+   * The field {@code reverse} contains the reverse table.
+   */
+  private final byte[] reverse = new byte[ 256 ];
 
-    /**
-     * Creates a new object.
-     * 
-     * @param cs the char set
-     * @param table the table of values
-     */
-    public TableEncoder(Charset cs, char[] table) {
+  /**
+   * Creates a new object.
+   *
+   * @param cs    the char set
+   * @param table the table of values
+   */
+  public TableEncoder( Charset cs, char[] table ) {
 
-        super(cs, 1.0f, 1.0f);
-        this.table = table;
-        int i = 0;
-        for (char c : table) {
-            if (c < reverse.length) {
-                reverse[c] = (byte) i;
-            }
-            i++;
+    super( cs, 1.0f, 1.0f );
+    this.table = table;
+    int i = 0;
+    for( char c : table ) {
+      if( c < reverse.length ) {
+        reverse[ c ] = (byte) i;
+      }
+      i++;
+    }
+  }
+
+  /**
+   * java.nio.ByteBuffer)
+   */
+  @Override
+  protected CoderResult encodeLoop( CharBuffer in, ByteBuffer out ) {
+
+    for( int i = 0; i < in.length(); i++ ) {
+      char c = in.get();
+      if( c < reverse.length ) {
+        out.put( reverse[ c ] );
+      }
+      else {
+        int j = 0;
+        for( char cc : table ) {
+          if( table[ cc ] == c ) {
+            out.put( reverse[ c ] );
+            break;
+          }
+          j++;
         }
+        // TODO gene: c may not be defined at all
+      }
     }
 
-    /**
-*      java.nio.ByteBuffer)
-     */
-    @Override
-    protected CoderResult encodeLoop(CharBuffer in, ByteBuffer out) {
-
-        for (int i = 0; i < in.length(); i++) {
-            char c = in.get();
-            if (c < reverse.length) {
-                out.put(reverse[c]);
-            } else {
-                int j = 0;
-                for (char cc : table) {
-                    if (table[cc] == c) {
-                        out.put(reverse[c]);
-                        break;
-                    }
-                    j++;
-                }
-                // TODO gene: c may not be defined at all
-            }
-        }
-
-        return null;
-    }
+    return null;
+  }
 
 }

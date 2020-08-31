@@ -19,59 +19,56 @@
 
 package org.extex.color;
 
-import java.io.Serializable;
-
 import org.extex.core.exception.GeneralException;
+
+import java.io.Serializable;
 
 /**
  * This interface declares some methods to access the color with an alpha
  * channel.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Color extends Serializable {
 
-    /**
-     * The constant {@code MAX_VALUE} contains the maximal values for all
-     * channels.
-     */
-    int MAX_VALUE = 0xffff;
+  /**
+   * The constant {@code MAX_VALUE} contains the maximal values for all
+   * channels.
+   */
+  int MAX_VALUE = 0xffff;
 
-    /**
-     * Getter for the alpha channel.
-     * The range of the value is 0x00 to 0xffff.
-     *
-     * @return the alpha channel
-     */
-    int getAlpha();
+  /**
+   * Getter for the alpha channel.
+   * The range of the value is 0x00 to 0xffff.
+   *
+   * @return the alpha channel
+   */
+  int getAlpha();
 
-    /**
-     * Check that the current color is identical to another one.
-     *
-     * @param other the other object to compare to
-     *
-     * @return {@code true} iff the color system is identical and the
-     *  colors are the same
-     */
-    boolean equals(Object other);
+  /**
+   * Check that the current color is identical to another one.
+   *
+   * @param other the other object to compare to
+   * @return {@code true} iff the color system is identical and the
+   * colors are the same
+   */
+  boolean equals( Object other );
 
-    /**
-     * This method provides an entry point for the visitor pattern.
-     *
-     * @param visitor the visitor to apply
-     * @param value the argument for the visitor
-     *
-     * @return the result of the method invocation of the visitor
-     *
-     * @throws GeneralException in case of an error
-     */
-    Object visit(ColorVisitor visitor, Object value) throws GeneralException;
+  /**
+   * This method provides an entry point for the visitor pattern.
+   *
+   * @param visitor the visitor to apply
+   * @param value   the argument for the visitor
+   * @return the result of the method invocation of the visitor
+   * @throws GeneralException in case of an error
+   */
+  Object visit( ColorVisitor visitor, Object value ) throws GeneralException;
 
-    /**
-     * Provide the string representation for the color.
-     *
-     * @return the string representation
-     */
-    String toString();
+  /**
+   * Provide the string representation for the color.
+   *
+   * @return the string representation
+   */
+  String toString();
 
 }

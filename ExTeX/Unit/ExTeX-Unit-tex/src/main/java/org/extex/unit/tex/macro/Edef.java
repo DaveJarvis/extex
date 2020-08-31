@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.macro;
 
-import java.util.logging.Logger;
-
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.EofInToksException;
 import org.extex.core.exception.helping.HelpingException;
@@ -39,18 +37,20 @@ import org.extex.unit.tex.macro.util.MacroCode;
 import org.extex.unit.tex.macro.util.MacroPattern;
 import org.extex.unit.tex.macro.util.ProtectedMacroCode;
 
+import java.util.logging.Logger;
+
 /**
  * This class provides an implementation for the primitive {@code \edef}.
- * 
+ *
  * <p>The Primitive {@code \edef}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;edef&rang;
  *       &rarr; &lang;prefix&rang; {@code \edef} {@linkplain
@@ -63,80 +63,80 @@ import org.extex.unit.tex.macro.util.ProtectedMacroCode;
  *       | {@code \long} &lang;prefix&rang;
  *       | {@code \outer} &lang;prefix&rang;
  *       | {@code \proteced} &lang;prefix&rang;</pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \edef#1{--#1--}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Edef extends AbstractAssignment implements LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the logger.
-     */
-    private transient Logger logger;
+  /**
+   * The field {@code logger} contains the logger.
+   */
+  private transient Logger logger;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Edef(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Edef( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    CodeToken cs = source.getControlSequence( context, typesetter );
+    boolean notLong = !prefix.clearLong();
+    boolean global = prefix.clearGlobal();
+    boolean protect = prefix.clearProtected();
+    MacroPattern pattern =
+        MacroPattern.getPattern( context, source, notLong, cs );
+    Tokens body;
+    try {
+      body = source.scanUnprotectedTokens( context,
+                                           false, false, getToken() );
+
+      Token t = pattern.get( pattern.length() - 1 );
+      if( t instanceof LeftBraceToken ) {
+        body.add( t );
+      }
+    } catch( EofException e ) {
+      throw new EofInToksException( cs.toText( context.escapechar() ) );
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    MacroCode macroCode = (protect
+        ? new ProtectedMacroCode( cs, prefix, notLong, pattern, body )
+        : new MacroCode( cs, prefix, notLong, pattern, body ));
+    macroCode.enableLogging( logger );
 
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        boolean notLong = !prefix.clearLong();
-        boolean global = prefix.clearGlobal();
-        boolean protect = prefix.clearProtected();
-        MacroPattern pattern =
-                MacroPattern.getPattern(context, source, notLong, cs);
-        Tokens body;
-        try {
-            body = source.scanUnprotectedTokens(context,
-                false, false, getToken());
+    context.setCode( cs, macroCode, global );
+  }
 
-            Token t = pattern.get(pattern.length() - 1);
-            if (t instanceof LeftBraceToken) {
-                body.add(t);
-            }
-        } catch (EofException e) {
-            throw new EofInToksException(cs.toText(context.escapechar()));
-        }
+  /**
+   * java.util.logging.Logger)
+   */
+  public void enableLogging( Logger log ) {
 
-        MacroCode macroCode = (protect
-                ? new ProtectedMacroCode(cs, prefix, notLong, pattern, body)
-                : new MacroCode(cs, prefix, notLong, pattern, body));
-        macroCode.enableLogging(logger);
-
-        context.setCode(cs, macroCode, global);
-    }
-
-    /**
-*      java.util.logging.Logger)
-     */
-    public void enableLogging(Logger log) {
-
-        this.logger = log;
-    }
+    this.logger = log;
+  }
 
 }

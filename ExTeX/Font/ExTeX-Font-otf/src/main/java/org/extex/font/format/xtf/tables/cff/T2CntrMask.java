@@ -19,140 +19,141 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
-import java.io.IOException;
-import java.util.List;
-
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
+import java.io.IOException;
+import java.util.List;
+
 /**
  * T2: cntrmask: cntrmask (20 + mask).
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2CntrMask extends T2AbstractHintMask {
 
-    /**
-     * The cntrmask.
-     */
-    private long mask;
+  /**
+   * The cntrmask.
+   */
+  private long mask;
 
-    /**
-     * The values.
-     */
-    private final T2Number[] val;
+  /**
+   * The values.
+   */
+  private final T2Number[] val;
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @param ch The char string.
-     * @param rar The input.
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2CntrMask(List<T2CharString> stack, CharString ch, RandomAccessR rar)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @param ch    The char string.
+   * @param rar   The input.
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2CntrMask( List<T2CharString> stack, CharString ch,
+                     RandomAccessR rar )
+      throws IOException {
 
-        super(stack, new short[]{T2CNTRMASK}, ch);
+    super( stack, new short[]{T2CNTRMASK}, ch );
 
-        int n = stack.size();
-        val = new T2Number[n];
-        ch.addHints(n);
+    int n = stack.size();
+    val = new T2Number[ n ];
+    ch.addHints( n );
 
-        for (int i = 0; i < n; i++) {
-            val[i] = (T2Number) stack.get(i);
-        }
-
-        readMask(ch, rar);
+    for( int i = 0; i < n; i++ ) {
+      val[ i ] = (T2Number) stack.get( i );
     }
 
-@Override
-    public int getID() {
+    readMask( ch, rar );
+  }
 
-        return TYPE_CNTRMASK;
+  @Override
+  public int getID() {
+
+    return TYPE_CNTRMASK;
+  }
+
+  /**
+   * Getter for mask.
+   *
+   * @return the mask
+   */
+  public long getMask() {
+
+    return mask;
+  }
+
+  /**
+   * Return the mask as binary string.
+   *
+   * @return Return the mask as binary string.
+   */
+  public String getMaskBin() {
+
+    return T2HintMask.toBin( mask );
+  }
+
+  @Override
+  public String getName() {
+
+    return "cntrmask";
+  }
+
+  /**
+   * Getter for val.
+   *
+   * @return the val
+   */
+  public T2Number[] getVal() {
+
+    return val;
+  }
+
+  @Override
+  public Object getValue() {
+
+    return val;
+  }
+
+  /**
+   * Read the mask.
+   *
+   * @param ch  The charstring.
+   * @param rar The input.
+   * @throws IOException if a IO-error occurred.
+   */
+  private void readMask( CharString ch, RandomAccessR rar ) throws IOException {
+
+    int cnt = (ch.getActualHints() / 2 - 1) / 8;
+    mask = rar.readUnsignedByte();
+    for( int i = 0; i < cnt; i++ ) {
+      mask = mask << 8;
+      mask += rar.readUnsignedByte();
     }
+  }
 
-    /**
-     * Getter for mask.
-     * 
-     * @return the mask
-     */
-    public long getMask() {
+  @Override
+  public String toText() {
 
-        return mask;
+    StringBuilder buf = new StringBuilder();
+    for( int i = 0; i < val.length; i++ ) {
+      buf.append( val[ i ].toString() ).append( ' ' );
     }
+    buf.append( getName() ).append( ' ' ).append( T2HintMask.toBin( mask ) );
+    return buf.toString();
+  }
 
-    /**
-     * Return the mask as binary string.
-     * 
-     * @return Return the mask as binary string.
-     */
-    public String getMaskBin() {
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        return T2HintMask.toBin(mask);
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "mask", T2HintMask.toBin( mask ) );
+    StringBuilder buf = new StringBuilder();
+    for( int i = 0; i < val.length; i++ ) {
+      buf.append( ' ' ).append( val[ i ] );
     }
-
-@Override
-    public String getName() {
-
-        return "cntrmask";
-    }
-
-    /**
-     * Getter for val.
-     * 
-     * @return the val
-     */
-    public T2Number[] getVal() {
-
-        return val;
-    }
-
-@Override
-    public Object getValue() {
-
-        return val;
-    }
-
-    /**
-     * Read the mask.
-     * 
-     * @param ch The charstring.
-     * @param rar The input.
-     * @throws IOException if a IO-error occurred.
-     */
-    private void readMask(CharString ch, RandomAccessR rar) throws IOException {
-
-        int cnt = (ch.getActualHints() / 2 - 1) / 8;
-        mask = rar.readUnsignedByte();
-        for (int i = 0; i < cnt; i++) {
-            mask = mask << 8;
-            mask += rar.readUnsignedByte();
-        }
-    }
-
-@Override
-    public String toText() {
-
-        StringBuilder buf = new StringBuilder();
-        for (int i = 0; i < val.length; i++) {
-            buf.append(val[i].toString()).append(' ');
-        }
-        buf.append(getName()).append(' ').append(T2HintMask.toBin(mask));
-        return buf.toString();
-    }
-
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("mask", T2HintMask.toBin(mask));
-        StringBuilder buf = new StringBuilder();
-        for (int i = 0; i < val.length; i++) {
-            buf.append(' ').append(val[i]);
-        }
-        writer.writeAttribute("values", buf.toString().trim());
-        writer.writeEndElement();
-    }
+    writer.writeAttribute( "values", buf.toString().trim() );
+    writer.writeEndElement();
+  }
 
 }

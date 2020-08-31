@@ -35,74 +35,74 @@ import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
 /**
  * This class provides an implementation for the primitive {@code \hfilneg}
  * .
- * 
+ *
  * <p>The Primitive {@code \hfilneg}</p>
  * <p>
  * The primitive {@code \hfilneg} inserts glue at the current position which is
  * stretchable horizontally wit the value of -1fil. The order of the glue is 1.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;hfilneg&rang;
  *        &rarr; {@code \hfilneg}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \hfilneg  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Hfilneg extends AbstractHorizontalCode implements HorizontalSkip {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code FIL_NEG} contains the glue to insert for this
-     * primitive.
-     */
-    private static final Glue FIL_NEG = new Glue(Dimen.ZERO,
-        GlueComponent.MINUS_ONE_FIL, GlueComponent.ZERO);
+  /**
+   * The field {@code FIL_NEG} contains the glue to insert for this
+   * primitive.
+   */
+  private static final Glue FIL_NEG = new Glue( Dimen.ZERO,
+                                                GlueComponent.MINUS_ONE_FIL,
+                                                GlueComponent.ZERO );
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Hfilneg(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Hfilneg( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        switchToHorizontalMode(typesetter);
-        typesetter.add(FIL_NEG);
-    }
+    switchToHorizontalMode( typesetter );
+    typesetter.add( FIL_NEG );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public FixedGlue getGlue(Context context, TokenSource source,
-            Typesetter typesetter) {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public FixedGlue getGlue( Context context, TokenSource source,
+                            Typesetter typesetter ) {
 
-        return FIL_NEG;
-    }
+    return FIL_NEG;
+  }
 
 }

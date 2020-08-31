@@ -25,61 +25,61 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \openin}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
 
-    /**
-     * The constant {@code EMPTY_TEX} contains the location of an empty file.
-     */
-    private static final String EMPTY_TEX =
-            "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
+  /**
+   * The constant {@code EMPTY_TEX} contains the location of an empty file.
+   */
+  private static final String EMPTY_TEX =
+      "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(OpeninTest.class);
-    }
+    (new JUnitCore()).run( OpeninTest.class );
+  }
 
 
-    public OpeninTest() {
+  public OpeninTest() {
 
-        super("openin", "1 " + EMPTY_TEX + " ");
-    }
+    super( "openin", "1 " + EMPTY_TEX + " " );
+  }
 
-    /**
-     * <testcase primitive="\openin"> Test case checking that a lonely
-     * {@code \openin} leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\openin"> Test case checking that a lonely
+   * {@code \openin} leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\openin ",
-            // --- log message ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  "\\openin ",
+                  // --- log message ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\openin"> Test case checking that a lonely
-     * {@code \openin} with an index leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof2() throws Exception {
+  /**
+   * <testcase primitive="\openin"> Test case checking that a lonely
+   * {@code \openin} with an index leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\openin 2",
-            // --- log message ---
-            "Unexpected end of file while processing \\openin");
-    }
+    assertFailure(// --- input code ---
+                  "\\openin 2",
+                  // --- log message ---
+                  "Unexpected end of file while processing \\openin" );
+  }
 
 }

@@ -29,71 +29,67 @@ import org.extex.exindex.lisp.type.function.LFunction;
 /**
  * This abstract base class provides common functionality for the adapter to the
  * L system.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AbstractLAdapter extends LFunction {
 
-    /**
-     * The field {@code container} contains the container for indices.
-     */
-    private final IndexContainer container;
+  /**
+   * The field {@code container} contains the container for indices.
+   */
+  private final IndexContainer container;
 
-    /**
-     * Creates a new function object.
-     * 
-     * @param name the name of the function
-     * @param container the index container
-     * @param args the argument descriptors
-     * 
-     * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
-     * @throws SecurityException in case a security problem occurred
-     */
-    public AbstractLAdapter(String name, IndexContainer container, Arg[] args)
-            throws SecurityException,
-                NoSuchMethodException {
+  /**
+   * Creates a new function object.
+   *
+   * @param name      the name of the function
+   * @param container the index container
+   * @param args      the argument descriptors
+   * @throws NoSuchMethodException in case that no method corresponding to the
+   *                               argument specification could be found
+   * @throws SecurityException     in case a security problem occurred
+   */
+  public AbstractLAdapter( String name, IndexContainer container, Arg[] args )
+      throws SecurityException,
+      NoSuchMethodException {
 
-        super(name, args);
-        this.container = container;
-    }
+    super( name, args );
+    this.container = container;
+  }
 
-    /**
-     * Getter for container.
-     * 
-     * @return the container
-     */
-    public IndexContainer getContainer() {
+  /**
+   * Getter for container.
+   *
+   * @return the container
+   */
+  public IndexContainer getContainer() {
 
-        return container;
-    }
+    return container;
+  }
 
-    /**
-     * Getter for the markup for the current index.
-     * 
-     * @param interpreter the interpreter
-     * 
-     * @return the markup
-     * 
-     * @throws LNonMatchingTypeException in case of an error
-     */
-    protected Markup getMarkup(LInterpreter interpreter)
-            throws LNonMatchingTypeException {
+  /**
+   * Getter for the markup for the current index.
+   *
+   * @param interpreter the interpreter
+   * @return the markup
+   * @throws LNonMatchingTypeException in case of an error
+   */
+  protected Markup getMarkup( LInterpreter interpreter )
+      throws LNonMatchingTypeException {
 
-        return container.getMarkup(getName());
-    }
+    return container.getMarkup( getName() );
+  }
 
-    /**
-     * Assign a new current index.
-     * 
-     * @param name the name of the index
-     * 
-     * @return {@code true} if the index is found and the set is
-     *         successful
-     */
-    protected boolean setCurrentIndex(String name) {
+  /**
+   * Assign a new current index.
+   *
+   * @param name the name of the index
+   * @return {@code true} if the index is found and the set is
+   * successful
+   */
+  protected boolean setCurrentIndex( String name ) {
 
-        return container.setCurrentIndex(name);
-    }
+    return container.setCurrentIndex( name );
+  }
 
 }

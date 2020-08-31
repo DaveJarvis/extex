@@ -32,7 +32,7 @@ import org.extex.unit.base.conditional.AbstractIf;
 /**
  * This class provides an implementation for the primitive
  * {@code \iffontchar}.
- * 
+ *
  * <p>The Primitive {@code \iffontchar}</p>
  * <p>
  * The primitive {@code \iffontchar} can be used to check whether a certain
@@ -40,57 +40,57 @@ import org.extex.unit.base.conditional.AbstractIf;
  * character and performs the test. If the character exists the then branch is
  * expanded otherwise the else branch.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;iffontchar&rang;
- *      &rarr; {@code \iffontchar} {@link TokenSource#getFont(Context,CodeToken) &lang;font&rang;} {@link
- *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) &lang;code&rang; &lang;true text&rang;} {@code \fi}
- *      | {@code \iffontchar} {@link TokenSource#getFont(Context,CodeToken) &lang;font&rang;} {@link
- *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) &lang;code&rang; &lang;true text&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
- * 
+ *      &rarr; {@code \iffontchar} {@link TokenSource#getFont(Context, CodeToken) &lang;font&rang;} {@link
+ *      TokenSource#scanCharacterCode(Context, Typesetter, CodeToken) &lang;code&rang; &lang;true text&rang;} {@code \fi}
+ *      | {@code \iffontchar} {@link TokenSource#getFont(Context, CodeToken) &lang;font&rang;} {@link
+ *      TokenSource#scanCharacterCode(Context, Typesetter, CodeToken) &lang;code&rang; &lang;true text&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \iffontchar abc \fi  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Iffontchar extends AbstractIf {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Iffontchar(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Iffontchar( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public boolean conditional( Context context, TokenSource source,
+                              Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Font font = source.getFont(context, getToken());
-        UnicodeChar uc =
-                source.scanCharacterCode(context, typesetter, getToken());
-        return font.hasGlyph(uc);
-    }
+    Font font = source.getFont( context, getToken() );
+    UnicodeChar uc =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    return font.hasGlyph( uc );
+  }
 
 }

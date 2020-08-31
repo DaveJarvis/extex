@@ -23,82 +23,87 @@ import org.junit.Test;
 
 /**
  * This is a test suite for \xdef-like primitives.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractXdefTester extends AbstractDefTester {
 
-    /**
-     * Creates a new object.
-     * @param def the name of the primitive
-     */
-    public AbstractXdefTester(String def) {
+  /**
+   * Creates a new object.
+   *
+   * @param def the name of the primitive
+   */
+  public AbstractXdefTester( String def ) {
 
-        super(def);
-    }
+    super( def );
+  }
 
-    /**
-     * Test case checking that macros (without arguments) are expanded at definition time
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testExpand1() throws Exception {
+  /**
+   * Test case checking that macros (without arguments) are expanded at
+   * definition time
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testExpand1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\def\\a{A}" + "\\" + getDef() + "\\aaa{X\\a X}"
-                    + "\\def\\a{B}" + "--\\aaa--\\end",
-            // --- output message ---
-            "--XAX--" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\def\\a{A}" + "\\" + getDef() + "\\aaa{X" +
+                      "\\a X}"
+                      + "\\def\\a{B}" + "--\\aaa--\\end",
+                  // --- output message ---
+                  "--XAX--" + TERM );
+  }
 
-    /**
-     * Test case checking that macros (with arguments) are expanded at definition time
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testExpand2() throws Exception {
+  /**
+   * Test case checking that macros (with arguments) are expanded at
+   * definition time
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testExpand2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\def\\a#1{-#1-}" + "\\" + getDef()
-                    + "\\aaa{X\\a9X}" + "\\def\\a{B}" + "--\\aaa--\\end",
-            // --- output message ---
-            "--X-9-X--" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\def\\a#1{-#1-}" + "\\" + getDef()
+                      + "\\aaa{X\\a9X}" + "\\def\\a{B}" + "--\\aaa--\\end",
+                  // --- output message ---
+                  "--X-9-X--" + TERM );
+  }
 
-    /**
-     * Test case checking that macros are deeply expanded at definition time
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testExpand3() throws Exception {
+  /**
+   * Test case checking that macros are deeply expanded at definition time
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testExpand3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\def\\a#1{-#1+\\b{#1}-}" + "\\def\\b#1{>#1<}"
-                    + "\\" + getDef() + "\\aaa{X\\a9X}" + "\\def\\a{B}"
-                    + "--\\aaa--\\end",
-            // --- output message ---
-            "--X-9+>9<-X--" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\def\\a#1{-#1+\\b{#1}-}" + "\\def\\b#1" +
+                      "{>#1<}"
+                      + "\\" + getDef() + "\\aaa{X\\a9X}" + "\\def\\a{B}"
+                      + "--\\aaa--\\end",
+                  // --- output message ---
+                  "--X-9+>9<-X--" + TERM );
+  }
 
-    /**
-     *  Test case checking that \noexpand prevent expansion of the
-     * following token
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testNoexpand1() throws Exception {
+  /**
+   * Test case checking that \noexpand prevent expansion of the
+   * following token
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testNoexpand1() throws Exception {
 
-        assertOutput(// --- input code ---
-            DEFINE_BRACES + "\\def\\a{A}" + "\\" + getDef()
-                    + "\\aaa{X\\noexpand\\a X}" + "\\show\\aaa\\end",
-            // --- error message ---
-            "> \\aaa=macro:\n" + "->X\\aX.\n",
-            // --- output message ---
-            "");
-    }
+    assertOutput(// --- input code ---
+                 DEFINE_BRACES + "\\def\\a{A}" + "\\" + getDef()
+                     + "\\aaa{X\\noexpand\\a X}" + "\\show\\aaa\\end",
+                 // --- error message ---
+                 "> \\aaa=macro:\n" + "->X\\aX.\n",
+                 // --- output message ---
+                 "" );
+  }
 
 }

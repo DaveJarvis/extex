@@ -33,73 +33,72 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This abstract base class provides the methods to compute the keys for
  * numbered count registers.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractCount extends AbstractAssignment
-        implements
-            InitializableCode {
+    implements
+    InitializableCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractCount(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractCount( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Return the key (the name of the primitive) for the numbered count
+   * register.
+   *
+   * @param context    the interpreter context to use
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the key for the current register
+   * @throws HelpingException    in case that a derived class need to throw an
+   *                             Exception this one is declared.
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String name;
+    name = source.scanRegisterName( context, source, typesetter, getToken() );
+
+    if( Namespace.SUPPORT_NAMESPACE_COUNT ) {
+      return context.getNamespace() + "\b" + name;
     }
+    return name;
+  }
 
-    /**
-     * Return the key (the name of the primitive) for the numbered count
-     * register.
-     * 
-     * @param context the interpreter context to use
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the key for the current register
-     * 
-     * @throws HelpingException in case that a derived class need to throw an
-     *         Exception this one is declared.
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void init( Context context, TokenSource source, Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
 
-        String name;
-        name = source.scanRegisterName(context, source, typesetter, getToken());
-
-        if (Namespace.SUPPORT_NAMESPACE_COUNT) {
-            return context.getNamespace() + "\b" + name;
-        }
-        return name;
+    if( source == null ) {
+      return;
     }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void init(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        if (source == null) {
-            return;
-        }
-        Token t = source.getNonSpace(context);
-        if (t == null) {
-            return;
-        }
-        source.push(t);
-        long value = source.parseInteger(context, source, typesetter);
-        context.setCount(getKey(context, source, typesetter), value, true);
+    Token t = source.getNonSpace( context );
+    if( t == null ) {
+      return;
     }
+    source.push( t );
+    long value = source.parseInteger( context, source, typesetter );
+    context.setCount( getKey( context, source, typesetter ), value, true );
+  }
 
 }

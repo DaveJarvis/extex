@@ -24,25 +24,25 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \dimen}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DimenTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DimenTest.class);
-    }
+    (new JUnitCore()).run( DimenTest.class );
+  }
 
 
-    public DimenTest() {
+  public DimenTest() {
 
-        super("dimen", "42 ", "0.0pt");
-    }
+    super( "dimen", "42 ", "0.0pt" );
+  }
 
 }

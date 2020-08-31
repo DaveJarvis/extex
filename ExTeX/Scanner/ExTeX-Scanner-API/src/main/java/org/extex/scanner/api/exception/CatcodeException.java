@@ -26,48 +26,48 @@ import org.extex.core.exception.GeneralException;
  * access goes wrong.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CatcodeException extends GeneralException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
 
-    public CatcodeException() {
+  public CatcodeException() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message of the exception
-     */
-    public CatcodeException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message of the exception
+   */
+  public CatcodeException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message of the exception
-     * @param cause the cause of the exception in a chained exception
-     */
-    public CatcodeException(String message, Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message of the exception
+   * @param cause   the cause of the exception in a chained exception
+   */
+  public CatcodeException( String message, Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the cause of the exception in a chained exception
-     */
-    public CatcodeException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause of the exception in a chained exception
+   */
+  public CatcodeException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
 }

@@ -31,7 +31,7 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive {@code \eqno}.
- * 
+ *
  * <p>The Math Primitive {@code \eqno}</p>
  * <p>
  * The math primitive {@code \eqno} arranges that the following material is
@@ -43,65 +43,64 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * appear in one display math list or {@code \eqno} appears together with
  * {@code \leqno} in a display math list.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;eqno&rang;
  *       &rarr; {@code \eqno}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    $$ 12 \eqno 34 $$ </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Eqno extends AbstractMathCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Eqno(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Eqno( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter ) throws CantUseInException {
+
+    ListMaker lm = typesetter.getListMaker();
+
+    try {
+
+      if( lm instanceof EqConsumer ) {
+        ((EqConsumer) lm).switchToNumber( true );
+        return;
+      }
+
+    } catch( CantUseInException e ) {
+      throw new CantUseInException( toText( context ),
+                                    "math mode" );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws CantUseInException {
-
-        ListMaker lm = typesetter.getListMaker();
-
-        try {
-
-            if (lm instanceof EqConsumer) {
-                ((EqConsumer) lm).switchToNumber(true);
-                return;
-            }
-
-        } catch (CantUseInException e) {
-            throw new CantUseInException(toText(context),
-                "math mode");
-        }
-        throw new CantUseInException(toText(context),
-            typesetter.getMode().toString());
-    }
+    throw new CantUseInException( toText( context ),
+                                  typesetter.getMode().toString() );
+  }
 
 }

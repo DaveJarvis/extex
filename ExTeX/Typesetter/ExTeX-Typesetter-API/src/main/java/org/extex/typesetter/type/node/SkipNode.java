@@ -25,7 +25,7 @@ import org.extex.typesetter.type.Node;
  * This is a marker interface to tie together glue node and the leaders nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface SkipNode extends Node {
 
 

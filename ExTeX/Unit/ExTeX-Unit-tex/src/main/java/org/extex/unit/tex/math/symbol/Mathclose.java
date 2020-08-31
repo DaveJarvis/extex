@@ -36,18 +36,18 @@ import org.extex.unit.tex.math.AbstractMathCode;
 /**
  * This class provides an implementation for the primitive
  * {@code \mathclose}.
- * 
+ *
  * <p>The Math Primitive {@code \mathclose}</p>
  * <p>
  * The primitive {@code \mathclose} takes an argument and treats it as a
  * closing symbol. It works in math mode only. The argument can either be a
  * single letter of a math expression enclosed in braces.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;mathclose&rang;
  *       &rarr; {@code \mathclose} &lang;formula&rang;
@@ -55,58 +55,59 @@ import org.extex.unit.tex.math.AbstractMathCode;
  *    &lang;formula&rang;
  *       &rarr;  &lang;letter&rang;
  *         |  {@code {} &lang;math material&rang; {@code }}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \mathclose x </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \mathclose\mathchar"1234  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \mathclose {abc} </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Mathclose extends AbstractMathCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Mathclose(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Mathclose( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
+
+    NoadConsumer nc = getListMaker( context, typesetter );
+    Noad noad = nc.scanNoad( prefix, context, source, typesetter,
+                             getToken(), GroupType.MATH_GROUP );
+
+    if( noad != null ) {
+      noad.setSpacingClass( MathSpacing.BIN );
+      nc.add( noad );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
-
-        NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
-            getToken(), GroupType.MATH_GROUP);
-
-        if (noad != null) {
-            noad.setSpacingClass(MathSpacing.BIN);
-            nc.add(noad);
-        } else {
-            nc.add(new CloseNoad(noad, context.getTypesettingContext()));
-        }
+    else {
+      nc.add( new CloseNoad( noad, context.getTypesettingContext() ) );
     }
+  }
 
 }

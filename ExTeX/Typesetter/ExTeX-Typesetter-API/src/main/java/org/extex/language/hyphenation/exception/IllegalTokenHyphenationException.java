@@ -24,22 +24,22 @@ package org.extex.language.hyphenation.exception;
  * hyphenation pattern.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IllegalTokenHyphenationException extends HyphenationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     */
-    public IllegalTokenHyphenationException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   */
+  public IllegalTokenHyphenationException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
 }

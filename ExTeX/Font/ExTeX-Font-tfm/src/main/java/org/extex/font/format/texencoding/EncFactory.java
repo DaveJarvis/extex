@@ -18,120 +18,120 @@
 
 package org.extex.font.format.texencoding;
 
-import java.io.InputStream;
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.font.exception.FontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.resource.ResourceFinder;
 
+import java.io.InputStream;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Factory for enc-files.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class EncFactory implements Serializable {
 
-    /**
-     * serialVersionUID.
-     */
-    private static final long serialVersionUID = -2024818780342719008L;
+  /**
+   * serialVersionUID.
+   */
+  private static final long serialVersionUID = -2024818780342719008L;
 
-    /**
-     * Map.
-     */
-    private final Map<String, EncReader> data;
+  /**
+   * Map.
+   */
+  private final Map<String, EncReader> data;
 
-    /**
-     * The resource finder.
-     */
-    private final transient ResourceFinder finder;
+  /**
+   * The resource finder.
+   */
+  private final transient ResourceFinder finder;
 
-    /**
-     * The field {@code localizer} contains the localizer. It is initiated
-     * with a localizer for the name of this class.
-     */
-    private final transient Localizer localizer =
-            LocalizerFactory.getLocalizer(EncFactory.class);
+  /**
+   * The field {@code localizer} contains the localizer. It is initiated
+   * with a localizer for the name of this class.
+   */
+  private final transient Localizer localizer =
+      LocalizerFactory.getLocalizer( EncFactory.class );
 
-    /**
-     * Create a new object.
-     * 
-     * @param afinder finder
-     */
-    public EncFactory(ResourceFinder afinder) {
+  /**
+   * Create a new object.
+   *
+   * @param afinder finder
+   */
+  public EncFactory( ResourceFinder afinder ) {
 
-        finder = afinder;
-        data = new HashMap<String, EncReader>();
-    }
+    finder = afinder;
+    data = new HashMap<String, EncReader>();
+  }
 
-    /**
-     * Returns the encoding table.
-     * 
-     * @param filename the file name.
-     * @return Returns the encoding table.
-     * @throws FontException if an font-error occurred.
-     * @throws ConfigurationException from the resource finder.
-     */
-    public String[] getEncodingTable(String filename)
-            throws FontException,
-                ConfigurationException {
+  /**
+   * Returns the encoding table.
+   *
+   * @param filename the file name.
+   * @return Returns the encoding table.
+   * @throws FontException          if an font-error occurred.
+   * @throws ConfigurationException from the resource finder.
+   */
+  public String[] getEncodingTable( String filename )
+      throws FontException,
+      ConfigurationException {
 
-        EncReader encreader = getEncReader(filename);
-        return encreader.getTable();
-    }
+    EncReader encreader = getEncReader( filename );
+    return encreader.getTable();
+  }
 
-    /**
-     * Returns the encoding table (without a slash in the name).
-     * 
-     * @param filename the file name.
-     * @return Returns the encoding table.
-     * @throws FontException if an font-error occurred.
-     * @throws ConfigurationException from the resource finder.
-     */
-    public String[] getEncodingTableWithoutSlash(String filename)
-            throws FontException,
-                ConfigurationException {
+  /**
+   * Returns the encoding table (without a slash in the name).
+   *
+   * @param filename the file name.
+   * @return Returns the encoding table.
+   * @throws FontException          if an font-error occurred.
+   * @throws ConfigurationException from the resource finder.
+   */
+  public String[] getEncodingTableWithoutSlash( String filename )
+      throws FontException,
+      ConfigurationException {
 
-        String[] table = getEncodingTable(filename);
+    String[] table = getEncodingTable( filename );
 
-        if (table != null) {
-            for (int i = 0; i < table.length; i++) {
-                if (table[i].startsWith("/")) {
-                    table[i] = table[i].substring(1);
-                }
-            }
+    if( table != null ) {
+      for( int i = 0; i < table.length; i++ ) {
+        if( table[ i ].startsWith( "/" ) ) {
+          table[ i ] = table[ i ].substring( 1 );
         }
-        return table;
+      }
     }
+    return table;
+  }
 
-    /**
-     * Returns the encoding reader.
-     * 
-     * @param filename the file name.
-     * @return Returns the encoding reader.
-     * @throws FontException if an font-error occurred.
-     * @throws ConfigurationException from the resource finder.
-     */
-    public EncReader getEncReader(String filename)
-            throws FontException,
-                ConfigurationException {
+  /**
+   * Returns the encoding reader.
+   *
+   * @param filename the file name.
+   * @return Returns the encoding reader.
+   * @throws FontException          if an font-error occurred.
+   * @throws ConfigurationException from the resource finder.
+   */
+  public EncReader getEncReader( String filename )
+      throws FontException,
+      ConfigurationException {
 
-        EncReader encreader = data.get(filename);
+    EncReader encreader = data.get( filename );
 
-        if (encreader == null) {
-            InputStream in = finder.findResource(filename, "enc");
-            if (in == null) {
-                throw new FontException(localizer.format(
-                    "EncFactory.FileNotFound", filename));
-            }
-            encreader = new EncReader(in);
-            data.put(filename, encreader);
-        }
-        return encreader;
+    if( encreader == null ) {
+      InputStream in = finder.findResource( filename, "enc" );
+      if( in == null ) {
+        throw new FontException( localizer.format(
+            "EncFactory.FileNotFound", filename ) );
+      }
+      encreader = new EncReader( in );
+      data.put( filename, encreader );
     }
+    return encreader;
+  }
 }

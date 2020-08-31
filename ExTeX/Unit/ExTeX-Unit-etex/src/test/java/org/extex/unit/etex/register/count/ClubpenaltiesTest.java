@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \clubpenalties}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ClubpenaltiesTest extends AbstractCountArrayTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ClubpenaltiesTest.class);
-    }
+    (new JUnitCore()).run( ClubpenaltiesTest.class );
+  }
 
 
-    public ClubpenaltiesTest() {
+  public ClubpenaltiesTest() {
 
-        super("clubpenalties", "255", "0");
-        setConfig("etex-test");
-    }
+    super( "clubpenalties", "255", "0" );
+    setConfig( "etex-test" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

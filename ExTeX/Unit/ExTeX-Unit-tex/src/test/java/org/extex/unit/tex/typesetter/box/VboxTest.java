@@ -26,138 +26,139 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \vbox}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class VboxTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(VboxTest.class);
-    }
+    (new JUnitCore()).run( VboxTest.class );
+  }
 
 
-    public VboxTest() {
+  public VboxTest() {
 
-        setPrimitive("vbox");setArguments("{}");setPrepare("");
-    }
+    setPrimitive( "vbox" );
+    setArguments( "{}" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\vbox"> Test case checking that a vbox needs an
-     * argument in braces. Nothing at all is not enough
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\vbox"> Test case checking that a vbox needs an
+   * argument in braces. Nothing at all is not enough
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\vbox ",
-            // --- output channel ---
-            "Unexpected end of file while processing \\vbox");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\vbox ",
+                  // --- output channel ---
+                  "Unexpected end of file while processing \\vbox" );
+  }
 
-    /**
-     * <testcase primitive="\vbox"> Test case checking that a vbox needs an
-     * argument in braces. an opening brace is not enough.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\vbox"> Test case checking that a vbox needs an
+   * argument in braces. an opening brace is not enough.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertOutput(// --- input code ---
-            DEFINE_BRACES + "\\vbox { ",
-            // --- output channel ---
-            "(\\end occurred inside a group at level 1)\n", TERM);
-    }
+    assertOutput(// --- input code ---
+                 DEFINE_BRACES + "\\vbox { ",
+                 // --- output channel ---
+                 "(\\end occurred inside a group at level 1)\n", TERM );
+  }
 
-    /**
-     * <testcase primitive="\vbox"> Test case checking that a vbox needs an
-     * argument in braces. Anything else than an opening brace is not
-     * sufficient.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError3() throws Exception {
+  /**
+   * <testcase primitive="\vbox"> Test case checking that a vbox needs an
+   * argument in braces. Anything else than an opening brace is not
+   * sufficient.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError3() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\vbox x ",
-            // --- output channel ---
-            "Missing `{' inserted");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\vbox x ",
+                  // --- output channel ---
+                  "Missing `{' inserted" );
+  }
 
-    /**
-     * <testcase primitive="\vbox"> Test case checking that a vbox with fixed
-     * width containing "abc" in font cmtt12 has the correct height and depth.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testTo1() throws Exception {
+  /**
+   * <testcase primitive="\vbox"> Test case checking that a vbox with fixed
+   * width containing "abc" in font cmtt12 has the correct height and depth.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testTo1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
-                    + "\\setbox1=\\vbox to 20pt{abc} "
-                    + "\\the\\ht1 : \\the\\dp1" + "\\end",
-            // --- output channel ---
-            "20.0pt: 0.0pt" + TERM); // checked with TeX
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
+                      + "\\setbox1=\\vbox to 20pt{abc} "
+                      + "\\the\\ht1 : \\the\\dp1" + "\\end",
+                  // --- output channel ---
+                  "20.0pt: 0.0pt" + TERM ); // checked with TeX
+  }
 
-    /**
-     * <testcase primitive="\vbox"> Test case checking that a spread vbox
-     * containing "abc" in font cmtt12 has the correct height and depth.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testSpread1() throws Exception {
+  /**
+   * <testcase primitive="\vbox"> Test case checking that a spread vbox
+   * containing "abc" in font cmtt12 has the correct height and depth.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testSpread1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
-                    + "\\setbox1=\\vbox spread 2pt{abc} "
-                    + "\\the\\ht1 : \\the\\dp1" + "\\end",
-            // --- output channel ---
-            "9.33333pt: 0.0pt" + TERM); // checked with TeX
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
+                      + "\\setbox1=\\vbox spread 2pt{abc} "
+                      + "\\the\\ht1 : \\the\\dp1" + "\\end",
+                  // --- output channel ---
+                  "9.33333pt: 0.0pt" + TERM ); // checked with TeX
+  }
 
-    /**
-     * <testcase primitive="\vbox"> Test case checking that a vbox containing
-     * "abcd" produces the desired nodes.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\vbox"> Test case checking that a vbox containing
+   * "abcd" produces the desired nodes.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt " + "x\\vbox {abcd} "
-                    + "\\end",
-            // --- output channel ---
-            "\\vbox(7.33333pt+0.0pt)x3000.0pt\n"
-                    + ".\\hbox(7.33333pt+0.0pt)x3000.0pt\n"
-                    + "..x\n"
-                    + "..\\vbox(7.33333pt+0.0pt)x3000.0pt\n"
-                    + "...\\vbox(7.33333pt+0.0pt)x3000.0pt\n"
-                    + "....\\hbox(7.33333pt+0.0pt)x3000.0pt\n"
-                    + ".....a\n"
-                    + ".....b\n"
-                    + ".....c\n"
-                    + ".....d\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt " + "x\\vbox " +
+                       "{abcd} "
+                       + "\\end",
+                   // --- output channel ---
+                   "\\vbox(7.33333pt+0.0pt)x3000.0pt\n"
+                       + ".\\hbox(7.33333pt+0.0pt)x3000.0pt\n"
+                       + "..x\n"
+                       + "..\\vbox(7.33333pt+0.0pt)x3000.0pt\n"
+                       + "...\\vbox(7.33333pt+0.0pt)x3000.0pt\n"
+                       + "....\\hbox(7.33333pt+0.0pt)x3000.0pt\n"
+                       + ".....a\n"
+                       + ".....b\n"
+                       + ".....c\n"
+                       + ".....d\n" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 
 }

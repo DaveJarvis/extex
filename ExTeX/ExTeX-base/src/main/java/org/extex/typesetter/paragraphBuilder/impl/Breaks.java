@@ -23,50 +23,50 @@ package org.extex.typesetter.paragraphBuilder.impl;
  * This is a container for a list of break points and the associated penalty.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 class Breaks {
 
-    /**
-     * The field {@code penalty} contains the accumulated penalty for the
-     * breaks contained.
-     */
-    private final int penalty;
+  /**
+   * The field {@code penalty} contains the accumulated penalty for the
+   * breaks contained.
+   */
+  private final int penalty;
 
-    /**
-     * The field {@code points} contains the array of break point actually
-     * used.
-     */
-    private final int[] points;
+  /**
+   * The field {@code points} contains the array of break point actually
+   * used.
+   */
+  private final int[] points;
 
-    /**
-     * Creates a new object.
-     *
-     * @param thePenalty the accumulated penalty
-     * @param thePoints the array of points
-     */
-    public Breaks(int thePenalty, int[] thePoints) {
+  /**
+   * Creates a new object.
+   *
+   * @param thePenalty the accumulated penalty
+   * @param thePoints  the array of points
+   */
+  public Breaks( int thePenalty, int[] thePoints ) {
 
-        this.penalty = thePenalty;
-        this.points = thePoints;
-    }
+    this.penalty = thePenalty;
+    this.points = thePoints;
+  }
 
-    /**
-     * Getter for penalty.
-     *
-     * @return the penalty.
-     */
-    public int getPenalty() {
+  /**
+   * Getter for penalty.
+   *
+   * @return the penalty.
+   */
+  public int getPenalty() {
 
-        return this.penalty;
-    }
+    return this.penalty;
+  }
 
-    /**
-     * Getter for points.
-     *
-     * @return the points.
-     */
-    public int[] getPoints() {
+  /**
+   * Getter for points.
+   *
+   * @return the points.
+   */
+  public int[] getPoints() {
 
-        return this.points;
-    }
+    return this.points;
+  }
 }

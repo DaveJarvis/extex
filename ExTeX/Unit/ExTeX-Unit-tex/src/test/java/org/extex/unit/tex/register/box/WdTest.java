@@ -24,40 +24,40 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \wd}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class WdTest extends AbstractBoxDimenTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(WdTest.class);
-    }
+    (new JUnitCore()).run( WdTest.class );
+  }
 
 
-    public WdTest() {
+  public WdTest() {
 
-        setPrimitive("wd");
-    }
+    setPrimitive( "wd" );
+  }
 
-    /**
-     * Test case checking that the primitive is count convertible on a hbox
-*
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCount2() throws Exception {
+  /**
+   * Test case checking that the primitive is count convertible on a hbox
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCount2() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES
-                    + "\\setbox1=\\hbox{abc}\\count0=\\wd1 \\the\\count0\\end ",
-            "1572864" + TERM);
-    }
+    assertSuccess(
+        DEFINE_BRACES
+            + "\\setbox1=\\hbox{abc}\\count0=\\wd1 \\the\\count0\\end ",
+        "1572864" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

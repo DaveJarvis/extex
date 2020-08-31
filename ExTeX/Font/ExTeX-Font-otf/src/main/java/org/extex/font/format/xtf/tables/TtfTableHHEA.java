@@ -19,18 +19,18 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * The 'hhea' table contains information needed to layout fonts whose characters
  * are written horizontally, that is, either left to right or right to left.
  * This table contains information that is general to the font as a whole.
- * 
+ *
  *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
@@ -83,7 +83,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <tr>
  * <td>SHORT</td>
  * <td>caretSlopeRise</td>
- * <td> Used to calculate the slope of the cursor (rise/run); 1 for vertical.</td>
+ * <td> Used to calculate the slope of the cursor (rise/run); 1 for vertical
+ * .</td>
  * </tr>
  * <tr>
  * <td>SHORT</td>
@@ -127,295 +128,296 @@ import org.extex.util.xml.XMLWriterConvertible;
  * than the total number of glyphs in the font.</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTableHHEA extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
 
-    /**
-     * advance width max
-     */
-    private final short advanceWidthMax;
+  /**
+   * advance width max
+   */
+  private final short advanceWidthMax;
 
-    /**
-     * ascender
-     */
-    private final short ascender;
+  /**
+   * ascender
+   */
+  private final short ascender;
 
-    /**
-     * caret slope rise
-     */
-    private final short caretSlopeRise;
+  /**
+   * caret slope rise
+   */
+  private final short caretSlopeRise;
 
-    /**
-     * caret slope run
-     */
-    private final short caretSlopeRun;
+  /**
+   * caret slope run
+   */
+  private final short caretSlopeRun;
 
-    /**
-     * descender
-     */
-    private final short descender;
+  /**
+   * descender
+   */
+  private final short descender;
 
-    /**
-     * line gap
-     */
-    private final short lineGap;
+  /**
+   * line gap
+   */
+  private final short lineGap;
 
-    /**
-     * metrix data format
-     */
-    private final short metricDataFormat;
+  /**
+   * metrix data format
+   */
+  private final short metricDataFormat;
 
-    /**
-     * min left side bearing
-     */
-    private final short minLeftSideBearing;
+  /**
+   * min left side bearing
+   */
+  private final short minLeftSideBearing;
 
-    /**
-     * min right side bearing
-     */
-    private final short minRightSideBearing;
+  /**
+   * min right side bearing
+   */
+  private final short minRightSideBearing;
 
-    /**
-     * number of horizontal metrics
-     */
-    private final short numberOfHMetrics;
+  /**
+   * number of horizontal metrics
+   */
+  private final short numberOfHMetrics;
 
-    /**
-     * reserved 0
-     */
-    private final short reserved0;
+  /**
+   * reserved 0
+   */
+  private final short reserved0;
 
-    /**
-     * reserved 1
-     */
-    private final short reserved1;
+  /**
+   * reserved 1
+   */
+  private final short reserved1;
 
-    /**
-     * reserved 2
-     */
-    private final short reserved2;
+  /**
+   * reserved 2
+   */
+  private final short reserved2;
 
-    /**
-     * reserved 3
-     */
-    private final short reserved3;
+  /**
+   * reserved 3
+   */
+  private final short reserved3;
 
-    /**
-     * reserved 4
-     */
-    private final short reserved4;
+  /**
+   * reserved 4
+   */
+  private final short reserved4;
 
-    /**
-     * version
-     */
-    private final int version;
+  /**
+   * version
+   */
+  private final int version;
 
-    /**
-     * max extent
-     */
-    private final short xMaxExtent;
+  /**
+   * max extent
+   */
+  private final short xMaxExtent;
 
-    /**
-     * Create a new object
-     * 
-     * @param tablemap the tablemap
-     * @param de entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public TtfTableHHEA(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object
+   *
+   * @param tablemap the tablemap
+   * @param de       entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public TtfTableHHEA( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap);
-        rar.seek(de.getOffset());
-        version = rar.readInt();
-        ascender = rar.readShort();
-        descender = rar.readShort();
-        lineGap = rar.readShort();
-        advanceWidthMax = rar.readShort();
-        minLeftSideBearing = rar.readShort();
-        minRightSideBearing = rar.readShort();
-        xMaxExtent = rar.readShort();
-        caretSlopeRise = rar.readShort();
-        caretSlopeRun = rar.readShort();
-        reserved0 = rar.readShort();
-        reserved1 = rar.readShort();
-        reserved2 = rar.readShort();
-        reserved3 = rar.readShort();
-        reserved4 = rar.readShort();
-        metricDataFormat = rar.readShort();
-        numberOfHMetrics = rar.readShort();
-    }
+    super( tablemap );
+    rar.seek( de.getOffset() );
+    version = rar.readInt();
+    ascender = rar.readShort();
+    descender = rar.readShort();
+    lineGap = rar.readShort();
+    advanceWidthMax = rar.readShort();
+    minLeftSideBearing = rar.readShort();
+    minRightSideBearing = rar.readShort();
+    xMaxExtent = rar.readShort();
+    caretSlopeRise = rar.readShort();
+    caretSlopeRun = rar.readShort();
+    reserved0 = rar.readShort();
+    reserved1 = rar.readShort();
+    reserved2 = rar.readShort();
+    reserved3 = rar.readShort();
+    reserved4 = rar.readShort();
+    metricDataFormat = rar.readShort();
+    numberOfHMetrics = rar.readShort();
+  }
 
-    /**
-     * Returns the advanceWidthMax.
-     * 
-     * @return Returns the advanceWidthMax.
-     */
-    public short getAdvanceWidthMax() {
+  /**
+   * Returns the advanceWidthMax.
+   *
+   * @return Returns the advanceWidthMax.
+   */
+  public short getAdvanceWidthMax() {
 
-        return advanceWidthMax;
-    }
+    return advanceWidthMax;
+  }
 
-    /**
-     * Returns the ascender.
-     * 
-     * @return Returns the ascender.
-     */
-    public short getAscender() {
+  /**
+   * Returns the ascender.
+   *
+   * @return Returns the ascender.
+   */
+  public short getAscender() {
 
-        return ascender;
-    }
+    return ascender;
+  }
 
-    /**
-     * Returns the caretSlopeRise.
-     * 
-     * @return Returns the caretSlopeRise.
-     */
-    public short getCaretSlopeRise() {
+  /**
+   * Returns the caretSlopeRise.
+   *
+   * @return Returns the caretSlopeRise.
+   */
+  public short getCaretSlopeRise() {
 
-        return caretSlopeRise;
-    }
+    return caretSlopeRise;
+  }
 
-    /**
-     * Returns the caretSlopeRun.
-     * 
-     * @return Returns the caretSlopeRun.
-     */
-    public short getCaretSlopeRun() {
+  /**
+   * Returns the caretSlopeRun.
+   *
+   * @return Returns the caretSlopeRun.
+   */
+  public short getCaretSlopeRun() {
 
-        return caretSlopeRun;
-    }
+    return caretSlopeRun;
+  }
 
-    /**
-     * Returns the descender.
-     * 
-     * @return Returns the descender.
-     */
-    public short getDescender() {
+  /**
+   * Returns the descender.
+   *
+   * @return Returns the descender.
+   */
+  public short getDescender() {
 
-        return descender;
-    }
+    return descender;
+  }
 
-    /**
-     * Returns the lineGap.
-     * 
-     * @return Returns the lineGap.
-     */
-    public short getLineGap() {
+  /**
+   * Returns the lineGap.
+   *
+   * @return Returns the lineGap.
+   */
+  public short getLineGap() {
 
-        return lineGap;
-    }
+    return lineGap;
+  }
 
-    /**
-     * Returns the metricDataFormat.
-     * 
-     * @return Returns the metricDataFormat.
-     */
-    public short getMetricDataFormat() {
+  /**
+   * Returns the metricDataFormat.
+   *
+   * @return Returns the metricDataFormat.
+   */
+  public short getMetricDataFormat() {
 
-        return metricDataFormat;
-    }
+    return metricDataFormat;
+  }
 
-    /**
-     * Returns the minLeftSideBearing.
-     * 
-     * @return Returns the minLeftSideBearing.
-     */
-    public short getMinLeftSideBearing() {
+  /**
+   * Returns the minLeftSideBearing.
+   *
+   * @return Returns the minLeftSideBearing.
+   */
+  public short getMinLeftSideBearing() {
 
-        return minLeftSideBearing;
-    }
+    return minLeftSideBearing;
+  }
 
-    /**
-     * Returns the minRightSideBearing.
-     * 
-     * @return Returns the minRightSideBearing.
-     */
-    public short getMinRightSideBearing() {
+  /**
+   * Returns the minRightSideBearing.
+   *
+   * @return Returns the minRightSideBearing.
+   */
+  public short getMinRightSideBearing() {
 
-        return minRightSideBearing;
-    }
+    return minRightSideBearing;
+  }
 
-    /**
-     * Returns the numberOfHMetrics.
-     * 
-     * @return Returns the numberOfHMetrics.
-     */
-    public short getNumberOfHMetrics() {
+  /**
+   * Returns the numberOfHMetrics.
+   *
+   * @return Returns the numberOfHMetrics.
+   */
+  public short getNumberOfHMetrics() {
 
-        return numberOfHMetrics;
-    }
+    return numberOfHMetrics;
+  }
 
-public String getShortcut() {
+  public String getShortcut() {
 
-        return "hhea";
-    }
+    return "hhea";
+  }
 
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
 
-        return XtfReader.HHEA;
-    }
+    return XtfReader.HHEA;
+  }
 
-    /**
-     * Returns the version.
-     * 
-     * @return Returns the version.
-     */
-    public int getVersion() {
+  /**
+   * Returns the version.
+   *
+   * @return Returns the version.
+   */
+  public int getVersion() {
 
-        return version;
-    }
+    return version;
+  }
 
-    /**
-     * Returns the xMaxExtent.
-     * 
-     * @return Returns the xMaxExtent.
-     */
-    public short getXMaxExtent() {
+  /**
+   * Returns the xMaxExtent.
+   *
+   * @return Returns the xMaxExtent.
+   */
+  public short getXMaxExtent() {
 
-        return xMaxExtent;
-    }
+    return xMaxExtent;
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writeStartElement(writer);
-        writer.writeAttribute("version", String.valueOf(XtfReader
-            .convertVersion(version)));
-        writer.writeAttribute("ascender", String.valueOf(ascender));
-        writer.writeAttribute("descender", String.valueOf(descender));
-        writer.writeAttribute("linegap", String.valueOf(lineGap));
-        writer.writeAttribute("advancewidthmax", String
-            .valueOf(advanceWidthMax));
-        writer.writeAttribute("minleftsidebearing", String
-            .valueOf(minLeftSideBearing));
-        writer.writeAttribute("minrightsidebearing", String
-            .valueOf(minRightSideBearing));
-        writer.writeAttribute("xmaxextent", String.valueOf(xMaxExtent));
-        writer.writeAttribute("caretsloperise", String.valueOf(caretSlopeRise));
-        writer.writeAttribute("caretsloperun", String.valueOf(caretSlopeRun));
-        writer.writeAttribute("metricdataformat", String
-            .valueOf(metricDataFormat));
-        writer.writeAttribute("numberofhmetrics", String
-            .valueOf(numberOfHMetrics));
-        writer.writeAttribute("reserved0", String.valueOf(reserved0));
-        writer.writeAttribute("reserved1", String.valueOf(reserved1));
-        writer.writeAttribute("reserved2", String.valueOf(reserved2));
-        writer.writeAttribute("reserved3", String.valueOf(reserved3));
-        writer.writeAttribute("reserved4", String.valueOf(reserved4));
-        writer.writeEndElement();
-    }
+    writeStartElement( writer );
+    writer.writeAttribute( "version", String.valueOf( XtfReader
+                                                          .convertVersion(
+                                                              version ) ) );
+    writer.writeAttribute( "ascender", String.valueOf( ascender ) );
+    writer.writeAttribute( "descender", String.valueOf( descender ) );
+    writer.writeAttribute( "linegap", String.valueOf( lineGap ) );
+    writer.writeAttribute( "advancewidthmax", String
+        .valueOf( advanceWidthMax ) );
+    writer.writeAttribute( "minleftsidebearing", String
+        .valueOf( minLeftSideBearing ) );
+    writer.writeAttribute( "minrightsidebearing", String
+        .valueOf( minRightSideBearing ) );
+    writer.writeAttribute( "xmaxextent", String.valueOf( xMaxExtent ) );
+    writer.writeAttribute( "caretsloperise", String.valueOf( caretSlopeRise ) );
+    writer.writeAttribute( "caretsloperun", String.valueOf( caretSlopeRun ) );
+    writer.writeAttribute( "metricdataformat", String
+        .valueOf( metricDataFormat ) );
+    writer.writeAttribute( "numberofhmetrics", String
+        .valueOf( numberOfHMetrics ) );
+    writer.writeAttribute( "reserved0", String.valueOf( reserved0 ) );
+    writer.writeAttribute( "reserved1", String.valueOf( reserved1 ) );
+    writer.writeAttribute( "reserved2", String.valueOf( reserved2 ) );
+    writer.writeAttribute( "reserved3", String.valueOf( reserved3 ) );
+    writer.writeAttribute( "reserved4", String.valueOf( reserved4 ) );
+    writer.writeEndElement();
+  }
 }

@@ -31,52 +31,51 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This abstract base class provides the methods to compute the keys for
  * numbered dimen registers.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractDimen extends AbstractAssignment {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  static final long serialVersionUID = 2007L;
 
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractDimen(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractDimen( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Return the key (the name of the primitive) for the numbered dimen
+   * register.
+   *
+   * @param context    the interpreter context to use
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the key for the current register
+   * @throws HelpingException    in case that a derived class need to throw an
+   *                             Exception this on e is declared.
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String name =
+        source.scanRegisterName( context, source, typesetter, getToken() );
+
+    if( Namespace.SUPPORT_NAMESPACE_DIMEN ) {
+      return context.getNamespace() + "dimen#" + name;
     }
-
-    /**
-     * Return the key (the name of the primitive) for the numbered dimen
-     * register.
-     * 
-     * @param context the interpreter context to use
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the key for the current register
-     * 
-     * @throws HelpingException in case that a derived class need to throw an
-     *         Exception this on e is declared.
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String name =
-                source.scanRegisterName(context, source, typesetter, getToken());
-
-        if (Namespace.SUPPORT_NAMESPACE_DIMEN) {
-            return context.getNamespace() + "dimen#" + name;
-        }
-        return name;
-    }
+    return name;
+  }
 
 }

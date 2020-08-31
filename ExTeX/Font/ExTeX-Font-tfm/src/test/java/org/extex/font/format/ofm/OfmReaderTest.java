@@ -19,83 +19,83 @@
 
 package org.extex.font.format.ofm;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.io.FileInputStream;
-
 import org.extex.font.format.tfm.TfmHeaderArray;
 import org.junit.Test;
 
+import java.io.FileInputStream;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 /**
  * Test for the {@link OfmReader}.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class OfmReaderTest {
 
-    /**
-     * The reader.
-     */
-    private OfmReader reader;
+  /**
+   * The reader.
+   */
+  private OfmReader reader;
 
-    /**
-     * Creates a new object.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public OfmReaderTest() throws Exception {
+  /**
+   * Creates a new object.
+   *
+   * @throws Exception if an error occurred.
+   */
+  public OfmReaderTest() throws Exception {
 
-        if (reader == null) {
-            reader =
-                    new OfmReader(new FileInputStream(
-                        "../ExTeX-Font-tfm/src/font/omlgc.ofm"), "omlgc");
-        }
+    if( reader == null ) {
+      reader =
+          new OfmReader( new FileInputStream(
+              "../ExTeX-Font-tfm/src/font/omlgc.ofm" ), "omlgc" );
     }
+  }
 
-    /**
-     * Test, if the font exists.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testExist01() throws Exception {
+  /**
+   * Test, if the font exists.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testExist01() throws Exception {
 
-        assertNotNull(reader);
-    }
+    assertNotNull( reader );
+  }
 
-    /**
-     * Test the header.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testHeader01() throws Exception {
+  /**
+   * Test the header.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testHeader01() throws Exception {
 
-        assertNotNull(reader);
-        assertEquals(0, reader.getOfmLevel());
+    assertNotNull( reader );
+    assertEquals( 0, reader.getOfmLevel() );
 
-        OfmHeaderLengths l = reader.getLengths();
-        assertNotNull(l);
+    OfmHeaderLengths l = reader.getLengths();
+    assertNotNull( l );
 
-        assertEquals(0x21, l.getBc());
-    }
+    assertEquals( 0x21, l.getBc() );
+  }
 
-    /**
-     * Test the header.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testHeader02() throws Exception {
+  /**
+   * Test the header.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testHeader02() throws Exception {
 
-        assertNotNull(reader);
+    assertNotNull( reader );
 
-        TfmHeaderArray h = reader.getHeader();
-        assertNotNull(h);
-        assertEquals("10.0", h.getDesignsize().toString());
-        assertEquals(0x48B7D0D4, h.getChecksum());
-        assertEquals("OMEGA-LGC", h.getCodingscheme());
-    }
+    TfmHeaderArray h = reader.getHeader();
+    assertNotNull( h );
+    assertEquals( "10.0", h.getDesignsize().toString() );
+    assertEquals( 0x48B7D0D4, h.getChecksum() );
+    assertEquals( "OMEGA-LGC", h.getCodingscheme() );
+  }
 
 }

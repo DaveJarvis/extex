@@ -19,190 +19,186 @@
 
 package org.extex.util.font.afm;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.font.exception.FontException;
 import org.extex.font.format.afm.AfmCharMetric;
 import org.extex.font.format.afm.AfmParser;
 import org.extex.font.format.texencoding.EncReader;
 import org.extex.util.font.AbstractFontUtil;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Print the missing glyphs from a font.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class AfmMissingGlyph extends AbstractFontUtil {
 
-    /**
-     * parameter.
-     */
-    private static final int PARAMETER = 1;
+  /**
+   * parameter.
+   */
+  private static final int PARAMETER = 1;
 
-    /**
-     * main.
-     * 
-     * @param args The command line.
-     * @throws Exception if an error occurred.
-     */
-    public static void main(String[] args) throws Exception {
+  /**
+   * main.
+   *
+   * @param args The command line.
+   * @throws Exception if an error occurred.
+   */
+  public static void main( String[] args ) throws Exception {
 
-        AfmMissingGlyph afm = new AfmMissingGlyph();
+    AfmMissingGlyph afm = new AfmMissingGlyph();
 
-        if (args.length < PARAMETER) {
-            afm.getLogger().severe(
-                afm.getLocalizer().format("AfmMissingGlyph.Call"));
-            System.exit(1);
-        }
-
-        String afmfile = "null";
-        List<String> enclist = new ArrayList<String>();
-
-        int i = 0;
-        do {
-            if ("-o".equals(args[i]) || "--outdir".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    afm.setOutdir(args[++i]);
-                }
-
-            } else if ("-e".equals(args[i]) || "--encvector".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    enclist.add(args[++i]);
-                }
-
-            } else {
-                afmfile = args[i];
-            }
-            i++;
-        } while (i < args.length);
-
-        afm.doIt(afmfile, enclist);
-
+    if( args.length < PARAMETER ) {
+      afm.getLogger().severe(
+          afm.getLocalizer().format( "AfmMissingGlyph.Call" ) );
+      System.exit( 1 );
     }
 
-    /**
-     * The list for the encoding vectors.
-     */
-    private List<String> enclist = new ArrayList<String>();
+    String afmfile = "null";
+    List<String> enclist = new ArrayList<String>();
 
-
-    public AfmMissingGlyph() {
-
-        super(AfmMissingGlyph.class);
-    }
-
-    /**
-     * do it.
-     * 
-     * @param file The afm file name.
-     * @param enc The list with the encoding vectors.
-     * @throws Exception if an error occurs.
-     */
-    private void doIt(String file, List<String> enc) throws Exception {
-
-        getLogger()
-            .severe(getLocalizer().format("AfmMissingGlyph.start", file));
-
-        enclist = enc;
-
-        InputStream afmin = null;
-
-        File afmfile = new File(file);
-        if (afmfile.canRead()) {
-            afmin = new FileInputStream(afmfile);
+    int i = 0;
+    do {
+      if( "-o".equals( args[ i ] ) || "--outdir".equals( args[ i ] ) ) {
+        if( i + 1 < args.length ) {
+          afm.setOutdir( args[ ++i ] );
         }
 
-        if (afmin == null) {
-            throw new FileNotFoundException(file);
+      }
+      else if( "-e".equals( args[ i ] ) || "--encvector".equals( args[ i ] ) ) {
+        if( i + 1 < args.length ) {
+          enclist.add( args[ ++i ] );
         }
 
-        AfmParser parser = new AfmParser(afmin);
+      }
+      else {
+        afmfile = args[ i ];
+      }
+      i++;
+    } while( i < args.length );
 
-        // read all glyphs from the encoding vectors
-        List<String> readenc = new ArrayList<String>();
-        readAllGlyphName(readenc);
+    afm.doIt( afmfile, enclist );
 
-        generateList(parser, readenc, afmfile);
+  }
 
+  /**
+   * The list for the encoding vectors.
+   */
+  private List<String> enclist = new ArrayList<String>();
+
+
+  public AfmMissingGlyph() {
+
+    super( AfmMissingGlyph.class );
+  }
+
+  /**
+   * do it.
+   *
+   * @param file The afm file name.
+   * @param enc  The list with the encoding vectors.
+   * @throws Exception if an error occurs.
+   */
+  private void doIt( String file, List<String> enc ) throws Exception {
+
+    getLogger()
+        .severe( getLocalizer().format( "AfmMissingGlyph.start", file ) );
+
+    enclist = enc;
+
+    InputStream afmin = null;
+
+    File afmfile = new File( file );
+    if( afmfile.canRead() ) {
+      afmin = new FileInputStream( afmfile );
     }
 
-    /**
-     * Generate the list.
-     * 
-     * @param parser The parser.
-     * @param readenc The list with the glyph names.
-     * @param afmfile The afm file.
-     * @throws IOException if an io-error occurred.
-     */
-    private void generateList(AfmParser parser, List<String> readenc,
-            File afmfile) throws IOException {
+    if( afmin == null ) {
+      throw new FileNotFoundException( file );
+    }
 
-        File outfile =
-                new File(getOutdir()
-                        + File.separator
-                        + afmfile.getName().replaceAll("[Aa][Ff][Mm]",
-                            "missing.txt"));
+    AfmParser parser = new AfmParser( afmin );
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(outfile));
-        writer.write(createVersion("AfmMissingGlyph.created"));
-        writer.write(getLocalizer().format("AfmMissingGlyph.header",
-            afmfile.getName()));
+    // read all glyphs from the encoding vectors
+    List<String> readenc = new ArrayList<String>();
+    readAllGlyphName( readenc );
 
-        for (String glyphname : readenc) {
-            AfmCharMetric cm = parser.getAfmCharMetric(glyphname);
-            if (cm == null) {
-                writer.write(getLocalizer().format("AfmMissingGlyph.missing",
-                    glyphname));
-            }
+    generateList( parser, readenc, afmfile );
+
+  }
+
+  /**
+   * Generate the list.
+   *
+   * @param parser  The parser.
+   * @param readenc The list with the glyph names.
+   * @param afmfile The afm file.
+   * @throws IOException if an io-error occurred.
+   */
+  private void generateList( AfmParser parser, List<String> readenc,
+                             File afmfile ) throws IOException {
+
+    File outfile =
+        new File( getOutdir()
+                      + File.separator
+                      + afmfile.getName().replaceAll( "[Aa][Ff][Mm]",
+                                                      "missing.txt" ) );
+
+    BufferedWriter writer = new BufferedWriter( new FileWriter( outfile ) );
+    writer.write( createVersion( "AfmMissingGlyph.created" ) );
+    writer.write( getLocalizer().format( "AfmMissingGlyph.header",
+                                         afmfile.getName() ) );
+
+    for( String glyphname : readenc ) {
+      AfmCharMetric cm = parser.getAfmCharMetric( glyphname );
+      if( cm == null ) {
+        writer.write( getLocalizer().format( "AfmMissingGlyph.missing",
+                                             glyphname ) );
+      }
+    }
+
+    writer.close();
+    getLogger().severe(
+        getLocalizer().format( "AfmMissingGlyph.end", outfile.getPath() ) );
+
+  }
+
+  /**
+   * Read all glyph names from the encoding vectors.
+   *
+   * @param readenc The list for the names.
+   * @throws IOException   if an IO-error occurred.
+   * @throws FontException if a font error occurred.
+   */
+  private void readAllGlyphName( List<String> readenc )
+      throws IOException,
+      FontException {
+
+    for( String encv : enclist ) {
+
+      InputStream encin = null;
+      File encfile = new File( encv );
+      if( encfile.canRead() ) {
+        encin = new FileInputStream( encfile );
+      }
+
+      if( encin == null ) {
+        throw new FileNotFoundException( encv );
+      }
+
+      EncReader enc = new EncReader( encin );
+      String[] table = enc.getTable();
+
+      for( int k = 0; k < table.length; k++ ) {
+        String name = table[ k ].replaceAll( "/", "" );
+        if( !readenc.contains( name ) ) {
+          readenc.add( name );
         }
-
-        writer.close();
-        getLogger().severe(
-            getLocalizer().format("AfmMissingGlyph.end", outfile.getPath()));
-
+      }
     }
-
-    /**
-     * Read all glyph names from the encoding vectors.
-     * 
-     * @param readenc The list for the names.
-     * @throws IOException if an IO-error occurred.
-     * @throws FontException if a font error occurred.
-     */
-    private void readAllGlyphName(List<String> readenc)
-            throws IOException,
-                FontException {
-
-        for (String encv : enclist) {
-
-            InputStream encin = null;
-            File encfile = new File(encv);
-            if (encfile.canRead()) {
-                encin = new FileInputStream(encfile);
-            }
-
-            if (encin == null) {
-                throw new FileNotFoundException(encv);
-            }
-
-            EncReader enc = new EncReader(encin);
-            String[] table = enc.getTable();
-
-            for (int k = 0; k < table.length; k++) {
-                String name = table[k].replaceAll("/", "");
-                if (!readenc.contains(name)) {
-                    readenc.add(name);
-                }
-            }
-        }
-    }
+  }
 
 }

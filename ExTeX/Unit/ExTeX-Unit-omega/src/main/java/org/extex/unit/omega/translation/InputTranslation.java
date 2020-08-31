@@ -37,77 +37,78 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
 /**
  * This class provides an implementation for the primitive
  * {@code \InputTranslation}.
- * 
+ *
  * <p>The Primitive {@code \InputTranslation}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;InputTranslation&rang;
  *      &rarr; {@code \InputTranslation} &lang;in file&rang; &lang;ocp file name&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  * \InputTranslation 4 myocp </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
-public class InputTranslation extends AbstractModeCode implements ResourceAware {
+ */
+public class InputTranslation extends AbstractModeCode
+    implements ResourceAware {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code finder} contains the resource finder.
-     */
-    private transient ResourceFinder finder;
+  /**
+   * The field {@code finder} contains the resource finder.
+   */
+  private transient ResourceFinder finder;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public InputTranslation(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public InputTranslation( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String file;
+    if( source.getKeyword( context, "currentfile" ) ) {
+      file = null;
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String file;
-        if (source.getKeyword(context, "currentfile")) {
-            file = null;
-        } else {
-            file = AbstractFileCode.scanInFileKey(context, source, typesetter);
-        }
-        InFile inFile = context.getInFile(file);
-        String resource = OcpUtil.scanOcpFileName(source, context);
-        Ocp ocp = Ocp.load(resource, finder);
-
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+    else {
+      file = AbstractFileCode.scanInFileKey( context, source, typesetter );
     }
+    InFile inFile = context.getInFile( file );
+    String resource = OcpUtil.scanOcpFileName( source, context );
+    Ocp ocp = Ocp.load( resource, finder );
 
-@Override
-    public void setResourceFinder(ResourceFinder resourceFinder) {
+    // TODO gene: unimplemented
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        this.finder = resourceFinder;
-    }
+  @Override
+  public void setResourceFinder( ResourceFinder resourceFinder ) {
+
+    this.finder = resourceFinder;
+  }
 
 }

@@ -39,7 +39,7 @@ import org.extex.unit.base.Relax;
 /**
  * This class provides an implementation for the primitive {@code \numexpr}
  * .
- * 
+ *
  * <p>The Primitive {@code \numexpr}</p>
  * <p>
  * The primitive {@code \numexpr} provides a means to use a inline way of
@@ -68,10 +68,10 @@ import org.extex.unit.base.Relax;
  * The primitive {@code \numexpr} can be used in any place where a number is
  * required. This includes assignments to count registers and comparisons.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;numexpr&rang;
  *      &rarr; {@code \numexpr} &lang;expr&rang; {@code \relax}
@@ -89,240 +89,245 @@ import org.extex.unit.base.Relax;
  *      &rarr; &lang;number&rang;
  *      |   {@code -} &lang;expr&rang;
  *      |   {@code (} &lang;expr&rang; {@code )}   </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \count1=\numexpr 23 \relax </pre>
- * 
+ *
  * <pre class="TeXSample">
  *   \count1=\numexpr 2 * 3 \relax </pre>
- * 
+ *
  * <pre class="TeXSample">
  *   \count1=\numexpr 2*\count2  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *   \count1=\numexpr 2*(1+3)  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *   \count1=\numexpr 2*-\count0  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Numexpr extends AbstractCode implements CountConvertible, Theable {
 
+  /**
+   * This interface describes a binary operation on two longs.
+   */
+  private interface BinOp {
+
     /**
-     * This interface describes a binary operation on two longs.
+     * Apply the operation on the arguments.
+     *
+     * @param arg1 the first argument
+     * @param arg2 the second argument
+     * @return the result
      */
-    private interface BinOp {
+    long apply( long arg1, long arg2 );
+  }
 
-        /**
-         * Apply the operation on the arguments.
-         * 
-         * @param arg1 the first argument
-         * @param arg2 the second argument
-         * 
-         * @return the result
-         */
-        long apply(long arg1, long arg2);
-    }
+  /**
+   * This operation subtracts the second argument from the first one.
+   */
+  private static final class Minus implements BinOp {
 
     /**
-     * This operation subtracts the second argument from the first one.
-     */
-    private static final class Minus implements BinOp {
-
-        /**
-    *      long)
-         */
-        @Override
-        public long apply(long arg1, long arg2) {
-
-            return arg1 - arg2;
-        }
-    }
-
-    /**
-     * This operation adds the arguments.
-     */
-    private static final class Plus implements BinOp {
-
-        /**
-    *      long)
-         */
-        @Override
-        public long apply(long arg1, long arg2) {
-
-            return arg1 + arg2;
-        }
-    }
-
-    /**
-     * This operation ignores the first argument and returns the second one.
-     */
-    private static final class Second implements BinOp {
-
-        /**
-    *      long)
-         */
-        @Override
-        public long apply(long arg1, long arg2) {
-
-            return arg2;
-        }
-    }
-
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
-
-    /**
-     * The field {@code SECOND} contains the operation to select the second
-     * argument.
-     */
-    private static final BinOp SECOND = new Second();
-
-    /**
-     * The field {@code PLUS} contains the adder.
-     */
-    private static final BinOp PLUS = new Plus();
-
-    /**
-     * The field {@code MINUS} contains the subtractor.
-     */
-    private static final BinOp MINUS = new Minus();
-
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Numexpr(CodeToken token) {
-
-        super(token);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     * long)
      */
     @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    public long apply( long arg1, long arg2 ) {
 
-        long result = evalExpr(context, source, typesetter);
-        Token t = source.getToken(context);
-        if (!(t instanceof CodeToken)
-                || !(context.getCode((CodeToken) t) instanceof Relax)) {
-            source.push(t);
-        }
-        return result;
+      return arg1 - arg2;
     }
+  }
+
+  /**
+   * This operation adds the arguments.
+   */
+  private static final class Plus implements BinOp {
 
     /**
-     * Evaluate an expression.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the result
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    private long evalExpr(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        long saveVal = 0;
-        BinOp op = SECOND;
-        long val = evalOperand(context, source, typesetter);
-
-        for (;;) {
-
-            Token t = source.getNonSpace(context);
-            if (t == null) {
-                throw new EofException(toText());
-
-            } else if (t.eq(Catcode.OTHER, '*')) {
-                val *= evalOperand(context, source, typesetter);
-
-            } else if (t.eq(Catcode.OTHER, '/')) {
-                long x = evalOperand(context, source, typesetter);
-                if (x == 0) {
-                    throw new ArithmeticOverflowException(toText());
-                }
-                val /= x;
-
-            } else if (t.eq(Catcode.OTHER, '+')) {
-                saveVal = op.apply(saveVal, val);
-                val = evalOperand(context, source, typesetter);
-                op = PLUS;
-
-            } else if (t.eq(Catcode.OTHER, '-')) {
-                saveVal = op.apply(saveVal, val);
-                val = evalOperand(context, source, typesetter);
-                op = MINUS;
-
-            } else {
-                source.push(t);
-                return op.apply(saveVal, val);
-            }
-        }
-    }
-
-    /**
-     * Evaluate an operand.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the result
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    public long evalOperand(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Token t = source.getNonSpace(context);
-        if (t == null) {
-            throw new EofException(toText());
-
-        } else if (t.eq(Catcode.OTHER, '(')) {
-            long val = evalExpr(context, source, typesetter);
-            t = source.getToken(context);
-            if (t != null && t.eq(Catcode.OTHER, ')')) {
-                return val;
-            }
-
-            throw new HelpingException(getLocalizer(), "MissingParenthesis",
-                (t == null ? "null" : t.toString()));
-
-        } else if (t.eq(Catcode.OTHER, '-')) {
-            long val = evalOperand(context, source, typesetter);
-            return -val;
-
-        }
-
-        source.push(t);
-        return source.parseNumber(context, source, typesetter);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     * long)
      */
     @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
+    public long apply( long arg1, long arg2 ) {
 
-        return context.getTokenFactory().toTokens(
-            convertCount(context, source, typesetter));
+      return arg1 + arg2;
     }
+  }
+
+  /**
+   * This operation ignores the first argument and returns the second one.
+   */
+  private static final class Second implements BinOp {
+
+    /**
+     * long)
+     */
+    @Override
+    public long apply( long arg1, long arg2 ) {
+
+      return arg2;
+    }
+  }
+
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
+
+  /**
+   * The field {@code SECOND} contains the operation to select the second
+   * argument.
+   */
+  private static final BinOp SECOND = new Second();
+
+  /**
+   * The field {@code PLUS} contains the adder.
+   */
+  private static final BinOp PLUS = new Plus();
+
+  /**
+   * The field {@code MINUS} contains the subtractor.
+   */
+  private static final BinOp MINUS = new Minus();
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Numexpr( CodeToken token ) {
+
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    long result = evalExpr( context, source, typesetter );
+    Token t = source.getToken( context );
+    if( !(t instanceof CodeToken)
+        || !(context.getCode( (CodeToken) t ) instanceof Relax) ) {
+      source.push( t );
+    }
+    return result;
+  }
+
+  /**
+   * Evaluate an expression.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the result
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  private long evalExpr( Context context, TokenSource source,
+                         Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    long saveVal = 0;
+    BinOp op = SECOND;
+    long val = evalOperand( context, source, typesetter );
+
+    for( ; ; ) {
+
+      Token t = source.getNonSpace( context );
+      if( t == null ) {
+        throw new EofException( toText() );
+
+      }
+      else if( t.eq( Catcode.OTHER, '*' ) ) {
+        val *= evalOperand( context, source, typesetter );
+
+      }
+      else if( t.eq( Catcode.OTHER, '/' ) ) {
+        long x = evalOperand( context, source, typesetter );
+        if( x == 0 ) {
+          throw new ArithmeticOverflowException( toText() );
+        }
+        val /= x;
+
+      }
+      else if( t.eq( Catcode.OTHER, '+' ) ) {
+        saveVal = op.apply( saveVal, val );
+        val = evalOperand( context, source, typesetter );
+        op = PLUS;
+
+      }
+      else if( t.eq( Catcode.OTHER, '-' ) ) {
+        saveVal = op.apply( saveVal, val );
+        val = evalOperand( context, source, typesetter );
+        op = MINUS;
+
+      }
+      else {
+        source.push( t );
+        return op.apply( saveVal, val );
+      }
+    }
+  }
+
+  /**
+   * Evaluate an operand.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the result
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  public long evalOperand( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Token t = source.getNonSpace( context );
+    if( t == null ) {
+      throw new EofException( toText() );
+
+    }
+    else if( t.eq( Catcode.OTHER, '(' ) ) {
+      long val = evalExpr( context, source, typesetter );
+      t = source.getToken( context );
+      if( t != null && t.eq( Catcode.OTHER, ')' ) ) {
+        return val;
+      }
+
+      throw new HelpingException( getLocalizer(), "MissingParenthesis",
+                                  (t == null ? "null" : t.toString()) );
+
+    }
+    else if( t.eq( Catcode.OTHER, '-' ) ) {
+      long val = evalOperand( context, source, typesetter );
+      return -val;
+
+    }
+
+    source.push( t );
+    return source.parseNumber( context, source, typesetter );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
+
+    return context.getTokenFactory().toTokens(
+        convertCount( context, source, typesetter ) );
+  }
 
 }

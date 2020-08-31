@@ -32,7 +32,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive {@code \shipout}
  * .
- * 
+ *
  * <p>The Primitive {@code \shipout}</p>
  * <p>
  * The primitive {@code \shipout} takes a box and send the contents of the box
@@ -44,50 +44,50 @@ import org.extex.typesetter.exception.TypesetterException;
  * register is used to break out of infinite loops when no material is shipped
  * out in the output routine.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;shipout&rang;
  *      &rarr; {@code \shipout} {@linkplain
- *        org.extex.interpreter.TokenSource#getBox(Flags,Context,Typesetter, org.extex.scanner.type.token.Token)
+ *        org.extex.interpreter.TokenSource#getBox(Flags, Context, Typesetter, org.extex.scanner.type.token.Token)
  *        &lang;box&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \shipout\box255  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Shipout extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * @param token the initial token for the primitive
-     */
-    public Shipout(CodeToken token) {
+  /**
+   * @param token the initial token for the primitive
+   */
+  public Shipout( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Box box = source.getBox( prefix, context, typesetter, null );
+
+    if( box != null && !box.isVoid() ) {
+      typesetter.shipout( box.getNodes() );
+      context.setCount( "deadcyles", 0, true );
     }
-
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Box box = source.getBox(prefix, context, typesetter, null);
-
-        if (box != null && !box.isVoid()) {
-            typesetter.shipout(box.getNodes());
-            context.setCount("deadcyles", 0, true);
-        }
-    }
+  }
 
 }

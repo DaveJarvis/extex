@@ -22,95 +22,87 @@ package org.extex.core.count;
 /**
  * This interface describes the features of a {@link org.extex.core.count.Count
  * Count} which do not modify the value.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface FixedCount {
 
-    /**
-     * Compare the value for equality.
-     * 
-     * @param count the count to compare to
-     * 
-     * @return {@code true} iff count has an equal value to the current one
-     */
-    boolean eq(FixedCount count);
+  /**
+   * Compare the value for equality.
+   *
+   * @param count the count to compare to
+   * @return {@code true} iff count has an equal value to the current one
+   */
+  boolean eq( FixedCount count );
 
-    /**
-     * Compare the value for a greater or equal value.
-     * 
-     * @param count the count to compare to
-     * 
-     * @return {@code true} iff count has an value greater or equal to the
-     *         current one
-     */
-    boolean ge(FixedCount count);
+  /**
+   * Compare the value for a greater or equal value.
+   *
+   * @param count the count to compare to
+   * @return {@code true} iff count has an value greater or equal to the
+   * current one
+   */
+  boolean ge( FixedCount count );
 
-    /**
-     * Getter for the value
-     * 
-     * @return the value
-     */
-    long getValue();
+  /**
+   * Getter for the value
+   *
+   * @return the value
+   */
+  long getValue();
 
-    /**
-     * Compare the value for a greater value.
-     * 
-     * @param count the count to compare to
-     * 
-     * @return {@code true} iff count has an value greater than the current
-     *         one
-     */
-    boolean gt(FixedCount count);
+  /**
+   * Compare the value for a greater value.
+   *
+   * @param count the count to compare to
+   * @return {@code true} iff count has an value greater than the current
+   * one
+   */
+  boolean gt( FixedCount count );
 
-    /**
-     * Compare the value for a less or equal value.
-     * 
-     * @param count the count to compare to
-     * 
-     * @return {@code true} iff count has an value less or equal to the
-     *         current one
-     */
-    boolean le(FixedCount count);
+  /**
+   * Compare the value for a less or equal value.
+   *
+   * @param count the count to compare to
+   * @return {@code true} iff count has an value less or equal to the
+   * current one
+   */
+  boolean le( FixedCount count );
 
-    /**
-     * Compare the value for a lesser value.
-     * 
-     * @param count the count to compare to
-     * 
-     * @return {@code true} iff count has an value less than the current
-     *         one
-     */
-    boolean lt(FixedCount count);
+  /**
+   * Compare the value for a lesser value.
+   *
+   * @param count the count to compare to
+   * @return {@code true} iff count has an value less than the current
+   * one
+   */
+  boolean lt( FixedCount count );
 
-    /**
-     * Compare the value for non-equality.
-     * 
-     * @param count the count to compare to
-     * 
-     * @return {@code true} iff count has an value not equal to the current
-     *         one
-     */
-    boolean ne(FixedCount count);
+  /**
+   * Compare the value for non-equality.
+   *
+   * @param count the count to compare to
+   * @return {@code true} iff count has an value not equal to the current
+   * one
+   */
+  boolean ne( FixedCount count );
 
-    /**
-     * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by TeX to print the Count.
-     * 
-     * @return the printable representation
-     * 
-     * @see #toString(StringBuilder)
-     */
-    String toString();
+  /**
+   * Determine the printable representation of the object. The value returned
+   * is exactly the string which would be produced by TeX to print the Count.
+   *
+   * @return the printable representation
+   * @see #toString(StringBuilder)
+   */
+  String toString();
 
-    /**
-     * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by TeX to print the Count.
-     * 
-     * @param sb the target string buffer
-     * 
-     * @see #toString()
-     */
-    void toString(StringBuilder sb);
+  /**
+   * Determine the printable representation of the object. The value returned
+   * is exactly the string which would be produced by TeX to print the Count.
+   *
+   * @param sb the target string buffer
+   * @see #toString()
+   */
+  void toString( StringBuilder sb );
 
 }

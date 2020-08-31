@@ -34,7 +34,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \else}.
- * 
+ *
  * <p>The Primitive {@code \else}</p>
  * <p>
  * The primitive {@code \else} can appear in the context of a conditional. It
@@ -45,87 +45,88 @@ import org.extex.typesetter.exception.TypesetterException;
  * conjunction with a conditional. A isolated {@code \else} leads immediately
  * to an error.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;else&rang;
  *      &rarr; {@code \else}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \ifnum 1&lt;2\else no\fi  </pre>
- * 
  *
- * 
+ *
+ *
  * <strong>Note:</strong> This primitive is <em>not</em> expandable!
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Else extends AbstractCode implements PrefixCode, ExpandableCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Else(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Else( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Executes the primitive.
+   * <p>
+   * This primitive can only be seen when a conditional has been opened before
+   * for which the then branch is expanded. Thus the else branch has to be
+   * skipped. Additionally the conditional stack has to be updated. If the
+   * conditional stack is already empty then an exception is raised.
+   * </p>
+   * <p>
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Conditional cond = context.popConditional();
+
+    if( cond == null
+        || AbstractIf.skipToElseOrFi( context, source, getToken() ) ) {
+      throw new HelpingException( getLocalizer(), "TTP.ExtraOrElseFi",
+                                  toText( context ) );
     }
+  }
 
-    /**
-     * Executes the primitive.
-     * <p>
-     * This primitive can only be seen when a conditional has been opened before
-     * for which the then branch is expanded. Thus the else branch has to be
-     * skipped. Additionally the conditional stack has to be updated. If the
-     * conditional stack is already empty then an exception is raised.
-     * </p>
-     * 
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws ConfigurationException,
+      HelpingException,
+      TypesetterException {
 
-        Conditional cond = context.popConditional();
+    Conditional cond = context.popConditional();
 
-        if (cond == null
-                || AbstractIf.skipToElseOrFi(context, source, getToken())) {
-            throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                toText(context));
-        }
+    if( cond == null
+        || AbstractIf.skipToElseOrFi( context, source, getToken() ) ) {
+      throw new HelpingException( getLocalizer(), "TTP.ExtraOrElseFi",
+                                  toText( context ) );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException,
-                TypesetterException {
-
-        Conditional cond = context.popConditional();
-
-        if (cond == null
-                || AbstractIf.skipToElseOrFi(context, source, getToken())) {
-            throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                toText(context));
-        }
-    }
+  }
 
 }

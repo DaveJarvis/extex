@@ -19,45 +19,45 @@
 
 package org.extex.exindex.lisp.type.function;
 
-import java.util.List;
-
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingParameterException;
 import org.extex.exindex.lisp.type.value.LValue;
 
+import java.util.List;
+
 /**
  * This class describes an optional parameter with an argument.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OptionalArgWithParameter extends Arg {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param flag the name of the flag
-     * @param resultClass the result class
-     * @param def the default value
-     * @param quoted the indicator for quoted expressions
-     */
-    public OptionalArgWithParameter(String flag, Class<?> resultClass,
-            Object def, boolean quoted) {
+  /**
+   * Creates a new object.
+   *
+   * @param flag        the name of the flag
+   * @param resultClass the result class
+   * @param def         the default value
+   * @param quoted      the indicator for quoted expressions
+   */
+  public OptionalArgWithParameter( String flag, Class<?> resultClass,
+                                   Object def, boolean quoted ) {
 
-        super(flag, resultClass, def, quoted);
+    super( flag, resultClass, def, quoted );
+  }
+
+  /**
+   * java.lang.Object[], int)
+   */
+  @Override
+  public final int parse( List<LValue> args, int ai, Object[] arguments,
+                          int index ) throws LException {
+
+    if( ai >= args.size() ) {
+      throw new LMissingParameterException( getFlag() );
     }
-
-    /**
-*      java.lang.Object[], int)
-     */
-    @Override
-    public final int parse(List<LValue> args, int ai, Object[] arguments,
-            int index) throws LException {
-
-        if (ai >= args.size()) {
-            throw new LMissingParameterException(getFlag());
-        }
-        arguments[index] = validate(args.get(ai));
-        return ai + 1;
-    }
+    arguments[ index ] = validate( args.get( ai ) );
+    return ai + 1;
+  }
 
 }

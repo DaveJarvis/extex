@@ -24,45 +24,45 @@ import java.io.PrintStream;
 /**
  * This class is a node containing a number. The class is immutable; i.e. it
  * does not have any setters.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LNumber implements LValue {
 
-    /**
-     * The field {@code value} contains the value.
-     */
-    private final long value;
+  /**
+   * The field {@code value} contains the value.
+   */
+  private final long value;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param value the value
-     */
-    public LNumber(long value) {
+  /**
+   * Creates a new object.
+   *
+   * @param value the value
+   */
+  public LNumber( long value ) {
 
-        this.value = value;
-    }
+    this.value = value;
+  }
 
-    /**
-     * Getter for value.
-     * 
-     * @return the value
-     */
-    public long getValue() {
+  /**
+   * Getter for value.
+   *
+   * @return the value
+   */
+  public long getValue() {
 
-        return value;
-    }
+    return value;
+  }
 
-public void print(PrintStream stream) {
+  public void print( PrintStream stream ) {
 
-        stream.print(value);
-    }
+    stream.print( value );
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        return Long.toString(value);
-    }
+    return Long.toString( value );
+  }
 
 }

@@ -19,8 +19,6 @@
 
 package org.extex.backend.documentWriter;
 
-import java.util.logging.Logger;
-
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.framework.AbstractFactory;
@@ -29,10 +27,12 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 
+import java.util.logging.Logger;
+
 /**
  * This is the factory to provide an instance of a document writer.
- * 
- * 
+ *
+ *
  * <p>
  * The class to be instantiated can implements one or more interfaces which
  * trigger special actions:
@@ -55,115 +55,112 @@ import org.extex.framework.configuration.exception.ConfigurationNotFoundExceptio
  * {@link org.extex.backend.outputStream.OutputStreamFactory
  * OutputStreamFactory} is passed in with the interface method.</dd>
  * </dl>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DocumentWriterFactory extends AbstractFactory<DocumentWriter> {
 
-    /**
-     * The field {@code defaultType} contains the default type from the
-     * configuration.
-     */
-    private final String defaultType;
+  /**
+   * The field {@code defaultType} contains the default type from the
+   * configuration.
+   */
+  private final String defaultType;
 
-    /**
-     * The field {@code options} contains the options.
-     */
-    private DocumentWriterOptions options;
+  /**
+   * The field {@code options} contains the options.
+   */
+  private DocumentWriterOptions options;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param configuration the configuration to use for the factory
-     * @param logger the logger
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    public DocumentWriterFactory(Configuration configuration, Logger logger)
-            throws ConfigurationException {
+  /**
+   * Creates a new object.
+   *
+   * @param configuration the configuration to use for the factory
+   * @param logger        the logger
+   * @throws ConfigurationException in case of an error
+   */
+  public DocumentWriterFactory( Configuration configuration, Logger logger )
+      throws ConfigurationException {
 
-        enableLogging(logger);
-        configure(configuration);
-        defaultType = configuration.getAttribute("default");
-        if (defaultType == null) {
-            throw new ConfigurationMissingAttributeException("default",
-                configuration);
-        }
+    enableLogging( logger );
+    configure( configuration );
+    defaultType = configuration.getAttribute( "default" );
+    if( defaultType == null ) {
+      throw new ConfigurationMissingAttributeException( "default",
+                                                        configuration );
+    }
+  }
+
+  /**
+   * Check that a given document writer type has a matching configuration.
+   *
+   * @param type the document writer type
+   * @return {@code true} iff a configuration exists
+   * @throws ConfigurationException in case of an error; especially if the
+   *                                configuration is not found
+   */
+  public boolean check( String type ) throws ConfigurationException {
+
+    try {
+      return selectConfiguration( type ) != null;
+    } catch( ConfigurationNotFoundException e ) {
+      return false;
+    }
+  }
+
+  /**
+   * Provide a new instance of a document writer. The new instance is
+   * initiated with the sub-configuration describing it.
+   * <p>
+   * If the generated instance implements the interface SingleDocumentStream
+   * then the method setOutputStream of this interface is invoked.
+   * </p>
+   * <p>
+   * If the generated instance implements the interface MultipleDocumentStream
+   * then the method setOutputStreamFactory of this interface is invoked.
+   * </p>
+   *
+   * @param type       the type of the document writer
+   * @param outFactory the factory for further output streams
+   * @return the new instance
+   * @throws DocumentWriterException in case of a problem
+   * @throws ConfigurationException  in case of a configuration problem
+   */
+  public DocumentWriter newInstance( String type,
+                                     OutputStreamFactory outFactory )
+      throws DocumentWriterException {
+
+    String outputType = type;
+    if( outputType == null || "".equals( outputType ) ) {
+      outputType = defaultType;
     }
 
-    /**
-     * Check that a given document writer type has a matching configuration.
-     * 
-     * @param type the document writer type
-     * 
-     * @return {@code true} iff a configuration exists
-     * 
-     * @throws ConfigurationException in case of an error; especially if the
-     *         configuration is not found
-     */
-    public boolean check(String type) throws ConfigurationException {
+    DocumentWriter documentWriter =
+        createInstance( outputType, DocumentWriter.class,
+                        DocumentWriterOptions.class, options );
 
-        try {
-            return selectConfiguration(type) != null;
-        } catch (ConfigurationNotFoundException e) {
-            return false;
-        }
+    outFactory.setExtension( documentWriter.getExtension() );
+
+    if( documentWriter instanceof SingleDocumentStream ) {
+      ((SingleDocumentStream) documentWriter).setOutputStream( outFactory
+                                                                   .getOutputStream(
+                                                                       null,
+                                                                       null ) );
     }
-
-    /**
-     * Provide a new instance of a document writer. The new instance is
-     * initiated with the sub-configuration describing it.
-     * <p>
-     * If the generated instance implements the interface SingleDocumentStream
-     * then the method setOutputStream of this interface is invoked.
-     * </p>
-     * <p>
-     * If the generated instance implements the interface MultipleDocumentStream
-     * then the method setOutputStreamFactory of this interface is invoked.
-     * </p>
-     * 
-     * @param type the type of the document writer
-     * @param outFactory the factory for further output streams
-     * 
-     * @return the new instance
-     * 
-     * @throws DocumentWriterException in case of a problem
-     * @throws ConfigurationException in case of a configuration problem
-     */
-    public DocumentWriter newInstance(String type,
-            OutputStreamFactory outFactory) throws DocumentWriterException {
-
-        String outputType = type;
-        if (outputType == null || "".equals(outputType)) {
-            outputType = defaultType;
-        }
-
-        DocumentWriter documentWriter =
-                createInstance(outputType, DocumentWriter.class,
-                    DocumentWriterOptions.class, options);
-
-        outFactory.setExtension(documentWriter.getExtension());
-
-        if (documentWriter instanceof SingleDocumentStream) {
-            ((SingleDocumentStream) documentWriter).setOutputStream(outFactory
-                .getOutputStream(null, null));
-        }
-        if (documentWriter instanceof MultipleDocumentStream) {
-            ((MultipleDocumentStream) documentWriter)
-                .setOutputStreamFactory(outFactory);
-        }
-        return documentWriter;
+    if( documentWriter instanceof MultipleDocumentStream ) {
+      ((MultipleDocumentStream) documentWriter)
+          .setOutputStreamFactory( outFactory );
     }
+    return documentWriter;
+  }
 
-    /**
-     * Setter for options.
-     * 
-     * @param options the dynamic access to the readable part of the context
-     */
-    public void setOptions(DocumentWriterOptions options) {
+  /**
+   * Setter for options.
+   *
+   * @param options the dynamic access to the readable part of the context
+   */
+  public void setOptions( DocumentWriterOptions options ) {
 
-        this.options = options;
-    }
+    this.options = options;
+  }
 
 }

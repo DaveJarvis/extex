@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.file;
 
-import java.util.logging.Logger;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
@@ -37,9 +35,11 @@ import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.tex.macro.util.MacroCode;
 import org.extex.unit.tex.macro.util.MacroPattern;
 
+import java.util.logging.Logger;
+
 /**
  * This class provides an implementation for the primitive {@code \read}.
- * 
+ *
  * <p>The Primitive {@code \read}</p>
  * <p>
  * The primitive {@code \read} read a line of text from the given input
@@ -58,15 +58,15 @@ import org.extex.unit.tex.macro.util.MacroPattern;
  * The primitive implements an assignment. Thus the definition of
  * {@code \afterassignment} and {@code \globaldefs} are honored.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;read&rang;
  *      &rarr; &lang;optional prefix&rang;{@code \read} {@linkplain
- *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
+ *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context, TokenSource, Typesetter)
  *        &lang;infile&nbsp;name&rang;} {@code to} {@linkplain
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;}
@@ -74,103 +74,101 @@ import org.extex.unit.tex.macro.util.MacroPattern;
  *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  {@code \global} &lang;optional prefix&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \openin3= abc.def
  *   \read3 to \line
  *   \closein3 </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Read extends AbstractAssignment implements LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the target channel for the message.
-     */
-    private transient Logger logger = null;
+  /**
+   * The field {@code logger} contains the target channel for the message.
+   */
+  private transient Logger logger = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Read(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Read( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key =
+        AbstractFileCode.scanInFileKey( context, source, typesetter );
+
+    if( !source.getKeyword( context, "to" ) ) {
+      throw new HelpingException( getLocalizer(), "TTP.MissingToForRead",
+                                  toText() );
+    }
+    CodeToken cs = source.getControlSequence( context, typesetter );
+
+    InFile file = context.getInFile( key );
+
+    if( file == null || !file.isOpen() ) {
+      file = context.getInFile( null );
+      if( !file.isOpen() ) {
+        throw new HelpingException( getLocalizer(), "TTP.EOFinRead",
+                                    toText() );
+      }
+    }
+    if( !file.isFileStream() ) {
+      Interaction interaction = context.getInteraction();
+      if( interaction != Interaction.ERRORSTOPMODE ) {
+        throw new HelpingException( getLocalizer(), "TTP.NoTermRead",
+                                    toText() );
+      }
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String key =
-                AbstractFileCode.scanInFileKey(context, source, typesetter);
-
-        if (!source.getKeyword(context, "to")) {
-            throw new HelpingException(getLocalizer(), "TTP.MissingToForRead",
-                toText());
-        }
-        CodeToken cs = source.getControlSequence(context, typesetter);
-
-        InFile file = context.getInFile(key);
-
-        if (file == null || !file.isOpen()) {
-            file = context.getInFile(null);
-            if (!file.isOpen()) {
-                throw new HelpingException(getLocalizer(), "TTP.EOFinRead",
-                    toText());
-            }
-        }
-        if (!file.isFileStream()) {
-            Interaction interaction = context.getInteraction();
-            if (interaction != Interaction.ERRORSTOPMODE) {
-                throw new HelpingException(getLocalizer(), "TTP.NoTermRead",
-                    toText());
-            }
-        }
-
-        if (file.isStandardStream()) {
-            logger.severe(cs.toText() + "=");
-        }
-
-        Tokens toks =
-                file.read(context.getTokenFactory(), context.getTokenizer());
-        if (toks == null) {
-            throw new HelpingException(getLocalizer(), "TTP.EOFinRead",
-                toText());
-        }
-        Flags f = prefix.copy();
-        f.setGlobal(prefix.isGlobal());
-        context.setCode(cs, new MacroCode(cs, f, false, MacroPattern.EMPTY,
-            toks), prefix.clearGlobal());
+    if( file.isStandardStream() ) {
+      logger.severe( cs.toText() + "=" );
     }
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
-     */
-    public void enableLogging(Logger log) {
-
-        this.logger = log;
+    Tokens toks =
+        file.read( context.getTokenFactory(), context.getTokenizer() );
+    if( toks == null ) {
+      throw new HelpingException( getLocalizer(), "TTP.EOFinRead",
+                                  toText() );
     }
+    Flags f = prefix.copy();
+    f.setGlobal( prefix.isGlobal() );
+    context.setCode( cs, new MacroCode( cs, f, false, MacroPattern.EMPTY,
+                                        toks ), prefix.clearGlobal() );
+  }
+
+  /**
+   * Setter for the logger.
+   *
+   * @param log the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(
+   *java.util.logging.Logger)
+   */
+  public void enableLogging( Logger log ) {
+
+    this.logger = log;
+  }
 
 }

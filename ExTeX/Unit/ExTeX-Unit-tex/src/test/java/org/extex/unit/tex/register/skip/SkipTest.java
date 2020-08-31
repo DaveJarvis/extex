@@ -23,25 +23,25 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \skip}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SkipTest extends AbstractSkipRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SkipTest.class);
-    }
+    (new JUnitCore()).run( SkipTest.class );
+  }
 
 
-    public SkipTest() {
+  public SkipTest() {
 
-        super("skip", "42", "0.0pt");
-    }
+    super( "skip", "42", "0.0pt" );
+  }
 
 }

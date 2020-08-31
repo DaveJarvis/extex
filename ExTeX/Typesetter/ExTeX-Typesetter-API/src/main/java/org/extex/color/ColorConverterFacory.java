@@ -19,47 +19,44 @@
 
 package org.extex.color;
 
-import java.util.logging.Logger;
-
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
+import java.util.logging.Logger;
+
 /**
  * This is the factory to provide an instance of a color converter.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ColorConverterFacory extends AbstractFactory<ColorConverter> {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param config the configuration
-     * @param logger the logger
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    public ColorConverterFacory(Configuration config, Logger logger)
-            throws ConfigurationException {
+  /**
+   * Creates a new object.
+   *
+   * @param config the configuration
+   * @param logger the logger
+   * @throws ConfigurationException in case of an error
+   */
+  public ColorConverterFacory( Configuration config, Logger logger )
+      throws ConfigurationException {
 
-        enableLogging(logger);
-        configure(config);
-    }
+    enableLogging( logger );
+    configure( config );
+  }
 
-    /**
-     * Provide a new instance of a color converter. The new instance is
-     * initiated with the sub-configuration describing it.
-     * 
-     * @param type the type
-     * 
-     * @return the new instance
-     * 
-     * @throws ConfigurationException in case of a problem in the configuration
-     */
-    public ColorConverter newInstance(String type) {
+  /**
+   * Provide a new instance of a color converter. The new instance is
+   * initiated with the sub-configuration describing it.
+   *
+   * @param type the type
+   * @return the new instance
+   * @throws ConfigurationException in case of a problem in the configuration
+   */
+  public ColorConverter newInstance( String type ) {
 
-        return createInstance(type, ColorConverter.class);
-    }
+    return createInstance( type, ColorConverter.class );
+  }
 
 }

@@ -23,16 +23,15 @@ package org.extex.backend.pageFilter.selector;
  * This interface describes a rule to be applied to a number.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 interface Rule {
 
-    /**
-     * Check that a given page is covered by this rule.
-     *
-     * @param value the number to check
-     *
-     * @return {@code true} iff the number is covered
-     */
-    boolean check(int value);
+  /**
+   * Check that a given page is covered by this rule.
+   *
+   * @param value the number to check
+   * @return {@code true} iff the number is covered
+   */
+  boolean check( int value );
 
 }

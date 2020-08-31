@@ -24,25 +24,26 @@ import org.extex.exbib.core.io.Locator;
 /**
  * This Exception is thrown whenever the program expects a function name and
  * none is found.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
-public class ExBibEmptyFunctionNameException extends ExBibIllegalValueException {
+ */
+public class ExBibEmptyFunctionNameException
+    extends ExBibIllegalValueException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param locator the locator
-     */
-    public ExBibEmptyFunctionNameException(Locator locator) {
+  /**
+   * Create a new object.
+   *
+   * @param locator the locator
+   */
+  public ExBibEmptyFunctionNameException( Locator locator ) {
 
-        super("", locator);
-    }
+    super( "", locator );
+  }
 
 }

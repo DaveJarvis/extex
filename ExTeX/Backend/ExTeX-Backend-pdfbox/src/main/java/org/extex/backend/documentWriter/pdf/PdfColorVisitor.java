@@ -30,88 +30,89 @@ import org.pdfbox.pdmodel.edit.PDPageContentStream;
 
 /**
  * Color visitor for pdf.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class PdfColorVisitor implements ColorVisitor {
 
-    /**
-     * div for 16-bit to 8 bit.
-     */
-    private static final int DIV = 0xff;
+  /**
+   * div for 16-bit to 8 bit.
+   */
+  private static final int DIV = 0xff;
 
-    /**
-     * div for 16-bit to 0.0-1.0.
-     */
-    private static final double DIVD = 0xffff;
+  /**
+   * div for 16-bit to 0.0-1.0.
+   */
+  private static final double DIVD = 0xffff;
 
-    /**
-*      java.lang.Object)
-     */
-    @Override
-    public Object visitCmyk(CmykColor color, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  @Override
+  public Object visitCmyk( CmykColor color, Object value )
+      throws GeneralException {
 
-        try {
+    try {
 
-            PDPageContentStream contentstream = (PDPageContentStream) value;
-            // TODO gene: Support the CMYK color model
-            // contentstream.setStrokingColor(color.getCyan() / DIVD,
-            // color.getMagenta() / DIVD, color.getYellow() / DIVD,
-            // color.getBlack() / DIVD);
+      PDPageContentStream contentstream = (PDPageContentStream) value;
+      // TODO gene: Support the CMYK color model
+      // contentstream.setStrokingColor(color.getCyan() / DIVD,
+      // color.getMagenta() / DIVD, color.getYellow() / DIVD,
+      // color.getBlack() / DIVD);
 
-        } catch (Exception e) {
-            throw new DocumentWriterPdfBoxColorException(e);
-        }
-        return null;
+    } catch( Exception e ) {
+      throw new DocumentWriterPdfBoxColorException( e );
     }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    @Override
-    public Object visitGray(GrayscaleColor color, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  @Override
+  public Object visitGray( GrayscaleColor color, Object value )
+      throws GeneralException {
 
-        try {
+    try {
 
-            PDPageContentStream contentstream = (PDPageContentStream) value;
-            int intensity = color.getGray(); // TODO gene: provide proper
-                                             // scaling
-            contentstream.setStrokingColor(intensity, intensity, intensity);
+      PDPageContentStream contentstream = (PDPageContentStream) value;
+      int intensity = color.getGray(); // TODO gene: provide proper
+      // scaling
+      contentstream.setStrokingColor( intensity, intensity, intensity );
 
-        } catch (Exception e) {
-            throw new DocumentWriterPdfBoxColorException(e);
-        }
-        return null;
+    } catch( Exception e ) {
+      throw new DocumentWriterPdfBoxColorException( e );
     }
+    return null;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    @Override
-    public Object visitHsv(HsvColor color, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  @Override
+  public Object visitHsv( HsvColor color, Object value )
+      throws GeneralException {
 
-        return null;
+    return null;
+  }
+
+  /**
+   * java.lang.Object)
+   */
+  @Override
+  public Object visitRgb( RgbColor color, Object value )
+      throws GeneralException {
+
+    try {
+
+      PDPageContentStream contentstream = (PDPageContentStream) value;
+      contentstream.setStrokingColor( color.getRed() / DIV,
+                                      color.getGreen() / DIV,
+                                      color.getBlue() / DIV );
+
+    } catch( Exception e ) {
+      throw new DocumentWriterPdfBoxColorException( e );
     }
-
-    /**
-*      java.lang.Object)
-     */
-    @Override
-    public Object visitRgb(RgbColor color, Object value)
-            throws GeneralException {
-
-        try {
-
-            PDPageContentStream contentstream = (PDPageContentStream) value;
-            contentstream.setStrokingColor(color.getRed() / DIV,
-                color.getGreen() / DIV, color.getBlue() / DIV);
-
-        } catch (Exception e) {
-            throw new DocumentWriterPdfBoxColorException(e);
-        }
-        return null;
-    }
+    return null;
+  }
 }

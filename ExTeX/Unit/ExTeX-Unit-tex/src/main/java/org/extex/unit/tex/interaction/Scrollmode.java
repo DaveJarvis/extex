@@ -37,55 +37,54 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  * <p>The Primitive {@code \scrollmode}</p>
  * <p>
- *  This primitive sets the interaction mode to scroll mode.
+ * This primitive sets the interaction mode to scroll mode.
  * </p>
  * <p>
- *  The setting of the interaction mode is an assignment. The mode is always
- *  processed globally. This means it does not interact with the group concept.
+ * The setting of the interaction mode is an assignment. The mode is always
+ * processed globally. This means it does not interact with the group concept.
  * </p>
  *
  * <p>Syntax</p>
-
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * <p>
+ * The formal description of this primitive is the following:
+ * <pre class="syntax">
  *    &lang;scrollmode&rang;
  *      &rarr; {@code \scrollmode}  </pre>
  *
  * <p>Examples</p>
-
- *  <pre class="TeXSample">
+ *
+ * <pre class="TeXSample">
  *    \scrollmode  </pre>
  *
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Scrollmode extends AbstractAssignment {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param token the initial token for the primitive
-     */
-    public Scrollmode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Scrollmode( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context,
+                      TokenSource source, Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        context.setInteraction(Interaction.SCROLLMODE);
-    }
+    context.setInteraction( Interaction.SCROLLMODE );
+  }
 
 }

@@ -22,232 +22,226 @@ package org.extex.core.count;
 /**
  * This class represents a long integer value. It is used for instance as count
  * register.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Count extends CountConstant {
 
-    /**
-     * The constant {@code ONE} contains the count register with the value 1.
-     * This count register is in fact immutable.
-     */
-    public static final FixedCount ONE = new CountConstant(1);
+  /**
+   * The constant {@code ONE} contains the count register with the value 1.
+   * This count register is in fact immutable.
+   */
+  public static final FixedCount ONE = new CountConstant( 1 );
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The constant {@code THOUSAND} contains the count register with the value
-     * 1000. This count register is in fact immutable.
-     */
-    public static final FixedCount THOUSAND = new CountConstant(1000);
+  /**
+   * The constant {@code THOUSAND} contains the count register with the value
+   * 1000. This count register is in fact immutable.
+   */
+  public static final FixedCount THOUSAND = new CountConstant( 1000 );
 
-    /**
-     * The constant {@code ZERO} contains the count register with the value 0.
-     * This count register is in fact immutable.
-     */
-    public static final FixedCount ZERO = new CountConstant(0);
+  /**
+   * The constant {@code ZERO} contains the count register with the value 0.
+   * This count register is in fact immutable.
+   */
+  public static final FixedCount ZERO = new CountConstant( 0 );
 
-    /**
-     * Creates a new object.
-     * 
-     * @param count the reference to be copied
-     */
-    public Count(FixedCount count) {
+  /**
+   * Creates a new object.
+   *
+   * @param count the reference to be copied
+   */
+  public Count( FixedCount count ) {
 
-        this.value = count.getValue();
+    this.value = count.getValue();
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param value the value
+   */
+  public Count( long value ) {
+
+    this.value = value;
+  }
+
+
+  public Count() {
+
+  }
+
+  /**
+   * Add a long to the value. This operation modifies the value.
+   *
+   * @param val the value to add to
+   */
+  public void add( long val ) {
+
+    value += val;
+  }
+
+  /**
+   * Add a Count to the value. This operation modifies the value.
+   *
+   * @param val the value to add to
+   */
+  public void add( FixedCount val ) {
+
+    value += val.getValue();
+  }
+
+  /**
+   * Divide the value by a long. This operation modifies the value.
+   *
+   * @param denom the denominator to divide by
+   * @throws ArithmeticException in case of a division by zero
+   */
+  public void divide( long denom ) throws ArithmeticException {
+
+    if( denom == 0 ) {
+      throw new ArithmeticException();
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param value the value
-     */
-    public Count(long value) {
+    value /= denom;
+  }
 
-        this.value = value;
+  /**
+   * Divide the value by a denominator. This operation modifies the value.
+   *
+   * @param denom the denominator to divide by
+   * @throws ArithmeticException in case of a division by zero
+   */
+  public void divide( FixedCount denom ) throws ArithmeticException {
+
+    long d = denom.getValue();
+    if( d == 0 ) {
+      throw new ArithmeticException( null );
     }
 
+    value /= d;
+  }
 
-    public Count() {
+  @Override
+  public boolean eq( FixedCount count ) {
 
-    }
+    return count.getValue() == value;
+  }
 
-    /**
-     * Add a long to the value. This operation modifies the value.
-     * 
-     * @param val the value to add to
-     */
-    public void add(long val) {
+  @Override
+  public boolean ge( FixedCount count ) {
 
-        value += val;
-    }
+    return value >= count.getValue();
+  }
 
-    /**
-     * Add a Count to the value. This operation modifies the value.
-     * 
-     * @param val the value to add to
-     */
-    public void add(FixedCount val) {
+  /**
+   * Getter for the value
+   *
+   * @return the value
+   */
+  @Override
+  public long getValue() {
 
-        value += val.getValue();
-    }
+    return value;
+  }
 
-    /**
-     * Divide the value by a long. This operation modifies the value.
-     * 
-     * @param denom the denominator to divide by
-     * 
-     * @throws ArithmeticException in case of a division by zero
-     */
-    public void divide(long denom) throws ArithmeticException {
+  @Override
+  public boolean gt( FixedCount count ) {
 
-        if (denom == 0) {
-            throw new ArithmeticException();
-        }
+    return value > count.getValue();
+  }
 
-        value /= denom;
-    }
+  @Override
+  public boolean le( FixedCount count ) {
 
-    /**
-     * Divide the value by a denominator. This operation modifies the value.
-     * 
-     * @param denom the denominator to divide by
-     * 
-     * @throws ArithmeticException in case of a division by zero
-     */
-    public void divide(FixedCount denom) throws ArithmeticException {
+    return value <= count.getValue();
+  }
 
-        long d = denom.getValue();
-        if (d == 0) {
-            throw new ArithmeticException(null);
-        }
+  @Override
+  public boolean lt( FixedCount count ) {
 
-        value /= d;
-    }
+    return value < count.getValue();
+  }
 
-@Override
-    public boolean eq(FixedCount count) {
+  /**
+   * Multiply the value with a factor. This operation modifies the value.
+   *
+   * @param factor the factor to multiply with
+   */
+  public void multiply( long factor ) {
 
-        return count.getValue() == value;
-    }
+    value *= factor;
+  }
 
-@Override
-    public boolean ge(FixedCount count) {
+  /**
+   * Multiply the value with a factor. This operation modifies the value.
+   *
+   * @param factor the factor to multiply with
+   */
+  public void multiply( FixedCount factor ) {
 
-        return value >= count.getValue();
-    }
+    value *= factor.getValue();
+  }
 
-    /**
-     * Getter for the value
-     * 
-     * @return the value
-     */
-    @Override
-    public long getValue() {
+  @Override
+  public boolean ne( FixedCount count ) {
 
-        return value;
-    }
+    return value != count.getValue();
+  }
 
-@Override
-    public boolean gt(FixedCount count) {
+  /**
+   * Setter for the value.
+   *
+   * @param l the new value
+   * @see #set(FixedCount)
+   */
+  public void set( long l ) {
 
-        return value > count.getValue();
-    }
+    value = l;
+  }
 
-@Override
-    public boolean le(FixedCount count) {
+  /**
+   * Setter for the value.
+   *
+   * @param c the new value
+   * @see #set(long)
+   */
+  public void set( FixedCount c ) {
 
-        return value <= count.getValue();
-    }
+    value = c.getValue();
+  }
 
-@Override
-    public boolean lt(FixedCount count) {
+  /**
+   * Determine the printable representation of the object. The value returned
+   * is exactly the string which would be produced by TeX to print the Count.
+   *
+   * @return the printable representation
+   * @see #toString(StringBuilder)
+   * @see org.extex.core.count.CountConstant#toString()
+   */
+  @Override
+  public String toString() {
 
-        return value < count.getValue();
-    }
+    return Long.toString( value );
+  }
 
-    /**
-     * Multiply the value with a factor. This operation modifies the value.
-     * 
-     * @param factor the factor to multiply with
-     */
-    public void multiply(long factor) {
+  /**
+   * Determine the printable representation of the object. The value returned
+   * is exactly the string which would be produced by TeX to print the Count.
+   *
+   * @param sb the target string buffer
+   * @see #toString()
+   * @see org.extex.core.count.CountConstant#toString(StringBuilder)
+   */
+  @Override
+  public void toString( StringBuilder sb ) {
 
-        value *= factor;
-    }
-
-    /**
-     * Multiply the value with a factor. This operation modifies the value.
-     * 
-     * @param factor the factor to multiply with
-     */
-    public void multiply(FixedCount factor) {
-
-        value *= factor.getValue();
-    }
-
-@Override
-    public boolean ne(FixedCount count) {
-
-        return value != count.getValue();
-    }
-
-    /**
-     * Setter for the value.
-     * 
-     * @param l the new value
-     * 
-     * @see #set(FixedCount)
-     */
-    public void set(long l) {
-
-        value = l;
-    }
-
-    /**
-     * Setter for the value.
-     * 
-     * @param c the new value
-     * 
-     * @see #set(long)
-     */
-    public void set(FixedCount c) {
-
-        value = c.getValue();
-    }
-
-    /**
-     * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by TeX to print the Count.
-     * 
-     * @return the printable representation
-     * 
-     * @see #toString(StringBuilder)
-     * @see org.extex.core.count.CountConstant#toString()
-     */
-    @Override
-    public String toString() {
-
-        return Long.toString(value);
-    }
-
-    /**
-     * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by TeX to print the Count.
-     * 
-     * @param sb the target string buffer
-     * 
-     * @see #toString()
-     * @see org.extex.core.count.CountConstant#toString(StringBuilder)
-     */
-    @Override
-    public void toString(StringBuilder sb) {
-
-        sb.append(value);
-    }
+    sb.append( value );
+  }
 
 }

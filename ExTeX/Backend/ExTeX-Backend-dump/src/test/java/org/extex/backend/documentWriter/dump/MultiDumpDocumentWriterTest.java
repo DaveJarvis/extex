@@ -19,11 +19,6 @@
 
 package org.extex.backend.documentWriter.dump;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.outputStream.OutputStreamObserver;
@@ -33,97 +28,98 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.page.Page;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+
+import static org.junit.Assert.assertEquals;
+
 /**
  * This document writer produces multi-page dumps.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MultiDumpDocumentWriterTest {
 
-    /**
-     * The field {@code stream} contains the output stream.
-     */
-    private static ByteArrayOutputStream stream;
+  /**
+   * The field {@code stream} contains the output stream.
+   */
+  private static ByteArrayOutputStream stream;
 
-    /**
-     * The field {@code factory} contains the global factory.
-     */
-    protected static final OutputStreamFactory FACTORY =
-            new OutputStreamFactory() {
+  /**
+   * The field {@code factory} contains the global factory.
+   */
+  protected static final OutputStreamFactory FACTORY =
+      new OutputStreamFactory() {
 
-                public OutputStream getOutputStream(String name, String type)
-                        throws DocumentWriterException {
+        public OutputStream getOutputStream( String name, String type )
+            throws DocumentWriterException {
 
-                    stream = new ByteArrayOutputStream();
-                    return stream;
-                }
+          stream = new ByteArrayOutputStream();
+          return stream;
+        }
 
-                public void register(OutputStreamObserver observer) {
+        public void register( OutputStreamObserver observer ) {
 
-                    // not needed
-                }
+          // not needed
+        }
 
-                public void setExtension(String extension) {
+        public void setExtension( String extension ) {
 
-                    // not needed
-                }
+          // not needed
+        }
 
-            };
+      };
 
-    /**
-     *  Test that the default extension is {@code out}.
-     *
-     */
-    @Test
-    public final void testGetExtension() {
+  /**
+   * Test that the default extension is {@code out}.
+   */
+  @Test
+  public final void testGetExtension() {
 
-        assertEquals("out", new MultiDumpDocumentWriter(null).getExtension());
-    }
+    assertEquals( "out", new MultiDumpDocumentWriter( null ).getExtension() );
+  }
 
-    /**
-     *  Test that a {@code null} page is not shipped.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testShipout1() throws Exception {
+  /**
+   * Test that a {@code null} page is not shipped.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testShipout1() throws Exception {
 
-        MultiDumpDocumentWriter writer = new MultiDumpDocumentWriter(null);
-        assertEquals(0, writer.shipout(null));
-    }
+    MultiDumpDocumentWriter writer = new MultiDumpDocumentWriter( null );
+    assertEquals( 0, writer.shipout( null ) );
+  }
 
-    /**
-     *  Test that ...
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testShipout2() throws Exception {
+  /**
+   * Test that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testShipout2() throws Exception {
 
-        MultiDumpDocumentWriter writer = new MultiDumpDocumentWriter(null);
-        writer.setOutputStreamFactory(FACTORY);
-        Page page = new PageImpl(new VerticalListNode(), new Count[10]);
-        assertEquals(1, writer.shipout(page));
-    }
+    MultiDumpDocumentWriter writer = new MultiDumpDocumentWriter( null );
+    writer.setOutputStreamFactory( FACTORY );
+    Page page = new PageImpl( new VerticalListNode(), new Count[ 10 ] );
+    assertEquals( 1, writer.shipout( page ) );
+  }
 
-    /**
-     *  Test that ...
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testClose1() throws Exception {
+  /**
+   * Test that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testClose1() throws Exception {
 
-        MultiDumpDocumentWriter writer = new MultiDumpDocumentWriter(null);
-        writer.setOutputStreamFactory(FACTORY);
-        writer.shipout(new PageImpl(new VerticalListNode(), new Count[10]));
-        writer.close();
-        String s = stream.toString();
-        assertEquals("\\vbox(0.0pt+0.0pt)x0.0pt\n", s);
-    }
+    MultiDumpDocumentWriter writer = new MultiDumpDocumentWriter( null );
+    writer.setOutputStreamFactory( FACTORY );
+    writer.shipout( new PageImpl( new VerticalListNode(), new Count[ 10 ] ) );
+    writer.close();
+    String s = stream.toString();
+    assertEquals( "\\vbox(0.0pt+0.0pt)x0.0pt\n", s );
+  }
 
-    // TODO implement more test cases
+  // TODO implement more test cases
 }

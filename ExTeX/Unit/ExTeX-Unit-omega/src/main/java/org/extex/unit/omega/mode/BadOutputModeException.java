@@ -25,22 +25,22 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception signals that an invalid specification for an output mode has
  * been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BadOutputModeException extends HelpingException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
 
-    public BadOutputModeException() {
+  public BadOutputModeException() {
 
-        super(LocalizerFactory.getLocalizer(BadOutputModeException.class),
-            "Omega.BadMode");
-    }
+    super( LocalizerFactory.getLocalizer( BadOutputModeException.class ),
+           "Omega.BadMode" );
+  }
 
 }

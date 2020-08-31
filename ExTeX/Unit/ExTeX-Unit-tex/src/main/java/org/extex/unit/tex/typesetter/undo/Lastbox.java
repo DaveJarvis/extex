@@ -36,96 +36,95 @@ import org.extex.typesetter.type.NodeList;
 
 /**
  * This class provides an implementation for the primitive {@code \lastbox}.
- * 
+ *
  * <p>The Primitive {@code \lastbox}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;lastbox&rang;
  *    &rarr; {@code \lastbox}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \lastbox  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \box1=\lastbox  </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Lastbox extends AbstractCode implements Boxable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Lastbox(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Lastbox( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Mode mode = typesetter.getMode();
+    if( mode.isMath() || mode == Mode.VERTICAL ) {
+      throw new HelpingException( getLocalizer(), "TTP.LastBoxIn",
+                                  toText(), mode.toString() );
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    // TODO gene: what's to do?
+    // throw new RuntimeException("unimplemented");
+  }
 
-        Mode mode = typesetter.getMode();
-        if (mode.isMath() || mode == Mode.VERTICAL) {
-            throw new HelpingException(getLocalizer(), "TTP.LastBoxIn",
-                toText(), mode.toString());
-        }
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+   * org.extex.scanner.type.token.Token)
+   */
+  public Box getBox( Context context, TokenSource source,
+                     Typesetter typesetter, Token insert )
+      throws HelpingException,
+      TypesetterException {
 
-        // TODO gene: what's to do?
-        // throw new RuntimeException("unimplemented");
+    Mode mode = typesetter.getMode();
+    if( mode.isMath() /* || mode == Mode.VERTICAL */ ) {
+      throw new HelpingException( getLocalizer(), "TTP.LastBoxIn",
+                                  toText(), mode.toString() );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      org.extex.scanner.type.token.Token)
-     */
-    public Box getBox(Context context, TokenSource source,
-            Typesetter typesetter, Token insert)
-            throws HelpingException,
-                TypesetterException {
+    Node nodes = typesetter.getLastNode();
+    Box box = null;
 
-        Mode mode = typesetter.getMode();
-        if (mode.isMath() /* || mode == Mode.VERTICAL */) {
-            throw new HelpingException(getLocalizer(), "TTP.LastBoxIn",
-                toText(), mode.toString());
-        }
-
-        Node nodes = typesetter.getLastNode();
-        Box box = null;
-
-        if (nodes instanceof NodeList) {
-            typesetter.removeLastNode();
-            box = new Box((NodeList) nodes);
-        }
-
-        if (insert != null) {
-            source.push(insert);
-        }
-
-        return box;
+    if( nodes instanceof NodeList ) {
+      typesetter.removeLastNode();
+      box = new Box( (NodeList) nodes );
     }
+
+    if( insert != null ) {
+      source.push( insert );
+    }
+
+    return box;
+  }
 }

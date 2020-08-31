@@ -19,141 +19,140 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * rcurveline: {dxa dya dxb dyb dxc dyc}+ dxd dyd rcurveline (24).
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2RcurveLine extends T2PathConstruction {
 
-    /**
-     * The dxd.
-     */
-    private final T2Number dxd;
+  /**
+   * The dxd.
+   */
+  private final T2Number dxd;
 
-    /**
-     * The dyd.
-     */
-    private final T2Number dyd;
+  /**
+   * The dyd.
+   */
+  private final T2Number dyd;
 
-    /**
-     * The six values array.
-     */
-    private final T2SixNumber[] eight;
+  /**
+   * The six values array.
+   */
+  private final T2SixNumber[] eight;
 
-    /**
-     * Create a new object.
-     * 
-     * @param ch The char string.
-     * @param stack The stack.
-     * 
-     * @throws IOException in case of an error
-     */
-    public T2RcurveLine(List<T2CharString> stack, CharString ch)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param ch    The char string.
+   * @param stack The stack.
+   * @throws IOException in case of an error
+   */
+  public T2RcurveLine( List<T2CharString> stack, CharString ch )
+      throws IOException {
 
-        super(stack, new short[]{T2RCURVELINE}, ch);
+    super( stack, new short[]{T2RCURVELINE}, ch );
 
-        int n = stack.size();
+    int n = stack.size();
 
-        eight = new T2SixNumber[n / 6];
+    eight = new T2SixNumber[ n / 6 ];
 
-        for (int i = 0; i < n; i += 6) {
-            T2Number v1 = (T2Number) stack.remove(0);
-            T2Number v2 = (T2Number) stack.remove(0);
-            T2Number v3 = (T2Number) stack.remove(0);
-            T2Number v4 = (T2Number) stack.remove(0);
-            T2Number v5 = (T2Number) stack.remove(0);
-            T2Number v6 = (T2Number) stack.remove(0);
-            T2SixNumber si = new T2SixNumber(v1, v2, v3, v4, v5, v6);
-            eight[i / 6] = si;
-        }
-
-        dxd = (T2Number) stack.remove(0);
-        dyd = (T2Number) stack.remove(0);
-
+    for( int i = 0; i < n; i += 6 ) {
+      T2Number v1 = (T2Number) stack.remove( 0 );
+      T2Number v2 = (T2Number) stack.remove( 0 );
+      T2Number v3 = (T2Number) stack.remove( 0 );
+      T2Number v4 = (T2Number) stack.remove( 0 );
+      T2Number v5 = (T2Number) stack.remove( 0 );
+      T2Number v6 = (T2Number) stack.remove( 0 );
+      T2SixNumber si = new T2SixNumber( v1, v2, v3, v4, v5, v6 );
+      eight[ i / 6 ] = si;
     }
 
-    /**
-     * Getter for dxd.
-     * 
-     * @return the dxd
-     */
-    public T2Number getDxd() {
+    dxd = (T2Number) stack.remove( 0 );
+    dyd = (T2Number) stack.remove( 0 );
 
-        return dxd;
+  }
+
+  /**
+   * Getter for dxd.
+   *
+   * @return the dxd
+   */
+  public T2Number getDxd() {
+
+    return dxd;
+  }
+
+  /**
+   * Getter for dyd.
+   *
+   * @return the dyd
+   */
+  public T2Number getDyd() {
+
+    return dyd;
+  }
+
+  /**
+   * Getter for eight.
+   *
+   * @return the eight
+   */
+  public T2SixNumber[] getEight() {
+
+    return eight;
+  }
+
+  @Override
+  public int getID() {
+
+    return TYPE_RCURVELINE;
+  }
+
+  @Override
+  public String getName() {
+
+    return "rcurveline";
+  }
+
+  @Override
+  public Object getValue() {
+
+    return eight;
+  }
+
+  @Override
+  public String toText() {
+
+    StringBuilder buf = new StringBuilder();
+
+    buf.append( dxd.toString() ).append( ' ' );
+    buf.append( dyd.toString() ).append( ' ' );
+    for( int i = 0; i < eight.length; i++ ) {
+      buf.append( eight[ i ].toString() ).append( ' ' );
     }
+    buf.append( getName() );
+    return buf.toString();
+  }
 
-    /**
-     * Getter for dyd.
-     * 
-     * @return the dyd
-     */
-    public T2Number getDyd() {
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        return dyd;
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "dxd", dxd );
+    writer.writeAttribute( "dyd", dyd );
+    for( int i = 0; i < eight.length; i++ ) {
+      writer.writeStartElement( "pair" );
+      writer.writeAttribute( "id", i );
+      writer.writeAttribute( "value", eight[ i ].toString() );
+      writer.writeEndElement();
     }
-
-    /**
-     * Getter for eight.
-     * 
-     * @return the eight
-     */
-    public T2SixNumber[] getEight() {
-
-        return eight;
-    }
-
-@Override
-    public int getID() {
-
-        return TYPE_RCURVELINE;
-    }
-
-@Override
-    public String getName() {
-
-        return "rcurveline";
-    }
-
-@Override
-    public Object getValue() {
-
-        return eight;
-    }
-
-@Override
-    public String toText() {
-
-        StringBuilder buf = new StringBuilder();
-
-        buf.append(dxd.toString()).append(' ');
-        buf.append(dyd.toString()).append(' ');
-        for (int i = 0; i < eight.length; i++) {
-            buf.append(eight[i].toString()).append(' ');
-        }
-        buf.append(getName());
-        return buf.toString();
-    }
-
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("dxd", dxd);
-        writer.writeAttribute("dyd", dyd);
-        for (int i = 0; i < eight.length; i++) {
-            writer.writeStartElement("pair");
-            writer.writeAttribute("id", i);
-            writer.writeAttribute("value", eight[i].toString());
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-    }
+    writer.writeEndElement();
+  }
 
 }

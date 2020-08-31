@@ -19,68 +19,64 @@
 
 package org.extex.exbib.core.io.bibio.options;
 
+import org.extex.exbib.core.io.Writer;
+
 import java.io.IOException;
 import java.util.Locale;
 
-import org.extex.exbib.core.io.Writer;
-
 /**
  * Enumeration for case converted writing.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public enum Cased {
 
+  /**
+   * The field {@code Upper} contains the translator to upper case.
+   */
+  Upper {
     /**
-     * The field {@code Upper} contains the translator to upper case.
+     *      org.extex.exbib.core.io.Writer, java.lang.String)
      */
-    Upper {
+    @Override
+    public void write( Writer writer, String s ) throws IOException {
 
-        /**
-    *      org.extex.exbib.core.io.Writer, java.lang.String)
-         */
-        @Override
-        public void write(Writer writer, String s) throws IOException {
-
-            writer.print(s.toUpperCase(Locale.ENGLISH));
-        }
-    },
+      writer.print( s.toUpperCase( Locale.ENGLISH ) );
+    }
+  },
+  /**
+   * The field {@code Lower} contains the translator to lower case.
+   */
+  Lower {
     /**
-     * The field {@code Lower} contains the translator to lower case.
+     *      org.extex.exbib.core.io.Writer, java.lang.String)
      */
-    Lower {
+    @Override
+    public void write( Writer writer, String s ) throws IOException {
 
-        /**
-    *      org.extex.exbib.core.io.Writer, java.lang.String)
-         */
-        @Override
-        public void write(Writer writer, String s) throws IOException {
-
-            writer.print(s.toLowerCase(Locale.ENGLISH));
-        }
-    },
+      writer.print( s.toLowerCase( Locale.ENGLISH ) );
+    }
+  },
+  /**
+   * The field {@code AsIs} contains the identity.
+   */
+  AsIs {
     /**
-     * The field {@code AsIs} contains the identity.
+     *      org.extex.exbib.core.io.Writer, java.lang.String)
      */
-    AsIs {
+    @Override
+    public void write( Writer writer, String s ) throws IOException {
 
-        /**
-    *      org.extex.exbib.core.io.Writer, java.lang.String)
-         */
-        @Override
-        public void write(Writer writer, String s) throws IOException {
+      writer.print( s );
+    }
+  };
 
-            writer.print(s);
-        }
-    };
-
-    /**
-     * Write a transformed string.
-     * 
-     * @param writer the writer
-     * @param s the string
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    public abstract void write(Writer writer, String s) throws IOException;
+  /**
+   * Write a transformed string.
+   *
+   * @param writer the writer
+   * @param s      the string
+   * @throws IOException in case of an I/O error
+   */
+  public abstract void write( Writer writer, String s ) throws IOException;
 }

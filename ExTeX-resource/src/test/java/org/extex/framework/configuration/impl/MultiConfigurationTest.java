@@ -19,590 +19,583 @@
 
 package org.extex.framework.configuration.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationLoader;
+import org.extex.framework.configuration.exception.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.ConfigurationLoader;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationIOException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * This is a test suite for {@link MultiConfiguration}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MultiConfigurationTest {
 
-    /**
-     * The field {@code CFG1} contains the first base configuration.
-     */
-    private static final Configuration CFG1 = new Configuration() {
+  /**
+   * The field {@code CFG1} contains the first base configuration.
+   */
+  private static final Configuration CFG1 = new Configuration() {
 
-        @Override
-        public Configuration findConfiguration(String key)
-                throws ConfigurationInvalidResourceException,
-                    ConfigurationNotFoundException,
-                    ConfigurationSyntaxException,
-                    ConfigurationIOException {
+    @Override
+    public Configuration findConfiguration( String key )
+        throws ConfigurationInvalidResourceException,
+        ConfigurationNotFoundException,
+        ConfigurationSyntaxException,
+        ConfigurationIOException {
 
-            return "s".equals(key) ? this : null;
-        }
-
-        @Override
-        public Configuration findConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            return "s".equals(key) && "a".equals(attribute) ? this : null;
-        }
-
-        @Override
-        public String getAttribute(String name) {
-
-            return "a".equals(name) ? "A" : "X";
-        }
-
-        @Override
-        public Configuration getConfiguration(String key)
-                throws ConfigurationException {
-
-            Configuration c = findConfiguration(key);
-            if (c == null) {
-                throw new ConfigurationNotFoundException(key, null);
-            }
-            return c;
-        }
-
-        @Override
-        public Configuration getConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            Configuration c = findConfiguration(key, attribute);
-            if (c == null) {
-                throw new ConfigurationNotFoundException(key, attribute);
-            }
-            return c;
-        }
-
-        @Override
-        public String getValue() throws ConfigurationException {
-
-            return "val";
-        }
-
-        @Override
-        public String getValue(String key) throws ConfigurationException {
-
-            return "val";
-        }
-
-        @Override
-        public int getValueAsInteger(String key, int defaultValue)
-                throws ConfigurationException {
-
-            return 42;
-        }
-
-        @Override
-        public void getValues(List<String> list, String key) {
-
-        }
-
-        @Override
-        public List<String> getValues(String key) {
-
-            return new ArrayList<String>();
-        }
-
-        @Override
-        public Iterator<Configuration> iterator() throws ConfigurationException {
-
-            return null;
-        }
-
-        @Override
-        public Iterator<Configuration> iterator(String key)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        @Override
-        public void setConfigurationLoader(ConfigurationLoader loader) {
-
-        }
-    };
-
-    /**
-     * The field {@code mc0} contains the multi-configuration without
-     * sub-configurations.
-     */
-    private MultiConfiguration mc0;
-
-    /**
-     * The field {@code mc1} contains the multi-configuration with one
-     * sub-configuration.
-     */
-    private MultiConfiguration mc1;
-
-    /**
-     * The field {@code mc1} contains the multi-configuration with two
-     * sub-configurations.
-     */
-    private MultiConfiguration mc2;
-
-    /**
-     * Create the test objects.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Before
-    public void setUp() throws Exception {
-
-        mc0 = new MultiConfiguration(new ArrayList<Configuration>());
-
-        ArrayList<Configuration> a = new ArrayList<Configuration>();
-        a.add(CFG1);
-        mc1 = new MultiConfiguration(a);
-
-        a = new ArrayList<Configuration>();
-        a.add(CFG1);
-        a.add(CFG1);
-        mc2 = new MultiConfiguration(a);
+      return "s".equals( key ) ? this : null;
     }
 
-    /**
-     * Release the test objects.
-     * 
-     * @throws Exception in case of an error
-     */
-    @After
-    public void tearDown() throws Exception {
+    @Override
+    public Configuration findConfiguration( String key, String attribute )
+        throws ConfigurationException {
 
-        mc0 = null;
-        mc1 = null;
-        mc2 = null;
+      return "s".equals( key ) && "a".equals( attribute ) ? this : null;
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testFindConfigurationString0() {
+    @Override
+    public String getAttribute( String name ) {
 
-        assertNull(mc0.findConfiguration(""));
+      return "a".equals( name ) ? "A" : "X";
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testFindConfigurationString1() {
+    @Override
+    public Configuration getConfiguration( String key )
+        throws ConfigurationException {
 
-        assertNull(mc1.findConfiguration(""));
+      Configuration c = findConfiguration( key );
+      if( c == null ) {
+        throw new ConfigurationNotFoundException( key, null );
+      }
+      return c;
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testFindConfigurationString11() {
+    @Override
+    public Configuration getConfiguration( String key, String attribute )
+        throws ConfigurationException {
 
-        assertNotNull(mc1.findConfiguration("s"));
+      Configuration c = findConfiguration( key, attribute );
+      if( c == null ) {
+        throw new ConfigurationNotFoundException( key, attribute );
+      }
+      return c;
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testFindConfigurationString2() {
+    @Override
+    public String getValue() throws ConfigurationException {
 
-        assertNull(mc2.findConfiguration(""));
+      return "val";
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testFindConfigurationString21() {
+    @Override
+    public String getValue( String key ) throws ConfigurationException {
 
-        assertNotNull(mc2.findConfiguration("s"));
+      return "val";
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String, java.lang.String)}
-     * .
-     */
-    @Test
-    public void testFindConfigurationStringString0() {
+    @Override
+    public int getValueAsInteger( String key, int defaultValue )
+        throws ConfigurationException {
 
-        assertNull(mc0.findConfiguration("", ""));
+      return 42;
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String, java.lang.String)}
-     * .
-     */
-    @Test
-    public void testFindConfigurationStringString1() {
+    @Override
+    public void getValues( List<String> list, String key ) {
 
-        assertNull(mc1.findConfiguration("", ""));
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String, java.lang.String)}
-     * .
-     */
-    @Test
-    public void testFindConfigurationStringString11() {
+    @Override
+    public List<String> getValues( String key ) {
 
-        assertNotNull(mc1.findConfiguration("s", "a"));
+      return new ArrayList<String>();
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String, java.lang.String)}
-     * .
-     */
-    @Test
-    public void testFindConfigurationStringString2() {
+    @Override
+    public Iterator<Configuration> iterator() throws ConfigurationException {
 
-        assertNull(mc2.findConfiguration("", ""));
+      return null;
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String, java.lang.String)}
-     * .
-     */
-    @Test
-    public void testFindConfigurationStringString21() {
+    @Override
+    public Iterator<Configuration> iterator( String key )
+        throws ConfigurationException {
 
-        assertTrue(mc2.findConfiguration("s", "a") instanceof MultiConfiguration);
+      return null;
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getAttribute(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetAttribute0() {
+    @Override
+    public void setConfigurationLoader( ConfigurationLoader loader ) {
 
-        assertNull(mc0.getAttribute(""));
     }
+  };
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getAttribute(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetAttribute1() {
+  /**
+   * The field {@code mc0} contains the multi-configuration without
+   * sub-configurations.
+   */
+  private MultiConfiguration mc0;
 
-        assertEquals("X", mc1.getAttribute(""));
-    }
+  /**
+   * The field {@code mc1} contains the multi-configuration with one
+   * sub-configuration.
+   */
+  private MultiConfiguration mc1;
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetConfigurationString0() {
+  /**
+   * The field {@code mc1} contains the multi-configuration with two
+   * sub-configurations.
+   */
+  private MultiConfiguration mc2;
 
-        assertNull(mc0.getConfiguration(""));
-    }
+  /**
+   * Create the test objects.
+   *
+   * @throws Exception in case of an error
+   */
+  @Before
+  public void setUp() throws Exception {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetConfigurationString1() {
+    mc0 = new MultiConfiguration( new ArrayList<Configuration>() );
 
-        assertNull(mc1.getConfiguration(""));
-    }
+    ArrayList<Configuration> a = new ArrayList<Configuration>();
+    a.add( CFG1 );
+    mc1 = new MultiConfiguration( a );
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetConfigurationString11() {
+    a = new ArrayList<Configuration>();
+    a.add( CFG1 );
+    a.add( CFG1 );
+    mc2 = new MultiConfiguration( a );
+  }
 
-        assertNotNull(mc1.getConfiguration("s"));
-    }
+  /**
+   * Release the test objects.
+   *
+   * @throws Exception in case of an error
+   */
+  @After
+  public void tearDown() throws Exception {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetConfigurationString2() {
+    mc0 = null;
+    mc1 = null;
+    mc2 = null;
+  }
 
-        assertNull(mc2.getConfiguration(""));
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testFindConfigurationString0() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetConfigurationString21() {
+    assertNull( mc0.findConfiguration( "" ) );
+  }
 
-        assertNotNull(mc2.getConfiguration("s"));
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testFindConfigurationString1() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String, java.lang.String)}
-     * .
-     */
-    @Test(expected = ConfigurationNotFoundException.class)
-    public void testGetConfigurationStringString0() {
+    assertNull( mc1.findConfiguration( "" ) );
+  }
 
-        mc0.getConfiguration("", "");
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testFindConfigurationString11() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String, java.lang.String)}
-     * .
-     */
-    @Test(expected = ConfigurationNotFoundException.class)
-    public void testGetConfigurationStringString1() {
+    assertNotNull( mc1.findConfiguration( "s" ) );
+  }
 
-        mc1.getConfiguration("", "");
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testFindConfigurationString2() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String, java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetConfigurationStringString11() {
+    assertNull( mc2.findConfiguration( "" ) );
+  }
 
-        assertNotNull(mc1.getConfiguration("s", "a"));
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testFindConfigurationString21() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String, java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetConfigurationStringString21() {
+    assertNotNull( mc2.findConfiguration( "s" ) );
+  }
 
-        assertNotNull(mc2.getConfiguration("s", "a"));
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String, java.lang.String)}
+   * .
+   */
+  @Test
+  public void testFindConfigurationStringString0() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValue()}
-     * .
-     */
-    @Test
-    public void testGetValue0() {
+    assertNull( mc0.findConfiguration( "", "" ) );
+  }
 
-        assertEquals("", mc0.getValue());
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String, java.lang.String)}
+   * .
+   */
+  @Test
+  public void testFindConfigurationStringString1() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValue()}
-     * .
-     */
-    @Test
-    public void testGetValue1() {
+    assertNull( mc1.findConfiguration( "", "" ) );
+  }
 
-        assertEquals("val", mc1.getValue());
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String, java.lang.String)}
+   * .
+   */
+  @Test
+  public void testFindConfigurationStringString11() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValueAsInteger(java.lang.String, int)}
-     * .
-     */
-    @Test
-    public void testGetValueAsInteger0() {
+    assertNotNull( mc1.findConfiguration( "s", "a" ) );
+  }
 
-        assertEquals(42, mc0.getValueAsInteger("", 42));
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String, java.lang.String)}
+   * .
+   */
+  @Test
+  public void testFindConfigurationStringString2() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValueAsInteger(java.lang.String, int)}
-     * .
-     */
-    @Test
-    public void testGetValueAsInteger1() {
+    assertNull( mc2.findConfiguration( "", "" ) );
+  }
 
-        assertEquals(42, mc1.getValueAsInteger("", 24));
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#findConfiguration(java.lang.String, java.lang.String)}
+   * .
+   */
+  @Test
+  public void testFindConfigurationStringString21() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValues(java.util.List, java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetValuesListOfStringString0() {
+    assertTrue( mc2.findConfiguration( "s",
+                                       "a" ) instanceof MultiConfiguration );
+  }
 
-        ArrayList<String> list = new ArrayList<String>();
-        mc0.getValues(list, "x");
-        assertEquals(0, list.size());
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getAttribute(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetAttribute0() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValues(java.util.List, java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetValuesListOfStringString1() {
+    assertNull( mc0.getAttribute( "" ) );
+  }
 
-        ArrayList<String> list = new ArrayList<String>();
-        mc1.getValues(list, "x");
-        assertEquals(0, list.size());
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getAttribute(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetAttribute1() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValues(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetValuesString0() {
+    assertEquals( "X", mc1.getAttribute( "" ) );
+  }
 
-        assertEquals(0, mc0.getValues("").size());
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetConfigurationString0() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValues(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetValuesString1() {
+    assertNull( mc0.getConfiguration( "" ) );
+  }
 
-        assertEquals(0, mc1.getValues("").size());
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetConfigurationString1() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValue(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetValueString0() {
+    assertNull( mc1.getConfiguration( "" ) );
+  }
 
-        assertNull(mc0.getValue(""));
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetConfigurationString11() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValue(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testGetValueString1() {
+    assertNotNull( mc1.getConfiguration( "s" ) );
+  }
 
-        assertEquals("val", mc1.getValue(""));
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetConfigurationString2() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#iterator()}
-     * .
-     */
-    @Test
-    public void testIterator0() {
+    assertNull( mc2.getConfiguration( "" ) );
+  }
 
-        Iterator<Configuration> it = mc0.iterator();
-        assertNotNull(it);
-        assertFalse(it.hasNext());
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetConfigurationString21() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#iterator()}
-     * .
-     */
-    @Test
-    public void testIterator1() {
+    assertNotNull( mc2.getConfiguration( "s" ) );
+  }
 
-        Iterator<Configuration> it = mc1.iterator();
-        assertNotNull(it);
-        assertFalse(it.hasNext());
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String, java.lang.String)}
+   * .
+   */
+  @Test(expected = ConfigurationNotFoundException.class)
+  public void testGetConfigurationStringString0() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#iterator(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testIteratorString0() {
+    mc0.getConfiguration( "", "" );
+  }
 
-        Iterator<Configuration> it = mc0.iterator("x");
-        assertNotNull(it);
-        assertFalse(it.hasNext());
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String, java.lang.String)}
+   * .
+   */
+  @Test(expected = ConfigurationNotFoundException.class)
+  public void testGetConfigurationStringString1() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#iterator(java.lang.String)}
-     * .
-     */
-    @Test
-    public void testIteratorString1() {
+    mc1.getConfiguration( "", "" );
+  }
 
-        Iterator<Configuration> it = mc1.iterator("x");
-        assertNotNull(it);
-        assertFalse(it.hasNext());
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String, java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetConfigurationStringString11() {
 
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.MultiConfiguration#MultiConfiguration(java.util.List)}
-     * .
-     */
-    @Test(expected = NullPointerException.class)
-    public void testMultiConfiguration1() {
+    assertNotNull( mc1.getConfiguration( "s", "a" ) );
+  }
 
-        new MultiConfiguration(null);
-    }
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getConfiguration(java.lang.String, java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetConfigurationStringString21() {
+
+    assertNotNull( mc2.getConfiguration( "s", "a" ) );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValue()}
+   * .
+   */
+  @Test
+  public void testGetValue0() {
+
+    assertEquals( "", mc0.getValue() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValue()}
+   * .
+   */
+  @Test
+  public void testGetValue1() {
+
+    assertEquals( "val", mc1.getValue() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValueAsInteger(java.lang.String, int)}
+   * .
+   */
+  @Test
+  public void testGetValueAsInteger0() {
+
+    assertEquals( 42, mc0.getValueAsInteger( "", 42 ) );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValueAsInteger(java.lang.String, int)}
+   * .
+   */
+  @Test
+  public void testGetValueAsInteger1() {
+
+    assertEquals( 42, mc1.getValueAsInteger( "", 24 ) );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValues(java.util.List, java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetValuesListOfStringString0() {
+
+    ArrayList<String> list = new ArrayList<String>();
+    mc0.getValues( list, "x" );
+    assertEquals( 0, list.size() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValues(java.util.List, java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetValuesListOfStringString1() {
+
+    ArrayList<String> list = new ArrayList<String>();
+    mc1.getValues( list, "x" );
+    assertEquals( 0, list.size() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValues(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetValuesString0() {
+
+    assertEquals( 0, mc0.getValues( "" ).size() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValues(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetValuesString1() {
+
+    assertEquals( 0, mc1.getValues( "" ).size() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValue(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetValueString0() {
+
+    assertNull( mc0.getValue( "" ) );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#getValue(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testGetValueString1() {
+
+    assertEquals( "val", mc1.getValue( "" ) );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#iterator()}
+   * .
+   */
+  @Test
+  public void testIterator0() {
+
+    Iterator<Configuration> it = mc0.iterator();
+    assertNotNull( it );
+    assertFalse( it.hasNext() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#iterator()}
+   * .
+   */
+  @Test
+  public void testIterator1() {
+
+    Iterator<Configuration> it = mc1.iterator();
+    assertNotNull( it );
+    assertFalse( it.hasNext() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#iterator(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testIteratorString0() {
+
+    Iterator<Configuration> it = mc0.iterator( "x" );
+    assertNotNull( it );
+    assertFalse( it.hasNext() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#iterator(java.lang.String)}
+   * .
+   */
+  @Test
+  public void testIteratorString1() {
+
+    Iterator<Configuration> it = mc1.iterator( "x" );
+    assertNotNull( it );
+    assertFalse( it.hasNext() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.framework.configuration.impl.MultiConfiguration#MultiConfiguration(java.util.List)}
+   * .
+   */
+  @Test(expected = NullPointerException.class)
+  public void testMultiConfiguration1() {
+
+    new MultiConfiguration( null );
+  }
 
 }

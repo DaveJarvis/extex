@@ -24,27 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \odelcode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OdelcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(OdelcodeTest.class);
-    }
+    (new JUnitCore()).run( OdelcodeTest.class );
+  }
 
 
-    public OdelcodeTest() {
+  public OdelcodeTest() {
 
-        setPrimitive("odelcode");setArguments("23 32");
-        setConfig("omega-test");
-    }
+    setPrimitive( "odelcode" );
+    setArguments( "23 32" );
+    setConfig( "omega-test" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

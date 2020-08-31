@@ -23,23 +23,21 @@ import org.extex.core.exception.helping.HelpingException;
 
 /**
  * This interface describes a binary function.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Function2 {
 
-    /**
-     * Apply the operation on the arguments.
-     * 
-     * @param arg1 the first argument. It m,ight be altered by the function and
-     *        returned
-     * @param arg2 the second argument. It will not be altered in any way
-     * 
-     * @return the function's result
-     * 
-     * @throws HelpingException in case of an error
-     */
-    Accumulator apply(Accumulator arg1, Accumulator arg2)
-            throws HelpingException;
+  /**
+   * Apply the operation on the arguments.
+   *
+   * @param arg1 the first argument. It m,ight be altered by the function and
+   *             returned
+   * @param arg2 the second argument. It will not be altered in any way
+   * @return the function's result
+   * @throws HelpingException in case of an error
+   */
+  Accumulator apply( Accumulator arg1, Accumulator arg2 )
+      throws HelpingException;
 
 }

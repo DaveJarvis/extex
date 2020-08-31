@@ -25,28 +25,29 @@ import java.io.IOException;
  * Exception: missing number
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2MissingNumberException extends IOException {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new object
-     */
-    public T2MissingNumberException() {
+  /**
+   * Create a new object
+   */
+  public T2MissingNumberException() {
 
-    }
+  }
 
-    /**
-     * Create a new object
-     * @param s the message
-     */
-    public T2MissingNumberException(String s) {
+  /**
+   * Create a new object
+   *
+   * @param s the message
+   */
+  public T2MissingNumberException( String s ) {
 
-        super(s);
-    }
+    super( s );
+  }
 }

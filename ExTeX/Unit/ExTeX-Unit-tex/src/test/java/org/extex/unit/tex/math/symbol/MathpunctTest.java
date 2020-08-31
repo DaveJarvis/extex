@@ -23,12 +23,12 @@ package org.extex.unit.tex.math.symbol;
  * This is a test suite for the primitive {@code \mathpunct}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathpunctTest extends AbstractOperatorTester {
 
-    public MathpunctTest() {
-        setPrimitive("mathpunct");
-    }
+  public MathpunctTest() {
+    setPrimitive( "mathpunct" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

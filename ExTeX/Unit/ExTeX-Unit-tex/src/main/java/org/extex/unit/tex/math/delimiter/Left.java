@@ -32,62 +32,61 @@ import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This class provides an implementation for the primitive {@code \left}.
- * 
+ *
  * <p>The Math Primitive {@code \left}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;left&rang;
  *       &rarr; {@code \left} ...  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \left(  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Left extends AbstractTeXDelimiter {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Left(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Left( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException,
-                ConfigurationException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException,
+      ConfigurationException,
+      TypesetterException {
 
-        NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del =
-                parseDelimiter(context, source, typesetter, getToken());
-        nc.left(del);
-    }
+    NoadConsumer nc = getListMaker( context, typesetter );
+    MathDelimiter del =
+        parseDelimiter( context, source, typesetter, getToken() );
+    nc.left( del );
+  }
 
 }

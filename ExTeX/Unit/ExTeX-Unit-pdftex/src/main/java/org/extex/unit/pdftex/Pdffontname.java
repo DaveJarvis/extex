@@ -38,105 +38,108 @@ import org.extex.typesetter.tc.font.Font;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdffontname}.
- * 
+ *
  * <p>The PDF Primitive {@code \pdffontname}</p>
  * <p>
  * This primitive expands to the name of the font as used in PDF. For instance
  * if a font is addressed as {@code /F12} then this primitive expands to
  * {@code 12}.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;pdffontname&rang;
  *       &rarr; {@code \pdffontname} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context, CodeToken)
  *          &lang;font&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \font\f cmr12
  *    \pdffontname \f  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdffontname extends AbstractPdftexCode
-        implements
-            ExpandableCode,
-            Theable,
-            TokensConvertible {
+    implements
+    ExpandableCode,
+    Theable,
+    TokensConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdffontname(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdffontname( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens convertTokens( Context context, TokenSource source,
+                               Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    PdftexSupport writer = ensurePdftex( context, typesetter );
+
+    Font font = source.getFont( context, getToken() );
+
+    String name = writer.pdffontname( font );
+    try {
+      return context.getTokenFactory().toTokens( name );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens convertTokens(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
+    source.push( convertTokens( context, source, typesetter ) );
+  }
 
-        Font font = source.getFont(context, getToken());
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String name = writer.pdffontname(font);
-        try {
-            return context.getTokenFactory().toTokens(name);
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
+    source.push( convertTokens( context, source, typesetter ) );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
 
-        source.push(convertTokens(context, source, typesetter));
-    }
+    return convertTokens( context, source, typesetter );
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        source.push(convertTokens(context, source, typesetter));
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        return convertTokens(context, source, typesetter);
-
-    }
+  }
 
 }

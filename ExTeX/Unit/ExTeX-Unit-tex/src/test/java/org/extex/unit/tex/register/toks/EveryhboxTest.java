@@ -25,80 +25,81 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \everyhbox}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EveryhboxTest extends AbstractToksRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(EveryhboxTest.class);
-    }
+    (new JUnitCore()).run( EveryhboxTest.class );
+  }
 
 
-    public EveryhboxTest() {
+  public EveryhboxTest() {
 
-        super("everyhbox", "", "");
-    }
+    super( "everyhbox", "", "" );
+  }
 
-    /**
-     * <testcase primitive="\everyhbox"> Test case checking that a hbox
-     * containing "abc" in font cmtt12 has the width 37.05002pt where "123" is
-     * added to the box by an {@code \everyhbox}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr1() throws Exception {
+  /**
+   * <testcase primitive="\everyhbox"> Test case checking that a hbox
+   * containing "abc" in font cmtt12 has the width 37.05002pt where "123" is
+   * added to the box by an {@code \everyhbox}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\catcode`{=1 " + "\\catcode`}=2 " + "\\everyhbox123" + "\\end",
-            // --- log message ---
-            "Missing `{' inserted");
-    }
+    assertFailure(// --- input code ---
+                  "\\catcode`{=1 " + "\\catcode`}=2 " + "\\everyhbox123" + 
+                      "\\end",
+                  // --- log message ---
+                  "Missing `{' inserted" );
+  }
 
-    /**
-     * <testcase primitive="\everyhbox"> Test case checking that a hbox
-     * containing "abc" in font cmtt12 has the width 37.05002pt where "123" is
-     * added to the box by an {@code \everyhbox}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEveryHbox1() throws Exception {
+  /**
+   * <testcase primitive="\everyhbox"> Test case checking that a hbox
+   * containing "abc" in font cmtt12 has the width 37.05002pt where "123" is
+   * added to the box by an {@code \everyhbox}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEveryHbox1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\catcode`{=1" + "\\catcode`}=2" + "\\relax"
-                    + "\\font\\fnt cmtt12 \\fnt" + "\\everyhbox{123}"
-                    + "\\setbox1=\\hbox{abc} " + "\\the\\wd1 " + "\\end",
-            // --- output channel ---
-            "37.05002pt" + TERM); // checked with TeX
-    }
+    assertSuccess(// --- input code ---
+                  "\\catcode`{=1" + "\\catcode`}=2" + "\\relax"
+                      + "\\font\\fnt cmtt12 \\fnt" + "\\everyhbox{123}"
+                      + "\\setbox1=\\hbox{abc} " + "\\the\\wd1 " + "\\end",
+                  // --- output channel ---
+                  "37.05002pt" + TERM ); // checked with TeX
+  }
 
-    /**
-     * <testcase primitive="\everyhbox"> Test case checking that a hbox
-     * containing "abc" in font cmtt12 has the width 55.57503pt where "123" is
-     * added to the box by an \everyhbox and "..." is prepended by
-     * \afterassignment.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEveryHboxAfterassignment1() throws Exception {
+  /**
+   * <testcase primitive="\everyhbox"> Test case checking that a hbox
+   * containing "abc" in font cmtt12 has the width 55.57503pt where "123" is
+   * added to the box by an \everyhbox and "..." is prepended by
+   * \afterassignment.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEveryHboxAfterassignment1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\catcode`{=1" + "\\catcode`}=2" + "\\relax"
-                    + "\\font\\fnt cmtt12 \\fnt" + "\\everyhbox{123}"
-                    + "\\def\\x{...}" + "\\afterassignment\\x"
-                    + "\\setbox1=\\hbox{abc} " + "\\the\\wd1 " + "\\end",
-            // --- output channel ---
-            "55.57503pt" + TERM); // checked with TeX
-    }
+    assertSuccess(// --- input code ---
+                  "\\catcode`{=1" + "\\catcode`}=2" + "\\relax"
+                      + "\\font\\fnt cmtt12 \\fnt" + "\\everyhbox{123}"
+                      + "\\def\\x{...}" + "\\afterassignment\\x"
+                      + "\\setbox1=\\hbox{abc} " + "\\the\\wd1 " + "\\end",
+                  // --- output channel ---
+                  "55.57503pt" + TERM ); // checked with TeX
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

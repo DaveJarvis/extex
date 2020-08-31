@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \mediaheight}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MediaheightTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MediaheightTest.class);
-    }
+    (new JUnitCore()).run( MediaheightTest.class );
+  }
 
 
-    public MediaheightTest() {
+  public MediaheightTest() {
 
-        super("mediaheight", "", "845.04684pt");
-        setConfig("extex-test");
-    }
+    super( "mediaheight", "", "845.04684pt" );
+    setConfig( "extex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

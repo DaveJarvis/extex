@@ -25,41 +25,41 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \pushocplist}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PushocplistTest extends ExTeXLauncher {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PushocplistTest.class);
-    }
+    (new JUnitCore()).run( PushocplistTest.class );
+  }
 
 
-    public PushocplistTest() {
+  public PushocplistTest() {
 
-        setConfig("omega-test");
-    }
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\pushocp"> Test case checking that {@code \pushocp}
-     * needs an active ocp list.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pushocp"> Test case checking that {@code \pushocp}
+   * needs an active ocp list.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\pushocplist \\relax",
-            // --- output channel ---
-            "Missing ocp list identifier");
-    }
+    assertFailure(// --- input code ---
+                  "\\pushocplist \\relax",
+                  // --- output channel ---
+                  "Missing ocp list identifier" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

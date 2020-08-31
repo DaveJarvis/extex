@@ -24,73 +24,73 @@ import org.extex.framework.configuration.Configuration;
 /**
  * This Exception is thrown when an attribute of configuration is requested
  * which is not found.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationMissingAttributeException
-        extends
-            ConfigurationException {
+    extends
+    ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2010L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2010L;
 
-    /**
-     * The field {@code attribute} contains the name of the missing attribute.
-     */
-    private final String attribute;
+  /**
+   * The field {@code attribute} contains the name of the missing attribute.
+   */
+  private final String attribute;
 
-    /**
-     * Create a new object.
-     * 
-     * @param attribute the message string
-     * @param origin the configuration in which the exception has occurred
-     */
-    public ConfigurationMissingAttributeException(String attribute,
-            Configuration origin) {
+  /**
+   * Create a new object.
+   *
+   * @param attribute the message string
+   * @param origin    the configuration in which the exception has occurred
+   */
+  public ConfigurationMissingAttributeException( String attribute,
+                                                 Configuration origin ) {
 
-        this(attribute, origin.toString());
-    }
+    this( attribute, origin.toString() );
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param attribute the message string
-     * @param location the location where the exception has occurred
-     */
-    public ConfigurationMissingAttributeException(String attribute,
-            String location) {
+  /**
+   * Create a new object.
+   *
+   * @param attribute the message string
+   * @param location  the location where the exception has occurred
+   */
+  public ConfigurationMissingAttributeException( String attribute,
+                                                 String location ) {
 
-        super(null, location);
-        this.attribute = attribute;
-    }
+    super( null, location );
+    this.attribute = attribute;
+  }
 
-    /**
-     * Getter for attribute.
-     * 
-     * @return the attribute
-     */
-    public String getAttribute() {
+  /**
+   * Getter for attribute.
+   *
+   * @return the attribute
+   */
+  public String getAttribute() {
 
-        return attribute;
-    }
+    return attribute;
+  }
 
-    /**
-     * Getter for the text prefix of this ConfigException. The text is taken
-     * from the resource bundle {@code ConfigurationEception} under the key
-     * {@code ConfigurationMissingAttributeException.Text}. The argument {0} is
-     * replaced by the name of the missing attribute as passed to the
-     * constructor.
-     * 
-     * @return the text
-     */
-    @Override
-    public String getText() {
+  /**
+   * Getter for the text prefix of this ConfigException. The text is taken
+   * from the resource bundle {@code ConfigurationEception} under the key
+   * {@code ConfigurationMissingAttributeException.Text}. The argument {0} is
+   * replaced by the name of the missing attribute as passed to the
+   * constructor.
+   *
+   * @return the text
+   */
+  @Override
+  public String getText() {
 
-        return getLocalizer().format(
-            "ConfigurationMissingAttributeException.Text",
-            attribute == null ? "" : attribute);
-    }
+    return getLocalizer().format(
+        "ConfigurationMissingAttributeException.Text",
+        attribute == null ? "" : attribute );
+  }
 
 }

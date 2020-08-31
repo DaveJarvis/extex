@@ -25,64 +25,64 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the kerning.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class KerningTest extends ExTeXLauncher {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(KerningTest.class);
-    }
+    (new JUnitCore()).run( KerningTest.class );
+  }
 
 
-    public KerningTest() {
+  public KerningTest() {
 
-    }
+  }
 
-    /**
-     *  Test case checking that ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAVAV() throws Exception {
+  /**
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAVAV() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "\\font\\f=cmr10 \\f " + "AVA",
-            // --- output channel ---
-            "\\vbox(6.83331pt+0.0pt)x3000.0pt\n"
-                    + ".\\hbox(6.83331pt+0.0pt)x3000.0pt\n"
-                    + "..A\n"
-                    + "..\\kern -1.11113pt\n"
-                    + "..V\n"
-                    + "..\\kern -1.11113pt\n"
-                    + "..A\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "\\font\\f=cmr10 \\f " + "AVA",
+                   // --- output channel ---
+                   "\\vbox(6.83331pt+0.0pt)x3000.0pt\n"
+                       + ".\\hbox(6.83331pt+0.0pt)x3000.0pt\n"
+                       + "..A\n"
+                       + "..\\kern -1.11113pt\n"
+                       + "..V\n"
+                       + "..\\kern -1.11113pt\n"
+                       + "..A\n" );
+  }
 
-    /**
-     *  Test case checking that ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testXyz() throws Exception {
+  /**
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testXyz() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "\\font\\f=cmr10 \\f " + "xyz",
-            // --- output channel ---
-            "\\vbox(4.30554pt+1.94444pt)x3000.0pt\n"
-                    + ".\\hbox(4.30554pt+1.94444pt)x3000.0pt\n"
-                    + "..x\n"
-                    + "..y\n"
-                    + "..z\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "\\font\\f=cmr10 \\f " + "xyz",
+                   // --- output channel ---
+                   "\\vbox(4.30554pt+1.94444pt)x3000.0pt\n"
+                       + ".\\hbox(4.30554pt+1.94444pt)x3000.0pt\n"
+                       + "..x\n"
+                       + "..y\n"
+                       + "..z\n" );
+  }
 
 }

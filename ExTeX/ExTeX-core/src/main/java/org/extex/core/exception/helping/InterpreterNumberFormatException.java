@@ -23,37 +23,39 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * InterprerterException, if a number format is wrong.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class InterpreterNumberFormatException extends HelpingException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Create a new object.
-     */
-    public InterpreterNumberFormatException() {
+  /**
+   * Create a new object.
+   */
+  public InterpreterNumberFormatException() {
 
-        super(LocalizerFactory
-            .getLocalizer(InterpreterNumberFormatException.class), "Message0",
-            "");
-    }
+    super( LocalizerFactory
+               .getLocalizer( InterpreterNumberFormatException.class ),
+           "Message0",
+           "" );
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     */
-    public InterpreterNumberFormatException(String message) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   */
+  public InterpreterNumberFormatException( String message ) {
 
-        super(LocalizerFactory
-            .getLocalizer(InterpreterNumberFormatException.class), "Message1",
-            message);
-    }
+    super( LocalizerFactory
+               .getLocalizer( InterpreterNumberFormatException.class ),
+           "Message1",
+           message );
+  }
 
 }

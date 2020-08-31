@@ -31,90 +31,90 @@ import java.util.Map;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public final class ScriptTag extends Tag {
 
-    private static final Map<String, ScriptTag> scriptTags =
-        new HashMap<>( 30 );
+  private static final Map<String, ScriptTag> scriptTags =
+      new HashMap<>( 30 );
 
-    private final static String TAG_DEFAULT = "DFLT";
+  private final static String TAG_DEFAULT = "DFLT";
 
-    static {
-        getInstance("arab"); // Arabic
-        getInstance("armn"); // Armenian
-        getInstance("beng"); // Bengali
-        getInstance("bopo"); // Bopomofo
-        getInstance("brai"); // Braille
-        getInstance("byzm"); // Byzantine Music
-        getInstance("cans"); // Canadian Syllabics
-        getInstance("cher"); // Cherokee
-        getInstance("hani"); // CJK Ideographic
-        getInstance("cyrl"); // Cyrillic
-        getInstance(TAG_DEFAULT);
-        getInstance("deva"); // Devanagari
-        getInstance("ethi"); // Ethiopic
-        getInstance("geor"); // Georgian
-        getInstance("grek"); // Greek
-        getInstance("gujr"); // Gujarati
-        getInstance("guru"); // Gurmukhi
-        getInstance("jamo"); // Hangul Jamo
-        getInstance("hang"); // Hangul
-        getInstance("hebr"); // Hebrew
-        getInstance("kana"); // Hiragana
-        getInstance("knda"); // Kannada
-        getInstance("kana"); // Katakana
-        getInstance("khmr"); // Khmer
-        getInstance("lao"); // Lao
-        getInstance("latn"); // Latin
-        getInstance("mlym"); // Malayalam
-        getInstance("mong"); // Mongolian
-        getInstance("mymr"); // Myanmar
-        getInstance("ogam"); // Ogham
-        getInstance("orya"); // Oriya
+  static {
+    getInstance( "arab" ); // Arabic
+    getInstance( "armn" ); // Armenian
+    getInstance( "beng" ); // Bengali
+    getInstance( "bopo" ); // Bopomofo
+    getInstance( "brai" ); // Braille
+    getInstance( "byzm" ); // Byzantine Music
+    getInstance( "cans" ); // Canadian Syllabics
+    getInstance( "cher" ); // Cherokee
+    getInstance( "hani" ); // CJK Ideographic
+    getInstance( "cyrl" ); // Cyrillic
+    getInstance( TAG_DEFAULT );
+    getInstance( "deva" ); // Devanagari
+    getInstance( "ethi" ); // Ethiopic
+    getInstance( "geor" ); // Georgian
+    getInstance( "grek" ); // Greek
+    getInstance( "gujr" ); // Gujarati
+    getInstance( "guru" ); // Gurmukhi
+    getInstance( "jamo" ); // Hangul Jamo
+    getInstance( "hang" ); // Hangul
+    getInstance( "hebr" ); // Hebrew
+    getInstance( "kana" ); // Hiragana
+    getInstance( "knda" ); // Kannada
+    getInstance( "kana" ); // Katakana
+    getInstance( "khmr" ); // Khmer
+    getInstance( "lao" ); // Lao
+    getInstance( "latn" ); // Latin
+    getInstance( "mlym" ); // Malayalam
+    getInstance( "mong" ); // Mongolian
+    getInstance( "mymr" ); // Myanmar
+    getInstance( "ogam" ); // Ogham
+    getInstance( "orya" ); // Oriya
+  }
+
+  /**
+   * Return the name of the default script tag.
+   *
+   * @return Return the name of the default script tag.
+   */
+  public static ScriptTag getDefault() {
+    return scriptTags.get( TAG_DEFAULT );
+  }
+
+  /**
+   * Get a new script tag.
+   *
+   * @param name The name of the script tag.
+   * @return Returns the new script tag.
+   */
+  public static ScriptTag getInstance( String name ) {
+    final String xname = format( name );
+    ScriptTag st = scriptTags.get( xname );
+    if( st == null ) {
+      st = new ScriptTag( xname );
+      scriptTags.put( xname, st );
     }
+    return st;
+  }
 
-    /**
-     * Return the name of the default script tag.
-     *
-     * @return Return the name of the default script tag.
-     */
-    public static ScriptTag getDefault() {
-      return scriptTags.get( TAG_DEFAULT );
-    }
+  /**
+   * Check, if the name is in the script tag list.
+   *
+   * @param name The name of the script tag.
+   * @return Returns {@code true}, if found, otherwise
+   * {@code false}.
+   */
+  public static boolean containsTag( String name ) {
+    return scriptTags.containsKey( format( name ) );
+  }
 
-    /**
-     * Get a new script tag.
-     *
-     * @param name The name of the script tag.
-     * @return Returns the new script tag.
-     */
-    public static ScriptTag getInstance(String name) {
-      final String xname = format( name );
-      ScriptTag st = scriptTags.get( xname );
-      if( st == null ) {
-        st = new ScriptTag( xname );
-        scriptTags.put( xname, st );
-      }
-      return st;
-    }
-
-    /**
-     * Check, if the name is in the script tag list.
-     *
-     * @param name The name of the script tag.
-     * @return Returns {@code true}, if found, otherwise
-     *         {@code false}.
-     */
-    public static boolean containsTag( String name ) {
-      return scriptTags.containsKey( format( name ) );
-    }
-
-    /**
-     * Creates a new object.
-     *
-     * @param name The name of the tag.
-     */
-    private ScriptTag(String name) {
-        super(name);
-    }
+  /**
+   * Creates a new object.
+   *
+   * @param name The name of the tag.
+   */
+  private ScriptTag( String name ) {
+    super( name );
+  }
 }

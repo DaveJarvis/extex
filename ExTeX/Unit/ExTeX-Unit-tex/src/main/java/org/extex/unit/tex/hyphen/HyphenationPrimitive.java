@@ -32,12 +32,7 @@ import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
-import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.LeftBraceToken;
-import org.extex.scanner.type.token.LetterToken;
-import org.extex.scanner.type.token.OtherToken;
-import org.extex.scanner.type.token.RightBraceToken;
-import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.*;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.unit.base.register.CharCode;
@@ -45,7 +40,7 @@ import org.extex.unit.base.register.CharCode;
 /**
  * This class provides an implementation for the primitive
  * {@code \hyphenation}.
- * 
+ *
  * <p>The Primitive {@code \hyphenation}</p>
  * <p>
  * The primitive {@code \hyphenation} can be used to add hyphenation
@@ -64,153 +59,153 @@ import org.extex.unit.base.register.CharCode;
  * without any hyphen characters. This can be used to suppress any hyphenation
  * in a single word.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
- * 
+ *
+ *
  * <pre class="syntax">
  *    &lang;hyphenation&rang;
  *     &rarr; {@code \hyphenation} {...} </pre>
- * 
+ *
  * <p>Example:</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \hyphenation{as-so-ciate as-so-ciates}  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class HyphenationPrimitive extends AbstractHyphenationCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public HyphenationPrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public HyphenationPrimitive( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-     * Collect all characters that make up a word.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param token the first token already read
-     * 
-     * @return the first character not included into the word
-     * 
-     * @throws HelpingException in case of an error
-     * @throws CatcodeException in case of an exception in token creation
-     */
-    protected UnicodeCharList collectWord(Context context, TokenSource source,
-            Token token) throws HelpingException, CatcodeException {
+  /**
+   * Collect all characters that make up a word.
+   *
+   * @param context the interpreter context
+   * @param source  the source for new tokens
+   * @param token   the first token already read
+   * @return the first character not included into the word
+   * @throws HelpingException in case of an error
+   * @throws CatcodeException in case of an exception in token creation
+   */
+  protected UnicodeCharList collectWord( Context context, TokenSource source,
+                                         Token token )
+      throws HelpingException, CatcodeException {
 
-        UnicodeCharList word = new UnicodeCharList();
-        UnicodeChar uc;
-        UnicodeChar lc;
+    UnicodeCharList word = new UnicodeCharList();
+    UnicodeChar uc;
+    UnicodeChar lc;
 
-        for (Token t = token; t != null; t = source.getToken(context)) {
+    for( Token t = token; t != null; t = source.getToken( context ) ) {
 
-            if (t instanceof LetterToken || t instanceof OtherToken) {
-                uc = t.getChar();
-            } else if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
-                uc = ((CharCode) code).getCharacter();
-            } else {
-                source.push(t);
-                return word;
-            }
-
-            if (t.eq(Catcode.OTHER, '-')) {
-                word.add(UnicodeChar.SHY);
-            } else {
-                uc = t.getChar();
-                lc = context.getLccode(uc);
-                word.add(lc == null ? uc : lc);
-            }
-        }
-
+      if( t instanceof LetterToken || t instanceof OtherToken ) {
+        uc = t.getChar();
+      }
+      else if( t instanceof CodeToken ) {
+        Code code = context.getCode( (CodeToken) t );
+        uc = ((CharCode) code).getCharacter();
+      }
+      else {
+        source.push( t );
         return word;
+      }
+
+      if( t.eq( Catcode.OTHER, '-' ) ) {
+        word.add( UnicodeChar.SHY );
+      }
+      else {
+        uc = t.getChar();
+        lc = context.getLccode( uc );
+        word.add( lc == null ? uc : lc );
+      }
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException {
+    return word;
+  }
 
-        Language table = getHyphenationTable(context);
-        Token t = source.getNonSpace(context);
-        if (!(t instanceof LeftBraceToken)) {
-            throw new MissingLeftBraceException(
-                toText(context));
-        }
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException {
 
-        try {
-            UnicodeCharList word;
-
-            for (t = source.getNonSpace(context);
-            !(t instanceof RightBraceToken);
-            t = source.getNonSpace(context)) {
-
-                if (!isWordConstituent(t, context)) {
-                    throw new HelpingException(getLocalizer(),
-                        "TTP.ImproperHyphen", toText(context));
-                }
-                word = collectWord(context, source, t);
-                table.addHyphenation(word, (TypesetterOptions) context);
-            }
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        } catch (HyphenationException e) {
-            throw new NoHelpException(e);
-        }
-
+    Language table = getHyphenationTable( context );
+    Token t = source.getNonSpace( context );
+    if( !(t instanceof LeftBraceToken) ) {
+      throw new MissingLeftBraceException(
+          toText( context ) );
     }
 
-    /**
-     * This method checks that the given token is a word constituent. This means
-     * that the token is either
-     * <ul>
-     * <li>a letter token, or</li>
-     * <li>a other token, or</li>
-     * <li>a code token defined with {@code \chardef}.</li>
-     * </ul>
-     * 
-     * @param t the token to analyze
-     * @param context the interpreter context
-     * 
-     * @return {@code true} iff the token is
-     * 
-     * @throws HelpingException in case of an error
-     */
-    protected boolean isWordConstituent(Token t, Context context)
-            throws HelpingException {
+    try {
+      UnicodeCharList word;
 
-        if (t == null) {
-            return false;
-        } else if (t instanceof LetterToken || t instanceof OtherToken) {
-            return true;
-        } else if (t instanceof CodeToken) {
-            Code code = context.getCode((CodeToken) t);
-            return (code instanceof CharCode);
+      for( t = source.getNonSpace( context );
+           !(t instanceof RightBraceToken);
+           t = source.getNonSpace( context ) ) {
+
+        if( !isWordConstituent( t, context ) ) {
+          throw new HelpingException( getLocalizer(),
+                                      "TTP.ImproperHyphen", toText( context ) );
         }
-
-        return false;
+        word = collectWord( context, source, t );
+        table.addHyphenation( word, (TypesetterOptions) context );
+      }
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
+    } catch( HyphenationException e ) {
+      throw new NoHelpException( e );
     }
+
+  }
+
+  /**
+   * This method checks that the given token is a word constituent. This means
+   * that the token is either
+   * <ul>
+   * <li>a letter token, or</li>
+   * <li>a other token, or</li>
+   * <li>a code token defined with {@code \chardef}.</li>
+   * </ul>
+   *
+   * @param t       the token to analyze
+   * @param context the interpreter context
+   * @return {@code true} iff the token is
+   * @throws HelpingException in case of an error
+   */
+  protected boolean isWordConstituent( Token t, Context context )
+      throws HelpingException {
+
+    if( t == null ) {
+      return false;
+    }
+    else if( t instanceof LetterToken || t instanceof OtherToken ) {
+      return true;
+    }
+    else if( t instanceof CodeToken ) {
+      Code code = context.getCode( (CodeToken) t );
+      return (code instanceof CharCode);
+    }
+
+    return false;
+  }
 
 }

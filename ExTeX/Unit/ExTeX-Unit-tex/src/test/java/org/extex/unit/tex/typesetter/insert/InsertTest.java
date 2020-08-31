@@ -23,19 +23,21 @@ import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive {@code \insert}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InsertTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Constructor for InsertTest. The prepare code contains an "x" just to
-     * enter hmode.
-     */
-    public InsertTest() {
+  /**
+   * Constructor for InsertTest. The prepare code contains an "x" just to
+   * enter hmode.
+   */
+  public InsertTest() {
 
-        setPrimitive("insert");setArguments("42{abc}");setPrepare("x");
-    }
+    setPrimitive( "insert" );
+    setArguments( "42{abc}" );
+    setPrepare( "x" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

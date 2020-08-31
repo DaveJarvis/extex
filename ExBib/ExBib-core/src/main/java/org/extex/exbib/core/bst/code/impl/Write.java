@@ -19,8 +19,6 @@
 
 package org.extex.exbib.core.bst.code.impl;
 
-import java.io.IOException;
-
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.db.Entry;
@@ -28,9 +26,12 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibIoException;
 import org.extex.exbib.core.io.Locator;
 
+import java.io.IOException;
+
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code write$}
  * <p>
  * This function pops a string from the stack and prints it as a message to the
@@ -40,57 +41,57 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *   "\end{thebibliography}" write$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Pops the top (string) literal and writes it on the output buffer (which
  * will result in stuff being written onto the <code>
  *  bbl</code> file when the buffer fills up).</dd>
  * </dl>
- * 
+ *
  * <dl>
  * <dt>BibTeX web documentation:</dt>
  * <dd>
  * TBD
  * </dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Write extends AbstractCode {
 
 
-    public Write() {
+  public Write() {
 
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Write( String name ) {
+
+    super( name );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    try {
+      processor.getOutWriter().print(
+          processor.pop( locator ).expand( processor ) );
+    } catch( IOException e ) {
+      throw new ExBibIoException( e );
     }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Write(String name) {
-
-        super(name);
-    }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        try {
-            processor.getOutWriter().print(
-                processor.pop(locator).expand(processor));
-        } catch (IOException e) {
-            throw new ExBibIoException(e);
-        }
-    }
+  }
 }

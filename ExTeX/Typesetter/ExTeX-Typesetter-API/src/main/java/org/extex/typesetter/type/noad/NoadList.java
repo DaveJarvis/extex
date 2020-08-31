@@ -23,33 +23,33 @@ import java.util.ArrayList;
 
 /**
  * This class provides a container for a list of Noads.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoadList extends ArrayList<Noad> {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object containing no elements.
-     */
-    public NoadList() {
+  /**
+   * Creates a new object containing no elements.
+   */
+  public NoadList() {
 
-    }
+  }
 
-    /**
-     * Getter for the last noad previously stored.
-     * 
-     * @return the last noad or {@code null} if none is available
-     */
-    Noad getLastNoad() {
+  /**
+   * Getter for the last noad previously stored.
+   *
+   * @return the last noad or {@code null} if none is available
+   */
+  Noad getLastNoad() {
 
-        int i = size();
-        return (i > 0 ? get(i - 1) : null);
-    }
+    int i = size();
+    return (i > 0 ? get( i - 1 ) : null);
+  }
 
 }

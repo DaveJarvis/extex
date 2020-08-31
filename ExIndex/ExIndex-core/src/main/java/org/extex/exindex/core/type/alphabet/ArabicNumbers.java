@@ -19,59 +19,59 @@
 
 package org.extex.exindex.core.type.alphabet;
 
-import java.io.PrintStream;
-
 import org.extex.exindex.core.type.page.NumericPage;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.type.value.LValue;
 
+import java.io.PrintStream;
+
 /**
  * This location class represents a parser for arabic numbers (0, 1,
  * 2,&hellip;).
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ArabicNumbers implements LValue, Alphabet, LocationClass {
 
 
-    public ArabicNumbers() {
+  public ArabicNumbers() {
 
+  }
+
+  /**
+   * java.lang.String)
+   */
+  public PageReference match( String encap, String s ) {
+
+    if( s.matches( "[0-9]+" ) ) {
+      return new NumericPage( encap, s );
     }
+    return null;
+  }
 
-    /**
-*      java.lang.String)
-     */
-    public PageReference match(String encap, String s) {
+  public boolean match( StringBuilder s ) {
 
-        if (s.matches("[0-9]+")) {
-            return new NumericPage(encap, s);
-        }
-        return null;
+    if( s.length() == 0 ) {
+      return false;
     }
-
-public boolean match(StringBuilder s) {
-
-        if (s.length() == 0) {
-            return false;
-        }
-        char c = s.charAt(0);
-        if (c < '0' || c > '9') {
-            return false;
-        }
-        s.deleteCharAt(0);
-        while (s.length() > 0) {
-            c = s.charAt(0);
-            if (c < '0' || c > '9') {
-                return true;
-            }
-            s.deleteCharAt(0);
-        }
+    char c = s.charAt( 0 );
+    if( c < '0' || c > '9' ) {
+      return false;
+    }
+    s.deleteCharAt( 0 );
+    while( s.length() > 0 ) {
+      c = s.charAt( 0 );
+      if( c < '0' || c > '9' ) {
         return true;
+      }
+      s.deleteCharAt( 0 );
     }
+    return true;
+  }
 
-public void print(PrintStream stream) {
+  public void print( PrintStream stream ) {
 
-        stream.print("#arabic-numbers");
-    }
+    stream.print( "#arabic-numbers" );
+  }
 
 }

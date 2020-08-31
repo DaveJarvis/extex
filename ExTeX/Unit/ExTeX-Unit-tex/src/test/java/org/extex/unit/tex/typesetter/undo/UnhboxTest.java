@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code &#x5c;unhbox}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class UnhboxTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(UnhboxTest.class);
-    }
+    (new JUnitCore()).run( UnhboxTest.class );
+  }
 
 
-    public UnhboxTest() {
+  public UnhboxTest() {
 
-        setPrimitive("unhbox");setArguments("42 ");setPrepare("");
-    }
+    setPrimitive( "unhbox" );
+    setArguments( "42 " );
+    setPrepare( "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

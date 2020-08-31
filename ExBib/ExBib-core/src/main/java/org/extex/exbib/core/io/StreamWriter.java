@@ -18,115 +18,110 @@
 
 package org.extex.exbib.core.io;
 
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 
 /**
  * This class provides a writer with a target in a {@link java.io.PrintStream}
  * or a {@link java.io.File}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class StreamWriter implements Writer {
 
-    /**
-     * The field {@code writer} contains the output writer.
-     */
-    private java.io.Writer writer = null;
+  /**
+   * The field {@code writer} contains the output writer.
+   */
+  private java.io.Writer writer = null;
 
-    /**
-     * Creates a new object.
-     *
-     * @param stream the output stream
-     * @param encoding the encoding to use for writing
-     *
-     * @throws UnsupportedEncodingException in case that the given encoding is
-     *         undefined
-     */
-    public StreamWriter(OutputStream stream, String encoding)
-            throws UnsupportedEncodingException {
+  /**
+   * Creates a new object.
+   *
+   * @param stream   the output stream
+   * @param encoding the encoding to use for writing
+   * @throws UnsupportedEncodingException in case that the given encoding is
+   *                                      undefined
+   */
+  public StreamWriter( OutputStream stream, String encoding )
+      throws UnsupportedEncodingException {
 
-        if (encoding == null) {
-            writer = new OutputStreamWriter(stream);
-        } else {
-            writer = new OutputStreamWriter(stream, encoding);
-        }
+    if( encoding == null ) {
+      writer = new OutputStreamWriter( stream );
     }
-
-    /**
-     * Creates a new object.
-     *
-     * @param file the name of the file to write to
-     * @param encoding the encoding to use for writing
-     *
-     * @throws IOException in case of an I/O error
-     */
-    public StreamWriter(String file, String encoding) throws IOException {
-
-        if (encoding == null) {
-            writer = new FileWriter(file);
-        } else {
-            FileOutputStream stream = new FileOutputStream(file);
-            writer = new OutputStreamWriter(stream, encoding);
-        }
+    else {
+      writer = new OutputStreamWriter( stream, encoding );
     }
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.exbib.core.io.Writer#close()
-     */
-    public void close() throws IOException {
+  /**
+   * Creates a new object.
+   *
+   * @param file     the name of the file to write to
+   * @param encoding the encoding to use for writing
+   * @throws IOException in case of an I/O error
+   */
+  public StreamWriter( String file, String encoding ) throws IOException {
 
-        writer.close();
+    if( encoding == null ) {
+      writer = new FileWriter( file );
     }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.exbib.core.io.Writer#flush()
-     */
-    public void flush() throws IOException {
-
-        writer.flush();
+    else {
+      FileOutputStream stream = new FileOutputStream( file );
+      writer = new OutputStreamWriter( stream, encoding );
     }
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
-     */
-    public void print(String... args) throws IOException {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.exbib.core.io.Writer#close()
+   */
+  public void close() throws IOException {
 
-        for (String s : args) {
-            writer.write(s);
-        }
+    writer.close();
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.exbib.core.io.Writer#flush()
+   */
+  public void flush() throws IOException {
+
+    writer.flush();
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
+   */
+  public void print( String... args ) throws IOException {
+
+    for( String s : args ) {
+      writer.write( s );
     }
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
-     */
-    public void println(String... args) throws IOException {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
+   */
+  public void println( String... args ) throws IOException {
 
-        for (String s : args) {
-            writer.write(s);
-        }
-        writer.write('\n');
+    for( String s : args ) {
+      writer.write( s );
     }
+    writer.write( '\n' );
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.exbib.core.io.Writer#write(int)
-     */
-    public void write(int c) throws IOException {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.exbib.core.io.Writer#write(int)
+   */
+  public void write( int c ) throws IOException {
 
-        writer.write(c);
-    }
+    writer.write( c );
+  }
 }

@@ -23,26 +23,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \xspaceskip}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class XspaceskipTest extends AbstractSkipRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(XspaceskipTest.class);
-    }
+    (new JUnitCore()).run( XspaceskipTest.class );
+  }
 
 
-    public XspaceskipTest() {
+  public XspaceskipTest() {
 
-        super("xspaceskip", "", "0.0pt");
-    }
+    super( "xspaceskip", "", "0.0pt" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

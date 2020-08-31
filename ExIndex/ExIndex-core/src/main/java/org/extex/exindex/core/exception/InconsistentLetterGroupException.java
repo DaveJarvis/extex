@@ -25,28 +25,28 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception signals that two conflicting letter group specifications have
  * been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InconsistentLetterGroupException extends LException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param group1 the first conflicting flag
-     * @param group2 the second conflicting flag
-     */
-    public InconsistentLetterGroupException(String group1, String group2) {
+  /**
+   * Creates a new object.
+   *
+   * @param group1 the first conflicting flag
+   * @param group2 the second conflicting flag
+   */
+  public InconsistentLetterGroupException( String group1, String group2 ) {
 
-        super(LocalizerFactory.getLocalizer(
-            InconsistentLetterGroupException.class).format("Message", group1,
-            group2));
-    }
+    super( LocalizerFactory.getLocalizer(
+        InconsistentLetterGroupException.class ).format( "Message", group1,
+                                                         group2 ) );
+  }
 
 }

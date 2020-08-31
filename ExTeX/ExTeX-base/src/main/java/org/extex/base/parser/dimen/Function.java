@@ -28,25 +28,24 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This interface describes a function object which is able to parse its
  * arguments from a token stream.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Function {
 
-    /**
-     * Acquire arguments and compute a function.
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return TODO
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    Accumulator apply(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException;
+  /**
+   * Acquire arguments and compute a function.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return TODO
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  Accumulator apply( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException;
 
 }

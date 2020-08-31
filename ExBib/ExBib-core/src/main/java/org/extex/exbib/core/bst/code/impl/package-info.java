@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -19,8 +19,8 @@
  * Contains the classes for the built-in functions of
  * the processor.
  * <p>
- *   Built-in functions are implemented as classes which are
- *   characterized as follows:
+ * Built-in functions are implemented as classes which are
+ * characterized as follows:
  * </p>
  * <ul>
  *   <li>They have a method {@code execute()} which performs the actions
@@ -35,10 +35,12 @@
  *   {@link org.extex.exbib.core.bst.code.Code Code}.
  * </p>
  * <p>
- *   The functions are either integrated in the processor statically like in 
- *   {@code {@link org.extex.exbib.core.bst.BstInterpreter099c BstInterpreter099c}}.
+ *   The functions are either integrated in the processor statically like in
+ *   {@code {@link org.extex.exbib.core.bst.BstInterpreter099c
+ *   BstInterpreter099c}}.
  *   Alternatively they can be loaded dynamically according to a configuration
- *   file like in {@code {@link org.extex.exbib.core.bst.BstInterpreter BstInterpreter}}.
+ *   file like in {@code {@link org.extex.exbib.core.bst.BstInterpreter
+ *   BstInterpreter}}.
  * </p>
  *
  *
@@ -48,8 +50,9 @@
  *     <th>Function Name</th>
  *     <th>Class</th>
  *     <th>Braces</th>
- *     <th>T<span 
- *     style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     <th>T<span
+ *     style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ *     margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X</th>
  *     <th>Western</th>
  *   </tr>
@@ -320,7 +323,6 @@
  *     <td></td>
  *     </tr>
  *   </table>
- *
  */
 
 package org.extex.exbib.core.bst.code.impl;

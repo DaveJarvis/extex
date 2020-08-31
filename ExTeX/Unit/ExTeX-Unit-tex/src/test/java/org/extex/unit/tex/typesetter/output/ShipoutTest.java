@@ -25,56 +25,58 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \shipout}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ShipoutTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ShipoutTest.class);
-    }
+    (new JUnitCore()).run( ShipoutTest.class );
+  }
 
 
-    public ShipoutTest() {
+  public ShipoutTest() {
 
-        setPrimitive("shipout");setArguments("\\box0");setPrepare("");
-    }
+    setPrimitive( "shipout" );
+    setArguments( "\\box0" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\shipout"> Test case showing that a void box is
-     * simply ignored.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\shipout"> Test case showing that a void box is
+   * simply ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\shipout\\box0 \\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\shipout\\box0 \\end",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\shipout"> Test case showing that an empty box is
-     * shipped.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\shipout"> Test case showing that an empty box is
+   * shipped.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\shipout\\hbox{} \\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\shipout\\hbox{} \\end",
+                  // --- output channel ---
+                  "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

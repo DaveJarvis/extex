@@ -23,14 +23,16 @@ package org.extex.unit.tex.math;
  * This is a test suite for the primitive {@code \vcenter}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class VcenterTest extends AbstractMathTester {
 
 
-    public VcenterTest() {
+  public VcenterTest() {
 
-        setPrimitive("vcenter");setArguments("{x}");setPrepare("");
-    }
+    setPrimitive( "vcenter" );
+    setArguments( "{x}" );
+    setPrepare( "" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

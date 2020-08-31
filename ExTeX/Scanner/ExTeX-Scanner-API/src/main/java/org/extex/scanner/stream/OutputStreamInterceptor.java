@@ -25,21 +25,20 @@ import java.io.OutputStream;
  * This interface describes the ability to manipulate an
  * {@link java.io.OutputStream OutputStream} by attaching additional processing
  * units in a pipe manner.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OutputStreamInterceptor {
 
-    /**
-     * Attach a processor to an output stream. If the decorator decides that no
-     * additional pipe element is required it should simply return the output
-     * stream.
-     * 
-     * @param stream the stream to add some processing unit to
-     * 
-     * @return the new output stream. This value should never be
-     *         {@code null}.
-     */
-    OutputStream pipe(OutputStream stream);
+  /**
+   * Attach a processor to an output stream. If the decorator decides that no
+   * additional pipe element is required it should simply return the output
+   * stream.
+   *
+   * @param stream the stream to add some processing unit to
+   * @return the new output stream. This value should never be
+   * {@code null}.
+   */
+  OutputStream pipe( OutputStream stream );
 
 }

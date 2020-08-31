@@ -19,15 +19,15 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.extex.font.format.xtf.tables.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessInputArray;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * CharStrings.
@@ -67,138 +67,139 @@ import org.extex.util.xml.XMLStreamWriter;
  * Type 2 argument stack (last result topmost). In the following discussion, all
  * numeric constants are decimal numbers, except where indicated.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOCharStrings extends T2TDONumber {
 
-    /**
-     * The map for the charstrings.
-     */
-    private final Map<String, CharString> charmap = new HashMap<String, CharString>();
+  /**
+   * The map for the charstrings.
+   */
+  private final Map<String, CharString> charmap = new HashMap<String,
+      CharString>();
 
-    /**
-     * The array of the char strings.
-     */
-    private CharString[] chars;
+  /**
+   * The array of the char strings.
+   */
+  private CharString[] chars;
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO.error occurs.
-     */
-    public T2TDOCharStrings(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO.error occurs.
+   */
+  public T2TDOCharStrings( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{CFF_CHARSTRINGS});
+    super( stack, new short[]{CFF_CHARSTRINGS} );
+  }
+
+  /**
+   * Returns the charstring or {@code null}, if not found.
+   *
+   * @param idx the index.
+   * @return Returns the charstring.
+   */
+  public CharString getCharString( int idx ) {
+
+    if( idx >= 0 && idx < chars.length ) {
+      return chars[ idx ];
     }
+    return null;
+  }
 
-    /**
-     * Returns the charstring or {@code null}, if not found.
-     * 
-     * @param idx the index.
-     * @return Returns the charstring.
-     */
-    public CharString getCharString(int idx) {
+  /**
+   * Returns the charstring or {@code null}, if not found.
+   *
+   * @param name The name of the charstring.
+   * @return Returns the charstring.
+   */
+  public CharString getCharString( String name ) {
 
-        if (idx >= 0 && idx < chars.length) {
-            return chars[idx];
-        }
-        return null;
+    if( name != null ) {
+      return charmap.get( name );
     }
+    return null;
+  }
 
-    /**
-     * Returns the charstring or {@code null}, if not found.
-     * 
-     * @param name The name of the charstring.
-     * @return Returns the charstring.
-     */
-    public CharString getCharString(String name) {
+  @Override
+  public int getID() {
 
-        if (name != null) {
-            return charmap.get(name);
-        }
-        return null;
-    }
+    return T2TopDICTOperator.TYPE_CHARSTRINGS;
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getInitPrio() {
 
-        return T2TopDICTOperator.TYPE_CHARSTRINGS;
-    }
+    return -1;
+  }
 
-@Override
-    public int getInitPrio() {
+  @Override
+  public String getName() {
 
-        return -1;
-    }
+    return "charstring";
+  }
 
-@Override
-    public String getName() {
+  /**
+   * org.extex.font.format.xtf.tables.OtfTableCFF, int,
+   * org.extex.font.format.xtf.tables.cff.CffFont)
+   */
+  @Override
+  public void init( RandomAccessR rar, OtfTableCFF cff, int baseoffset,
+                    CffFont cffFont ) throws IOException {
 
-        return "charstring";
-    }
+    int offset = getInteger();
 
-    /**
-*      org.extex.font.format.xtf.tables.OtfTableCFF, int,
-     *      org.extex.font.format.xtf.tables.cff.CffFont)
-     */
-    @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
-            CffFont cffFont) throws IOException {
+    if( offset > 0 ) {
+      rar.seek( baseoffset + offset );
 
-        int offset = getInteger();
+      int[] offsetarray = cff.readOffsets( rar );
 
-        if (offset > 0) {
-            rar.seek(baseoffset + offset);
+      chars = new CharString[ offsetarray.length - 1 ];
 
-            int[] offsetarray = cff.readOffsets(rar);
+      // notdef: guid 0
+      // chars[0] = new CharString(cffFont, 0);
+      // chars[0].checkWidth();
 
-            chars = new CharString[offsetarray.length - 1];
+      // get data
+      for( int i = 0; i < offsetarray.length - 1; i++ ) {
 
-            // notdef: guid 0
-            // chars[0] = new CharString(cffFont, 0);
-            // chars[0].checkWidth();
+        byte[] data =
+            cff.readDataFromIndex( offsetarray[ i ],
+                                   offsetarray[ i + 1 ], rar );
 
-            // get data
-            for (int i = 0; i < offsetarray.length - 1; i++) {
+        chars[ i ] = new CharString( cffFont, i );
 
-                byte[] data =
-                        cff.readDataFromIndex(offsetarray[i],
-                            offsetarray[i + 1], rar);
-
-                chars[i] = new CharString(cffFont, i);
-
-                RandomAccessInputArray arar = new RandomAccessInputArray(data);
-                try {
-                    while (true) {
-                        // read until eof
-                        T2Operator op = T2Operator.newInstance(arar, chars[i]);
-                        chars[i].add(op);
-                        if (arar.isEOF()) {
-                            break;
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    // TODO change to EOFException ignore
-                }
-                chars[i].checkWidth();
-
-                charmap.put(chars[i].getName(), chars[i]);
+        RandomAccessInputArray arar = new RandomAccessInputArray( data );
+        try {
+          while( true ) {
+            // read until eof
+            T2Operator op = T2Operator.newInstance( arar, chars[ i ] );
+            chars[ i ].add( op );
+            if( arar.isEOF() ) {
+              break;
             }
+          }
+        } catch( IOException e ) {
+          e.printStackTrace();
+          // TODO change to EOFException ignore
         }
-    }
+        chars[ i ].checkWidth();
 
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("count", chars.length);
-        for (int i = 0; i < chars.length; i++) {
-            chars[i].writeXML(writer);
-        }
-        writer.writeEndElement();
+        charmap.put( chars[ i ].getName(), chars[ i ] );
+      }
     }
+  }
+
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "count", chars.length );
+    for( int i = 0; i < chars.length; i++ ) {
+      chars[ i ].writeXML( writer );
+    }
+    writer.writeEndElement();
+  }
 }

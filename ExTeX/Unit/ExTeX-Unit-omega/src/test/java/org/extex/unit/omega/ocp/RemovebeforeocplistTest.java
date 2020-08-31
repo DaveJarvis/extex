@@ -25,42 +25,41 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \removebeforeocplist}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RemovebeforeocplistTest extends ExTeXLauncher {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(RemovebeforeocplistTest.class);
-    }
+    (new JUnitCore()).run( RemovebeforeocplistTest.class );
+  }
 
 
-    public RemovebeforeocplistTest() {
+  public RemovebeforeocplistTest() {
 
-        setConfig("omega-test");
-    }
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\removebeforeocplist"> Test case checking that
-     * {@code \removebeforeocplist} can not be used in a normal mode.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\removebeforeocplist"> Test case checking that
+   * {@code \removebeforeocplist} can not be used in a normal mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\removebeforeocplist",
-            // --- output channel ---
-            "To use ocps, use the \\pushocplist primitive");
-    }
+    assertFailure(// --- input code ---
+                  "\\removebeforeocplist",
+                  // --- output channel ---
+                  "To use ocps, use the \\pushocplist primitive" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

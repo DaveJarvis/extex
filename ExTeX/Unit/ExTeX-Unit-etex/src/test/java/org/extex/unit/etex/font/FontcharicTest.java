@@ -24,137 +24,137 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \fontcharic}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class FontcharicTest extends ExTeXLauncher {
 
 
-    public FontcharicTest() {
+  public FontcharicTest() {
 
-        setConfig("etex-test");
-    }
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * <testcase primitive="\fontcharic"> Test case checking that
-     * {@code \fontcharic} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVertical1() throws Exception {
+  /**
+   * <testcase primitive="\fontcharic"> Test case checking that
+   * {@code \fontcharic} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testVertical1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\fontcharic ",
-            // --- log message ---
-            "You can't use `\\fontcharic' in vertical mode");
-    }
+    assertFailure(// --- input code ---
+                  "\\fontcharic ",
+                  // --- log message ---
+                  "You can't use `\\fontcharic' in vertical mode" );
+  }
 
-    /**
-     * <testcase primitive="\fontcharic"> Test case checking that
-     * {@code \fontcharic} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\fontcharic"> Test case checking that
+   * {@code \fontcharic} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\dimen0=\\fontcharic ",
-            // --- log message ---
-            "Unexpected end of file while processing \\fontcharic");
-    }
+    assertFailure(// --- input code ---
+                  "\\dimen0=\\fontcharic ",
+                  // --- log message ---
+                  "Unexpected end of file while processing \\fontcharic" );
+  }
 
-    /**
-     * <testcase primitive="\fontcharic"> Test case checking that
-     * {@code \fontcharic} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof2() throws Exception {
+  /**
+   * <testcase primitive="\fontcharic"> Test case checking that
+   * {@code \fontcharic} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\dimen0=\\fontcharic\\nullfont ",
-            // --- log message ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  "\\dimen0=\\fontcharic\\nullfont ",
+                  // --- log message ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
-     * {@code \fontcharic} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCmslPoint() throws Exception {
+  /**
+   * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
+   * {@code \fontcharic} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCmslPoint() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\cmsl cmsl10 " + "\\the\\fontcharic\\cmsl `.\\end",
-            // --- output message ---
-            "0.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\cmsl cmsl10 " + "\\the\\fontcharic\\cmsl `.\\end",
+                  // --- output message ---
+                  "0.0pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
-     * {@code \fontcharic} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCmslL() throws Exception {
+  /**
+   * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
+   * {@code \fontcharic} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCmslL() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\cmsl cmsl10 " + "\\the\\fontcharic\\cmsl `l\\end",
-            // --- output message ---
-            "0.39354pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\cmsl cmsl10 " + "\\the\\fontcharic\\cmsl `l\\end",
+                  // --- output message ---
+                  "0.39354pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
-     * {@code \fontcharic} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCmslX() throws Exception {
+  /**
+   * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
+   * {@code \fontcharic} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCmslX() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\cmsl cmsl10 " + "\\the\\fontcharic\\cmsl `x\\end",
-            // --- output message ---
-            "0.68982pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\cmsl cmsl10 " + "\\the\\fontcharic\\cmsl `x\\end",
+                  // --- output message ---
+                  "0.68982pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
-     * {@code \fontcharic} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCmslPlus2() throws Exception {
+  /**
+   * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
+   * {@code \fontcharic} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCmslPlus2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\cmsl cmsl10 "
-                    + "\\dimen0=\\fontcharic\\cmsl `+\\the\\dimen0\\end",
-            // --- output message ---
-            "0.1389pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\cmsl cmsl10 "
+                      + "\\dimen0=\\fontcharic\\cmsl `+\\the\\dimen0\\end",
+                  // --- output message ---
+                  "0.1389pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontcharic"> Test case checking that
-     * {@code \fontcharic} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCmslPlus3() throws Exception {
+  /**
+   * <testcase primitive="\fontcharic"> Test case checking that
+   * {@code \fontcharic} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCmslPlus3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\cmsl cmsl10 "
-                    + "\\count0=\\fontcharic\\cmsl `+\\the\\count0\\end",
-            // --- output message ---
-            "9103" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\cmsl cmsl10 "
+                      + "\\count0=\\fontcharic\\cmsl `+\\the\\count0\\end",
+                  // --- output message ---
+                  "9103" + TERM );
+  }
 
 }

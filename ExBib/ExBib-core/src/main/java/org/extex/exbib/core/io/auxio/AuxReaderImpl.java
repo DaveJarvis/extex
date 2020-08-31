@@ -19,19 +19,20 @@
 
 package org.extex.exbib.core.io.auxio;
 
+import org.extex.exbib.core.ProcessorContainer;
+import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.framework.configuration.exception.ConfigurationException;
+
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.extex.exbib.core.ProcessorContainer;
-import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.framework.configuration.exception.ConfigurationException;
-
 /**
  * This is the core of the aux file reading. In addition to the one performed by
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X it supports multiple bibliographies via optional arguments of the
  * macros.
  * <p>
@@ -39,7 +40,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </p>
  * <dl>
  * <dt>\citation[type]{keys}</dt>
- * <dd>pass a list of comma separated citation keys to the bibliography "type"</dd>
+ * <dd>pass a list of comma separated citation keys to the bibliography 
+ * "type"</dd>
  * <dt>\bibstyle[type]{styles}</dt>
  * <dd>pass a list of comma separated bibliography styles to the bibliography
  * "type"</dd>
@@ -48,103 +50,103 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <dt>\biboption{option}</dt>
  * <dd>pass an option to the bibliography processor.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AuxReaderImpl extends AuxReader099cImpl {
 
+  /**
+   * This is the handler for biboption.
+   */
+  private static final class BiboptionHandler implements AuxHandler {
+
     /**
-     * This is the handler for biboption.
+     * org.extex.exbib.core.ProcessorContainer, java.lang.String,
+     * org.extex.exbib.core.io.auxio.AuxReader)
      */
-    private static final class BiboptionHandler implements AuxHandler {
+    public void invoke( String arg, ProcessorContainer processors,
+                        String type, AuxReader engine )
+        throws ConfigurationException,
+        ExBibException {
 
-        /**
-    *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
-         *      org.extex.exbib.core.io.auxio.AuxReader)
-         */
-        public void invoke(String arg, ProcessorContainer processors,
-                String type, AuxReader engine)
-                throws ConfigurationException,
-                    ExBibException {
+      processors.setOption( type, arg );
+    }
+  }
 
-            processors.setOption(type, arg);
-        }
+  /**
+   * The constant {@code PATTERN} contains the pattern for the recognized
+   * macros.
+   */
+  protected static final Pattern PATTERN = Pattern
+      .compile( "^\\\\([@cb][a-z]+)\\{([^{}]*)\\}" );
+
+  /**
+   * The field {@code OPT_PATTERN} contains the pattern for the recognized
+   * macros with optional arguments.
+   */
+  private static final Pattern OPT_PATTERN = Pattern
+      .compile( "^\\\\([cb][a-z]+)\\[([^]]*)\\]\\{([^{}]*)\\}" );
+
+  /**
+   * Creates a new object.
+   *
+   * @throws ConfigurationException in case of a configuration error
+   */
+  public AuxReaderImpl() throws ConfigurationException {
+
+    register( "biboption", new BiboptionHandler() );
+  }
+
+  /**
+   * java.lang.String, java.lang.String)
+   */
+  @Override
+  public void load( ProcessorContainer bibliographies, String resource,
+                    String encoding )
+      throws ConfigurationException,
+      IOException,
+      ExBibException {
+
+    setEncoding( encoding );
+    LineNumberReader reader = open( resource, "aux", encoding );
+    String name = getFilename();
+
+    ResourceObserver observer = getObserver();
+    if( observer != null ) {
+      observer.observeOpen( resource, "aux", name );
     }
 
-    /**
-     * The constant {@code PATTERN} contains the pattern for the recognized
-     * macros.
-     */
-    protected static final Pattern PATTERN = Pattern
-        .compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
+    try {
+      for( String line = reader.readLine(); line != null; line =
+          reader.readLine() ) {
+        Matcher m = PATTERN.matcher( line );
 
-    /**
-     * The field {@code OPT_PATTERN} contains the pattern for the recognized
-     * macros with optional arguments.
-     */
-    private static final Pattern OPT_PATTERN = Pattern
-        .compile("^\\\\([cb][a-z]+)\\[([^]]*)\\]\\{([^{}]*)\\}");
-
-    /**
-     * Creates a new object.
-     * 
-     * @throws ConfigurationException in case of a configuration error
-     */
-    public AuxReaderImpl() throws ConfigurationException {
-
-        register("biboption", new BiboptionHandler());
-    }
-
-    /**
-*      java.lang.String, java.lang.String)
-     */
-    @Override
-    public void load(ProcessorContainer bibliographies, String resource,
-            String encoding)
-            throws ConfigurationException,
-                IOException,
-                ExBibException {
-
-        setEncoding(encoding);
-        LineNumberReader reader = open(resource, "aux", encoding);
-        String name = getFilename();
-
-        ResourceObserver observer = getObserver();
-        if (observer != null) {
-            observer.observeOpen(resource, "aux", name);
+        if( m.matches() ) {
+          AuxHandler handler = getHandler( m.group( 1 ) );
+          if( handler != null ) {
+            handler.invoke( m.group( 2 ), bibliographies,
+                            DEFAULT_TYPE, this );
+          }
+          continue;
         }
+        m = OPT_PATTERN.matcher( line );
 
-        try {
-            for (String line = reader.readLine(); line != null; line =
-                    reader.readLine()) {
-                Matcher m = PATTERN.matcher(line);
-
-                if (m.matches()) {
-                    AuxHandler handler = getHandler(m.group(1));
-                    if (handler != null) {
-                        handler.invoke(m.group(2), bibliographies,
-                            DEFAULT_TYPE, this);
-                    }
-                    continue;
-                }
-                m = OPT_PATTERN.matcher(line);
-
-                if (m.matches()) {
-                    AuxHandler handler = getHandler(m.group(1));
-                    if (handler != null) {
-                        handler.invoke(m.group(3), bibliographies, m.group(2),
-                            this);
-                    }
-                    continue;
-                }
-            }
-            if (observer != null) {
-                observer.observeClose(resource, "aux", name);
-            }
-        } finally {
-            reader.close();
-            close();
+        if( m.matches() ) {
+          AuxHandler handler = getHandler( m.group( 1 ) );
+          if( handler != null ) {
+            handler.invoke( m.group( 3 ), bibliographies, m.group( 2 ),
+                            this );
+          }
+          continue;
         }
+      }
+      if( observer != null ) {
+        observer.observeClose( resource, "aux", name );
+      }
+    } finally {
+      reader.close();
+      close();
     }
+  }
 
 }

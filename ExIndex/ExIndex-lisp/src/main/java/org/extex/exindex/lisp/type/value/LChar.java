@@ -24,45 +24,45 @@ import java.io.PrintStream;
 /**
  * This class is a node containing a character. The class is immutable; i.e. it
  * does not have any setters.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LChar implements LValue {
 
-    /**
-     * The field {@code value} contains the value.
-     */
-    private final char value;
+  /**
+   * The field {@code value} contains the value.
+   */
+  private final char value;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param value the value
-     */
-    public LChar(char value) {
+  /**
+   * Creates a new object.
+   *
+   * @param value the value
+   */
+  public LChar( char value ) {
 
-        this.value = value;
-    }
+    this.value = value;
+  }
 
-    /**
-     * Getter for value.
-     * 
-     * @return the value
-     */
-    public char getValue() {
+  /**
+   * Getter for value.
+   *
+   * @return the value
+   */
+  public char getValue() {
 
-        return value;
-    }
+    return value;
+  }
 
-public void print(PrintStream stream) {
+  public void print( PrintStream stream ) {
 
-        stream.print(value);
-    }
+    stream.print( value );
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        return Character.toString(value);
-    }
+    return Character.toString( value );
+  }
 
 }

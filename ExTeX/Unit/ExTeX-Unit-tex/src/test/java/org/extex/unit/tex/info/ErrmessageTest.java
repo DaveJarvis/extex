@@ -26,28 +26,27 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \errmessage}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ErrmessageTest extends ExTeXLauncher {
 
 
-    public ErrmessageTest() {
+  public ErrmessageTest() {
 
-    }
+  }
 
-    /**
-     * <testcase primitive="\errmessage">
-     *  Test case checking that \errmessage delivers a decent value.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\errmessage">
+   * Test case checking that \errmessage delivers a decent value.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\errmessage{abc}",
-                //--- log message ---
-                "abc");
-    }
+    assertFailure(//--- input code ---
+                  DEFINE_BRACES + "\\errmessage{abc}",
+                  //--- log message ---
+                  "abc" );
+  }
 
 }

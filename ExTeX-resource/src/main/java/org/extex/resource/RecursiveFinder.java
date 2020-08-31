@@ -25,14 +25,14 @@ package org.extex.resource;
  * input name. This is done by delegating the request to the parent finder.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface RecursiveFinder {
 
-    /**
-     * Setter for the parent finder.
-     *
-     * @param parent the parent finder
-     */
-    void setParent(ResourceFinder parent);
+  /**
+   * Setter for the parent finder.
+   *
+   * @param parent the parent finder
+   */
+  void setParent( ResourceFinder parent );
 
 }

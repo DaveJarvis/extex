@@ -19,133 +19,130 @@
 
 package org.extex.exbib.core.util;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
-
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
+
+import java.io.IOException;
+import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * This observer collects information about function calls and prints a
  * statistics.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  */
 public class FuncallObserver implements Observer {
 
-    /**
-     * The class Int provides an integer counter.
-     * 
-     * @author $Author$
-    */
-    private static class Int {
-
-        /**
-         * The field {@code value} contains the integer value.
-         */
-        private int value = 0;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param val the initial value
-         */
-        public Int(int val) {
-
-            value = val;
-        }
-
-        /**
-         * Getter for the current value.
-         * 
-         * @return the value
-         */
-        public int getValue() {
-
-            return value;
-        }
-
-        /**
-         * Increment the current value by 1.
-         */
-        public void inc() {
-
-            value++;
-        }
-
-        /**
-         * Return a string representation for this object.
-         * 
-         * @return the string representation
-         */
-        @Override
-        public String toString() {
-
-            return Integer.toString(value);
-        }
-    }
+  /**
+   * The class Int provides an integer counter.
+   *
+   * @author $Author$
+   */
+  private static class Int {
 
     /**
-     * The field {@code stat} contains the map to store collected statistics.
+     * The field {@code value} contains the integer value.
      */
-    private final Map<String, Int> stat = new HashMap<String, Int>();
-
-    /**
-     * The field {@code logger} contains the logger for any output.
-     */
-    private Logger logger = null;
+    private int value = 0;
 
     /**
      * Creates a new object.
-     * 
-     * @param logger the logger for output
+     *
+     * @param val the initial value
      */
-    public FuncallObserver(Logger logger) {
+    public Int( int val ) {
 
-        this.logger = logger;
+      value = val;
     }
 
     /**
-     * Print the collected statistics to the writer given to the constructor.
-     * 
-     * @throws IOException in case something could not be written
+     * Getter for the current value.
+     *
+     * @return the value
      */
-    public void print() throws IOException {
+    public int getValue() {
 
-        Localizer localizer = LocalizerFactory.getLocalizer(getClass());
-        logger.fine(localizer.format("profile"));
-
-        int funcalls = 0;
-        List<String> list = new ArrayList<String>(stat.keySet());
-        Collections.sort(list);
-
-        for (String key : list) {
-            int count = ((stat.get(key))).getValue();
-            funcalls += count;
-            logger.fine(count + "\t-- " + key);
-        }
-
-        logger.fine(localizer.format("total", Integer.valueOf(funcalls)));
+      return value;
     }
 
     /**
-*      java.lang.Object)
+     * Increment the current value by 1.
+     */
+    public void inc() {
+
+      value++;
+    }
+
+    /**
+     * Return a string representation for this object.
+     *
+     * @return the string representation
      */
     @Override
-    public void update(Observable source, Object o) {
+    public String toString() {
 
-        String name = o.toString();
-
-        if (stat.containsKey(name)) {
-            stat.get(name).inc();
-        } else {
-            stat.put(name, new Int(1));
-        }
+      return Integer.toString( value );
     }
+  }
+
+  /**
+   * The field {@code stat} contains the map to store collected statistics.
+   */
+  private final Map<String, Int> stat = new HashMap<String, Int>();
+
+  /**
+   * The field {@code logger} contains the logger for any output.
+   */
+  private Logger logger = null;
+
+  /**
+   * Creates a new object.
+   *
+   * @param logger the logger for output
+   */
+  public FuncallObserver( Logger logger ) {
+
+    this.logger = logger;
+  }
+
+  /**
+   * Print the collected statistics to the writer given to the constructor.
+   *
+   * @throws IOException in case something could not be written
+   */
+  public void print() throws IOException {
+
+    Localizer localizer = LocalizerFactory.getLocalizer( getClass() );
+    logger.fine( localizer.format( "profile" ) );
+
+    int funcalls = 0;
+    List<String> list = new ArrayList<String>( stat.keySet() );
+    Collections.sort( list );
+
+    for( String key : list ) {
+      int count = ((stat.get( key ))).getValue();
+      funcalls += count;
+      logger.fine( count + "\t-- " + key );
+    }
+
+    logger.fine( localizer.format( "total", Integer.valueOf( funcalls ) ) );
+  }
+
+  /**
+   * java.lang.Object)
+   */
+  @Override
+  public void update( Observable source, Object o ) {
+
+    String name = o.toString();
+
+    if( stat.containsKey( name ) ) {
+      stat.get( name ).inc();
+    }
+    else {
+      stat.put( name, new Int( 1 ) );
+    }
+  }
 
 }

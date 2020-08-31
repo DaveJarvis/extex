@@ -34,7 +34,7 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
 /**
  * This class provides an implementation for the primitive
  * {@code \mathchar}.
- * 
+ *
  * <p>The Math Primitive {@code \mathchar}</p>
  * <p>
  * The primitive {@code \mathchar} inserts a mathematical character
@@ -44,68 +44,69 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;mathchar&rang;
  *       &rarr; {@code \mathchar ...}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \mathchar"041  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \mathchar{ordinary 0 `A}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Mathchar extends AbstractTeXMathCode
-        implements
-            MathCodeConvertible {
+    implements
+    MathCodeConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Mathchar(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Mathchar( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public MathCode convertMathCode(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public MathCode convertMathCode( Context context, TokenSource source,
+                                   Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        return parseMathCode(context, source, typesetter, getToken());
-    }
+    return parseMathCode( context, source, typesetter, getToken() );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        NoadConsumer nc = getListMaker(context, typesetter);
-        MathCode mc = parseMathCode(context, source, typesetter, getToken());
+    NoadConsumer nc = getListMaker( context, typesetter );
+    MathCode mc = parseMathCode( context, source, typesetter, getToken() );
 
-        nc.add(mc, context.getTypesettingContext());
-    }
+    nc.add( mc, context.getTypesettingContext() );
+  }
 
 }

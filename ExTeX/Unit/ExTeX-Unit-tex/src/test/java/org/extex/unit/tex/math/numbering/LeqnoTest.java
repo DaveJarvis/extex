@@ -23,12 +23,12 @@ package org.extex.unit.tex.math.numbering;
  * This is a test suite for the primitive {@code \leqno}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LeqnoTest extends AbstractNumberingTester {
 
-    public LeqnoTest() {
-        setPrimitive( "leqno" );
-    }
-    
-    //TODO: write more primitive specific test cases
+  public LeqnoTest() {
+    setPrimitive( "leqno" );
+  }
+
+  //TODO: write more primitive specific test cases
 }

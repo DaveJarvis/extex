@@ -24,75 +24,77 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \the}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TheTest extends NoFlagsPrimitiveTester {
 
 
-    public TheTest() {
+  public TheTest() {
 
-        setPrimitive("the");setArguments("\\count1 ");setPrepare("");
-    }
+    setPrimitive( "the" );
+    setArguments( "\\count1 " );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\the"> Test case checking that {@code \the} on a
-     * count register works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCount1() throws Exception {
+  /**
+   * <testcase primitive="\the"> Test case checking that {@code \the} on a
+   * count register works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCount1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\the \\count1 ",
-            // --- output channel ---
-            "0" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\the \\count1 ",
+                  // --- output channel ---
+                  "0" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\the"> Test case checking that {@code \the} on a
-     * count register works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCount2() throws Exception {
+  /**
+   * <testcase primitive="\the"> Test case checking that {@code \the} on a
+   * count register works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCount2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\count1=123 \\the \\count1 ",
-            // --- output channel ---
-            "123" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\count1=123 \\the \\count1 ",
+                  // --- output channel ---
+                  "123" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\the"> Test case checking that {@code \the} on a
-     * letter leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErrorLetter() throws Exception {
+  /**
+   * <testcase primitive="\the"> Test case checking that {@code \the} on a
+   * letter leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErrorLetter() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\the a ",
-            // --- error channel ---
-            "You can't use `the letter a' after \\the");
-    }
+    assertFailure(// --- input code ---
+                  "\\the a ",
+                  // --- error channel ---
+                  "You can't use `the letter a' after \\the" );
+  }
 
-    /**
-     * <testcase primitive="\the"> Test case checking that {@code \the} on a
-     * digit leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErrorOther() throws Exception {
+  /**
+   * <testcase primitive="\the"> Test case checking that {@code \the} on a
+   * digit leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErrorOther() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\the 1 ",
-            // --- error channel ---
-            "You can't use `the character 1' after \\the");
-    }
+    assertFailure(// --- input code ---
+                  "\\the 1 ",
+                  // --- error channel ---
+                  "You can't use `the character 1' after \\the" );
+  }
 
 }

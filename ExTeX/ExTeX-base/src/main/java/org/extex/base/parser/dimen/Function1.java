@@ -23,21 +23,19 @@ import org.extex.core.exception.helping.HelpingException;
 
 /**
  * This interface describes a function object with a single argument.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Function1 {
 
-    /**
-     * Compute the function value for the argument stored in the accumulator and
-     * return in the accumulator overwriting the value stored therein.
-     * 
-     * @param accumulator the accumulator argument
-     * 
-     * @return the accumulator containing the result
-     * 
-     * @throws HelpingException in case of an error
-     */
-    Accumulator apply(Accumulator accumulator) throws HelpingException;
+  /**
+   * Compute the function value for the argument stored in the accumulator and
+   * return in the accumulator overwriting the value stored therein.
+   *
+   * @param accumulator the accumulator argument
+   * @return the accumulator containing the result
+   * @throws HelpingException in case of an error
+   */
+  Accumulator apply( Accumulator accumulator ) throws HelpingException;
 
 }

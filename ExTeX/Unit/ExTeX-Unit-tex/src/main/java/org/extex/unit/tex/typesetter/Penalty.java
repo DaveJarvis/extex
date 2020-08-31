@@ -31,7 +31,7 @@ import org.extex.typesetter.type.node.PenaltyNode;
 
 /**
  * This class provides an implementation for the primitive {@code \penalty}.
- * 
+ *
  * <p>The Primitive {@code \penalty}</p>
  * <p>
  * This primitive inserts penalty into the current node list. In vertical mode
@@ -41,59 +41,58 @@ import org.extex.typesetter.type.node.PenaltyNode;
  * A penalty of 10000 or more will inhibit a break at this position. A penalty
  * of -10000 or less will force a break at this position.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;penalty&rang;
  *        &rarr; {@code \penalty} {@linkplain
- *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *          &lang;8-bit&nbsp;number&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \penalty 123  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \penalty -456  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \penalty -\count254  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Penalty extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Penalty(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Penalty( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        long penalty = source.parseInteger(context, source, typesetter);
-        typesetter.add(new PenaltyNode(penalty));
-    }
+    long penalty = source.parseInteger( context, source, typesetter );
+    typesetter.add( new PenaltyNode( penalty ) );
+  }
 
 }

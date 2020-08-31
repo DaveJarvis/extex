@@ -25,31 +25,31 @@ import org.junit.runner.JUnitCore;
 
 /**
  * Test for the primitive \ifdefined.
- * 
+ *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
-*/
+ */
 public class IfdefinedTest {
 
-    /**
-     * main
-     * 
-     * @param args command line args
-     */
-    public static void main(String[] args) {
+  /**
+   * main
+   *
+   * @param args command line args
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IfdefinedTest.class);
-    }
+    (new JUnitCore()).run( IfdefinedTest.class );
+  }
 
-    /**
-     * Test the primitive \ifdefined.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore("gene: I don't know why this one fails")
-    public void testIfdefined() throws Exception {
+  /**
+   * Test the primitive \ifdefined.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore("gene: I don't know why this one fails")
+  public void testIfdefined() throws Exception {
 
-        // TestTeX.test("juifdefined", "ExTeX-Unit-etex", "etex");
-    }
+    // TestTeX.test("juifdefined", "ExTeX-Unit-etex", "etex");
+  }
 
 }

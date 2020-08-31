@@ -31,59 +31,58 @@ import org.extex.unit.omega.ocp.util.OcpList;
 
 /**
  * This class provides an implementation for the primitive {@code \ocplist}.
- * 
+ *
  * <p>The Primitive {@code \ocplist}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;ocplist&rang;
  *      &rarr; {@code \ocplist} ...  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  * \ocplist \nullocplist </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OcplistPrimitive extends AbstractAssignment {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public OcplistPrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public OcplistPrimitive( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        source.getOptionalEquals(context);
-        OcpList list = AbstractOcplist.scanOcplist(context, source, typesetter);
-        context.setCode(cs, list, prefix.clearGlobal());
-    }
+    CodeToken cs = source.getControlSequence( context, typesetter );
+    source.getOptionalEquals( context );
+    OcpList list = AbstractOcplist.scanOcplist( context, source, typesetter );
+    context.setCode( cs, list, prefix.clearGlobal() );
+  }
 
 }

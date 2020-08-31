@@ -22,26 +22,27 @@ package org.extex.core.exception.helping;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an ε-TeX extension is used which has been disabled.
- * 
+ * This exception is raised when an ε-TeX extension is used which has been 
+ * disabled.
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExtensionDisabledException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param macro the name of the macro which is disabled
-     */
-    public ExtensionDisabledException(String macro) {
+  /**
+   * Creates a new object.
+   *
+   * @param macro the name of the macro which is disabled
+   */
+  public ExtensionDisabledException( String macro ) {
 
-        super(LocalizerFactory.getLocalizer(ExtensionDisabledException.class),
-            "ExtensionDisabled");
-    }
+    super( LocalizerFactory.getLocalizer( ExtensionDisabledException.class ),
+           "ExtensionDisabled" );
+  }
 
 }

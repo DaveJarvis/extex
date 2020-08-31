@@ -36,7 +36,7 @@ import org.extex.unit.tex.conditional.Ifcase;
 
 /**
  * This class provides an implementation for the primitive {@code \if}.
- * 
+ *
  * <p>The Primitive {@code &#x005c;unless}</p>
  * <p>
  * <strong>Copied of the ε-TeX reference</strong>.
@@ -68,56 +68,59 @@ import org.extex.unit.tex.conditional.Ifcase;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
-*/
+ */
 public class Unless extends AbstractCode implements ExpandableCode, PrefixCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for the
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for the
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Unless(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Unless( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    CodeToken token = source.getControlSequence( context, typesetter );
+    Code code = context.getCode( token );
+
+    if( !code.isIf() || code instanceof Ifcase ) {
+      throw new CantUseAfterException( token.toText( context.escapechar() ),
+                                       toText( context ) );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        CodeToken token = source.getControlSequence(context, typesetter);
-        Code code = context.getCode(token);
-
-        if (!code.isIf() || code instanceof Ifcase) {
-            throw new CantUseAfterException(token.toText(context.escapechar()),
-                toText(context));
-        }
-
-        if (!((AbstractIf) code).conditional(context, source, typesetter)) {
-            context.pushConditional(source.getLocator(), true, code, 1, true);
-        } else if (AbstractIf.skipToElseOrFi(context, source, getToken())) {
-            context.pushConditional(source.getLocator(), true, code, -1, true);
-        }
+    if( !((AbstractIf) code).conditional( context, source, typesetter ) ) {
+      context.pushConditional( source.getLocator(), true, code, 1, true );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        execute(prefix, context, source, typesetter);
+    else if( AbstractIf.skipToElseOrFi( context, source, getToken() ) ) {
+      context.pushConditional( source.getLocator(), true, code, -1, true );
     }
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    execute( prefix, context, source, typesetter );
+  }
 
 }

@@ -24,33 +24,33 @@ import java.util.List;
 
 /**
  * ItalicAngle.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOItalicAngle extends T2TDONumber {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2TDOItalicAngle(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2TDOItalicAngle( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{ESCAPE_BYTE, CFF_ITALICANGLE});
-    }
+    super( stack, new short[]{ESCAPE_BYTE, CFF_ITALICANGLE} );
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return T2TopDICTOperator.TYPE_ITALICANGLE;
-    }
+    return T2TopDICTOperator.TYPE_ITALICANGLE;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "italicangle";
-    }
+    return "italicangle";
+  }
 
 }

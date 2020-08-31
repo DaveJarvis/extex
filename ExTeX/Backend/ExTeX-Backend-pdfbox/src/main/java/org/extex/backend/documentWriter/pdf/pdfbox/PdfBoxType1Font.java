@@ -19,10 +19,6 @@
 
 package org.extex.backend.documentWriter.pdf.pdfbox;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.font.FontKey;
 import org.extex.typesetter.tc.font.Font;
 import org.pdfbox.afmtypes.FontMetric;
@@ -32,164 +28,169 @@ import org.pdfbox.pdmodel.font.PDFontDescriptor;
 import org.pdfbox.pdmodel.font.PDFontDescriptorDictionary;
 import org.pdfbox.pdmodel.font.PDType1Font;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Type1 font with ExTeX values.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public final class PdfBoxType1Font extends PDType1Font {
 
-    /**
-     * Returns a instance for the font.
-     *
-     * @param doc   the PDDocument.
-     * @param font  the extex font.
-     * @return Returns the instance for the font.
-     * @throws IOException if an IO-error occurred.
-     */
-    public static PDFont getInstance(PDDocument doc, Font font)
-            throws IOException {
+  /**
+   * Returns a instance for the font.
+   *
+   * @param doc  the PDDocument.
+   * @param font the extex font.
+   * @return Returns the instance for the font.
+   * @throws IOException if an IO-error occurred.
+   */
+  public static PDFont getInstance( PDDocument doc, Font font )
+      throws IOException {
 
-        FontKey key = font.getFontKey();
-        PDFont pdfont = map.get(key);
-        if (pdfont == null) {
-            pdfont = new PdfBoxType1Font(doc, font);
-            map.put(key, pdfont);
-        }
-
-        return pdfont;
+    FontKey key = font.getFontKey();
+    PDFont pdfont = map.get( key );
+    if( pdfont == null ) {
+      pdfont = new PdfBoxType1Font( doc, font );
+      map.put( key, pdfont );
     }
 
-    /**
-     * the map for the fonts.
-     */
-    private static final Map<FontKey, PDFont> map = new HashMap<FontKey, PDFont>();
+    return pdfont;
+  }
 
-    /**
-     * Create a new object.
-     *
-     * @param doc   the PDDocument.
-     * @param font  the extex font
-     *
-     * @throws IOException TODO
-     */
-    private PdfBoxType1Font(PDDocument doc, Font font)
-            throws IOException {
+  /**
+   * the map for the fonts.
+   */
+  private static final Map<FontKey, PDFont> map = new HashMap<FontKey,
+      PDFont>();
 
-        fd = new PDFontDescriptorDictionary();
-        setFontDescriptor(fd);
+  /**
+   * Create a new object.
+   *
+   * @param doc  the PDDocument.
+   * @param font the extex font
+   * @throws IOException TODO
+   */
+  private PdfBoxType1Font( PDDocument doc, Font font )
+      throws IOException {
 
-        //        // read the pfb
-        //        PfbParser pfbparser = new PfbParser(pfb);
-        //        pfb.close();
+    fd = new PDFontDescriptorDictionary();
+    setFontDescriptor( fd );
 
-        //        PDStream fontStream = new PDStream(doc, pfbparser.getInputStream(),
-        //                false);
-        //        fontStream.getStream().setInt("Length", pfbparser.size());
-        //        for (int i = 0; i < pfbparser.getLengths().length; i++) {
-        //            fontStream.getStream().setInt("Length" + (i + 1),
-        //                    pfbparser.getLengths()[i]);
-        //        }
-        //        fontStream.addCompression();
-        //        fd.setFontFile(fontStream);
+    //        // read the pfb
+    //        PfbParser pfbparser = new PfbParser(pfb);
+    //        pfb.close();
 
-        //        // read the afm
-        //        AFMParser parser = new AFMParser(afm);
-        //        parser.parse();
-        //        metric = parser.getResult();
-        //        setEncoding(new AFMEncoding(metric));
+    //        PDStream fontStream = new PDStream(doc, pfbparser
+    //        .getInputStream(),
+    //                false);
+    //        fontStream.getStream().setInt("Length", pfbparser.size());
+    //        for (int i = 0; i < pfbparser.getLengths().length; i++) {
+    //            fontStream.getStream().setInt("Length" + (i + 1),
+    //                    pfbparser.getLengths()[i]);
+    //        }
+    //        fontStream.addCompression();
+    //        fd.setFontFile(fontStream);
 
-        //        // set the values
-        //        setBaseFont(metric.getFontName());
-        //        fd.setFontName(metric.getFontName());
-        //        fd.setFontFamily(metric.getFamilyName());
-        //        fd.setNonSymbolic(true);
-        //        fd.setFontBoundingBox(new PDRectangle(metric.getFontBBox()));
-        //        fd.setItalicAngle(metric.getItalicAngle());
-        //        fd.setAscent(metric.getAscender());
-        //        fd.setDescent(metric.getDescender());
-        //        fd.setCapHeight(metric.getCapHeight());
-        //        fd.setXHeight(metric.getXHeight());
-        //        fd.setAverageWidth(metric.getAverageCharacterWidth());
-        //        fd.setCharacterSet(metric.getCharacterSet());
+    //        // read the afm
+    //        AFMParser parser = new AFMParser(afm);
+    //        parser.parse();
+    //        metric = parser.getResult();
+    //        setEncoding(new AFMEncoding(metric));
 
-        //        // use encoding ?
-        //        if (encvec == null) {
-        //            // no reencoding
+    //        // set the values
+    //        setBaseFont(metric.getFontName());
+    //        fd.setFontName(metric.getFontName());
+    //        fd.setFontFamily(metric.getFamilyName());
+    //        fd.setNonSymbolic(true);
+    //        fd.setFontBoundingBox(new PDRectangle(metric.getFontBBox()));
+    //        fd.setItalicAngle(metric.getItalicAngle());
+    //        fd.setAscent(metric.getAscender());
+    //        fd.setDescent(metric.getDescender());
+    //        fd.setCapHeight(metric.getCapHeight());
+    //        fd.setXHeight(metric.getXHeight());
+    //        fd.setAverageWidth(metric.getAverageCharacterWidth());
+    //        fd.setCharacterSet(metric.getCharacterSet());
 
-        //            // get firstchar, lastchar
-        //            int firstchar = 255;
-        //            int lastchar = 0;
+    //        // use encoding ?
+    //        if (encvec == null) {
+    //            // no reencoding
 
-        //            // widths
-        //            List listmetric = metric.getCharMetrics();
+    //            // get firstchar, lastchar
+    //            int firstchar = 255;
+    //            int lastchar = 0;
 
-        //            int maxWidths = 256;
-        //            List widths = new ArrayList(maxWidths);
-        //            Integer zero = new Integer(0);
-        //            Iterator iter = listmetric.iterator();
-        //            while (iter.hasNext()) {
-        //                CharMetric m = (CharMetric) iter.next();
-        //                int n = m.getCharacterCode();
-        //                if (n > 0) {
-        //                    firstchar = Math.min(firstchar, n);
-        //                    lastchar = Math.max(lastchar, n);
-        //                    if (m.getWx() > 0) {
-        //                        float width = m.getWx();
-        //                        widths.add(new Float(width));
-        //                    } else {
-        //                        widths.add(zero);
-        //                    }
-        //                }
-        //            }
-        //            setFirstChar(firstchar);
-        //            setLastChar(lastchar);
-        //            setWidths(widths);
-        //        } else {
-        //            // use reencoding
+    //            // widths
+    //            List listmetric = metric.getCharMetrics();
 
-        //            // widths
-        //            List listmetric = metric.getCharMetrics();
-        //            int maxWidths = 256;
-        //            List widths = new ArrayList(maxWidths);
-        //            Integer zero = new Integer(0);
+    //            int maxWidths = 256;
+    //            List widths = new ArrayList(maxWidths);
+    //            Integer zero = new Integer(0);
+    //            Iterator iter = listmetric.iterator();
+    //            while (iter.hasNext()) {
+    //                CharMetric m = (CharMetric) iter.next();
+    //                int n = m.getCharacterCode();
+    //                if (n > 0) {
+    //                    firstchar = Math.min(firstchar, n);
+    //                    lastchar = Math.max(lastchar, n);
+    //                    if (m.getWx() > 0) {
+    //                        float width = m.getWx();
+    //                        widths.add(new Float(width));
+    //                    } else {
+    //                        widths.add(zero);
+    //                    }
+    //                }
+    //            }
+    //            setFirstChar(firstchar);
+    //            setLastChar(lastchar);
+    //            setWidths(widths);
+    //        } else {
+    //            // use reencoding
 
-        //            // fill with zero
-        //            for (int i = 0; i < encvec.length; i++) {
-        //                if (encvec[i] != null) {
-        //                    float w = getWithGlypName(encvec[i], listmetric);
-        //                    widths.add(new Float(w));
-        //                } else {
-        //                    widths.add(zero);
-        //                }
-        //            }
-        //            setFirstChar(0);
-        //            setLastChar(255);
-        //            setWidths(widths);
-        //        }
+    //            // widths
+    //            List listmetric = metric.getCharMetrics();
+    //            int maxWidths = 256;
+    //            List widths = new ArrayList(maxWidths);
+    //            Integer zero = new Integer(0);
 
-    }
+    //            // fill with zero
+    //            for (int i = 0; i < encvec.length; i++) {
+    //                if (encvec[i] != null) {
+    //                    float w = getWithGlypName(encvec[i], listmetric);
+    //                    widths.add(new Float(w));
+    //                } else {
+    //                    widths.add(zero);
+    //                }
+    //            }
+    //            setFirstChar(0);
+    //            setLastChar(255);
+    //            setWidths(widths);
+    //        }
 
-    /**
-     * The font descriptor.
-     */
-    private final PDFontDescriptorDictionary fd;
+  }
 
-    /**
-     * the font metric.
-     */
-    private FontMetric metric;
+  /**
+   * The font descriptor.
+   */
+  private final PDFontDescriptorDictionary fd;
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.pdfbox.pdmodel.font.PDSimpleFont#getFontDescriptor()
-     */
-    @Override
-    public PDFontDescriptor getFontDescriptor() throws IOException {
+  /**
+   * the font metric.
+   */
+  private FontMetric metric;
 
-        return fd;
-    }
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.pdfbox.pdmodel.font.PDSimpleFont#getFontDescriptor()
+   */
+  @Override
+  public PDFontDescriptor getFontDescriptor() throws IOException {
+
+    return fd;
+  }
 
 }

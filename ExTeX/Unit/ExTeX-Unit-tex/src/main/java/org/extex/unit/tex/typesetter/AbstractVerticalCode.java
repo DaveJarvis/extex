@@ -30,54 +30,53 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This an abstract base class for primitives in vertical mode.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractVerticalCode extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractVerticalCode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractVerticalCode( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Check that the current mode is a vertical mode and throw an exception if
+   * another mode is detected.
+   *
+   * @param typesetter the typesetter to ask for the mode
+   * @throws HelpingException       in case of an error
+   * @throws TypesetterException    in case of an error in the typesetter
+   * @throws ConfigurationException in case of an configuration error
+   */
+  protected void ensureVerticalMode( Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException,
+      ConfigurationException {
+
+    Mode mode = typesetter.getMode();
+    if( typesetter.getMode() == Mode.HORIZONTAL ) { // see TTP[1094]
+      // see TTP[1095]
+      typesetter.par();
+      mode = typesetter.getMode();
     }
 
-    /**
-     * Check that the current mode is a vertical mode and throw an exception if
-     * another mode is detected.
-     * 
-     * @param typesetter the typesetter to ask for the mode
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     * @throws ConfigurationException in case of an configuration error
-     */
-    protected void ensureVerticalMode(Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException,
-                ConfigurationException {
-
-        Mode mode = typesetter.getMode();
-        if (typesetter.getMode() == Mode.HORIZONTAL) { // see TTP[1094]
-            // see TTP[1095]
-            typesetter.par();
-            mode = typesetter.getMode();
-        }
-
-        if (!mode.isVmode()) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(AbstractVerticalCode.class),
-                "TTP.MissingInserted", "}");
-        }
+    if( !mode.isVmode() ) {
+      throw new HelpingException( LocalizerFactory
+                                      .getLocalizer( AbstractVerticalCode.class ),
+                                  "TTP.MissingInserted", "}" );
     }
+  }
 
 }

@@ -26,140 +26,139 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Class for a encoding writer.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*
  */
 public class EncWriter {
 
-    /**
-     * The encoding size.
-     */
-    private static final int ENCODINGSIZE = 256;
+  /**
+   * The encoding size.
+   */
+  private static final int ENCODINGSIZE = 256;
 
-    /**
-     * Use comments?
-     */
-    private boolean comments = true;
+  /**
+   * Use comments?
+   */
+  private boolean comments = true;
 
-    /**
-     * The encoding vector.
-     */
-    private final String[] enc = new String[ENCODINGSIZE];
+  /**
+   * The encoding vector.
+   */
+  private final String[] enc = new String[ ENCODINGSIZE ];
 
-    /**
-     * The encoding name.
-     */
-    private String encname = "";
+  /**
+   * The encoding name.
+   */
+  private String encname = "";
 
-    /**
-     * The header comment.
-     */
-    private String headerComment = null;
+  /**
+   * The header comment.
+   */
+  private String headerComment = null;
 
-    /**
-     * Create a new object.
-     */
-    public EncWriter() {
+  /**
+   * Create a new object.
+   */
+  public EncWriter() {
 
-        for (int i = 0; i < ENCODINGSIZE; i++) {
-            enc[i] = "/.notdef";
-        }
+    for( int i = 0; i < ENCODINGSIZE; i++ ) {
+      enc[ i ] = "/.notdef";
+    }
+  }
+
+  /**
+   * Returns the encname.
+   *
+   * @return Returns the encname.
+   */
+  public String getEncname() {
+
+    return encname;
+  }
+
+  /**
+   * Returns the comments.
+   *
+   * @return Returns the comments.
+   */
+  public boolean isComments() {
+
+    return comments;
+  }
+
+  /**
+   * The comments to set.
+   *
+   * @param c The comments to set.
+   */
+  public void setComments( boolean c ) {
+
+    comments = c;
+  }
+
+  /**
+   * The encname to set.
+   *
+   * @param name The encname to set.
+   */
+  public void setEncname( String name ) {
+
+    encname = name;
+  }
+
+  /**
+   * Set a encoding value.
+   *
+   * @param pos  The position.
+   * @param name The glyph name.
+   */
+  public void setEncoding( int pos, String name ) {
+
+    if( pos >= 0 && pos < ENCODINGSIZE ) {
+      enc[ pos ] = name;
+    }
+  }
+
+  /**
+   * Setter for headerComment.
+   *
+   * @param headerComment the headerComment to set
+   */
+  public void setHeaderComment( String headerComment ) {
+
+    this.headerComment = headerComment;
+  }
+
+  /**
+   * Write the encoding vector to a output stream.
+   *
+   * @param out The output
+   * @throws IOException if an IO-error occurred.
+   */
+  public void write( OutputStream out ) throws IOException {
+
+    BufferedWriter writer =
+        new BufferedWriter( new OutputStreamWriter( out,
+                                                    StandardCharsets.US_ASCII ) );
+
+    if( headerComment != null ) {
+      writer.write( headerComment );
     }
 
-    /**
-     * Returns the encname.
-     * 
-     * @return Returns the encname.
-     */
-    public String getEncname() {
-
-        return encname;
+    writer.write( "/" );
+    writer.write( encname );
+    writer.write( " [\n" );
+    for( int i = 0; i < ENCODINGSIZE; i++ ) {
+      if( comments ) {
+        writer
+            .write( "% 0x" + Integer.toHexString( i ) + " (" + i + ")\n" );
+      }
+      writer.write( " " );
+      writer.write( enc[ i ] );
+      writer.write( "\n" );
     }
 
-    /**
-     * Returns the comments.
-     * 
-     * @return Returns the comments.
-     */
-    public boolean isComments() {
-
-        return comments;
-    }
-
-    /**
-     * The comments to set.
-     * 
-     * @param c The comments to set.
-     */
-    public void setComments(boolean c) {
-
-        comments = c;
-    }
-
-    /**
-     * The encname to set.
-     * 
-     * @param name The encname to set.
-     */
-    public void setEncname(String name) {
-
-        encname = name;
-    }
-
-    /**
-     * Set a encoding value.
-     * 
-     * @param pos The position.
-     * @param name The glyph name.
-     */
-    public void setEncoding(int pos, String name) {
-
-        if (pos >= 0 && pos < ENCODINGSIZE) {
-            enc[pos] = name;
-        }
-    }
-
-    /**
-     * Setter for headerComment.
-     * 
-     * @param headerComment the headerComment to set
-     */
-    public void setHeaderComment(String headerComment) {
-
-        this.headerComment = headerComment;
-    }
-
-    /**
-     * Write the encoding vector to a output stream.
-     * 
-     * @param out The output
-     * @throws IOException if an IO-error occurred.
-     */
-    public void write(OutputStream out) throws IOException {
-
-        BufferedWriter writer =
-                new BufferedWriter(new OutputStreamWriter( out,
-                                                           StandardCharsets.US_ASCII ));
-
-        if (headerComment != null) {
-            writer.write(headerComment);
-        }
-
-        writer.write("/");
-        writer.write(encname);
-        writer.write(" [\n");
-        for (int i = 0; i < ENCODINGSIZE; i++) {
-            if (comments) {
-                writer
-                    .write("% 0x" + Integer.toHexString(i) + " (" + i + ")\n");
-            }
-            writer.write(" ");
-            writer.write(enc[i]);
-            writer.write("\n");
-        }
-
-        writer.write("] def\n");
-        writer.close();
-    }
+    writer.write( "] def\n" );
+    writer.close();
+  }
 }

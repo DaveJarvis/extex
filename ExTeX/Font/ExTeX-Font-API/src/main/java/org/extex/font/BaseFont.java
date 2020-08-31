@@ -21,23 +21,23 @@ package org.extex.font;
 
 /**
  * Interface for the font.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface BaseFont {
 
-    /**
-     * Returns the actual FontKey for this font after a font substitution.
-     * 
-     * @return Returns the actual FontKey for this font.
-     */
-    FontKey getActualFontKey();
+  /**
+   * Returns the actual FontKey for this font after a font substitution.
+   *
+   * @return Returns the actual FontKey for this font.
+   */
+  FontKey getActualFontKey();
 
-    /**
-     * Returns the FontKey for this font.
-     * 
-     * @return Returns the FontKey for this font.
-     */
-    FontKey getFontKey();
+  /**
+   * Returns the FontKey for this font.
+   *
+   * @return Returns the FontKey for this font.
+   */
+  FontKey getFontKey();
 
 }

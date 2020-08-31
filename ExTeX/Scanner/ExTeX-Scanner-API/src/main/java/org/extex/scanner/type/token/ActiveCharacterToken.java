@@ -31,191 +31,179 @@ import org.extex.scanner.type.Namespace;
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory} to get an
  * instance of this class.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ActiveCharacterToken extends AbstractToken implements CodeToken {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2011L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2011L;
 
-    /**
-     * The constant {@code HASH_FACTOR} contains the factor used to construct
-     * the hash code.
-     */
-    private static final int HASH_FACTOR = 17;
+  /**
+   * The constant {@code HASH_FACTOR} contains the factor used to construct
+   * the hash code.
+   */
+  private static final int HASH_FACTOR = 17;
 
-    /**
-     * The field {@code namespace} contains the namespace for this token.
-     */
-    private final String namespace;
+  /**
+   * The field {@code namespace} contains the namespace for this token.
+   */
+  private final String namespace;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param uc the string value
-     * @param theNamespace the namespace
-     */
-    protected ActiveCharacterToken(UnicodeChar uc, String theNamespace) {
+  /**
+   * Creates a new object.
+   *
+   * @param uc           the string value
+   * @param theNamespace the namespace
+   */
+  protected ActiveCharacterToken( UnicodeChar uc, String theNamespace ) {
 
-        super(uc);
-        namespace = theNamespace;
+    super( uc );
+    namespace = theNamespace;
+  }
+
+  /**
+   * Create a new instance of the token where the name space is the default
+   * name space and the other attributes are the same as for the current
+   * token.
+   *
+   * @return the new token
+   * @see org.extex.scanner.type.token.CodeToken#cloneInDefaultNamespace()
+   */
+  @Override
+  public CodeToken cloneInDefaultNamespace() {
+
+    if( Namespace.DEFAULT_NAMESPACE.equals( namespace ) ) {
+      return this;
     }
+    return new ActiveCharacterToken( getChar(), Namespace.DEFAULT_NAMESPACE );
+  }
 
-    /**
-     * Create a new instance of the token where the name space is the default
-     * name space and the other attributes are the same as for the current
-     * token.
-     * 
-     * @return the new token
-     * 
-     * @see org.extex.scanner.type.token.CodeToken#cloneInDefaultNamespace()
-     */
-    @Override
-    public CodeToken cloneInDefaultNamespace() {
+  /**
+   * Create a new instance of the token where the name space is the given one.
+   *
+   * @param theNamespace the name space to use
+   * @return the new token
+   * @see org.extex.scanner.type.token.CodeToken#cloneInNamespace(java.lang.String)
+   */
+  @Override
+  public CodeToken cloneInNamespace( String theNamespace ) {
 
-        if (Namespace.DEFAULT_NAMESPACE.equals(namespace)) {
-            return this;
-        }
-        return new ActiveCharacterToken(getChar(), Namespace.DEFAULT_NAMESPACE);
+    if( theNamespace == null || namespace.equals( theNamespace ) ) {
+      return this;
     }
+    return new ActiveCharacterToken( getChar(), theNamespace );
+  }
 
-    /**
-     * Create a new instance of the token where the name space is the given one.
-     * 
-     * @param theNamespace the name space to use
-     * 
-     * @return the new token
-     * 
-     * @see org.extex.scanner.type.token.CodeToken#cloneInNamespace(java.lang.String)
-     */
-    @Override
-    public CodeToken cloneInNamespace(String theNamespace) {
+  /**
+   * Indicates whether some other object is "equal to" this one.
+   *
+   * @param other the reference object with which to compare.
+   * @return {@code true} if this object is the same as the obj argument;
+   * {@code false} otherwise.
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals( Object other ) {
 
-        if (theNamespace == null || namespace.equals(theNamespace)) {
-            return this;
-        }
-        return new ActiveCharacterToken(getChar(), theNamespace);
+    if( other == null || !(other instanceof ActiveCharacterToken) ) {
+      return false;
     }
+    ActiveCharacterToken othertoken = (ActiveCharacterToken) other;
+    return (super.equals( other ) && namespace.equals( othertoken.namespace ));
+  }
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     * 
-     * @param other the reference object with which to compare.
-     * @return {@code true} if this object is the same as the obj argument;
-     *         {@code false} otherwise.
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object other) {
+  /**
+   * Getter for the catcode.
+   *
+   * @return the catcode
+   * @see org.extex.scanner.type.token.Token#getCatcode()
+   */
+  @Override
+  public Catcode getCatcode() {
 
-        if (other == null || !(other instanceof ActiveCharacterToken)) {
-            return false;
-        }
-        ActiveCharacterToken othertoken = (ActiveCharacterToken) other;
-        return (super.equals(other) && namespace.equals(othertoken.namespace));
-    }
+    return Catcode.ACTIVE;
+  }
 
-    /**
-     * Getter for the catcode.
-     * 
-     * @return the catcode
-     * 
-     * @see org.extex.scanner.type.token.Token#getCatcode()
-     */
-    @Override
-    public Catcode getCatcode() {
+  /**
+   * Getter for the name. The name is the string representation without the
+   * escape character in front.
+   *
+   * @return the name of the token
+   * @see org.extex.scanner.type.token.CodeToken#getName()
+   */
+  @Override
+  public String getName() {
 
-        return Catcode.ACTIVE;
-    }
+    return "";
+  }
 
-    /**
-     * Getter for the name. The name is the string representation without the
-     * escape character in front.
-     * 
-     * @return the name of the token
-     * 
-     * @see org.extex.scanner.type.token.CodeToken#getName()
-     */
-    @Override
-    public String getName() {
+  /**
+   * Getter for the name space.
+   *
+   * @return the name space
+   * @see org.extex.scanner.type.token.CodeToken#getNamespace()
+   */
+  @Override
+  public String getNamespace() {
 
-        return "";
-    }
+    return namespace;
+  }
 
-    /**
-     * Getter for the name space.
-     * 
-     * @return the name space
-     * 
-     * @see org.extex.scanner.type.token.CodeToken#getNamespace()
-     */
-    @Override
-    public String getNamespace() {
+  /**
+   * Returns a hash code value for the object.
+   *
+   * @return a hash code value for this object
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
 
-        return namespace;
-    }
+    return super.hashCode() + HASH_FACTOR * namespace.hashCode();
+  }
 
-    /**
-     * Returns a hash code value for the object.
-     * 
-     * @return a hash code value for this object
-     * 
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode() {
+  /**
+   * Get the string representation of this object for debugging purposes.
+   *
+   * @return the string representation
+   */
+  @Override
+  public String toString() {
 
-        return super.hashCode() + HASH_FACTOR * namespace.hashCode();
-    }
+    return getLocalizer().format( "ActiveCharacterToken.Text",
+                                  super.toString() );
+  }
 
-    /**
-     * Get the string representation of this object for debugging purposes.
-     * 
-     * @return the string representation
-     */
-    @Override
-    public String toString() {
+  /**
+   * Print the token into a StringBuilder.
+   *
+   * @param sb the target string builder
+   * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
+   */
+  @Override
+  public void toString( StringBuilder sb ) {
 
-        return getLocalizer().format("ActiveCharacterToken.Text",
-            super.toString());
-    }
+    sb.append( getLocalizer().format( "ActiveCharacterToken.Text",
+                                      super.toString() ) );
+  }
 
-    /**
-     * Print the token into a StringBuilder.
-     * 
-     * @param sb the target string builder
-     * 
-     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
-     */
-    @Override
-    public void toString(StringBuilder sb) {
+  /**
+   * Invoke the appropriate visit method for the current class.
+   *
+   * @param visitor the calling visitor
+   * @param arg1    the first argument to pass
+   * @return the result object
+   * @throws Exception in case of an error
+   * @see org.extex.scanner.type.token.Token#visit(org.extex.scanner.type.token.TokenVisitor,
+   * java.lang.Object)
+   */
+  @Override
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public Object visit( TokenVisitor visitor, Object arg1 ) throws Exception {
 
-        sb.append(getLocalizer().format("ActiveCharacterToken.Text",
-            super.toString()));
-    }
-
-    /**
-     * Invoke the appropriate visit method for the current class.
-     * 
-     * @param visitor the calling visitor
-     * @param arg1 the first argument to pass
-     * 
-     * @return the result object
-     * 
-     * @throws Exception in case of an error
-     * 
-     * @see org.extex.scanner.type.token.Token#visit(org.extex.scanner.type.token.TokenVisitor,
-     *      java.lang.Object)
-     */
-    @Override
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(TokenVisitor visitor, Object arg1) throws Exception {
-
-        return visitor.visitActive(this, arg1);
-    }
+    return visitor.visitActive( this, arg1 );
+  }
 
 }

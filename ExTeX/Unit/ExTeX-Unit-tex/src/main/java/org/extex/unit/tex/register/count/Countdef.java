@@ -35,7 +35,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \countdef}.
- * 
+ *
  * <p>The Primitive {@code \countdef}</p>
  * <p>
  * The primitive {@code \countdef} can be used to define a control sequence as
@@ -51,10 +51,10 @@ import org.extex.typesetter.exception.TypesetterException;
  * control sequence global instead of the group-local assignment which is the
  * default.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;countdef&rang;
  *      &rarr; &lang;modifier&rang; {@code \countdef} {@linkplain
@@ -62,89 +62,94 @@ import org.extex.typesetter.exception.TypesetterException;
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context, TokenSource, Typesetter, CodeToken)
  *        &lang;register name&rang;}
  *
  *    &lang;modifier&rang;
  *      &rarr;
  *       |  {@code \global}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \countdef\abc=45  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \countdef\abc 33  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \countdef\abc={xyz}  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \countdef\abc={xyz\the\count0}  </pre>
- * 
+ *
  * <p>Differences to TeX and Friends</p>
-
+ *
  * <p>
  * In TeX the register name could consist of an integer in the range
  * from 0 to 255. In  Omega this restriction has been relaxed to
- * allow integers from 0 to 32767. In εχTeX the restriction to integers has been relaxed. The register
+ * allow integers from 0 to 32767. In εχTeX the restriction to integers has 
+ * been relaxed. The register
  * name can either be a number &ndash; positive or not and of any value &ndash;
  * or alternatively any token sequence enclosed in braces.
  * </p>
  * <p>
  * Note that the extended register names and the maximal number acceptable as
- * register names are a feature of εχTeX which is configurable via the count register
+ * register names are a feature of εχTeX which is configurable via the count 
+ * register
  * {@code \max.register}. This means that the feature can be disabled in the
  * compatibility modes.
  * </p>
- *
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
  * To protect the built-in registers one might consider to use the key
  * "#<i>name</i>" or "count#<i>name</i>".
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Countdef extends AbstractCount {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Countdef(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Countdef( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    CodeToken cs = source.getControlSequence( context, typesetter );
+    source.getOptionalEquals( context );
+    String key = getKey( context, source, typesetter );
+    try {
+      context.setCode(
+          cs,
+          new IntegerParameter( (ControlSequenceToken) context
+              .getTokenFactory().createToken( Catcode.ESCAPE,
+                                              context.escapechar(),
+                                              "",
+                                              Namespace.DEFAULT_NAMESPACE ),
+                                key ), prefix.clearGlobal() );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        source.getOptionalEquals(context);
-        String key = getKey(context, source, typesetter);
-        try {
-            context.setCode(
-                cs,
-                new IntegerParameter((ControlSequenceToken) context
-                    .getTokenFactory().createToken(Catcode.ESCAPE,
-                        context.escapechar(), "", Namespace.DEFAULT_NAMESPACE),
-                    key), prefix.clearGlobal());
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
+  }
 
 }

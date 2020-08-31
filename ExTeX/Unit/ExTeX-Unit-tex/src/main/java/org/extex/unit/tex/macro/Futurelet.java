@@ -32,18 +32,18 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \futurelet}.
- * 
+ *
  * <p>The Primitive {@code \futurelet}</p>
  * <p>
  * The primitive {@code \futurelet} lets a token to a control sequence while
  * keeping the token between the two out of sight. This means that this token is
  * stored away and reinserted after the let is complete.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;futurelet&rang;
  *      &rarr; {@code \futurelet} {@linkplain
@@ -53,53 +53,52 @@ import org.extex.typesetter.exception.TypesetterException;
  *       &lang;token&rang;} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \futurelet \aa\bb x  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Futurelet extends Let {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Futurelet(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Futurelet( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    CodeToken cs = source.getControlSequence( context, typesetter );
+    Token t1 = source.getToken( context );
+    Token t2 = source.getToken( context );
+    if( t1 == null || t2 == null ) {
+      throw new EofException( toText() );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        Token t1 = source.getToken(context);
-        Token t2 = source.getToken(context);
-        if (t1 == null || t2 == null) {
-            throw new EofException(toText());
-        }
-        let(prefix, context, cs, t2);
-        source.push(source.scanToken(context));
-        source.push(t2);
-        source.push(t1);
-    }
+    let( prefix, context, cs, t2 );
+    source.push( source.scanToken( context ) );
+    source.push( t2 );
+    source.push( t1 );
+  }
 
 }

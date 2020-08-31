@@ -19,211 +19,210 @@
 
 package org.extex.font.fontparameter;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
 import org.extex.core.UnicodeChar;
 import org.extex.font.unicode.GlyphName;
 import org.extex.util.xml.XmlHandler;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Manage additional font parameters.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class FontParameter {
 
-    /**
-     * Class for the handler.
-     */
-    private class MyHandler extends XmlHandler {
+  /**
+   * Class for the handler.
+   */
+  private class MyHandler extends XmlHandler {
 
-        @Override
-        public void startElement(String uri, String localName, String name,
-                Attributes attributes) throws SAXException {
+    @Override
+    public void startElement( String uri, String localName, String name,
+                              Attributes attributes ) throws SAXException {
 
-            super.startElement(uri, localName, name, attributes);
+      super.startElement( uri, localName, name, attributes );
 
-            if (hasParentElement("glyphname")) {
-                if (isInElement("name")) {
-                    String id = attributes.getValue("id");
-                    String val = attributes.getValue("value");
-                    int value = Integer.parseInt(val, 16);
-                    UnicodeChar uc = UnicodeChar.get(value);
-                    glyphmap.put(id, uc);
-                    unicodemap.put(uc, id);
-                }
-            } else if (hasParentElement("parameter")) {
-                if (isInElement("param")) {
-                    String id = attributes.getValue("id");
-                    String val = attributes.getValue("value");
-                    int value = 0;
-                    try {
-                        value = Integer.parseInt(val);
-                    } catch (NumberFormatException e) {
-                        // ignore
-                        value = 0;
-                    }
-                    fontDimen.put(id, value);
-                }
-            }
+      if( hasParentElement( "glyphname" ) ) {
+        if( isInElement( "name" ) ) {
+          String id = attributes.getValue( "id" );
+          String val = attributes.getValue( "value" );
+          int value = Integer.parseInt( val, 16 );
+          UnicodeChar uc = UnicodeChar.get( value );
+          glyphmap.put( id, uc );
+          unicodemap.put( uc, id );
         }
-    }
-
-    /**
-     * The map fr the font dimen values.
-     */
-    private final Map<String, Integer> fontDimen = new HashMap<String, Integer>();
-
-    /**
-     * The glyph name map.
-     */
-    private final Map<String, UnicodeChar> glyphmap =
-            new HashMap<String, UnicodeChar>();
-
-    /**
-     * The Unicode map.
-     */
-    private final Map<UnicodeChar, String> unicodemap =
-            new HashMap<UnicodeChar, String>();
-
-    /**
-     * Use the class GlyphName, if the name/value not yet set (default).
-     */
-    private boolean useGlyphName = true;
-
-
-    public FontParameter() {
-
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param in The input.
-     * @throws IOException if a io-error occurred.
-     */
-    public FontParameter(InputStream in) throws IOException {
-
-        parseXml(in);
-    }
-
-    /**
-     * Returns the font dimen value, or {@code null}, if not found.
-     * 
-     * @param name The name of the value.
-     * @return Returns the font dimen value, or {@code null}, if not found.
-     */
-    public Integer getFontDimen(String name) {
-
-        return fontDimen.get(name);
-    }
-
-    /**
-     * Returns the name of the glyph, or {@code null}, if not found.
-     * 
-     * @param uc the Unicode char.
-     * @return the name of the glyph, or {@code null}, if not found.
-     */
-    public String getGlyphname(UnicodeChar uc) {
-
-        String name = unicodemap.get(uc);
-        if (useGlyphName && name == null) {
-            try {
-                name = GlyphName.getInstance().getGlyphname(uc);
-            } catch (IOException e) {
-                // ignore
-                return null;
-            }
+      }
+      else if( hasParentElement( "parameter" ) ) {
+        if( isInElement( "param" ) ) {
+          String id = attributes.getValue( "id" );
+          String val = attributes.getValue( "value" );
+          int value = 0;
+          try {
+            value = Integer.parseInt( val );
+          } catch( NumberFormatException e ) {
+            // ignore
+            value = 0;
+          }
+          fontDimen.put( id, value );
         }
-        return name;
+      }
+    }
+  }
+
+  /**
+   * The map fr the font dimen values.
+   */
+  private final Map<String, Integer> fontDimen = new HashMap<String, Integer>();
+
+  /**
+   * The glyph name map.
+   */
+  private final Map<String, UnicodeChar> glyphmap =
+      new HashMap<String, UnicodeChar>();
+
+  /**
+   * The Unicode map.
+   */
+  private final Map<UnicodeChar, String> unicodemap =
+      new HashMap<UnicodeChar, String>();
+
+  /**
+   * Use the class GlyphName, if the name/value not yet set (default).
+   */
+  private boolean useGlyphName = true;
+
+
+  public FontParameter() {
+
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param in The input.
+   * @throws IOException if a io-error occurred.
+   */
+  public FontParameter( InputStream in ) throws IOException {
+
+    parseXml( in );
+  }
+
+  /**
+   * Returns the font dimen value, or {@code null}, if not found.
+   *
+   * @param name The name of the value.
+   * @return Returns the font dimen value, or {@code null}, if not found.
+   */
+  public Integer getFontDimen( String name ) {
+
+    return fontDimen.get( name );
+  }
+
+  /**
+   * Returns the name of the glyph, or {@code null}, if not found.
+   *
+   * @param uc the Unicode char.
+   * @return the name of the glyph, or {@code null}, if not found.
+   */
+  public String getGlyphname( UnicodeChar uc ) {
+
+    String name = unicodemap.get( uc );
+    if( useGlyphName && name == null ) {
+      try {
+        name = GlyphName.getInstance().getGlyphname( uc );
+      } catch( IOException e ) {
+        // ignore
+        return null;
+      }
+    }
+    return name;
+  }
+
+  /**
+   * Returns the {@code UnicodeChar} for the glyph name or
+   * {@code null}, if not found.
+   *
+   * @param name The glyph name.
+   * @return Returns the {@code UnicodeChar} for the glyph name or
+   * {@code null}, if not found.
+   */
+  public UnicodeChar getUnicode( String name ) {
+
+    UnicodeChar uc = glyphmap.get( name );
+    if( useGlyphName && uc == null ) {
+      try {
+        uc = GlyphName.getInstance().getUnicode( name );
+      } catch( IOException e ) {
+        // ignore
+        return null;
+      }
+    }
+    return uc;
+  }
+
+  /**
+   * Getter for useGlyphName.
+   *
+   * @return the useGlyphName
+   */
+  public boolean isUseGlyphName() {
+
+    return useGlyphName;
+  }
+
+  /**
+   * Parse the xml file.
+   *
+   * @param in the input stream
+   * @throws IOException if an io-error occurred.
+   */
+  private void parseXml( InputStream in ) throws IOException {
+
+    if( in == null ) {
+      throw new NullPointerException();
+    }
+    try {
+
+      SAXParserFactory factory = SAXParserFactory.newInstance();
+      SAXParser parser = factory.newSAXParser();
+
+      MyHandler handler = new MyHandler();
+      handler.setUseWriter( false );
+
+      parser.parse( in, handler );
+
+    } catch( Exception e ) {
+      throw new IOException( e.getMessage() );
     }
 
-    /**
-     * Returns the {@code UnicodeChar} for the glyph name or
-     * {@code null}, if not found.
-     * 
-     * @param name The glyph name.
-     * @return Returns the {@code UnicodeChar} for the glyph name or
-     *         {@code null}, if not found.
-     */
-    public UnicodeChar getUnicode(String name) {
+  }
 
-        UnicodeChar uc = glyphmap.get(name);
-        if (useGlyphName && uc == null) {
-            try {
-                uc = GlyphName.getInstance().getUnicode(name);
-            } catch (IOException e) {
-                // ignore
-                return null;
-            }
-        }
-        return uc;
-    }
+  /**
+   * Setter for useGlyphName.
+   *
+   * @param useGlyphName the useGlyphName to set
+   */
+  public void setUseGlyphName( boolean useGlyphName ) {
 
-    /**
-     * Getter for useGlyphName.
-     * 
-     * @return the useGlyphName
-     */
-    public boolean isUseGlyphName() {
+    this.useGlyphName = useGlyphName;
+  }
 
-        return useGlyphName;
-    }
+  /**
+   * Getter for fontDimen.
+   *
+   * @return the fontDimen
+   */
+  public Map<String, Integer> getFontDimen() {
 
-    /**
-     * Parse the xml file.
-     * 
-     * @param in the input stream
-     *
-     * @throws IOException if an io-error occurred.
-     */
-    private void parseXml(InputStream in) throws IOException {
-
-        if (in == null) {
-            throw new NullPointerException();
-        }
-        try {
-
-            SAXParserFactory factory = SAXParserFactory.newInstance();
-            SAXParser parser = factory.newSAXParser();
-
-            MyHandler handler = new MyHandler();
-            handler.setUseWriter(false);
-
-            parser.parse(in, handler);
-
-        } catch (Exception e) {
-            throw new IOException(e.getMessage());
-        }
-
-    }
-
-    /**
-     * Setter for useGlyphName.
-     * 
-     * @param useGlyphName the useGlyphName to set
-     */
-    public void setUseGlyphName(boolean useGlyphName) {
-
-        this.useGlyphName = useGlyphName;
-    }
-
-    /**
-     * Getter for fontDimen.
-     * 
-     * @return the fontDimen
-     */
-    public Map<String, Integer> getFontDimen() {
-
-        return fontDimen;
-    }
+    return fontDimen;
+  }
 
 }

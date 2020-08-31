@@ -163,7 +163,7 @@ import java.util.logging.Logger;
  * </p>
  *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
+ * The formal description of this primitive is the following:
  *
  * <pre class="syntax">
  *    &lang;scriptfont&rang;
@@ -205,371 +205,357 @@ import java.util.logging.Logger;
  */
 public final class StyleNoad implements Noad {
 
-    /**
-     * The field {@code styles} contains the list of styles prepared for use.
-     * Some of them are available via constants; others can be acquired via some
-     * methods-
-     */
-    private static final StyleNoad[] STYLE = {
-            new StyleNoad(0, "displaystyle", "textfont"),
-                    new StyleNoad(1, "displaystyle", "textfont"),
-                    new StyleNoad(2, "textstyle", "textfont"),
-                    new StyleNoad(3, "textstyle", "textfont"),
-                    new StyleNoad(4, "scriptstyle", "scriptfont"),
-                    new StyleNoad(5, "scriptstyle", "scriptfont"),
-                    new StyleNoad(6, "scriptscriptstyle", "scriptscriptfont"),
-                    new StyleNoad(7, "scriptscriptstyle", "scriptscriptfont")};
+  /**
+   * The field {@code styles} contains the list of styles prepared for use.
+   * Some of them are available via constants; others can be acquired via some
+   * methods-
+   */
+  private static final StyleNoad[] STYLE = {
+      new StyleNoad( 0, "displaystyle", "textfont" ),
+      new StyleNoad( 1, "displaystyle", "textfont" ),
+      new StyleNoad( 2, "textstyle", "textfont" ),
+      new StyleNoad( 3, "textstyle", "textfont" ),
+      new StyleNoad( 4, "scriptstyle", "scriptfont" ),
+      new StyleNoad( 5, "scriptstyle", "scriptfont" ),
+      new StyleNoad( 6, "scriptscriptstyle", "scriptscriptfont" ),
+      new StyleNoad( 7, "scriptscriptstyle", "scriptscriptfont" )};
 
-    /**
-     * The field {@code CRAMPED} contains the mapping to cramped styles.
-     */
-    private static final StyleNoad[] CRAMPED = {STYLE[1], STYLE[1], STYLE[3],
-            STYLE[3], STYLE[5], STYLE[5], STYLE[7], STYLE[7]};
+  /**
+   * The field {@code CRAMPED} contains the mapping to cramped styles.
+   */
+  private static final StyleNoad[] CRAMPED = {STYLE[ 1 ], STYLE[ 1 ],
+      STYLE[ 3 ],
+      STYLE[ 3 ], STYLE[ 5 ], STYLE[ 5 ], STYLE[ 7 ], STYLE[ 7 ]};
 
-    /**
-     * The field {@code DENOM} contains the mapping to denom styles.
-     */
-    private static final StyleNoad[] DENOM = {STYLE[5], STYLE[6], STYLE[7],
-            STYLE[7], STYLE[7], STYLE[7], STYLE[7], STYLE[7]};
+  /**
+   * The field {@code DENOM} contains the mapping to denom styles.
+   */
+  private static final StyleNoad[] DENOM = {STYLE[ 5 ], STYLE[ 6 ], STYLE[ 7 ],
+      STYLE[ 7 ], STYLE[ 7 ], STYLE[ 7 ], STYLE[ 7 ], STYLE[ 7 ]};
 
-    /**
-     * The constant {@code DISPLAYSTYLE} contains the value for the display
-     * style.
-     */
-    public static final StyleNoad DISPLAYSTYLE = STYLE[0];
+  /**
+   * The constant {@code DISPLAYSTYLE} contains the value for the display
+   * style.
+   */
+  public static final StyleNoad DISPLAYSTYLE = STYLE[ 0 ];
 
-    /**
-     * The field {@code NUM} contains the mapping to num styles.
-     */
-    private static final StyleNoad[] NUM = {STYLE[2], STYLE[3], STYLE[4],
-            STYLE[5], STYLE[6], STYLE[6], STYLE[6], STYLE[7]};
+  /**
+   * The field {@code NUM} contains the mapping to num styles.
+   */
+  private static final StyleNoad[] NUM = {STYLE[ 2 ], STYLE[ 3 ], STYLE[ 4 ],
+      STYLE[ 5 ], STYLE[ 6 ], STYLE[ 6 ], STYLE[ 6 ], STYLE[ 7 ]};
 
-    /**
-     * The constant {@code SCRIPTSCRIPTSTYLE} contains the value for the
-     * scriptscript style.
-     */
-    public static final StyleNoad SCRIPTSCRIPTSTYLE = STYLE[6];
+  /**
+   * The constant {@code SCRIPTSCRIPTSTYLE} contains the value for the
+   * scriptscript style.
+   */
+  public static final StyleNoad SCRIPTSCRIPTSTYLE = STYLE[ 6 ];
 
-    /**
-     * The constant {@code SCRIPTSTYLE} contains the value for the script
-     * style.
-     */
-    public static final StyleNoad SCRIPTSTYLE = STYLE[4];
+  /**
+   * The constant {@code SCRIPTSTYLE} contains the value for the script
+   * style.
+   */
+  public static final StyleNoad SCRIPTSTYLE = STYLE[ 4 ];
 
-    /**
-     * The field {@code SUB} contains the mapping to sub styles.
-     */
-    private static final StyleNoad[] SUB = {STYLE[5], STYLE[5], STYLE[5],
-            STYLE[5], STYLE[7], STYLE[7], STYLE[7], STYLE[7]};
+  /**
+   * The field {@code SUB} contains the mapping to sub styles.
+   */
+  private static final StyleNoad[] SUB = {STYLE[ 5 ], STYLE[ 5 ], STYLE[ 5 ],
+      STYLE[ 5 ], STYLE[ 7 ], STYLE[ 7 ], STYLE[ 7 ], STYLE[ 7 ]};
 
-    /**
-     * The field {@code SUP} contains the mapping to sup styles.
-     */
-    private static final StyleNoad[] SUP = {STYLE[4], STYLE[5], STYLE[4],
-            STYLE[5], STYLE[6], STYLE[7], STYLE[6], STYLE[7]};
+  /**
+   * The field {@code SUP} contains the mapping to sup styles.
+   */
+  private static final StyleNoad[] SUP = {STYLE[ 4 ], STYLE[ 5 ], STYLE[ 4 ],
+      STYLE[ 5 ], STYLE[ 6 ], STYLE[ 7 ], STYLE[ 6 ], STYLE[ 7 ]};
 
-    /**
-     * The constant {@code TEXTSTYLE} contains the value for the text style.
-     */
-    public static final StyleNoad TEXTSTYLE = STYLE[2];
+  /**
+   * The constant {@code TEXTSTYLE} contains the value for the text style.
+   */
+  public static final StyleNoad TEXTSTYLE = STYLE[ 2 ];
 
-    /**
-     * The field {@code fontName} contains the name of the font.
-     */
-    private final String fontName;
+  /**
+   * The field {@code fontName} contains the name of the font.
+   */
+  private final String fontName;
 
-    /**
-     * The field {@code no} contains the TeX encoding of the style.
-     */
-    private final int no;
+  /**
+   * The field {@code no} contains the TeX encoding of the style.
+   */
+  private final int no;
 
-    /**
-     * The field {@code spacingClass} contains the spacing class.
-     */
-    private MathSpacing spacingClass = MathSpacing.UNDEF;
+  /**
+   * The field {@code spacingClass} contains the spacing class.
+   */
+  private MathSpacing spacingClass = MathSpacing.UNDEF;
 
-    /**
-     * The field {@code style} contains the TeX name for the style. It has the values
-     * {@code textstyle}, {@code scriptstyle}, or {@code scriptscriptstyle}.
-     */
-    private final String style;
+  /**
+   * The field {@code style} contains the TeX name for the style. It has
+   * the values
+   * {@code textstyle}, {@code scriptstyle}, or {@code scriptscriptstyle}.
+   */
+  private final String style;
 
-    /**
-     * Creates a new object. This constructor is private since nobody is
-     * supposed to use it to create new instances. The constants defined in this
-     * class should be used instead.
-     * 
-     * @param no the index of this style
-     * @param style the style
-     * @param fontName the name of the font to use
-     */
-    private StyleNoad(int no, String style, String fontName) {
+  /**
+   * Creates a new object. This constructor is private since nobody is
+   * supposed to use it to create new instances. The constants defined in this
+   * class should be used instead.
+   *
+   * @param no       the index of this style
+   * @param style    the style
+   * @param fontName the name of the font to use
+   */
+  private StyleNoad( int no, String style, String fontName ) {
 
-        this.no = no;
-        this.style = style;
-        this.fontName = fontName;
+    this.no = no;
+    this.style = style;
+    this.fontName = fontName;
+  }
+
+  /**
+   * Get the cramped style for this one.
+   *
+   * @return the cramped style
+   * @see "TTP [702]"
+   */
+  public StyleNoad cramped() {
+
+    return CRAMPED[ no ];
+  }
+
+  /**
+   * Get the denominator style for this one.
+   *
+   * @return the denominator style
+   * @see "TTP [702]"
+   */
+  public StyleNoad denom() {
+
+    return DENOM[ no ];
+  }
+
+  /**
+   * Getter for font name.
+   *
+   * @return the font name
+   */
+  public String getFontName() {
+
+    return this.fontName;
+  }
+
+  /**
+   * Getter for spacing class.
+   *
+   * @return the spacing class
+   * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
+   */
+  @Override
+  public MathSpacing getSpacingClass() {
+
+    return spacingClass;
+  }
+
+  /**
+   * Getter for style.
+   *
+   * @return the style
+   */
+  public String getStyleName() {
+
+    return this.style;
+  }
+
+  /**
+   * Getter for the subscript.
+   *
+   * @return the subscript.
+   * @see org.extex.typesetter.type.noad.Noad#getSubscript()
+   */
+  @Override
+  public Noad getSubscript() {
+
+    return null;
+  }
+
+  /**
+   * Getter for the superscript.
+   *
+   * @return the superscript.
+   * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
+   */
+  @Override
+  public Noad getSuperscript() {
+
+    return null;
+  }
+
+  /**
+   * Test whether the current style is a cramped style.
+   *
+   * @return {@code true} iff the current style is a cramped style
+   */
+  public boolean isCramped() {
+
+    return (no & 1) == 1;
+  }
+
+  /**
+   * Ordering on the styles.
+   *
+   * @param other the style to compare to
+   * @return {@code true} iff the current style is less than the other
+   * according to the list in the description of StyleNoad.
+   */
+  public boolean less( StyleNoad other ) {
+
+    return no < other.no;
+  }
+
+  /**
+   * Get the numerator style for this one.
+   *
+   * @return the numerator style
+   * @see "TTP [702]"
+   */
+  public StyleNoad num() {
+
+    return NUM[ no ];
+  }
+
+  /**
+   * Return the singleton constant object after the serialized instance has
+   * been read back in. This is one of the magic methods of Java which is
+   * invoked when a serialized object is deserialized.
+   *
+   * @return the one and only instance of this object
+   * @throws ObjectStreamException never
+   */
+  protected Object readResolve() throws ObjectStreamException {
+
+    return STYLE[ no ];
+  }
+
+  @Override
+  public void setSpacingClass( MathSpacing spacingClass ) {
+
+    this.spacingClass = spacingClass;
+  }
+
+  /**
+   * Setter for the subscript.
+   *
+   * @param subscript the subscript to set.
+   * @see org.extex.typesetter.type.noad.Noad#setSubscript(org.extex.typesetter.type.noad.Noad)
+   */
+  @Override
+  public void setSubscript( Noad subscript ) {
+
+    throw new UnsupportedOperationException( "subscript in style" );
+  }
+
+  /**
+   * Setter for the superscript.
+   *
+   * @param superscript the superscript to set.
+   * @see org.extex.typesetter.type.noad.Noad#setSuperscript(org.extex.typesetter.type.noad.Noad)
+   */
+  @Override
+  public void setSuperscript( Noad superscript ) {
+
+    throw new UnsupportedOperationException( "superscript in style" );
+  }
+
+  /**
+   * Get the sub style for this one.
+   *
+   * @return the sub style
+   * @see "TTP [702]"
+   */
+  public StyleNoad sub() {
+
+    return SUB[ no ];
+  }
+
+  /**
+   * Get the sup style for this one.
+   *
+   * @return the sup style
+   * @see "TTP [702]"
+   */
+  public StyleNoad sup() {
+
+    return SUP[ no ];
+  }
+
+  /**
+   * Get the string representation of this object for debugging purposes.
+   *
+   * @return the string representation
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+
+    return "\\" + style;
+  }
+
+  /**
+   * Produce a printable representation of the noad in a StringBuilder.
+   *
+   * @param sb the string buffer
+   * @see "TTP [694]"
+   * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
+   */
+  @Override
+  public void toString( StringBuilder sb ) {
+
+    sb.append( "\\" + style );
+  }
+
+  /**
+   * Produce a printable representation to a certain depth of the noad.
+   *
+   * @param sb    the string buffer
+   * @param depth the depth to which the full information should be given
+   * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
+   */
+  @Override
+  public void toString( StringBuilder sb, int depth ) {
+
+    toString( sb );
+  }
+
+  /**
+   * Translate a Noad into a NodeList.
+   *
+   * @param previousNoad the previous noad
+   * @param noads        the list of noads currently processed
+   * @param index        the index of the current node in the list
+   * @param list         the list to add the nodes to. This list contains
+   *                     the Nodes
+   *                     previously typeset. Thus it can be used to look back
+   * @param mathContext  the context to consider
+   * @param logger       the logger for debugging and tracing information
+   * @throws TypesetterException    in case of a problem
+   * @throws ConfigurationException in case of a configuration problem
+   * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
+   * org.extex.typesetter.type.noad.NoadList, int,
+   * org.extex.typesetter.type.NodeList,
+   * org.extex.typesetter.type.noad.util.MathContext,
+   * java.util.logging.Logger)
+   */
+  @Override
+  public void typeset( Noad previousNoad, NoadList noads, int index,
+                       NodeList list, MathContext mathContext, Logger logger )
+      throws TypesetterException,
+      ConfigurationException {
+
+    mathContext.setStyle( this );
+
+    if( index > 0 ) {
+      spacingClass = noads.get( index - 1 ).getSpacingClass();
     }
-
-    /**
-     * Get the cramped style for this one.
-     * 
-     * @return the cramped style
-     * 
-     * @see "TTP [702]"
-     */
-    public StyleNoad cramped() {
-
-        return CRAMPED[no];
-    }
-
-    /**
-     * Get the denominator style for this one.
-     * 
-     * @return the denominator style
-     * 
-     * @see "TTP [702]"
-     */
-    public StyleNoad denom() {
-
-        return DENOM[no];
-    }
-
-    /**
-     * Getter for font name.
-     * 
-     * @return the font name
-     */
-    public String getFontName() {
-
-        return this.fontName;
-    }
-
-    /**
-     * Getter for spacing class.
-     * 
-     * @return the spacing class
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
-     */
-    @Override
-    public MathSpacing getSpacingClass() {
-
-        return spacingClass;
-    }
-
-    /**
-     * Getter for style.
-     * 
-     * @return the style
-     */
-    public String getStyleName() {
-
-        return this.style;
-    }
-
-    /**
-     * Getter for the subscript.
-     * 
-     * @return the subscript.
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#getSubscript()
-     */
-    @Override
-    public Noad getSubscript() {
-
-        return null;
-    }
-
-    /**
-     * Getter for the superscript.
-     * 
-     * @return the superscript.
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
-     */
-    @Override
-    public Noad getSuperscript() {
-
-        return null;
-    }
-
-    /**
-     * Test whether the current style is a cramped style.
-     * 
-     * @return {@code true} iff the current style is a cramped style
-     */
-    public boolean isCramped() {
-
-        return (no & 1) == 1;
-    }
-
-    /**
-     * Ordering on the styles.
-     * 
-     * @param other the style to compare to
-     * 
-     * @return {@code true} iff the current style is less than the other
-     *         according to the list in the description of StyleNoad.
-     */
-    public boolean less(StyleNoad other) {
-
-        return no < other.no;
-    }
-
-    /**
-     * Get the numerator style for this one.
-     * 
-     * @return the numerator style
-     * 
-     * @see "TTP [702]"
-     */
-    public StyleNoad num() {
-
-        return NUM[no];
-    }
-
-    /**
-     * Return the singleton constant object after the serialized instance has
-     * been read back in. This is one of the magic methods of Java which is
-     * invoked when a serialized object is deserialized.
-     * 
-     * @return the one and only instance of this object
-     * 
-     * @throws ObjectStreamException never
-     */
-    protected Object readResolve() throws ObjectStreamException {
-
-        return STYLE[no];
-    }
-
-@Override
-    public void setSpacingClass(MathSpacing spacingClass) {
-
-        this.spacingClass = spacingClass;
-    }
-
-    /**
-     * Setter for the subscript.
-     * 
-     * @param subscript the subscript to set.
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#setSubscript(org.extex.typesetter.type.noad.Noad)
-     */
-    @Override
-    public void setSubscript(Noad subscript) {
-
-        throw new UnsupportedOperationException("subscript in style");
-    }
-
-    /**
-     * Setter for the superscript.
-     * 
-     * @param superscript the superscript to set.
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#setSuperscript(org.extex.typesetter.type.noad.Noad)
-     */
-    @Override
-    public void setSuperscript(Noad superscript) {
-
-        throw new UnsupportedOperationException("superscript in style");
-    }
-
-    /**
-     * Get the sub style for this one.
-     * 
-     * @return the sub style
-     * 
-     * @see "TTP [702]"
-     */
-    public StyleNoad sub() {
-
-        return SUB[no];
-    }
-
-    /**
-     * Get the sup style for this one.
-     * 
-     * @return the sup style
-     * 
-     * @see "TTP [702]"
-     */
-    public StyleNoad sup() {
-
-        return SUP[no];
-    }
-
-    /**
-     * Get the string representation of this object for debugging purposes.
-     * 
-     * @return the string representation
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        return "\\" + style;
-    }
-
-    /**
-     * Produce a printable representation of the noad in a StringBuilder.
-     * 
-     * @param sb the string buffer
-     * 
-     * @see "TTP [694]"
-     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
-     */
-    @Override
-    public void toString(StringBuilder sb) {
-
-        sb.append("\\" + style);
-    }
-
-    /**
-     * Produce a printable representation to a certain depth of the noad.
-     * 
-     * @param sb the string buffer
-     * @param depth the depth to which the full information should be given
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
-     */
-    @Override
-    public void toString(StringBuilder sb, int depth) {
-
-        toString(sb);
-    }
-
-    /**
-     * Translate a Noad into a NodeList.
-     * 
-     * @param previousNoad the previous noad
-     * @param noads the list of noads currently processed
-     * @param index the index of the current node in the list
-     * @param list the list to add the nodes to. This list contains the Nodes
-     *        previously typeset. Thus it can be used to look back
-     * @param mathContext the context to consider
-     * @param logger the logger for debugging and tracing information
-     * 
-     * @throws TypesetterException in case of a problem
-     * @throws ConfigurationException in case of a configuration problem
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList, int,
-     *      org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.type.noad.util.MathContext,
-     *      java.util.logging.Logger)
-     */
-    @Override
-    public void typeset(Noad previousNoad, NoadList noads, int index,
-            NodeList list, MathContext mathContext, Logger logger)
-            throws TypesetterException,
-                ConfigurationException {
-
-        mathContext.setStyle(this);
-
-        if (index > 0) {
-            spacingClass = noads.get(index - 1).getSpacingClass();
-        }
-    }
+  }
 
 }

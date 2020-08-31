@@ -31,7 +31,7 @@ import org.extex.typesetter.Typesetter;
  * This class provides an implementation for the primitive {@code \outer}.
  * It does simply nothing, but as a side effect the prefix <i>OUTER</i> is
  * added to the prefixes.
- * 
+ *
  * <p>The Prefix Primitive {@code \outer}</p>
  * <p>
  * The primitive {@code \outer} is a prefix modifying the operation of a
@@ -43,53 +43,52 @@ import org.extex.typesetter.Typesetter;
  * <p>
  * Multiple {@code \outer} prefixes act identical to a single one.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;outer&rang;
  *      &rarr; {@code \outer}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \outer\def#1{--#1--}  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \outer\outer\def#1{--#1--}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Outer extends AbstractCode implements PrefixCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Outer(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Outer( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter ) {
 
-        prefix.setOuter();
-    }
+    prefix.setOuter();
+  }
 
 }

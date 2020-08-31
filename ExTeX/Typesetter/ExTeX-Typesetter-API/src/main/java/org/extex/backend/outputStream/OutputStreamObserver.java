@@ -26,16 +26,16 @@ import java.io.OutputStream;
  * output stream to be delivered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OutputStreamObserver {
 
-    /**
-     * Recognize that a new output stream has been delivered.
-     *
-     * @param name the name of the resource requested
-     * @param type the type of the resource
-     * @param stream the stream to be delivered
-     */
-    void update(String name, String type, OutputStream stream);
+  /**
+   * Recognize that a new output stream has been delivered.
+   *
+   * @param name   the name of the resource requested
+   * @param type   the type of the resource
+   * @param stream the stream to be delivered
+   */
+  void update( String name, String type, OutputStream stream );
 
 }

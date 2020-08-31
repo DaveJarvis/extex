@@ -32,69 +32,69 @@ import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
 
 /**
  * This class provides an implementation for the primitive {@code \hskip}.
- * 
+ *
  * <p>The Primitive {@code \hskip}</p>
  * <p>
  * The primitive {@code \hskip} inserts the given amount of glue into the
  * typesetter. If the typesetter is not in a horizontal mode then it is switched
  * to horizontal mode first.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;hskip&rang;
  *        &rarr; {@code \hskip} &lang;Glue&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \hskip 1em plus 1pt minus 1pt  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Hskip(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Hskip( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        switchToHorizontalMode(typesetter);
-        Glue glue = source.parseGlue(context, source, typesetter);
-        typesetter.add(glue);
-    }
+    switchToHorizontalMode( typesetter );
+    Glue glue = source.parseGlue( context, source, typesetter );
+    typesetter.add( glue );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public FixedGlue getGlue(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public FixedGlue getGlue( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        return source.parseGlue(context, source, typesetter);
-    }
+    return source.parseGlue( context, source, typesetter );
+  }
 
 }

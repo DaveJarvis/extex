@@ -19,104 +19,103 @@
 
 package org.extex.font;
 
-import java.util.ArrayList;
-
 import junit.framework.TestCase;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 /**
  * Test suite for the font key factory.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class FontKeyFactoryTest extends TestCase {
 
-    /**
-     * The font key factory.
-     */
-    private static final FontKeyFactory factory = new FontKeyFactory();
+  /**
+   * The font key factory.
+   */
+  private static final FontKeyFactory factory = new FontKeyFactory();
 
-    /**
-     * Test 01.
-     */
-    @Test
-    public final void test01() {
+  /**
+   * Test 01.
+   */
+  @Test
+  public final void test01() {
 
-        assertNotNull(factory);
+    assertNotNull( factory );
 
-        FontKey key = factory.newInstance("cmr10");
-        key.put(FontKey.SIZE, Dimen.ONE_INCH);
+    FontKey key = factory.newInstance( "cmr10" );
+    key.put( FontKey.SIZE, Dimen.ONE_INCH );
 
-        assertEquals("cmr10 size=72.26999pt", key.toString());
-    }
+    assertEquals( "cmr10 size=72.26999pt", key.toString() );
+  }
 
-    /**
-     * Test 02.
-     */
-    @Test
-    public final void test02() {
+  /**
+   * Test 02.
+   */
+  @Test
+  public final void test02() {
 
-        assertNotNull(factory);
+    assertNotNull( factory );
 
-        FontKey key = factory.newInstance("cmr10");
-        key.put(FontKey.SIZE, (FixedDimen) null);
+    FontKey key = factory.newInstance( "cmr10" );
+    key.put( FontKey.SIZE, (FixedDimen) null );
 
-        assertEquals("cmr10 size=null", key.toString());
-    }
+    assertEquals( "cmr10 size=null", key.toString() );
+  }
 
-    /**
-     * Test 03.
-     */
-    @Test
-    public final void test03() {
+  /**
+   * Test 03.
+   */
+  @Test
+  public final void test03() {
 
-        assertNotNull(factory);
+    assertNotNull( factory );
 
-        FontKey key = factory.newInstance("cmr10");
-        key.put(FontKey.SIZE, (FixedDimen) null);
-        java.util.List<String> list = new ArrayList<String>();
-        list.add("kern");
-        list.add("latn");
-        key.add(list);
+    FontKey key = factory.newInstance( "cmr10" );
+    key.put( FontKey.SIZE, (FixedDimen) null );
+    java.util.List<String> list = new ArrayList<String>();
+    list.add( "kern" );
+    list.add( "latn" );
+    key.add( list );
 
-        assertEquals("cmr10 size=null kern latn", key.toString());
-    }
+    assertEquals( "cmr10 size=null kern latn", key.toString() );
+  }
 
-    /**
-     * Test 04.
-     */
-    @Test
-    public final void test04() {
+  /**
+   * Test 04.
+   */
+  @Test
+  public final void test04() {
 
-        assertNotNull(factory);
+    assertNotNull( factory );
 
-        FontKey key = factory.newInstance("cmr10");
-        java.util.List<String> list = new ArrayList<String>();
-        list.add("kern");
-        list.add("latn");
-        key.add(list);
+    FontKey key = factory.newInstance( "cmr10" );
+    java.util.List<String> list = new ArrayList<String>();
+    list.add( "kern" );
+    list.add( "latn" );
+    key.add( list );
 
-        assertEquals("cmr10 kern latn", key.toString());
-    }
+    assertEquals( "cmr10 kern latn", key.toString() );
+  }
 
-    /**
-     * Test 04.
-     */
-    @Test
-    public final void test05() {
+  /**
+   * Test 04.
+   */
+  @Test
+  public final void test05() {
 
-        assertNotNull(factory);
+    assertNotNull( factory );
 
-        FontKey key = factory.newInstance("cmr10", Dimen.ONE_INCH);
-        java.util.List<String> list = new ArrayList<String>();
-        list.add("kern");
-        list.add("latn");
-        key.add(list);
+    FontKey key = factory.newInstance( "cmr10", Dimen.ONE_INCH );
+    java.util.List<String> list = new ArrayList<String>();
+    list.add( "kern" );
+    list.add( "latn" );
+    key.add( list );
 
-        assertEquals("cmr10 size=72.26999pt kern latn", key.toString());
-    }
+    assertEquals( "cmr10 size=72.26999pt kern latn", key.toString() );
+  }
 
 }

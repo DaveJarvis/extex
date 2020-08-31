@@ -25,107 +25,111 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \glueshrink}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class GlueshrinkTest extends ExTeXLauncher {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(GlueshrinkTest.class);
-    }
+    (new JUnitCore()).run( GlueshrinkTest.class );
+  }
 
 
-    public GlueshrinkTest() {
+  public GlueshrinkTest() {
 
-        setConfig("etex-test");
-    }
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * Test case showing that {@code \glueshrink} can not be used to assign something to it
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr1() throws Exception {
+  /**
+   * Test case showing that {@code \glueshrink} can not be used to assign 
+   * something to it
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\glueshrink\\skip0=1pt ",
-            // --- error channel ---
-                      "You can't use `\\glueshrink' in vertical mode" );
-    }
+    assertFailure(// --- input code ---
+                  "\\glueshrink\\skip0=1pt ",
+                  // --- error channel ---
+                  "You can't use `\\glueshrink' in vertical mode" );
+  }
 
-    /**
-     *  Test case showing that {@code \glueshrink} extracts the
-     * correct value. In addition it shows that {@code \glueshrink} is
-     * applicable to {@code \the}. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test case showing that {@code \glueshrink} extracts the
+   * correct value. In addition it shows that {@code \glueshrink} is
+   * applicable to {@code \the}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3pt" + "\\the\\glueshrink\\skip0 "
-                    + "\\end",
-            // --- output channel ---
-            "3.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3pt" + "\\the\\glueshrink\\skip0 "
+                      + "\\end",
+                  // --- output channel ---
+                  "3.0pt" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \glueshrink} extracts the
-     * correct value. In addition it shows that {@code \glueshrink} is
-     * assignable to a dimen register. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * Test case showing that {@code \glueshrink} extracts the
+   * correct value. In addition it shows that {@code \glueshrink} is
+   * assignable to a dimen register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3pt" + "\\dimen0=\\glueshrink\\skip0 "
-                    + "\\the\\dimen0" + "\\end",
-            // --- output channel ---
-            "3.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3pt" + "\\dimen0=\\glueshrink" +
+                      "\\skip0 "
+                      + "\\the\\dimen0" + "\\end",
+                  // --- output channel ---
+                  "3.0pt" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \glueshrink} extracts the
-     * correct value. In addition it shows that {@code \glueshrink} is
-     * assignable to a count register. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * Test case showing that {@code \glueshrink} extracts the
+   * correct value. In addition it shows that {@code \glueshrink} is
+   * assignable to a count register.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3pt" + "\\count0=\\glueshrink\\skip0 "
-                    + "\\the\\count0" + "\\end",
-            // --- output channel ---
-            "196608" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3pt" + "\\count0=\\glueshrink" +
+                      "\\skip0 "
+                      + "\\the\\count0" + "\\end",
+                  // --- output channel ---
+                  "196608" + TERM );
+  }
 
-    /**
-     *  Test case showing that {@code \glueshrink} extracts the
-     * correct value from an infinite glue. In addition it shows that
-     * {@code \glueshrink} is applicable to {@code \the}. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test10() throws Exception {
+  /**
+   * Test case showing that {@code \glueshrink} extracts the
+   * correct value from an infinite glue. In addition it shows that
+   * {@code \glueshrink} is applicable to {@code \the}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test10() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\skip0=1pt plus 2pt minus 3fill" + "\\the\\glueshrink\\skip0 "
-                    + "\\end",
-            // --- output channel ---
-            "3.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\skip0=1pt plus 2pt minus 3fill" + "\\the\\glueshrink" +
+                      "\\skip0 "
+                      + "\\end",
+                  // --- output channel ---
+                  "3.0pt" + TERM );
+  }
 
 }

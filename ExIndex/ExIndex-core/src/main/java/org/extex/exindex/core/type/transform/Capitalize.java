@@ -24,41 +24,42 @@ import java.io.PrintStream;
 /**
  * This transformer translates all first characters of a word to their uppercase
  * counterpart and the other characters to theri lowercase counterpart.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Capitalize implements Transform {
 
 
-    public Capitalize() {
+  public Capitalize() {
 
+  }
+
+  public void print( PrintStream stream ) {
+
+    stream.print( "capitalize" );
+  }
+
+  /**
+   * java.lang.String)
+   */
+  public String transform( String in ) {
+
+    boolean up = true;
+    StringBuilder sb = new StringBuilder();
+    for( int i = 0; i < in.length(); i++ ) {
+      char c = in.charAt( i );
+      if( up ) {
+        sb.append( Character.toUpperCase( c ) );
+        up = false;
+      }
+      else {
+        sb.append( Character.toLowerCase( c ) );
+      }
+      if( Character.isWhitespace( c ) ) {
+        up = true;
+      }
     }
-
-public void print(PrintStream stream) {
-
-        stream.print("capitalize");
-    }
-
-    /**
-*      java.lang.String)
-     */
-    public String transform(String in) {
-
-        boolean up = true;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < in.length(); i++) {
-            char c = in.charAt(i);
-            if (up) {
-                sb.append(Character.toUpperCase(c));
-                up = false;
-            } else {
-                sb.append(Character.toLowerCase(c));
-            }
-            if (Character.isWhitespace(c)) {
-                up = true;
-            }
-        }
-        return sb.toString();
-    }
+    return sb.toString();
+  }
 
 }

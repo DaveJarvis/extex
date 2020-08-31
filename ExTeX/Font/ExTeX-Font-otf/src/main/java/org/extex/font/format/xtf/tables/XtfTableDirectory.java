@@ -30,11 +30,11 @@ import java.util.Comparator;
 
 /**
  * Class for a TTF/OTF TableDirectory.
- * 
+ *
  * <table>
  * <caption>TBD</caption>
  * <thead>
-* <tr>
+ * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
@@ -66,338 +66,338 @@ import java.util.Comparator;
  * <td>NumTables x 16-searchRange.</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class XtfTableDirectory implements XMLWriterConvertible {
 
-    /**
-     * Class for a TTF TableDirectory-Entry.
-     * 
-     * <table>
-     * <caption>TBD</caption>
-     * <thead>
-     * <tr>
-     * <td><b>Type</b></td>
-     * <td><b>Name</b></td>
-     * <td><b>Description</b></td>
-     * </tr>
-     * </thead>
-     * <tr>
-     * <td>ULONG</td>
-     * <td>tag</td>
-     * <td>4 -byte identifier.</td>
-     * </tr>
-     * <tr>
-     * <td>ULONG</td>
-     * <td>checkSum</td>
-     * <td>CheckSum for this table.</td>
-     * </tr>
-     * <tr>
-     * <td>ULONG</td>
-     * <td>offset</td>
-     * <td>Offset from beginning of TrueType font file.</td>
-     * </tr>
-     * <tr>
-     * <td>ULONG</td>
-     * <td>length</td>
-     * <td>Length of this table.</td>
-     * </tr>
-     * </table>
-     */
-    public static class Entry implements XMLWriterConvertible {
-
-        /**
-         * tag (ULONG)
-         */
-        private final int tag;
-
-        /**
-         * checkSum (ULONG)
-         */
-        private final int checkSum;
-
-        /**
-         * offset (ULONG)
-         */
-        private final int offset;
-
-        /**
-         * length (ULONG)
-         */
-        private final int length;
-
-        /**
-         * shift 8
-         */
-        private static final int SHIFT8 = 8;
-
-        /**
-         * shift 16
-         */
-        private static final int SHIFT16 = 16;
-
-        /**
-         * shift 24
-         */
-        private static final int SHIFT24 = 24;
-
-        /**
-         * 0xff
-         */
-        private static final int FF = 0xff;
-
-        /**
-         * Create a new object.
-         * 
-         * @param rar input
-         * @throws IOException if an error occurs
-         */
-        Entry(RandomAccessR rar) throws IOException {
-
-            tag = rar.readInt();
-            checkSum = rar.readInt();
-            offset = rar.readInt();
-            length = rar.readInt();
-        }
-
-        /**
-         * Returns the checkSum.
-         * 
-         * @return Returns the checkSum.
-         */
-        public int getCheckSum() {
-
-            return checkSum;
-        }
-
-        /**
-         * Returns the length.
-         * 
-         * @return Returns the length.
-         */
-        public int getLength() {
-
-            return length;
-        }
-
-        /**
-         * Returns the offset.
-         * 
-         * @return Returns the offset.
-         */
-        public int getOffset() {
-
-            return offset;
-        }
-
-        /**
-         * Returns the tag.
-         * 
-         * @return Returns the tag.
-         */
-        public int getTag() {
-
-            return tag;
-        }
-
-        /**
-         * Returns the tag name.
-         * 
-         * @return Returns the tag name.
-         */
-        public String getTagName() {
-
-            StringBuilder buf = new StringBuilder();
-            buf.append((char) ((tag >> SHIFT24) & FF));
-            buf.append((char) ((tag >> SHIFT16) & FF));
-            buf.append((char) ((tag >> SHIFT8) & FF));
-            buf.append((char) ((tag) & FF));
-            return buf.toString();
-        }
-
-    @Override
-        public void writeXML(XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("entry");
-
-            writer.writeAttribute("tag", getTagName());
-            writer.writeAttribute("offset",
-                XtfReader.convertIntToHexString(offset));
-            writer.writeAttribute("length", String.valueOf(length));
-            writer.writeAttribute("checksum",
-                XtfReader.convertIntToHexString(checkSum));
-            writer.writeEndElement();
-        }
-    }
+  /**
+   * Class for a TTF TableDirectory-Entry.
+   *
+   * <table>
+   * <caption>TBD</caption>
+   * <thead>
+   * <tr>
+   * <td><b>Type</b></td>
+   * <td><b>Name</b></td>
+   * <td><b>Description</b></td>
+   * </tr>
+   * </thead>
+   * <tr>
+   * <td>ULONG</td>
+   * <td>tag</td>
+   * <td>4 -byte identifier.</td>
+   * </tr>
+   * <tr>
+   * <td>ULONG</td>
+   * <td>checkSum</td>
+   * <td>CheckSum for this table.</td>
+   * </tr>
+   * <tr>
+   * <td>ULONG</td>
+   * <td>offset</td>
+   * <td>Offset from beginning of TrueType font file.</td>
+   * </tr>
+   * <tr>
+   * <td>ULONG</td>
+   * <td>length</td>
+   * <td>Length of this table.</td>
+   * </tr>
+   * </table>
+   */
+  public static class Entry implements XMLWriterConvertible {
 
     /**
-     * Version (Fixed)
+     * tag (ULONG)
      */
-    private final int version;
+    private final int tag;
 
     /**
-     * Number of tables (USHORT)
+     * checkSum (ULONG)
      */
-    private final short numTables;
+    private final int checkSum;
 
     /**
-     * searchRange (USHORT)
+     * offset (ULONG)
      */
-    private final short searchRange;
+    private final int offset;
 
     /**
-     * entrySelector (USHORT)
+     * length (ULONG)
      */
-    private final short entrySelector;
+    private final int length;
 
     /**
-     * rangeShift (USHORT)
+     * shift 8
      */
-    private final short rangeShift;
+    private static final int SHIFT8 = 8;
 
     /**
-     * entries
+     * shift 16
      */
-    private final Entry[] entries;
+    private static final int SHIFT16 = 16;
+
+    /**
+     * shift 24
+     */
+    private static final int SHIFT24 = 24;
+
+    /**
+     * 0xff
+     */
+    private static final int FF = 0xff;
 
     /**
      * Create a new object.
-     * 
+     *
      * @param rar input
      * @throws IOException if an error occurs
      */
-    public XtfTableDirectory(RandomAccessR rar) throws IOException {
+    Entry( RandomAccessR rar ) throws IOException {
 
-        // read TableDirectory
-        version = rar.readInt();
-        numTables = rar.readShort();
-        searchRange = rar.readShort();
-        entrySelector = rar.readShort();
-        rangeShift = rar.readShort();
-        entries = new Entry[numTables];
+      tag = rar.readInt();
+      checkSum = rar.readInt();
+      offset = rar.readInt();
+      length = rar.readInt();
+    }
 
-        // read TableDirectory entries
-        for (int i = 0; i < numTables; i++) {
-            entries[i] = new Entry(rar);
+    /**
+     * Returns the checkSum.
+     *
+     * @return Returns the checkSum.
+     */
+    public int getCheckSum() {
+
+      return checkSum;
+    }
+
+    /**
+     * Returns the length.
+     *
+     * @return Returns the length.
+     */
+    public int getLength() {
+
+      return length;
+    }
+
+    /**
+     * Returns the offset.
+     *
+     * @return Returns the offset.
+     */
+    public int getOffset() {
+
+      return offset;
+    }
+
+    /**
+     * Returns the tag.
+     *
+     * @return Returns the tag.
+     */
+    public int getTag() {
+
+      return tag;
+    }
+
+    /**
+     * Returns the tag name.
+     *
+     * @return Returns the tag name.
+     */
+    public String getTagName() {
+
+      StringBuilder buf = new StringBuilder();
+      buf.append( (char) ((tag >> SHIFT24) & FF) );
+      buf.append( (char) ((tag >> SHIFT16) & FF) );
+      buf.append( (char) ((tag >> SHIFT8) & FF) );
+      buf.append( (char) ((tag) & FF) );
+      return buf.toString();
+    }
+
+    @Override
+    public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+      writer.writeStartElement( "entry" );
+
+      writer.writeAttribute( "tag", getTagName() );
+      writer.writeAttribute( "offset",
+                             XtfReader.convertIntToHexString( offset ) );
+      writer.writeAttribute( "length", String.valueOf( length ) );
+      writer.writeAttribute( "checksum",
+                             XtfReader.convertIntToHexString( checkSum ) );
+      writer.writeEndElement();
+    }
+  }
+
+  /**
+   * Version (Fixed)
+   */
+  private final int version;
+
+  /**
+   * Number of tables (USHORT)
+   */
+  private final short numTables;
+
+  /**
+   * searchRange (USHORT)
+   */
+  private final short searchRange;
+
+  /**
+   * entrySelector (USHORT)
+   */
+  private final short entrySelector;
+
+  /**
+   * rangeShift (USHORT)
+   */
+  private final short rangeShift;
+
+  /**
+   * entries
+   */
+  private final Entry[] entries;
+
+  /**
+   * Create a new object.
+   *
+   * @param rar input
+   * @throws IOException if an error occurs
+   */
+  public XtfTableDirectory( RandomAccessR rar ) throws IOException {
+
+    // read TableDirectory
+    version = rar.readInt();
+    numTables = rar.readShort();
+    searchRange = rar.readShort();
+    entrySelector = rar.readShort();
+    rangeShift = rar.readShort();
+    entries = new Entry[ numTables ];
+
+    // read TableDirectory entries
+    for( int i = 0; i < numTables; i++ ) {
+      entries[ i ] = new Entry( rar );
+    }
+
+    // sort the entries by offset
+    Arrays.sort( entries, new Comparator<Object>() {
+
+      @Override
+      public int compare( Object arg0, Object arg1 ) {
+
+        Entry e0 = (Entry) arg0;
+        Entry e1 = (Entry) arg1;
+        if( e0.getOffset() > e1.getOffset() ) {
+          return 1;
         }
+        return 0;
+      }
+    } );
 
-        // sort the entries by offset
-        Arrays.sort(entries, new Comparator<Object>() {
+  }
 
-            @Override
-            public int compare(Object arg0, Object arg1) {
+  /**
+   * Returns the entries.
+   *
+   * @return Returns the entries.
+   */
+  public Entry[] getEntries() {
 
-                Entry e0 = (Entry) arg0;
-                Entry e1 = (Entry) arg1;
-                if (e0.getOffset() > e1.getOffset()) {
-                    return 1;
-                }
-                return 0;
-            }
-        });
+    return entries;
+  }
 
+  /**
+   * Returns the DirectoryEntry at the index
+   *
+   * @param index the index
+   * @return Returns the DirectoryEntry at the index
+   */
+  public Entry getEntry( int index ) {
+
+    return entries[ index ];
+  }
+
+  /**
+   * Returns the DirectoryEntry with a tag
+   *
+   * @param tag the tag
+   * @return Returns the DirectoryEntry with a tag
+   */
+  public Entry getEntryByTag( int tag ) {
+
+    for( int i = 0; i < numTables; i++ ) {
+      if( entries[ i ].getTag() == tag ) {
+        return entries[ i ];
+      }
     }
+    return null;
+  }
 
-    /**
-     * Returns the entries.
-     * 
-     * @return Returns the entries.
-     */
-    public Entry[] getEntries() {
+  /**
+   * Returns the entrySelector.
+   *
+   * @return Returns the entrySelector.
+   */
+  public short getEntrySelector() {
 
-        return entries;
+    return entrySelector;
+  }
+
+  /**
+   * Returns the numTables.
+   *
+   * @return Returns the numTables.
+   */
+  public short getNumTables() {
+
+    return numTables;
+  }
+
+  /**
+   * Returns the rangeShift.
+   *
+   * @return Returns the rangeShift.
+   */
+  public short getRangeShift() {
+
+    return rangeShift;
+  }
+
+  /**
+   * Returns the searchRange.
+   *
+   * @return Returns the searchRange.
+   */
+  public short getSearchRange() {
+
+    return searchRange;
+  }
+
+  /**
+   * @return Returns the version.
+   */
+  public int getVersion() {
+
+    return version;
+  }
+
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( "tabledirectory" );
+    writer.writeAttribute( "version",
+                           XtfReader.convertIntToHexString( version ) );
+    writer.writeAttribute( "numberoftables", String.valueOf( numTables ) );
+    writer.writeAttribute( "searchrange", String.valueOf( searchRange ) );
+    writer.writeAttribute( "entryselector", String.valueOf( entrySelector ) );
+    writer.writeAttribute( "rangeshift", String.valueOf( rangeShift ) );
+    for( int i = 0; i < entries.length; i++ ) {
+      entries[ i ].writeXML( writer );
     }
-
-    /**
-     * Returns the DirectoryEntry at the index
-     * 
-     * @param index the index
-     * @return Returns the DirectoryEntry at the index
-     */
-    public Entry getEntry(int index) {
-
-        return entries[index];
-    }
-
-    /**
-     * Returns the DirectoryEntry with a tag
-     * 
-     * @param tag the tag
-     * @return Returns the DirectoryEntry with a tag
-     */
-    public Entry getEntryByTag(int tag) {
-
-        for (int i = 0; i < numTables; i++) {
-            if (entries[i].getTag() == tag) {
-                return entries[i];
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns the entrySelector.
-     * 
-     * @return Returns the entrySelector.
-     */
-    public short getEntrySelector() {
-
-        return entrySelector;
-    }
-
-    /**
-     * Returns the numTables.
-     * 
-     * @return Returns the numTables.
-     */
-    public short getNumTables() {
-
-        return numTables;
-    }
-
-    /**
-     * Returns the rangeShift.
-     * 
-     * @return Returns the rangeShift.
-     */
-    public short getRangeShift() {
-
-        return rangeShift;
-    }
-
-    /**
-     * Returns the searchRange.
-     * 
-     * @return Returns the searchRange.
-     */
-    public short getSearchRange() {
-
-        return searchRange;
-    }
-
-    /**
-     * @return Returns the version.
-     */
-    public int getVersion() {
-
-        return version;
-    }
-
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("tabledirectory");
-        writer.writeAttribute("version",
-            XtfReader.convertIntToHexString(version));
-        writer.writeAttribute("numberoftables", String.valueOf(numTables));
-        writer.writeAttribute("searchrange", String.valueOf(searchRange));
-        writer.writeAttribute("entryselector", String.valueOf(entrySelector));
-        writer.writeAttribute("rangeshift", String.valueOf(rangeShift));
-        for (int i = 0; i < entries.length; i++) {
-            entries[i].writeXML(writer);
-        }
-        writer.writeEndElement();
-    }
+    writer.writeEndElement();
+  }
 
 }

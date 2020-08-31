@@ -24,31 +24,30 @@ package org.extex.scanner.api.exception;
  * access goes wrong.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CatcodeVisitorException extends CatcodeException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
 
-    public CatcodeVisitorException() {
+  public CatcodeVisitorException() {
 
-    }
+  }
 
-    /**
-     * Creates a localized description of this throwable.
-     *
-     * @return the localized description of this throwable
-     *
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * Creates a localized description of this throwable.
+   *
+   * @return the localized description of this throwable
+   * @see java.lang.Throwable#getLocalizedMessage()
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        return getLocalizer().format("CatcodeVisitorException.Text",
-                super.getMessage());
-    }
+    return getLocalizer().format( "CatcodeVisitorException.Text",
+                                  super.getMessage() );
+  }
 
 }

@@ -24,18 +24,17 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This interface describes a transformer on a string which can be stored in the
  * L system.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Transform extends LValue {
 
-    /**
-     * Transform a single string.
-     * 
-     * @param in the string to transform
-     * 
-     * @return the transformed string
-     */
-    String transform(String in);
+  /**
+   * Transform a single string.
+   *
+   * @param in the string to transform
+   * @return the transformed string
+   */
+  String transform( String in );
 
 }

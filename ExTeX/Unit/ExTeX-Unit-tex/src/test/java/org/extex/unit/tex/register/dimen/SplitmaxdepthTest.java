@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \splitmaxdepth}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SplitmaxdepthTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SplitmaxdepthTest.class);
-    }
+    (new JUnitCore()).run( SplitmaxdepthTest.class );
+  }
 
 
-    public SplitmaxdepthTest() {
+  public SplitmaxdepthTest() {
 
-        super("splitmaxdepth", "", "0.0pt");
-    }
+    super( "splitmaxdepth", "", "0.0pt" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

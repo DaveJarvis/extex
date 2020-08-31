@@ -21,249 +21,245 @@ package org.extex.core.scaled;
 
 /**
  * This class provides a fixed point number.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ScaledNumber {
 
-    /**
-     * The constant {@code ONE} contains the internal representation for 1pt.
-     */
-    public static final long ONE = 1 << 16;
+  /**
+   * The constant {@code ONE} contains the internal representation for 1pt.
+   */
+  public static final long ONE = 1 << 16;
 
-    /**
-     * Determine the printable representation of the object and append it to the
-     * given StringBuilder.
-     * 
-     * @param sb the output string buffer
-     * @param value the internal value in multiples of ONE
-     */
-    public static void toString(StringBuilder sb, long value) {
+  /**
+   * Determine the printable representation of the object and append it to the
+   * given StringBuilder.
+   *
+   * @param sb    the output string buffer
+   * @param value the internal value in multiples of ONE
+   */
+  public static void toString( StringBuilder sb, long value ) {
 
-        long val = value;
+    long val = value;
 
-        if (val < 0) {
-            sb.append('-');
-            val = -val;
-        }
-
-        long v = val / ONE;
-        if (v == 0) {
-            sb.append('0');
-        } else {
-            long m = 1;
-            while (m <= v) {
-                m *= 10;
-            }
-            m /= 10;
-            while (m > 0) {
-                sb.append((char) ('0' + (v / m)));
-                v = v % m;
-                m /= 10;
-            }
-        }
-
-        sb.append('.');
-
-        val = 10 * (val % ONE) + 5;
-        long delta = 10;
-        do {
-            if (delta > ONE) {
-                val = val + 0100000 - 50000; // round the last digit
-            }
-            int i = (int) (val / ONE);
-            sb.append((char) ('0' + i));
-            val = 10 * (val % ONE);
-            delta *= 10;
-        } while (val > delta);
+    if( val < 0 ) {
+      sb.append( '-' );
+      val = -val;
     }
 
-    /**
-     * The field {@code value} contains the value.
-     */
-    private long value;
-
-    /**
-     * Creates a new object.
-     * 
-     */
-    public ScaledNumber() {
-
-        this.value = 0;
+    long v = val / ONE;
+    if( v == 0 ) {
+      sb.append( '0' );
+    }
+    else {
+      long m = 1;
+      while( m <= v ) {
+        m *= 10;
+      }
+      m /= 10;
+      while( m > 0 ) {
+        sb.append( (char) ('0' + (v / m)) );
+        v = v % m;
+        m /= 10;
+      }
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param value the initial value
-     */
-    public ScaledNumber(long value) {
+    sb.append( '.' );
 
-        this.value = value;
-    }
+    val = 10 * (val % ONE) + 5;
+    long delta = 10;
+    do {
+      if( delta > ONE ) {
+        val = val + 0100000 - 50000; // round the last digit
+      }
+      int i = (int) (val / ONE);
+      sb.append( (char) ('0' + i) );
+      val = 10 * (val % ONE);
+      delta *= 10;
+    } while( val > delta );
+  }
 
-    /**
-     * Add a number to the current one.
-     * 
-     * @param scaled the number to add
-     */
-    public void add(long scaled) {
+  /**
+   * The field {@code value} contains the value.
+   */
+  private long value;
 
-        this.value += scaled;
-    }
+  /**
+   * Creates a new object.
+   */
+  public ScaledNumber() {
 
-    /**
-     * Add a number to the current one.
-     * 
-     * @param scaled the number to add
-     */
-    public void add(ScaledNumber scaled) {
+    this.value = 0;
+  }
 
-        this.value += scaled.value;
-    }
+  /**
+   * Creates a new object.
+   *
+   * @param value the initial value
+   */
+  public ScaledNumber( long value ) {
 
-    /**
-     * Divide the scaled value by a number.
-     * 
-     * @param scaled the divisor
-     */
-    public void divide(long scaled) {
+    this.value = value;
+  }
 
-        value = value / scaled * ONE;
-    }
+  /**
+   * Add a number to the current one.
+   *
+   * @param scaled the number to add
+   */
+  public void add( long scaled ) {
 
-    /**
-     * Compares the current instance with another ScaledNumber for equality.
-     * 
-     * @param d the other ScaledNumber to compare to. If this parameter is
-     *        {@code null} then the comparison fails.
-     * 
-     * @return {@code true} iff |this| == |d|
-     */
-    public boolean eq(ScaledNumber d) {
+    this.value += scaled;
+  }
 
-        return (d != null && value == d.value);
-    }
+  /**
+   * Add a number to the current one.
+   *
+   * @param scaled the number to add
+   */
+  public void add( ScaledNumber scaled ) {
 
-    /**
-     * Compares the current instance with another ScaledNumber.
-     * 
-     * @param d the other ScaledNumber to compare to
-     * 
-     * @return {@code true} iff this is greater or equal to d
-     */
-    public boolean ge(ScaledNumber d) {
+    this.value += scaled.value;
+  }
 
-        return (value >= d.value);
-    }
+  /**
+   * Divide the scaled value by a number.
+   *
+   * @param scaled the divisor
+   */
+  public void divide( long scaled ) {
 
-    /**
-     * Getter for the value.
-     * 
-     * @return the value
-     */
-    public long getValue() {
+    value = value / scaled * ONE;
+  }
 
-        return value;
-    }
+  /**
+   * Compares the current instance with another ScaledNumber for equality.
+   *
+   * @param d the other ScaledNumber to compare to. If this parameter is
+   *          {@code null} then the comparison fails.
+   * @return {@code true} iff |this| == |d|
+   */
+  public boolean eq( ScaledNumber d ) {
 
-    /**
-     * Compares the current instance with another ScaledNumber.
-     * 
-     * @param d the other ScaledNumber to compare to
-     * 
-     * @return {@code true} iff this is less or equal to d
-     */
-    public boolean le(ScaledNumber d) {
+    return (d != null && value == d.value);
+  }
 
-        return (value <= d.value);
-    }
+  /**
+   * Compares the current instance with another ScaledNumber.
+   *
+   * @param d the other ScaledNumber to compare to
+   * @return {@code true} iff this is greater or equal to d
+   */
+  public boolean ge( ScaledNumber d ) {
 
-    /**
-     * Compares the current instance with another ScaledNumber.
-     * 
-     * @param d the other ScaledNumber to compare to
-     * 
-     * @return {@code true} iff |this| &lt; |d|
-     */
-    public boolean lt(ScaledNumber d) {
+    return (value >= d.value);
+  }
 
-        return (value < d.value);
-    }
+  /**
+   * Getter for the value.
+   *
+   * @return the value
+   */
+  public long getValue() {
 
-    /**
-     * Multiply the current value by a scaled number.
-     * 
-     * @param scaled the multiplicant
-     */
-    public void multiply(long scaled) {
+    return value;
+  }
 
-        value = value * scaled / ONE;
-    }
+  /**
+   * Compares the current instance with another ScaledNumber.
+   *
+   * @param d the other ScaledNumber to compare to
+   * @return {@code true} iff this is less or equal to d
+   */
+  public boolean le( ScaledNumber d ) {
 
-    /**
-     * Multiply the value by an integer fraction.
-     * <p>
-     * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
-     * </p>
-     * 
-     * @param nom nominator
-     * @param denom denominator
-     */
-    public void multiply(long nom, long denom) {
+    return (value <= d.value);
+  }
 
-        this.value = this.value * nom / denom;
-    }
+  /**
+   * Compares the current instance with another ScaledNumber.
+   *
+   * @param d the other ScaledNumber to compare to
+   * @return {@code true} iff |this| &lt; |d|
+   */
+  public boolean lt( ScaledNumber d ) {
 
-    /**
-     * Negate the current value.
-     */
-    public void negate() {
+    return (value < d.value);
+  }
 
-        this.value = -this.value;
-    }
+  /**
+   * Multiply the current value by a scaled number.
+   *
+   * @param scaled the multiplicant
+   */
+  public void multiply( long scaled ) {
 
-    /**
-     * Set the value to a new one
-     * 
-     * @param scaled the new value
-     */
-    public void set(long scaled) {
+    value = value * scaled / ONE;
+  }
 
-        value = scaled;
-    }
+  /**
+   * Multiply the value by an integer fraction.
+   * <p>
+   * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
+   * </p>
+   *
+   * @param nom   nominator
+   * @param denom denominator
+   */
+  public void multiply( long nom, long denom ) {
 
-    /**
-     * Setter for the value
-     * 
-     * @param scaled the new value
-     */
-    public void set(ScaledNumber scaled) {
+    this.value = this.value * nom / denom;
+  }
 
-        value = scaled.value;
-    }
+  /**
+   * Negate the current value.
+   */
+  public void negate() {
 
-    /**
-     * Subtract a number from the current one.
-     * 
-     * @param scaled the number to subtract
-     */
-    public void subtract(ScaledNumber scaled) {
+    this.value = -this.value;
+  }
 
-        this.value -= scaled.value;
-    }
+  /**
+   * Set the value to a new one
+   *
+   * @param scaled the new value
+   */
+  public void set( long scaled ) {
 
-    /**
-     * Determine the printable representation of the object.
-     * 
-     * @return the printable representation
-     */
-    @Override
-    public String toString() {
+    value = scaled;
+  }
 
-        StringBuilder sb = new StringBuilder();
-        toString(sb, this.value);
-        return sb.toString();
-    }
+  /**
+   * Setter for the value
+   *
+   * @param scaled the new value
+   */
+  public void set( ScaledNumber scaled ) {
+
+    value = scaled.value;
+  }
+
+  /**
+   * Subtract a number from the current one.
+   *
+   * @param scaled the number to subtract
+   */
+  public void subtract( ScaledNumber scaled ) {
+
+    this.value -= scaled.value;
+  }
+
+  /**
+   * Determine the printable representation of the object.
+   *
+   * @return the printable representation
+   */
+  @Override
+  public String toString() {
+
+    StringBuilder sb = new StringBuilder();
+    toString( sb, this.value );
+    return sb.toString();
+  }
 
 }

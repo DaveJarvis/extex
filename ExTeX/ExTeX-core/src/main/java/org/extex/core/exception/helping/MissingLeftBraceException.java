@@ -24,28 +24,28 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is raised when an arithmetic overflow has been encountered.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code TTP.ArithmeticOverflow}.
+ * The localization format is taken from the Localizer under the key
+ * {@code TTP.ArithmeticOverflow}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MissingLeftBraceException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param macro the name of the macro in which the eof has been encoutered
-     */
-    public MissingLeftBraceException(String macro) {
+  /**
+   * Creates a new object.
+   *
+   * @param macro the name of the macro in which the eof has been encoutered
+   */
+  public MissingLeftBraceException( String macro ) {
 
-        super(LocalizerFactory.getLocalizer(
-                MissingLeftBraceException.class), "TTP.MissingLeftBrace");
-    }
+    super( LocalizerFactory.getLocalizer(
+        MissingLeftBraceException.class ), "TTP.MissingLeftBrace" );
+  }
 
 }

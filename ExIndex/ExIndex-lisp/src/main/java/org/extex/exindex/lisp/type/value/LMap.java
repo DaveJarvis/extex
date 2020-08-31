@@ -25,64 +25,64 @@ import java.util.Map;
 
 /**
  * This class provides a map for the L system.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LMap implements LValue {
 
-    /**
-     * The field {@code array} contains the content.
-     */
-    private final Map<LValue, LValue> map = new HashMap<LValue, LValue>();
+  /**
+   * The field {@code array} contains the content.
+   */
+  private final Map<LValue, LValue> map = new HashMap<LValue, LValue>();
 
 
-    public LMap() {
+  public LMap() {
 
+  }
+
+  /**
+   * Get an element at a certain position. If the position is empty then
+   * {@code nil} is returned.
+   *
+   * @param key the key
+   * @return the specified element or {@code nil}
+   */
+  public LValue get( LValue key ) {
+
+    LValue value = map.get( key );
+    if( value == null ) {
+      return LList.NIL;
     }
+    return value;
+  }
 
-    /**
-     * Get an element at a certain position. If the position is empty then
-     * {@code nil} is returned.
-     * 
-     * @param key the key
-     * 
-     * @return the specified element or {@code nil}
-     */
-    public LValue get(LValue key) {
+  public void print( PrintStream stream ) {
 
-        LValue value = map.get(key);
-        if (value == null) {
-            return LList.NIL;
-        }
-        return value;
+    boolean first = true;
+    stream.print( "#{" );
+    for( LValue key : map.keySet() ) {
+      if( first ) {
+        first = false;
+      }
+      else {
+        stream.print( "\n" );
+      }
+      key.print( stream );
+      stream.print( " => " );
+      map.get( key ).print( stream );
     }
+    stream.print( "} " );
+  }
 
-public void print(PrintStream stream) {
+  /**
+   * Add a value to the end.
+   *
+   * @param key   the key
+   * @param value the value to add
+   */
+  public void put( LValue key, LValue value ) {
 
-        boolean first = true;
-        stream.print("#{");
-        for (LValue key : map.keySet()) {
-            if (first) {
-                first = false;
-            } else {
-                stream.print("\n");
-            }
-            key.print(stream);
-            stream.print(" => ");
-            map.get(key).print(stream);
-        }
-        stream.print("} ");
-    }
-
-    /**
-     * Add a value to the end.
-     * 
-     * @param key the key
-     * @param value the value to add
-     */
-    public void put(LValue key, LValue value) {
-
-        map.put(key, value);
-    }
+    map.put( key, value );
+  }
 
 }

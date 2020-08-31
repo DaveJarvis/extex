@@ -33,66 +33,66 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \aftergroup}.
- * 
+ *
  * <p>The Primitive {@code \aftergroup}</p>
  * <p>
  * This primitive takes the next token and saves it. The saved token will be
  * inserted after the current group has been closed. If several tokens are saved
  * then they will be inserted in the same sequence as they are saved.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *   &lang;aftergroup&rang;
  *     &rarr; {@code \aftergroup} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token&rang;}   </pre>
- * 
+ *
  * <p>Example:</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    {\aftergroup~ xyz}  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    {\aftergroup\a\aftergroup\b xyz}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Aftergroup extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Aftergroup(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Aftergroup( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Token t = source.getToken( context );
+    if( t == null ) {
+      throw new EofException( toText( context ) );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Token t = source.getToken(context);
-        if (t == null) {
-            throw new EofException(toText(context));
-        }
-        context.afterGroup(t);
-    }
+    context.afterGroup( t );
+  }
 
 }

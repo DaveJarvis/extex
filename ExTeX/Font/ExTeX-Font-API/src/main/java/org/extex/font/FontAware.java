@@ -25,14 +25,14 @@ package org.extex.font;
  * {@link org.extex.font.FontFactory FontFactory} via a setter method.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface FontAware {
 
-    /**
-     * Setter for the font factory.
-     *
-     * @param factory the font factory
-     */
-    void setFontFactory(CoreFontFactory factory);
+  /**
+   * Setter for the font factory.
+   *
+   * @param factory the font factory
+   */
+  void setFontFactory( CoreFontFactory factory );
 
 }

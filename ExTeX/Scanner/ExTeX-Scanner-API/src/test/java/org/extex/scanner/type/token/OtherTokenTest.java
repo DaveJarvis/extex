@@ -19,51 +19,50 @@
 
 package org.extex.scanner.type.token;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import static org.junit.Assert.assertNotEquals;
+
 /**
  * Test cases for other tokens.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OtherTokenTest extends TokenTester {
 
-    /**
-     * The field {@code token} contains the reference token.
-     */
-    private static final Token token = new OtherToken( UnicodeChar.get( 'x'));
+  /**
+   * The field {@code token} contains the reference token.
+   */
+  private static final Token token = new OtherToken( UnicodeChar.get( 'x' ) );
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LeftBraceTokenTest.class);
-    }
+    (new JUnitCore()).run( LeftBraceTokenTest.class );
+  }
 
 
-    public OtherTokenTest() {
+  public OtherTokenTest() {
 
-        setToken(token);
-        setCatcode( Catcode.OTHER);
-        setText( "x");
-        setStr( "the character x");
-    }
+    setToken( token );
+    setCatcode( Catcode.OTHER );
+    setText( "x" );
+    setStr( "the character x" );
+  }
 
-@Test
-    public void testEqualsToken1() {
+  @Test
+  public void testEqualsToken1() {
 
-        Token t1 = new OtherToken(UnicodeChar.get(' '));
-        Token t2 = new SpaceToken(" ");
-        assertNotEquals( t1, t2 );
-    }
+    Token t1 = new OtherToken( UnicodeChar.get( ' ' ) );
+    Token t2 = new SpaceToken( " " );
+    assertNotEquals( t1, t2 );
+  }
 
 }

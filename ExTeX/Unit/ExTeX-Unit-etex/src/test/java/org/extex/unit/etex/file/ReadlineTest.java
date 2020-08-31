@@ -26,33 +26,35 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for the primitive {@code \readline}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * The constant {@code DATA_FILE} contains the name of the file to be used
-     * for reading.
-     */
-    private static final String DATA_FILE =
-            "../ExTeX-Unit-tex/src/test/resources/tex/read_data.tex";
+  /**
+   * The constant {@code DATA_FILE} contains the name of the file to be used
+   * for reading.
+   */
+  private static final String DATA_FILE =
+      "../ExTeX-Unit-tex/src/test/resources/tex/read_data.tex";
 
-    /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ReadlineTest.class);
-    }
+    (new JUnitCore()).run( ReadlineTest.class );
+  }
 
 
-    public ReadlineTest() {
+  public ReadlineTest() {
 
-        setPrimitive("readline");setArguments("1 to \\x");setPrepare("\\openin1 " + DATA_FILE + " ");
-        setConfig("etex-test");
-    }
+    setPrimitive( "readline" );
+    setArguments( "1 to \\x" );
+    setPrepare( "\\openin1 " + DATA_FILE + " " );
+    setConfig( "etex-test" );
+  }
 
-    //TODO implement the primitive specific test cases
+  //TODO implement the primitive specific test cases
 
 }

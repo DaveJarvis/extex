@@ -19,156 +19,146 @@
 
 package org.extex.font.manager;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.TreeSet;
+import org.extex.font.*;
 
-import org.extex.font.BackendCharacter;
-import org.extex.font.BackendFont;
-import org.extex.font.BackendFontFactory;
-import org.extex.font.BackendFontManager;
-import org.extex.font.FontKey;
+import java.util.*;
 
 /**
  * Abstract Backend font manager.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public abstract class AbstractBackendFontManager implements BackendFontManager {
 
-    /**
-     * The back-end font factory.
-     */
-    protected BackendFontFactory factory;
+  /**
+   * The back-end font factory.
+   */
+  protected BackendFontFactory factory;
 
-    /**
-     * The font list.
-     */
-    protected Map<FontKey, ManagerInfo> fontList;
+  /**
+   * The font list.
+   */
+  protected Map<FontKey, ManagerInfo> fontList;
 
-    /**
-     * Is it a recognized font?
-     */
-    protected boolean newRecongnizedFont;
+  /**
+   * Is it a recognized font?
+   */
+  protected boolean newRecongnizedFont;
 
-    /**
-     * The back-end character.
-     */
-    protected BackendCharacter recognizedCharcterId;
+  /**
+   * The back-end character.
+   */
+  protected BackendCharacter recognizedCharcterId;
 
-    /**
-     * The recognized font.
-     */
-    protected BackendFont recognizedFont;
+  /**
+   * The recognized font.
+   */
+  protected BackendFont recognizedFont;
 
 
-    public AbstractBackendFontManager() {
+  public AbstractBackendFontManager() {
 
-        fontList = new HashMap<FontKey, ManagerInfo>();
-    }
+    fontList = new HashMap<FontKey, ManagerInfo>();
+  }
 
-@Override
-    public BackendCharacter getRecognizedCharId() {
+  @Override
+  public BackendCharacter getRecognizedCharId() {
 
-        return recognizedCharcterId;
-    }
+    return recognizedCharcterId;
+  }
 
-@Override
-    public BackendFont getRecognizedFont() {
+  @Override
+  public BackendFont getRecognizedFont() {
 
-        return recognizedFont;
-    }
+    return recognizedFont;
+  }
 
-@Override
-    public boolean isNewRecongnizedFont() {
+  @Override
+  public boolean isNewRecongnizedFont() {
 
-        return newRecongnizedFont;
-    }
+    return newRecongnizedFont;
+  }
 
-@Override
-    public Iterator<ManagerInfo> iterator() {
+  @Override
+  public Iterator<ManagerInfo> iterator() {
 
-        return new Iterator<ManagerInfo>() {
+    return new Iterator<ManagerInfo>() {
 
-            /**
-             * Iterator for the font key.
-             */
-            private Iterator<FontKey> it;
+      /**
+       * Iterator for the font key.
+       */
+      private Iterator<FontKey> it;
 
-            /**
-             * Create the {@code Iterator} and sort it.
-             */
-            private void createIterator() {
+      /**
+       * Create the {@code Iterator} and sort it.
+       */
+      private void createIterator() {
 
-                Set<FontKey> keySet = fontList.keySet();
-                TreeSet<FontKey> sort =
-                        new TreeSet<FontKey>(new Comparator<FontKey>() {
+        Set<FontKey> keySet = fontList.keySet();
+        TreeSet<FontKey> sort =
+            new TreeSet<FontKey>( new Comparator<FontKey>() {
 
-                            @Override
-                            public int compare(FontKey o1, FontKey o2) {
+              @Override
+              public int compare( FontKey o1, FontKey o2 ) {
 
-                                return o1.getName().compareTo(o2.getName());
-                            }
+                return o1.getName().compareTo( o2.getName() );
+              }
 
-                        });
-                for (FontKey key : keySet) {
-                    sort.add(key);
-                }
+            } );
+        for( FontKey key : keySet ) {
+          sort.add( key );
+        }
 
-                it = sort.iterator();
-            }
+        it = sort.iterator();
+      }
 
-        @Override
-            public boolean hasNext() {
+      @Override
+      public boolean hasNext() {
 
-                if (fontList != null && it == null) {
-                    createIterator();
-                }
-                if (it != null) {
-                    return it.hasNext();
-                }
-                return false;
-            }
+        if( fontList != null && it == null ) {
+          createIterator();
+        }
+        if( it != null ) {
+          return it.hasNext();
+        }
+        return false;
+      }
 
-        @Override
-            public ManagerInfo next() {
+      @Override
+      public ManagerInfo next() {
 
-                if (fontList != null && it == null) {
-                    createIterator();
-                }
-                if (it == null) {
-                    throw new NoSuchElementException();
-                }
-                FontKey key = it.next();
-                return fontList.get(key);
-            }
+        if( fontList != null && it == null ) {
+          createIterator();
+        }
+        if( it == null ) {
+          throw new NoSuchElementException();
+        }
+        FontKey key = it.next();
+        return fontList.get( key );
+      }
 
-        @Override
-            public void remove() {
+      @Override
+      public void remove() {
 
-                throw new UnsupportedOperationException();
-            }
-        };
-    }
+        throw new UnsupportedOperationException();
+      }
+    };
+  }
 
-@Override
-    public void reset() {
+  @Override
+  public void reset() {
 
-        newRecongnizedFont = false;
-        recognizedCharcterId = null;
-        recognizedFont = null;
-        fontList.clear();
+    newRecongnizedFont = false;
+    recognizedCharcterId = null;
+    recognizedFont = null;
+    fontList.clear();
 
-    }
+  }
 
-@Override
-    public void setBackendFontFactory(BackendFontFactory f) {
+  @Override
+  public void setBackendFontFactory( BackendFontFactory f ) {
 
-        this.factory = f;
+    this.factory = f;
 
-    }
+  }
 }

@@ -33,76 +33,73 @@ import org.extex.core.exception.helping.HelpingException;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class FixedHelpingException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * The field {@code help} contains the string which is shown if further
-     * help is requested.
-     */
-    private final String help;
+  /**
+   * The field {@code help} contains the string which is shown if further
+   * help is requested.
+   */
+  private final String help;
 
-    /**
-     * The field {@code message} contains the message. We need to keep it here
-     * since the parent class does not provide writing access to the message of
-     * the underlying Exception.
-     */
-    private final String message;
+  /**
+   * The field {@code message} contains the message. We need to keep it here
+   * since the parent class does not provide writing access to the message of
+   * the underlying Exception.
+   */
+  private final String message;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message of this Exception
-     * @param help the help string
-     */
-    public FixedHelpingException(String message, String help) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message of this Exception
+   * @param help    the help string
+   */
+  public FixedHelpingException( String message, String help ) {
 
-        this.message = message;
-        this.help = help;
-    }
+    this.message = message;
+    this.help = help;
+  }
 
-    /**
-     * Getter for further help information.
-     *
-     * @return the help information
-     *
-     * @see org.extex.core.exception.GeneralException#getHelp()
-     */
-    @Override
-    public String getHelp() {
+  /**
+   * Getter for further help information.
+   *
+   * @return the help information
+   * @see org.extex.core.exception.GeneralException#getHelp()
+   */
+  @Override
+  public String getHelp() {
 
-        return help;
-    }
+    return help;
+  }
 
-    /**
-     * Creates a localized description of this throwable.
-     *
-     * @return the localized description of this throwable.
-     *
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * Creates a localized description of this throwable.
+   *
+   * @return the localized description of this throwable.
+   * @see java.lang.Throwable#getLocalizedMessage()
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        return message;
-    }
+    return message;
+  }
 
-    /**
-     * Creates a description of this throwable.
-     *
-     * @return the description of this throwable.
-     *
-     * @see java.lang.Throwable#getMessage()
-     */
-    @Override
-    public String getMessage() {
+  /**
+   * Creates a description of this throwable.
+   *
+   * @return the description of this throwable.
+   * @see java.lang.Throwable#getMessage()
+   */
+  @Override
+  public String getMessage() {
 
-        return message;
-    }
+    return message;
+  }
 
 }

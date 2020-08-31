@@ -21,7 +21,7 @@ package org.extex.typesetter.tex.paragraph;
 
 /**
  * 819.
- *
+ * <p>
  * An active node for a given breakpoint contains six fields:
  * <ul>
  * <li>
@@ -29,7 +29,8 @@ package org.extex.typesetter.tex.paragraph;
  *  last active node has <i>link=last_active</i>.
  * </li>
  * <li>
- *  <i>break_node</i> points to the passive node associated with this breakpoint.
+ *  <i>break_node</i> points to the passive node associated with this 
+ *  breakpoint.
  * </li>
  * <li>
  *  <i>line_number</i> is the number of the line that follows this breakpoint.
@@ -72,119 +73,117 @@ package org.extex.typesetter.tex.paragraph;
  * <b>define</b> last_active ::= active  {the active list ends where it begins}
  * </pre>
  *
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  */
 public class ActiveNode {
 
-    /**
-     * The field {@code breakNode} contains the associated passive node.
-     */
-    private final PassiveNode breakNode;
+  /**
+   * The field {@code breakNode} contains the associated passive node.
+   */
+  private final PassiveNode breakNode;
 
-    /**
-     * The field {@code demerits} contains the demerits for this break
-     * point.
-     */
-    private final long demerits;
+  /**
+   * The field {@code demerits} contains the demerits for this break
+   * point.
+   */
+  private final long demerits;
 
-    /**
-     * The field {@code fitness} contains the fitness classification.
-     */
-    private final Fitness fitness;
+  /**
+   * The field {@code fitness} contains the fitness classification.
+   */
+  private final Fitness fitness;
 
-    /**
-     * The field {@code hyphenated} contains the indicator for hyphenation at
-     * this break point.
-     */
-    private final boolean hyphenated;
+  /**
+   * The field {@code hyphenated} contains the indicator for hyphenation at
+   * this break point.
+   */
+  private final boolean hyphenated;
 
-    /**
-     * The field {@code lineNumber} contains the sequence number of the line.
-     */
-    private final int lineNumber;
+  /**
+   * The field {@code lineNumber} contains the sequence number of the line.
+   */
+  private final int lineNumber;
 
-    /**
-     * Creates a new object.
-     *
-     * @param fitness the fitness classification
-     * @param hyphenated the indicator for hyphenation at this break point
-     * @param demerits the demerits for this break point
-     * @param lineNumber the sequence number of the line
-     * @param breakNode the index of the break
-     */
-    public ActiveNode(Fitness fitness, boolean hyphenated,
-            long demerits, int lineNumber,
-            PassiveNode breakNode) {
+  /**
+   * Creates a new object.
+   *
+   * @param fitness    the fitness classification
+   * @param hyphenated the indicator for hyphenation at this break point
+   * @param demerits   the demerits for this break point
+   * @param lineNumber the sequence number of the line
+   * @param breakNode  the index of the break
+   */
+  public ActiveNode( Fitness fitness, boolean hyphenated,
+                     long demerits, int lineNumber,
+                     PassiveNode breakNode ) {
 
-        this.fitness = fitness;
-        this.hyphenated = hyphenated;
-        this.demerits = demerits;
-        this.lineNumber = lineNumber;
-        this.breakNode = breakNode;
-    }
+    this.fitness = fitness;
+    this.hyphenated = hyphenated;
+    this.demerits = demerits;
+    this.lineNumber = lineNumber;
+    this.breakNode = breakNode;
+  }
 
-    /**
-     * Getter for breakNode.
-     *
-     * @return the breakNode
-     */
-    protected PassiveNode getBreakNode() {
+  /**
+   * Getter for breakNode.
+   *
+   * @return the breakNode
+   */
+  protected PassiveNode getBreakNode() {
 
-        return this.breakNode;
-    }
+    return this.breakNode;
+  }
 
-    /**
-     * Getter for fitness.
-     *
-     * @return the fitness
-     */
-    protected Fitness getFitness() {
+  /**
+   * Getter for fitness.
+   *
+   * @return the fitness
+   */
+  protected Fitness getFitness() {
 
-        return this.fitness;
-    }
+    return this.fitness;
+  }
 
-    /**
-     * Getter for lineNumber.
-     *
-     * @return the lineNumber
-     */
-    protected int getLineNumber() {
+  /**
+   * Getter for lineNumber.
+   *
+   * @return the lineNumber
+   */
+  protected int getLineNumber() {
 
-        return this.lineNumber;
-    }
+    return this.lineNumber;
+  }
 
-    /**
-     * Getter for demerits.
-     *
-     * @return the demerits
-     */
-    protected long getTotalDemerits() {
+  /**
+   * Getter for demerits.
+   *
+   * @return the demerits
+   */
+  protected long getTotalDemerits() {
 
-        return this.demerits;
-    }
+    return this.demerits;
+  }
 
-    /**
-     * Getter for hyphenated.
-     *
-     * @return the hyphenated
-     */
-    protected boolean isHyphenated() {
+  /**
+   * Getter for hyphenated.
+   *
+   * @return the hyphenated
+   */
+  protected boolean isHyphenated() {
 
-        return this.hyphenated;
-    }
+    return this.hyphenated;
+  }
 
-    /**
-     * Return the printable representation of the instance.
-     *
-     * @return the string representation
-     *
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
+  /**
+   * Return the printable representation of the instance.
+   *
+   * @return the string representation
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-        return "active(" + breakNode + ")";
-    }
+    return "active(" + breakNode + ")";
+  }
 
 }

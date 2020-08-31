@@ -23,185 +23,192 @@ import org.extex.exindex.core.util.StringUtils;
 
 /**
  * This class is a container for the raw index entries.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RawIndexentry {
 
-    /**
-     * The field {@code mainKey} contains the main key as given by the user.
-     */
-    private final String[] mainKey;
+  /**
+   * The field {@code mainKey} contains the main key as given by the user.
+   */
+  private final String[] mainKey;
 
-    /**
-     * The field {@code printKey} contains the print key.
-     */
-    private final String[] printKey;
+  /**
+   * The field {@code printKey} contains the print key.
+   */
+  private final String[] printKey;
 
-    /**
-     * The field {@code sortKey} contains the sort key.
-     */
-    private String[] sortKey = null;
+  /**
+   * The field {@code sortKey} contains the sort key.
+   */
+  private String[] sortKey = null;
 
-    /**
-     * The field {@code ref} contains the page reference.
-     */
-    private final Reference ref;
+  /**
+   * The field {@code ref} contains the page reference.
+   */
+  private final Reference ref;
 
-    /**
-     * The field {@code index} contains the name of the index.
-     */
-    private final String index;
+  /**
+   * The field {@code index} contains the name of the index.
+   */
+  private final String index;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param index the name of the index or the empty string for the default
-     * @param key the main key; It can not be {@code null}
-     * @param print the print key; It can not be {@code null}
-     * @param ref the reference
-     */
-    public RawIndexentry(String index, String[] key, String[] print,
-            Reference ref) {
+  /**
+   * Creates a new object.
+   *
+   * @param index the name of the index or the empty string for the default
+   * @param key   the main key; It can not be {@code null}
+   * @param print the print key; It can not be {@code null}
+   * @param ref   the reference
+   */
+  public RawIndexentry( String index, String[] key, String[] print,
+                        Reference ref ) {
 
-        if (key == null || print == null || ref == null) {
-            throw new IllegalArgumentException();
-        }
-        this.mainKey = key;
-        this.printKey = print;
-        this.ref = ref;
-        this.index = index;
+    if( key == null || print == null || ref == null ) {
+      throw new IllegalArgumentException();
     }
+    this.mainKey = key;
+    this.printKey = print;
+    this.ref = ref;
+    this.index = index;
+  }
 
-    /**
-     * Getter for index.
-     * 
-     * @return the index
-     */
-    public String getIndex() {
+  /**
+   * Getter for index.
+   *
+   * @return the index
+   */
+  public String getIndex() {
 
-        return index;
+    return index;
+  }
+
+  /**
+   * Getter for main key.
+   *
+   * @return the main key
+   */
+  public String[] getMainKey() {
+
+    return mainKey;
+  }
+
+  /**
+   * Getter for print key.
+   *
+   * @return the print key
+   */
+  public String[] getPrintKey() {
+
+    return printKey;
+  }
+
+  /**
+   * Getter for ref.
+   *
+   * @return the ref
+   */
+  public Reference getRef() {
+
+    return ref;
+  }
+
+  /**
+   * Getter for sort key.
+   *
+   * @return the sort key
+   */
+  public String[] getSortKey() {
+
+    return sortKey;
+  }
+
+  /**
+   * Setter for the sort key.
+   *
+   * @param sortKey the sort key
+   */
+  public void setSortKey( String[] sortKey ) {
+
+    this.sortKey = sortKey;
+  }
+
+  @Override
+  public String toString() {
+
+    StringBuilder sb = new StringBuilder();
+    sb.append( "(indexentry" );
+    if( index != null ) {
+      sb.append( " :index " );
+      StringUtils.putPrintable( sb, index );
     }
-
-    /**
-     * Getter for main key.
-     * 
-     * @return the main key
-     */
-    public String[] getMainKey() {
-
-        return mainKey;
+    if( printKey == null ) {
+      toStringAppendList( sb, " :key ", mainKey );
     }
-
-    /**
-     * Getter for print key.
-     * 
-     * @return the print key
-     */
-    public String[] getPrintKey() {
-
-        return printKey;
+    else if( mainKey == printKey ) {
+      toStringAppendList( sb, " :key ", mainKey );
     }
-
-    /**
-     * Getter for ref.
-     * 
-     * @return the ref
-     */
-    public Reference getRef() {
-
-        return ref;
+    else {
+      toStringAppendList( sb, " :key ", mainKey );
+      toStringAppendList( sb, " :print ", printKey );
     }
-
-    /**
-     * Getter for sort key.
-     * 
-     * @return the sort key
-     */
-    public String[] getSortKey() {
-
-        return sortKey;
+    String attribute = ref.getLayer();
+    if( attribute != null ) {
+      sb.append( " :attr " );
+      StringUtils.putPrintable( sb, attribute );
     }
-
-    /**
-     * Setter for the sort key.
-     * 
-     * @param sortKey the sort key
-     */
-    public void setSortKey(String[] sortKey) {
-
-        this.sortKey = sortKey;
+    if( ref instanceof CrossReference ) {
+      sb.append( " :xref " );
+      sb.append( ref.toString() );
     }
-
-@Override
-    public String toString() {
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("(indexentry");
-        if (index != null) {
-            sb.append(" :index ");
-            StringUtils.putPrintable(sb, index);
-        }
-        if (printKey == null) {
-            toStringAppendList(sb, " :key ", mainKey);
-        } else if (mainKey == printKey) {
-            toStringAppendList(sb, " :key ", mainKey);
-        } else {
-            toStringAppendList(sb, " :key ", mainKey);
-            toStringAppendList(sb, " :print ", printKey);
-        }
-        String attribute = ref.getLayer();
-        if (attribute != null) {
-            sb.append(" :attr ");
-            StringUtils.putPrintable(sb, attribute);
-        }
-        if (ref instanceof CrossReference) {
-            sb.append(" :xref ");
-            sb.append(ref.toString());
-        } else if (ref instanceof OpenLocationReference) {
-            sb.append(" :locref ");
-            sb.append(ref.toString());
-            sb.append(" :open-range");
-        } else if (ref instanceof CloseLocationReference) {
-            sb.append(" :locref ");
-            sb.append(ref.toString());
-            sb.append(" :close-range");
-        } else {
-            sb.append(" :locref ");
-            sb.append(ref.toString());
-        }
-        sb.append(")\n");
-        return sb.toString();
+    else if( ref instanceof OpenLocationReference ) {
+      sb.append( " :locref " );
+      sb.append( ref.toString() );
+      sb.append( " :open-range" );
     }
-
-    /**
-     * Append a list of strings to a string builder.
-     * 
-     * @param sb the buffer
-     * @param tag the initial tag
-     * @param a the array of values
-     */
-    private void toStringAppendList(StringBuilder sb, String tag, String[] a) {
-
-        if (a == null) {
-            return;
-        }
-        sb.append(tag);
-        sb.append("(");
-        boolean first = true;
-        for (String s : a) {
-            if (first) {
-                first = false;
-            } else {
-                sb.append(" ");
-            }
-            if (s == null) {
-                sb.append("null");
-            } else {
-                StringUtils.putPrintable(sb, s);
-            }
-        }
-        sb.append(")");
+    else if( ref instanceof CloseLocationReference ) {
+      sb.append( " :locref " );
+      sb.append( ref.toString() );
+      sb.append( " :close-range" );
     }
+    else {
+      sb.append( " :locref " );
+      sb.append( ref.toString() );
+    }
+    sb.append( ")\n" );
+    return sb.toString();
+  }
+
+  /**
+   * Append a list of strings to a string builder.
+   *
+   * @param sb  the buffer
+   * @param tag the initial tag
+   * @param a   the array of values
+   */
+  private void toStringAppendList( StringBuilder sb, String tag, String[] a ) {
+
+    if( a == null ) {
+      return;
+    }
+    sb.append( tag );
+    sb.append( "(" );
+    boolean first = true;
+    for( String s : a ) {
+      if( first ) {
+        first = false;
+      }
+      else {
+        sb.append( " " );
+      }
+      if( s == null ) {
+        sb.append( "null" );
+      }
+      else {
+        StringUtils.putPrintable( sb, s );
+      }
+    }
+    sb.append( ")" );
+  }
 
 }

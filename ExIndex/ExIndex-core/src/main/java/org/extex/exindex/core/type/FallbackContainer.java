@@ -23,37 +23,34 @@ import org.extex.exindex.core.type.markup.Markup;
 
 /**
  * This interface describes the handling of several fallback scenarios.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface FallbackContainer {
 
-    /**
-     * Apply the fallback merge rules.
-     * 
-     * @param text the text to transform
-     * 
-     * @return the transformed text
-     */
-    String applyMergeRuleFallback(String text);
+  /**
+   * Apply the fallback merge rules.
+   *
+   * @param text the text to transform
+   * @return the transformed text
+   */
+  String applyMergeRuleFallback( String text );
 
-    /**
-     * Apply the fallback sort rules.
-     * 
-     * @param text the text to transform
-     * @param level the current level
-     * 
-     * @return the transformed text
-     */
-    String applySortRuleFallback(String text, int level);
+  /**
+   * Apply the fallback sort rules.
+   *
+   * @param text  the text to transform
+   * @param level the current level
+   * @return the transformed text
+   */
+  String applySortRuleFallback( String text, int level );
 
-    /**
-     * Getter for the fallback markup.
-     * 
-     * @param name the name
-     * 
-     * @return the markup
-     */
-    Markup getFallbackMarkup(String name);
+  /**
+   * Getter for the fallback markup.
+   *
+   * @param name the name
+   * @return the markup
+   */
+  Markup getFallbackMarkup( String name );
 
 }

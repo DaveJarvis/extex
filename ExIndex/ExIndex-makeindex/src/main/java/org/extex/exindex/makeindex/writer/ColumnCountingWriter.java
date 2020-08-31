@@ -24,85 +24,85 @@ import java.io.Writer;
 
 /**
  * This writer keeps track of the current column.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ColumnCountingWriter extends Writer {
 
-    /**
-     * The field {@code tabSize} contains the width of a tab.
-     */
-    private final int tabSize = 8;
+  /**
+   * The field {@code tabSize} contains the width of a tab.
+   */
+  private final int tabSize = 8;
 
-    /**
-     * The field {@code writer} contains the next writer.
-     */
-    private final Writer writer;
+  /**
+   * The field {@code writer} contains the next writer.
+   */
+  private final Writer writer;
 
-    /**
-     * The field {@code column} contains the current column.
-     */
-    private int column;
+  /**
+   * The field {@code column} contains the current column.
+   */
+  private int column;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param writer the next writer
-     */
-    public ColumnCountingWriter(Writer writer) {
+  /**
+   * Creates a new object.
+   *
+   * @param writer the next writer
+   */
+  public ColumnCountingWriter( Writer writer ) {
 
-        this.writer = writer;
+    this.writer = writer;
+  }
+
+  @Override
+  public void close() throws IOException {
+
+    writer.close();
+  }
+
+  @Override
+  public void flush() throws IOException {
+
+    writer.flush();
+  }
+
+  /**
+   * Getter for the column.
+   *
+   * @return the column
+   */
+  public int getColumn() {
+
+    return column;
+  }
+
+  /**
+   * Setter for column.
+   *
+   * @param column the column to set
+   */
+  public void setColumn( int column ) {
+
+    this.column = column;
+  }
+
+  @Override
+  public void write( char[] cbuf, int off, int len ) throws IOException {
+
+    for( int i = off; i < off + len; i++ ) {
+      switch( cbuf[ i ] ) {
+        case '\n':
+        case '\r':
+          column = 0;
+          break;
+        case '\t':
+          column += tabSize * ((column + 8) % 8);
+          break;
+        default:
+          column++;
+      }
     }
-
-@Override
-    public void close() throws IOException {
-
-        writer.close();
-    }
-
-@Override
-    public void flush() throws IOException {
-
-        writer.flush();
-    }
-
-    /**
-     * Getter for the column.
-     * 
-     * @return the column
-     */
-    public int getColumn() {
-
-        return column;
-    }
-
-    /**
-     * Setter for column.
-     * 
-     * @param column the column to set
-     */
-    public void setColumn(int column) {
-
-        this.column = column;
-    }
-
-@Override
-    public void write(char[] cbuf, int off, int len) throws IOException {
-
-        for (int i = off; i < off + len; i++) {
-            switch (cbuf[i]) {
-                case '\n':
-                case '\r':
-                    column = 0;
-                    break;
-                case '\t':
-                    column += tabSize * ((column + 8) % 8);
-                    break;
-                default:
-                    column++;
-            }
-        }
-        writer.write(cbuf, off, len);
-    }
+    writer.write( cbuf, off, len );
+  }
 
 }

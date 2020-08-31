@@ -35,7 +35,7 @@ import org.extex.unit.tex.math.AbstractMathCode;
 /**
  * This class provides an implementation for the primitive
  * {@code \displaylimits}.
- * 
+ *
  * <p>The Math Primitive {@code \displaylimits}</p>
  * <p>
  * The math primitive {@code \displaylimits} influences the treatment of
@@ -45,61 +45,60 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * <p>
  * In any other circumstances the primitive raises an error.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;displaylimits&rang;
  *       &rarr; {@code \displaylimits}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \displaylimits  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Displaylimits extends AbstractMathCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Displaylimits(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Displaylimits( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException,
+      ConfigurationException,
+      TypesetterException {
+
+    NoadConsumer nc = getListMaker( context, typesetter );
+    Noad noad = nc.getLastNoad();
+
+    if( !(noad instanceof OperatorNoad) ) {
+      throw new HelpingException( getLocalizer(), "TTP.MisplacedLimits" );
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException,
-                ConfigurationException,
-                TypesetterException {
-
-        NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.getLastNoad();
-
-        if (!(noad instanceof OperatorNoad)) {
-            throw new HelpingException(getLocalizer(), "TTP.MisplacedLimits");
-        }
-
-        ((OperatorNoad) noad).setLimits(null);
-    }
+    ((OperatorNoad) noad).setLimits( null );
+  }
 
 }

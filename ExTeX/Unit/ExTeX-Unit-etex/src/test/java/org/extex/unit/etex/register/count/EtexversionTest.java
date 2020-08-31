@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \eTeXversion}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EtexversionTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(EtexversionTest.class);
-    }
+    (new JUnitCore()).run( EtexversionTest.class );
+  }
 
 
-    public EtexversionTest() {
+  public EtexversionTest() {
 
-        super("eTeXversion", "", "3");
-        setConfig("etex-test");
-    }
+    super( "eTeXversion", "", "3" );
+    setConfig( "etex-test" );
+  }
 
 }

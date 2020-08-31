@@ -26,199 +26,201 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \hbox}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HboxTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(HboxTest.class);
-    }
+    (new JUnitCore()).run( HboxTest.class );
+  }
 
 
-    public HboxTest() {
+  public HboxTest() {
 
-        setPrimitive("hbox");setArguments("{} ");setPrepare("");
-    }
+    setPrimitive( "hbox" );
+    setArguments( "{} " );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that {@code \hbox} on
-     * the empty box works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEmpty1() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that {@code \hbox} on
+   * the empty box works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEmpty1() throws Exception {
 
-        assertSuccess(DEFINE_BRACES + "\\hbox{}\\end",
+    assertSuccess( DEFINE_BRACES + "\\hbox{}\\end",
 
-            "" + TERM);
-    }
+                   "" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that {@code \hbox} on a
-     * non-empty box works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that {@code \hbox} on a
+   * non-empty box works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(DEFINE_BRACES + "\\hbox{abc}\\end",
+    assertSuccess( DEFINE_BRACES + "\\hbox{abc}\\end",
 
-            "abc" + TERM);
-    }
+                   "abc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that a missing left brace
-     * directly after the macro token leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMissingBrace1() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that a missing left brace
+   * directly after the macro token leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMissingBrace1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "" + "\\hbox a" + "\\end ",
-            // --- log message ---
-            "Missing `{' inserted");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "" + "\\hbox a" + "\\end ",
+                  // --- log message ---
+                  "Missing `{' inserted" );
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that a missing left brace
-     * after a "to" specification leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMissingBrace2() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that a missing left brace
+   * after a "to" specification leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMissingBrace2() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\hbox to 2pt a" + "\\end ",
-            // --- log message ---
-            "Missing `{' inserted");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\hbox to 2pt a" + "\\end ",
+                  // --- log message ---
+                  "Missing `{' inserted" );
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that an outer macro in
-     * the preamble leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that an outer macro in
+   * the preamble leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\hbox ",
-            // --- log message ---
-            "Unexpected end of file while processing \\hbox");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\hbox ",
+                  // --- log message ---
+                  "Unexpected end of file while processing \\hbox" );
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that a correct hbox
-     * passes its contents to the typesetter.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testHbox1() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that a correct hbox
+   * passes its contents to the typesetter.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testHbox1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt" + "\\hbox{abc}"
-                    + "\\end ",
-            // --- output channel ---
-            "abc" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt" + "\\hbox{abc}"
+                      + "\\end ",
+                  // --- output channel ---
+                  "abc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that an outer macro in
-     * the preamble leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testHbox2() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that an outer macro in
+   * the preamble leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testHbox2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\hbox{}",
-            // --- output channel ---
-            "" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\hbox{}",
+                  // --- output channel ---
+                  "" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testHbox3() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testHbox3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\hbox{abc}",
-            // --- output channel ---
-            "abc" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\hbox{abc}",
+                  // --- output channel ---
+                  "abc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that a hbox containing
-     * "abc" in font cmtt12 has the width 18.52501pt. This value has been
-     * computed with TeX.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testHbox4() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that a hbox containing
+   * "abc" in font cmtt12 has the width 18.52501pt. This value has been
+   * computed with TeX.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testHbox4() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
-                    + "\\setbox1=\\hbox{abc} " + "\\the\\wd1 " + "\\end",
-            // --- output channel ---
-            "18.52501pt" + TERM); // checked wih TeX
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
+                      + "\\setbox1=\\hbox{abc} " + "\\the\\wd1 " + "\\end",
+                  // --- output channel ---
+                  "18.52501pt" + TERM ); // checked wih TeX
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that a hbox containing
-     * "abc" ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testHboxTo1() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that a hbox containing
+   * "abc" ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testHboxTo1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
-                    + "\\setbox1=\\hbox to 20pt{abc} " + "\\the\\wd1 "
-                    + "\\end",
-            // --- output channel ---
-            "20.0pt" + TERM); // checked with TeX
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
+                      + "\\setbox1=\\hbox to 20pt{abc} " + "\\the\\wd1 "
+                      + "\\end",
+                  // --- output channel ---
+                  "20.0pt" + TERM ); // checked with TeX
+  }
 
-    /**
-     * <testcase primitive="\hbox"> Test case checking that a hbox containing
-     * "abc" ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testHboxSpread1() throws Exception {
+  /**
+   * <testcase primitive="\hbox"> Test case checking that a hbox containing
+   * "abc" ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testHboxSpread1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
-                    + "\\setbox1=\\hbox spread 2pt{abc} " + "\\the\\wd1 "
-                    + "\\end",
-            // --- output channel ---
-            "20.52501pt" + TERM); // checked with TeX
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
+                      + "\\setbox1=\\hbox spread 2pt{abc} " + "\\the\\wd1 "
+                      + "\\end",
+                  // --- output channel ---
+                  "20.52501pt" + TERM ); // checked with TeX
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

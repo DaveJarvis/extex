@@ -19,158 +19,153 @@
 
 package org.extex.exbib.core.io.bibio;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationLoader;
+import org.extex.framework.configuration.exception.*;
+import org.junit.Test;
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.ConfigurationLoader;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationIOException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * This is a test suite for {@link BibPrinterFactory}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BibPrinterFactoryTest {
 
+  /**
+   * The field {@code cfg} contains the test configuration.
+   */
+  private final Configuration cfg = new Configuration() {
+
     /**
-     * The field {@code cfg} contains the test configuration.
+     *      java.lang.String)
      */
-    private final Configuration cfg = new Configuration() {
+    public Configuration findConfiguration( String key )
+        throws ConfigurationInvalidResourceException,
+        ConfigurationNotFoundException,
+        ConfigurationSyntaxException,
+        ConfigurationIOException {
 
-        /**
-    *      java.lang.String)
-         */
-        public Configuration findConfiguration(String key)
-                throws ConfigurationInvalidResourceException,
-                    ConfigurationNotFoundException,
-                    ConfigurationSyntaxException,
-                    ConfigurationIOException {
+      return this;
+    }
 
-            return this;
-        }
+    /**
+     *      java.lang.String, java.lang.String)
+     */
+    public Configuration findConfiguration( String key, String attribute )
+        throws ConfigurationException {
 
-        /**
-    *      java.lang.String, java.lang.String)
-         */
-        public Configuration findConfiguration(String key, String attribute)
-                throws ConfigurationException {
+      return this;
+    }
 
-            return this;
-        }
+    /**
+     *      java.lang.String)
+     */
+    public String getAttribute( String name ) {
 
-        /**
-    *      java.lang.String)
-         */
-        public String getAttribute(String name) {
+      if( "base".equals( name ) ) {
+        return null;
+      }
+      assertTrue( name, "class".equals( name ) );
+      return BibPrinterLispImpl.class.getName();
+    }
 
-            if ("base".equals(name)) {
-                return null;
-            }
-            assertTrue(name, "class".equals(name));
-            return BibPrinterLispImpl.class.getName();
-        }
+    /**
+     *      java.lang.String)
+     */
+    public Configuration getConfiguration( String key )
+        throws ConfigurationException {
 
-        /**
-    *      java.lang.String)
-         */
-        public Configuration getConfiguration(String key)
-                throws ConfigurationException {
+      return this;
+    }
 
-            return this;
-        }
+    /**
+     *      java.lang.String, java.lang.String)
+     */
+    public Configuration getConfiguration( String key, String attribute )
+        throws ConfigurationException {
 
-        /**
-    *      java.lang.String, java.lang.String)
-         */
-        public Configuration getConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            return null;
-        }
+      return null;
+    }
 
     public String getValue() throws ConfigurationException {
 
-            return null;
-        }
+      return null;
+    }
 
-        /**
-    *      java.lang.String)
-         */
-        public String getValue(String key) throws ConfigurationException {
+    /**
+     *      java.lang.String)
+     */
+    public String getValue( String key ) throws ConfigurationException {
 
-            return null;
-        }
+      return null;
+    }
 
-        /**
-    *      java.lang.String, int)
-         */
-        public int getValueAsInteger(String key, int defaultValue)
-                throws ConfigurationException {
+    /**
+     *      java.lang.String, int)
+     */
+    public int getValueAsInteger( String key, int defaultValue )
+        throws ConfigurationException {
 
-            return 0;
-        }
+      return 0;
+    }
 
-        /**
-    *      java.util.List, java.lang.String)
-         */
-        public void getValues(List<String> list, String key) {
+    /**
+     *      java.util.List, java.lang.String)
+     */
+    public void getValues( List<String> list, String key ) {
 
-            // getValues unimplemented
-        }
+      // getValues unimplemented
+    }
 
-        /**
-    *      java.lang.String)
-         */
-        public List<String> getValues(String key) {
+    /**
+     *      java.lang.String)
+     */
+    public List<String> getValues( String key ) {
 
-            return null;
-        }
+      return null;
+    }
 
     public Iterator<Configuration> iterator() throws ConfigurationException {
 
-            return null;
-        }
-
-        /**
-    *      java.lang.String)
-         */
-        public Iterator<Configuration> iterator(String key)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-    *      org.extex.framework.configuration.ConfigurationLoader)
-         */
-        public void setConfigurationLoader(ConfigurationLoader loader) {
-
-            // setConfigurationLoader unimplemented
-        }
-
-    };
+      return null;
+    }
 
     /**
-     *  The default value of encoding is {@code null}.
-     *
-     * 
-     * @throws Exception in case of an error
+     *      java.lang.String)
      */
-    @Test
-    public void test1() throws Exception {
+    public Iterator<Configuration> iterator( String key )
+        throws ConfigurationException {
 
-        BibPrinter ret = new BibPrinterFactory(cfg).newInstance("abc", null);
-        assertNotNull(ret);
-        assertTrue(ret instanceof BibPrinterLispImpl);
+      return null;
     }
+
+    /**
+     *      org.extex.framework.configuration.ConfigurationLoader)
+     */
+    public void setConfigurationLoader( ConfigurationLoader loader ) {
+
+      // setConfigurationLoader unimplemented
+    }
+
+  };
+
+  /**
+   * The default value of encoding is {@code null}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
+
+    BibPrinter ret = new BibPrinterFactory( cfg ).newInstance( "abc", null );
+    assertNotNull( ret );
+    assertTrue( ret instanceof BibPrinterLispImpl );
+  }
 
 }

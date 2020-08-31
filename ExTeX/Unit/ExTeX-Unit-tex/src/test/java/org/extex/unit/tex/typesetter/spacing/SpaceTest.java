@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \ }.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SpaceTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SpaceTest.class);
-    }
+    (new JUnitCore()).run( SpaceTest.class );
+  }
 
 
-    public SpaceTest() {
+  public SpaceTest() {
 
-        setPrimitive(" ");setArguments("");setPrepare("");
-    }
+    setPrimitive( " " );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

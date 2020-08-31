@@ -28,38 +28,39 @@ import static org.junit.Assert.assertNotEquals;
 
 /**
  * Test cases for math shift tokens.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathShiftTokenTest extends TokenTester {
 
-private static final Token token = new MathShiftToken( UnicodeChar.get( 'x'));
+  private static final Token token =
+      new MathShiftToken( UnicodeChar.get( 'x' ) );
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MathShiftTokenTest.class);
-    }
+    (new JUnitCore()).run( MathShiftTokenTest.class );
+  }
 
 
-    public MathShiftTokenTest() {
+  public MathShiftTokenTest() {
 
-        setToken(token);
-        setCatcode( Catcode.MATHSHIFT);
-        setText( "x");
-        setStr( "math shift character x");
-    }
+    setToken( token );
+    setCatcode( Catcode.MATHSHIFT );
+    setText( "x" );
+    setStr( "math shift character x" );
+  }
 
-@Test
-    public void testEqualsToken1() {
+  @Test
+  public void testEqualsToken1() {
 
-        Token t1 = new MathShiftToken(UnicodeChar.get(' '));
-        Token t2 = new SpaceToken(" ");
-        assertNotEquals( t1, t2 );
-    }
+    Token t1 = new MathShiftToken( UnicodeChar.get( ' ' ) );
+    Token t2 = new SpaceToken( " " );
+    assertNotEquals( t1, t2 );
+  }
 
 }

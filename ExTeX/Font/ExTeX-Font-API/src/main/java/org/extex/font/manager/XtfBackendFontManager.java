@@ -29,107 +29,107 @@ import org.extex.font.format.XtfMetricFont;
 
 /**
  * Backend font manager for a xtf (ttf, otf) font.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class XtfBackendFontManager extends AbstractBackendFontManager
-        implements
-            BackendFontManager {
+    implements
+    BackendFontManager {
+
+  /**
+   * Class for a back-end character.
+   */
+  private class BackendCharacterImpl implements BackendCharacter {
 
     /**
-     * Class for a back-end character.
+     * The Unicode char.
      */
-    private class BackendCharacterImpl implements BackendCharacter {
+    private final UnicodeChar uc;
 
-        /**
-         * The Unicode char.
-         */
-        private final UnicodeChar uc;
+    /**
+     * Creates a new object.
+     *
+     * @param uc the Unicode char.
+     */
+    public BackendCharacterImpl( UnicodeChar uc ) {
 
-        /**
-         * Creates a new object.
-         * 
-         * @param uc the Unicode char.
-         */
-        public BackendCharacterImpl(UnicodeChar uc) {
-
-            this.uc = uc;
-        }
+      this.uc = uc;
+    }
 
     public int getId() {
 
-            return uc.getCodePoint();
-        }
+      return uc.getCodePoint();
+    }
 
     public String getName() {
 
-            return uc.toString();
-        }
-
-        @Override
-        public int hashCode() {
-
-            return uc.hashCode();
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-
-            if (obj != null && obj instanceof BackendCharacter) {
-                BackendCharacter ch = (BackendCharacter) obj;
-                return ch.getId() == getId();
-            }
-
-            return false;
-        }
+      return uc.toString();
     }
 
+    @Override
+    public int hashCode() {
 
-    public XtfBackendFontManager() {
-
+      return uc.hashCode();
     }
 
-    /**
-*      org.extex.core.UnicodeChar)
-     */
-    public boolean recognize(FontKey fontKey, UnicodeChar uc)
-            throws FontException {
+    @Override
+    public boolean equals( Object obj ) {
 
-        if (fontKey == null) {
-            throw new IllegalArgumentException("fontkey");
-        }
-        if (uc == null) {
-            throw new IllegalArgumentException("unicodechar");
-        }
+      if( obj != null && obj instanceof BackendCharacter ) {
+        BackendCharacter ch = (BackendCharacter) obj;
+        return ch.getId() == getId();
+      }
 
-        ManagerInfo info = fontList.get(fontKey);
-        if (info != null) {
-            newRecongnizedFont = false;
-            recognizedFont = info.getBackendFont();
-            recognizedCharcterId = new BackendCharacterImpl(uc);
-            info.add(recognizedCharcterId);
-            return true;
-        }
-
-        BackendFont recognizedFonttmp = factory.getBackendFont(fontKey);
-        if (recognizedFonttmp == null) {
-            return false;
-        }
-
-        // only xtf metric fonts
-        if (!(recognizedFonttmp instanceof XtfMetricFont)) {
-            return false;
-        }
-
-        info = new ManagerInfo(fontKey, this);
-        newRecongnizedFont = true;
-        recognizedFont = recognizedFonttmp;
-        info.setBackendFont(recognizedFont);
-        recognizedCharcterId = new BackendCharacterImpl(uc);
-        info.add(recognizedCharcterId);
-        fontList.put(fontKey, info);
-
-        return true;
+      return false;
     }
+  }
+
+
+  public XtfBackendFontManager() {
+
+  }
+
+  /**
+   * org.extex.core.UnicodeChar)
+   */
+  public boolean recognize( FontKey fontKey, UnicodeChar uc )
+      throws FontException {
+
+    if( fontKey == null ) {
+      throw new IllegalArgumentException( "fontkey" );
+    }
+    if( uc == null ) {
+      throw new IllegalArgumentException( "unicodechar" );
+    }
+
+    ManagerInfo info = fontList.get( fontKey );
+    if( info != null ) {
+      newRecongnizedFont = false;
+      recognizedFont = info.getBackendFont();
+      recognizedCharcterId = new BackendCharacterImpl( uc );
+      info.add( recognizedCharcterId );
+      return true;
+    }
+
+    BackendFont recognizedFonttmp = factory.getBackendFont( fontKey );
+    if( recognizedFonttmp == null ) {
+      return false;
+    }
+
+    // only xtf metric fonts
+    if( !(recognizedFonttmp instanceof XtfMetricFont) ) {
+      return false;
+    }
+
+    info = new ManagerInfo( fontKey, this );
+    newRecongnizedFont = true;
+    recognizedFont = recognizedFonttmp;
+    info.setBackendFont( recognizedFont );
+    recognizedCharcterId = new BackendCharacterImpl( uc );
+    info.add( recognizedCharcterId );
+    fontList.put( fontKey, info );
+
+    return true;
+  }
 
 }

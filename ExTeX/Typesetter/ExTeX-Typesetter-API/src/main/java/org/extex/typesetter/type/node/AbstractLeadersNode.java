@@ -30,130 +30,135 @@ import org.extex.typesetter.type.OrientedNode;
 /**
  * This node represents a leaders node as used by the primitives
  * {@code \leaders}, {@code \cleaders}, and {@code \xleaders}.
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public abstract class AbstractLeadersNode extends AbstractExpandableNode
-        implements
-            SkipNode {
+    implements
+    SkipNode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code node} contains the node to repeat or expand.
-     */
-    private final Node node;
+  /**
+   * The field {@code node} contains the node to repeat or expand.
+   */
+  private final Node node;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param node the node or node list to stretch or repeat; if the node is
-     *        {@code null} then it is treated like an empty list
-     * @param glue the desired size
-     */
-    public AbstractLeadersNode(OrientedNode node, FixedGlue glue) {
+  /**
+   * Creates a new object.
+   *
+   * @param node the node or node list to stretch or repeat; if the node is
+   *             {@code null} then it is treated like an empty list
+   * @param glue the desired size
+   */
+  public AbstractLeadersNode( OrientedNode node, FixedGlue glue ) {
 
-        super(glue, node != null && node.isHorizontal());
-        this.node = node;
-        if (node == null) {
-            // ignore
-        } else if (node.isHorizontal()) {
-            setHeight(node.getHeight());
-            setDepth(node.getDepth());
-        } else {
-            setWidth(node.getWidth());
-        }
+    super( glue, node != null && node.isHorizontal() );
+    this.node = node;
+    if( node == null ) {
+      // ignore
+    }
+    else if( node.isHorizontal() ) {
+      setHeight( node.getHeight() );
+      setDepth( node.getDepth() );
+    }
+    else {
+      setWidth( node.getWidth() );
+    }
+  }
+
+  /**
+   * org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
+   * org.extex.core.dimen.FixedDimen)
+   */
+  @Override
+  public Node atShipping( PageContext context, Typesetter typesetter,
+                          FixedDimen posX, FixedDimen posY )
+      throws GeneralException {
+
+    Node result;
+    if( node instanceof RuleNode ) {
+      node.setWidth( getWidth() );
+      node.setHeight( getHeight() );
+      node.setDepth( getDepth() );
+      result = node;
+    }
+    else if( isHorizontal() ) {
+      result = fillHorizontally( getWidth().getValue(), node, posX, posY );
+    }
+    else {
+      result =
+          fillVertically( getHeight().getValue()
+                              + getDepth().getValue(), node, posX, posY );
     }
 
-    /**
-*      org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
-     *      org.extex.core.dimen.FixedDimen)
-     */
-    @Override
-    public Node atShipping(PageContext context, Typesetter typesetter,
-            FixedDimen posX, FixedDimen posY) throws GeneralException {
+    return result;
+  }
 
-        Node result;
-        if (node instanceof RuleNode) {
-            node.setWidth(getWidth());
-            node.setHeight(getHeight());
-            node.setDepth(getDepth());
-            result = node;
-        } else if (isHorizontal()) {
-            result = fillHorizontally(getWidth().getValue(), node, posX, posY);
-        } else {
-            result =
-                    fillVertically(getHeight().getValue()
-                            + getDepth().getValue(), node, posX, posY);
-        }
+  /**
+   * Compute the horizontal list with appropriately many instances of the
+   * repeat box. If not enough space is left then the leaders node itself is
+   * returned as place holder. Otherwise a hlist is returned.
+   *
+   * @param total the width in scaled points
+   * @param n     the repeated node
+   * @param posX  the x coordinate of the absolute position of the element on
+   *              the page
+   * @param posY  the y coordinate of the absolute position of the element on
+   *              the page
+   * @return the appropriate node
+   */
+  protected abstract Node fillHorizontally( long total, Node n,
+                                            FixedDimen posX, FixedDimen posY );
 
-        return result;
-    }
+  /**
+   * Compute the vertical list with appropriately many instances of the repeat
+   * box. If not enough space is left then the leaders node itself is returned
+   * as place holder. Otherwise a vlist is returned.
+   *
+   * @param total the total height; i.e. height plus depth
+   * @param n     the repeated node
+   * @param posX  the x coordinate of the absolute position of the element on
+   *              the page
+   * @param posY  the y coordinate of the absolute position of the element on
+   *              the page
+   * @return the appropriate node
+   */
+  protected abstract Node fillVertically( long total, Node n, FixedDimen posX,
+                                          FixedDimen posY );
 
-    /**
-     * Compute the horizontal list with appropriately many instances of the
-     * repeat box. If not enough space is left then the leaders node itself is
-     * returned as place holder. Otherwise a hlist is returned.
-     * 
-     * @param total the width in scaled points
-     * @param n the repeated node
-     * @param posX the x coordinate of the absolute position of the element on
-     *        the page
-     * @param posY the y coordinate of the absolute position of the element on
-     *        the page
-     * @return the appropriate node
-     */
-    protected abstract Node fillHorizontally(long total, Node n,
-            FixedDimen posX, FixedDimen posY);
+  /**
+   * Getter for the repeated construction.
+   *
+   * @return the repeated node
+   */
+  public Node getRepeat() {
 
-    /**
-     * Compute the vertical list with appropriately many instances of the repeat
-     * box. If not enough space is left then the leaders node itself is returned
-     * as place holder. Otherwise a vlist is returned.
-     * 
-     * @param total the total height; i.e. height plus depth
-     * @param n the repeated node
-     * @param posX the x coordinate of the absolute position of the element on
-     *        the page
-     * @param posY the y coordinate of the absolute position of the element on
-     *        the page
-     * @return the appropriate node
-     */
-    protected abstract Node fillVertically(long total, Node n, FixedDimen posX,
-            FixedDimen posY);
+    return node;
+  }
 
-    /**
-     * Getter for the repeated construction.
-     * 
-     * @return the repeated node
-     */
-    public Node getRepeat() {
+  /**
+   * This method puts the printable representation into the string buffer.
+   * This is meant to produce a short form only as it is used in error
+   * messages to the user.
+   *
+   * @param sb      the output string buffer
+   * @param prefix  the prefix string inserted at the beginning of each line
+   * @param breadth the breadth
+   * @param depth   the depth
+   * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+   * java.lang.String, int, int)
+   */
+  @Override
+  public void toString( StringBuilder sb, String prefix, int breadth,
+                        int depth ) {
 
-        return node;
-    }
-
-    /**
-     * This method puts the printable representation into the string buffer.
-     * This is meant to produce a short form only as it is used in error
-     * messages to the user.
-     * 
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * @param breadth the breadth
-     * @param depth the depth
-* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
-     *      java.lang.String, int, int)
-     */
-    @Override
-    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
-
-        sb.append(getLocalizer().format("String.Format", getSize().toString()));
-        node.toString(sb, prefix, Integer.MAX_VALUE, Integer.MAX_VALUE);
-    }
+    sb.append( getLocalizer().format( "String.Format", getSize().toString() ) );
+    node.toString( sb, prefix, Integer.MAX_VALUE, Integer.MAX_VALUE );
+  }
 
 }

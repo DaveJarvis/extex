@@ -26,12 +26,12 @@ import org.extex.scanner.type.token.CodeToken;
  */
 public class JavadefTestClass1 {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param code the code argument
-     */
-    public JavadefTestClass1(CodeToken code) {
+  /**
+   * Creates a new object.
+   *
+   * @param code the code argument
+   */
+  public JavadefTestClass1( CodeToken code ) {
 
-    }
+  }
 }

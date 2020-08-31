@@ -27,75 +27,72 @@ import java.io.OutputStream;
  * The header manager keeps track of the headers for the PostScript file.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HeaderManager {
 
-    /**
-     * The field {@code header} contains the buffer for the header.
-     */
-    private StringBuilder header = new StringBuilder();
+  /**
+   * The field {@code header} contains the buffer for the header.
+   */
+  private StringBuilder header = new StringBuilder();
 
 
-    public HeaderManager() {
+  public HeaderManager() {
 
+  }
+
+  /**
+   * Add the contents read from a stream to the headers.
+   *
+   * @param stream the stream to read from
+   * @param name   the name of the stream
+   * @throws IOException in case of an error during the writing
+   */
+  public void add( InputStream stream, String name )
+      throws IOException {
+
+    header.append( "%%BeginProcSet: " );
+    header.append( name );
+    header.append( '\n' );
+    int c;
+    while( (c = stream.read()) >= 0 ) {
+      header.append( (char) c );
     }
+    header.append( "%%EndProcSet \n" );
+  }
 
-    /**
-     * Add the contents read from a stream to the headers.
-     *
-     * @param stream the stream to read from
-     * @param name the name of the stream
-     *
-     * @throws IOException in case of an error during the writing
-     */
-    public void add(InputStream stream, String name)
-            throws IOException {
+  /**
+   * Add a string to the headers.
+   *
+   * @param value the string to add
+   * @param name  the name for the DSC
+   * @throws IOException in case of an error during the writing
+   */
+  public void add( String value, String name ) throws IOException {
 
-        header.append("%%BeginProcSet: ");
-        header.append(name);
-        header.append('\n');
-        int c;
-        while ((c = stream.read()) >= 0) {
-            header.append((char) c);
-        }
-        header.append("%%EndProcSet \n");
-    }
+    header.append( "%%BeginProcSet: " );
+    header.append( name );
+    header.append( '\n' );
+    header.append( value );
+    header.append( "%%EndProcSet \n" );
+  }
 
-    /**
-     * Add a string to the headers.
-     *
-     * @param value the string to add
-     * @param name the name for the DSC
-     *
-     * @throws IOException in case of an error during the writing
-     */
-    public void add(String value, String name) throws IOException {
+  /**
+   * Clear the header buffer and discard its previous contents.
+   */
+  public void reset() {
 
-        header.append("%%BeginProcSet: ");
-        header.append(name);
-        header.append('\n');
-        header.append(value);
-        header.append("%%EndProcSet \n");
-    }
+    header = new StringBuilder();
+  }
 
-    /**
-     * Clear the header buffer and discard its previous contents.
-     */
-    public void reset() {
+  /**
+   * Write the accumulated headers to the output stream.
+   *
+   * @param stream the target stream
+   * @throws IOException in case of an IO error
+   */
+  public void write( OutputStream stream ) throws IOException {
 
-        header = new StringBuilder();
-    }
-
-    /**
-     * Write the accumulated headers to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @throws IOException in case of an IO error
-     */
-    public void write(OutputStream stream) throws IOException {
-
-        stream.write(header.toString().getBytes());
-    }
+    stream.write( header.toString().getBytes() );
+  }
 
 }

@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \TeXXeTstate}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TexxetstateTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(TexxetstateTest.class);
-    }
+    (new JUnitCore()).run( TexxetstateTest.class );
+  }
 
 
-    public TexxetstateTest() {
+  public TexxetstateTest() {
 
-        super("TeXXeTstate", "", "0");
-        setConfig("etex-test");
-    }
+    super( "TeXXeTstate", "", "0" );
+    setConfig( "etex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

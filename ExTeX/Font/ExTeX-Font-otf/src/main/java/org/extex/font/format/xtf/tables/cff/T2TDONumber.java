@@ -19,135 +19,133 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * Abstract class for all number-values.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public abstract class T2TDONumber extends T2TopDICTOperator {
 
-    /**
-     * bytes
-     */
-    private final short[] bytes;
+  /**
+   * bytes
+   */
+  private final short[] bytes;
 
-    /**
-     * value
-     */
-    private final T2Number value;
+  /**
+   * value
+   */
+  private final T2Number value;
 
 
-    protected T2TDONumber() {
+  protected T2TDONumber() {
 
-        value = new T2DummyNumber();
-        bytes = value.getBytes();
+    value = new T2DummyNumber();
+    bytes = value.getBytes();
+  }
+
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @param id    the operator-id for the value
+   * @throws IOException if an IO-error occurs.
+   */
+  protected T2TDONumber( List<T2CharString> stack, short[] id )
+      throws IOException {
+
+    if( stack.size() < 1 ) {
+      throw new T2MissingNumberException();
     }
+    value = ((T2Number) stack.get( 0 ));
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @param id the operator-id for the value
-     * @throws IOException if an IO-error occurs.
-     */
-    protected T2TDONumber(List<T2CharString> stack, short[] id)
-            throws IOException {
+    bytes = convertStackaddID( stack, id );
 
-        if (stack.size() < 1) {
-            throw new T2MissingNumberException();
-        }
-        value = ((T2Number) stack.get(0));
+  }
 
-        bytes = convertStackaddID(stack, id);
+  /**
+   * Returns the byte-array as short for the object.
+   *
+   * @return Returns the byte-array for the object.
+   * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
+   */
+  @Override
+  public short[] getBytes() {
 
-    }
+    return bytes;
+  }
 
-    /**
-     * Returns the byte-array as short for the object.
-     * 
-     * @return Returns the byte-array for the object.
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
-    public short[] getBytes() {
+  /**
+   * Returns the value of the operator as double.
+   *
+   * @return Returns the value of the operator as double.
+   */
+  public double getDouble() {
 
-        return bytes;
-    }
+    return value.getDouble();
+  }
 
-    /**
-     * Returns the value of the operator as double.
-     * 
-     * @return Returns the value of the operator as double.
-     */
-    public double getDouble() {
+  /**
+   * Returns the value of the operator as int.
+   *
+   * @return Returns the value of the operator as int.
+   */
+  public int getInteger() {
 
-        return value.getDouble();
-    }
+    return value.getInteger();
+  }
 
-    /**
-     * Returns the value of the operator as int.
-     * 
-     * @return Returns the value of the operator as int.
-     */
-    public int getInteger() {
+  /**
+   * Returns the value of the operator.
+   *
+   * @return Returns the value of the operator.
+   * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
+   */
+  @Override
+  public Object getValue() {
 
-        return value.getInteger();
-    }
+    return value;
+  }
 
-    /**
-     * Returns the value of the operator.
-     * 
-     * @return Returns the value of the operator.
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
-    public Object getValue() {
+  /**
+   * Check, if the object is a double.
+   *
+   * @return Returns {@code true}, if the object is a double.
+   */
+  @Override
+  public boolean isDouble() {
 
-        return value;
-    }
+    return value.isDouble();
+  }
 
-    /**
-     * Check, if the object is a double.
-     * 
-     * @return Returns {@code true}, if the object is a double.
-     */
-    @Override
-    public boolean isDouble() {
+  /**
+   * Check, if the object is an integer.
+   *
+   * @return Returns {@code true}, if the object is a integer.
+   */
+  @Override
+  public boolean isInteger() {
 
-        return value.isDouble();
-    }
+    return value.isInteger();
+  }
 
-    /**
-     * Check, if the object is an integer.
-     * 
-     * @return Returns {@code true}, if the object is a integer.
-     */
-    @Override
-    public boolean isInteger() {
+  @Override
+  public String toString() {
 
-        return value.isInteger();
-    }
+    return value.toString();
+  }
 
-@Override
-    public String toString() {
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        return value.toString();
-    }
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "value", value );
+    writer.writeEndElement();
 
-public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("value", value);
-        writer.writeEndElement();
-
-    }
+  }
 
 }

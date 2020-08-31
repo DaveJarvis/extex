@@ -19,10 +19,10 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.IOException;
 
 /**
  * Class for a Coverage Table.
@@ -54,61 +54,59 @@ import org.extex.util.xml.XMLWriterConvertible;
  * in the Coverage table. The client uses the Coverage Index to look up values
  * in the subtable for each glyph.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public abstract class CoverageTable implements XMLWriterConvertible {
 
-    /**
-     * Return a instance.
-     * 
-     * @param rar input
-     * @param offset The offset for the table.
-     * @param baseoffset The baseofset.
-     * 
-     * @return TODO
-     * 
-     * @throws IOException if a io-error occurred.
-     */
-    public static CoverageTable getInstance(RandomAccessR rar, int baseoffset,
-            int offset) throws IOException {
+  /**
+   * Return a instance.
+   *
+   * @param rar        input
+   * @param offset     The offset for the table.
+   * @param baseoffset The baseofset.
+   * @return TODO
+   * @throws IOException if a io-error occurred.
+   */
+  public static CoverageTable getInstance( RandomAccessR rar, int baseoffset,
+                                           int offset ) throws IOException {
 
-        rar.seek(baseoffset + offset);
+    rar.seek( baseoffset + offset );
 
-        int format = rar.readUnsignedShort();
+    int format = rar.readUnsignedShort();
 
-        switch (format) {
-            case 1:
-                return new CoverageTable1(format, rar);
-            case 2:
-                return new CoverageTable2(format, rar);
-            default:
-                throw new IOException("wrong format tpye");
-        }
+    switch( format ) {
+      case 1:
+        return new CoverageTable1( format, rar );
+      case 2:
+        return new CoverageTable2( format, rar );
+      default:
+        throw new IOException( "wrong format tpye" );
     }
+  }
 
-    /**
-     * The CoverageFormat.
-     */
-    private final int coverageFormat;
+  /**
+   * The CoverageFormat.
+   */
+  private final int coverageFormat;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param format The format
-     */
-    protected CoverageTable(int format) {
+  /**
+   * Creates a new object.
+   *
+   * @param format The format
+   */
+  protected CoverageTable( int format ) {
 
-        coverageFormat = format;
-    }
+    coverageFormat = format;
+  }
 
-    /**
-     * Getter for coverageFormat.
-     * 
-     * @return the coverageFormat
-     */
-    public int getCoverageFormat() {
+  /**
+   * Getter for coverageFormat.
+   *
+   * @return the coverageFormat
+   */
+  public int getCoverageFormat() {
 
-        return coverageFormat;
-    }
+    return coverageFormat;
+  }
 }

@@ -25,61 +25,61 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \noDefaultOutputTranslation}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoDefaultOutputTranslationTest
-        extends
-            NoFlagsButGlobalPrimitiveTester {
+    extends
+    NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(NoDefaultOutputTranslationTest.class);
-    }
+    (new JUnitCore()).run( NoDefaultOutputTranslationTest.class );
+  }
 
 
-    public NoDefaultOutputTranslationTest() {
+  public NoDefaultOutputTranslationTest() {
 
-        setPrimitive("noDefaultOutputTranslation");setArguments(" onebyte ");
-        setConfig("omega-test");
-    }
+    setPrimitive( "noDefaultOutputTranslation" );
+    setArguments( " onebyte " );
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\noDefaultOutputTranslation"> Test case checking
-     * that {@code \noDefaultOutputTranslation} needs an argument.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErrEof1() throws Exception {
+  /**
+   * <testcase primitive="\noDefaultOutputTranslation"> Test case checking
+   * that {@code \noDefaultOutputTranslation} needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErrEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\noDefaultOutputTranslation",
-            // --- output channel ---
-            "Unexpected end of file");
-    }
+    assertFailure(// --- input code ---
+                  "\\noDefaultOutputTranslation",
+                  // --- output channel ---
+                  "Unexpected end of file" );
+  }
 
-    /**
-     * <testcase primitive="\noDefaultOutputTranslation"> Test case checking
-     * that {@code \noDefaultOutputTranslation} needs a known input mode as
-     * argument. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr1() throws Exception {
+  /**
+   * <testcase primitive="\noDefaultOutputTranslation"> Test case checking
+   * that {@code \noDefaultOutputTranslation} needs a known input mode as
+   * argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\noDefaultOutputTranslation xxx",
-            // --- output channel ---
-            "Bad input mode");
-    }
+    assertFailure(// --- input code ---
+                  "\\noDefaultOutputTranslation xxx",
+                  // --- output channel ---
+                  "Bad input mode" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

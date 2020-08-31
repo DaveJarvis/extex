@@ -27,27 +27,27 @@ import org.extex.framework.i18n.LocalizerFactory;
  * The localization format is taken from the Localizer under the key
  * {@code UnusedPrefix}.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class UnusedPrefixException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param flag the name of the flag which has been used
-     * @param token the command on which this has happened
-     */
-    public UnusedPrefixException(String flag, String token) {
+  /**
+   * Creates a new object.
+   *
+   * @param flag  the name of the flag which has been used
+   * @param token the command on which this has happened
+   */
+  public UnusedPrefixException( String flag, String token ) {
 
-        super(LocalizerFactory.getLocalizer(UnusedPrefixException.class),
-            "UnusedPrefix", flag, token);
-    }
+    super( LocalizerFactory.getLocalizer( UnusedPrefixException.class ),
+           "UnusedPrefix", flag, token );
+  }
 
 }

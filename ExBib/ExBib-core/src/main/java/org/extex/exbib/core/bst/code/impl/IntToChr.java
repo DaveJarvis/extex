@@ -31,7 +31,8 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code int.to.chr$}
  * <p>
  * This function takes an integer code point from the stack and translates it
@@ -41,10 +42,12 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * Note that B<small>IB</small><span style="margin-left: -0.15em;"
  * >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X&nbsp;0.99c and B<small>IB</small><span
  * style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X&nbsp;8 restrict the characters to 8~bit characters.
  * ??Bib has expanded the definition to 16~bit Unicode
  * characters. Thus in compatibility mode of ??Bib the
@@ -56,20 +59,20 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *   #0 int.to.chr$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Pops the top (integer) literal, interpreted as the ASCII integer value of
  * a single character, converts it to the corresponding single-character string,
  * and pushes this string.</dd>
  * </dl>
- * 
+ *
  * <dl>
  * <dt>BibTeX web documentation:</dt>
  * <dd>The {@code built_in} function {@code int.to.chr$} pops the top
@@ -78,44 +81,44 @@ import org.extex.framework.i18n.LocalizerFactory;
  * pushes this string. If the literal isn't an appropriate integer, it complains
  * and pushes the null string.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IntToChr extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public IntToChr() {
+  /**
+   * Create a new object.
+   */
+  public IntToChr() {
 
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public IntToChr( String name ) {
+
+    super( name );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  @Override
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    int i = processor.popInteger( locator ).getInt();
+
+    if( i < 0 ) {
+      Localizer localizer = LocalizerFactory.getLocalizer( getClass() );
+      throw new ExBibIllegalValueException( localizer.format(
+          "negative.argument", Integer.toString( i ) ), locator );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public IntToChr(String name) {
-
-        super(name);
-    }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    @Override
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        int i = processor.popInteger(locator).getInt();
-
-        if (i < 0) {
-            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
-            throw new ExBibIllegalValueException(localizer.format(
-                "negative.argument", Integer.toString(i)), locator);
-        }
-
-        processor.push(new TString(String.valueOf((char) i), locator));
-    }
+    processor.push( new TString( String.valueOf( (char) i ), locator ) );
+  }
 
 }

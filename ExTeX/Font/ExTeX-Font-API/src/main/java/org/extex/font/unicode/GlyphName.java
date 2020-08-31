@@ -19,125 +19,125 @@
 
 package org.extex.font.unicode;
 
+import org.extex.core.UnicodeChar;
+
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.extex.core.UnicodeChar;
-
 /**
  * This class manage the correlation between the glyph name and the Unicode
  * value.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public final class GlyphName {
 
-    /**
-     * The file name.
-     */
-    private static final String FILE = "GlyphName.properties";
+  /**
+   * The file name.
+   */
+  private static final String FILE = "GlyphName.properties";
 
-    /**
-     * The singleton instance.
-     */
-    private static GlyphName glyphname;
+  /**
+   * The singleton instance.
+   */
+  private static GlyphName glyphname;
 
-    /**
-     * hex value.
-     */
-    private static final int HEX = 16;
+  /**
+   * hex value.
+   */
+  private static final int HEX = 16;
 
-    /**
-     * The initial size for the map.
-     */
-    private static final int INITSIZE = 5000;
+  /**
+   * The initial size for the map.
+   */
+  private static final int INITSIZE = 5000;
 
-    /**
-     * Return the instance of {@code GlyphName}.
-     * 
-     * @return Return the instance of {@code GlyphName}.
-     * @throws IOException if an IO-error occurred.
-     */
-    public static GlyphName getInstance() throws IOException {
+  /**
+   * Return the instance of {@code GlyphName}.
+   *
+   * @return Return the instance of {@code GlyphName}.
+   * @throws IOException if an IO-error occurred.
+   */
+  public static GlyphName getInstance() throws IOException {
 
-        if (glyphname == null) {
-            glyphname = new GlyphName();
+    if( glyphname == null ) {
+      glyphname = new GlyphName();
+    }
+    return glyphname;
+  }
+
+  /**
+   * The glyph name map.
+   */
+  private final Map<String, UnicodeChar> glyphmap;
+
+  /**
+   * The Unicode map.
+   */
+  private final Map<UnicodeChar, String> unicodemap;
+
+  /**
+   * Create a new object.
+   * <p>
+   * Read the {@code FILE} and parse it.
+   *
+   * @throws IOException if an IO-error occurred.
+   */
+  private GlyphName() throws IOException {
+
+    glyphmap = new HashMap<String, UnicodeChar>( INITSIZE );
+    unicodemap = new HashMap<UnicodeChar, String>( INITSIZE );
+
+    Properties prop = new Properties();
+    prop.load( getClass().getResourceAsStream( FILE ) );
+
+    Enumeration<Object> keyenum = prop.keys();
+
+    while( keyenum.hasMoreElements() ) {
+      String key = (String) keyenum.nextElement();
+      String value = prop.getProperty( key ).trim();
+
+      // only one 16-bit value; rest ignored
+      // TODO: add combined Unicode characters
+      if( value.length() <= 4 ) {
+        try {
+          UnicodeChar uc =
+              UnicodeChar.get( Integer.parseInt( value, HEX ) );
+          glyphmap.put( key, uc );
+          unicodemap.put( uc, key );
+        } catch( NumberFormatException e ) {
+          throw new IOException( e.getMessage() );
         }
-        return glyphname;
+      }
     }
+  }
 
-    /**
-     * The glyph name map.
-     */
-    private final Map<String, UnicodeChar> glyphmap;
+  /**
+   * Returns the name of the glyph, or {@code null}, if not found.
+   *
+   * @param uc the Unicode char.
+   * @return the name of the glyph, or {@code null}, if not found.
+   */
+  public String getGlyphname( UnicodeChar uc ) {
 
-    /**
-     * The Unicode map.
-     */
-    private final Map<UnicodeChar, String> unicodemap;
+    return unicodemap.get( uc );
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * Read the {@code FILE} and parse it.
-     * 
-     * @throws IOException if an IO-error occurred.
-     */
-    private GlyphName() throws IOException {
+  /**
+   * Returns the {@code UnicodeChar} for the glyph name or
+   * {@code null}, if not found.
+   *
+   * @param name The glyph name.
+   * @return Returns the {@code UnicodeChar} for the glyph name or
+   * {@code null}, if not found.
+   */
+  public UnicodeChar getUnicode( String name ) {
 
-        glyphmap = new HashMap<String, UnicodeChar>(INITSIZE);
-        unicodemap = new HashMap<UnicodeChar, String>(INITSIZE);
-
-        Properties prop = new Properties();
-        prop.load(getClass().getResourceAsStream(FILE));
-
-        Enumeration<Object> keyenum = prop.keys();
-
-        while (keyenum.hasMoreElements()) {
-            String key = (String) keyenum.nextElement();
-            String value = prop.getProperty(key).trim();
-
-            // only one 16-bit value; rest ignored
-            // TODO: add combined Unicode characters
-            if (value.length() <= 4) {
-                try {
-                    UnicodeChar uc =
-                            UnicodeChar.get(Integer.parseInt(value, HEX));
-                    glyphmap.put(key, uc);
-                    unicodemap.put(uc, key);
-                } catch (NumberFormatException e) {
-                    throw new IOException(e.getMessage());
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns the name of the glyph, or {@code null}, if not found.
-     * 
-     * @param uc the Unicode char.
-     * @return the name of the glyph, or {@code null}, if not found.
-     */
-    public String getGlyphname(UnicodeChar uc) {
-
-        return unicodemap.get(uc);
-    }
-
-    /**
-     * Returns the {@code UnicodeChar} for the glyph name or
-     * {@code null}, if not found.
-     * 
-     * @param name The glyph name.
-     * @return Returns the {@code UnicodeChar} for the glyph name or
-     *         {@code null}, if not found.
-     */
-    public UnicodeChar getUnicode(String name) {
-
-        return glyphmap.get(name);
-    }
+    return glyphmap.get( name );
+  }
 
 }

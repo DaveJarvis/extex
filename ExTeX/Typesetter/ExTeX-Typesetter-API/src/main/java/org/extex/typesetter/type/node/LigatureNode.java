@@ -31,143 +31,143 @@ import org.extex.typesetter.type.NodeVisitor;
  * be build among characters from one common font only. The information where
  * and how to build ligatures comes from the font. The original characters are
  * contained in this node to be restored when required.
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class LigatureNode extends CharNode implements Node {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code chars} contains the cache of the list of plain char
-     * nodes contained.
-     */
-    private final CharNode[] chars;
+  /**
+   * The field {@code chars} contains the cache of the list of plain char
+   * nodes contained.
+   */
+  private final CharNode[] chars;
 
-    /**
-     * The field {@code left} contains the first node combined in the ligature.
-     */
-    private final CharNode left;
+  /**
+   * The field {@code left} contains the first node combined in the ligature.
+   */
+  private final CharNode left;
 
-    /**
-     * The field {@code second} contains the node combined in the ligature.
-     */
-    private final CharNode right;
+  /**
+   * The field {@code second} contains the node combined in the ligature.
+   */
+  private final CharNode right;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param context the typesetting context
-     * @param uc the Unicode character
-     * @param left the first node for the ligature
-     * @param right the second node for the ligature
-*/
-    public LigatureNode(TypesettingContext context, UnicodeChar uc,
-            CharNode left, CharNode right) {
+  /**
+   * Creates a new object.
+   *
+   * @param context the typesetting context
+   * @param uc      the Unicode character
+   * @param left    the first node for the ligature
+   * @param right   the second node for the ligature
+   */
+  public LigatureNode( TypesettingContext context, UnicodeChar uc,
+                       CharNode left, CharNode right ) {
 
-        super(context, uc);
-        this.left = left;
-        this.right = right;
-        CharNode[] uc1 = left.getChars();
-        CharNode[] uc2 = right.getChars();
-        chars = new CharNode[uc1.length + uc2.length];
-        for (int i = 0; i < uc1.length; i++) {
-            chars[i] = uc1[i];
-        }
-        for (int i = 0; i < uc2.length; i++) {
-            chars[i + uc1.length] = uc2[i];
-        }
+    super( context, uc );
+    this.left = left;
+    this.right = right;
+    CharNode[] uc1 = left.getChars();
+    CharNode[] uc2 = right.getChars();
+    chars = new CharNode[ uc1.length + uc2.length ];
+    for( int i = 0; i < uc1.length; i++ ) {
+      chars[ i ] = uc1[ i ];
     }
-
-    /**
-     * This method determines the number of characters contained in a node.
-     * <ul>
-     * <li>A CharNode has a single character</li>
-     * <li>A LigatureNde has the number of characters which made up the ligature
-     * </li>
-     * <li>A NodeList has the number of characters given by the sum of the
-     * number of characters of its elements</li>
-     * <li>Any other node types has no character</li>
-     * </ul>
-     * 
-     * @return the number of characters contained
-     * 
-     * @see org.extex.typesetter.type.Node#countChars()
-     */
-    @Override
-    public int countChars() {
-
-        return chars.length;
+    for( int i = 0; i < uc2.length; i++ ) {
+      chars[ i + uc1.length ] = uc2[ i ];
     }
+  }
 
-    /**
-     * Getter for the array of characters enclosed in this node.
-     * 
-     * @return the array of characters
-     * 
-     * @see org.extex.typesetter.type.Node#getChars()
-     */
-    @Override
-    public CharNode[] getChars() {
+  /**
+   * This method determines the number of characters contained in a node.
+   * <ul>
+   * <li>A CharNode has a single character</li>
+   * <li>A LigatureNde has the number of characters which made up the ligature
+   * </li>
+   * <li>A NodeList has the number of characters given by the sum of the
+   * number of characters of its elements</li>
+   * <li>Any other node types has no character</li>
+   * </ul>
+   *
+   * @return the number of characters contained
+   * @see org.extex.typesetter.type.Node#countChars()
+   */
+  @Override
+  public int countChars() {
 
-        return chars;
-    }
+    return chars.length;
+  }
 
-    /**
-     * Getter for left node.
-     * 
-     * @return the left node
-     */
-    public CharNode getLeft() {
+  /**
+   * Getter for the array of characters enclosed in this node.
+   *
+   * @return the array of characters
+   * @see org.extex.typesetter.type.Node#getChars()
+   */
+  @Override
+  public CharNode[] getChars() {
 
-        return this.left;
-    }
+    return chars;
+  }
 
-    /**
-     * Getter for right node.
-     * 
-     * @return the right node
-     */
-    public CharNode getRight() {
+  /**
+   * Getter for left node.
+   *
+   * @return the left node
+   */
+  public CharNode getLeft() {
 
-        return this.right;
-    }
+    return this.left;
+  }
 
-    /**
-     * This method returns the printable representation. This is meant to
-     * produce a exhaustive form as it is used in tracing output to the log
-     * file.
-     * 
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * @param breadth the breadth
-     * @param depth the depth
-* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
-     *      java.lang.String, int, int)
-     */
-    @Override
-    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
+  /**
+   * Getter for right node.
+   *
+   * @return the right node
+   */
+  public CharNode getRight() {
 
-        Font font = getTypesettingContext().getFont();
-        sb.append(getLocalizer().format("String.Format",
-            (font == null ? "*" : font.getFontName()),
-            getCharacter().toString(), left.toString(), right.toString()));
-    }
+    return this.right;
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    @Override
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(NodeVisitor visitor, Object value)
-            throws GeneralException {
+  /**
+   * This method returns the printable representation. This is meant to
+   * produce a exhaustive form as it is used in tracing output to the log
+   * file.
+   *
+   * @param sb      the output string buffer
+   * @param prefix  the prefix string inserted at the beginning of each line
+   * @param breadth the breadth
+   * @param depth   the depth
+   * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+   * java.lang.String, int, int)
+   */
+  @Override
+  public void toString( StringBuilder sb, String prefix, int breadth,
+                        int depth ) {
 
-        return visitor.visitLigature(this, value);
-    }
+    Font font = getTypesettingContext().getFont();
+    sb.append( getLocalizer().format( "String.Format",
+                                      (font == null ? "*" : font.getFontName()),
+                                      getCharacter().toString(),
+                                      left.toString(),
+                                      right.toString() ) );
+  }
+
+  /**
+   * java.lang.Object)
+   */
+  @Override
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public Object visit( NodeVisitor visitor, Object value )
+      throws GeneralException {
+
+    return visitor.visitLigature( this, value );
+  }
 
 }

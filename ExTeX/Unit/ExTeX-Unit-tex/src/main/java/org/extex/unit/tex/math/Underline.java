@@ -34,61 +34,60 @@ import org.extex.typesetter.type.noad.UnderlinedNoad;
 /**
  * This class provides an implementation for the primitive
  * {@code &#x5c;underline}.
- * 
+ *
  * <p>The Math Primitive {@code &#x5c;underline}</p>
  * <p>
  * The math primitive {@code &#x5c;underline} takes one argument and
  * underlines it. The material to be underlined is typeset in math mode.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;underline&rang;
  *       &rarr; {@code &#x5c;underline} &lang;math group&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    &#x5c;underline{abc}  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Underline extends AbstractMathCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Underline(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Underline( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
-            getToken(), GroupType.MATH_GROUP);
-        nc.add(new UnderlinedNoad(noad, context.getTypesettingContext()));
-    }
+    NoadConsumer nc = getListMaker( context, typesetter );
+    Noad noad = nc.scanNoad( prefix, context, source, typesetter,
+                             getToken(), GroupType.MATH_GROUP );
+    nc.add( new UnderlinedNoad( noad, context.getTypesettingContext() ) );
+  }
 
 }

@@ -26,47 +26,47 @@ import java.io.Serializable;
  * <p>
  * Kerning instruction
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TfmKerning extends TfmLigKern implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * The amount of kerning.
-     */
-    private final TfmFixWord kern;
+  /**
+   * The amount of kerning.
+   */
+  private final TfmFixWord kern;
 
-    /**
-     * Create a new object.
-     * 
-     * @param skip the skip amount to the next instruction.
-     * @param next the code of the next character.
-     * @param k the amount of kerning between the current and the next
-     *        characters.
-     */
-    public TfmKerning(int skip, short next, TfmFixWord k) {
+  /**
+   * Create a new object.
+   *
+   * @param skip the skip amount to the next instruction.
+   * @param next the code of the next character.
+   * @param k    the amount of kerning between the current and the next
+   *             characters.
+   */
+  public TfmKerning( int skip, short next, TfmFixWord k ) {
 
-        super(skip, next);
-        kern = k;
-    }
+    super( skip, next );
+    kern = k;
+  }
 
-@Override
-    public TfmFixWord getKern() {
+  @Override
+  public TfmFixWord getKern() {
 
-        return kern;
-    }
+    return kern;
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        StringBuilder buf = new StringBuilder(super.toString());
-        buf.append(" kern=").append(kern.toString());
-        return buf.toString();
-    }
+    StringBuilder buf = new StringBuilder( super.toString() );
+    buf.append( " kern=" ).append( kern.toString() );
+    return buf.toString();
+  }
 
 }

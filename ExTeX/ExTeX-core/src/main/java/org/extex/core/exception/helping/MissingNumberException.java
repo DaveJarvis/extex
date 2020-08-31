@@ -24,24 +24,24 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is raised when a number should be read but none is found.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code TTP.MissingNumber}.
+ * The localization format is taken from the Localizer under the key
+ * {@code TTP.MissingNumber}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MissingNumberException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
 
-    public MissingNumberException() {
+  public MissingNumberException() {
 
-        super(LocalizerFactory.getLocalizer(
-                MissingNumberException.class), "TTP.MissingNumber");
-    }
+    super( LocalizerFactory.getLocalizer(
+        MissingNumberException.class ), "TTP.MissingNumber" );
+  }
 
 }

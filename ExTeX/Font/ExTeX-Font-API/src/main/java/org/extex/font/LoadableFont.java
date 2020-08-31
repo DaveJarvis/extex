@@ -19,30 +19,29 @@
 
 package org.extex.font;
 
-import java.io.InputStream;
-
 import org.extex.font.exception.CorruptFontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
+import java.io.InputStream;
+
 /**
  * Interface for font which can be loaded from an external resource.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface LoadableFont extends ExtexFont {
 
-    /**
-     * Load a font from the stream.
-     * 
-     * @param in The stream for reading.
-     * @param factory Tthe font factory.
-     * @param fontKey The font key.
-     * 
-     * @throws CorruptFontException if the font is corrupt.
-     * @throws ConfigurationException from the configuration system.
-     */
-    void loadFont(InputStream in, CoreFontFactory factory, FontKey fontKey)
-            throws CorruptFontException,
-                ConfigurationException;
+  /**
+   * Load a font from the stream.
+   *
+   * @param in      The stream for reading.
+   * @param factory Tthe font factory.
+   * @param fontKey The font key.
+   * @throws CorruptFontException   if the font is corrupt.
+   * @throws ConfigurationException from the configuration system.
+   */
+  void loadFont( InputStream in, CoreFontFactory factory, FontKey fontKey )
+      throws CorruptFontException,
+      ConfigurationException;
 
 }

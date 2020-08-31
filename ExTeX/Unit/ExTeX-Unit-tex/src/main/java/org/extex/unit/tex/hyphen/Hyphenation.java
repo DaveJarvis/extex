@@ -36,7 +36,7 @@ import org.extex.unit.base.register.CharCode;
 /**
  * This class provides an implementation for the primitive
  * {@code \hyphenation}.
- * 
+ *
  * <p>The Primitive {@code \hyphenation}</p>
  * <p>
  * The primitive {@code \hyphenation} can be used to add hyphenation exceptions
@@ -55,110 +55,112 @@ import org.extex.unit.base.register.CharCode;
  * without any hyphen characters. This can be used to suppress any hyphenation
  * in a single word.
  * </p>
- * 
+ *
  * <p>Extension</p>
-
+ *
  * <p>
- * In addition to the behavior of the original TeX definition this implementation can be used to insert words
+ * In addition to the behavior of the original TeX definition this
+ * implementation can be used to insert words
  * with hyphens as well. To specify the places where a hyphen occurs literally
  * you just have to include two hyphens in the hyphenation list.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
- * 
+ *
+ *
  * <pre class="syntax">
  *    &lang;hyphenation&rang;
  *     &rarr; {@code \hyphenation} {&lang;words&rang;}
- *     
+ *
  *    &lang;words&rang;
- *     &rarr; 
+ *     &rarr;
  *      |  &lang;word&rang;
  *      |  &lang;word&rang; &lang;spaces&rang; &lang;words&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \hyphenation{as-so-ciate as-so-ciates}  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *   \hyphenation{Gro&szlig;--Ger-au}  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Hyphenation extends HyphenationPrimitive {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Hyphenation(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Hyphenation( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-     * Collect all characters that make up a word.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param token the first token already read
-     * 
-     * @return the first character not included into the word
-     * 
-     * @throws CatcodeException in case of an exception in token creation
-     * @throws HelpingException in case of an error
-     */
-    @Override
-    protected UnicodeCharList collectWord(Context context, TokenSource source,
-            Token token) throws CatcodeException, HelpingException {
+  /**
+   * Collect all characters that make up a word.
+   *
+   * @param context the interpreter context
+   * @param source  the source for new tokens
+   * @param token   the first token already read
+   * @return the first character not included into the word
+   * @throws CatcodeException in case of an exception in token creation
+   * @throws HelpingException in case of an error
+   */
+  @Override
+  protected UnicodeCharList collectWord( Context context, TokenSource source,
+                                         Token token )
+      throws CatcodeException, HelpingException {
 
-        UnicodeCharList word = new UnicodeCharList();
-        UnicodeChar uc;
-        UnicodeChar lc;
-        boolean hyphen = false;
+    UnicodeCharList word = new UnicodeCharList();
+    UnicodeChar uc;
+    UnicodeChar lc;
+    boolean hyphen = false;
 
-        for (Token t = token; t != null; t = source.getToken(context)) {
+    for( Token t = token; t != null; t = source.getToken( context ) ) {
 
-            if (t instanceof LetterToken || t instanceof OtherToken) {
-                uc = t.getChar();
-            } else if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
-                uc = ((CharCode) code).getCharacter();
-            } else {
-                source.push(t);
-                return word;
-            }
-
-            if (t.eq(Catcode.OTHER, '-')) {
-                if (hyphen) {
-                    word.add(t.getChar());
-                } else {
-                    hyphen = true;
-                }
-                word.add(UnicodeChar.SHY);
-            } else {
-                if (hyphen) {
-                    word.add(UnicodeChar.SHY);
-                    hyphen = false;
-                }
-                uc = t.getChar();
-                lc = context.getLccode(uc);
-                word.add(lc == null ? uc : lc);
-            }
-        }
-
+      if( t instanceof LetterToken || t instanceof OtherToken ) {
+        uc = t.getChar();
+      }
+      else if( t instanceof CodeToken ) {
+        Code code = context.getCode( (CodeToken) t );
+        uc = ((CharCode) code).getCharacter();
+      }
+      else {
+        source.push( t );
         return word;
+      }
+
+      if( t.eq( Catcode.OTHER, '-' ) ) {
+        if( hyphen ) {
+          word.add( t.getChar() );
+        }
+        else {
+          hyphen = true;
+        }
+        word.add( UnicodeChar.SHY );
+      }
+      else {
+        if( hyphen ) {
+          word.add( UnicodeChar.SHY );
+          hyphen = false;
+        }
+        uc = t.getChar();
+        lc = context.getLccode( uc );
+        word.add( lc == null ? uc : lc );
+      }
     }
+
+    return word;
+  }
 
 }

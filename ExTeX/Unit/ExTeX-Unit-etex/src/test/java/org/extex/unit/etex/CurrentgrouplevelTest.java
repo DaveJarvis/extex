@@ -24,30 +24,30 @@ import org.junit.runner.JUnitCore;
 
 /**
  * Test for the primitive \currentgrouplevel.
- * 
+ *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
-*/
+ */
 public class CurrentgrouplevelTest {
 
-    /**
-     * main.
-     * 
-     * @param args command line args
-     */
-    public static void main(String[] args) {
+  /**
+   * main.
+   *
+   * @param args command line args
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(CurrentgrouplevelTest.class);
-    }
+    (new JUnitCore()).run( CurrentgrouplevelTest.class );
+  }
 
-    /**
-     * Test the primitive \currengrouplevel.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCurrentgrouplevel() throws Exception {
+  /**
+   * Test the primitive \currengrouplevel.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCurrentgrouplevel() throws Exception {
 
-        // TestTeX.test("jucurrentgrouplevel", "ExTeX-Unit-etex", "etex");
-    }
+    // TestTeX.test("jucurrentgrouplevel", "ExTeX-Unit-etex", "etex");
+  }
 
 }

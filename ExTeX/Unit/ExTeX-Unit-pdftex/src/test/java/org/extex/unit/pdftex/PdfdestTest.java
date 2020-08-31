@@ -24,44 +24,45 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \pdfdest}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfdestTest extends NoFlagsButProtectedPrimitiveTester {
 
 
-    public PdfdestTest() {
+  public PdfdestTest() {
 
-        super("pdfdest", " name {abc} fit", "a " + "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfdest", " name {abc} fit", "a " + "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    /**
-     * <testcase primitive="\pdfdest"> Test case checking that ... 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pdfdest"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\pdfoutput=0 a \\pdfdest num 23 A",
-            // --- output message ---
-            "pdfTeX error (ext1): \\pdfdest used while pdfoutput is not set");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=0 a \\pdfdest num 23 A",
+                  // --- output message ---
+                  "pdfTeX error (ext1): \\pdfdest used while pdfoutput is not" +
+                      " set" );
+  }
 
-    /**
-     * <testcase primitive="\pdfdest"> Test case checking that ... 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\pdfdest"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\pdfoutput=1 a \\pdfdest num 23 A",
-            // --- output message ---
-            "pdfTeX error (ext1): destination type missing");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 a \\pdfdest num 23 A",
+                  // --- output message ---
+                  "pdfTeX error (ext1): destination type missing" );
+  }
 
 }

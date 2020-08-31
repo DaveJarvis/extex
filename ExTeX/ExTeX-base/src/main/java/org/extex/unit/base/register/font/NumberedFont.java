@@ -30,55 +30,56 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for a font stored under a name and a
  * number in the context.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NumberedFont extends NamedFont {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Construct the reference key for a numbered font.
-     * 
-     * @param context the interpreter context
-     * @param theName the base name of the font
-     * @param theNumber the number of the font
-     * 
-     * @return the key
-     */
-    public static String key(Context context, String theName, String theNumber) {
+  /**
+   * Construct the reference key for a numbered font.
+   *
+   * @param context   the interpreter context
+   * @param theName   the base name of the font
+   * @param theNumber the number of the font
+   * @return the key
+   */
+  public static String key( Context context, String theName,
+                            String theNumber ) {
 
-        if (Namespace.SUPPORT_NAMESPACE_FONT) {
-            return context.getNamespace() + "\b" + theName + "#" + theNumber;
-        }
-        return theName + "#" + theNumber;
+    if( Namespace.SUPPORT_NAMESPACE_FONT ) {
+      return context.getNamespace() + "\b" + theName + "#" + theNumber;
     }
+    return theName + "#" + theNumber;
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public NumberedFont(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public NumberedFont( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String number =
-                Long.toString(source.parseInteger(context, source, typesetter));
-        return key(context, getName(), number);
-    }
+    String number =
+        Long.toString( source.parseInteger( context, source, typesetter ) );
+    return key( context, getName(), number );
+  }
 
 }

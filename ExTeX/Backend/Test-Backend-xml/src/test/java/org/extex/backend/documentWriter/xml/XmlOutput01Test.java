@@ -29,240 +29,240 @@ import org.junit.Test;
 
 /**
  * Test for the xml backend.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class XmlOutput01Test extends ExTeXLauncher {
 
-    /**
-     * The properties.
-     */
-    private static Properties prop = null;
+  /**
+   * The properties.
+   */
+  private static Properties prop = null;
 
 
-    public XmlOutput01Test() {
+  public XmlOutput01Test() {
 
-        super();
+    super();
 
-        setConfig("base-xml.xml");
+    setConfig( "base-xml.xml" );
 
-        // delete temp files after the test
-        new File("texput.log").deleteOnExit();
+    // delete temp files after the test
+    new File( "texput.log" ).deleteOnExit();
 
-    }
+  }
 
-    /**
-     * TODO
-     * 
-     * @throws Exception
-     */
-    @Before
-    public void setUp() throws Exception {
+  /**
+   * TODO
+   *
+   * @throws Exception
+   */
+  @Before
+  public void setUp() throws Exception {
 
-        prop = new Properties(System.getProperties());
-        prop.setProperty("extex.output", "xml");
-    }
+    prop = new Properties( System.getProperties() );
+    prop.setProperty( "extex.output", "xml" );
+  }
 
-    /**
-     * Test: use default output with afm font 'fxlr'.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testDefaultOutput() throws Exception {
+  /**
+   * Test: use default output with afm font 'fxlr'.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testDefaultOutput() throws Exception {
 
-        // use default output
-        prop.remove("extex.output");
-        assertOutput(prop, // --- input code ---
-            "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
-            /* logValidator */null, /* outputValidator */
-            new EqualityValidator("test", "Hugo" + TERM));
+    // use default output
+    prop.remove( "extex.output" );
+    assertOutput( prop, // --- input code ---
+                  "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
+        /* logValidator */null, /* outputValidator */
+                  new EqualityValidator( "test", "Hugo" + TERM ) );
 
-    }
+  }
 
-    /**
-     * Test: page size.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testPageSize() throws Exception {
+  /**
+   * Test: page size.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testPageSize() throws Exception {
 
-        String[] comment = new String[]{"pagesize" // 1
-                , "pagesize width" // 2
-                , "Orientation" // 3
-                , "pagesize height" // 4
+    String[] comment = new String[]{"pagesize" // 1
+        , "pagesize width" // 2
+        , "Orientation" // 3
+        , "pagesize height" // 4
+    };
+    String[] xpath =
+        new String[]{"/root/parameter/param[@name=\"Paper\"]/@value" // 1
+            , "/root/page[1]/@paperwidth_mm" // 2
+            , "/root/parameter/param[@name=\"Orientation\"]/@value" // 3
+            , "/root/page[1]/@paperheight_mm" // 4
         };
-        String[] xpath =
-                new String[]{"/root/parameter/param[@name=\"Paper\"]/@value" // 1
-                        , "/root/page[1]/@paperwidth_mm" // 2
-                        , "/root/parameter/param[@name=\"Orientation\"]/@value" // 3
-                        , "/root/page[1]/@paperheight_mm" // 4
-                };
-        String[] expected = new String[]{"A4" // 1
-                , "210" // 2
-                , "Portrait" // 3
-                , "297" // 4
-        };
+    String[] expected = new String[]{"A4" // 1
+        , "210" // 2
+        , "Portrait" // 3
+        , "297" // 4
+    };
 
-        assertOutput(prop, // --- input code ---
-            "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
-            /* logValidator */null, /* outputValidator */
-            new XmlValidator(comment, xpath, expected));
+    assertOutput( prop, // --- input code ---
+                  "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
+        /* logValidator */null, /* outputValidator */
+                  new XmlValidator( comment, xpath, expected ) );
 
-    }
+  }
 
-    /**
-     * Test the manager.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testManager01() throws Exception {
+  /**
+   * Test the manager.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testManager01() throws Exception {
 
-        String[] comment = new String[]{"manager exists" // 1
-                , "font fxlt" // 2
-                , "count chars" // 3
-                , "test first char" // 4
-                , "test last char" // 5
-        };
-        String[] xpath = new String[]{"count(/root/managerinfo)" // 1
-                , "/root/managerinfo/manager[1]/@font" // 2
-                , "count(/root/managerinfo/manager[1]/char)" // 3
-                , "/root/managerinfo/manager[1]/char[1]/@id" // 4
-                , "/root/managerinfo/manager[1]/char[4]/@id" // 5
-        };
-        String[] expected = new String[]{"1" // 1
-                , "fxlr" // 2
-                , "4" // 3
-                , "72" // 4
-                , "111" // 4
-        };
+    String[] comment = new String[]{"manager exists" // 1
+        , "font fxlt" // 2
+        , "count chars" // 3
+        , "test first char" // 4
+        , "test last char" // 5
+    };
+    String[] xpath = new String[]{"count(/root/managerinfo)" // 1
+        , "/root/managerinfo/manager[1]/@font" // 2
+        , "count(/root/managerinfo/manager[1]/char)" // 3
+        , "/root/managerinfo/manager[1]/char[1]/@id" // 4
+        , "/root/managerinfo/manager[1]/char[4]/@id" // 5
+    };
+    String[] expected = new String[]{"1" // 1
+        , "fxlr" // 2
+        , "4" // 3
+        , "72" // 4
+        , "111" // 4
+    };
 
-        assertOutput(prop, // --- input code ---
-            "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
-            /* logValidator */null, /* outputValidator */
-            new XmlValidator(comment, xpath, expected));
-    }
+    assertOutput( prop, // --- input code ---
+                  "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
+        /* logValidator */null, /* outputValidator */
+                  new XmlValidator( comment, xpath, expected ) );
+  }
 
-    /**
-     * Test the manager with identical chars.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testManager02() throws Exception {
+  /**
+   * Test the manager with identical chars.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testManager02() throws Exception {
 
-        String[] comment = new String[]{"manager exists" // 1
-                , "font fxlt" // 2
-                , "count chars" // 3
-                , "test first char" // 4
-                , "test last char" // 5
-        };
-        String[] xpath = new String[]{"count(/root/managerinfo)" // 1
-                , "/root/managerinfo/manager[1]/@font" // 2
-                , "count(/root/managerinfo/manager[1]/char)" // 3
-                , "/root/managerinfo/manager[1]/char[1]/@id" // 4
-                , "/root/managerinfo/manager[1]/char[4]/@id" // 5
-        };
-        String[] expected = new String[]{"1" // 1
-                , "fxlr" // 2
-                , "4" // 3
-                , "72" // 4
-                , "111" // 5
-        };
+    String[] comment = new String[]{"manager exists" // 1
+        , "font fxlt" // 2
+        , "count chars" // 3
+        , "test first char" // 4
+        , "test last char" // 5
+    };
+    String[] xpath = new String[]{"count(/root/managerinfo)" // 1
+        , "/root/managerinfo/manager[1]/@font" // 2
+        , "count(/root/managerinfo/manager[1]/char)" // 3
+        , "/root/managerinfo/manager[1]/char[1]/@id" // 4
+        , "/root/managerinfo/manager[1]/char[4]/@id" // 5
+    };
+    String[] expected = new String[]{"1" // 1
+        , "fxlr" // 2
+        , "4" // 3
+        , "72" // 4
+        , "111" // 5
+    };
 
-        assertOutput(prop, // --- input code ---
-            "\\font\\hugo=fxlr " + "\\hugo " + "Hugo Hugo HHHH" + "\\end",
-            /* logValidator */null, /* outputValidator */
-            new XmlValidator(comment, xpath, expected));
-    }
+    assertOutput( prop, // --- input code ---
+                  "\\font\\hugo=fxlr " + "\\hugo " + "Hugo Hugo HHHH" + "\\end",
+        /* logValidator */null, /* outputValidator */
+                  new XmlValidator( comment, xpath, expected ) );
+  }
 
-    /**
-     * Test the manager with tow fonts.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testManager03() throws Exception {
+  /**
+   * Test the manager with tow fonts.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testManager03() throws Exception {
 
-        String[] comment = new String[]{"manager exists" // 1
-                , "font fxlt" // 2
-                , "count chars" // 3
-                , "test first char" // 4
-                , "test last char" // 5
-                , "font cmr10" // 6
-                , "count chars cmr10" // 7
-        };
-        String[] xpath = new String[]{"count(/root/managerinfo)" // 1
-                , "/root/managerinfo/manager[2]/@font" // 2
-                , "count(/root/managerinfo/manager[2]/char)" // 3
-                , "/root/managerinfo/manager[2]/char[1]/@id" // 4
-                , "/root/managerinfo/manager[2]/char[4]/@id" // 5
-                , "/root/managerinfo/manager[1]/@font" // 6
-                , "count(/root/managerinfo/manager[1]/char)" // 7
-        };
-        String[] expected = new String[]{"1" // 1
-                , "fxlr" // 2
-                , "4" // 3
-                , "72" // 4
-                , "111" // 5
-                , "cmr10" // 6
-                , "8" // 7
-        };
+    String[] comment = new String[]{"manager exists" // 1
+        , "font fxlt" // 2
+        , "count chars" // 3
+        , "test first char" // 4
+        , "test last char" // 5
+        , "font cmr10" // 6
+        , "count chars cmr10" // 7
+    };
+    String[] xpath = new String[]{"count(/root/managerinfo)" // 1
+        , "/root/managerinfo/manager[2]/@font" // 2
+        , "count(/root/managerinfo/manager[2]/char)" // 3
+        , "/root/managerinfo/manager[2]/char[1]/@id" // 4
+        , "/root/managerinfo/manager[2]/char[4]/@id" // 5
+        , "/root/managerinfo/manager[1]/@font" // 6
+        , "count(/root/managerinfo/manager[1]/char)" // 7
+    };
+    String[] expected = new String[]{"1" // 1
+        , "fxlr" // 2
+        , "4" // 3
+        , "72" // 4
+        , "111" // 5
+        , "cmr10" // 6
+        , "8" // 7
+    };
 
-        assertOutput(prop, // --- input code ---
-            "\\font\\hugo=fxlr " + "\\hugo " + "Hugo Hugo HHHH"
-                    + "\\font\\peter=cmr10 " + "\\peter "
-                    + "Peter Peter Hugo HHHH" + "\\end",
-            /* logValidator */null, /* outputValidator */
-            new XmlValidator(comment, xpath, expected));
-    }
+    assertOutput( prop, // --- input code ---
+                  "\\font\\hugo=fxlr " + "\\hugo " + "Hugo Hugo HHHH"
+                      + "\\font\\peter=cmr10 " + "\\peter "
+                      + "Peter Peter Hugo HHHH" + "\\end",
+        /* logValidator */null, /* outputValidator */
+                  new XmlValidator( comment, xpath, expected ) );
+  }
 
-    /**
-     * Test the manager with tow fonts.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testNodeWidth01() throws Exception {
+  /**
+   * Test the manager with tow fonts.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testNodeWidth01() throws Exception {
 
-        String[] comment = new String[]{"only one char" // 1
-                , "font fxlt" // 2
-                , "width char" // 3
-                , "codepoint" // 4
-                , "char" // 5
-                , "height" // 6
-                , "depth" // 7
-                , "width horizontal" // 8
-                , "width vertical" // 9
-        };
-        String[] xpath = new String[]{"count(/root/page/verticallist//char)" // 1
-                , "/root/page/verticallist/horizontallist/char[1]/@font" // 2
-                , "/root/page/verticallist/horizontallist/char[1]/@width_sp" // 3
-                , "/root/page/verticallist/horizontallist/char[1]/@codepoint" // 4
-                , "/root/page/verticallist/horizontallist/char[1]/@visiblechar" // 5
-                , "/root/page/verticallist/horizontallist/char[1]/@height_sp" // 6
-                , "/root/page/verticallist/horizontallist/char[1]/@depth_sp" // 7
-                , "/root/page/verticallist/horizontallist[1]/@width_sp" // 8
-                , "/root/page/verticallist[1]/@width_sp" // 9
-        };
-        String[] expected = new String[]{"1" // 1
-                , "fxlr" // 2
-                , "458752" // 3
-                , "72" // 4
-                , "H" // 5
-                , "423362" // 6
-                , "655" // 7
-                , "197066752" // 8
-                , "197066752" // 9
-        };
+    String[] comment = new String[]{"only one char" // 1
+        , "font fxlt" // 2
+        , "width char" // 3
+        , "codepoint" // 4
+        , "char" // 5
+        , "height" // 6
+        , "depth" // 7
+        , "width horizontal" // 8
+        , "width vertical" // 9
+    };
+    String[] xpath = new String[]{"count(/root/page/verticallist//char)" // 1
+        , "/root/page/verticallist/horizontallist/char[1]/@font" // 2
+        , "/root/page/verticallist/horizontallist/char[1]/@width_sp" // 3
+        , "/root/page/verticallist/horizontallist/char[1]/@codepoint" // 4
+        , "/root/page/verticallist/horizontallist/char[1]/@visiblechar" // 5
+        , "/root/page/verticallist/horizontallist/char[1]/@height_sp" // 6
+        , "/root/page/verticallist/horizontallist/char[1]/@depth_sp" // 7
+        , "/root/page/verticallist/horizontallist[1]/@width_sp" // 8
+        , "/root/page/verticallist[1]/@width_sp" // 9
+    };
+    String[] expected = new String[]{"1" // 1
+        , "fxlr" // 2
+        , "458752" // 3
+        , "72" // 4
+        , "H" // 5
+        , "423362" // 6
+        , "655" // 7
+        , "197066752" // 8
+        , "197066752" // 9
+    };
 
-        // H
-        assertOutput(prop, // --- input code ---
-            "\\font\\hugo=fxlr " + "\\hugo " + "H" + "\\end",
-            /* logValidator */null, /* outputValidator */
-            new XmlValidator(comment, xpath, expected));
-    }
+    // H
+    assertOutput( prop, // --- input code ---
+                  "\\font\\hugo=fxlr " + "\\hugo " + "H" + "\\end",
+        /* logValidator */null, /* outputValidator */
+                  new XmlValidator( comment, xpath, expected ) );
+  }
 
 }

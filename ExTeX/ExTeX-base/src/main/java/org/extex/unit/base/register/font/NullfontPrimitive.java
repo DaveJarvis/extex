@@ -36,7 +36,7 @@ import org.extex.typesetter.tc.font.impl.NullFont;
 /**
  * This class provides an implementation for the primitive
  * {@code \nullfont}.
- * 
+ *
  * <p>The Primitive {@code \nullfont}</p>
  * <p>
  * The primitive {@code \nullfont} provides access to an internal font
@@ -44,86 +44,87 @@ import org.extex.typesetter.tc.font.impl.NullFont;
  * will not succeed. Nevertheless the font dimens can be read and written
  * freely.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;nullfont&rang;
  *      &rarr; {@code \nullfont}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \font123=\nullfont  </pre>
- * 
+ *
  * <p>
  * {@code \nullfont} produces the primitive name {@code \nullfont} when
  * applied to {@code \the} or {@code \showthe}.
  * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NullfontPrimitive extends AbstractCode
-        implements
-            FontConvertible,
-            ComparableCode {
+    implements
+    FontConvertible,
+    ComparableCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code nullFont} contains the font encapsulated in this
-     * primitive.
-     */
-    private final NullFont nullFont = new NullFont();
+  /**
+   * The field {@code nullFont} contains the font encapsulated in this
+   * primitive.
+   */
+  private final NullFont nullFont = new NullFont();
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public NullfontPrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public NullfontPrimitive( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.scanner.type.token.Token,
-     *      org.extex.interpreter.context.Context)
-     */
-    public boolean compare(Token token, Context context)
-            throws HelpingException {
+  /**
+   * org.extex.scanner.type.token.Token,
+   * org.extex.interpreter.context.Context)
+   */
+  public boolean compare( Token token, Context context )
+      throws HelpingException {
 
-        return (token instanceof CodeToken)
-                && context.getCode((CodeToken) token) == this;
-    }
+    return (token instanceof CodeToken)
+        && context.getCode( (CodeToken) token ) == this;
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Font convertFont(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Font convertFont( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        return nullFont;
-    }
+    return nullFont;
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        context.set(nullFont, prefix.clearGlobal());
-    }
+    context.set( nullFont, prefix.clearGlobal() );
+  }
 
 }

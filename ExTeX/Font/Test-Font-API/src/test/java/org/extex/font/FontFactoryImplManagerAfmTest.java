@@ -35,269 +35,269 @@ import org.junit.Test;
 
 /**
  * Test for the font factory (manager).
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class FontFactoryImplManagerAfmTest extends AbstractFontFactoryTester {
 
-    /**
-     * The factory.
-     */
-    private static CoreFontFactory factory;
+  /**
+   * The factory.
+   */
+  private static CoreFontFactory factory;
 
-    /**
-     * The font key.
-     */
-    private static FontKey key;
+  /**
+   * The font key.
+   */
+  private static FontKey key;
 
 
-    public FontFactoryImplManagerAfmTest() {
+  public FontFactoryImplManagerAfmTest() {
 
-        if (factory == null) {
-            factory = makeFontFactory();
-            key = factory.getFontKey("fxlr");
-        }
+    if( factory == null ) {
+      factory = makeFontFactory();
+      key = factory.getFontKey( "fxlr" );
+    }
+  }
+
+  /**
+   * Test for the font manager.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test01() throws Exception {
+
+    try {
+      factory.createManager( new ArrayList<String>() );
+      assertTrue( false );
+    } catch( IllegalArgumentException e ) {
+      assertTrue( true );
     }
 
-    /**
-     * Test for the font manager.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test01() throws Exception {
+  }
 
-        try {
-            factory.createManager(new ArrayList<String>());
-            assertTrue(false);
-        } catch (IllegalArgumentException e) {
-            assertTrue(true);
-        }
+  /**
+   * Test for the font manager.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test02() throws Exception {
 
+    List<String> sl = new ArrayList<String>();
+    sl.add( "afm" );
+
+    BackendFontManager manager = factory.createManager( sl );
+
+    assertNotNull( manager );
+  }
+
+  /**
+   * Test for the font manager.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test03() throws Exception {
+
+    List<String> sl = new ArrayList<String>();
+    sl.add( "afm" );
+
+    BackendFontManager manager = factory.createManager( sl );
+
+    assertNotNull( manager );
+
+    try {
+      manager.recognize( null, null );
+      assertTrue( false );
+    } catch( IllegalArgumentException e ) {
+      assertTrue( true );
     }
 
-    /**
-     * Test for the font manager.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test02() throws Exception {
+  }
 
-        List<String> sl = new ArrayList<String>();
-        sl.add("afm");
+  /**
+   * Test for the font manager.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test04() throws Exception {
 
-        BackendFontManager manager = factory.createManager(sl);
+    List<String> sl = new ArrayList<String>();
+    sl.add( "afm" );
 
-        assertNotNull(manager);
+    BackendFontManager manager = factory.createManager( sl );
+
+    assertNotNull( manager );
+
+    try {
+      manager.recognize( key, null );
+      assertTrue( false );
+    } catch( IllegalArgumentException e ) {
+      assertTrue( true );
     }
 
-    /**
-     * Test for the font manager.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test03() throws Exception {
+  }
 
-        List<String> sl = new ArrayList<String>();
-        sl.add("afm");
+  /**
+   * Test for the font manager.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test05() throws Exception {
 
-        BackendFontManager manager = factory.createManager(sl);
+    List<String> sl = new ArrayList<String>();
+    sl.add( "afm" );
 
-        assertNotNull(manager);
+    BackendFontManager manager = factory.createManager( sl );
 
-        try {
-            manager.recognize(null, null);
-            assertTrue(false);
-        } catch (IllegalArgumentException e) {
-            assertTrue(true);
-        }
+    assertNotNull( manager );
+    assertNotNull( key );
+    UnicodeChar uc = UnicodeChar.get( 'A' );
+    assertNotNull( uc );
+    assertTrue( manager.recognize( key, uc ) );
+  }
 
-    }
+  /**
+   * Test for the font manager.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testFont01() throws Exception {
 
-    /**
-     * Test for the font manager.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test04() throws Exception {
+    assertNotNull( factory );
+    assertNotNull( key );
+    ExtexFont font = factory.getInstance( key );
+    assertNotNull( font );
+  }
 
-        List<String> sl = new ArrayList<String>();
-        sl.add("afm");
+  /**
+   * Test that the font manager recognizes no character before the first
+   * character and font.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testManager0() throws Exception {
 
-        BackendFontManager manager = factory.createManager(sl);
+    List<String> sl = new ArrayList<String>();
+    sl.add( "afm" );
+    BackendFontManager manager = factory.createManager( sl );
+    assertNotNull( manager );
 
-        assertNotNull(manager);
+    assertFalse( "nothing recognized yet", manager.isNewRecongnizedFont() );
+    assertNull( "no char recognized yet", manager.getRecognizedCharId() );
+    assertNull( "no font recognized yet", manager.getRecognizedFont() );
+    Iterator<ManagerInfo> it = manager.iterate();
+    assertNotNull( it );
+    boolean next = it.hasNext();
+    assertFalse( "no font enlisted", next );
+  }
 
-        try {
-            manager.recognize(key, null);
-            assertTrue(false);
-        } catch (IllegalArgumentException e) {
-            assertTrue(true);
-        }
+  /**
+   * Test that the font manager recognizes the first character and font.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testManager1() throws Exception {
 
-    }
+    List<String> sl = new ArrayList<String>();
+    sl.add( "afm" );
+    BackendFontManager manager = factory.createManager( sl );
+    assertNotNull( manager );
 
-    /**
-     * Test for the font manager.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test05() throws Exception {
+    assertTrue( "A in fxlr should be managable",
+                manager.recognize( key, UnicodeChar.get( 'A' ) ) );
+    assertTrue( "first always is new", manager.isNewRecongnizedFont() );
+    BackendCharacter cid = manager.getRecognizedCharId();
+    assertEquals( 'A', (char) cid.getId() );
+    assertEquals( "A", cid.getName() );
+    Iterator<ManagerInfo> it = manager.iterate();
+    assertTrue( it.hasNext() );
+    ManagerInfo man = it.next();
+    assertNotNull( man );
+    Object fnt = man.getBackendFont();
+    assertNotNull( fnt );
+    assertTrue( fnt instanceof BackendFont );
+    BackendFont bfnt = (BackendFont) fnt;
+    assertEquals( "fxlr", bfnt.getName() );
+    assertEquals( 0, bfnt.getCheckSum() );
+    assertFalse( it.hasNext() );
+  }
 
-        List<String> sl = new ArrayList<String>();
-        sl.add("afm");
+  /**
+   * Test that the font manager iterate the manager info.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testManager2() throws Exception {
 
-        BackendFontManager manager = factory.createManager(sl);
+    List<String> sl = new ArrayList<String>();
+    sl.add( "afm" );
+    BackendFontManager manager = factory.createManager( sl );
+    assertNotNull( manager );
 
-        assertNotNull(manager);
-        assertNotNull(key);
-        UnicodeChar uc = UnicodeChar.get('A');
-        assertNotNull(uc);
-        assertTrue(manager.recognize(key, uc));
-    }
+    assertTrue( "A in fxlr should be managable",
+                manager.recognize( key, UnicodeChar.get( 'A' ) ) );
+    assertTrue( "first always is new", manager.isNewRecongnizedFont() );
+    BackendCharacter cid = manager.getRecognizedCharId();
+    assertEquals( 'A', (char) cid.getId() );
+    assertEquals( "A", cid.getName() );
+    assertTrue( "B in fxlr should be managable",
+                manager.recognize( key, UnicodeChar.get( 'B' ) ) );
+    assertTrue( "C in fxlr should be managable",
+                manager.recognize( key, UnicodeChar.get( 'C' ) ) );
 
-    /**
-     * Test for the font manager.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testFont01() throws Exception {
+    Iterator<ManagerInfo> it = manager.iterate();
+    assertNotNull( it );
+    assertTrue( it.hasNext() );
+    ManagerInfo info = it.next();
+    assertNotNull( info );
+    assertEquals( "fxlr", info.getFontKey().getName() );
+    assertFalse( it.hasNext() );
 
-        assertNotNull(factory);
-        assertNotNull(key);
-        ExtexFont font = factory.getInstance(key);
-        assertNotNull(font);
-    }
+  }
 
-    /**
-     * Test that the font manager recognizes no character before the first
-     * character and font.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testManager0() throws Exception {
+  /**
+   * Test that the font manager iterate the manager info.
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void testManager3() throws Exception {
 
-        List<String> sl = new ArrayList<String>();
-        sl.add("afm");
-        BackendFontManager manager = factory.createManager(sl);
-        assertNotNull(manager);
+    List<String> sl = new ArrayList<String>();
+    sl.add( "afm" );
+    BackendFontManager manager = factory.createManager( sl );
+    assertNotNull( manager );
 
-        assertFalse("nothing recognized yet", manager.isNewRecongnizedFont());
-        assertNull("no char recognized yet", manager.getRecognizedCharId());
-        assertNull("no font recognized yet", manager.getRecognizedFont());
-        Iterator<ManagerInfo> it = manager.iterate();
-        assertNotNull(it);
-        boolean next = it.hasNext();
-        assertFalse("no font enlisted", next);
-    }
+    assertTrue( "A in fxlr should be managable",
+                manager.recognize( key, UnicodeChar.get( 'A' ) ) );
+    assertTrue( "first always is new", manager.isNewRecongnizedFont() );
+    BackendCharacter cid = manager.getRecognizedCharId();
+    assertEquals( 'A', (char) cid.getId() );
+    assertEquals( "A", cid.getName() );
+    assertTrue( "B in fxlr should be managable",
+                manager.recognize( key, UnicodeChar.get( 'B' ) ) );
+    assertTrue( "C in fxlr should be managable",
+                manager.recognize( key, UnicodeChar.get( 'C' ) ) );
 
-    /**
-     * Test that the font manager recognizes the first character and font.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testManager1() throws Exception {
+    Iterator<ManagerInfo> it = manager.iterate();
+    assertNotNull( it );
+    assertTrue( it.hasNext() );
+    ManagerInfo info = it.next();
+    assertNotNull( info );
+    assertEquals( "fxlr", info.getFontKey().getName() );
 
-        List<String> sl = new ArrayList<String>();
-        sl.add("afm");
-        BackendFontManager manager = factory.createManager(sl);
-        assertNotNull(manager);
+    Iterator<BackendCharacter> bcit = info.iterate();
+    assertNotNull( bcit );
+    assertTrue( bcit.hasNext() );
 
-        assertTrue("A in fxlr should be managable", 
-            manager.recognize(key, UnicodeChar.get('A')));
-        assertTrue("first always is new", manager.isNewRecongnizedFont());
-        BackendCharacter cid = manager.getRecognizedCharId();
-        assertEquals('A', (char) cid.getId());
-        assertEquals("A", cid.getName());
-        Iterator<ManagerInfo> it = manager.iterate();
-        assertTrue(it.hasNext());
-        ManagerInfo man = it.next();
-        assertNotNull(man);
-        Object fnt = man.getBackendFont();
-        assertNotNull(fnt);
-        assertTrue(fnt instanceof BackendFont);
-        BackendFont bfnt = (BackendFont) fnt;
-        assertEquals("fxlr", bfnt.getName());
-        assertEquals(0, bfnt.getCheckSum());
-        assertFalse(it.hasNext());
-    }
-
-    /**
-     * Test that the font manager iterate the manager info.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testManager2() throws Exception {
-
-        List<String> sl = new ArrayList<String>();
-        sl.add("afm");
-        BackendFontManager manager = factory.createManager(sl);
-        assertNotNull(manager);
-
-        assertTrue("A in fxlr should be managable", 
-            manager.recognize(key, UnicodeChar.get('A')));
-        assertTrue("first always is new", manager.isNewRecongnizedFont());
-        BackendCharacter cid = manager.getRecognizedCharId();
-        assertEquals('A', (char) cid.getId());
-        assertEquals("A", cid.getName());
-        assertTrue("B in fxlr should be managable", 
-            manager.recognize(key, UnicodeChar.get('B')));
-        assertTrue("C in fxlr should be managable", 
-            manager.recognize(key, UnicodeChar.get('C')));
-
-        Iterator<ManagerInfo> it = manager.iterate();
-        assertNotNull(it);
-        assertTrue(it.hasNext());
-        ManagerInfo info = it.next();
-        assertNotNull(info);
-        assertEquals("fxlr", info.getFontKey().getName());
-        assertFalse(it.hasNext());
-
-    }
-
-    /**
-     * Test that the font manager iterate the manager info.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testManager3() throws Exception {
-
-        List<String> sl = new ArrayList<String>();
-        sl.add("afm");
-        BackendFontManager manager = factory.createManager(sl);
-        assertNotNull(manager);
-
-        assertTrue("A in fxlr should be managable", 
-            manager.recognize(key, UnicodeChar.get('A')));
-        assertTrue("first always is new", manager.isNewRecongnizedFont());
-        BackendCharacter cid = manager.getRecognizedCharId();
-        assertEquals('A', (char) cid.getId());
-        assertEquals("A", cid.getName());
-        assertTrue("B in fxlr should be managable", 
-            manager.recognize(key, UnicodeChar.get('B')));
-        assertTrue("C in fxlr should be managable", 
-            manager.recognize(key, UnicodeChar.get('C')));
-
-        Iterator<ManagerInfo> it = manager.iterate();
-        assertNotNull(it);
-        assertTrue(it.hasNext());
-        ManagerInfo info = it.next();
-        assertNotNull(info);
-        assertEquals("fxlr", info.getFontKey().getName());
-
-        Iterator<BackendCharacter> bcit = info.iterate();
-        assertNotNull(bcit);
-        assertTrue(bcit.hasNext());
-
-    }
+  }
 
 }

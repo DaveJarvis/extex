@@ -22,23 +22,23 @@ package org.extex.exindex.lisp.parser;
 /**
  * This interface describes the ability to receive the location of a resource
  * with line number.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ResourceLocator {
 
-    /**
-     * Getter for the line number.
-     * 
-     * @return the line number
-     */
-    int getLineNumber();
+  /**
+   * Getter for the line number.
+   *
+   * @return the line number
+   */
+  int getLineNumber();
 
-    /**
-     * Getter for resource.
-     * 
-     * @return the resource
-     */
-    String getResource();
+  /**
+   * Getter for resource.
+   *
+   * @return the resource
+   */
+  String getResource();
 
 }

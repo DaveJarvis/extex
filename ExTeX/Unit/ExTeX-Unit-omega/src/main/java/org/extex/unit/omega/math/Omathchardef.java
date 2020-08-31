@@ -33,7 +33,7 @@ import org.extex.unit.omega.math.util.OmegaMathcharCode;
 /**
  * This class provides an implementation for the primitive
  * {@code \omathchardef}.
- * 
+ *
  * <p>The Math Primitive {@code \omathchardef}</p>
  * <p>
  * The math primitive {@code \omathchardef} defines a control sequence or
@@ -42,59 +42,59 @@ import org.extex.unit.omega.math.util.OmegaMathcharCode;
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;omathchardef&rang;
  *       &rarr; {@code \omathchardef} ...  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \omathchardef\alpha ...  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Omathchardef extends AbstractAssignment {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Omathchardef(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Omathchardef( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        source.getOptionalEquals(context);
-        MathCode mathchar =
-                AbstractOmegaMathCode.parseMathCode(context, source,
-                    typesetter, getToken());
+    CodeToken cs = source.getControlSequence( context, typesetter );
+    source.getOptionalEquals( context );
+    MathCode mathchar =
+        AbstractOmegaMathCode.parseMathCode( context, source,
+                                             typesetter, getToken() );
 
-        context.setCode(cs,
-            new OmegaMathcharCode(cs, mathchar),
-            prefix.clearGlobal());
-    }
+    context.setCode( cs,
+                     new OmegaMathcharCode( cs, mathchar ),
+                     prefix.clearGlobal() );
+  }
 
 }

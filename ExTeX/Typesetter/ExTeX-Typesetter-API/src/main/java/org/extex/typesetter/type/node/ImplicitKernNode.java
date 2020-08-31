@@ -25,25 +25,25 @@ import org.extex.core.dimen.FixedDimen;
  * This class provides the same functionality as
  * {@link org.extex.typesetter.type.node.KernNode KernNode} but is
  * distinguishable for the sake of some fine differentiations in TeX.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ImplicitKernNode extends AbstractKernNode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param kern the natural size
-     * @param horizontal the indicator that the kern works horizontally
-     */
-    public ImplicitKernNode(FixedDimen kern, boolean horizontal) {
+  /**
+   * Creates a new object.
+   *
+   * @param kern       the natural size
+   * @param horizontal the indicator that the kern works horizontally
+   */
+  public ImplicitKernNode( FixedDimen kern, boolean horizontal ) {
 
-        super(kern, horizontal);
-    }
+    super( kern, horizontal );
+  }
 
 }

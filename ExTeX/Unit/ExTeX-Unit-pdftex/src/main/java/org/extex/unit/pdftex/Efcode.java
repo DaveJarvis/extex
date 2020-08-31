@@ -38,7 +38,7 @@ import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides an implementation for the primitive {@code \efcode}.
- * 
+ *
  * <p>The PDF Primitive {@code \efcode}</p>
  * <p>
  * The PDF primitive {@code \efcode} ...
@@ -49,102 +49,104 @@ import org.extex.typesetter.tc.font.Font;
  * <p>
  * The default value is 1000.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;efcode&rang;
  *       &rarr; {@code \efcode} ... </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \efcode\f`A 1200  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Efcode extends AbstractCode
-        implements
-            CountConvertible,
-            ExpandableCode,
-            Theable {
+    implements
+    CountConvertible,
+    ExpandableCode,
+    Theable {
 
-    /**
-     * The field {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Efcode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Efcode( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Font font = source.getFont( context, getToken() );
+    UnicodeChar uc =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    source.getOptionalEquals( context );
+    long code = source.parseInteger( context, source, typesetter );
+    font.setEfCode( uc, code );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Font font = source.getFont( context, getToken() );
+    UnicodeChar uc =
+        source.scanCharacterCode( context, typesetter, getToken() );
+
+    return font.getEfCode( uc );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    long value = convertCount( context, source, typesetter );
+    try {
+      source.push( context.getTokenFactory().toTokens( value ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        Font font = source.getFont(context, getToken());
-        UnicodeChar uc =
-                source.scanCharacterCode(context, typesetter, getToken());
-        source.getOptionalEquals(context);
-        long code = source.parseInteger(context, source, typesetter);
-        font.setEfCode(uc, code);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Font font = source.getFont(context, getToken());
-        UnicodeChar uc =
-                source.scanCharacterCode(context, typesetter, getToken());
-
-        return font.getEfCode(uc);
-    }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        long value = convertCount(context, source, typesetter);
-        try {
-            source.push(context.getTokenFactory().toTokens(value));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        long value = convertCount(context, source, typesetter);
-        return context.getTokenFactory().toTokens(value);
-    }
+    long value = convertCount( context, source, typesetter );
+    return context.getTokenFactory().toTokens( value );
+  }
 
 }

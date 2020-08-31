@@ -24,36 +24,36 @@ import org.extex.exindex.lisp.parser.ResourceLocator;
 /**
  * This exception signals that a symbol has been expected and something else has
  * been found.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MissingSymbolException extends RawIndexException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     */
-    public MissingSymbolException(ResourceLocator locator) {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   */
+  public MissingSymbolException( ResourceLocator locator ) {
 
-        super(locator, "");
-    }
+    super( locator, "" );
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     * @param c the character found instead
-     */
-    public MissingSymbolException(ResourceLocator locator, char c) {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   * @param c       the character found instead
+   */
+  public MissingSymbolException( ResourceLocator locator, char c ) {
 
-        super(locator, Character.toString(c));
-    }
+    super( locator, Character.toString( c ) );
+  }
 
 }

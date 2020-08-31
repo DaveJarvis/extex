@@ -28,48 +28,46 @@ import org.extex.scanner.type.token.Token;
  * which do not modify the value.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface FixedTokens {
 
-    /**
-     * Get a specified token from the tokens register.
-     *
-     * @param i the index for the token to get
-     *
-     * @return the i<sup>th</sup> token or {@code null} if i is out of
-     *  bounds
-     */
-    Token get(int i);
+  /**
+   * Get a specified token from the tokens register.
+   *
+   * @param i the index for the token to get
+   * @return the i<sup>th</sup> token or {@code null} if i is out of
+   * bounds
+   */
+  Token get( int i );
 
-    /**
-     * Getter for the length of the token register, this is the number of
-     * elements contained.
-     *
-     * @return the number of elements in the token register
-     */
-    int length();
+  /**
+   * Getter for the length of the token register, this is the number of
+   * elements contained.
+   *
+   * @return the number of elements in the token register
+   */
+  int length();
 
-    /**
-     * Return a String, which shows all tokens in the list.
-     *
-     * @return a String, which show all tokens in the list
-     */
-    String toString();
+  /**
+   * Return a String, which shows all tokens in the list.
+   *
+   * @return a String, which show all tokens in the list
+   */
+  String toString();
 
-    /**
-     * Return a String, which shows all tokens (in text format) in the list.
-     *
-     * @return a String, which show all tokens (in text format) in the list
-     */
-    String toText();
+  /**
+   * Return a String, which shows all tokens (in text format) in the list.
+   *
+   * @return a String, which show all tokens (in text format) in the list
+   */
+  String toText();
 
-    /**
-     * Return a String, which shows all tokens (in text format) in the list.
-     *
-     * @param esc the escape character to use
-     *
-     * @return a String, which show all tokens (in text format) in the list
-     */
-    String toText(UnicodeChar esc);
+  /**
+   * Return a String, which shows all tokens (in text format) in the list.
+   *
+   * @param esc the escape character to use
+   * @return a String, which show all tokens (in text format) in the list
+   */
+  String toText( UnicodeChar esc );
 
 }

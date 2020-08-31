@@ -31,69 +31,69 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdfliteral}.
- * 
+ *
  * <p>The Primitive {@code \pdfliteral}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;pdfliteral&rang;
  *       &rarr; {@code \pdfliteral} &lang;optional direct&rang; {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context, boolean, boolean, CodeToken)
  *          &lang;general text&rang;}
  *
  *    &lang;optional direct&rang;
  *       &rarr; {@code direct}
  *       |  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \pdfliteral {...}  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \pdfliteral direct {...}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdfliteral extends AbstractPdftexCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdfliteral(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdfliteral( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        ensurePdftex(context, typesetter);
+    ensurePdftex( context, typesetter );
 
-        boolean direct = source.getKeyword(context, "direct");
-        String text = source.scanTokensAsString(context, getToken());
+    boolean direct = source.getKeyword( context, "direct" );
+    String text = source.scanTokensAsString( context, getToken() );
 
-        typesetter.add(new PdfLiteral(text, direct));
-    }
+    typesetter.add( new PdfLiteral( text, direct ) );
+  }
 
 }

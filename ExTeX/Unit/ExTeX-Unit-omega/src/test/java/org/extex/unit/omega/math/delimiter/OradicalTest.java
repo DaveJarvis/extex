@@ -25,15 +25,17 @@ import org.extex.unit.tex.math.AbstractMathTester;
  * This is a test suite for the primitive {@code \oradical}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OradicalTest extends AbstractMathTester {
 
 
-    public OradicalTest() {
+  public OradicalTest() {
 
-        setPrimitive("oradical");setArguments("12 32");setPrepare("");
-        setConfig("omega-test");
-    }
+    setPrimitive( "oradical" );
+    setArguments( "12 32" );
+    setPrepare( "" );
+    setConfig( "omega-test" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

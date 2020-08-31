@@ -38,99 +38,99 @@ import java.util.WeakHashMap;
  * exists in the system. Thus the symbol table relies on the cooperation of the
  * calling code to avoid memory leaks.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class LSymbol implements LValue {
 
-    /**
-     * The field {@code symbolTable} contains the symbol table.
-     */
-    private static final Map<String, LSymbol> SYMBOL_TABLE =
-        new WeakHashMap<>();
+  /**
+   * The field {@code symbolTable} contains the symbol table.
+   */
+  private static final Map<String, LSymbol> SYMBOL_TABLE =
+      new WeakHashMap<>();
 
-    /**
-     * This is the factory method for symbols.
-     * 
-     * @param value the name
-     * 
-     * @return the symbol corresponding to the name
-     */
-    public static synchronized LSymbol get(String value) {
+  /**
+   * This is the factory method for symbols.
+   *
+   * @param value the name
+   * @return the symbol corresponding to the name
+   */
+  public static synchronized LSymbol get( String value ) {
 
-        LSymbol sym = SYMBOL_TABLE.get( value);
-        if (sym == null) {
-            sym = new LSymbol(value);
-            if (value != null && !"".equals(value) && value.charAt(0) == ':') {
-                sym.setMutable(false);
-            }
-            SYMBOL_TABLE.put( value, sym);
-        }
-
-        return sym;
+    LSymbol sym = SYMBOL_TABLE.get( value );
+    if( sym == null ) {
+      sym = new LSymbol( value );
+      if( value != null && !"".equals( value ) && value.charAt( 0 ) == ':' ) {
+        sym.setMutable( false );
+      }
+      SYMBOL_TABLE.put( value, sym );
     }
 
-    /**
-     * The field {@code value} contains the value.
-     */
-    private final String value;
+    return sym;
+  }
 
-    /**
-     * The field {@code mutable} contains the indicator for non-constants.
-     */
-    private boolean mutable = true;
+  /**
+   * The field {@code value} contains the value.
+   */
+  private final String value;
 
-    /**
-     * Creates a new object. In fact these instances are managed via the factory
-     * method.
-     * 
-     * @param value the value
-     */
-    private LSymbol(String value) {
+  /**
+   * The field {@code mutable} contains the indicator for non-constants.
+   */
+  private boolean mutable = true;
 
-        this.value = value;
-    }
+  /**
+   * Creates a new object. In fact these instances are managed via the factory
+   * method.
+   *
+   * @param value the value
+   */
+  private LSymbol( String value ) {
 
-    /**
-     * Getter for value.
-     * 
-     * @return the value
-     */
-    public String getValue() {
+    this.value = value;
+  }
 
-        return value;
-    }
+  /**
+   * Getter for value.
+   *
+   * @return the value
+   */
+  public String getValue() {
 
-    /**
-     * Getter for the {@code mutable} property.
-     * This is a boolean property indicating the modifiable symbols in an interpreter.
-     * 
-     * @return the mutable
-     */
-    public boolean isMutable() {
+    return value;
+  }
 
-        return mutable;
-    }
+  /**
+   * Getter for the {@code mutable} property.
+   * This is a boolean property indicating the modifiable symbols in an
+   * interpreter.
+   *
+   * @return the mutable
+   */
+  public boolean isMutable() {
 
-    public void print(PrintStream stream) {
+    return mutable;
+  }
 
-        stream.print(value);
-    }
+  public void print( PrintStream stream ) {
 
-    /**
-     * Setter for mutable.
-     * 
-     * @param mutable the mutable to set
-     */
-    public void setMutable(boolean mutable) {
+    stream.print( value );
+  }
 
-        this.mutable = mutable;
-    }
+  /**
+   * Setter for mutable.
+   *
+   * @param mutable the mutable to set
+   */
+  public void setMutable( boolean mutable ) {
 
-    @Override
-    public String toString() {
+    this.mutable = mutable;
+  }
 
-        return value;
-    }
+  @Override
+  public String toString() {
+
+    return value;
+  }
 
 }

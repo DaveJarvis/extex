@@ -360,8 +360,7 @@ public abstract class ExTeXLauncher {
         ExTeX extex = new ExTeX(properties) {
 
             /**
-             * @see org.extex.ExTeX#makeInterpreter(org.extex.framework.configuration.Configuration,
-             *      org.extex.backend.outputStream.OutputStreamFactory,
+
              *      org.extex.resource.ResourceFinder, java.lang.String)
              */
             @Override

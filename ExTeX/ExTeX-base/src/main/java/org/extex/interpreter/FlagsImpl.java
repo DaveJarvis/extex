@@ -25,373 +25,361 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This class implements a set of flags. This is needed to pass controlling
  * information to primitives.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class FlagsImpl implements Flags {
 
-    /**
-     * The field {@code globalP} contains the global flag.
-     */
-    private boolean globalP = false;
+  /**
+   * The field {@code globalP} contains the global flag.
+   */
+  private boolean globalP = false;
 
-    /**
-     * The field {@code immediateP} contains the immediate flag.
-     */
-    private boolean immediateP = false;
+  /**
+   * The field {@code immediateP} contains the immediate flag.
+   */
+  private boolean immediateP = false;
 
-    /**
-     * The field {@code longP} contains the long flag.
-     */
-    private boolean longP = false;
+  /**
+   * The field {@code longP} contains the long flag.
+   */
+  private boolean longP = false;
 
-    /**
-     * The field {@code outerP} contains the outer flag.
-     */
-    private boolean outerP = false;
+  /**
+   * The field {@code outerP} contains the outer flag.
+   */
+  private boolean outerP = false;
 
-    /**
-     * The field {@code protectedP} contains the protected flag.
-     */
-    private boolean protectedP = false;
+  /**
+   * The field {@code protectedP} contains the protected flag.
+   */
+  private boolean protectedP = false;
 
-    /**
-     * Creates a new object. Initially no flags are set.
-     */
-    public FlagsImpl() {
+  /**
+   * Creates a new object. Initially no flags are set.
+   */
+  public FlagsImpl() {
 
+  }
+
+  /**
+   * This method clears all flags.
+   *
+   * @see org.extex.interpreter.Flags#clear()
+   */
+  @Override
+  public void clear() {
+
+    globalP = false;
+    longP = false;
+    outerP = false;
+    immediateP = false;
+    protectedP = false;
+  }
+
+  /**
+   * Setter for the global flag. The flag is reset to {@code false}.
+   *
+   * @return the old value of the global flag
+   * @see org.extex.interpreter.Flags#clearGlobal()
+   */
+  @Override
+  public boolean clearGlobal() {
+
+    boolean flag = globalP;
+    globalP = false;
+    return flag;
+  }
+
+  /**
+   * Setter for the immediate flag. The flag is reset to {@code false}.
+   *
+   * @return the old value of the immediate flag
+   * @see org.extex.interpreter.Flags#clearImmediate()
+   */
+  @Override
+  public boolean clearImmediate() {
+
+    boolean flag = immediateP;
+    immediateP = false;
+    return flag;
+  }
+
+  /**
+   * Setter for the long flag. The flag is reset to {@code false}.
+   *
+   * @return the old value of the long flag
+   * @see org.extex.interpreter.Flags#clearLong()
+   */
+  @Override
+  public boolean clearLong() {
+
+    boolean flag = longP;
+    longP = false;
+    return flag;
+  }
+
+  /**
+   * Setter for the outer flag. The flag is reset to {@code false}.
+   *
+   * @return the old value of the outer flag
+   * @see org.extex.interpreter.Flags#clearOuter()
+   */
+  @Override
+  public boolean clearOuter() {
+
+    boolean flag = outerP;
+    outerP = false;
+    return flag;
+  }
+
+  /**
+   * Setter for the protected flag. The flag is reset to {@code false}.
+   *
+   * @return the old value of the protected flag
+   * @see org.extex.interpreter.Flags#clearProtected()
+   */
+  @Override
+  public boolean clearProtected() {
+
+    boolean flag = protectedP;
+    protectedP = false;
+    return flag;
+  }
+
+  /**
+   * Clone an instance.
+   *
+   * @return a copy of the instance
+   * @see org.extex.interpreter.Flags#copy()
+   */
+  @Override
+  public Flags copy() {
+
+    Flags f = new FlagsImpl();
+    if( globalP ) {
+      f.setGlobal();
     }
-
-    /**
-     * This method clears all flags.
-     * 
-     * @see org.extex.interpreter.Flags#clear()
-     */
-    @Override
-    public void clear() {
-
-        globalP = false;
-        longP = false;
-        outerP = false;
-        immediateP = false;
-        protectedP = false;
+    if( longP ) {
+      f.setLong();
     }
-
-    /**
-     * Setter for the global flag. The flag is reset to {@code false}.
-     * 
-     * @return the old value of the global flag
-     * 
-     * @see org.extex.interpreter.Flags#clearGlobal()
-     */
-    @Override
-    public boolean clearGlobal() {
-
-        boolean flag = globalP;
-        globalP = false;
-        return flag;
+    if( outerP ) {
+      f.setOuter();
     }
-
-    /**
-     * Setter for the immediate flag. The flag is reset to {@code false}.
-     * 
-     * @return the old value of the immediate flag
-     * 
-     * @see org.extex.interpreter.Flags#clearImmediate()
-     */
-    @Override
-    public boolean clearImmediate() {
-
-        boolean flag = immediateP;
-        immediateP = false;
-        return flag;
+    if( immediateP ) {
+      f.setImmediate();
     }
-
-    /**
-     * Setter for the long flag. The flag is reset to {@code false}.
-     * 
-     * @return the old value of the long flag
-     * 
-     * @see org.extex.interpreter.Flags#clearLong()
-     */
-    @Override
-    public boolean clearLong() {
-
-        boolean flag = longP;
-        longP = false;
-        return flag;
+    if( protectedP ) {
+      f.setProtected();
     }
+    return f;
+  }
 
-    /**
-     * Setter for the outer flag. The flag is reset to {@code false}.
-     * 
-     * @return the old value of the outer flag
-     * 
-     * @see org.extex.interpreter.Flags#clearOuter()
-     */
-    @Override
-    public boolean clearOuter() {
+  /**
+   * Getter for the text representations of the flags currently set.
+   *
+   * @return the array of flag names
+   * @see org.extex.interpreter.Flags#get()
+   */
+  @Override
+  public String[] get() {
 
-        boolean flag = outerP;
-        outerP = false;
-        return flag;
+    Localizer localizer = LocalizerFactory.getLocalizer( FlagsImpl.class );
+    String[] result = new String[ ((globalP ? 1 : 0)
+        + (longP ? 1 : 0)
+        + (outerP ? 1 : 0)
+        + (immediateP ? 1 : 0)
+        + (protectedP ? 1 : 0)) ];
+    int i = 0;
+    if( globalP ) {
+      result[ i++ ] = localizer.format( "global.text" );
     }
-
-    /**
-     * Setter for the protected flag. The flag is reset to {@code false}.
-     * 
-     * @return the old value of the protected flag
-     * 
-     * @see org.extex.interpreter.Flags#clearProtected()
-     */
-    @Override
-    public boolean clearProtected() {
-
-        boolean flag = protectedP;
-        protectedP = false;
-        return flag;
+    if( longP ) {
+      result[ i++ ] = localizer.format( "long.text" );
     }
-
-    /**
-     * Clone an instance.
-     * 
-     * @return a copy of the instance
-     * 
-     * @see org.extex.interpreter.Flags#copy()
-     */
-    @Override
-    public Flags copy() {
-
-        Flags f = new FlagsImpl();
-        if (globalP) {
-            f.setGlobal();
-        }
-        if (longP) {
-            f.setLong();
-        }
-        if (outerP) {
-            f.setOuter();
-        }
-        if (immediateP) {
-            f.setImmediate();
-        }
-        if (protectedP) {
-            f.setProtected();
-        }
-        return f;
+    if( outerP ) {
+      result[ i++ ] = localizer.format( "outer.text" );
     }
-
-    /**
-     * Getter for the text representations of the flags currently set.
-     * 
-     * @return the array of flag names
-     * 
-     * @see org.extex.interpreter.Flags#get()
-     */
-    @Override
-    public String[] get() {
-
-        Localizer localizer = LocalizerFactory.getLocalizer(FlagsImpl.class);
-        String[] result = new String[((globalP ? 1 : 0)
-                + (longP ? 1 : 0)
-                + (outerP ? 1 : 0)
-                + (immediateP ? 1 : 0)
-        + (protectedP ? 1 : 0))];
-        int i = 0;
-        if (globalP) {
-            result[i++] = localizer.format("global.text");
-        }
-        if (longP) {
-            result[i++] = localizer.format("long.text");
-        }
-        if (outerP) {
-            result[i++] = localizer.format("outer.text");
-        }
-        if (immediateP) {
-            result[i++] = localizer.format("immediate.text");
-        }
-        if (protectedP) {
-            result[i++] = localizer.format("protected.text");
-        }
-        return result;
+    if( immediateP ) {
+      result[ i++ ] = localizer.format( "immediate.text" );
     }
-
-    /**
-     * Test if all flags are cleared.
-     * 
-     * @return {@code true} iff not all flags are cleared
-     * 
-     * @see org.extex.interpreter.Flags#isDirty()
-     */
-    @Override
-    public boolean isDirty() {
-
-        return globalP || longP || immediateP || outerP || protectedP;
+    if( protectedP ) {
+      result[ i++ ] = localizer.format( "protected.text" );
     }
+    return result;
+  }
 
-    /**
-     * Getter for the global flag.
-     * 
-     * @return the current value of the global flag
-     */
-    @Override
-    public boolean isGlobal() {
+  /**
+   * Test if all flags are cleared.
+   *
+   * @return {@code true} iff not all flags are cleared
+   * @see org.extex.interpreter.Flags#isDirty()
+   */
+  @Override
+  public boolean isDirty() {
 
-        return globalP;
-    }
+    return globalP || longP || immediateP || outerP || protectedP;
+  }
 
-    /**
-     * Getter for the immediate flag.
-     * 
-     * @return the current value of the immediate flag
-     */
-    @Override
-    public boolean isImmediate() {
+  /**
+   * Getter for the global flag.
+   *
+   * @return the current value of the global flag
+   */
+  @Override
+  public boolean isGlobal() {
 
-        return immediateP;
-    }
+    return globalP;
+  }
 
-    /**
-     * Getter for the long flag.
-     * 
-     * @return the current value of the long flag
-     */
-    @Override
-    public boolean isLong() {
+  /**
+   * Getter for the immediate flag.
+   *
+   * @return the current value of the immediate flag
+   */
+  @Override
+  public boolean isImmediate() {
 
-        return longP;
-    }
+    return immediateP;
+  }
 
-    /**
-     * Getter for the outer flag.
-     * 
-     * @return the current value of the outer flag
-     */
-    @Override
-    public boolean isOuter() {
+  /**
+   * Getter for the long flag.
+   *
+   * @return the current value of the long flag
+   */
+  @Override
+  public boolean isLong() {
 
-        return outerP;
-    }
+    return longP;
+  }
 
-    /**
-     * Getter for the protected flag.
-     * 
-     * @return the current value of the protected flag
-     * 
-     * @see org.extex.interpreter.Flags#isProtected()
-     */
-    @Override
-    public boolean isProtected() {
+  /**
+   * Getter for the outer flag.
+   *
+   * @return the current value of the outer flag
+   */
+  @Override
+  public boolean isOuter() {
 
-        return protectedP;
-    }
+    return outerP;
+  }
 
-    /**
-     * Copy the flag settings from a given instance int this instance.
-     * 
-     * @param flags the flags to copy
-     * 
-     * @see org.extex.interpreter.Flags#set(org.extex.interpreter.Flags)
-     */
-    @Override
-    public void set(Flags flags) {
+  /**
+   * Getter for the protected flag.
+   *
+   * @return the current value of the protected flag
+   * @see org.extex.interpreter.Flags#isProtected()
+   */
+  @Override
+  public boolean isProtected() {
 
-        globalP = flags.isGlobal();
-        immediateP = flags.isImmediate();
-        longP = flags.isLong();
-        outerP = flags.isOuter();
-        protectedP = flags.isProtected();
-    }
+    return protectedP;
+  }
 
-    /**
-     * Setter for the global flag.
-     */
-    @Override
-    public void setGlobal() {
+  /**
+   * Copy the flag settings from a given instance int this instance.
+   *
+   * @param flags the flags to copy
+   * @see org.extex.interpreter.Flags#set(org.extex.interpreter.Flags)
+   */
+  @Override
+  public void set( Flags flags ) {
 
-        globalP = true;
-    }
+    globalP = flags.isGlobal();
+    immediateP = flags.isImmediate();
+    longP = flags.isLong();
+    outerP = flags.isOuter();
+    protectedP = flags.isProtected();
+  }
 
-    /**
-     * Setter for the global flag.
-     * 
-     * @param value the new value for the global flag
-     */
-    @Override
-    public void setGlobal(boolean value) {
+  /**
+   * Setter for the global flag.
+   */
+  @Override
+  public void setGlobal() {
 
-        globalP = value;
-    }
+    globalP = true;
+  }
 
-    /**
-     * Setter for the immediate flag.
-     */
-    @Override
-    public void setImmediate() {
+  /**
+   * Setter for the global flag.
+   *
+   * @param value the new value for the global flag
+   */
+  @Override
+  public void setGlobal( boolean value ) {
 
-        immediateP = true;
-    }
+    globalP = value;
+  }
 
-    /**
-     * Setter for the long flag.
-     */
-    @Override
-    public void setLong() {
+  /**
+   * Setter for the immediate flag.
+   */
+  @Override
+  public void setImmediate() {
 
-        longP = true;
-    }
+    immediateP = true;
+  }
 
-    /**
-     * Setter for the outer flag.
-     */
-    @Override
-    public void setOuter() {
+  /**
+   * Setter for the long flag.
+   */
+  @Override
+  public void setLong() {
 
-        outerP = true;
-    }
+    longP = true;
+  }
 
-    /**
-     * @see org.extex.interpreter.Flags#setProtected()
-     */
-    @Override
-    public void setProtected() {
+  /**
+   * Setter for the outer flag.
+   */
+  @Override
+  public void setOuter() {
 
-        protectedP = true;
-    }
+    outerP = true;
+  }
 
-    /**
-     * Determine a printable representation of the instance.
-     * 
-     * @return the printable representation
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
+  /**
+   * @see org.extex.interpreter.Flags#setProtected()
+   */
+  @Override
+  public void setProtected() {
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(globalP ? 'G' : '-');
-        sb.append(longP ? 'L' : '-');
-        sb.append(outerP ? 'O' : '-');
-        sb.append(immediateP ? 'I' : '-');
-        sb.append(protectedP ? 'P' : '-');
-        return sb.toString();
-    }
+    protectedP = true;
+  }
 
-    /**
-     * Determine a printable representation of the flags set. The representation
-     * takes into account the current locale.
-     * 
-     * @return the list
-     * 
-     * @see org.extex.interpreter.Flags#toText()
-     */
-    @Override
-    public String toText() {
+  /**
+   * Determine a printable representation of the instance.
+   *
+   * @return the printable representation
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-        String[] s = get();
-        return LocalizerFactory.getLocalizer(FlagsImpl.class).format(
-            "text." + s.length, s);
-    }
+    StringBuilder sb = new StringBuilder();
+    sb.append( globalP ? 'G' : '-' );
+    sb.append( longP ? 'L' : '-' );
+    sb.append( outerP ? 'O' : '-' );
+    sb.append( immediateP ? 'I' : '-' );
+    sb.append( protectedP ? 'P' : '-' );
+    return sb.toString();
+  }
+
+  /**
+   * Determine a printable representation of the flags set. The representation
+   * takes into account the current locale.
+   *
+   * @return the list
+   * @see org.extex.interpreter.Flags#toText()
+   */
+  @Override
+  public String toText() {
+
+    String[] s = get();
+    return LocalizerFactory.getLocalizer( FlagsImpl.class ).format(
+        "text." + s.length, s );
+  }
 
 }

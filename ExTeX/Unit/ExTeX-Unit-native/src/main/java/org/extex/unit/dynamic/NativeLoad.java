@@ -43,7 +43,7 @@ import java.util.logging.Logger;
 /**
  * This primitive initiates the loading of native code and implements the
  * primitive {@code \nativeload}.
- * 
+ *
  * <p>The Primitive {@code \nativeload}</p>
  * <p>
  * The primitive {@code \nativeload} loads some native language code. As
@@ -56,16 +56,16 @@ import java.util.logging.Logger;
  * with {@code \def}. It is even possible to define extension macros in other
  * programming languages than the TeX language.
  * </p>
- * 
+ *
  * <p>Syntax</p>
  * <p>
  * The general form of this primitive is
  * </p>
- * 
- * <pre class="syntax"> 
+ *
+ * <pre class="syntax">
  *    &lang;nativeload&rang;
  *      &rarr; {@code \nativeload} &lang;type&rang; &lang;tokens&rang; </pre>
- * 
+ *
  * <p>
  * The {@code &lang;type&rang;} is any specification of a list of tokens
  * like a constant list enclosed in braces or a token register. The value of
@@ -80,16 +80,16 @@ import java.util.logging.Logger;
  * init()} is invoked. The instantiation requires the empty constructor to be
  * visible.
  * </p>
- * 
+ *
  * <p>Examples</p>
-
+ *
  * <p>
  * The following example illustrates the use of this primitive:
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *   \nativeload{java}{my.unit.MyUnitLoader} </pre>
- * 
+ *
  * <p>
  * For the loading of the Java class it is necessary that this Java class
  * implements the interface {@link org.extex.unit.dynamic.java.Loadable
@@ -98,19 +98,19 @@ import java.util.logging.Logger;
  *
  * <pre class="JavaSample">
  * <b>package</b> my.package;
- * 
+ *
  * <b>import</b> org.extex.interpreter.context.Context;
  * <b>import</b> org.extex.interpreter.primitives.dynamic.java.Loadable;
  * <b>import</b> org.extex.typesetter.Typesetter;
  * <b>import</b> org.extex.util.exception.GeneralException;
- * 
+ *
  * <b>class</b> MyModule <b>implements</b> Loadable {
- * 
+ *
  *     <b>public</b> MyModule() {
  *         super();
  *         <i>// initialization code &ndash; if required</i>
  *     }
- * 
+ *
  *     <b>public void</b> init(<b>final</b> Context context, <b>final</b> Typesetter
  * typesetter )
  *         <b>throws</b> GeneralException {
@@ -119,7 +119,7 @@ import java.util.logging.Logger;
  * } </pre>
  *
  * <p>Configuration</p>
-
+ *
  * <p>
  * The supported types are determined in the configuration of the unit which
  * defines the primitive. Here a mapping is specified assigning a binding class
@@ -127,14 +127,14 @@ import java.util.logging.Logger;
  * several extension types. Currently a binding for Java is provided. In the
  * future other languages can be added easily.
  * </p>
- * 
+ *
  * <pre class="configuration">
  * &lt;define name="nativeload"
  *         class="org.extex.interpreter.primitives.dynamic.NativeLoad"&gt;
  *   &lt;load name="java"
  *         class="org.extex.interpreter.primitives.dynamic.java.JavaLoad"/&gt;
  * &lt;/define&gt; </pre>
- * 
+ *
  * <p>
  * The body of the define tag for the primitive may contain an arbitrary number
  * of load sections. Each load has the attribute name and class. The attribute
@@ -145,105 +145,103 @@ import java.util.logging.Logger;
  * The class attribute names the class which provides the binding to the target
  * programming language.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NativeLoad extends AbstractCode
-        implements
-            Configurable,
-            LogEnabled {
+    implements
+    Configurable,
+    LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the logger to use.
-     */
-    private transient Logger logger = null;
+  /**
+   * The field {@code logger} contains the logger to use.
+   */
+  private transient Logger logger = null;
 
-    /**
-     * The field {@code map} contains the mapping from a symbolic name to a
-     * configuration.
-     */
-    private final Map<String, Configuration> map =
-            new HashMap<String, Configuration>();
+  /**
+   * The field {@code map} contains the mapping from a symbolic name to a
+   * configuration.
+   */
+  private final Map<String, Configuration> map =
+      new HashMap<String, Configuration>();
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public NativeLoad(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public NativeLoad( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Configure an object according to a given Configuration.
+   *
+   * @param config the configuration object to consider
+   * @throws ConfigurationException in case that something went wrong
+   * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
+   */
+  public void configure( Configuration config ) throws ConfigurationException {
+
+    Iterator<Configuration> iterator = config.iterator( "load" );
+    while( iterator.hasNext() ) {
+      Configuration cfg = iterator.next();
+      map.put( cfg.getAttribute( "name" ), cfg );
+    }
+  }
+
+  /**
+   * Setter for the logger.
+   *
+   * @param log the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+   */
+  public void enableLogging( Logger log ) {
+
+    this.logger = log;
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String name;
+    try {
+      name = source.getTokens( context, source, typesetter ).toText();
+    } catch( EofException e ) {
+      throw new EofInToksException( toText( context ) );
+    }
+    Configuration cfg = map.get( name );
+    if( cfg == null ) {
+      throw new HelpingException( getLocalizer(), "UnknownType", name,
+                                  toText() );
     }
 
-    /**
-     * Configure an object according to a given Configuration.
-     * 
-     * @param config the configuration object to consider
-     * 
-     * @throws ConfigurationException in case that something went wrong
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
+    LoaderFactory factory = new LoaderFactory();
+    factory.enableLogging( logger );
+    factory.configure( cfg );
+    factory.createLoad().load( context, source, typesetter );
+  }
 
-        Iterator<Configuration> iterator = config.iterator("load");
-        while (iterator.hasNext()) {
-            Configuration cfg = iterator.next();
-            map.put(cfg.getAttribute("name"), cfg);
-        }
-    }
+  /**
+   * Getter for logger.
+   *
+   * @return the logger
+   */
+  protected Logger getLogger() {
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    public void enableLogging(Logger log) {
-
-        this.logger = log;
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String name;
-        try {
-            name = source.getTokens(context, source, typesetter).toText();
-        } catch (EofException e) {
-            throw new EofInToksException(toText(context));
-        }
-        Configuration cfg = map.get(name);
-        if (cfg == null) {
-            throw new HelpingException(getLocalizer(), "UnknownType", name,
-                toText());
-        }
-
-        LoaderFactory factory = new LoaderFactory();
-        factory.enableLogging(logger);
-        factory.configure(cfg);
-        factory.createLoad().load(context, source, typesetter);
-    }
-
-    /**
-     * Getter for logger.
-     * 
-     * @return the logger
-     */
-    protected Logger getLogger() {
-
-        return this.logger;
-    }
+    return this.logger;
+  }
 
 }

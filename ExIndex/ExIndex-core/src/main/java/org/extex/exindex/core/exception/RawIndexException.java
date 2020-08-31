@@ -25,43 +25,43 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals that an unknown argument has been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RawIndexException extends LException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * The field {@code locator} contains the name and line number of the
-     * resource.
-     */
-    private final ResourceLocator locator;
+  /**
+   * The field {@code locator} contains the name and line number of the
+   * resource.
+   */
+  private final ResourceLocator locator;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     * @param message the message
-     */
-    public RawIndexException(ResourceLocator locator, String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   * @param message the message
+   */
+  public RawIndexException( ResourceLocator locator, String message ) {
 
-        super(message);
-        this.locator = locator;
-    }
+    super( message );
+    this.locator = locator;
+  }
 
-@Override
-    public String getLocalizedMessage() {
+  @Override
+  public String getLocalizedMessage() {
 
-        String message = getMessage();
+    String message = getMessage();
 
-        return LocalizerFactory.getLocalizer(RawIndexException.class).format(
-            (message == null ? "NoMessage" : "Message"), locator.getResource(),
-            Integer.toString(locator.getLineNumber()), message);
-    }
+    return LocalizerFactory.getLocalizer( RawIndexException.class ).format(
+        (message == null ? "NoMessage" : "Message"), locator.getResource(),
+        Integer.toString( locator.getLineNumber() ), message );
+  }
 
 }

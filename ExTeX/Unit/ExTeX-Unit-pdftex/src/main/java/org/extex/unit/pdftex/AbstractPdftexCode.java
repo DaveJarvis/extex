@@ -32,53 +32,51 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides a base class for pdfTeX primitives.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractPdftexCode extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractPdftexCode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractPdftexCode( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Check that pdfTeX is active.
+   *
+   * @param context    the interpreter context
+   * @param typesetter the typesetter
+   * @return the casted document writer with pdf support
+   * @throws PdftexException in case that pdfTeX is not active
+   * @throws NoHelpException in case of an exception in the back-end
+   */
+  protected PdftexSupport ensurePdftex( Context context, Typesetter typesetter )
+      throws PdftexException,
+      NoHelpException {
+
+    DocumentWriter documentWriter;
+    try {
+      documentWriter = typesetter.getBackendDriver().getDocumentWriter();
+    } catch( DocumentWriterException e ) {
+      throw new NoHelpException( e );
     }
 
-    /**
-     * Check that pdfTeX is active.
-     * 
-     * @param context the interpreter context
-     * @param typesetter the typesetter
-     * 
-     * @return the casted document writer with pdf support
-     * 
-     * @throws PdftexException in case that pdfTeX is not active
-     * @throws NoHelpException in case of an exception in the back-end
-     */
-    protected PdftexSupport ensurePdftex(Context context, Typesetter typesetter)
-            throws PdftexException,
-                NoHelpException {
-
-        DocumentWriter documentWriter;
-        try {
-            documentWriter = typesetter.getBackendDriver().getDocumentWriter();
-        } catch (DocumentWriterException e) {
-            throw new NoHelpException(e);
-        }
-
-        if (documentWriter instanceof PdftexSupport
-                && context.getCount("pdfoutput").gt(Count.ZERO)) {
-            return (PdftexSupport) documentWriter;
-        }
-        throw new PdftexException(toText(context));
+    if( documentWriter instanceof PdftexSupport
+        && context.getCount( "pdfoutput" ).gt( Count.ZERO ) ) {
+      return (PdftexSupport) documentWriter;
     }
+    throw new PdftexException( toText( context ) );
+  }
 
 }

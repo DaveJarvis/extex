@@ -19,98 +19,97 @@
 
 package org.extex.exindex.core.type.alphabet;
 
-import java.io.PrintStream;
-
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.page.SomePage;
 import org.extex.exindex.lisp.type.value.LValue;
 
+import java.io.PrintStream;
+
 /**
  * This class contains the finite set of elements as a list.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ListAlphabet implements LValue, Alphabet, LocationClass {
 
-    /**
-     * The field {@code list} contains the list of words.
-     */
-    private final String[] list;
+  /**
+   * The field {@code list} contains the list of words.
+   */
+  private final String[] list;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param list the list of words
-     */
-    public ListAlphabet(String[] list) {
+  /**
+   * Creates a new object.
+   *
+   * @param list the list of words
+   */
+  public ListAlphabet( String[] list ) {
 
-        this.list = list;
+    this.list = list;
+  }
+
+  /**
+   * Getter for list.
+   *
+   * @return the list
+   */
+  public String[] getList() {
+
+    return list;
+  }
+
+  /**
+   * java.lang.String)
+   */
+  public PageReference match( String encap, String s ) {
+
+    for( String x : list ) {
+      if( !x.equals( s ) ) {
+        return null;
+      }
     }
+    return new SomePage( encap, s );
+  }
 
-    /**
-     * Getter for list.
-     * 
-     * @return the list
-     */
-    public String[] getList() {
+  public boolean match( StringBuilder s ) {
 
-        return list;
-    }
-
-    /**
-*      java.lang.String)
-     */
-    public PageReference match(String encap, String s) {
-
-        for (String x : list) {
-            if (!x.equals(s)) {
-                return null;
-            }
-        }
-        return new SomePage(encap, s);
-    }
-
-public boolean match(StringBuilder s) {
-
-        for (String x : list) {
-            if (match(s, x)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Match a string at all positions in a string builder and delete all
-     * characters if a match is found.
-     * 
-     * @param s the string builder
-     * @param x the pattern
-     * 
-     * @return {@code true} if a match has been found
-     */
-    private boolean match(StringBuilder s, String x) {
-
-        int j = 0;
-        for (int i = 0; i < x.length(); i++) {
-            if (s.length() == 0 || s.charAt(j) != x.charAt(i)) {
-                return false;
-            }
-            j++;
-        }
-        s.delete(0, j);
+    for( String x : list ) {
+      if( match( s, x ) ) {
         return true;
+      }
     }
+    return false;
+  }
 
-public void print(PrintStream stream) {
+  /**
+   * Match a string at all positions in a string builder and delete all
+   * characters if a match is found.
+   *
+   * @param s the string builder
+   * @param x the pattern
+   * @return {@code true} if a match has been found
+   */
+  private boolean match( StringBuilder s, String x ) {
 
-        stream.print("#alphabet(");
-        for (String a : list) {
-            stream.print("\"");
-            stream.print(a);
-            stream.print("\" ");
-        }
-        stream.print(")");
+    int j = 0;
+    for( int i = 0; i < x.length(); i++ ) {
+      if( s.length() == 0 || s.charAt( j ) != x.charAt( i ) ) {
+        return false;
+      }
+      j++;
     }
+    s.delete( 0, j );
+    return true;
+  }
+
+  public void print( PrintStream stream ) {
+
+    stream.print( "#alphabet(" );
+    for( String a : list ) {
+      stream.print( "\"" );
+      stream.print( a );
+      stream.print( "\" " );
+    }
+    stream.print( ")" );
+  }
 
 }

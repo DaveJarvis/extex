@@ -19,85 +19,85 @@
 
 package org.extex.exindex.core.type.page;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is a test suite for lowercase roman page numbers.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LowerRomanPageTest {
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
-     */
-    @Test
-    public final void test1() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
+   */
+  @Test
+  public final void test1() {
 
-        assertEquals(1, new LowerRomanPage("", "i").getOrd());
-    }
+    assertEquals( 1, new LowerRomanPage( "", "i" ).getOrd() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
-     */
-    @Test
-    public final void test2() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
+   */
+  @Test
+  public final void test2() {
 
-        assertEquals(2, new LowerRomanPage("", "ii").getOrd());
-    }
+    assertEquals( 2, new LowerRomanPage( "", "ii" ).getOrd() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
-     */
-    @Test
-    public final void test3() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
+   */
+  @Test
+  public final void test3() {
 
-        assertEquals(3, new LowerRomanPage("", "iii").getOrd());
-    }
+    assertEquals( 3, new LowerRomanPage( "", "iii" ).getOrd() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
-     */
-    @Test
-    public final void test4() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
+   */
+  @Test
+  public final void test4() {
 
-        assertEquals(4, new LowerRomanPage("", "iv").getOrd());
-    }
+    assertEquals( 4, new LowerRomanPage( "", "iv" ).getOrd() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
-     */
-    @Test
-    public final void test4o() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
+   */
+  @Test
+  public final void test4o() {
 
-        assertEquals(4, new LowerRomanPage("", "iiii").getOrd());
-    }
+    assertEquals( 4, new LowerRomanPage( "", "iiii" ).getOrd() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
-     */
-    @Test
-    public final void test9() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
+   */
+  @Test
+  public final void test9() {
 
-        assertEquals(9, new LowerRomanPage("", "ix").getOrd());
-    }
+    assertEquals( 9, new LowerRomanPage( "", "ix" ).getOrd() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
-     */
-    @Test(expected = IllegalArgumentException.class)
-    public final void testError1() {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.type.page.LowerRomanPage#LowerRomanPage(java.lang.String, java.lang.String)}.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public final void testError1() {
 
-        new LowerRomanPage("", "");
-    }
+    new LowerRomanPage( "", "" );
+  }
 
 }

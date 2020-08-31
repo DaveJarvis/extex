@@ -22,53 +22,53 @@ package org.extex.exbib.core.db;
 /**
  * This class models a pair consisting of a {@link String String} named key and
  * a {@link Value Value} named value.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class KeyValue {
 
-    /**
-     * The field {@code theKey} contains the instance variable containing the
-     * key.
-     */
-    private final String theKey;
+  /**
+   * The field {@code theKey} contains the instance variable containing the
+   * key.
+   */
+  private final String theKey;
 
-    /**
-     * The field {@code theValue} contains the instance variable containing the
-     * value.
-     */
-    private final Value theValue;
+  /**
+   * The field {@code theValue} contains the instance variable containing the
+   * value.
+   */
+  private final Value theValue;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param key the key
-     * @param val the value
-     */
-    public KeyValue(String key, Value val) {
+  /**
+   * Creates a new object.
+   *
+   * @param key the key
+   * @param val the value
+   */
+  public KeyValue( String key, Value val ) {
 
-        theKey = key;
-        theValue = val;
-    }
+    theKey = key;
+    theValue = val;
+  }
 
-    /**
-     * Getter for the key.
-     * 
-     * @return the key
-     */
-    public String getKey() {
+  /**
+   * Getter for the key.
+   *
+   * @return the key
+   */
+  public String getKey() {
 
-        return theKey;
-    }
+    return theKey;
+  }
 
-    /**
-     * Getter for the value.
-     * 
-     * @return the value
-     */
-    public Value getValue() {
+  /**
+   * Getter for the value.
+   *
+   * @return the value
+   */
+  public Value getValue() {
 
-        return theValue;
-    }
+    return theValue;
+  }
 
 }

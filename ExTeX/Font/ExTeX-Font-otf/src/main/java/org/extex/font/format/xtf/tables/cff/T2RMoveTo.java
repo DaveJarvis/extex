@@ -19,121 +19,120 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * rmoveto : dx1 dy1 rmoveto (21).
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2RMoveTo extends T2PathConstruction {
 
-    /**
-     * dx.
-     */
-    private final T2Number dx;
+  /**
+   * dx.
+   */
+  private final T2Number dx;
 
-    /**
-     * dy.
-     */
-    private final T2Number dy;
+  /**
+   * dy.
+   */
+  private final T2Number dy;
 
-    /**
-     * The width (optional).
-     */
-    private T2Number width = null;
+  /**
+   * The width (optional).
+   */
+  private T2Number width = null;
 
-    /**
-     * Create a new object.
-     * 
-     * @param ch The char string.
-     * @param stack The stack.
-     * 
-     * @throws IOException in case of an error
-     */
-    public T2RMoveTo(List<T2CharString> stack, CharString ch)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param ch    The char string.
+   * @param stack The stack.
+   * @throws IOException in case of an error
+   */
+  public T2RMoveTo( List<T2CharString> stack, CharString ch )
+      throws IOException {
 
-        super(stack, new short[]{T2RMOVETO}, ch);
+    super( stack, new short[]{T2RMOVETO}, ch );
 
-        int n = stack.size();
+    int n = stack.size();
 
-        if (n > 2) {
-            width = checkWidth(stack, ch);
-        }
-        n = stack.size();
-        if (n != 2) {
-            throw new T2MissingNumberException();
-        }
-
-        dx = (T2Number) stack.get(0);
-        dy = (T2Number) stack.get(1);
-
+    if( n > 2 ) {
+      width = checkWidth( stack, ch );
+    }
+    n = stack.size();
+    if( n != 2 ) {
+      throw new T2MissingNumberException();
     }
 
-    /**
-     * Getter for dx.
-     * 
-     * @return the dx
-     */
-    public T2Number getDx() {
+    dx = (T2Number) stack.get( 0 );
+    dy = (T2Number) stack.get( 1 );
 
-        return dx;
+  }
+
+  /**
+   * Getter for dx.
+   *
+   * @return the dx
+   */
+  public T2Number getDx() {
+
+    return dx;
+  }
+
+  /**
+   * Getter for dy.
+   *
+   * @return the dy
+   */
+  public T2Number getDy() {
+
+    return dy;
+  }
+
+  @Override
+  public int getID() {
+
+    return TYPE_RMOVETO;
+  }
+
+  @Override
+  public String getName() {
+
+    return "rmoveto";
+  }
+
+  @Override
+  public Object getValue() {
+
+    T2Number[] arr = new T2Number[ 2 ];
+    arr[ 0 ] = dx;
+    arr[ 1 ] = dy;
+    return arr;
+  }
+
+  @Override
+  public String toText() {
+
+    StringBuilder buf = new StringBuilder();
+    if( width != null ) {
+      buf.append( width.toString() ).append( ' ' );
     }
+    buf.append( dx.toString() ).append( ' ' );
+    buf.append( dy.toString() ).append( ' ' );
+    buf.append( getName() );
+    return buf.toString();
+  }
 
-    /**
-     * Getter for dy.
-     * 
-     * @return the dy
-     */
-    public T2Number getDy() {
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        return dy;
-    }
-
-@Override
-    public int getID() {
-
-        return TYPE_RMOVETO;
-    }
-
-@Override
-    public String getName() {
-
-        return "rmoveto";
-    }
-
-@Override
-    public Object getValue() {
-
-        T2Number[] arr = new T2Number[2];
-        arr[0] = dx;
-        arr[1] = dy;
-        return arr;
-    }
-
-@Override
-    public String toText() {
-
-        StringBuilder buf = new StringBuilder();
-        if (width != null) {
-            buf.append(width.toString()).append(' ');
-        }
-        buf.append(dx.toString()).append(' ');
-        buf.append(dy.toString()).append(' ');
-        buf.append(getName());
-        return buf.toString();
-    }
-
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("dx", dx);
-        writer.writeAttribute("dy", dy);
-        writer.writeEndElement();
-    }
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "dx", dx );
+    writer.writeAttribute( "dy", dy );
+    writer.writeEndElement();
+  }
 }

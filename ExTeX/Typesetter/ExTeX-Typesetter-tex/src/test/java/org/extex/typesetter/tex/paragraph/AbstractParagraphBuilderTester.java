@@ -65,7 +65,7 @@ import static org.junit.Assert.assertTrue;
  * This is the abstract base class to test a paragraph builder.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 @SuppressWarnings("RedundantThrows")
 public abstract class AbstractParagraphBuilderTester {
 
@@ -73,7 +73,7 @@ public abstract class AbstractParagraphBuilderTester {
    * Inner class for the typesetter options.
    *
    * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-  */
+   */
   private static class MockOptions implements TypesetterOptions {
 
     /**
@@ -791,7 +791,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   *  Test case checking that ...
+   * Test case checking that ...
    *
    * @throws Exception in case of an error
    */
@@ -818,7 +818,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   *  Test case checking that ...
+   * Test case checking that ...
    *
    * @throws Exception in case of an error
    */
@@ -846,7 +846,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   *  Test case checking that ...
+   * Test case checking that ...
    *
    * @throws Exception in case of an error
    */
@@ -898,7 +898,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   *  Test case checking that ...
+   * Test case checking that ...
    *
    * @throws Exception in case of an error
    */
@@ -920,7 +920,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   *  Test case checking that ...
+   * Test case checking that ...
    *
    * @throws Exception in case of an error
    */
@@ -945,7 +945,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   *  Test case checking that discretionary without content may be
+   * Test case checking that discretionary without content may be
    * contained in the non-broken text.
    *
    * @throws Exception in case of an error
@@ -983,7 +983,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   *  Test case checking that discretionary without content may be
+   * Test case checking that discretionary without content may be
    * contained in the non-broken text.
    *
    * @throws Exception in case of an error
@@ -1012,8 +1012,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   *  Test case checking that the empty list is treated correctly.
-   *
+   * Test case checking that the empty list is treated correctly.
    *
    * @throws Exception in case of an error
    */

@@ -24,66 +24,66 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the constant dimen parser.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConstantDimenParserTest extends ExTeXLauncher {
 
 
-    public ConstantDimenParserTest() {
+  public ConstantDimenParserTest() {
 
-    }
+  }
 
-    /**
-     * Test method for {@link org.extex.base.parser.ConstantDimenParser#parse(
-     * org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource,
-     * org.extex.typesetter.Typesetter)}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testParse1() throws Exception {
+  /**
+   * Test method for {@link org.extex.base.parser.ConstantDimenParser#parse(
+   *org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource,
+   * org.extex.typesetter.Typesetter)}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testParse1() throws Exception {
 
-        assertOutput("\\mathchardef\\T=1000 " + "\\dimen0=-\\T pt"
-                + "\\showthe\\dimen0 " + "\\end",
+    assertOutput( "\\mathchardef\\T=1000 " + "\\dimen0=-\\T pt"
+                      + "\\showthe\\dimen0 " + "\\end",
 
-            "> -1000.0pt.\n",
+                  "> -1000.0pt.\n",
 
-            "");
-    }
+                  "" );
+  }
 
-    /**
-     * Test method for {@link org.extex.base.parser.ConstantDimenParser#parse(
-     * org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource,
-     * org.extex.typesetter.Typesetter)}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testParse2() throws Exception {
+  /**
+   * Test method for {@link org.extex.base.parser.ConstantDimenParser#parse(
+   *org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource,
+   * org.extex.typesetter.Typesetter)}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testParse2() throws Exception {
 
-        assertOutput("\\dimen0=--12 pt" + "\\showthe\\dimen0 " + "\\end",
+    assertOutput( "\\dimen0=--12 pt" + "\\showthe\\dimen0 " + "\\end",
 
-            "> 12.0pt.\n",
+                  "> 12.0pt.\n",
 
-            "");
-    }
+                  "" );
+  }
 
-    /**
-     * Test method for {@link org.extex.base.parser.ConstantDimenParser#parse(
-     * org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource,
-     * org.extex.typesetter.Typesetter)}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testParse3() throws Exception {
+  /**
+   * Test method for {@link org.extex.base.parser.ConstantDimenParser#parse(
+   *org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource,
+   * org.extex.typesetter.Typesetter)}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testParse3() throws Exception {
 
-        assertOutput("\\dimen0=- -12 pt" + "\\showthe\\dimen0 " + "\\end",
+    assertOutput( "\\dimen0=- -12 pt" + "\\showthe\\dimen0 " + "\\end",
 
-            "> 12.0pt.\n",
+                  "> 12.0pt.\n",
 
-            "");
-    }
+                  "" );
+  }
 
 }

@@ -21,16 +21,16 @@ package org.extex.font.format.xtf.tables.cff;
 
 /**
  * Interface, to calculate the bounding box for the {@link CharString}.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface CharStringCalc {
 
-    /**
-     * Calculate the bounding box.
-     * 
-     * @param ch The {@link CharString} object.
-     */
-    void calculate(CharString ch);
+  /**
+   * Calculate the bounding box.
+   *
+   * @param ch The {@link CharString} object.
+   */
+  void calculate( CharString ch );
 
 }

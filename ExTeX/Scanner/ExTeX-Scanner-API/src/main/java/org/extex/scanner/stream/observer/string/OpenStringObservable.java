@@ -24,14 +24,14 @@ package org.extex.scanner.stream.observer.string;
  * open string event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OpenStringObservable {
 
-    /**
-     * Register an open string observer for later use.
-     *
-     * @param observer the observer to be registered
-     */
-    void registerObserver(OpenStringObserver observer);
+  /**
+   * Register an open string observer for later use.
+   *
+   * @param observer the observer to be registered
+   */
+  void registerObserver( OpenStringObserver observer );
 
 }

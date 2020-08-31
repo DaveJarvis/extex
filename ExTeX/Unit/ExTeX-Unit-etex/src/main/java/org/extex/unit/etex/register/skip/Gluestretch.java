@@ -37,7 +37,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \gluestretch}.
- * 
+ *
  * <p>The Primitive {@code \gluestretch}</p>
  * <p>
  * The primitive {@code \gluestretch} translates a stretch part of a glue
@@ -49,84 +49,85 @@ import org.extex.typesetter.exception.TypesetterException;
  * The primitive {@code \gluestretch} can be used wherever a length is
  * expected. The primitive is also applicable to {@code \the}.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;gluestretch&rang;
  *      &rarr; {@code \gluestretch} {@linkplain
  *        org.extex.interpreter.parser.GlueParser#parseGlue(
- *        org.extex.interpreter.context.Context,
+ *org.extex.interpreter.context.Context,
  *        org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
  *        &lang;glue&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \gluestretch\skip1  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Gluestretch extends AbstractCode
-        implements
-            CountConvertible,
-            DimenConvertible,
-            Theable {
+    implements
+    CountConvertible,
+    DimenConvertible,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Gluestretch(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Gluestretch( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Glue glue = source.parseGlue(context, source, typesetter);
-        return glue.getShrink().getValue();
-    }
+    Glue glue = source.parseGlue( context, source, typesetter );
+    return glue.getShrink().getValue();
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertDimen( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Glue glue = source.parseGlue(context, source, typesetter);
-        return glue.getStretch().getValue();
-    }
+    Glue glue = source.parseGlue( context, source, typesetter );
+    return glue.getStretch().getValue();
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        return context.getTokenFactory().toTokens(
-            (new Dimen(convertDimen(context, source, typesetter))).toString());
-    }
+    return context.getTokenFactory().toTokens(
+        (new Dimen( convertDimen( context, source, typesetter ) )).toString() );
+  }
 
 }

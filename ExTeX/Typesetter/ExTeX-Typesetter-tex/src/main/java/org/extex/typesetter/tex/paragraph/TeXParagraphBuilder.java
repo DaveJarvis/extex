@@ -59,7 +59,7 @@ import java.util.logging.Logger;
  * Java. This includes the original comments. Thus most of the original comments
  * can still be found in this file.
  * </p>
- * 
+ *
  * <p>
  * 813. Breaking paragraphs into lines.
  * </p>
@@ -91,7 +91,7 @@ import java.util.logging.Logger;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 @SuppressWarnings("RedundantThrows")
 public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
 
@@ -117,61 +117,47 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     private TypesetterOptions options;
 
     /**
-     *  <p>The Count Parameter {@code \adjdemerits}</p>
-*
-     * TODO missing documentation
+     * <p>The Count Parameter {@code \adjdemerits}</p>
      */
     private long adjDemerits;
 
     /**
-     *  <p>The Count Parameter {@code \brokenpenalty}</p>
-*
+     * <p>The Count Parameter {@code \brokenpenalty}</p>
+     *
      * <p>
      * The parameter {@code \brokenpenalty} contains the penalty which is added
      * if a line ends within an hyphenation point.
      * </p>
-     * 
      */
     private long brokenPenalty;
 
     /**
-     *  <p>The Count Parameter {@code \clubpenalty}</p>
-*
-     * TODO missing documentation
+     * <p>The Count Parameter {@code \clubpenalty}</p>
      */
     private long clubPenalty;
 
     /**
-     *  <p>The Count Parameter {@code \doublehyphendemerits}</p>
-*
-     * TODO missing documentation
+     * <p>The Count Parameter {@code \doublehyphendemerits}</p>
      */
     private long doubleHyphenDemerits;
 
     /**
-     *  <p>The Count Parameter {@code \emergencystretch}</p>
-*
-     * TODO missing documentation
+     * <p>The Count Parameter {@code \emergencystretch}</p>
      */
     private FixedDimen emergencyStretch;
 
     /**
-     *  <p>The CountParameter {@code \exhyphenpenalty}</p>
-*
-     * TODO missing documentation
+     * <p>The CountParameter {@code \exhyphenpenalty}</p>
      */
     private long exHyphenPenalty;
 
     /**
-     *  <p>The Parameter {@code \finalhyphendemerits}</p>
-*
+     * <p>The Parameter {@code \finalhyphendemerits}</p>
      */
     private long finalHyphenDemerits;
 
     /**
-     *  <p>The Count Parameter {@code \finalwidowpenalty}</p>
-*
-     * TODO missing documentation
+     * <p>The Count Parameter {@code \finalwidowpenalty}</p>
      */
     private long finalWidowPenalty;
 
@@ -203,16 +189,16 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * the line. Those effects can be achieved in combination with the parameter
      * {@code \rightskip}.
      * </p>
-     * 
+     *
      * <p>Examples</p>
 
-     * 
+     *
      * <pre class="TeXSample">
      *    \leftskip=0pt plus 2pt minus 2pt  </pre>
-     * 
+     *
      * <pre class="TeXSample">
      *    \leftskip=1fill  </pre>
-     * 
+     *
      */
     private FixedGlue leftSkip;
 
@@ -236,13 +222,13 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * The parameter {@code \parfillskip} contains the glue which is added at
      * the end of each paragraph.
      * </p>
-     * 
+     *
      * <p>Examples</p>
 
-     * 
+     *
      * <pre class="TeXSample">
      *    \parfillskip=.5ex plus 2pt minus 2pt  </pre>
-     * 
+     *
      */
     private FixedGlue parfillSkip;
 
@@ -269,15 +255,15 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * the line. Those effects can be achieved in combination with the parameter
      * {@code \leftskip}.
      * </p>
-     * 
+     *
      * <p>Examples</p>
      *
      * <pre class="TeXSample">
      *    \rightskip=0pt plus 2pt minus 2pt  </pre>
-     * 
+     *
      * <pre class="TeXSample">
      *    \rightskip=1fill  </pre>
-     * 
+     *
      */
     private FixedGlue rightSkip;
 
@@ -334,8 +320,8 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * values stored in it will be overwritten whenever this object will be used
      * for the current paragraph.
      */
-    private final HangingParagraphShape hangingParshape = new HangingParagraphShape(
-        0, Dimen.ZERO_PT, Dimen.ZERO_PT);
+    private final HangingParagraphShape hangingParshape =
+        new HangingParagraphShape( 0, Dimen.ZERO_PT, Dimen.ZERO_PT );
 
     /**
      * <p>
@@ -348,7 +334,8 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * alignment finishing routine.
      * </p>
      * <p>
-      * &lt;&lt;Global variables 13>> +::= pack_begin_line: integer; {source file line
+     * &lt;&lt;Global variables 13>> +::= pack_begin_line: integer; {source
+     * file line
      * where the current paragraph or alignment began; a negative value denotes
      * alignment}
      * </p>
@@ -384,7 +371,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * formula.
      * </p>
      * <p>
-      * &lt;&lt;Global variables 13>> +::=
+     * &lt;&lt;Global variables 13>> +::=
      * </p>
      * <p>
      * just_box: pointer; {the hlist_node for the last line of the new
@@ -397,16 +384,20 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 821. The passive node for a given breakpoint contains only four fields:
      *
      * <ul>
-     * <li>{@code link} points to the passive node created just before this one, if any,
+     * <li>{@code link} points to the passive node created just before this
+     * one, if any,
      * otherwise it is null.</li>
-     * 
-     * <li>{@code cur_break} points to the position of this breakpoint in the horizontal
+     *
+     * <li>{@code cur_break} points to the position of this breakpoint in the
+     * horizontal
      * list for the paragraph being broken.</li>
-     * 
-     * <li>{@code prev_break} points to the passive node that should precede this one in an
+     *
+     * <li>{@code prev_break} points to the passive node that should precede
+     * this one in an
      * optimal path to this breakpoint.</li>
-     * 
-     * <li>{@code serial} is equal to n if this passive node is the nth one created during
+     *
+     * <li>{@code serial} is equal to n if this passive node is the nth one
+     * created during
      * the current pass. (This field is used only when printing out detailed
      * statistics about the line-breaking calculations.)</li>
      * </ul>
@@ -420,21 +411,24 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      *
      * <ul>
      * <li>define passive_node_size=2 {number of words in passive nodes}</li>
-     * 
-     * <li>define cur_break ::= rlink {in passive node, points to position of this
+     *
+     * <li>define cur_break ::= rlink {in passive node, points to position of
+     * this
      * breakpoint}</li>
-     * 
-     * <li>define prev_break ::= llink {points to passive node that should precede
+     *
+     * <li>define prev_break ::= llink {points to passive node that should
+     * precede
      * this one}</li>
-     * 
-     * <li>define serial ::= info {serial number for symbolic identification}</li>
-     * 
+     *
+     * <li>define serial ::= info {serial number for symbolic identification}
+     * </li>
+     *
      * <li>&lt;&lt;Global variables 13&gt;&gt; +::=</li>
-     * 
+     *
      * <li>passive: pointer; {most recent node on passive list}</li>
-     * 
+     *
      * <li>printed_node: pointer; {most recent node that has been printed}</li>
-     * 
+     *
      * <li>pass_number: halfword; {the number of passive nodes allocated on this
      * pass}</li>
      * </ul>
@@ -478,7 +472,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
 
     /*
      * 818.
-     * 
+     *
      * The algorithm essentially determines the best possible way to achieve
      * each feasible combination of position, line, and fitness. Thus, it
      * answers questions like, "What is the best way to break the opening part
@@ -488,7 +482,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * sufficiently large line numbers as equivalent, when the looseness
      * parameter is zero, and this makes it possible for the algorithm to save
      * space and time.
-     * 
+     *
      * An "active node" and a "passive node" are created in mem for each
      * feasible breakpoint that needs to be considered. Active nodes are three
      * words long and passive nodes are two words long. We need active nodes
@@ -499,9 +493,9 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
 
     /*
      * 820.
-     * 
-      * &lt;&lt;Initialize the special list heads and constant nodes 790>> +::=
-     * 
+     *
+     * &lt;&lt;Initialize the special list heads and constant nodes 790>> +::=
+     *
      * type(last_active) <-- hyphenated; line_number(last_active) <--
      * max_halfword; subtype(last_active) <-- 0; {the subtype is never examined
      * by the algorithm}
@@ -514,7 +508,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
 
     /*
      * 823.
-     * 
+     *
      * As the algorithm runs, it maintains a set of six delta-like registers for
      * the length of the line following the first active breakpoint to the
      * current position in the given hlist. When it makes a pass through the
@@ -522,14 +516,14 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * length following the active breakpoint of current interest. A third set
      * holds the length of an empty line (namely, the sum of \leftskip and
      * \rightskip); and a fourth set is used to create new delta nodes.
-     * 
+     *
      * When we pass a delta node we want to do operations like
-     * 
+     *
      * for k <-- 1 to6 d o cur_active_width[k] <--
      * cur_active_width[k]+mem[q+k].sc; and we want to do this without the
      * overhead of for loops. The do_all_six macro makes such six-tuples
      * convenient.
-     * 
+     *
      * define do_all_six(#) ::= #(1); #(2); #(3); #(4); #(5); #(6)
      */
 
@@ -557,7 +551,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
 
     /*
      * 824.
-     * 
+     *
      * Let's state the principles of the delta nodes more precisely and
      * concisely, so that the following programs will be less obscure. For each
      * legal breakpoint p in the paragraph, we define two quantities &alpha;(p)
@@ -567,7 +561,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * material from the beginning of the paragraph to a point "after" a break
      * at p and to a point "before" a break at q; and &gamma; is the width of an
      * empty line, namely the length contributed by \leftskip and \rightskip.
-     * 
+     *
      * Suppose, for example, that the paragraph consists entirely of alternating
      * boxes and glue skips; let the boxes have widths
      * x<sub>1</sub>&hellip;x<sub>n</sub> and let the skips have widths
@@ -581,7 +575,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * say, is &gamma;+x<sub>3</sub> +y<sub>3</sub> +x<sub>4</sub>
      * +y<sub>4</sub> +x<sub>5</sub> =&gamma;+&beta;(p<sub>5</sub> )
      * -&alpha;(p<sub>2</sub> ).
-     * 
+     *
      * The quantities &alpha;, &beta;, &gamma; involve glue stretchability and
      * shrinkability as well as a natural width. If we were to compute
      * &alpha;(p) and &beta;(p) for each p, we would need multiple precision
@@ -620,11 +614,11 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
 
     /*
      * 828.
-     * 
+     *
      * A pointer variable cur_p runs through the given horizontal list as we
      * look for breakpoints. This variable is global, since it is used both by
      * line_break and by its subprocedure try_break.
-     * 
+     *
      * Another global variable called threshold is used to determine the
      * feasibility of individual lines: breakpoints are feasible if there is a
      * way to reach them without creating lines whose badness exceeds threshold.
@@ -634,7 +628,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 10000 or more, all legal breaks are considered feasible, since the
      * badness function specified above never returns a value greater than
      * 10000.
-     * 
+     *
      * Up to three passes might be made through the paragraph in an attempt to
      * find at least one set of feasible breakpoints. On the first pass, we have
      * threshold=pretolerance and second_pass=final_pass= false. If this pass
@@ -660,7 +654,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      */
     private Fitness fitClass;
 
-private boolean breakType;
+    private boolean breakType;
 
     /**
      * prev_prev_r: pointer; {a step behind prev_r, if type(prev_r)=delta_node}
@@ -669,28 +663,28 @@ private boolean breakType;
 
     /*
      * 829.
-     * 
+     *
      * The heart of the line-breaking procedure is `try_break', a subroutine
      * that tests if the current breakpoint cur_p is feasible, by running
      * through the active list to see what lines of text can be made from active
      * nodes to cur_p. If feasible breaks are possible, new break nodes are
      * created. If cur_p is too far from an active node, that node is
      * deactivated.
-     * 
+     *
      * The parameter pi to try_break is the penalty associated with a break at
      * cur_p; we have pi=eject_penalty if the break is forced, and
      * pi=inf_penalty if the break is illegal.
-     * 
+     *
      * The other parameter, break_type, is set to hyphenated or unhyphenated,
      * depending on whether or not the current break is at a disc_node. The end
      * of a paragraph is also regarded as `hyphenated'; this case is
      * distinguishable by the condition cur_p=null.
-     * 
+     *
      * define copy_to_cur_active(#) ::= cur_active_width[#] <-- active_width[#]
-     * 
+     *
      * define deactivate=60 {go here when node r should be deactivated}
-     * 
-      * &lt;&lt;Declare subprocedures for line_break 826>> +::=
+     *
+     * &lt;&lt;Declare subprocedures for line_break 826>> +::=
      */
 
     /**
@@ -708,7 +702,7 @@ private boolean breakType;
      * best total demerits known for current line class and position, given the
      * fitness
      */
-    private final long[] minimalDemerits = new long[4];
+    private final long[] minimalDemerits = new long[ 4 ];
 
     /**
      * best total demerits known for current line class and position
@@ -722,12 +716,12 @@ private boolean breakType;
     /**
      * how to achieve minimal_demerits
      */
-    private final PassiveNode[] bestPlace = new PassiveNode[4];
+    private final PassiveNode[] bestPlace = new PassiveNode[ 4 ];
 
     /**
      * corresponding line number
      */
-    private final int[] bestPlaceLine = new int[4];
+    private final int[] bestPlaceLine = new int[ 4 ];
 
     /**
      * disc_width: scaled; {the length of discretionary material preceding a
@@ -737,7 +731,7 @@ private boolean breakType;
 
     /*
      * 847.
-     * 
+     *
      * The length of lines depends on whether the user has specified \parshape
      * or \hangindent. If par_shape_ptr is not null, it points to a (2n+1)-word
      * record in mem, where the info in the first word contains the value of n,
@@ -751,7 +745,7 @@ private boolean breakType;
      * is hsize-|hang_indent|. The normal setting is par_shape_ptr=null,
      * hang_after=1, and hang_indent=0. Note that if hang_indent=0, the value of
      * hang_after is irrelevant.
-     * 
+     *
      */
 
     // <<Global variables 13>> +::=
@@ -770,7 +764,7 @@ private boolean breakType;
     /**
      * The field {@code D_7230584} contains the constant for comparison.
      */
-    private static final Dimen D_7230584 = new Dimen(7230584);
+    private static final Dimen D_7230584 = new Dimen( 7230584 );
 
     /**
      * is node cur_p outside a formula?
@@ -779,7 +773,7 @@ private boolean breakType;
 
     /*
      * 833.
-     * 
+     *
      * As we consider various ways to end a line at cur_p, in a given line
      * number class, we keep track of the best total demerits known, in an array
      * with one entry for each of the fitness classifications. For example,
@@ -792,19 +786,19 @@ private boolean breakType;
      * minimal_demerits entries will be equal to awful_bad, which is 2^{30} - 1.
      * Another variable, minimum_demerits, keeps track of the smallest value in
      * the minimal_demerits array.
-     * 
-      * &lt;&lt;Global variables 13>> +::=
-     * 
+     *
+     * &lt;&lt;Global variables 13>> +::=
+     *
      * minimal_demerits: array [very_loose_fit .. tight_fit] of integer; {best
      * total demerits known for current line class and position, given the
      * fitness}
-     * 
+     *
      * minimum_demerits: integer; {best total demerits known for current line
      * class and position}
-     * 
+     *
      * best_place: array [very_loose_fit .. tight_fit] of pointer; {how to
      * achieve minimal_demerits}
-     * 
+     *
      * best_pl_line: array [very_loose_fit .. tight_fit] of halfword;
      * {corresponding line number}
      */
@@ -824,386 +818,329 @@ private boolean breakType;
      * on the node types.
      */
     private final NodeVisitor<Object, NodeList> visitor =
-            new NodeVisitor<Object, NodeList>() {
+        new NodeVisitor<Object, NodeList>() {
 
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(org.extex.typesetter.type.node.AdjustNode,
-                 *      java.lang.Object)
+            @Override
+            public Object visitAdjust( AdjustNode node, NodeList value ) {
+
+                return null;
+            }
+
+            @Override
+            public Object visitAfterMath( AfterMathNode node, NodeList value )
+                throws GeneralException {
+
+                autoBreaking = true;
+                kernBreak( value );
+                return null;
+            }
+
+            @Override
+            public Object visitAlignedLeaders( AlignedLeadersNode node,
+                                               NodeList value )
+                throws GeneralException {
+
+                // confusion("paragraph")
+                throw new HelpingException( localizer, "Panic.Paragraph" );
+            }
+
+            @Override
+            public Object visitBeforeMath( BeforeMathNode node,
+                                           NodeList value )
+                throws GeneralException {
+
+                autoBreaking = false;
+                kernBreak( value );
+                return null;
+            }
+
+            @Override
+            public Object visitCenteredLeaders( CenteredLeadersNode node,
+                                                NodeList value )
+                throws GeneralException {
+
+                // confusion("paragraph")
+                throw new HelpingException( localizer, "Panic.Paragraph" );
+            }
+
+            @Override
+            public Object visitChar( CharNode node, NodeList value )
+                throws GeneralException {
+
+                // begin if is_char_node(cur_p) then
+                // <<Advance (c)cur_p to the node following the present
+                // string of
+                // characters 867>>;
+                Node n = advanceToNonChar( value );
+                return n.visit( this, value );
+            }
+
+            @Override
+            public Object visitDiscretionary( DiscretionaryNode node,
+                                              NodeList nodes )
+                throws GeneralException {
+
+                // disc_node: <<Try to break after a discretionary fragment,
+                // then
+                // goto done5 869>>;
+                /*
+                 * 869.
+                 *
+                 * The following code knows that discretionary texts contain
+                 * only character nodes, kern nodes, box nodes, rule nodes,
+                 * and ligature nodes.
+                 *
+                 * This code is used in section 866.
                  */
-                @Override
-                public Object visitAdjust(AdjustNode node, NodeList value) {
 
-                    return null;
+                // <<Try to break after a discretionary fragment, then goto
+                // done5 869>> ::=
+                // begin s <-- pre_break(cur_p);
+                NodeList nl = node.getPreBreak();
+                // disc_width <-- 0;
+                discretionaryWidth.set( 0 );
+                // if s=null then
+                if( nl == null || nl.size() == 0 ) {
+                    // try_break(ex_hyphen_penalty,hyphenated)
+                    tryBreak( nodes, exHyphenPenalty, true );
+                    // else begin
                 }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(org.extex.typesetter.type.node.AfterMathNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitAfterMath(AfterMathNode node, NodeList value)
-                        throws GeneralException {
-
-                    autoBreaking = true;
-                    kernBreak(value);
-                    return null;
+                else {
+                    // repeat
+                    // <<Add the width of node s to disc_width 870>>;
+                    // s <-- link(s);
+                    // until s=null;
+                    discretionaryWidth.add( node.getWidth() );
+                    // act_width <-- act_width+disc_width;
+                    activeWidth.add( discretionaryWidth );
+                    // try_break(hyphen_penalty,hyphenated);
+                    tryBreak( nodes, hyphenPenalty, true );
+                    // act_width <-- act_width-disc_width;
+                    activeWidth.subtract( discretionaryWidth );
+                    // end ;
                 }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(org.extex.typesetter.type.node.AlignedLeadersNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitAlignedLeaders(AlignedLeadersNode node,
-                        NodeList value) throws GeneralException {
-
-                    // confusion("paragraph")
-                    throw new HelpingException(localizer, "Panic.Paragraph");
+                // r <-- replace_count(cur_p);
+                // s <-- link(cur_p);
+                NodeList s = node.getNoBreak();
+                // while r > 0 do
+                // begin <<Add the width of node s to act_width 871>>;
+                // decr(r);
+                // s <-- link(s);
+                // end ;
+                if( s != null ) {
+                    activeWidth.add( s.getWidth() );
                 }
+                // prev_p <-- cur_p;
+                prevP = curBreak;
+                // cur_p <-- s;
+                curBreak++;
+                // goto done5;
+                return Boolean.TRUE;
+                // end
+            }
 
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(org.extex.typesetter.type.node.BeforeMathNode,
-                 *      java.lang.Object)
+            @Override
+            public Object visitExpandedLeaders( ExpandedLeadersNode node,
+                                                NodeList value )
+                throws GeneralException {
+
+                // confusion("paragraph")
+                throw new HelpingException( localizer, "Panic.Paragraph" );
+            }
+
+            @Override
+            public Object visitGlue( GlueNode glue, NodeList nodes )
+                throws GeneralException {
+
+                // glue_node: begin <<If node cur_p is a legal breakpoint,
+                // call try_break; then update the active widths by
+                // including the glue in glue_ptr(cur_p) 868>>;
+                /*
+                 * 868.
+                 *
+                 * When node cur_p is a glue node, we look at prev_p to see
+                 * whether or not a breakpoint is legal at cur_p, as
+                 * explained above.
+                 *
+                 * This code is used in section 866.
                  */
-                @Override
-                public Object visitBeforeMath(BeforeMathNode node,
-                        NodeList value) throws GeneralException {
 
-                    autoBreaking = false;
-                    kernBreak(value);
-                    return null;
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(org.extex.typesetter.type.node.CenteredLeadersNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitCenteredLeaders(CenteredLeadersNode node,
-                        NodeList value) throws GeneralException {
-
-                    // confusion("paragraph")
-                    throw new HelpingException(localizer, "Panic.Paragraph");
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitChar(org.extex.typesetter.type.node.CharNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitChar(CharNode node, NodeList value)
-                        throws GeneralException {
-
-                    // begin if is_char_node(cur_p) then
-                    // <<Advance (c)cur_p to the node following the present
-                    // string of
-                    // characters 867>>;
-                    Node n = advanceToNonChar(value);
-                    return n.visit(this, value);
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(org.extex.typesetter.type.node.DiscretionaryNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitDiscretionary(DiscretionaryNode node,
-                        NodeList nodes) throws GeneralException {
-
-                    // disc_node: <<Try to break after a discretionary fragment,
-                    // then
-                    // goto done5 869>>;
-                    /*
-                     * 869.
-                     *
-                     * The following code knows that discretionary texts contain
-                     * only character nodes, kern nodes, box nodes, rule nodes,
-                     * and ligature nodes.
-                     *
-                     * This code is used in section 866.
-                     */
-
-                    // <<Try to break after a discretionary fragment, then goto
-                    // done5 869>> ::=
-                    // begin s <-- pre_break(cur_p);
-                    NodeList nl = node.getPreBreak();
-                    // disc_width <-- 0;
-                    discretionaryWidth.set(0);
-                    // if s=null then
-                    if (nl == null || nl.size() == 0) {
-                        // try_break(ex_hyphen_penalty,hyphenated)
-                        tryBreak(nodes, exHyphenPenalty, true);
-                        // else begin
-                    } else {
-                        // repeat
-                        // <<Add the width of node s to disc_width 870>>;
-                        // s <-- link(s);
-                        // until s=null;
-                        discretionaryWidth.add(node.getWidth());
-                        // act_width <-- act_width+disc_width;
-                        activeWidth.add(discretionaryWidth);
-                        // try_break(hyphen_penalty,hyphenated);
-                        tryBreak(nodes, hyphenPenalty, true);
-                        // act_width <-- act_width-disc_width;
-                        activeWidth.subtract(discretionaryWidth);
+                // <<If node cur_p is a legal breakpoint, call try_break;
+                // then update the active widths by including the glue in
+                // glue_ptr(cur_p) 868>> ::= if auto_breaking then
+                if( autoBreaking ) {
+                    Node previousNode = nodes.get( prevP );
+                    // begin if is_char_node(prev_p) then
+                    if( previousNode instanceof CharNode ) {
+                        // try_break(0,unhyphenated)
+                        tryBreak( nodes, 0, false );
+                        // else if precedes_break(prev_p) then
+                    }
+                    else if( !(previousNode instanceof Discardable) ) {
+                        // try_break(0,unhyphenated)
+                        tryBreak( nodes, 0, false );
+                        // else if (type(prev_p)=kern_node) &&
+                        // (subtype(prev_p) != explicit) then
+                    }
+                    else if( previousNode instanceof KernNode
+                        && !(previousNode instanceof ExplicitKernNode) ) {
+                        // try_break(0,unhyphenated);
+                        tryBreak( nodes, 0, false );
                         // end ;
                     }
-                    // r <-- replace_count(cur_p);
-                    // s <-- link(cur_p);
-                    NodeList s = node.getNoBreak();
-                    // while r > 0 do
-                    // begin <<Add the width of node s to act_width 871>>;
-                    // decr(r);
-                    // s <-- link(s);
-                    // end ;
-                    if (s != null) {
-                        activeWidth.add(s.getWidth());
-                    }
-                    // prev_p <-- cur_p;
-                    prevP = curBreak;
-                    // cur_p <-- s;
-                    curBreak++;
-                    // goto done5;
-                    return Boolean.TRUE;
-                    // end
+                }
+                // check_shrinkage(glue_ptr(cur_p));
+                checkShrinkage( glue.getSize() );
+                // q <-- glue_ptr(cur_p);
+                FixedGlue g = glue.getSize();
+                // act_width <-- act_width+width(q);
+                // active_width[2+stretch_order(q)] <-- active_width[2+
+                // stretch_order(q)]+stretch(q);
+                // active_width[6] <-- active_width[6]+shrink(q)
+                activeWidth.add( g );
+
+                // - - - -
+                // if second_pass && auto_breaking then
+                if( secondPass && autoBreaking ) {
+                    // <<Try to hyphenate the following word 894>>;
+                    hyphenateFollowingWord( nodes, curBreak );
                 }
 
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(org.extex.typesetter.type.node.ExpandedLeadersNode,
-                 *      java.lang.Object)
+                // end ;
+                return null;
+            }
+
+
+            @Override
+            public Object visitHorizontalList( HorizontalListNode node,
+                                               NodeList value )
+                throws GeneralException {
+
+                activeWidth.add( node.getWidth() );
+                return null;
+            }
+
+
+            @Override
+            public Object visitInsertion( InsertionNode node, NodeList value )
+                throws GeneralException {
+
+                return null;
+            }
+
+
+            @Override
+            public Object visitKern( KernNode node, NodeList value )
+                throws GeneralException {
+
+                // kern_node: if subtype(cur_p)=explicit then
+                if( node instanceof ExplicitKernNode ) {
+                    // kern_break
+                    kernBreak( value );
+                    // else act_width <-- act_width+width(cur_p);
+                }
+                else {
+                    activeWidth.add( node.getWidth() );
+                }
+                return null;
+            }
+
+
+            @Override
+            public Object visitLigature( LigatureNode node, NodeList value )
+                throws GeneralException {
+
+                // ligature_node: begin f <-- font(lig_char(cur_p));
+                // act_width <-- act_width+char_width(f)(char_info(f)(
+                // character(lig_char(cur_p))));
+
+                activeWidth.add( node.getWidth() );
+
+                // end ;
+                return null;
+            }
+
+
+            @Override
+            public Object visitMark( MarkNode node, NodeList value )
+                throws GeneralException {
+
+                return null;
+            }
+
+
+            @Override
+            public Object visitPenalty( PenaltyNode node, NodeList value )
+                throws GeneralException {
+
+                tryBreak( value, (int) node.getPenalty(), false );
+                return null;
+            }
+
+
+            @Override
+            public Object visitRule( RuleNode node, NodeList value )
+                throws GeneralException {
+
+                activeWidth.add( node.getWidth() );
+                return null;
+            }
+
+
+            @Override
+            public Object visitSpace( SpaceNode node, NodeList value )
+                throws GeneralException {
+
+                return visitGlue( node, value );
+            }
+
+
+            @Override
+            public Object visitVerticalList( VerticalListNode node,
+                                             NodeList value )
+                throws GeneralException {
+
+                activeWidth.add( node.getWidth() );
+                return null;
+            }
+
+
+            @Override
+            public Object visitVirtualChar( VirtualCharNode node,
+                                            NodeList value )
+                throws GeneralException {
+
+                return visitChar( node, value );
+            }
+
+
+            @Override
+            public Object visitWhatsIt( WhatsItNode node, NodeList value )
+                throws GeneralException {
+
+                // whatsit_node: <<Advance (p)past a whatsit node in the (l)
+                // line_break loop 1362>>;
+                /*
+                 * 1362.
+                 *
+                 * This code is used in section 866.
+                 *
+                 * define adv_past(#) ::= if subtype(#)=language_node then
+                 * begin cur_lang <-- what_lang(#); l_hyf <-- what_lhm(#);
+                 * r_hyf <-- what_rhm(#); end
+                 *
+                 * &lt;&lt;Advance (p)past a whatsit node in the (l)line_break
+                 * loop 1362>> ::= adv_past(cur_p)
                  */
-                @Override
-                public Object visitExpandedLeaders(ExpandedLeadersNode node,
-                        NodeList value) throws GeneralException {
+                // - - -
+                return null;
+            }
 
-                    // confusion("paragraph")
-                    throw new HelpingException(localizer, "Panic.Paragraph");
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitGlue(org.extex.typesetter.type.node.GlueNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitGlue(GlueNode glue, NodeList nodes)
-                        throws GeneralException {
-
-                    // glue_node: begin <<If node cur_p is a legal breakpoint,
-                    // call try_break; then update the active widths by
-                    // including the glue in glue_ptr(cur_p) 868>>;
-                    /*
-                     * 868.
-                     * 
-                     * When node cur_p is a glue node, we look at prev_p to see
-                     * whether or not a breakpoint is legal at cur_p, as
-                     * explained above.
-                     * 
-                     * This code is used in section 866.
-                     */
-
-                    // <<If node cur_p is a legal breakpoint, call try_break;
-                    // then update the active widths by including the glue in
-                    // glue_ptr(cur_p) 868>> ::= if auto_breaking then
-                    if (autoBreaking) {
-                        Node previousNode = nodes.get(prevP);
-                        // begin if is_char_node(prev_p) then
-                        if (previousNode instanceof CharNode) {
-                            // try_break(0,unhyphenated)
-                            tryBreak(nodes, 0, false);
-                            // else if precedes_break(prev_p) then
-                        } else if (!(previousNode instanceof Discardable)) {
-                            // try_break(0,unhyphenated)
-                            tryBreak(nodes, 0, false);
-                            // else if (type(prev_p)=kern_node) &&
-                            // (subtype(prev_p) != explicit) then
-                        } else if (previousNode instanceof KernNode
-                                && !(previousNode instanceof ExplicitKernNode)) {
-                            // try_break(0,unhyphenated);
-                            tryBreak(nodes, 0, false);
-                            // end ;
-                        }
-                    }
-                    // check_shrinkage(glue_ptr(cur_p));
-                    checkShrinkage(glue.getSize());
-                    // q <-- glue_ptr(cur_p);
-                    FixedGlue g = glue.getSize();
-                    // act_width <-- act_width+width(q);
-                    // active_width[2+stretch_order(q)] <-- active_width[2+
-                    // stretch_order(q)]+stretch(q);
-                    // active_width[6] <-- active_width[6]+shrink(q)
-                    activeWidth.add(g);
-
-                    // - - - -
-                    // if second_pass && auto_breaking then
-                    if (secondPass && autoBreaking) {
-                        // <<Try to hyphenate the following word 894>>;
-                        hyphenateFollowingWord(nodes, curBreak);
-                    }
-
-                    // end ;
-                    return null;
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(org.extex.typesetter.type.node.HorizontalListNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitHorizontalList(HorizontalListNode node,
-                        NodeList value) throws GeneralException {
-
-                    activeWidth.add(node.getWidth());
-                    return null;
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(org.extex.typesetter.type.node.InsertionNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitInsertion(InsertionNode node, NodeList value)
-                        throws GeneralException {
-
-                    return null;
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitKern(org.extex.typesetter.type.node.KernNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitKern(KernNode node, NodeList value)
-                        throws GeneralException {
-
-                    // kern_node: if subtype(cur_p)=explicit then
-                    if (node instanceof ExplicitKernNode) {
-                        // kern_break
-                        kernBreak(value);
-                        // else act_width <-- act_width+width(cur_p);
-                    } else {
-                        activeWidth.add(node.getWidth());
-                    }
-                    return null;
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitLigature(org.extex.typesetter.type.node.LigatureNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitLigature(LigatureNode node, NodeList value)
-                        throws GeneralException {
-
-                    // ligature_node: begin f <-- font(lig_char(cur_p));
-                    // act_width <-- act_width+char_width(f)(char_info(f)(
-                    // character(lig_char(cur_p))));
-
-                    activeWidth.add(node.getWidth());
-
-                    // end ;
-                    return null;
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitMark(org.extex.typesetter.type.node.MarkNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitMark(MarkNode node, NodeList value)
-                        throws GeneralException {
-
-                    return null;
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(org.extex.typesetter.type.node.PenaltyNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitPenalty(PenaltyNode node, NodeList value)
-                        throws GeneralException {
-
-                    tryBreak(value, (int) node.getPenalty(), false);
-                    return null;
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitRule(org.extex.typesetter.type.node.RuleNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitRule(RuleNode node, NodeList value)
-                        throws GeneralException {
-
-                    activeWidth.add(node.getWidth());
-                    return null;
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitSpace(org.extex.typesetter.type.node.SpaceNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitSpace(SpaceNode node, NodeList value)
-                        throws GeneralException {
-
-                    return visitGlue(node, value);
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(org.extex.typesetter.type.node.VerticalListNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitVerticalList(VerticalListNode node,
-                        NodeList value) throws GeneralException {
-
-                    activeWidth.add(node.getWidth());
-                    return null;
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitVirtualChar(VirtualCharNode node,
-                        NodeList value) throws GeneralException {
-
-                    return visitChar(node, value);
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(org.extex.typesetter.type.node.WhatsItNode,
-                 *      java.lang.Object)
-                 */
-                @Override
-                public Object visitWhatsIt(WhatsItNode node, NodeList value)
-                        throws GeneralException {
-
-                    // whatsit_node: <<Advance (p)past a whatsit node in the (l)
-                    // line_break loop 1362>>;
-                    /*
-                     * 1362.
-                     * 
-                     * This code is used in section 866.
-                     * 
-                     * define adv_past(#) ::= if subtype(#)=language_node then
-                     * begin cur_lang <-- what_lang(#); l_hyf <-- what_lhm(#);
-                     * r_hyf <-- what_rhm(#); end
-                     * 
-                      * &lt;&lt;Advance (p)past a whatsit node in the (l)line_break
-                     * loop 1362>> ::= adv_past(cur_p)
-                     */
-                    // - - -
-                    return null;
-                }
-
-            };
+        };
 
     /*
      * 870.
-     * 
+     *
      * This code is used in section 869. <<Add the width of node s to disc_width
      * 870>> ::=
      */
@@ -1223,7 +1160,7 @@ private boolean breakType;
     // endcases
     /*
      * 871.
-     * 
+     *
      * This code is used in section 869.
      */
     // <<Add the width of node s to act_width 871>> ::=
@@ -1243,21 +1180,21 @@ private boolean breakType;
     // endcases
     /**
      * 872.
-     * 
+     * <p>
      * The forced line break at the paragraph's end will reduce the list of
      * breakpoints so that all active nodes represent breaks at cur_p=null. On
      * the first pass, we insist on finding an active node that has the correct
      * "looseness." On the final pass, there will be at least one active node,
      * and we will match the desired looseness as well as we can.
-     * 
+     * <p>
      * The global variable best_bet will be set to the active node for the best
      * way to break the paragraph, and a few other variables are used to help
      * determine what is best.
-     * 
-      * &lt;&lt;Global variables 13>> +::=
-     * 
+     * <p>
+     * &lt;&lt;Global variables 13>> +::=
+     * <p>
      * best_bet: pointer; {use this passive node and its predecessors}
-     * 
+     * <p>
      * line_diff: integer; {the difference between the current line number and
      * the optimum best_line}
      */
@@ -1284,7 +1221,7 @@ private boolean breakType;
 
     /*
      * 839.
-     * 
+     *
      * When cur_p is a discretionary break, the length of a line "from cur_p to
      * cur_p" has to be defined properly so that the other calculations work
      * out. Suppose that the pre-break text at cur_p has length l_0, the
@@ -1297,10 +1234,10 @@ private boolean breakType;
      * discretionary is empty, a break may also discard q; in that unusual case
      * we subtract the length of q and any other nodes that will be discarded
      * after the discretionary break.
-     * 
+     *
      * The value of l_0 need not be computed, since line_break will put it into
      * the global variable disc_width before calling try_break.
-     * 
+     *
      */
 
     /**
@@ -1315,25 +1252,25 @@ private boolean breakType;
 
     /**
      * 867.
-     * 
+     * <p>
      * The code that passes over the characters of words in a paragraph is part
      * of TeX's inner loop, so it has been streamlined for speed. We
      * use the fact that `\parfillskip' glue appears at the end of each
      * paragraph; it is therefore unnecessary to check if link(cur_p)=null when
      * cur_p is a character node.
-     * 
-     * &lt;&lt;Advance (c)cur_p to the node following the present string of characters
+     * <p>
+     * &lt;&lt;Advance (c)cur_p to the node following the present string of
+     * characters
      * 867&gt;&gt; ::=
-     * 
+     * <p>
      * This code is used in section 866.
-     * 
+     *
      * @param nodes the node list for the paragraph to break
-     * 
      * @return the next non-char node
      */
-    private Node advanceToNonChar(NodeList nodes) {
+    private Node advanceToNonChar( NodeList nodes ) {
 
-        Node node = nodes.get(curBreak);
+        Node node = nodes.get( curBreak );
 
         // begin prev_p <-- cur_p;
         prevP = curBreak;
@@ -1342,13 +1279,13 @@ private boolean breakType;
             // repeat f <-- font(cur_p);
             // act_width <--
             // act_width+char_width(f)(char_info(f)(character(cur_p)));
-            activeWidth.add(node.getWidth());
+            activeWidth.add( node.getWidth() );
             // cur_p <-- link(cur_p);
             curBreak++;
 
-            node = nodes.get(curBreak);
+            node = nodes.get( curBreak );
             // until not is_char_node(cur_p);
-        } while (node instanceof CharNode);
+        } while( node instanceof CharNode );
 
         // end
         return node;
@@ -1356,56 +1293,57 @@ private boolean breakType;
 
     /*
      * 842.
-     * 
+     *
      * This code is used in section 840.
      */
 
     /**
      * 890.
-     * 
+     * <p>
      * Penalties between the lines of a paragraph come from club and widow
      * lines, from the inter_line_penalty parameter, and from lines that end at
      * discretionary breaks. Breaking between lines of a two-line paragraph gets
      * both club-line and widow-line penalties. The local variable pen will be
      * set to the sum of all relevant penalties for the current line, except
      * that the final line is never penalized.
-     * 
+     * <p>
      * This code is used in section 880.
-     * 
-     * &lt;&lt;Append a penalty node, if a nonzero penalty is appropriate 890&gt;&gt; ::=
-     * 
-     * @param line the current line
+     * <p>
+     * &lt;&lt;Append a penalty node, if a nonzero penalty is appropriate
+     * 890&gt;&gt; ::=
+     *
+     * @param line    the current line
      * @param curLine the current line number
      */
-    private void appendPenalty(NodeList line, long curLine) {
+    private void appendPenalty( NodeList line, long curLine ) {
 
         long pen;
 
         // if cur_line+1 != best_line then
-        if (curLine + 1 != bestLine) {
+        if( curLine + 1 != bestLine ) {
             // begin pen <-- inter_line_penalty;
             pen = interLinePenalty;
             // if cur_line=prev_graf+1 then
-            if (curLine == prevGraf + 1) {
+            if( curLine == prevGraf + 1 ) {
                 // pen <-- pen+club_penalty;
                 pen += clubPenalty;
             }
             // if cur_line+2=best_line then
-            if (curLine + 2 == bestLine) {
+            if( curLine + 2 == bestLine ) {
                 // pen <-- pen+final_widow_penalty;
                 pen += finalWidowPenalty;
             }
             // if disc_break then
-            if (discBreak) {
+            if( discBreak ) {
                 // pen <-- pen+broken_penalty;
                 pen += brokenPenalty;
             }
             // if pen != 0 then
-            if (pen != 0) {
+            if( pen != 0 ) {
                 // begin r <-- new_penalty(pen);
                 // link(tail) <-- r;
                 // tail <-- r;
-                line.add(new PenaltyNode(pen));
+                line.add( new PenaltyNode( pen ) );
                 // end ;
             }
             // end
@@ -1414,31 +1352,35 @@ private boolean breakType;
 
     /**
      * 853.
-     * 
+     * <p>
      * Shrinkability is never infinite in a paragraph; we can shrink the line
      * from r to cur_p by at most cur_active_width[6].
-     * 
+     * </p>
+     * <p>
      * This code is used in section 851.
-     * 
-     * &lt;&lt;Set the value of b to the badness for shrinking the line, and compute
-     * the corresponding fit_class 853>> ::=
-     * 
+     * </p>
+     * <p>
+     * &lt;&lt;Set the value of b to the badness for shrinking the line, and
+     * compute the corresponding fit_class 853>> ::=
+     * </p>
+     *
      * @return ...
      */
     private int badnessForShrinking() {
 
         // begin if -shortfall > cur_active_width[6] then
-        GlueComponent minusShortfall = new GlueComponent(shortfall);
+        GlueComponent minusShortfall = new GlueComponent( shortfall );
         minusShortfall.negate();
         int badness;
-        if (minusShortfall.gt(curActiveWidth.getShrink())) {
+        if( minusShortfall.gt( curActiveWidth.getShrink() ) ) {
             // b <-- inf_bad+1
             badness = Badness.INF_BAD + 1;
             // else b <-- badness(-shortfall,cur_active_width[6]);
-        } else {
+        }
+        else {
             badness =
-                    Badness.badness(minusShortfall.getValue(), curActiveWidth
-                        .getShrink().getValue());
+                Badness.badness( minusShortfall.getValue(), curActiveWidth
+                    .getShrink().getValue() );
         }
         // if b > 12 then
         // fit_class <-- tight_fit else fit_class <-- decent_fit;
@@ -1449,21 +1391,27 @@ private boolean breakType;
 
     /**
      * 852.
-     * 
+     * <p>
      * When a line must stretch, the available stretchability can be found in
      * the subarray cur_active_width[2 .. 5], in units of points, fil, fill, and
      * filll.
-     * 
-     * The present section is part of TeX's inner loop, and it is most often performed when the
+     * </p>
+     * <p>
+     * The present section is part of TeX's inner loop, and it is most often
+     * performed when the
      * badness is infinite; therefore it is worth while to make a quick test for
      * large width excess and small stretchability, before calling the badness
      * subroutine.
-     * 
+     * </p>
+     * <p>
      * This code is used in section 851.
-     * 
-      * &lt;&lt;Set the value of b to the badness for stretching the line, and compute
+     * </p>
+     * <p>
+     * &lt;&lt;Set the value of b to the badness for stretching the line, and
+     * compute
      * the corresponding fit_class 852>> ::=
-     * 
+     * </p>
+     *
      * @return ...
      */
     private int badnessForStretching() {
@@ -1471,17 +1419,17 @@ private boolean breakType;
         // if (cur_active_width[3] != 0) || (cur_active_width[4] != 0) || (
         // cur_active_width[5] != 0) then
         FixedGlueComponent stretch = curActiveWidth.getStretch();
+        // begin b <-- 0;
         int badness;
-        if (stretch.getOrder() > 0) {
-            // begin b <-- 0;
-            badness = 0;
+        if( stretch.getOrder() > 0 ) {
             // fit_class <-- decent_fit; {infinite stretch}
             fitClass = Fitness.DECENT;
             // end
-        } else if (shortfall.gt(D_7230584)) {
+        }
+        else if( shortfall.gt( D_7230584 ) ) {
             // else begin if shortfall > 7230584 then
             // if cur_active_width[2] < 1663497 then
-            if (stretch.getValue() < 1663497) {
+            if( stretch.getValue() < 1663497 ) {
                 // begin b <-- inf_bad;
                 badness = Badness.INF_BAD;
                 // fit_class <-- very_loose_fit;
@@ -1492,53 +1440,57 @@ private boolean breakType;
             }
         }
         // b <-- badness(shortfall,cur_active_width[2]);
-        badness = Badness.badness(shortfall.getValue(), stretch.getValue());
+        badness = Badness.badness( shortfall.getValue(), stretch.getValue() );
         // if b > 12 then
         // if b > 99 then
         // fit_class <-- very_loose_fit
         // else fit_class <-- loose_fit
         // else fit_class <-- decent_fit;
-        if (badness <= 12) {
+        if( badness <= 12 ) {
             fitClass = Fitness.DECENT;
-        } else if (badness > 99) {
+        }
+        else if( badness > 99 ) {
             fitClass = Fitness.VERY_LOOSE;
-        } else {
+        }
+        else {
             fitClass = Fitness.LOOSE;
         }
         // done1: end
         return badness;
     }
 
-@Override
-    public NodeList build(HorizontalListNode nodes) throws TypesetterException {
+    @Override
+    public NodeList build( HorizontalListNode nodes )
+        throws TypesetterException {
 
-        if (nodes.size() == 0) {
+        if( nodes.size() == 0 ) {
             return new VerticalListNode();
         }
-        adjDemerits = options.getCountOption("adjdemerits").getValue();
-        clubPenalty = options.getCountOption("clubpenalty").getValue();
-        brokenPenalty = options.getCountOption("brokenpenalty").getValue();
+        adjDemerits = options.getCountOption( "adjdemerits" ).getValue();
+        clubPenalty = options.getCountOption( "clubpenalty" ).getValue();
+        brokenPenalty = options.getCountOption( "brokenpenalty" ).getValue();
         doubleHyphenDemerits =
-                options.getCountOption("doublehyphendemerits").getValue();
-        emergencyStretch = options.getDimenOption("emergencystretch");
-        exHyphenPenalty = options.getCountOption("exhyphenpenalty").getValue();
+            options.getCountOption( "doublehyphendemerits" ).getValue();
+        emergencyStretch = options.getDimenOption( "emergencystretch" );
+        exHyphenPenalty = options.getCountOption( "exhyphenpenalty" )
+                                 .getValue();
         finalHyphenDemerits =
-                options.getCountOption("finalhyphendemerits").getValue();
+            options.getCountOption( "finalhyphendemerits" ).getValue();
         finalWidowPenalty =
-                options.getCountOption("finalwidowpenalty").getValue();
-        hyphenPenalty = options.getCountOption("hyphenpenalty").getValue();
+            options.getCountOption( "finalwidowpenalty" ).getValue();
+        hyphenPenalty = options.getCountOption( "hyphenpenalty" ).getValue();
         interLinePenalty =
-                options.getCountOption("interlinepenalty").getValue();
-        leftSkip = options.getGlueOption("leftskip");
-        linePenalty = options.getCountOption("linepenalty").getValue();
-        looseness = options.getCountOption("looseness").getValue();
-        parfillSkip = options.getGlueOption("parfillskip");
-        preTolerance = options.getCountOption("pretolerance").getValue();
-        prevGraf = (int) options.getCountOption("prevgraf").getValue();
-        rightSkip = options.getGlueOption("rightskip");
-        tolerance = options.getCountOption("tolerance").getValue();
+            options.getCountOption( "interlinepenalty" ).getValue();
+        leftSkip = options.getGlueOption( "leftskip" );
+        linePenalty = options.getCountOption( "linepenalty" ).getValue();
+        looseness = options.getCountOption( "looseness" ).getValue();
+        parfillSkip = options.getGlueOption( "parfillskip" );
+        preTolerance = options.getCountOption( "pretolerance" ).getValue();
+        prevGraf = (int) options.getCountOption( "prevgraf" ).getValue();
+        rightSkip = options.getGlueOption( "rightskip" );
+        tolerance = options.getCountOption( "tolerance" ).getValue();
         tracingParagraphs =
-                options.getCountOption("tracingparagraphs").gt(Count.ZERO);
+            options.getCountOption( "tracingparagraphs" ).gt( Count.ZERO );
         prepareParshape();
 
         NodeList result;
@@ -1547,7 +1499,7 @@ private boolean breakType;
         try {
             /*
              * 815.
-             * 
+             *
              * Since line_break is a rather lengthy procedure---sort of a small
              * world unto itself---we must build it up little by little,
              * somewhat more cautiously than we have done with the simpler
@@ -1559,13 +1511,13 @@ private boolean breakType;
             // messages
             packBeginLine = modeLine;
             // <<Get ready to start line breaking 816>>;
-            getReadyToStartLineBreaking(nodes);
+            getReadyToStartLineBreaking( nodes );
             // <<Find optimal breakpoints 863>>;
-            findOptimalBreakpoints(nodes);
+            findOptimalBreakpoints( nodes );
             // <<Break the paragraph at the chosen breakpoints, justify the
             // resulting lines to the correct widths, and append them to
             // the current vertical list 876>>;
-            result = postLineBreak(nodes);
+            result = postLineBreak( nodes );
             // <<Clean up the memory by removing the break nodes 865>>;
             cleanUpTheMemory();
 
@@ -1573,40 +1525,41 @@ private boolean breakType;
 
             // - - -
 
-            options.setCountOption("prevgraf", prevGraf);
+            options.setCountOption( "prevgraf", prevGraf );
 
-        } catch (TypesetterException e) {
+        } catch( TypesetterException e ) {
             throw e;
-        } catch (GeneralException e) {
-            throw new TypesetterException(e);
+        } catch( GeneralException e ) {
+            throw new TypesetterException( e );
         }
 
-        options.setParshape(null);
+        options.setParshape( null );
 
         return result;
     }
 
     /**
      * 866.
-     * 
+     * <p>
      * Here is the main switch in the line_break routine, where legal breaks are
      * determined. As we move through the hlist, we need to keep the active
      * _width array up to date, so that the badness of individual lines is
      * readily calculated by try_break. It is convenient to use the short name
      * act_width for the component of active width that represents real width as
      * opposed to glue.
-     * 
+     * </p>
+     * <p>
      * define act_width ::= active_width[1] {length from first active node to
      * current node}
-     * 
+     * </p>
+     * <p>
      * This code is used in section 863.
-     * 
-     * 
+     * </p>
+     *
      * @param nodes the node list for the paragraph to break
-     * 
      * @throws GeneralException in case of an error
      */
-    private void callTryBreak(NodeList nodes) throws GeneralException {
+    private void callTryBreak( NodeList nodes ) throws GeneralException {
 
         // begin if is_char_node(cur_p) then
         // <<Advance (c)cur_p to the node following the present string of
@@ -1641,7 +1594,7 @@ private boolean breakType;
         // othercases confusion("paragraph")
         // endcases ;
 
-        if (nodes.get(curBreak).visit(visitor, nodes) == null) {
+        if( nodes.get( curBreak ).visit( visitor, nodes ) == null ) {
             // prev_p <-- cur_p;
             prevP = curBreak;
             // cur_p <-- link(cur_p);
@@ -1651,24 +1604,25 @@ private boolean breakType;
         // done5: end
     }
 
-    /**
+    /*
      * 849.
-     * 
+     *
      * This code is used in section 848.
      */
 
     /**
      * 882.
-     * 
+     * <p>
      * This code is used in section 881.
-     * 
-      * &lt;&lt;Change discretionary to compulsory and set disc_break <-- true 882>>
+     * <p>
+     * &lt;&lt;Change discretionary to compulsory and set disc_break <-- true
+     * 882>>
      * ::=
-     * 
+     *
      * @param node the current node
      * @param line the target line
      */
-    private void changeDiscretionary(DiscretionaryNode node, NodeList line) {
+    private void changeDiscretionary( DiscretionaryNode node, NodeList line ) {
 
         // begin t <-- replace_count(q);
         // <<Destroy the t nodes following q, and make r point to the following
@@ -1677,15 +1631,15 @@ private boolean breakType;
 
         NodeList postBreak = node.getPostBreak();
         // if post_break(q) != null then
-        if (postBreak != null && postBreak.size() > 0) {
+        if( postBreak != null && postBreak.size() > 0 ) {
             // <<Transplant the post-break list 884>>;
-            transplantPostBreakList(postBreak);
+            transplantPostBreakList( postBreak );
         }
         NodeList preBreak = node.getPreBreak();
         // if pre_break(q) != null then
-        if (preBreak != null && preBreak.size() > 0) {
+        if( preBreak != null && preBreak.size() > 0 ) {
             // <<Transplant the pre-break list 885>>;
-            transplantPreBreakList(preBreak, line);
+            transplantPreBreakList( preBreak, line );
         }
         // link(q) <-- r;
         // disc_break <-- true;
@@ -1696,7 +1650,7 @@ private boolean breakType;
 
     /**
      * 825.
-     * 
+     * <p>
      * Glue nodes in a horizontal list that is being paragraphed are not
      * supposed to include "infinite" shrinkability; that is why the algorithm
      * maintains four registers for stretching but only one for shrinking. If
@@ -1704,37 +1658,36 @@ private boolean breakType;
      * will be reset to finite and an error message will be issued. A boolean
      * variable no_shrink_error_yet prevents this error message from appearing
      * more than once per paragraph.
-     * 
-      * &lt;&lt;Global variables 13>> +::=
-     * 
+     * <p>
+     * &lt;&lt;Global variables 13>> +::=
+     * <p>
      * no_shrink_error_yet: boolean; {have we complained about infinite
      * shrinkage?}
-     * 
+     * <p>
      * define check_shrinkage(#) ::=
-     * 
+     *
      * @param glue the glue to be checked
-     * 
      * @return the glue value to be used instead
      */
-    private FixedGlue checkShrinkage(FixedGlue glue) {
+    private FixedGlue checkShrinkage( FixedGlue glue ) {
 
         // if (shrink_order(#) != normal) && (shrink(#) != 0) then
         FixedGlueComponent shrink = glue.getShrink();
-        if (shrink.getOrder() != FixedGlue.NORMAL_ORDER
-                && shrink.getValue() != 0) {
+        if( shrink.getOrder() != FixedGlue.NORMAL_ORDER
+            && shrink.getValue() != 0 ) {
             // begin # <-- finite_shrink(#);
             /*
              * 826.
-             * 
+             *
              * See also sections 829, 877, 895, and 942. This code is used in
              * section 815.
-             * 
+             *
              * function finite_shrink(p:pointer): pointer; {recovers from
              * infinite shrinkage}
              */
             // var q: pointer; {new glue specification}
             // begin if no_shrink_error_yet then
-            if (noShrinkErrorYet) {
+            if( noShrinkErrorYet ) {
 
                 // begin no_shrink_error_yet <-- false;
                 noShrinkErrorYet = false;
@@ -1743,11 +1696,12 @@ private boolean breakType;
 
                 // ("infinite shrinkability, e.g., `\hskip 0pt minus 1fil'.")
                 // ("Such glue doesn't belong there---it allows a paragraph")
-                // ("of any length to fit on one line. But it's safe to proceed,")
+                // ("of any length to fit on one line. But it's safe to
+                // proceed,")
                 // ("since the offensive shrinkability has been made finite.");
                 // error;
 
-                logger.warning(localizer.format("TTP.InfShringInPar"));
+                logger.warning( localizer.format( "TTP.InfShringInPar" ) );
                 // end ;
             }
 
@@ -1755,8 +1709,8 @@ private boolean breakType;
             // shrink_order(q) <-- normal;
             // delete_glue_ref(p);
             // finite_shrink <-- q;
-            return new Glue(glue.getLength(), glue.getStretch(),
-                GlueComponent.ZERO);
+            return new Glue( glue.getLength(), glue.getStretch(),
+                             GlueComponent.ZERO );
             // end ;
             // - - -
 
@@ -1767,8 +1721,9 @@ private boolean breakType;
 
     /**
      * 865.
-     * 
+     * <p>
      * This code is used in sections 815 and 863.
+     * </p>
      */
     private void cleanUpTheMemory() {
 
@@ -1779,7 +1734,7 @@ private boolean breakType;
 
     /**
      * 837.
-     * 
+     * <p>
      * When we insert a new active node for a break at cur_p, suppose this new
      * node is to be placed just before active node a; then we essentially want
      * to insert `&delta;cur_p&delta;'' before a, where
@@ -1790,83 +1745,88 @@ private boolean breakType;
      * &gamma;+&beta;(cur_p)- &alpha;(cur_p). The latter quantity can be
      * regarded as the length of a line "from cur_p to cur_p"; we call it the
      * break_width at cur_p.
-     * 
+     * <p>
      * The break_width is usually negative, since it consists of the background
      * (which is normally zero) minus the width of nodes following cur_p that
      * are eliminated after a break. If, for example, node cur_p is a glue node,
      * the width of this glue is subtracted from the background; and we also
      * look ahead to eliminate all subsequent glue and penalty and kern and math
      * nodes, subtracting their widths as well.
-     * 
+     * <p>
      * Kern nodes do not disappear at a line break unless they are explicit.
-     * 
+     * <p>
      * define set_break_width_to_background(#) ::= break_width[#] <--
      * background[#]
-     * 
-     * 
+     * <p>
+     * <p>
      * This code is used in section 836.
-     * 
-      * &lt;&lt;Compute the values of break_width 837>> ::=
-     * 
+     * <p>
+     * &lt;&lt;Compute the values of break_width 837>> ::=
+     *
      * @param nodes the node list for the paragraph to break
      */
-    private void computeBreakWidth(NodeList nodes) {
+    private void computeBreakWidth( NodeList nodes ) {
 
         // begin no_break_yet <-- false;
         noBreakYet = false;
         // do_all_six(set_break_width_to_background);
-        breakWidth.set(background);
+        breakWidth.set( background );
         // s <-- cur_p;
         int s = curBreak;
         // if break_type > unhyphenated then
-        if (breakType) {
+        if( breakType ) {
             // if cur_p != null then
-            if (curBreak < nodes.size()) {
+            if( curBreak < nodes.size() ) {
                 // <<Compute the discretionary break_width values 840>>;
-                computeDiscretionaryBreakWidth(nodes, nodes.get(curBreak));
+                computeDiscretionaryBreakWidth( nodes, nodes.get( curBreak ) );
             }
         }
         // while s != null do
-        for (; s < nodes.size(); s++) {
-            Node n = nodes.get(s);
+        for( ; s < nodes.size(); s++ ) {
+            Node n = nodes.get( s );
             // begin if is_char_node(s) then
-            if (n instanceof CharNode) {
+            if( n instanceof CharNode ) {
                 // goto done;
                 return;
                 // case type(s) of
-            } else if (n instanceof AbstractExpandableNode) {
+            }
+            else if( n instanceof AbstractExpandableNode ) {
                 // glue_node: <<Subtract glue from break_width 838>>;
 
                 /*
                  * 838.
-                 * 
+                 *
                  * This code is used in section 837.
-                 * 
-                  * &lt;&lt;Subtract glue from break_width 838>> ::=
+                 *
+                 * &lt;&lt;Subtract glue from break_width 838>> ::=
                  */
                 // begin v <-- glue_ptr(s);
                 // break_width[1] <-- break_width[1]-width(v);
                 // break_width[2+stretch_order(v)] <--
                 // break_width[2+stretch_order(v)]-stretch(v);
                 // break_width[6] <-- break_width[6]-shrink(v);
-                breakWidth.subtract(((GlueNode) n).getSize());
+                breakWidth.subtract( ((GlueNode) n).getSize() );
                 // end
 
-            } else if (n instanceof PenaltyNode) {
+            }
+            else if( n instanceof PenaltyNode ) {
                 // penalty_node: do_nothing;
-            } else if (n instanceof BeforeMathNode
-                    || n instanceof AfterMathNode) {
+            }
+            else if( n instanceof BeforeMathNode
+                || n instanceof AfterMathNode ) {
                 // math_node: break_width[1] <-- break_width[1]-width(s);
-                breakWidth.subtract(n.getWidth());
-            } else if (n instanceof KernNode) {
+                breakWidth.subtract( n.getWidth() );
+            }
+            else if( n instanceof KernNode ) {
                 // kern_node: if subtype(s) != explicit then
-                if (!(n instanceof ExplicitKernNode)) {
+                if( !(n instanceof ExplicitKernNode) ) {
                     // goto done
                     return;
                 }
                 // else break_width[1] <-- break_width[1]-width(s);
-                breakWidth.subtract(n.getWidth());
-            } else {
+                breakWidth.subtract( n.getWidth() );
+            }
+            else {
                 // othercases goto done
                 return;
             }
@@ -1887,56 +1847,59 @@ private boolean breakType;
     // printed_node <-- link(printed_node);
     // end ;
     // end
+
     /**
      * 859.
-     * 
+     * <p>
      * This code is used in section 855.
-     * 
-      * &lt;&lt;Compute the demerits, d, from r to cur_p 859>> ::=
-     * 
+     * <p>
+     * &lt;&lt;Compute the demerits, d, from r to cur_p 859>> ::=
+     *
      * @param activeNode the active node
-     * @param penalty the panalty
-     * @param badness the badness
-     * 
+     * @param penalty    the panalty
+     * @param badness    the badness
      * @return the demerits value
      */
-    private long computeDemertis(ActiveNode activeNode, long penalty,
-            long badness) {
+    private long computeDemertis( ActiveNode activeNode, long penalty,
+                                  long badness ) {
 
         // begin d <-- line_penalty+b;
         long d = linePenalty + badness;
         // if abs(d) >= 10000 then
-        if (d < -Badness.INF_PENALTY || d > Badness.INF_PENALTY) {
+        if( d < -Badness.INF_PENALTY || d > Badness.INF_PENALTY ) {
             // d <-- 100000000 else d <-- d*d;
             d = Badness.INF_PENALTY * Badness.INF_PENALTY;
-        } else {
+        }
+        else {
             d *= d;
         }
         // if pi != 0 then
-        if (penalty != 0) {
+        if( penalty != 0 ) {
             // if pi > 0 then
-            if (penalty > 0) {
+            if( penalty > 0 ) {
                 // d <-- d+pi*pi
                 d += penalty * penalty;
                 // else if pi > eject_penalty then
-            } else if (penalty > Badness.EJECT_PENALTY) {
+            }
+            else if( penalty > Badness.EJECT_PENALTY ) {
                 // d <-- d-pi*pi;
                 d -= penalty * penalty;
             }
         }
         // if (break_type=hyphenated) && (type(r)=hyphenated)
-        if (breakType && activeNode.isHyphenated()) {
+        if( breakType && activeNode.isHyphenated() ) {
             // then
             // if cur_p != null then
-            if (curBreak < active.size()) {
+            if( curBreak < active.size() ) {
                 // d <-- d+double_hyphen_demerits
                 d += doubleHyphenDemerits;
                 // else d <-- d+final_hyphen_demerits;
-            } else {
+            }
+            else {
                 d += finalHyphenDemerits;
             }
             // if abs(fit_class-fitness(r)) > 1 then
-            if (!fitClass.adjacent(activeNode.getFitness())) {
+            if( !fitClass.adjacent( activeNode.getFitness() ) ) {
                 // d <-- d+adj_demerits;
             }
         }
@@ -1946,15 +1909,15 @@ private boolean breakType;
 
     /**
      * 840.
-     * 
+     * <p>
      * This code is used in section 837.
-     * 
-      * &lt;&lt;Compute the discretionary break_width values 840>> ::=
-     * 
+     * <p>
+     * &lt;&lt;Compute the discretionary break_width values 840>> ::=
+     *
      * @param nodes the node list for the paragraph to break
-     * @param node the current node
+     * @param node  the current node
      */
-    void computeDiscretionaryBreakWidth(NodeList nodes, Node node) {
+    void computeDiscretionaryBreakWidth( NodeList nodes, Node node ) {
 
         DiscretionaryNode x = (DiscretionaryNode) node;
         // begin t <-- replace_count(cur_p);
@@ -1965,17 +1928,17 @@ private boolean breakType;
         // begin decr(t);
         // v <-- link(v);
         // <<Subtract the width of node v from break_width 841>>;
-        breakWidth.subtract(x.getWidth());
+        breakWidth.subtract( x.getWidth() );
         // end ;
         // while s != null do
         // begin <<Add the width of node s to break_width 842>>;
         // s <-- link(s);
         // end ;
         // break_width[1] <-- break_width[1]+disc_width;
-        breakWidth.add(discretionaryWidth);
+        breakWidth.add( discretionaryWidth );
         // if post_break(cur_p)=null then
-        if (postBreak != null) {
-            breakWidth.add(postBreak.getWidth());
+        if( postBreak != null ) {
+            breakWidth.add( postBreak.getWidth() );
             // s <-- link(v); {nodes may be discardable after the break}
             // end
         }
@@ -2000,22 +1963,23 @@ private boolean breakType;
     // else second_indent <-- 0;
     // end ;
     // end
+
     /**
      * 850.
-     * 
+     * <p>
      * When we come to the following code, we have just encountered the first
      * active node r whose line_number field contains l. Thus we want to compute
      * the length of the lth line of the current paragraph. Furthermore, we want
      * to set old_l to the last number in the class of line numbers equivalent
      * to l.
-     * 
+     * <p>
      * This code is used in section 835.
-     * 
-      * &lt;&lt;Compute the new line width 850>> ::=
-     * 
+     * <p>
+     * &lt;&lt;Compute the new line width 850>> ::=
+     *
      * @param line the line number
      */
-    private void computeLineWidth(long line) {
+    private void computeLineWidth( long line ) {
 
         // if l > easy_line then
         // begin line_width <-- second_width;
@@ -2029,17 +1993,17 @@ private boolean breakType;
         // else line_width <-- mem[par_shape_ptr+2*l].sc;
         // end
         oldL = line;
-        lineWidth.set(parshape.getLength((int) line));
+        lineWidth.set( parshape.getLength( (int) line ) );
     }
 
     /**
      * 864.
-     * 
+     * <p>
      * The active node that represents the starting point does not need a
      * corresponding passive node.
-     * 
+     * <p>
      * define store_background(#) ::= active_width[#] <-- background[#]
-     * 
+     * <p>
      * This code is used in section 863.
      */
     private void createAnActiveBreakpointRepresentingTheBeginningOfTheParagraph() {
@@ -2054,9 +2018,13 @@ private boolean breakType;
         // link(active) <-- q;
         active.clear();
         active
-            .add(new ActiveNode(Fitness.DECENT, false, 0, prevGraf + 1, null));
+            .add( new ActiveNode( Fitness.DECENT,
+                                  false,
+                                  0,
+                                  prevGraf + 1,
+                                  null ) );
         // do_all_six(store_background);
-        activeWidth.set(background);
+        activeWidth.set( background );
 
         // passive <-- null;
         passive.clear();
@@ -2068,37 +2036,39 @@ private boolean breakType;
 
     /**
      * 836.
-     * 
+     * <p>
      * It is not necessary to create new active nodes having minimal_demerits
      * greater than minimum_demerits+abs(adj_demerits), since such active nodes
      * will never be chosen in the final paragraph breaks. This observation
      * allows us to omit a substantial number of feasible breakpoints from
      * further consideration.
-     * 
-     * 
+     * <p>
+     * <p>
      * This code is used in section 835.
-     * 
-      * &lt;&lt;Create new active nodes for the best feasible breaks just found 836>>
+     * <p>
+     * &lt;&lt;Create new active nodes for the best feasible breaks just
+     * found 836>>
      * ::=
-     * 
+     *
      * @param nodes the node list for the paragraph to break
      */
-    private void createNewActiveNodes(NodeList nodes) {
+    private void createNewActiveNodes( NodeList nodes ) {
 
         // begin if no_break_yet then
-        if (noBreakYet) {
+        if( noBreakYet ) {
             // <<Compute the values of break_width 837>>;
-            computeBreakWidth(nodes);
+            computeBreakWidth( nodes );
         }
         // <<Insert a delta node to prepare for breaks at cur_p 843>>;
         insertDeltaNodeForBreaks();
         // if abs(adj_demerits) >= awful_bad-minimum_demerits
         // then
-        if ((adjDemerits < 0 ? -adjDemerits : adjDemerits) >= AWFUL_BAD
-                - minimumDemerits) {
+        if( (adjDemerits < 0 ? -adjDemerits : adjDemerits) >= AWFUL_BAD
+            - minimumDemerits ) {
             // minimum_demerits <-- awful_bad-1
             minimumDemerits = AWFUL_BAD - 1;
-        } else {
+        }
+        else {
             // else minimum_demerits <-- minimum_demerits+abs(adj_demerits);
             minimumDemerits += (adjDemerits < 0 ? -adjDemerits : adjDemerits);
         }
@@ -2107,21 +2077,21 @@ private boolean breakType;
         // <<Insert a new active node from best_place[fit_class] to cur_p 845>>;
         // minimal_demerits[fit_class] <-- awful_bad;
         // end ;
-        if (minimalDemerits[0] <= minimumDemerits) {
-            insertActiveNode(nodes, Fitness.VERY_LOOSE);
-            minimalDemerits[0] = AWFUL_BAD;
+        if( minimalDemerits[ 0 ] <= minimumDemerits ) {
+            insertActiveNode( nodes, Fitness.VERY_LOOSE );
+            minimalDemerits[ 0 ] = AWFUL_BAD;
         }
-        if (minimalDemerits[1] <= minimumDemerits) {
-            insertActiveNode(nodes, Fitness.LOOSE);
-            minimalDemerits[1] = AWFUL_BAD;
+        if( minimalDemerits[ 1 ] <= minimumDemerits ) {
+            insertActiveNode( nodes, Fitness.LOOSE );
+            minimalDemerits[ 1 ] = AWFUL_BAD;
         }
-        if (minimalDemerits[2] <= minimumDemerits) {
-            insertActiveNode(nodes, Fitness.DECENT);
-            minimalDemerits[2] = AWFUL_BAD;
+        if( minimalDemerits[ 2 ] <= minimumDemerits ) {
+            insertActiveNode( nodes, Fitness.DECENT );
+            minimalDemerits[ 2 ] = AWFUL_BAD;
         }
-        if (minimalDemerits[3] <= minimumDemerits) {
-            insertActiveNode(nodes, Fitness.TIGHT);
-            minimalDemerits[3] = AWFUL_BAD;
+        if( minimalDemerits[ 3 ] <= minimumDemerits ) {
+            insertActiveNode( nodes, Fitness.TIGHT );
+            minimalDemerits[ 3 ] = AWFUL_BAD;
         }
 
         // minimum_demerits <-- awful_bad;
@@ -2133,69 +2103,71 @@ private boolean breakType;
 
     /**
      * 858.
-     * 
+     *
      * When the data for a discretionary break is being displayed, we will have
      * printed the pre_break and post_break lists; we want to skip over the
      * third list, so that the discretionary data will not appear twice. The
      * following code is performed at the very end of try_break.
-     * 
+     *
      * This code is used in section 829.
      */
 
     /**
      * 860.
-     * 
+     * <p>
      * When an active node disappears, we must delete an adjacent delta node if
      * the active node was at the beginning or the end of the active list, or if
      * it was surrounded by delta nodes. We also must preserve the property that
      * cur_active_width represents the length of material from link(prev_r) to
      * cur_p.
-     * 
+     * <p>
      * define combine_two_deltas(#) ::= mem[prev_r+#].sc <--
      * mem[prev_r+#].sc+mem[r+#].sc
-     * 
+     * <p>
      * define downdate_width(#) ::= cur_active_width[#] <--
      * cur_active_width[#]-mem[prev_r+#].sc
-     * 
+     * <p>
      * This code is used in section 851.
-     * 
-      * &lt;&lt;Deactivate node r 860>> ::=
+     * <p>
+     * &lt;&lt;Deactivate node r 860>> ::=
      */
     private void deactivateNodeR() {
 
         // link(prev_r) <-- link(r);
         // free_node(r,active_node_size);
         // S ystem.err.println("deactivate " + r + "/" + active.size());
-        active.remove(r);
+        active.remove( r );
         // if prev_r=active then
-        if (prevR < 0) {
+        if( prevR < 0 ) {
             // <<Update the active widths, since the first active node has been
             // deleted 861>>
             sub861();
             // else if type(prev_r)=delta_node then
-        } else if (active.get(prevR) instanceof DeltaNode) {
-            DeltaNode deltaPrev = (DeltaNode) active.get(prevR);
+        }
+        else if( active.get( prevR ) instanceof DeltaNode ) {
+            DeltaNode deltaPrev = (DeltaNode) active.get( prevR );
             // begin r <-- link(prev_r);
             // if r=last_active then
-            if (r >= active.size()) {
+            if( r >= active.size() ) {
                 // begin do_all_six(downdate_width);
-                curActiveWidth.subtract(deltaPrev);
+                curActiveWidth.subtract( deltaPrev );
                 // link(prev_prev_r) <-- last_active;
-                active.remove(prevR);
+                active.remove( prevR );
                 // free_node(prev_r,delta_node_size);
                 // prev_r <-- prev_prev_r;
                 prevR = prevPrevR;
                 r--;
                 // end
                 // else if type(r)=delta_node then
-            } else if (active.get(r) instanceof DeltaNode) {
+            }
+            else if( active.get( r ) instanceof DeltaNode ) {
                 // begin do_all_six(update_width);
-                DeltaNode delta = (DeltaNode) active.get(r);
-                curActiveWidth.add(delta);
+                DeltaNode delta = (DeltaNode) active.get( r );
+                curActiveWidth.add( delta );
                 // do_all_six(combine_two_deltas);
-                deltaPrev.add(delta);
+                deltaPrev.add( delta );
                 // link(prev_r) <-- link(r);
-                active.remove(r);
+                active.remove( r );
                 // free_node(r,delta_node_size);
                 // end ;
             }
@@ -2203,26 +2175,27 @@ private boolean breakType;
         }
     }
 
-@Override
-    public void enableLogging(Logger theLogger) {
+    @Override
+    public void enableLogging( Logger theLogger ) {
 
         this.logger = theLogger;
     }
 
     /**
      * 878.
-     * 
+     * <p>
      * The job of reversing links in a list is conveniently regarded as the job
      * of taking items off one stack and putting them on another. In this case
      * we take them off a stack pointed to by q and having prev_break fields; we
      * put them on a stack pointed to by cur_p and having next_break fields.
      * Node r is the passive node being moved from stack to stack.
-     * 
+     * <p>
      * This code is used in section 877.
-     * 
-      * &lt;&lt;Reverse the links of the relevant passive nodes, setting cur_p to the
+     * <p>
+     * &lt;&lt;Reverse the links of the relevant passive nodes, setting cur_p
+      * to the
      * first breakpoint 878>> ::=
-     * 
+     *
      * @return the first passive node
      */
     private PassiveNode extractBestBreaks() {
@@ -2239,118 +2212,121 @@ private boolean breakType;
             // q <-- prev_break(q);
             breakNode = breakNode.getPrevBreak();
             // next_break(r) <-- cur_p;
-            ptr.setNextBreak(ret);
+            ptr.setNextBreak( ret );
             // cur_p <-- r;
             ret = ptr;
             // until q=null
-        } while (breakNode != null);
+        } while( breakNode != null );
 
         return ret;
     }
 
     /**
      * 862. Breaking paragraphs into lines, continued.
-     * 
+     *
      * So far we have gotten a little way into the line_break routine, having
      * covered its important try_break subroutine. Now let's consider the rest
      * of the process.
-     * 
+     *
      * The main loop of line_break traverses the given hlist, starting at
      * link(temp_head), and calls try_break at each legal breakpoint. A variable
      * called auto_breaking is set to true except within math formulas, since
      * glue nodes are not legal breakpoints when they appear in formulas.
-     * 
+     *
      * The current node of interest in the hlist is pointed to by cur_p. Another
      * variable, prev_p, is usually one step behind cur_p, but the real meaning
      * of prev_p is this: If type(cur_p)=glue_node then cur_p is a legal
      * breakpoint if and only if auto_breaking is true and prev_p does not point
      * to a glue node, penalty node, explicit kern node, or math node.
-     * 
+     *
      * The following declarations provide for a few other local variables that
      * are used in special calculations.
-     * 
+     *
      * See also section 893. This code is used in section 815.
      */
 
     /**
      * Link the nodes from the input list to the output list.
-     * 
-     * @param nodes the node list for the paragraph to break
-     * @param idx the start index of the node to be linked in
-     * @param to the index of the first node beyond the ones to link in
-     * @param line the target list
+     *
+     * @param nodes    the node list for the paragraph to break
+     * @param idx      the start index of the node to be linked in
+     * @param to       the index of the first node beyond the ones to link in
+     * @param line     the target list
      * @param lineGlue the sum of the glues encountered so far.
-     * @param vlist the vlist to add adjusted material to
+     * @param vlist    the vlist to add adjusted material to
      */
-    private void fillLine(NodeList nodes, int idx, int to, NodeList line,
-            WideGlue lineGlue, NodeList vlist) {
+    private void fillLine( NodeList nodes, int idx, int to, NodeList line,
+                           WideGlue lineGlue, NodeList vlist ) {
 
         Node n;
         int i = idx;
 
-        if (postDiscBreak != null) {
+        if( postDiscBreak != null ) {
 
             int size = postDiscBreak.size();
-            for (int j = 0; j < size; j++) {
-                n = postDiscBreak.get(j);
-                if (n instanceof MarkNode || n instanceof InsertionNode
-                        || n instanceof AdjustNode) {
-                    vlist.add(n);
-                } else {
-                    line.add(n);
-                    n.addWidthTo(lineGlue);
+            for( int j = 0; j < size; j++ ) {
+                n = postDiscBreak.get( j );
+                if( n instanceof MarkNode || n instanceof InsertionNode
+                    || n instanceof AdjustNode ) {
+                    vlist.add( n );
+                }
+                else {
+                    line.add( n );
+                    n.addWidthTo( lineGlue );
                 }
             }
             postDiscBreak = null;
             i++;
-        } else {
-            while (i < to) {
-                n = nodes.get(i);
-                if (n instanceof GlueNode) {
+        }
+        else {
+            while( i < to ) {
+                n = nodes.get( i );
+                if( n instanceof GlueNode ) {
                     i++;
-                } else if (n instanceof MarkNode || n instanceof InsertionNode
-                        || n instanceof AdjustNode) {
-                    vlist.add(n);
-                } else {
+                }
+                else if( n instanceof MarkNode || n instanceof InsertionNode
+                    || n instanceof AdjustNode ) {
+                    vlist.add( n );
+                }
+                else {
                     break;
                 }
             }
         }
 
-        lineGlue.set(Dimen.ZERO_PT);
+        lineGlue.set( Dimen.ZERO_PT );
 
-        for (; i < to; i++) {
-            n = nodes.get(i);
-            if (n instanceof MarkNode || n instanceof InsertionNode
-                    || n instanceof AdjustNode) {
-                vlist.add(n);
-            } else {
-                line.add(n);
-                n.addWidthTo(lineGlue);
+        for( ; i < to; i++ ) {
+            n = nodes.get( i );
+            if( n instanceof MarkNode || n instanceof InsertionNode
+                || n instanceof AdjustNode ) {
+                vlist.add( n );
+            }
+            else {
+                line.add( n );
+                n.addWidthTo( lineGlue );
             }
         }
     }
 
     /**
      * 874.
-     * 
+     * <p>
      * This code is used in section 873.
      */
     private void findAnActiveNodeWithFewestDemerits() {
 
-        Object n;
         ActiveNode node;
         // r <-- link(active);
         // fewest_demerits <-- awful_bad;
         fewestDemerits = AWFUL_BAD;
 
-        for (int i = 0; i < active.size(); i++) {
+        for( final Object o : active ) {
             // repeat if type(r) != delta_node then
-            n = active.get(i);
-            if (n instanceof ActiveNode) {
-                node = (ActiveNode) n;
+            if( o instanceof ActiveNode ) {
+                node = (ActiveNode) o;
                 // if total_demerits(r) < fewest_demerits then
-                if (node.getTotalDemerits() < fewestDemerits) {
+                if( node.getTotalDemerits() < fewestDemerits ) {
                     // begin fewest_demerits <-- total_demerits(r);
                     fewestDemerits = node.getTotalDemerits();
                     // best_bet <-- r;
@@ -2370,30 +2346,31 @@ private boolean breakType;
      * used when calculating character widths
      */
     // private int f; //f: internal_font_number;
+
     /**
      * 863.
-     * 
+     * <p>
      * The `loop' in the following code is performed at most thrice per call of
      * line_break, since it is actually a pass over the entire paragraph.
-     * 
+     * <p>
      * This code is used in section 815.
-     * 
+     *
      * @param nodes the node list for the paragraph to break
-     * 
      * @throws GeneralException in case of an error
      */
-    private void findOptimalBreakpoints(NodeList nodes) throws GeneralException {
+    private void findOptimalBreakpoints( NodeList nodes )
+        throws GeneralException {
 
         // threshold <-- pretolerance;
         threshold = preTolerance;
 
         // if threshold >= 0 then
-        if (threshold >= 0) {
+        if( threshold >= 0 ) {
             // begin stat if tracing_paragraphs > 0 then
-            if (tracingParagraphs) {
+            if( tracingParagraphs ) {
                 // begin begin_diagnostic;
                 // print_nl("@firstpass"); end ; tats
-                logger.info("@firstpass\n");
+                logger.info( "@firstpass\n" );
             }
 
             // second_pass <-- false;
@@ -2402,32 +2379,31 @@ private boolean breakType;
             finalPass = false;
             // end
             // else begin threshold <-- tolerance;
-        } else {
+        }
+        else {
             threshold = tolerance;
             // second_pass <-- true;
             secondPass = true;
             // final_pass <-- (emergency_stretch =< 0);
             finalPass = (emergencyStretch.getValue() <= 0);
 
+            // TODO: implement tracing paragraphs
             // stat if tracing_paragraphs > 0 then
-            if (tracingParagraphs) {
-                // begin_diagnostic;
-
-                // tats
-            }
+            // begin_diagnostic;
+            // tats
             // end ;
         }
 
         // loop begin
-        for (;;) {
+        for( ; ; ) {
             // if threshold > inf_bad then
-            if (threshold > Badness.INF_BAD) {
+            if( threshold > Badness.INF_BAD ) {
                 // threshold <-- inf_bad;
                 threshold = Badness.INF_BAD;
             }
 
             // if second_pass then
-            if (secondPass) {
+            if( secondPass ) {
                 // <<Initialize for hyphenating a paragraph 891>>;
                 initializeForHyphenatingAParagraph();
             }
@@ -2446,7 +2422,7 @@ private boolean breakType;
 
             int nodesSize = nodes.size();
             // while (cur_p != null) && (link(active) != last_active) do
-            while (curBreak < nodesSize && active.size() > 0) {
+            while( curBreak < nodesSize && active.size() > 0 ) {
                 // <<Call try_break if cur_p is a legal breakpoint; on the
                 // second
                 // pass, also try to hyphenate the next word, if cur_p is a glue
@@ -2454,20 +2430,20 @@ private boolean breakType;
                 // advance cur_p to the next node of the paragraph that could
                 // possibly be a
                 // legal breakpoint 866>>;
-                callTryBreak(nodes);
+                callTryBreak( nodes );
             }
 
             // if cur_p=null then
-            if (curBreak >= nodesSize) {
+            if( curBreak >= nodesSize ) {
                 // <<Try the final line break at the end of the paragraph, and
                 // goto
                 // done if the desired breakpoints have been found 873>>;
-                if (tryTheFinalLineBreak(nodes)) {
+                if( tryTheFinalLineBreak( nodes ) ) {
 
                     // done: stat if tracing_paragraphs > 0 then
-                    if (tracingParagraphs) {
+                    if( tracingParagraphs ) {
                         // begin end_diagnostic(true);
-                        logger.info("\n");
+                        logger.info( "\n" );
                         // normalize_selector;
                         // end ;
                     }
@@ -2479,11 +2455,11 @@ private boolean breakType;
             cleanUpTheMemory();
 
             // if not second_pass then
-            if (!secondPass) {
+            if( !secondPass ) {
                 // begin stat if tracing_paragraphs > 0 then
-                if (tracingParagraphs) {
+                if( tracingParagraphs ) {
                     // print_nl("@secondpass"); tats
-                    logger.info("@secondpass\n");
+                    logger.info( "@secondpass\n" );
                 }
 
                 // threshold <-- tolerance;
@@ -2494,14 +2470,15 @@ private boolean breakType;
                 finalPass = (emergencyStretch.getValue() <= 0);
 
                 // end {if at first you don't succeed, . . .}
-            } else {
+            }
+            else {
                 // else begin stat if tracing_paragraphs > 0 then
-                if (tracingParagraphs) {
+                if( tracingParagraphs ) {
                     // print_nl("@emergencypass"); tats
-                    logger.info("@emergencypass\n");
+                    logger.info( "@emergencypass\n" );
                 }
                 // background[2] <-- background[2]+emergency_stretch;
-                background.addStretch(emergencyStretch);
+                background.addStretch( emergencyStretch );
                 // final_pass <-- true;
                 finalPass = true;
                 // end ;
@@ -2517,12 +2494,12 @@ private boolean breakType;
 
     /**
      * 875.
-     * 
+     * <p>
      * The adjustment for a desired looseness is a slightly more complicated
      * version of the loop just considered. Note that if a paragraph is broken
      * into segments by displayed equations, each segment will be subject to the
      * looseness calculation, independently of the other segments.
-     * 
+     * <p>
      * This code is used in section 873.
      */
     private void findTheBestActiveNodeForTheDesiredLooseness() {
@@ -2538,8 +2515,8 @@ private boolean breakType;
 
         do {
             // repeat if type(r) != delta_node then
-            Object node = active.get(idx);
-            if (node instanceof ActiveNode) {
+            Object node = active.get( idx );
+            if( node instanceof ActiveNode ) {
                 ActiveNode aNode = (ActiveNode) node;
                 // begin line_diff <-- line_number(r)-best_line;
                 lineDiff = aNode.getLineNumber() - bestLine;
@@ -2548,8 +2525,8 @@ private boolean breakType;
                 // line_diff)) ||
                 // ((line_diff > actual_looseness) && (looseness >= line_diff))
                 // then
-                if ((lineDiff < actualLooseness && looseness <= lineDiff)
-                        || (lineDiff > actualLooseness && looseness >= lineDiff)) {
+                if( (lineDiff < actualLooseness && looseness <= lineDiff)
+                    || (lineDiff > actualLooseness && looseness >= lineDiff) ) {
                     // begin best_bet <-- r;
                     bestBet = aNode;
                     // actual_looseness <-- line_diff;
@@ -2560,8 +2537,9 @@ private boolean breakType;
                     // end
                     // else if (line_diff=actual_looseness) &&
                     // (total_demerits(r) < fewest_demerits) then
-                } else if (lineDiff == actualLooseness
-                        && aNode.getTotalDemerits() < fewestDemerits) {
+                }
+                else if( lineDiff == actualLooseness
+                    && aNode.getTotalDemerits() < fewestDemerits ) {
                     // begin best_bet <-- r;
                     bestBet = aNode;
                     // fewest_demerits <-- total_demerits(r);
@@ -2574,7 +2552,7 @@ private boolean breakType;
             // r <-- link(r);
             idx++;
             // until r=last_active;
-        } while (idx < active.size());
+        } while( idx < active.size() );
 
         // best_line <-- line_number(best_bet);
         bestLine = bestBet.getLineNumber();
@@ -2601,37 +2579,37 @@ private boolean breakType;
      * <p>
      * See also sections 827, 834, and 848. This code is used in section 815.
      * </p>
-     * 
+     *
      * @param nodes the node list for the paragraph to break
      */
-    private void getReadyToStartLineBreaking(NodeList nodes) {
+    private void getReadyToStartLineBreaking( NodeList nodes ) {
 
         // link(temp_head) <-- link(head);
-        Node n = nodes.get(nodes.size() - 1);
+        Node n = nodes.get( nodes.size() - 1 );
 
         // if is_char_node(tail) then
         // tail_append(new_penalty(inf_penalty))
         // else if type(tail) != glue_node then
         // tail_append(new_penalty(inf_penalty))
         // else begin type(tail) <-- penalty_node;
-        if (n instanceof GlueNode) {
+        if( n instanceof GlueNode ) {
             // delete_glue_ref(glue_ptr(tail));
             // flush_node_list(leader_ptr(tail));
-            nodes.remove(nodes.size() - 1);
+            nodes.remove( nodes.size() - 1 );
             // penalty(tail) <-- inf_penalty;
             // end ;
         }
-        nodes.add(new PenaltyNode(Badness.INF_PENALTY));
+        nodes.add( new PenaltyNode( Badness.INF_PENALTY ) );
 
         // link(tail) <-- new_param_glue(par_fill_skip_code);
-        nodes.add(new GlueNode(parfillSkip, true));
+        nodes.add( new GlueNode( parfillSkip, true ) );
 
         // init_cur_lang <-- prev_graf mod '200000;
         // init_l_hyf <-- prev_graf div '20000000;
         // init_r_hyf <-- (prev_graf div '200000) mod '100;
         // pop_nest;
 
-        /**
+        /*
          * 827.
          */
 
@@ -2639,9 +2617,9 @@ private boolean breakType;
         noShrinkErrorYet = true;
 
         // check_shrinkage(left_skip);
-        leftSkip = checkShrinkage(leftSkip);
+        leftSkip = checkShrinkage( leftSkip );
         // check_shrinkage(right_skip);
-        rightSkip = checkShrinkage(rightSkip);
+        rightSkip = checkShrinkage( rightSkip );
 
         // q <-- left_skip;
         // r <-- right_skip;
@@ -2654,8 +2632,8 @@ private boolean breakType;
         // background[2+stretch_order(r)] <--
         // background[2+stretch_order(r)]+stretch(r);
         // background[6] <-- shrink(q)+shrink(r);
-        background.set(leftSkip);
-        background.add(rightSkip);
+        background.set( leftSkip );
+        background.add( rightSkip );
 
         /**
          * 834.
@@ -2668,14 +2646,14 @@ private boolean breakType;
         // minimal_demerits[decent_fit] <-- awful_bad;
         // minimal_demerits[loose_fit] <-- awful_bad;
         // minimal_demerits[very_loose_fit] <-- awful_bad;
-        minimalDemerits[0] = AWFUL_BAD;
-        minimalDemerits[1] = AWFUL_BAD;
-        minimalDemerits[2] = AWFUL_BAD;
-        minimalDemerits[3] = AWFUL_BAD;
+        minimalDemerits[ 0 ] = AWFUL_BAD;
+        minimalDemerits[ 1 ] = AWFUL_BAD;
+        minimalDemerits[ 2 ] = AWFUL_BAD;
+        minimalDemerits[ 3 ] = AWFUL_BAD;
 
         /*
          * 848.
-         * 
+         *
          * We compute the values of easy_line and the other local variables
          * relating to line length when the line_break procedure is initializing
          * itself.
@@ -2694,38 +2672,38 @@ private boolean breakType;
         // second_indent <-- mem[par_shape_ptr+2*last_special_line+1].sc;
         // end ;
         // if looseness=0 then
-        if (looseness == 0) {
+        if( looseness == 0 ) {
             // easy_line <-- last_special_line
             easyLine = parshape.getSize();
-        } else {
+        }
+        else {
             // else easy_line <-- max_halfword
             easyLine = Integer.MAX_VALUE;
         }
-        computeLineWidth(0);
+        computeLineWidth( 0 );
     }
 
     /**
      * Hyphenate the following word.
-     * 
-     * @param list the node list to insert the hyphenation points into
+     *
+     * @param list  the node list to insert the hyphenation points into
      * @param start the starting index
-     * 
      * @throws HyphenationException in case of an error
      */
-    private void hyphenateFollowingWord(NodeList list, int start)
-            throws HyphenationException {
+    private void hyphenateFollowingWord( NodeList list, int start )
+        throws HyphenationException {
 
         Node n;
 
-        for (int i = start; i < list.size(); i++) {
-            n = list.get(i);
-            if (n instanceof CharNode) {
+        for( int i = start; i < list.size(); i++ ) {
+            n = list.get( i );
+            if( n instanceof CharNode ) {
                 TypesettingContext tc = ((CharNode) n).getTypesettingContext();
                 Language language = tc.getLanguage();
                 UnicodeChar hyphen = tc.getFont().getHyphenChar();
-                if (hyphen != null) {
-                    language.hyphenate(list, options, hyphen, start, false,
-                        nodeFactory);
+                if( hyphen != null ) {
+                    language.hyphenate( list, options, hyphen, start, false,
+                                        nodeFactory );
                 }
                 return;
             }
@@ -2733,7 +2711,7 @@ private boolean breakType;
     }
 
     /**
-      * &lt;&lt;Initialize for hyphenating a paragraph 891>>;
+     * &lt;&lt;Initialize for hyphenating a paragraph 891>>;
      */
     private void initializeForHyphenatingAParagraph() {
 
@@ -2742,18 +2720,19 @@ private boolean breakType;
 
     /**
      * 845.
-     * 
+     * <p>
      * When we create an active node, we also create the corresponding passive
      * node.
-     * 
+     * <p>
      * This code is used in section 836.
-     * 
-      * &lt;&lt;Insert a new active node from best_place[fit_class] to cur_p 845>> ::=
-     * 
-     * @param nodes the node list for the paragraph to break
+     * <p>
+     * &lt;&lt;Insert a new active node from best_place[fit_class] to cur_p
+     * 845>> ::=
+     *
+     * @param nodes   the node list for the paragraph to break
      * @param fitness the fitness
      */
-    private void insertActiveNode(NodeList nodes, Fitness fitness) {
+    private void insertActiveNode( NodeList nodes, Fitness fitness ) {
 
         // begin q <-- get_node(passive_node_size);
         // link(q) <-- passive;
@@ -2763,9 +2742,9 @@ private boolean breakType;
         // serial(q) <-- pass_number; tats
         // prev_break(q) <-- best_place[fit_class];
         PassiveNode pn =
-                new PassiveNode(curBreak, passive.size() + 1,
-                    bestPlace[fitClass.getOrder()]);
-        passive.add(pn);
+            new PassiveNode( curBreak, passive.size() + 1,
+                             bestPlace[ fitClass.getOrder() ] );
+        passive.add( pn );
 
         // q <-- get_node(active_node_size);
         // break_node(q) <-- passive;
@@ -2774,20 +2753,20 @@ private boolean breakType;
         // type(q) <-- break_type;
         // total_demerits(q) <-- minimal_demerits[fit_class];
         ActiveNode an =
-                new ActiveNode(fitClass, breakType,
-                    minimalDemerits[fitClass.getOrder()],
-                    bestPlaceLine[fitClass.getOrder()] + 1, pn);
+            new ActiveNode( fitClass, breakType,
+                            minimalDemerits[ fitClass.getOrder() ],
+                            bestPlaceLine[ fitClass.getOrder() ] + 1, pn );
         // link(q) <-- r;
         // link(prev_r) <-- q;
         // prev_r <-- q;
-        active.add(r, an);
+        active.add( r, an );
         prevR++;
         r++;
 
         // stat if tracing_paragraphs > 0 then
-        if (tracingParagraphs) {
+        if( tracingParagraphs ) {
             // <<Print a symbolic description of the new break node 846>>;
-            printNewBreakNode(an);
+            printNewBreakNode( an );
             // tats
         }
         // end
@@ -2795,30 +2774,30 @@ private boolean breakType;
 
     /**
      * 844.
-     * 
+     * <p>
      * When the following code is performed, we will have just inserted at least
      * one active node before r, so type(prev_r) != delta_node.
-     * 
+     * <p>
      * define new_delta_from_break_width(#) ::= mem[q+#].sc <--
      * cur_active_width[#]-break_width[#]
-     * 
+     * <p>
      * This code is used in section 836.
-     * 
-      * &lt;&lt;Insert a delta node to prepare for the next active node 844>> ::=
+     * <p>
+     * &lt;&lt;Insert a delta node to prepare for the next active node 844>> ::=
      */
     private void insertDeltaNodeForActive() {
 
         // if r != last_active then
-        if (r < active.size()) {
-            DeltaNode delta = new DeltaNode(curActiveWidth);
-            delta.subtract(breakWidth);
+        if( r < active.size() ) {
+            DeltaNode delta = new DeltaNode( curActiveWidth );
+            delta.subtract( breakWidth );
             // begin q <-- get_node(delta_node_size);
             // link(q) <-- r;
             // type(q) <-- delta_node;
             // subtype(q) <-- 0; {the subtype is not used}
             // do_all_six(new_delta_from_break_width);
             // link(prev_r) <-- q;
-            active.add(prevR + 1, delta);
+            active.add( prevR + 1, delta );
             // prev_prev_r <-- prev_r;
             prevPrevR = prevR;
             // prev_r <-- q;
@@ -2843,47 +2822,50 @@ private boolean breakType;
     // break_width[1] <-- break_width[1]+width(s);
     // othercases confusion("disc2")
     // endcases
+
     /**
      * 843.
-     * 
+     * <p>
      * We use the fact that type(active) != delta_node.
-     * 
+     * <p>
      * define convert_to_break_width(#) ::= mem[prev_r+#].sc <--
      * mem[prev_r+#].sc-cur_active_width[ #]+break_width[#]
-     * 
+     * <p>
      * define store_break_width(#) ::= active_width[#] <-- break_width[ #]
-     * 
+     * <p>
      * define new_delta_to_break_width(#) ::= mem[q+#].sc <--
      * break_width[#]-cur_active_width[#]
-     * 
+     * <p>
      * This code is used in section 836.
-     * 
-      * &lt;&lt;Insert a delta node to prepare for breaks at cur_p 843>> ::=
+     * <p>
+     * &lt;&lt;Insert a delta node to prepare for breaks at cur_p 843>> ::=
      */
     private void insertDeltaNodeForBreaks() {
 
         Object prevNode;
         // if type(prev_r)=delta_node then {modify an existing delta node}
         // else if prev_r=active then {no delta node needed at the beginning}
-        if (prevR < 0) {
+        if( prevR < 0 ) {
             // begin do_all_six(store_break_width);
-            activeWidth.set(breakWidth);
+            activeWidth.set( breakWidth );
             // end
-        } else if ((prevNode = active.get(prevR)) instanceof DeltaNode) {
+        }
+        else if( (prevNode = active.get( prevR )) instanceof DeltaNode ) {
             // begin do_all_six(convert_to_break_width);
-            ((DeltaNode) prevNode).subtract(curActiveWidth);
-            ((DeltaNode) prevNode).add(breakWidth);
+            ((DeltaNode) prevNode).subtract( curActiveWidth );
+            ((DeltaNode) prevNode).add( breakWidth );
             // end
             // else begin q <-- get_node(delta_node_size);
-        } else {
-            DeltaNode delta = new DeltaNode(breakWidth);
-            delta.subtract(curActiveWidth);
+        }
+        else {
+            DeltaNode delta = new DeltaNode( breakWidth );
+            delta.subtract( curActiveWidth );
             // link(q) <-- r;
             // type(q) <-- delta_node;
             // subtype(q) <-- 0; {the subtype is not used}
             // do_all_six(new_delta_to_break_width);
             // link(prev_r) <-- q;
-            active.add(r, delta);
+            active.add( r, delta );
             // prev_prev_r <-- prev_r;
             prevPrevR = prevR;
             // prev_r <-- q;
@@ -2895,23 +2877,24 @@ private boolean breakType;
 
     /**
      * 889.
-     * 
+     * <p>
      * Now q points to the hlist that represents the current line of the<
      * paragraph. We need to compute the appropriate line width, pack the line
      * into a box of this size, and shift the box by the appropriate amount of
      * indentation.
-     * 
+     * <p>
      * This code is used in section 880.
-     * 
-      * &lt;&lt;Call the packaging subroutine, setting just_box to the justified box
+     * <p>
+     * &lt;&lt;Call the packaging subroutine, setting just_box to the
+     * justified box
      * 889>> ::=
-     * 
-     * @param line the current line
+     *
+     * @param line    the current line
      * @param curLine the current line number
-     * @param glue the sum of the glues in the line
+     * @param glue    the sum of the glues in the line
      */
-    private void justifyLine(HorizontalListNode line, long curLine,
-            WideGlue glue) {
+    private void justifyLine( HorizontalListNode line, long curLine,
+                              WideGlue glue ) {
 
         // if cur_line > last_special_line then
         // begin cur_width <-- second_width;
@@ -2928,50 +2911,52 @@ private boolean breakType;
         // adjust_tail <-- adjust_head;
         // just_box <-- hpack(q,cur_width,exactly);
 
-        line.hpack(parshape.getLength((int) curLine));
+        line.hpack( parshape.getLength( (int) curLine ) );
         justBox = line;
 
         // shift_amount(just_box) <-- cur_indent
-        justBox.setShift(parshape.getIndent((int) curLine));
+        justBox.setShift( parshape.getIndent( (int) curLine ) );
     }
 
     /**
      * define kern_break ::=
-     * 
+     *
      * @param nodes the node list for the paragraph to break
      */
-    private void kernBreak(NodeList nodes) {
+    private void kernBreak( NodeList nodes ) {
 
         // begin if not is_char_node(link(cur_p)) && auto_breaking then
-        Node n = nodes.get(curBreak + 1);
-        if (!(n instanceof CharNode) && autoBreaking) {
+        Node n = nodes.get( curBreak + 1 );
+        if( !(n instanceof CharNode) && autoBreaking ) {
             // if type(link(cur_p))=glue_node then
-            if (n instanceof AbstractExpandableNode) {
+            if( n instanceof AbstractExpandableNode ) {
                 // try_break(0,unhyphenated);
-                tryBreak(nodes, 0, false);
+                tryBreak( nodes, 0, false );
             }
         }
         // act_width <-- act_width+width(cur_p);
-        activeWidth.add(nodes.get(curBreak).getWidth());
+        activeWidth.add( nodes.get( curBreak ).getWidth() );
         // end
     }
 
     /**
      * 881.
-     * 
+     * <p>
      * At the end of the following code, q will point to the final node on the
      * list about to be justified.
-     * 
+     * <p>
      * This code is used in section 880.
-     * 
-      * &lt;&lt;Modify the end of the line to reflect the nature of the break and to
+     * <p>
+     * &lt;&lt;Modify the end of the line to reflect the nature of the break
+     * and to
      * include \rightskip; also set the proper value of disc_break 881>> ::=
-     * 
-     * @param nodes the node list for the paragraph to break
-     * @param line the current line
+     *
+     * @param nodes    the node list for the paragraph to break
+     * @param line     the current line
      * @param theBreak the current break point
      */
-    private void modifyEndOfLine(NodeList nodes, NodeList line, int theBreak) {
+    private void modifyEndOfLine( NodeList nodes, NodeList line,
+                                  int theBreak ) {
 
         // q <-- cur_break(cur_p);
         // disc_break <-- false;
@@ -2979,31 +2964,34 @@ private boolean breakType;
         // post_disc_break <-- false;
         postDiscBreak = null;
         // if q != null then {q cannot be a char_node}
-        if (theBreak < nodes.size()) {
-            Node q = nodes.get(theBreak);
+        if( theBreak < nodes.size() ) {
+            Node q = nodes.get( theBreak );
             // if type(q)=glue_node then
-            if (q instanceof GlueNode) {
+            if( q instanceof GlueNode ) {
                 // begin delete_glue_ref(glue_ptr(q));
                 // glue_ptr(q) <-- right_skip;
                 // subtype(q) <-- right_skip_code+1;
                 // add_glue_ref(right_skip);
-                ((GlueNode) q).setSize(rightSkip);
+                ((GlueNode) q).setSize( rightSkip );
                 // goto done;
                 return;
                 // end
                 // else begin if type(q)=disc_node then
-            } else if (q instanceof DiscretionaryNode) {
+            }
+            else if( q instanceof DiscretionaryNode ) {
                 // <<Change discretionary to compulsory and set disc_break <--
                 // true 882>>
-                changeDiscretionary((DiscretionaryNode) q, line);
+                changeDiscretionary( (DiscretionaryNode) q, line );
                 // else if (type(q)=math_node) || (type(q)=kern_node) then
-            } else if (q instanceof BeforeMathNode
-                    || q instanceof AfterMathNode || q instanceof KernNode) {
+            }
+            else if( q instanceof BeforeMathNode
+                || q instanceof AfterMathNode || q instanceof KernNode ) {
                 // width(q) <-- 0;
-                q.setWidth(Dimen.ZERO_PT);
+                q.setWidth( Dimen.ZERO_PT );
                 // end
                 // else begin q <-- temp_head;
-            } else {
+            }
+            else {
                 // while link(q) != null do
                 // q <-- link(q);
                 // TODO put q to end???
@@ -3013,17 +3001,17 @@ private boolean breakType;
 
             /*
              * 886.
-             * 
+             *
              * This code is used in section 881.
-             * 
-              * &lt;&lt;Put the (r)\rightskip glue after node q 886>> ::=
+             *
+             * &lt;&lt;Put the (r)\rightskip glue after node q 886>> ::=
              */
 
             // r <-- new_param_glue(right_skip_code);
             // link(r) <-- link(q);
             // link(q) <-- r;
             // q <-- r
-            line.add(new GlueNode(rightSkip, true));
+            line.add( new GlueNode( rightSkip, true ) );
             // - - -
 
         }
@@ -3032,7 +3020,7 @@ private boolean breakType;
 
     /**
      * 877.
-     * 
+     * <p>
      * The total number of lines that will be set by post_line_break is
      * best_line-prev_graf-1. The last breakpoint is specified by
      * break_node(best_bet), and this passive node points to the other
@@ -3041,21 +3029,19 @@ private boolean breakType;
      * to next_break. (The next_break fields actually reside in the same memory
      * space as the prev_break fields did, but we give them a new name because
      * of their new significance.) Then the lines are justified, one by one.
-     * 
+     *
      * <pre>
      * define next_break ::= prev_break {new name for prev_break
      * after links are reversed}
      *
      * procedure post_line_break(final_widow_penalty: integer);
      * </pre>
-     * 
+     *
      * @param nodes the node list for the paragraph to break
-     * 
      * @return the post line break node list
-     * 
      * @throws HelpingException in case of an error
      */
-    private NodeList postLineBreak(NodeList nodes) throws HelpingException {
+    private NodeList postLineBreak( NodeList nodes ) throws HelpingException {
 
         VerticalListNode vlist = new VerticalListNode();
         HorizontalListNode line;
@@ -3097,7 +3083,7 @@ private boolean breakType;
             line = new HorizontalListNode();
             adjust = new HorizontalListNode();
             int theBreak = curP.getCurBreak();
-            fillLine(nodes, idx, theBreak, line, lineGlue, adjust);
+            fillLine( nodes, idx, theBreak, line, lineGlue, adjust );
             idx = theBreak;
 
             // <<Justify the line ending at breakpoint cur_p, and
@@ -3105,7 +3091,7 @@ private boolean breakType;
             // penalties and other insertions 880>>;
             /*
              * 880.
-             * 
+             *
              * The current line to be justified appears in a horizontal list
              * starting at link(temp_head) and ending at cur_break(cur_p). If
              * cur_break(cur_p) is a glue node, we reset the glue to equal the
@@ -3114,48 +3100,49 @@ private boolean breakType;
              * the list so that the discretionary break is compulsory, and we
              * set disc_break to true. We also append the left_skip glue at the
              * left of the line, unless it is zero.
-             * 
+             *
              * This code is used in section 877.
-             * 
-              * &lt;&lt;Justify the line ending at breakpoint cur_p, and append it to
+             *
+             * &lt;&lt;Justify the line ending at breakpoint cur_p, and
+             * append it to
              * the current vertical list, together with associated penalties and
              * other insertions 880>> ::=
              */
             // <<Modify the end of the line to reflect the nature of the break
             // and to include \rightskip; also set the proper value of
             // disc_break 881>>;
-            modifyEndOfLine(nodes, line, theBreak);
+            modifyEndOfLine( nodes, line, theBreak );
             // <<Put the (l)\leftskip glue at the left and detach this line
             // 887>>;
-            putLeftskipAndDetach(line);
+            putLeftskipAndDetach( line );
             // <<Call the packaging subroutine, setting box to the justified
             // box 889>>;
-            justifyLine(line, curLine, lineGlue);
+            justifyLine( line, curLine, lineGlue );
             // <<Append the new box to the current vertical list, followed by
             // the
             // list of special nodes taken out of the box by the packager 888>>;
             /*
              * 888.
-             * 
+             *
              * This code is used in section 880. <<Append the new box to the
              * current vertical list, followed by the list of special nodes
              * taken out of the box by the packager 888>> ::=
              */
             // <append_to_vlist(just_box);
-            vlist.add(line);
+            vlist.add( line );
             // if adjust_head != adjust_tail then
             // begin link(tail) <-- link(adjust_head);
             // tail <-- adjust_tail;
             // end ;
             // adjust_tail <-- null
-            for (int i = 0; i < adjust.size(); i++) {
-                vlist.add(adjust.get(i));
+            for( int i = 0; i < adjust.size(); i++ ) {
+                vlist.add( adjust.get( i ) );
             }
             // - - -
 
             // <<Append a penalty node, if a nonzero penalty is appropriate
             // 890>>
-            appendPenalty(vlist, curLine);
+            appendPenalty( vlist, curLine );
             // - - -
 
             // incr(cur_line);
@@ -3163,22 +3150,22 @@ private boolean breakType;
             // cur_p <-- next_break(cur_p);
             curP = curP.getNextBreak();
             // if cur_p != null then
-            if (curP != null) {
+            if( curP != null ) {
                 // if not post_disc_break then
-                if (postDiscBreak == null) {
+                if( postDiscBreak == null ) {
                     // <<Prune unwanted nodes at the beginning of the next line
                     // 879>>;
-                    idx = pruneUnwantedNodes(nodes, idx, theBreak);
+                    idx = pruneUnwantedNodes( nodes, idx, theBreak );
                 }
             }
 
             // until cur_p=null;
-        } while (curP != null);
+        } while( curP != null );
 
         // if (cur_line != best_line) || (link(temp_head) != null) then
-        if (curLine != bestLine) {
+        if( curLine != bestLine ) {
             // confusion("line breaking");
-            throw new HelpingException(localizer, "Panic.Line.Breaking");
+            throw new HelpingException( localizer, "Panic.Line.Breaking" );
         }
 
         // prev_graf <-- best_line-1;
@@ -3191,35 +3178,36 @@ private boolean breakType;
     /**
      * Initializes the field {@code parshape} if not set already. For this
      * purpose the options are considered.
-     * 
-     *  <p>The Parameter {@code \hangafter}</p>
-*
-     * 
-     *  <p>The Parameter {@code \hangindent}</p>
-*
-     * 
-     *  <p>The Parameter {@code \hsize}</p>
+     *
+     * <p>The Parameter {@code \hangafter}</p>
+     *
+     *
+     * <p>The Parameter {@code \hangindent}</p>
+     *
+     *
+     * <p>The Parameter {@code \hsize}</p>
      * The parameter {@code \hsize} contains the horizontal size of the
      * paragraph to be build. See also {@code \parshape}, {@code \hangindent},
      * and {@code \hangafter}.
-     * 
      */
     private void prepareParshape() {
 
         parshape = options.getParshape();
 
-        if (parshape == null) {
+        if( parshape == null ) {
             int hangafter =
-                    (int) options.getCountOption("hangafter").getValue();
+                (int) options.getCountOption( "hangafter" ).getValue();
 
-            if (hangafter != 0) {
-                hangingParshape.setHangafter(hangafter);
-                hangingParshape.setHangindent(options
-                    .getDimenOption("hangindent"));
-                hangingParshape.setHsize(options.getDimenOption("hsize"));
+            if( hangafter != 0 ) {
+                hangingParshape.setHangafter( hangafter );
+                hangingParshape.setHangindent( options
+                                                   .getDimenOption(
+                                                       "hangindent" ) );
+                hangingParshape.setHsize( options.getDimenOption( "hsize" ) );
                 parshape = hangingParshape;
-            } else {
-                fixedParshape.setHsize(options.getDimenOption("hsize"));
+            }
+            else {
+                fixedParshape.setHsize( options.getDimenOption( "hsize" ) );
                 parshape = fixedParshape;
             }
         }
@@ -3227,36 +3215,40 @@ private boolean breakType;
 
     /**
      * 854.
-     * 
+     * <p>
      * During the final pass, we dare not lose all active nodes, lest we lose
      * touch with the line breaks already found. The code shown here makes sure
      * that such a catastrophe does not happen, by permitting overfull boxes as
-     * a last resort. This particular part of TeX was a source of several subtle bugs before the correct
+     * a last resort. This particular part of TeX was a source of several
+     * subtle bugs before the correct
      * program logic was finally discovered; readers who seek to "improve"
      * TeX should therefore think thrice before daring to make any
      * changes here.
-     * 
+     * <p>
      * This code is used in section 851.
-     * 
-      * &lt;&lt;Prepare to deactivate node r, and goto deactivate unless there is a
+     * <p>
+     * &lt;&lt;Prepare to deactivate node r, and goto deactivate unless there
+     * is a
      * reason to consider lines of text from r to cur_p 854>> ::=
-     * 
+     *
      * @param badness the badness
-     * 
      * @return the indicator for the continuation
      */
-    private boolean prepareToDeactivate(long badness) {
+    private boolean prepareToDeactivate( long badness ) {
 
         // begin if final_pass && (minimum_demerits=awful_bad) &&
         // (link(r)=last_active) && (prev_r=active) then
         // goto deactivate;
-        if (finalPass && minimumDemerits == AWFUL_BAD && r + 1 >= active.size()
-                && prevR < 0) {
+        if( finalPass && minimumDemerits == AWFUL_BAD && r + 1 >= active.size()
+            && prevR < 0 ) {
             // artificial_demerits <-- true {set demerits zero, this break is
             // forced}
             artificialDemerits = true;
             // else if b > threshold then
-        } else return badness > threshold;
+        }
+        else {
+            return badness > threshold;
+        }
         // node_r_stays_active <-- false;
         return false;
         // end
@@ -3264,105 +3256,112 @@ private boolean breakType;
 
     /**
      * 856.
-     * 
+     * <p>
      * This code is used in section 855.
-     * 
-      * &lt;&lt;Print a symbolic description of this feasible break 856>> ::=
-     * 
-     * @param nodes the node list for the paragraph to break
-     * @param d the demerits
+     * <p>
+     * &lt;&lt;Print a symbolic description of this feasible break 856>> ::=
+     *
+     * @param nodes   the node list for the paragraph to break
+     * @param d       the demerits
      * @param penalty the penalty
      * @param badness the badness
      */
-    private void printFeasibleBreak(NodeList nodes, long d, long penalty,
-            int badness) {
+    private void printFeasibleBreak( NodeList nodes, long d, long penalty,
+                                     int badness ) {
 
         StringBuilder sb = new StringBuilder();
         // begin if printed_node != cur_p then
-        if (printedNode != curBreak) {
+        if( printedNode != curBreak ) {
             // <<Print the list between printed_node and cur_p, then set
             // printed_node <-- cur_p 857>>;
-            printList(sb, nodes);
+            printList( sb, nodes );
         }
         // print_nl("@");
-        sb.append("@");
+        sb.append( "@" );
         // if cur_p=null then
-        if (curBreak >= nodes.size()) {
+        if( curBreak >= nodes.size() ) {
             // print_esc("par")
-            sb.append("\\par");
-        } else {
-            Node n = nodes.get(curBreak);
-            if (n instanceof AbstractExpandableNode) {
+            sb.append( "\\par" );
+        }
+        else {
+            Node n = nodes.get( curBreak );
+            if( n instanceof AbstractExpandableNode ) {
                 // else if type(cur_p) != glue_node then
                 // begin if type(cur_p)=penalty_node then
-            } else if (n instanceof PenaltyNode) {
+            }
+            else if( n instanceof PenaltyNode ) {
                 // print_esc("penalty")
-                sb.append("\\penalty");
+                sb.append( "\\penalty" );
                 // else if type(cur_p)=disc_node then
-            } else if (n instanceof DiscretionaryNode) {
+            }
+            else if( n instanceof DiscretionaryNode ) {
                 // print_esc("discretionary")
-                sb.append("\\discretionary");
+                sb.append( "\\discretionary" );
                 // else if type(cur_p)=kern_node then
-            } else if (n instanceof KernNode) {
+            }
+            else if( n instanceof KernNode ) {
                 // print_esc("kern")
-                sb.append("\\kern");
+                sb.append( "\\kern" );
                 // else print_esc("math");
-            } else {
-                sb.append("\\math");
+            }
+            else {
+                sb.append( "\\math" );
             }
             // end ;
         }
         PassiveNode breakNode =
-                (r < active.size() ? ((ActiveNode) active.get(r))
-                    .getBreakNode() : null);
+            (r < active.size() ? ((ActiveNode) active.get( r ))
+                .getBreakNode() : null);
         // print(" via @@");
-        sb.append(" via @@");
+        sb.append( " via @@" );
         // if break_node(r)=null then
         // print_char("0")
         // else print_int(serial(break_node(r)));
-        sb.append(breakNode == null ? "0" : "" + breakNode.getSerial());
+        sb.append( breakNode == null ? "0" : "" + breakNode.getSerial() );
         // print(" b=");
         // if b > inf_bad then print_char("*") else print_int(b);
-        sb.append(badness > Badness.INF_BAD ? " b=*" : " b=" + badness);
+        sb.append( badness > Badness.INF_BAD ? " b=*" : " b=" + badness );
         // print(" p=");
-        sb.append(" p=");
+        sb.append( " p=" );
         // print_int(pi);
-        sb.append(penalty);
+        sb.append( penalty );
         // print(" d=");
         // if artificial_demerits then print_char("*") else print_int(d);
-        sb.append(artificialDemerits ? " d=*" : " d=" + d);
-        sb.append("\n");
-        logger.info(sb.toString());
+        sb.append( artificialDemerits ? " d=*" : " d=" + d );
+        sb.append( "\n" );
+        logger.info( sb.toString() );
         // end
     }
 
-    /**
+    /*
      * 876.
-     * 
+     *
      * Once the best sequence of breakpoints has been found (hurray), we call on
      * the procedure post_line_break to finish the remainder of the work. (By
      * introducing this subprocedure, we are able to keep line_break from
      * getting extremely long.)
-     * 
-      * &lt;&lt;Break the paragraph at the chosen breakpoints, justify the resulting
+     *
+     * &lt;&lt;Break the paragraph at the chosen breakpoints, justify the
+     * resulting
      * lines to the correct widths, and append them to the current vertical list
      * 876>> ::= post_line_break(final_widow_penalty)
-     * 
+     *
      * This code is used in section 815.
      */
 
     /**
      * 857.
-     * 
+     * <p>
      * This code is used in section 856.
-     * 
-      * &lt;&lt;Print the list between printed_node and cur_p, then set printed_node
+     * <p>
+     * &lt;&lt;Print the list between printed_node and cur_p, then set
+     * printed_node
      * <-- cur_p 857>> ::=
-     * 
-     * @param sb the target string buffer
+     *
+     * @param sb    the target string buffer
      * @param nodes the node list for the paragraph to break
      */
-    private void printList(StringBuilder sb, NodeList nodes) {
+    private void printList( StringBuilder sb, NodeList nodes ) {
 
         // begin print_nl("");
         // if cur_p=null then
@@ -3373,9 +3372,9 @@ private boolean breakType;
         // short_display(link(printed_node));
         // link(cur_p) <-- save_link;
         // end ;
-        for (int i = printedNode + 1; i < curBreak; i++) {
-            nodes.get(i).toText(sb, "");
-            sb.append("\n");
+        for( int i = printedNode + 1; i < curBreak; i++ ) {
+            nodes.get( i ).toText( sb, "" );
+            sb.append( "\n" );
         }
 
         // printed_node <-- cur_p;
@@ -3385,99 +3384,99 @@ private boolean breakType;
 
     /**
      * 846.
-     * 
+     * <p>
      * This code is used in section 845.
-     * 
-      * &lt;&lt;Print a symbolic description of the new break node 846>> ::=
-     * 
+     * <p>
+     * &lt;&lt;Print a symbolic description of the new break node 846>> ::=
+     *
      * @param aNode the active node
      */
-    private void printNewBreakNode(ActiveNode aNode) {
+    private void printNewBreakNode( ActiveNode aNode ) {
 
         // begin print_nl("@@");
-        StringBuilder sb = new StringBuilder("@@");
+        StringBuilder sb = new StringBuilder( "@@" );
         // print_int(serial(passive));
-        PassiveNode passiveNode = passive.get(passive.size() - 1);
-        sb.append(passiveNode.getSerial());
+        PassiveNode passiveNode = passive.get( passive.size() - 1 );
+        sb.append( passiveNode.getSerial() );
         // print(": line ");
-        sb.append(": line ");
+        sb.append( ": line " );
         // print_int(line_number(q)-1);
-        sb.append(aNode.getLineNumber() - 1);
+        sb.append( aNode.getLineNumber() - 1 );
         // print_char(".");
-        sb.append(".");
+        sb.append( "." );
         // print_int(fit_class);
-        sb.append(fitClass.getOrder());
+        sb.append( fitClass.getOrder() );
         // if break_type=hyphenated then
-        if (breakType) {
+        if( breakType ) {
             // print_char("-");
-            sb.append("-");
+            sb.append( "-" );
         }
         // print(" t=");
-        sb.append(" t=");
+        sb.append( " t=" );
         // print_int(total_demerits(q));
-        sb.append(aNode.getTotalDemerits());
+        sb.append( aNode.getTotalDemerits() );
 
         // print(" - > @@");
-        sb.append(" - > @@");
+        sb.append( " - > @@" );
         // if prev_break(passive)=null then
         PassiveNode prevBreak = passiveNode.getPrevBreak();
-        if (prevBreak == null) {
+        if( prevBreak == null ) {
             // print_char("0")
-            sb.append("0");
-        } else {
+            sb.append( "0" );
+        }
+        else {
             // else print_int(serial(prev_break(passive)));
-            sb.append(prevBreak.getSerial());
+            sb.append( prevBreak.getSerial() );
         }
 
-        sb.append("\n");
-        logger.info(sb.toString());
+        sb.append( "\n" );
+        logger.info( sb.toString() );
         // end
     }
 
     /**
      * 879.
-     * 
+     * <p>
      * Glue and penalty and kern and math nodes are deleted at the beginning of
      * a line, except in the anomalous case that the node to be deleted is
      * actually one of the chosen breakpoints. Otherwise the pruning done here
      * is designed to match the lookahead computation in try_break, where the
      * break_width values are computed for non-discretionary breakpoints.
-     * 
+     * <p>
      * This code is used in section 877.
-     * 
-      * &lt;&lt;Prune unwanted nodes at the beginning of the next line 879>> ::=
-     * 
+     * <p>
+     * &lt;&lt;Prune unwanted nodes at the beginning of the next line 879>> ::=
+     *
      * @param nodes the node list for the paragraph to break
-     * @param idx start index
-     * @param to end index
-     * 
+     * @param idx   start index
+     * @param to    end index
      * @return the actual end index
      */
-    private int pruneUnwantedNodes(NodeList nodes, int idx, int to) {
+    private int pruneUnwantedNodes( NodeList nodes, int idx, int to ) {
 
         Node q;
         int i = idx;
         // begin r <-- temp_head;
         // loop begin q <-- link(r);
-        while (i < to) {
-            q = nodes.get(i);
+        while( i < to ) {
+            q = nodes.get( i );
             // if q=cur_break(cur_p) then
             // goto done1; {cur_break(cur_p) is the next breakpoint}
             // {now q cannot be null}
             // if is_char_node(q) then
-            if (q instanceof CharNode) {
+            if( q instanceof CharNode ) {
                 // goto done1;
                 break;
             }
             // if non_discardable(q) then
-            if (!(q instanceof Discardable)) {
+            if( !(q instanceof Discardable) ) {
                 // goto done1;
                 break;
             }
             // if type(q)=kern_node then
-            if (q instanceof KernNode) {
+            if( q instanceof KernNode ) {
                 // if subtype(q) != explicit then
-                if (!(q instanceof ExplicitKernNode)) {
+                if( !(q instanceof ExplicitKernNode) ) {
                     // goto done1;
                     break;
                 }
@@ -3499,85 +3498,89 @@ private boolean breakType;
 
     /**
      * 887.
-     * 
+     * <p>
      * The following code begins with q at the end of the list to be justified.
      * It ends with q at the beginning of that list, and with link(temp_head)
      * pointing to the remainder of the paragraph, if any.
-     * 
+     * <p>
      * This code is used in section 880.
-     * 
-      * &lt;&lt;Put the (l)\leftskip glue at the left and detach this line 887>> ::=
-     * 
+     * <p>
+     * &lt;&lt;Put the (l)\leftskip glue at the left and detach this line
+     * 887>> ::=
+     *
      * @param line the current line
      */
-    private void putLeftskipAndDetach(NodeList line) {
+    private void putLeftskipAndDetach( NodeList line ) {
 
         // r <-- link(q);
         // link(q) <-- null;
         // q <-- link(temp_head);
         // link(temp_head) <-- r;
         // if left_skip != zero_glue then
-        if (leftSkip.ne(FixedGlue.ZERO)) {
+        if( leftSkip.ne( FixedGlue.ZERO ) ) {
             // begin r <-- new_param_glue(left_skip_code);
             // link(r) <-- q;
             // q <-- r;
-            line.add(new GlueNode(leftSkip, true));
+            line.add( new GlueNode( leftSkip, true ) );
             // end
         }
     }
 
     /**
      * 855.
-     * 
+     * <p>
      * When we get to this part of the code, the line from r to cur_p is
      * feasible, its badness is b, and its fitness classification is fit_class.
      * We don't want to make an active node for this break yet, but we will
      * compute the total demerits and record them in the minimal_demerits array,
      * if such a break is the current champion among all ways to get to cur_p in
      * a given line-number class and fitness class.
-     * 
+     * <p>
      * This code is used in section 851.
-     * 
-      * &lt;&lt;Record a new feasible break 855>> ::=
-     * 
-     * @param nodes the node list for the paragraph to break
+     * <p>
+     * &lt;&lt;Record a new feasible break 855>> ::=
+     *
+     * @param nodes   the node list for the paragraph to break
      * @param penalty the penalty
      * @param badness the badness
      */
-    private void recordNewFeasibleBreak(NodeList nodes, long penalty,
-            int badness) {
+    private void recordNewFeasibleBreak( NodeList nodes, long penalty,
+                                         int badness ) {
 
         long d;
         // if artificial_demerits then
-        if (artificialDemerits) {
+        if( artificialDemerits ) {
             // d <-- 0
             d = 0;
-        } else {
+        }
+        else {
             // else <<Compute the demerits, d, from r to cur_p 859>>;
-            d = computeDemertis((ActiveNode) active.get(r), penalty, badness);
+            d = computeDemertis( (ActiveNode) active.get( r ),
+                                 penalty,
+                                 badness );
         }
         // stat if tracing_paragraphs > 0 then
-        if (tracingParagraphs) {
+        if( tracingParagraphs ) {
             // <<Print a symbolic description of this feasible break 856>>;
-            printFeasibleBreak(nodes, d, penalty, badness);
+            printFeasibleBreak( nodes, d, penalty, badness );
         }
         // tats
         // d <-- d+total_demerits(r); {this is the minimum total demerits
         // from the beginning to cur_p via r}
-        if (r < active.size()) {
-            d += ((ActiveNode) active.get(r)).getTotalDemerits();
+        if( r < active.size() ) {
+            d += ((ActiveNode) active.get( r )).getTotalDemerits();
         }
         // if d =< minimal_demerits[fit_class] then
         int fit = fitClass.getOrder();
-        if (d <= minimalDemerits[fit]) {
+        if( d <= minimalDemerits[ fit ] ) {
             // begin minimal_demerits[fit_class] <-- d;
-            minimalDemerits[fit] = d;
+            minimalDemerits[ fit ] = d;
             // best_place[fit_class] <-- break_node(r);
-            bestPlace[fit] = ((ActiveNode) active.get(r)).getBreakNode();
+            bestPlace[ fit ] = ((ActiveNode) active.get( r )).getBreakNode();
             // best_pl_line[fit_class] <-- l;
-            bestPlaceLine[fit] = l;
+            bestPlaceLine[ fit ] = l;
             // if d < minimum_demerits then
-            if (d < minimumDemerits) {
+            if( d < minimumDemerits ) {
                 // minimum_demerits <-- d;
                 minimumDemerits = d;
             }
@@ -3585,14 +3588,14 @@ private boolean breakType;
         }
     }
 
-@Override
-    public void setNodefactory(NodeFactory factory) {
+    @Override
+    public void setNodefactory( NodeFactory factory ) {
 
         this.nodeFactory = factory;
     }
 
-@Override
-    public void setOptions(TypesetterOptions options) {
+    @Override
+    public void setOptions( TypesetterOptions options ) {
 
         this.options = options;
     }
@@ -3602,7 +3605,8 @@ private boolean breakType;
      * 835.
      * </p>
      * <p>
-     * The first part of the following code is part of TeX's inner loop, so we don't want to waste any time. The
+     * The first part of the following code is part of TeX's inner loop, so
+     * we don't want to waste any time. The
      * current active node, namely node r, contains the line number that will be
      * considered next. At the end of the list we have arranged the data
      * structure so that r=last_active and line_number(last_active) > old_l.
@@ -3611,41 +3615,42 @@ private boolean breakType;
      * This code is used in section 829.
      * </p>
      * <p>
-      * &lt;&lt;If a line number class has ended, create new active nodes for the best
+     * &lt;&lt;If a line number class has ended, create new active nodes for
+     * the best
      * feasible breaks in that class; then return if r=last_active, otherwise
      * compute the new line_width 835>> ::=
      * </p>
-     * 
+     *
      * @param nodes the node list for the paragraph to break
-     * 
      * @return the indicator that the processing is at its end
      */
-    private boolean sub835(NodeList nodes) {
+    private boolean sub835( NodeList nodes ) {
 
-        if (r >= active.size()) {
+        if( r >= active.size() ) {
             l = Integer.MAX_VALUE;
-        } else {
+        }
+        else {
             // begin l <-- line_number(r);
-            l = ((ActiveNode) active.get(r)).getLineNumber();
+            l = ((ActiveNode) active.get( r )).getLineNumber();
         }
         // if l > old_l then
-        if (l > oldL) {
+        if( l > oldL ) {
             // begin {now we are no longer in the inner loop}
             // if (minimum_demerits < awful_bad) && ((old_l != easy_line)
             // || (r=last_active)) then
-            if (minimumDemerits < AWFUL_BAD
-                    && (oldL != easyLine || r >= active.size())) {
+            if( minimumDemerits < AWFUL_BAD
+                && (oldL != easyLine || r >= active.size()) ) {
                 // <<Create new active nodes for the best feasible breaks just
                 // found 836>>;
-                createNewActiveNodes(nodes);
+                createNewActiveNodes( nodes );
             }
             // if r=last_active then
-            if (r >= active.size()) {
+            if( r >= active.size() ) {
                 // return ;
                 return true;
             }
             // <<Compute the new line width 850>>;
-            computeLineWidth(l);
+            computeLineWidth( l );
             // end ;
         }
         // end
@@ -3654,17 +3659,17 @@ private boolean breakType;
 
     /**
      * 841.
-     * 
+     * <p>
      * Replacement texts and discretionary texts are supposed to contain only
      * character nodes, kern nodes, ligature nodes, and box or rule nodes.
-     * 
+     * <p>
      * This code is used in section 840.
-     * 
-      * &lt;&lt;Subtract the width of node v from break_width 841>> ::=
-     * 
+     * <p>
+     * &lt;&lt;Subtract the width of node v from break_width 841>> ::=
+     *
      * @param v ...
      */
-    private void sub841(Node v) {
+    private void sub841( Node v ) {
 
         // if is_char_node(v) then
         // begin f <-- font(v);
@@ -3678,36 +3683,36 @@ private boolean breakType;
         // end ;
         // hlist_node,vlist_node,rule_node,kern_node:
         // break_width[1] <-- break_width[1]-width(v);
-        breakWidth.subtract(v.getWidth());
+        breakWidth.subtract( v.getWidth() );
         // othercases confusion("disc1")
         // endcases
     }
 
     /**
      * 851.
-     * 
+     * <p>
      * The remaining part of try_break deals with the calculation of demerits
      * for a break from r to cur_p.
-     * 
+     * <p>
      * The first thing to do is calculate the badness, b. This value will always
      * be between zero and inf_bad+1; the latter value occurs only in the case
      * of lines from r to cur_p that cannot shrink enough to fit the necessary
      * width. In such cases, node r will be deactivated. We also deactivate node
      * r when a break at cur_p is forced, since future breaks must go through a
      * forced break.
-     * 
+     * <p>
      * This code is used in section 829.
-     * 
-      * &lt;&lt;Consider the demerits for a line from r to cur_p; deactivate node r if
+     * <p>
+     * &lt;&lt;Consider the demerits for a line from r to cur_p; deactivate
+     * node r if
      * it should no longer be active; then goto continue if a line from r to
      * cur_p is infeasible, otherwise record a new feasible break 851>> ::=
-     * 
-     * @param nodes the node list for the paragraph to break
+     *
+     * @param nodes   the node list for the paragraph to break
      * @param penalty the penalty
-     * 
      * @return {@code true} iff ...
      */
-    private boolean sub851(NodeList nodes, long penalty) {
+    private boolean sub851( NodeList nodes, long penalty ) {
 
         // node_r_stays_active: boolean; {should node r remain in the
         // active list?}
@@ -3720,35 +3725,38 @@ private boolean breakType;
         artificialDemerits = false;
         // shortfall <-- line_width-cur_active_width[1]; {we're this much too
         // short}
-        shortfall.set(lineWidth);
-        shortfall.subtract(curActiveWidth.getLength());
+        shortfall.set( lineWidth );
+        shortfall.subtract( curActiveWidth.getLength() );
         // if shortfall > 0 then
-        if (shortfall.gt(Dimen.ZERO_PT)) {
+        if( shortfall.gt( Dimen.ZERO_PT ) ) {
             // <<Set the value of b to the badness for stretching the line, and
             // compute the corresponding fit_class 852>>
             badness = badnessForStretching();
-        } else {
+        }
+        else {
             // else <<Set the value of b to the badness for shrinking the line,
             // and compute the corresponding fit_class 853>>;
             badness = badnessForShrinking();
         }
         // if (b > inf_bad) || (pi=eject_penalty) then
-        if (badness > Badness.INF_BAD || penalty == Badness.EJECT_PENALTY) {
+        if( badness > Badness.INF_BAD || penalty == Badness.EJECT_PENALTY ) {
             // <<Prepare to deactivate node r, and goto deactivate unless there
             // is a reason to consider lines of text from r to cur_p 854>>
-            if (prepareToDeactivate(badness)) {
+            if( prepareToDeactivate( badness ) ) {
 
                 // deactivate: <<Deactivate node r 860>>;
                 deactivateNodeR();
                 return false;
-            } else {
+            }
+            else {
                 nodeRStaysActive = false;
             }
-        } else {
+        }
+        else {
             // else begin prev_r <-- r;
             prevR = r;
             // if b > threshold then
-            if (badness > threshold) {
+            if( badness > threshold ) {
                 // goto continue;
                 return true;
             }
@@ -3757,9 +3765,9 @@ private boolean breakType;
             // end ;
         }
         // <<Record a new feasible break 855>>;
-        recordNewFeasibleBreak(nodes, penalty, badness);
+        recordNewFeasibleBreak( nodes, penalty, badness );
         // if node_r_stays_active then
-        if (nodeRStaysActive) {
+        if( nodeRStaysActive ) {
             // goto continue; {prev_r has been set to r}
             return true;
         }
@@ -3771,18 +3779,19 @@ private boolean breakType;
 
     /**
      * 861.
-     * 
+     * <p>
      * The following code uses the fact that type(last_active) != delta_node. If
      * the active list has just become empty, we do not need to update the
      * active_width array, since it will be initialized when an active node is
      * next inserted.
-     * 
+     * <p>
      * define update_active(#) ::= active_width[#] <--
      * active_width[#]+mem[r+#].sc
-     * 
+     * <p>
      * This code is used in section 860.
-     * 
-      * &lt;&lt;Update the active widths, since the first active node has been deleted
+     * <p>
+     * &lt;&lt;Update the active widths, since the first active node has been
+     * deleted
      * 861>> ::=
      */
     private void sub861() {
@@ -3790,14 +3799,14 @@ private boolean breakType;
         // begin r <-- link(active);
         r = 0;
         // if type(r)=delta_node then
-        if (!active.isEmpty() && active.get(r) instanceof DeltaNode) {
+        if( !active.isEmpty() && active.get( r ) instanceof DeltaNode ) {
             // begin do_all_six(update_active);
-            activeWidth.add((DeltaNode) active.get(r));
+            activeWidth.add( (DeltaNode) active.get( r ) );
             // do_all_six(copy_to_cur_active);
-            curActiveWidth.set(activeWidth);
+            curActiveWidth.set( activeWidth );
             // link(active) <-- link(r);
             // free_node(r,delta_node_size);
-            active.remove(r);
+            active.remove( r );
             // end ;
         }
         // end
@@ -3805,10 +3814,11 @@ private boolean breakType;
 
     /**
      * 883.
-     * 
+     * <p>
      * This code is used in section 882.
-     * 
-      * &lt;&lt;Destroy the t nodes following q, and make r point to the following node
+     * <p>
+     * &lt;&lt;Destroy the t nodes following q, and make r point to the
+     * following node
      * 883>> ::=
      */
     private void sub883() {
@@ -3830,17 +3840,17 @@ private boolean breakType;
 
     /**
      * 884.
-     * 
+     * <p>
      * We move the post-break list from inside node q to the main list by
      * re-attaching it just before the present node r, then resetting r.
-     * 
+     * <p>
      * This code is used in section 882.
-     * 
-      * &lt;&lt;Transplant the post-break list 884>> ::=
-     * 
+     * <p>
+     * &lt;&lt;Transplant the post-break list 884>> ::=
+     *
      * @param postBreak the list of post break items
      */
-    private void transplantPostBreakList(NodeList postBreak) {
+    private void transplantPostBreakList( NodeList postBreak ) {
 
         // begin s <-- post_break(q);
         // while link(s) != null do
@@ -3855,18 +3865,18 @@ private boolean breakType;
 
     /**
      * 885.
-     * 
+     * <p>
      * We move the pre-break list from inside node q to the main list by
      * re-attaching it just after the present node q, then resetting q.
-     * 
+     * <p>
      * This code is used in section 882.
-     * 
-      * &lt;&lt;Transplant the pre-break list 885>> ::=
-     * 
+     * <p>
+     * &lt;&lt;Transplant the pre-break list 885>> ::=
+     *
      * @param preBreak the pre-break list
-     * @param line the current line
+     * @param line     the current line
      */
-    private void transplantPreBreakList(NodeList preBreak, NodeList line) {
+    private void transplantPreBreakList( NodeList preBreak, NodeList line ) {
 
         // begin s <-- pre_break(q);
         // link(q) <-- s;
@@ -3874,20 +3884,20 @@ private boolean breakType;
         // s <-- link(s);
         // pre_break(q) <-- null;
         // q <-- s;
-        for (int i = 0; i < preBreak.size(); i++) {
-            line.add(preBreak.get(i));
+        for( int i = 0; i < preBreak.size(); i++ ) {
+            line.add( preBreak.get( i ) );
         }
         // end
     }
 
     /**
      * procedure try_break(pi:integer;break_type: small_number);
-     * 
-     * @param nodes the node list for the paragraph to break
-     * @param penalty the initial penalty
+     *
+     * @param nodes      the node list for the paragraph to break
+     * @param penalty    the initial penalty
      * @param hyphenated the break type
      */
-    private void tryBreak(NodeList nodes, long penalty, boolean hyphenated) {
+    private void tryBreak( NodeList nodes, long penalty, boolean hyphenated ) {
 
         long pen = penalty;
         breakType = hyphenated;
@@ -3900,7 +3910,7 @@ private boolean breakType;
 
         /*
          * 830.
-         * 
+         *
          * This code is used in section 829.
          */
 
@@ -3915,16 +3925,17 @@ private boolean breakType;
         // begin <<Make sure that pi is in the proper range 831>>;
         /*
          * 831.
-         * 
+         *
          * This code is used in section 829.
          */
         // <<Make sure that pi is in the proper range 831>> ::=
         // if abs(pi) >= inf_penalty then
         // if pi > 0 then
-        if (pen >= Badness.INF_PENALTY) {
+        if( pen >= Badness.INF_PENALTY ) {
             // return {this breakpoint is inhibited by infinite penalty}
             return;
-        } else if (pen < Badness.EJECT_PENALTY) {
+        }
+        else if( pen < Badness.EJECT_PENALTY ) {
             // else pi <-- eject_penalty {this breakpoint will be forced}
             pen = Badness.EJECT_PENALTY;
 
@@ -3937,9 +3948,9 @@ private boolean breakType;
         // old_l <-- 0;
         oldL = 0;
         // do_all_six(copy_to_cur_active);
-        curActiveWidth.set(activeWidth);
+        curActiveWidth.set( activeWidth );
 
-        for (;;) {
+        for( ; ; ) {
             // loop begin continue: r <-- link(prev_r);
             r = prevR + 1;
             // //S ystem.err.println("--> " + r);
@@ -3948,23 +3959,23 @@ private boolean breakType;
 
             /*
              * 832.
-             * 
+             *
              * The following code uses the fact that type(last_active) !=
              * delta_node.
-             * 
+             *
              * define update_width(#) ::= cur_active_width[#] <--
              * cur_active_width[#]+mem[r+#].sc
-             * 
+             *
              * This code is used in section 829.
              */
 
             // <<If node r is of type delta_node, update cur_active_width,
             // set prev_r and prev_prev_r, then goto continue 832>> ::=
             // if type(r)=delta_node then
-            Object n = (r < active.size() ? active.get(r) : null);
-            if (n instanceof DeltaNode) {
+            Object n = (r < active.size() ? active.get( r ) : null);
+            if( n instanceof DeltaNode ) {
                 // begin do_all_six(update_width);
-                curActiveWidth.add((DeltaNode) n);
+                curActiveWidth.add( (DeltaNode) n );
                 // prev_prev_r <-- prev_r;
                 prevPrevR = prevR;
                 // prev_r <-- r;
@@ -3972,13 +3983,14 @@ private boolean breakType;
                 // goto continue;
                 continue;
                 // end
-            } else {
+            }
+            else {
 
                 // <<If a line number class has ended, create new
                 // active nodes for the best feasible breaks in that
                 // class; then return if r=last_active, otherwise
                 // compute the new line_width 835>>;
-                if (sub835(nodes)) {
+                if( sub835( nodes ) ) {
                     return;
                 }
 
@@ -3987,7 +3999,7 @@ private boolean breakType;
                 // then goto continue if a line from r to cur_p is
                 // infeasible, otherwise record a new feasible break
                 // 851>>;
-                if (sub851(nodes, pen)) {
+                if( sub851( nodes, pen ) ) {
                     continue;
                 }
                 // end ;
@@ -4002,24 +4014,23 @@ private boolean breakType;
 
     /**
      * 873.
-     * 
+     * <p>
      * This code is used in section 863.
-     * 
+     *
      * @param nodes the node list for the paragraph to break
-     * 
      * @return {@code true} iff the calling program should be finished
      */
-    private boolean tryTheFinalLineBreak(NodeList nodes) {
+    private boolean tryTheFinalLineBreak( NodeList nodes ) {
 
         // begin try_break(eject_penalty,hyphenated);
-        tryBreak(nodes, Badness.EJECT_PENALTY, true);
+        tryBreak( nodes, Badness.EJECT_PENALTY, true );
         // if link(active) != last_active then
-        if (active.size() > 0) {
+        if( active.size() > 0 ) {
             // begin <<Find an active node with fewest demerits 874>>;
             findAnActiveNodeWithFewestDemerits();
 
             // if looseness=0 then
-            if (looseness == 0) {
+            if( looseness == 0 ) {
                 // goto done;
                 return true;
             }

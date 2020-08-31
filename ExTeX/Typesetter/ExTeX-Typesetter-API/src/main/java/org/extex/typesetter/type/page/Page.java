@@ -29,92 +29,92 @@ import org.extex.typesetter.type.NodeList;
  * access to additional parameters.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Page {
 
-    /**
-     * Getter for the background color.
-     *
-     * @return the background color
-     */
-    Color getColor();
+  /**
+   * Getter for the background color.
+   *
+   * @return the background color
+   */
+  Color getColor();
 
-    /**
-     * Getter for the height of the media.
-     *
-     * @return the height of the media
-     */
-    Dimen getMediaHeight();
+  /**
+   * Getter for the height of the media.
+   *
+   * @return the height of the media
+   */
+  Dimen getMediaHeight();
 
-    /**
-     * Getter for the horizontal offset of the media.
-     *
-     * @return the horizontal offset of the media
-     */
-    Dimen getMediaHOffset();
+  /**
+   * Getter for the horizontal offset of the media.
+   *
+   * @return the horizontal offset of the media
+   */
+  Dimen getMediaHOffset();
 
-    /**
-     * Getter for the vertical offset of the media.
-     *
-     * @return the vertical offset of the media
-     */
-    Dimen getMediaVOffset();
+  /**
+   * Getter for the vertical offset of the media.
+   *
+   * @return the vertical offset of the media
+   */
+  Dimen getMediaVOffset();
 
-    /**
-     * Getter for the width of the media.
-     *
-     * @return the width of the media
-     */
-    Dimen getMediaWidth();
+  /**
+   * Getter for the width of the media.
+   *
+   * @return the width of the media
+   */
+  Dimen getMediaWidth();
 
-    /**
-     * Getter for the node list. The node list describes where on the page to
-     * put characters from fonts or other graphical symbols like rules.
-     *
-     * @return the node list
-     */
-    NodeList getNodes();
+  /**
+   * Getter for the node list. The node list describes where on the page to
+   * put characters from fonts or other graphical symbols like rules.
+   *
+   * @return the node list
+   */
+  NodeList getNodes();
 
-    /**
-     * Getter for the array of page numbers.
-     *
-     * @return the array of page numbers
-     */
-    FixedCount[] getPageNo();
+  /**
+   * Getter for the array of page numbers.
+   *
+   * @return the array of page numbers
+   */
+  FixedCount[] getPageNo();
 
-    /**
-     * Setter for the background color.
-     *
-     * @param background the background color
-     */
-    void setColor(Color background);
+  /**
+   * Setter for the background color.
+   *
+   * @param background the background color
+   */
+  void setColor( Color background );
 
-    /**
-     * Setter for the height of the media.
-     *
-     * @param height the media height
-     */
-    void setMediaHeight(Dimen height);
+  /**
+   * Setter for the height of the media.
+   *
+   * @param height the media height
+   */
+  void setMediaHeight( Dimen height );
 
-    /**
-     * Setter for the horizontal offset of the media.
-     *
-     * @param offset the media horizontal offset
-     */
-    void setMediaHOffset(Dimen offset);
+  /**
+   * Setter for the horizontal offset of the media.
+   *
+   * @param offset the media horizontal offset
+   */
+  void setMediaHOffset( Dimen offset );
 
-    /**
-     * Setter for the vertical offset of the media.
-     *
-     * @param offset the media vertical offset
-     */
-    void setMediaVOffset(Dimen offset);
+  /**
+   * Setter for the vertical offset of the media.
+   *
+   * @param offset the media vertical offset
+   */
+  void setMediaVOffset( Dimen offset );
 
-    /**
-     * Setter for the width of the media.
-     *
-     * @param width the media width
-     */
-    void setMediaWidth(Dimen width);
+  /**
+   * Setter for the width of the media.
+   *
+   * @param width the media width
+   */
+  void setMediaWidth( Dimen width );
 
 }

@@ -35,7 +35,7 @@ import org.extex.unit.base.file.AbstractFileCode;
  * This class provides an implementation for the primitive {@code \input}.
  * It uses the standard encoding (see token register {@code \fileencoding}
  * and {@code extex.encoding}.
- * 
+ *
  * <p>The Primitive {@code \input}</p>
  * <p>
  * The primitive {@code \input} takes as argument one file name and opens
@@ -50,7 +50,7 @@ import org.extex.unit.base.file.AbstractFileCode;
  * The primitive also makes provisions that the information in
  * {@code \inputfilename} and {@code \inputlineno} are set properly.
  * </p>
- * 
+ *
  * <p>Syntax</p>
  * <p>
  * The formal description of this primitive is the following:
@@ -59,9 +59,9 @@ import org.extex.unit.base.file.AbstractFileCode;
  * <pre class="syntax">
  *    &lang;input&rang;
  *       &rarr; {@code \input} &lang;file name&rang; </pre>
- * 
+ *
  * <p>Examples</p>
-
+ *
  * <p>
  * The traditional version of the file name parsing allows the following syntax:
  * </p>
@@ -76,72 +76,71 @@ import org.extex.unit.base.file.AbstractFileCode;
  *
  * <pre class="TeXSample">
  *    \input{file.name}  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Input extends AbstractFileCode implements ExpandableCode {
 
-    /**
-     * The field {@code FILE_TYPE} contains the file type to create an input
-     * stream for.
-     */
-    private static final String FILE_TYPE = "tex";
+  /**
+   * The field {@code FILE_TYPE} contains the file type to create an input
+   * stream for.
+   */
+  private static final String FILE_TYPE = "tex";
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Input(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Input( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String name = scanFileName( context, source );
+    TokenStream stream =
+        source.getTokenStreamFactory().getStream( name, FILE_TYPE,
+                                                  getEncoding( context ) );
+    if( stream == null ) {
+      throw new HelpingException( getLocalizer(), "TTP.FileNotFound", name );
     }
+    source.addStream( stream );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws ConfigurationException,
+      HelpingException,
+      TypesetterException {
 
-        String name = scanFileName(context, source);
-        TokenStream stream =
-                source.getTokenStreamFactory().getStream(name, FILE_TYPE,
-                    getEncoding(context));
-        if (stream == null) {
-            throw new HelpingException(getLocalizer(), "TTP.FileNotFound", name);
-        }
-        source.addStream(stream);
+    String name = scanFileName( context, source );
+    TokenStream stream =
+        source.getTokenStreamFactory().getStream( name, FILE_TYPE,
+                                                  getEncoding( context ) );
+    if( stream == null ) {
+      throw new HelpingException( getLocalizer(), "TTP.FileNotFound", name );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException,
-                TypesetterException {
-
-        String name = scanFileName(context, source);
-        TokenStream stream =
-                source.getTokenStreamFactory().getStream(name, FILE_TYPE,
-                    getEncoding(context));
-        if (stream == null) {
-            throw new HelpingException(getLocalizer(), "TTP.FileNotFound", name);
-        }
-        source.addStream(stream);
-    }
+    source.addStream( stream );
+  }
 
 }

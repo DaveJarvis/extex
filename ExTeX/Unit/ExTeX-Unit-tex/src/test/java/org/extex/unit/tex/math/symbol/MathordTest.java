@@ -26,30 +26,28 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \mathord}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathordTest extends AbstractOperatorTester {
 
-    public MathordTest() {
-        setPrimitive("mathord");
-    }
+  public MathordTest() {
+    setPrimitive( "mathord" );
+  }
 
-    /**
-     * 
-     *  Test case checking that a single math character works.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testLetter1() throws Exception {
+  /**
+   * Test case checking that a single math character works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testLetter1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        //--- input code ---
-                DEFINE_MATH + DEFINE_MATH_FONTS + "$\\mathord a$" + "\\end ",
-                //--- output channel ---
-                "\\vbox(4.30554pt+0.0pt)x3000.0pt\n"
-                        + ".\\hbox(4.30554pt+0.0pt)x3000.0pt\n" + "..a\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   //--- input code ---
+                   DEFINE_MATH + DEFINE_MATH_FONTS + "$\\mathord a$" + "\\end ",
+                   //--- output channel ---
+                   "\\vbox(4.30554pt+0.0pt)x3000.0pt\n"
+                       + ".\\hbox(4.30554pt+0.0pt)x3000.0pt\n" + "..a\n" );
+  }
 
 }

@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \splitfirstmark}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SplitfirstmarkTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SplitfirstmarkTest.class);
-    }
+    (new JUnitCore()).run( SplitfirstmarkTest.class );
+  }
 
 
-    public SplitfirstmarkTest() {
+  public SplitfirstmarkTest() {
 
-        setPrimitive("splitfirstmark");setArguments("");setPrepare("");
-    }
+    setPrimitive( "splitfirstmark" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

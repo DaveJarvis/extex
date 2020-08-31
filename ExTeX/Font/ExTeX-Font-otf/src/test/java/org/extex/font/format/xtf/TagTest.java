@@ -31,91 +31,91 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Test for the class {@link Tag} and all sub classes.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TagTest {
 
-    /**
-     * Test add.
-     */
-    @Test
-    public void testAdd() {
+  /**
+   * Test add.
+   */
+  @Test
+  public void testAdd() {
 
-        ScriptTag.getInstance("new");
+    ScriptTag.getInstance( "new" );
 
-        assertTrue( ScriptTag.containsTag( "new " ) );
-    }
+    assertTrue( ScriptTag.containsTag( "new " ) );
+  }
 
-    /**
-     * Test default.
-     */
-    @Test
-    public void testDefault() {
+  /**
+   * Test default.
+   */
+  @Test
+  public void testDefault() {
 
-        assertEquals( "DFLT", ScriptTag.getDefault().getTag() );
-    }
+    assertEquals( "DFLT", ScriptTag.getDefault().getTag() );
+  }
 
-    /**
-     * Test exists.
-     */
-    @Test
-    public void testExists() {
+  /**
+   * Test exists.
+   */
+  @Test
+  public void testExists() {
 
-        assertTrue( ScriptTag.containsTag( "latn" ) );
-        assertTrue( ScriptTag.containsTag( "lao" ) );
-        assertTrue( ScriptTag.containsTag( "arab" ) );
-    }
+    assertTrue( ScriptTag.containsTag( "latn" ) );
+    assertTrue( ScriptTag.containsTag( "lao" ) );
+    assertTrue( ScriptTag.containsTag( "arab" ) );
+  }
 
-    // /**
-    // * Test not exists.
-    // */
-    // @Test
-    // public void testNotExists() {
+  // /**
+  // * Test not exists.
+  // */
+  // @Test
+  // public void testNotExists() {
 
-    // assertTrue(!ScriptTag.isInList("XXX"));
-    // }
+  // assertTrue(!ScriptTag.isInList("XXX"));
+  // }
 
-    /**
-     * Test tag found 01.
-     */
-    @Test
-    public void testTagFound01() {
+  /**
+   * Test tag found 01.
+   */
+  @Test
+  public void testTagFound01() {
 
-        Tag tag = Tag.getInstance("DFLT");
-        Assert.assertNotNull( tag );
-        assertTrue( tag instanceof ScriptTag );
-    }
+    Tag tag = Tag.getInstance( "DFLT" );
+    Assert.assertNotNull( tag );
+    assertTrue( tag instanceof ScriptTag );
+  }
 
-    /**
-     * Test tag found 02.
-     */
-    @Test
-    public void testTagFound02() {
+  /**
+   * Test tag found 02.
+   */
+  @Test
+  public void testTagFound02() {
 
-        Tag tag = Tag.getInstance("hlig");
-        Assert.assertNotNull( tag );
-        assertTrue( tag instanceof FeatureTag );
-    }
+    Tag tag = Tag.getInstance( "hlig" );
+    Assert.assertNotNull( tag );
+    assertTrue( tag instanceof FeatureTag );
+  }
 
-    /**
-     * Test tag found 03.
-     */
-    @Test
-    public void testTagFound03() {
+  /**
+   * Test tag found 03.
+   */
+  @Test
+  public void testTagFound03() {
 
-        Tag tag = Tag.getInstance("DEU");
-        Assert.assertNotNull( tag );
-        assertTrue( tag instanceof LanguageSystemTag );
-    }
+    Tag tag = Tag.getInstance( "DEU" );
+    Assert.assertNotNull( tag );
+    assertTrue( tag instanceof LanguageSystemTag );
+  }
 
-    /**
-     * Test tag not found.
-     */
-    @Test
-    public void testTagNotFound() {
+  /**
+   * Test tag not found.
+   */
+  @Test
+  public void testTagNotFound() {
 
-        Tag tag = Tag.getInstance("XXX2");
-        Assert.assertNull( tag );
-    }
+    Tag tag = Tag.getInstance( "XXX2" );
+    Assert.assertNull( tag );
+  }
 }

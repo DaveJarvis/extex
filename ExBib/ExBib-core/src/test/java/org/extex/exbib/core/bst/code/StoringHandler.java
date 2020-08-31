@@ -24,43 +24,43 @@ import java.util.logging.LogRecord;
 
 /**
  * This class is a log handler which stores the log record in a buffer.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class StoringHandler extends Handler {
 
-    /**
-     * The field {@code buffer} contains the buffer.
-     */
-    private final StringBuilder buffer = new StringBuilder();
+  /**
+   * The field {@code buffer} contains the buffer.
+   */
+  private final StringBuilder buffer = new StringBuilder();
 
 
-    public StoringHandler() {
+  public StoringHandler() {
 
-    }
+  }
 
-@Override
-    public void close() {
+  @Override
+  public void close() {
 
-        
-    }
 
-@Override
-    public void flush() {
+  }
 
-        
-    }
+  @Override
+  public void flush() {
 
-@Override
-    public void publish(LogRecord record) {
 
-        buffer.append(record.getMessage());
-    }
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public void publish( LogRecord record ) {
 
-        return buffer.toString();
-    }
+    buffer.append( record.getMessage() );
+  }
+
+  @Override
+  public String toString() {
+
+    return buffer.toString();
+  }
 
 }

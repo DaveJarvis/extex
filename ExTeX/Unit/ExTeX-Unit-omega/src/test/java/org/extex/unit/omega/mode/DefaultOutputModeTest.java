@@ -25,58 +25,58 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \DefaultOutputMode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DefaultOutputModeTest.class);
-    }
+    (new JUnitCore()).run( DefaultOutputModeTest.class );
+  }
 
 
-    public DefaultOutputModeTest() {
+  public DefaultOutputModeTest() {
 
-        setPrimitive("DefaultOutputMode");setArguments(" onebyte ");
-        setConfig("omega-test");
-    }
+    setPrimitive( "DefaultOutputMode" );
+    setArguments( " onebyte " );
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\DefaultOutputMode"> Test case checking that
-     * {@code \DefaultOutputMode} works needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErrorEof1() throws Exception {
+  /**
+   * <testcase primitive="\DefaultOutputMode"> Test case checking that
+   * {@code \DefaultOutputMode} works needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErrorEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\DefaultOutputMode",
-            // --- output channel ---
-            "Unexpected end of file");
-    }
+    assertFailure(// --- input code ---
+                  "\\DefaultOutputMode",
+                  // --- output channel ---
+                  "Unexpected end of file" );
+  }
 
-    /**
-     * <testcase primitive="\DefaultOutputMode"> Test case checking that
-     * {@code \DefaultOutputMode} needs a known output mode as argument.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr1() throws Exception {
+  /**
+   * <testcase primitive="\DefaultOutputMode"> Test case checking that
+   * {@code \DefaultOutputMode} needs a known output mode as argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\DefaultOutputMode xxx",
-            // --- output channel ---
-            "Bad output mode");
-    }
+    assertFailure(// --- input code ---
+                  "\\DefaultOutputMode xxx",
+                  // --- output channel ---
+                  "Bad output mode" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

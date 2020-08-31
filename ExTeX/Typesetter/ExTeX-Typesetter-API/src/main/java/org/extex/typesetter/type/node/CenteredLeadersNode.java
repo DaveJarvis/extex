@@ -31,129 +31,129 @@ import org.extex.typesetter.type.OrientedNode;
 /**
  * This node represents an centered leaders node as used by the primitive
  * {@code \cleaders}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CenteredLeadersNode extends AbstractLeadersNode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param node the node or node list to stretch or repeat
-     * @param glue the desired size
-     */
-    public CenteredLeadersNode(OrientedNode node, FixedGlue glue) {
+  /**
+   * Creates a new object.
+   *
+   * @param node the node or node list to stretch or repeat
+   * @param glue the desired size
+   */
+  public CenteredLeadersNode( OrientedNode node, FixedGlue glue ) {
 
-        super(node, glue);
+    super( node, glue );
+  }
+
+  /**
+   * The method determines how much horizontal space is left and distributes
+   * it if necessary.
+   * <p>
+   * If there is not enough space for at least one instance then the current
+   * instance is returned. In this case it acts as placeholder to contribute
+   * the dimensions for the update of the current position in the document
+   * writer.
+   * </p>
+   * <p>
+   * Otherwise a hlist is created and filled with appropriately many
+   * references to the repeat material. Optionally this is preceded by a kern
+   * node to achieve the centering.
+   * </p>
+   * <p>
+   * org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
+   * org.extex.core.dimen.FixedDimen)
+   */
+  @Override
+  protected Node fillHorizontally( long total, Node node, FixedDimen posX,
+                                   FixedDimen posY ) {
+
+    long w = node.getWidth().getValue();
+    if( total < w || w <= 0 ) {
+      return this;
     }
 
-    /**
-     * The method determines how much horizontal space is left and distributes
-     * it if necessary.
-     * <p>
-     * If there is not enough space for at least one instance then the current
-     * instance is returned. In this case it acts as placeholder to contribute
-     * the dimensions for the update of the current position in the document
-     * writer.
-     * </p>
-     * <p>
-     * Otherwise a hlist is created and filled with appropriately many
-     * references to the repeat material. Optionally this is preceded by a kern
-     * node to achieve the centering.
-     * </p>
-     * 
-*      org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
-     *      org.extex.core.dimen.FixedDimen)
-     */
-    @Override
-    protected Node fillHorizontally(long total, Node node, FixedDimen posX,
-            FixedDimen posY) {
+    long n = total / w;
+    // the rounding error appears at the right side
+    long offset = (total - n * w) / 2;
+    // Possible improvement: If n==1 && offset == 0 return node?
+    NodeList nl = new HorizontalListNode();
 
-        long w = node.getWidth().getValue();
-        if (total < w || w <= 0) {
-            return this;
-        }
-
-        long n = total / w;
-        // the rounding error appears at the right side
-        long offset = (total - n * w) / 2;
-        // Possible improvement: If n==1 && offset == 0 return node?
-        NodeList nl = new HorizontalListNode();
-
-        if (offset > 0) {
-            nl.add(new ImplicitKernNode(new Dimen(offset), true));
-        }
-
-        while (n-- > 0) {
-            nl.add(node);
-        }
-
-        nl.setDepth(getDepth());
-        nl.setHeight(getHeight());
-        nl.setWidth(getWidth());
-        return nl;
+    if( offset > 0 ) {
+      nl.add( new ImplicitKernNode( new Dimen( offset ), true ) );
     }
 
-    /**
-     * The method determines how much vertical space is left and distributes it
-     * if necessary.
-     * <p>
-     * If there is not enough space for at least one instance then the current
-     * instance is returned. In this case it acts as placeholder to contribute
-     * the dimensions for the update of the current position in the document
-     * writer.
-     * </p>
-     * <p>
-     * Otherwise a vlist is created and filled with appropriately many
-     * references to the repeat material. Optionally this is preceded by a kern
-     * node to achieve the centering.
-     * </p>
-     * 
-*      org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
-     *      org.extex.core.dimen.FixedDimen)
-     */
-    @Override
-    protected Node fillVertically(long total, Node node, FixedDimen posX,
-            FixedDimen posY) {
-
-        long h = node.getHeight().getValue() + node.getDepth().getValue();
-        if (total < h || h <= 0) {
-            return this;
-        }
-
-        long n = total / h;
-        // the rounding error appears at the bottom
-        long offset = (total - n * h) / 2;
-        // Possible improvement: If n==1 && offset == 0 return node?
-        NodeList nl = new VerticalListNode();
-
-        if (offset > 0) {
-            nl.add(new ImplicitKernNode(new Dimen(offset), false));
-        }
-
-        while (n-- > 0) {
-            nl.add(node);
-        }
-
-        nl.setDepth(getDepth());
-        nl.setHeight(getHeight());
-        nl.setWidth(getWidth());
-        return nl;
+    while( n-- > 0 ) {
+      nl.add( node );
     }
 
-    /**
-*      java.lang.Object)
-     */
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(NodeVisitor visitor, Object value)
-            throws GeneralException {
+    nl.setDepth( getDepth() );
+    nl.setHeight( getHeight() );
+    nl.setWidth( getWidth() );
+    return nl;
+  }
 
-        return visitor.visitCenteredLeaders(this, value);
+  /**
+   * The method determines how much vertical space is left and distributes it
+   * if necessary.
+   * <p>
+   * If there is not enough space for at least one instance then the current
+   * instance is returned. In this case it acts as placeholder to contribute
+   * the dimensions for the update of the current position in the document
+   * writer.
+   * </p>
+   * <p>
+   * Otherwise a vlist is created and filled with appropriately many
+   * references to the repeat material. Optionally this is preceded by a kern
+   * node to achieve the centering.
+   * </p>
+   * <p>
+   * org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
+   * org.extex.core.dimen.FixedDimen)
+   */
+  @Override
+  protected Node fillVertically( long total, Node node, FixedDimen posX,
+                                 FixedDimen posY ) {
+
+    long h = node.getHeight().getValue() + node.getDepth().getValue();
+    if( total < h || h <= 0 ) {
+      return this;
     }
+
+    long n = total / h;
+    // the rounding error appears at the bottom
+    long offset = (total - n * h) / 2;
+    // Possible improvement: If n==1 && offset == 0 return node?
+    NodeList nl = new VerticalListNode();
+
+    if( offset > 0 ) {
+      nl.add( new ImplicitKernNode( new Dimen( offset ), false ) );
+    }
+
+    while( n-- > 0 ) {
+      nl.add( node );
+    }
+
+    nl.setDepth( getDepth() );
+    nl.setHeight( getHeight() );
+    nl.setWidth( getWidth() );
+    return nl;
+  }
+
+  /**
+   * java.lang.Object)
+   */
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public Object visit( NodeVisitor visitor, Object value )
+      throws GeneralException {
+
+    return visitor.visitCenteredLeaders( this, value );
+  }
 
 }

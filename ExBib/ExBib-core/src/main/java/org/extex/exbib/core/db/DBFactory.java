@@ -37,40 +37,37 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  *   <DB class="org.extex.exbib.core.db.impl.DBImpl"/>
  * }
  * </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DBFactory extends AbstractFactory<DB> {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param configuration the configuration
-     */
-    public DBFactory(Configuration configuration) {
+  /**
+   * Creates a new object.
+   *
+   * @param configuration the configuration
+   */
+  public DBFactory( Configuration configuration ) {
 
-        super(configuration);
-    }
+    super( configuration );
+  }
 
-    /**
-     * Request a {@link DB DB} implementation. The new database is configured
-     * with the same configuration as this factory itself.
-     * 
-     * @param bibReaderFactory the factory for readers
-     * @param minCrossrefs the crossref.min parameter
-     * 
-     * @return a new instance of a DB
-     * 
-     * @throws ConfigurationException in case that something goes wrong
-     */
-    public DB newInstance(BibReaderFactory bibReaderFactory, int minCrossrefs)
-            throws ConfigurationException {
+  /**
+   * Request a {@link DB DB} implementation. The new database is configured
+   * with the same configuration as this factory itself.
+   *
+   * @param bibReaderFactory the factory for readers
+   * @param minCrossrefs     the crossref.min parameter
+   * @return a new instance of a DB
+   * @throws ConfigurationException in case that something goes wrong
+   */
+  public DB newInstance( BibReaderFactory bibReaderFactory, int minCrossrefs )
+      throws ConfigurationException {
 
-        DB db = createInstance(DB.class);
-        db.setBibReaderFactory(bibReaderFactory);
-        db.setMinCrossrefs(minCrossrefs);
-        return db;
-    }
+    DB db = createInstance( DB.class );
+    db.setBibReaderFactory( bibReaderFactory );
+    db.setMinCrossrefs( minCrossrefs );
+    return db;
+  }
 
 }

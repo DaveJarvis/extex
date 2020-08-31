@@ -27,64 +27,66 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \over}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OverTest extends AbstractMathTester {
 
 
-    public OverTest() {
+  public OverTest() {
 
-        setPrimitive("over");setArguments(" b$");setPrepare("a ");
-    }
+    setPrimitive( "over" );
+    setArguments( " b$" );
+    setPrepare( "a " );
+  }
 
-    /**
-     * <testcase primitive="\over">
-     *  ...
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\over">
+   * ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_MATH_FONTS + DEFINE_MATH + "$a\\over b \\over c$ \\end",
-                //--- error stream ---
-                "Ambiguous; you need another { and }");
-    }
+    assertFailure(//--- input code ---
+                  DEFINE_MATH_FONTS + DEFINE_MATH + "$a\\over b \\over c$ " +
+                      "\\end",
+                  //--- error stream ---
+                  "Ambiguous; you need another { and }" );
+  }
 
-    /**
-     * <testcase primitive="\over">
-     *  ...
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testMathMode1() throws Exception {
+  /**
+   * <testcase primitive="\over">
+   * ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testMathMode1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$a\\over b$ \\end",
-                //--- output stream ---
-                "???"); //TODO gene: check
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_MATH_FONTS + DEFINE_MATH
+                      + "$a\\over b$ \\end",
+                  //--- output stream ---
+                  "???" ); //TODO gene: check
+  }
 
-    /**
-     * Test case checking that \mathaccent needs the math mode.
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testMath2() throws Exception {
+  /**
+   * Test case checking that \mathaccent needs the math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testMath2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
-                + "${a \\over b}$ \\end",
-                //--- output channel ---
-                "???"); //TODO gene: check
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+                      + "${a \\over b}$ \\end",
+                  //--- output channel ---
+                  "???" ); //TODO gene: check
+  }
 
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

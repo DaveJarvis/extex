@@ -24,25 +24,25 @@ import java.io.IOException;
 /**
  * This exception signals that a syntax error has been encountered during
  * parsing.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SyntaxException extends IOException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the resource
-     */
-    public SyntaxException(String resource) {
+  /**
+   * Creates a new object.
+   *
+   * @param resource the resource
+   */
+  public SyntaxException( String resource ) {
 
-        super(resource);
-    }
+    super( resource );
+  }
 
 }

@@ -31,7 +31,7 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 
 /**
  * This class provides an implementation for the primitive {@code \indent}.
- * 
+ *
  * <p>The Primitive {@code \indent}</p>
  * <p>
  * The primitive {@code \indent} ensures that the further processing appears
@@ -43,52 +43,52 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * invocations lead to more spacing. This can even happen in the middle of a
  * paragraph.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;indent&rang;
  *       &rarr; {@code \indent}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \indent  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Indent extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Indent(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Indent( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        typesetter.ensureHorizontalMode(source.getLocator());
-        typesetter.add(new HorizontalListNode(context.getDimen("parindent")));
-    }
+    typesetter.ensureHorizontalMode( source.getLocator() );
+    typesetter.add( new HorizontalListNode( context.getDimen( "parindent" ) ) );
+  }
 
 }

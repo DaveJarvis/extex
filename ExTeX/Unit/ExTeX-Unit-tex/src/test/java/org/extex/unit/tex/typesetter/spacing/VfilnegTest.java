@@ -25,43 +25,45 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \vfilneg}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class VfilnegTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(VfilnegTest.class);
-    }
+    (new JUnitCore()).run( VfilnegTest.class );
+  }
 
 
-    public VfilnegTest() {
+  public VfilnegTest() {
 
-        setPrimitive("vfilneg");setArguments("");setPrepare("");
-    }
+    setPrimitive( "vfilneg" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\vfilneg"> Test case checking that {@code \vfilneg}
-     * switches to vertical mode and inserts a glue node with 1fil.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\vfilneg"> Test case checking that {@code \vfilneg}
+   * switches to vertical mode and inserts a glue node with 1fil.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "\\vfilneg\\end ",
-            // --- output channel ---
-            "\\vbox(0.0pt+0.0pt)x0.0pt\n" +
-                    ".\\glue0.0pt plus -1.0fil\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "\\vfilneg\\end ",
+                   // --- output channel ---
+                   "\\vbox(0.0pt+0.0pt)x0.0pt\n" +
+                       ".\\glue0.0pt plus -1.0fil\n" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

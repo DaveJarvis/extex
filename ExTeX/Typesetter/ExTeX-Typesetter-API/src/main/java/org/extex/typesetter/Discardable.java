@@ -22,11 +22,10 @@ package org.extex.typesetter;
 /**
  * This is a marker interface for discardable nodes.
  *
- * @see "The TeXbook; Chapter 14, p. 95"
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see "The TeXbook; Chapter 14, p. 95"
+ */
 public interface Discardable {
 
-    // that's all
+  // that's all
 }

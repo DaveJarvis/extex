@@ -21,54 +21,55 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: fnt_num: set the font.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviFntNum extends DviCommand {
 
-    /**
-     * fnt1
-     */
-    private static final int FNT1 = 235;
+  /**
+   * fnt1
+   */
+  private static final int FNT1 = 235;
 
-    /**
-     * the font
-     */
-    private final int font;
+  /**
+   * the font
+   */
+  private final int font;
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param f the font
-     */
-    public DviFntNum(final int opc, final int sp, final int f) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param f   the font
+   */
+  public DviFntNum( final int opc, final int sp, final int f ) {
 
-        super(opc, sp);
-        font = f;
+    super( opc, sp );
+    font = f;
+  }
+
+  /**
+   * Returns the font.
+   *
+   * @return Returns the font.
+   */
+  public int getFont() {
+
+    return font;
+  }
+
+  @Override
+  public String getName() {
+
+    StringBuilder buf = new StringBuilder();
+    if( getOpcode() < FNT1 ) {
+      buf.append( "fntnum" ).append( font );
     }
-
-    /**
-     * Returns the font.
-     * 
-     * @return Returns the font.
-     */
-    public int getFont() {
-
-        return font;
+    else {
+      buf.append( "fnt" ).append( getOpcode() - FNT1 + 1 );
     }
-
-@Override
-    public String getName() {
-
-        StringBuilder buf = new StringBuilder();
-        if (getOpcode() < FNT1) {
-            buf.append("fntnum").append(font);
-        } else {
-            buf.append("fnt").append(getOpcode() - FNT1 + 1);
-        }
-        return buf.toString();
-    }
+    return buf.toString();
+  }
 }

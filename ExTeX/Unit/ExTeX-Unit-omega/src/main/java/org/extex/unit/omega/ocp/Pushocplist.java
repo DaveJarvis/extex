@@ -34,64 +34,63 @@ import org.extex.unit.omega.ocp.util.OcpList;
 /**
  * This class provides an implementation for the primitive {@code \pushocplist}
  * .
- * 
+ *
  * <p>The Primitive {@code \pushocplist}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;pushocplist&rang;
  *      &rarr; {@code \pushocplist} ...  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  * \pushocplist </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pushocplist extends AbstractCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pushocplist(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pushocplist( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    CodeToken cs = source.getControlSequence( context, typesetter );
+    Code code = context.getCode( cs );
+
+    if( !(code instanceof OcpList) ) {
+      throw new HelpingException( getLocalizer(), "Message" );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        Code code = context.getCode(cs);
-
-        if (!(code instanceof OcpList)) {
-            throw new HelpingException(getLocalizer(), "Message");
-        }
-
-        OcpList list = (OcpList) context.get(OcpList.class, "ocplist");
-        list.push(((OcpList) code));
-        context.set(OmegaExtension.NAME, "ocplist", list, prefix.clearGlobal());
-    }
+    OcpList list = (OcpList) context.get( OcpList.class, "ocplist" );
+    list.push( ((OcpList) code) );
+    context.set( OmegaExtension.NAME, "ocplist", list, prefix.clearGlobal() );
+  }
 
 }

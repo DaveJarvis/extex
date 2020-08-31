@@ -21,25 +21,25 @@ package org.extex.exindex.lisp.exception;
 
 /**
  * This exception signals that parameter of a flag is missing.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LMissingParameterException extends LException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param flag the name of the flag
-     */
-    public LMissingParameterException(String flag) {
+  /**
+   * Creates a new object.
+   *
+   * @param flag the name of the flag
+   */
+  public LMissingParameterException( String flag ) {
 
-        super(flag);
-    }
+    super( flag );
+  }
 
 }

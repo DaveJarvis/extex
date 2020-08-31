@@ -19,366 +19,365 @@
 
 package org.extex.exindex.core.parser.reader;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.io.StringReader;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is a test suite for the {@link PlainTeXReader}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PlainTeXReaderTest extends TeXReaderTest {
 
-    /**
-     * Create a reader to be tested.
-     * 
-     * @param s the contents to be read
-     * 
-     * @return the reader
-     */
-    @Override
-    protected TeXReader makeReader(String s) {
-
-        return new PlainTeXReader("rsc", new StringReader(s));
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead05() throws Exception {
-
-        TeXReader r = makeReader("\\ss  ");
-
-        assertEquals('\u00df', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead06() throws Exception {
-
-        TeXReader r = makeReader("\\ss{} ");
-
-        assertEquals('\u00df', r.read());
-        assertEquals(' ', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead10() throws Exception {
-
-        TeXReader r = makeReader("\\\"x");
-
-        assertEquals('\\', r.read());
-        assertEquals('"', r.read());
-        assertEquals('x', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead11() throws Exception {
-
-        TeXReader r = makeReader("\\\"a");
-
-        assertEquals('\u00e4', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead12() throws Exception {
-
-        TeXReader r = makeReader("\\\"A");
-
-        assertEquals('\u00c4', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead13() throws Exception {
-
-        TeXReader r = makeReader("\\\"{");
-
-        assertEquals('\\', r.read());
-        assertEquals('"', r.read());
-        assertEquals('{', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead14() throws Exception {
-
-        TeXReader r = makeReader("\\\"{a");
-
-        assertEquals('\\', r.read());
-        assertEquals('"', r.read());
-        assertEquals('{', r.read());
-        assertEquals('a', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead15() throws Exception {
-
-        TeXReader r = makeReader("\\\"{ax");
-
-        assertEquals('\\', r.read());
-        assertEquals('"', r.read());
-        assertEquals('{', r.read());
-        assertEquals('a', r.read());
-        assertEquals('x', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead16() throws Exception {
-
-        TeXReader r = makeReader("\\aa{");
-
-        assertEquals('\u00e5', r.read());
-        assertEquals('{', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead18() throws Exception {
-
-        TeXReader r = makeReader("\\c x");
-
-        assertEquals('\\', r.read());
-        assertEquals('c', r.read());
-        assertEquals(' ', r.read());
-        assertEquals('x', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead19() throws Exception {
-
-        TeXReader r = makeReader("\\\"");
-
-        assertEquals('\\', r.read());
-        assertEquals('"', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead20() throws Exception {
-
-        TeXReader r = makeReader("\\\"{x}");
-
-        assertEquals('\\', r.read());
-        assertEquals('"', r.read());
-        assertEquals('{', r.read());
-        assertEquals('x', r.read());
-        assertEquals('}', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead21() throws Exception {
-
-        TeXReader r = makeReader("\\\"{a}");
-
-        assertEquals('\u00e4', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead31() throws Exception {
-
-        TeXReader r = makeReader("\\c c");
-
-        assertEquals('\u00e7', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead32() throws Exception {
-
-        TeXReader r = makeReader("\\c C");
-
-        assertEquals('\u00c7', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead33() throws Exception {
-
-        TeXReader r = makeReader("\\AA ");
-
-        assertEquals('\u00c5', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead34() throws Exception {
-
-        TeXReader r = makeReader("\\AE ");
-
-        assertEquals('\u00c6', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead51() throws Exception {
-
-        TeXReader r = makeReader("\\'a");
-
-        assertEquals('\u00e1', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead61() throws Exception {
-
-        TeXReader r = makeReader("\\`a");
-
-        assertEquals('\u00e0', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead71() throws Exception {
-
-        TeXReader r = makeReader("\\^a");
-
-        assertEquals('\u00e2', r.read());
-        assertEquals(-1, r.read());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testRead81() throws Exception {
-
-        TeXReader r = makeReader("\\~n");
-
-        assertEquals('\u00f1', r.read());
-        assertEquals(-1, r.read());
-    }
+  /**
+   * Create a reader to be tested.
+   *
+   * @param s the contents to be read
+   * @return the reader
+   */
+  @Override
+  protected TeXReader makeReader( String s ) {
+
+    return new PlainTeXReader( "rsc", new StringReader( s ) );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead05() throws Exception {
+
+    TeXReader r = makeReader( "\\ss  " );
+
+    assertEquals( '\u00df', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead06() throws Exception {
+
+    TeXReader r = makeReader( "\\ss{} " );
+
+    assertEquals( '\u00df', r.read() );
+    assertEquals( ' ', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead10() throws Exception {
+
+    TeXReader r = makeReader( "\\\"x" );
+
+    assertEquals( '\\', r.read() );
+    assertEquals( '"', r.read() );
+    assertEquals( 'x', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead11() throws Exception {
+
+    TeXReader r = makeReader( "\\\"a" );
+
+    assertEquals( '\u00e4', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead12() throws Exception {
+
+    TeXReader r = makeReader( "\\\"A" );
+
+    assertEquals( '\u00c4', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead13() throws Exception {
+
+    TeXReader r = makeReader( "\\\"{" );
+
+    assertEquals( '\\', r.read() );
+    assertEquals( '"', r.read() );
+    assertEquals( '{', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead14() throws Exception {
+
+    TeXReader r = makeReader( "\\\"{a" );
+
+    assertEquals( '\\', r.read() );
+    assertEquals( '"', r.read() );
+    assertEquals( '{', r.read() );
+    assertEquals( 'a', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead15() throws Exception {
+
+    TeXReader r = makeReader( "\\\"{ax" );
+
+    assertEquals( '\\', r.read() );
+    assertEquals( '"', r.read() );
+    assertEquals( '{', r.read() );
+    assertEquals( 'a', r.read() );
+    assertEquals( 'x', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead16() throws Exception {
+
+    TeXReader r = makeReader( "\\aa{" );
+
+    assertEquals( '\u00e5', r.read() );
+    assertEquals( '{', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead18() throws Exception {
+
+    TeXReader r = makeReader( "\\c x" );
+
+    assertEquals( '\\', r.read() );
+    assertEquals( 'c', r.read() );
+    assertEquals( ' ', r.read() );
+    assertEquals( 'x', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead19() throws Exception {
+
+    TeXReader r = makeReader( "\\\"" );
+
+    assertEquals( '\\', r.read() );
+    assertEquals( '"', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead20() throws Exception {
+
+    TeXReader r = makeReader( "\\\"{x}" );
+
+    assertEquals( '\\', r.read() );
+    assertEquals( '"', r.read() );
+    assertEquals( '{', r.read() );
+    assertEquals( 'x', r.read() );
+    assertEquals( '}', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead21() throws Exception {
+
+    TeXReader r = makeReader( "\\\"{a}" );
+
+    assertEquals( '\u00e4', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead31() throws Exception {
+
+    TeXReader r = makeReader( "\\c c" );
+
+    assertEquals( '\u00e7', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead32() throws Exception {
+
+    TeXReader r = makeReader( "\\c C" );
+
+    assertEquals( '\u00c7', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead33() throws Exception {
+
+    TeXReader r = makeReader( "\\AA " );
+
+    assertEquals( '\u00c5', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead34() throws Exception {
+
+    TeXReader r = makeReader( "\\AE " );
+
+    assertEquals( '\u00c6', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead51() throws Exception {
+
+    TeXReader r = makeReader( "\\'a" );
+
+    assertEquals( '\u00e1', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead61() throws Exception {
+
+    TeXReader r = makeReader( "\\`a" );
+
+    assertEquals( '\u00e0', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead71() throws Exception {
+
+    TeXReader r = makeReader( "\\^a" );
+
+    assertEquals( '\u00e2', r.read() );
+    assertEquals( -1, r.read() );
+  }
+
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.PlainTeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testRead81() throws Exception {
+
+    TeXReader r = makeReader( "\\~n" );
+
+    assertEquals( '\u00f1', r.read() );
+    assertEquals( -1, r.read() );
+  }
 
 }

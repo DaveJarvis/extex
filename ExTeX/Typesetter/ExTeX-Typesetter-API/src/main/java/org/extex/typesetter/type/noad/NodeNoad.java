@@ -19,8 +19,6 @@
 
 package org.extex.typesetter.type.noad;
 
-import java.util.logging.Logger;
-
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
@@ -30,175 +28,169 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
 import org.extex.typesetter.type.node.GlueNode;
 import org.extex.typesetter.type.node.KernNode;
 
+import java.util.logging.Logger;
+
 /**
  * This noad contains a node which is passed through the math apparatus.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NodeNoad implements Noad {
 
-    /**
-     * The field {@code node} contains the encapsulated node.
-     */
-    private final Node node;
+  /**
+   * The field {@code node} contains the encapsulated node.
+   */
+  private final Node node;
 
-    /**
-     * The field {@code spacingClass} contains the spacing class.
-     */
-    private MathSpacing spacingClass = MathSpacing.ORD; // gene: correct?
+  /**
+   * The field {@code spacingClass} contains the spacing class.
+   */
+  private MathSpacing spacingClass = MathSpacing.ORD; // gene: correct?
 
-    /**
-     * Creates a new object.
-     * 
-     * @param node the node to
-     */
-    public NodeNoad(Node node) {
+  /**
+   * Creates a new object.
+   *
+   * @param node the node to
+   */
+  public NodeNoad( Node node ) {
 
-        this.node = node;
-    }
+    this.node = node;
+  }
 
-    /**
-     * Getter for spacing class.
-     * 
-     * @return the spacing class
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
-     */
-    @Override
-    public MathSpacing getSpacingClass() {
+  /**
+   * Getter for spacing class.
+   *
+   * @return the spacing class
+   * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
+   */
+  @Override
+  public MathSpacing getSpacingClass() {
 
-        return spacingClass;
-    }
+    return spacingClass;
+  }
 
-    /**
-     * Getter for the subscript.
-     * 
-     * @return the subscript.
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#getSubscript()
-     */
-    @Override
-    public Noad getSubscript() {
+  /**
+   * Getter for the subscript.
+   *
+   * @return the subscript.
+   * @see org.extex.typesetter.type.noad.Noad#getSubscript()
+   */
+  @Override
+  public Noad getSubscript() {
 
-        return null;
-    }
+    return null;
+  }
 
-    /**
-     * Getter for the superscript.
-     * 
-     * @return the superscript.
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
-     */
-    @Override
-    public Noad getSuperscript() {
+  /**
+   * Getter for the superscript.
+   *
+   * @return the superscript.
+   * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
+   */
+  @Override
+  public Noad getSuperscript() {
 
-        return null;
-    }
+    return null;
+  }
 
-@Override
-    public void setSpacingClass(MathSpacing spacingClass) {
+  @Override
+  public void setSpacingClass( MathSpacing spacingClass ) {
 
-        this.spacingClass = spacingClass;
-    }
+    this.spacingClass = spacingClass;
+  }
 
-    /**
-     * Setter for the subscript. This operation is not supported and leads to an
-     * exception.
-     * 
-     * @param subscript the subscript to set.
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#setSubscript(org.extex.typesetter.type.noad.Noad)
-     */
-    @Override
-    public void setSubscript(Noad subscript) {
+  /**
+   * Setter for the subscript. This operation is not supported and leads to an
+   * exception.
+   *
+   * @param subscript the subscript to set.
+   * @see org.extex.typesetter.type.noad.Noad#setSubscript(org.extex.typesetter.type.noad.Noad)
+   */
+  @Override
+  public void setSubscript( Noad subscript ) {
 
-        throw new UnsupportedOperationException();
-    }
+    throw new UnsupportedOperationException();
+  }
 
-    /**
-     * Setter for the superscript. This operation is not supported and leads to
-     * an exception.
-     * 
-     * @param superscript the superscript to set.
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#setSuperscript(org.extex.typesetter.type.noad.Noad)
-     */
-    @Override
-    public void setSuperscript(Noad superscript) {
+  /**
+   * Setter for the superscript. This operation is not supported and leads to
+   * an exception.
+   *
+   * @param superscript the superscript to set.
+   * @see org.extex.typesetter.type.noad.Noad#setSuperscript(org.extex.typesetter.type.noad.Noad)
+   */
+  @Override
+  public void setSuperscript( Noad superscript ) {
 
-        throw new UnsupportedOperationException();
-    }
+    throw new UnsupportedOperationException();
+  }
 
-    /**
-     * Produce a printable representation of the noad in a StringBuilder.
-     * 
-     * @param sb the string buffer
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
-     */
-    @Override
-    public void toString(StringBuilder sb) {
+  /**
+   * Produce a printable representation of the noad in a StringBuilder.
+   *
+   * @param sb the string buffer
+   * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
+   */
+  @Override
+  public void toString( StringBuilder sb ) {
 
-        node.toString(sb, "", Integer.MAX_VALUE, Integer.MAX_VALUE);
-    }
+    node.toString( sb, "", Integer.MAX_VALUE, Integer.MAX_VALUE );
+  }
 
-    /**
-     * Produce a printable representation to a certain depth of the noad.
-     * 
-     * @param sb the string buffer
-     * @param depth the depth to which the full information should be given
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
-     */
-    @Override
-    public void toString(StringBuilder sb, int depth) {
+  /**
+   * Produce a printable representation to a certain depth of the noad.
+   *
+   * @param sb    the string buffer
+   * @param depth the depth to which the full information should be given
+   * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
+   */
+  @Override
+  public void toString( StringBuilder sb, int depth ) {
 
-        node.toString(sb, "", Integer.MAX_VALUE, Integer.MAX_VALUE);
-    }
+    node.toString( sb, "", Integer.MAX_VALUE, Integer.MAX_VALUE );
+  }
 
-    /**
-     * Translate a Noad into a NodeList.
-     * 
-     * @param previousNoad the previous noad
-     * @param noads the list of noads currently processed
-     * @param index the index of the current node in the list
-     * @param list the list to add the nodes to. This list contains the Nodes
-     *        previously typeset. Thus it can be used to look back
-     * @param mathContext the context to consider
-     * @param logger the logger for debugging and tracing information
-     * 
-     * @throws TypesetterException in case of a problem
-     * @throws ConfigurationException in case of a configuration problem
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList, int,
-     *      org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.type.noad.util.MathContext,
-     *      java.util.logging.Logger)
-     */
-    @Override
-    public void typeset(Noad previousNoad, NoadList noads, int index,
-            NodeList list, MathContext mathContext, Logger logger)
-            throws TypesetterException,
-                ConfigurationException {
+  /**
+   * Translate a Noad into a NodeList.
+   *
+   * @param previousNoad the previous noad
+   * @param noads        the list of noads currently processed
+   * @param index        the index of the current node in the list
+   * @param list         the list to add the nodes to. This list contains
+   *                     the Nodes
+   *                     previously typeset. Thus it can be used to look back
+   * @param mathContext  the context to consider
+   * @param logger       the logger for debugging and tracing information
+   * @throws TypesetterException    in case of a problem
+   * @throws ConfigurationException in case of a configuration problem
+   * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
+   * org.extex.typesetter.type.noad.NoadList, int,
+   * org.extex.typesetter.type.NodeList,
+   * org.extex.typesetter.type.noad.util.MathContext,
+   * java.util.logging.Logger)
+   */
+  @Override
+  public void typeset( Noad previousNoad, NoadList noads, int index,
+                       NodeList list, MathContext mathContext, Logger logger )
+      throws TypesetterException,
+      ConfigurationException {
 
-        if (node instanceof GlueNode || node instanceof KernNode) {
-            if (previousNoad instanceof GlueNoad
-                    && ((GlueNoad) previousNoad).isKill()) {
-                StyleNoad style = mathContext.getStyle();
-                if (style == StyleNoad.SCRIPTSTYLE
-                        || style == StyleNoad.SCRIPTSCRIPTSTYLE) {
-                    return;
-                }
-            }
+    if( node instanceof GlueNode || node instanceof KernNode ) {
+      if( previousNoad instanceof GlueNoad
+          && ((GlueNoad) previousNoad).isKill() ) {
+        StyleNoad style = mathContext.getStyle();
+        if( style == StyleNoad.SCRIPTSTYLE
+            || style == StyleNoad.SCRIPTSCRIPTSTYLE ) {
+          return;
         }
-
-        getSpacingClass().addClearance(
-            (previousNoad != null ? previousNoad.getSpacingClass() : null),
-            list, mathContext);
-
-        list.add(node);
+      }
     }
+
+    getSpacingClass().addClearance(
+        (previousNoad != null ? previousNoad.getSpacingClass() : null),
+        list, mathContext );
+
+    list.add( node );
+  }
 
 }

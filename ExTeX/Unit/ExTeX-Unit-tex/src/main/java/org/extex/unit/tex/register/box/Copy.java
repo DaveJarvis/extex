@@ -33,7 +33,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \copy}.
- * 
+ *
  * <p>The Primitive {@code \copy}</p>
  * <p>
  * The primitive {@code \copy} inserts the contents of the named box register
@@ -45,75 +45,75 @@ import org.extex.typesetter.exception.TypesetterException;
  * If the primitive is used on the right hand side of a box assignment then the
  * box contents is used for the assignment.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;copy&rang;
  *      &rarr; {@code \copy} {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context, TokenSource, Typesetter, CodeToken)
  *        &lang;box register name&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \copy42  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Copy extends AbstractCode implements Boxable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Copy(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Copy( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = Setbox.getKey( context, source, typesetter, getToken() );
+    Box box = context.getBox( key );
+    if( box != null ) {
+      typesetter.add( box.getNodes() );
     }
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+   * org.extex.scanner.type.token.Token)
+   */
+  public Box getBox( Context context, TokenSource source,
+                     Typesetter typesetter, Token insert )
+      throws HelpingException,
+      TypesetterException {
 
-        String key = Setbox.getKey(context, source, typesetter, getToken());
-        Box box = context.getBox(key);
-        if (box != null) {
-            typesetter.add(box.getNodes());
-        }
+    String key = Setbox.getKey( context, source, typesetter, getToken() );
+    Box b = context.getBox( key );
+    if( insert != null ) {
+      source.push( insert );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      org.extex.scanner.type.token.Token)
-     */
-    public Box getBox(Context context, TokenSource source,
-            Typesetter typesetter, Token insert)
-            throws HelpingException,
-                TypesetterException {
-
-        String key = Setbox.getKey(context, source, typesetter, getToken());
-        Box b = context.getBox(key);
-        if (insert != null) {
-            source.push(insert);
-        }
-        return new Box(b);
-    }
+    return new Box( b );
+  }
 
 }

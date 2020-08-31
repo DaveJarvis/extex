@@ -19,12 +19,12 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.IOException;
 
 /**
  * The 'prep' table stores the instructions that make up the control value
@@ -34,7 +34,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * opcodes. Each opcode is a byte. The tag 'prep', referring to the preProgram,
  * is anachronistic but some people still call the control value program the
  * preProgram.
- * 
+ *
  *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
@@ -47,71 +47,71 @@ import org.extex.util.xml.XMLWriterConvertible;
  * transformation change</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTablePREP extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
 
-    /**
-     * instructions
-     */
-    private final byte[] instructions;
+  /**
+   * instructions
+   */
+  private final byte[] instructions;
 
-    /**
-     * Create a new object.
-     * 
-     * @param tablemap the table map
-     * @param de directory entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public TtfTablePREP(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param tablemap the table map
+   * @param de       directory entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public TtfTablePREP( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap);
-        rar.seek(de.getOffset());
-        instructions = new byte[de.getLength()];
-        for (int i = 0; i < de.getLength(); i++) {
-            instructions[i] = (byte) rar.readUnsignedByte();
-        }
+    super( tablemap );
+    rar.seek( de.getOffset() );
+    instructions = new byte[ de.getLength() ];
+    for( int i = 0; i < de.getLength(); i++ ) {
+      instructions[ i ] = (byte) rar.readUnsignedByte();
     }
+  }
 
-    /**
-     * Returns the instructions
-     * 
-     * @return Returns the instructions
-     */
-    public byte[] getInstructions() {
+  /**
+   * Returns the instructions
+   *
+   * @return Returns the instructions
+   */
+  public byte[] getInstructions() {
 
-        return instructions;
-    }
+    return instructions;
+  }
 
-public String getShortcut() {
+  public String getShortcut() {
 
-        return "prep";
-    }
+    return "prep";
+  }
 
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
 
-        return XtfReader.PREP;
-    }
+    return XtfReader.PREP;
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writeStartElement(writer);
-        writer.writeByteArray(instructions);
-        writer.writeEndElement();
-    }
+    writeStartElement( writer );
+    writer.writeByteArray( instructions );
+    writer.writeEndElement();
+  }
 
 }

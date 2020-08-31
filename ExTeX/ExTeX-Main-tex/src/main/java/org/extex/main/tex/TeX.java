@@ -1022,8 +1022,7 @@ public class TeX extends ExTeX {
              * @param type the type of the resource
              * @param stream the stream to be delivered
              * 
-             * @see org.extex.backend.outputStream.OutputStreamObserver#update(java.lang.String,
-             *      java.lang.String, java.io.OutputStream)
+
              */
             @Override
             public void update(String name, String type, OutputStream stream) {

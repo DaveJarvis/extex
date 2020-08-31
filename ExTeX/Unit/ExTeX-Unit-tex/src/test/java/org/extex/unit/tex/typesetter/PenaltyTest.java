@@ -26,64 +26,66 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \penalty}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PenaltyTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PenaltyTest.class);
-    }
+    (new JUnitCore()).run( PenaltyTest.class );
+  }
 
 
-    public PenaltyTest() {
+  public PenaltyTest() {
 
-        setPrimitive("penalty");setArguments("12");setPrepare("");
-    }
+    setPrimitive( "penalty" );
+    setArguments( "12" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\penalty"> Test case checking that {@code \penalty}
-     * inserts a penalty node.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    // TODO Hm, penalty nodes are discarded and do not show up after par
-    // building
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\penalty"> Test case checking that {@code \penalty}
+   * inserts a penalty node.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  // TODO Hm, penalty nodes are discarded and do not show up after par
+  // building
+  public void test1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "x\\penalty -12 x\\end ",
-            // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
-                    "..x\n" +
-                    "..\\penalty -12\n" +
-                    "..x\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "x\\penalty -12 x\\end ",
+                   // --- output channel ---
+                   "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
+                       ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
+                       "..x\n" +
+                       "..\\penalty -12\n" +
+                       "..x\n" );
+  }
 
-    /**
-     * <testcase primitive="\penalty"> Test case checking that {@code \penalty}
-     * in vertical mode inserts a penalty node.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\penalty"> Test case checking that {@code \penalty}
+   * in vertical mode inserts a penalty node.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "\\penalty -12 x\\end ",
-            // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + ".\\penalty -12\n"
-                    + ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + "..x\n" + "");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "\\penalty -12 x\\end ",
+                   // --- output channel ---
+                   "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + ".\\penalty -12\n"
+                       + ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + "..x\n" + "" );
+  }
 }

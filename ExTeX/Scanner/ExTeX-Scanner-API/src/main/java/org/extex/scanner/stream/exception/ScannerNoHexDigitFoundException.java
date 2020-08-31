@@ -25,21 +25,21 @@ import org.extex.scanner.api.exception.ScannerException;
  * ScannerException, if no hex digit are not found after '^^^^'.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class ScannerNoHexDigitFoundException extends ScannerException {
 
-    /**
-     * The field {@code serialVersionUID} contains th version number for
-     * serialization
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains th version number for
+   * serialization
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new Object
-     */
-    public ScannerNoHexDigitFoundException() {
+  /**
+   * Create a new Object
+   */
+  public ScannerNoHexDigitFoundException() {
 
-    }
+  }
 
 }

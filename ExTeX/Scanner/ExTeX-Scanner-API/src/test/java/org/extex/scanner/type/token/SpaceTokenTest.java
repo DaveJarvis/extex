@@ -19,67 +19,65 @@
 
 package org.extex.scanner.type.token;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import static org.junit.Assert.*;
+
 /**
  * Test cases for space tokens.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SpaceTokenTest extends TokenTester {
 
-    /**
-     * The field {@code token} contains the reference token.
-     */
-    private static final Token token = new SpaceToken( "x");
+  /**
+   * The field {@code token} contains the reference token.
+   */
+  private static final Token token = new SpaceToken( "x" );
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LeftBraceTokenTest.class);
-    }
+    (new JUnitCore()).run( LeftBraceTokenTest.class );
+  }
 
 
-    public SpaceTokenTest() {
+  public SpaceTokenTest() {
 
-        setToken(token);
-        setCatcode( Catcode.SPACE);
-        setText( " ");
-        setStr( "blank space  ");
-    }
+    setToken( token );
+    setCatcode( Catcode.SPACE );
+    setText( " " );
+    setStr( "blank space  " );
+  }
 
-@Test
-    @Override
-    public void testEq10() {
+  @Test
+  @Override
+  public void testEq10() {
 
-        assertTrue(token.eq(Catcode.SPACE, ' '));
-    }
+    assertTrue( token.eq( Catcode.SPACE, ' ' ) );
+  }
 
-@Test
-    @Override
-    public void testEq20() {
+  @Test
+  @Override
+  public void testEq20() {
 
-        assertTrue(token.toString(), token.eq(' '));
-    }
+    assertTrue( token.toString(), token.eq( ' ' ) );
+  }
 
-@Test
-    @Override
-    public void testGetChar0() {
+  @Test
+  @Override
+  public void testGetChar0() {
 
-        UnicodeChar x = token.getChar();
-        assertNotNull(x);
-        assertEquals(32, x.getCodePoint());
-    }
+    UnicodeChar x = token.getChar();
+    assertNotNull( x );
+    assertEquals( 32, x.getCodePoint() );
+  }
 
 }

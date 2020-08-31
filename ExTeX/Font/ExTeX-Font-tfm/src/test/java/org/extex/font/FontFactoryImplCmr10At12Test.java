@@ -19,10 +19,6 @@
 
 package org.extex.font;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
@@ -30,178 +26,180 @@ import org.extex.font.exception.FontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 /**
  * Test for the font factory.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
 
-    /**
-     * The font.
-     */
-    private final ExtexFont font;
+  /**
+   * The font.
+   */
+  private final ExtexFont font;
 
-    /**
-     * The font key.
-     */
-    private final FontKey key;
+  /**
+   * The font key.
+   */
+  private final FontKey key;
 
-    /**
-     * Creates a new object.
-     * 
-     * @throws ConfigurationException from the configuration system.
-     * @throws FontException if a font error occurred.
-     */
-    public FontFactoryImplCmr10At12Test()
-            throws ConfigurationException,
-                FontException {
+  /**
+   * Creates a new object.
+   *
+   * @throws ConfigurationException from the configuration system.
+   * @throws FontException          if a font error occurred.
+   */
+  public FontFactoryImplCmr10At12Test()
+      throws ConfigurationException,
+      FontException {
 
-        CoreFontFactory factory = makeFontFactory();
+    CoreFontFactory factory = makeFontFactory();
 
-        key = factory.getFontKey("cmr10", new Dimen(Dimen.ONE * 12));
+    key = factory.getFontKey( "cmr10", new Dimen( Dimen.ONE * 12 ) );
 
-        font = factory.getInstance(key);
+    font = factory.getInstance( key );
 
-    }
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test01() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test01() throws Exception {
 
-        assertNotNull(font);
-    }
+    assertNotNull( font );
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test03() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test03() throws Exception {
 
-        assertEquals("cmr10", font.getFontName());
-    }
+    assertEquals( "cmr10", font.getFontName() );
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test04() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test04() throws Exception {
 
-        assertNotNull(font.getFontKey());
-        assertEquals(key, font.getFontKey());
-    }
+    assertNotNull( font.getFontKey() );
+    assertEquals( key, font.getFontKey() );
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test05() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test05() throws Exception {
 
-        assertNotNull(font.getActualFontKey());
-        assertEquals(key, font.getActualFontKey());
-    }
+    assertNotNull( font.getActualFontKey() );
+    assertEquals( key, font.getActualFontKey() );
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test06() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test06() throws Exception {
 
-        FixedDimen ds = font.getDesignSize();
-        assertNotNull(ds);
-        assertTrue(ds.toString(), new Dimen(Dimen.ONE * 10).eq(ds));
-    }
+    FixedDimen ds = font.getDesignSize();
+    assertNotNull( ds );
+    assertTrue( ds.toString(), new Dimen( Dimen.ONE * 10 ).eq( ds ) );
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test07() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test07() throws Exception {
 
-        assertNotNull(font.getActualSize());
-        assertTrue(new Dimen(Dimen.ONE * 12).eq(font.getActualSize()));
-        // assertEquals(1274110073, font.getCheckSum());
-    }
+    assertNotNull( font.getActualSize() );
+    assertTrue( new Dimen( Dimen.ONE * 12 ).eq( font.getActualSize() ) );
+    // assertEquals(1274110073, font.getCheckSum());
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test08() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test08() throws Exception {
 
-        FixedCount scale = font.getScaleFactor();
-        assertNotNull(scale);
-        assertEquals(12 * 1000 / 10, scale.getValue());
-    }
+    FixedCount scale = font.getScaleFactor();
+    assertNotNull( scale );
+    assertEquals( 12 * 1000 / 10, scale.getValue() );
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test09() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test09() throws Exception {
 
-        FixedDimen ex = font.getEx();
-        assertNotNull(ex);
-        // assertTrue(ex.toString(), new Dimen(338602).eq(ex));
-        assertTrue(Long.toString(ex.getValue()), new Dimen(338602).eq(ex));
-    }
+    FixedDimen ex = font.getEx();
+    assertNotNull( ex );
+    // assertTrue(ex.toString(), new Dimen(338602).eq(ex));
+    assertTrue( Long.toString( ex.getValue() ), new Dimen( 338602 ).eq( ex ) );
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test10() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test10() throws Exception {
 
-        FixedDimen em = font.getEm();
-        assertNotNull(em);
-        assertTrue(Long.toString(em.getValue()), new Dimen(786434).eq(em));
-        assertTrue(em.toString(), new Dimen(786434).eq(em));
-    }
+    FixedDimen em = font.getEm();
+    assertNotNull( em );
+    assertTrue( Long.toString( em.getValue() ), new Dimen( 786434 ).eq( em ) );
+    assertTrue( em.toString(), new Dimen( 786434 ).eq( em ) );
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test11() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test11() throws Exception {
 
-        FixedDimen fd0 = font.getFontDimen("0");
-        assertNotNull(fd0);
-        assertTrue(fd0.toString(), Dimen.ZERO_PT.eq(fd0));
-    }
+    FixedDimen fd0 = font.getFontDimen( "0" );
+    assertNotNull( fd0 );
+    assertTrue( fd0.toString(), Dimen.ZERO_PT.eq( fd0 ) );
+  }
 
-    /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void test12() throws Exception {
+  /**
+   * Test for the font key: cmr10
+   *
+   * @throws Exception if an error occurred.
+   */
+  @Test
+  public void test12() throws Exception {
 
-        FixedDimen fd1 = font.getFontDimen("1");
-        assertNotNull(fd1);
-        assertTrue(fd1.toString(), Dimen.ZERO_PT.eq(fd1));
+    FixedDimen fd1 = font.getFontDimen( "1" );
+    assertNotNull( fd1 );
+    assertTrue( fd1.toString(), Dimen.ZERO_PT.eq( fd1 ) );
 
-    }
+  }
 }

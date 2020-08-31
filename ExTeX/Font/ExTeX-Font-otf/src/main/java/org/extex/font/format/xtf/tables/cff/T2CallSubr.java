@@ -19,92 +19,93 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * callsubr subr# callsubr (10).
- * 
+ *
  * <p>
  * Calls a charstring subroutine with index subr# (actually the subr number plus
  * the subroutine bias number, as described in section 2.3) in the Subrs array.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2CallSubr extends T2Subroutine {
 
-    /**
-     * subroutine index.
-     */
-    private final T2Number subr;
+  /**
+   * subroutine index.
+   */
+  private final T2Number subr;
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @param ch The char string.
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2CallSubr(List<T2CharString> stack, CharString ch)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @param ch    The char string.
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2CallSubr( List<T2CharString> stack, CharString ch )
+      throws IOException {
 
-        super(stack, new short[]{T2CALLSUBR}, ch);
+    super( stack, new short[]{T2CALLSUBR}, ch );
 
-        int n = stack.size();
+    int n = stack.size();
 
-        if (n != 1) {
-            throw new T2MissingNumberException();
-        }
-
-        subr = (T2Number) stack.get(0);
-
+    if( n != 1 ) {
+      throw new T2MissingNumberException();
     }
 
-@Override
-    public int getID() {
+    subr = (T2Number) stack.get( 0 );
 
-        return TYPE_CALLSUBR;
-    }
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public int getID() {
 
-        return "callsubr";
-    }
+    return TYPE_CALLSUBR;
+  }
 
-    /**
-     * Getter for subr.
-     * 
-     * @return the subr
-     */
-    public T2Number getSubr() {
+  @Override
+  public String getName() {
 
-        return subr;
-    }
+    return "callsubr";
+  }
 
-@Override
-    public Object getValue() {
+  /**
+   * Getter for subr.
+   *
+   * @return the subr
+   */
+  public T2Number getSubr() {
 
-        return subr;
-    }
+    return subr;
+  }
 
-@Override
-    public String toText() {
+  @Override
+  public Object getValue() {
 
-        return new StringBuilder(subr.toString()).append(' ').append(getName())
-            .toString();
-    }
+    return subr;
+  }
 
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  @Override
+  public String toText() {
 
-        writer.writeStartElement(getName());
-        writer.writeAttribute("subr", subr.getInteger());
-        writer.writeEndElement();
+    return new StringBuilder( subr.toString() ).append( ' ' )
+                                               .append( getName() )
+                                               .toString();
+  }
 
-    }
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "subr", subr.getInteger() );
+    writer.writeEndElement();
+
+  }
 
 }

@@ -19,66 +19,63 @@
 
 package org.extex.dviware.type;
 
+import org.extex.dviware.Dvi;
+
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.extex.dviware.Dvi;
 
 /**
  * This class represents the DVI instruction {@code bop}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviBop extends AbstractDviCode {
 
-    /**
-     * The field {@code lastBop} contains the index of the last bop in the
-     * stream or -1.
-     */
-    private final int lastBop;
+  /**
+   * The field {@code lastBop} contains the index of the last bop in the
+   * stream or -1.
+   */
+  private final int lastBop;
 
-    /**
-     * The field {@code pageNo} contains the array of the page number
-     * indicators.
-     */
-    private final int[] pageNo;
+  /**
+   * The field {@code pageNo} contains the array of the page number
+   * indicators.
+   */
+  private final int[] pageNo;
 
-    /**
-     * Creates a new object.
-     *
-     * @param pageNo the array of page numbers
-     * @param lastBop the index of the last bop or -1 at the beginning
-     */
-    public DviBop(int[] pageNo, int lastBop) {
+  /**
+   * Creates a new object.
+   *
+   * @param pageNo  the array of page numbers
+   * @param lastBop the index of the last bop or -1 at the beginning
+   */
+  public DviBop( int[] pageNo, int lastBop ) {
 
-        super("bop");
-        if (pageNo.length != 10) {
-            throw new IllegalArgumentException("count");
-        }
-        this.pageNo = pageNo;
-        this.lastBop = lastBop;
+    super( "bop" );
+    if( pageNo.length != 10 ) {
+      throw new IllegalArgumentException( "count" );
     }
+    this.pageNo = pageNo;
+    this.lastBop = lastBop;
+  }
 
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
 
-        stream.write(Dvi.BOP);
-        int length = pageNo.length;
-        for (int i = 0; i < length; i++) {
-            write4(stream, pageNo[i]);
-        }
-        write4(stream, lastBop);
-        return 1 + 4 * (length + 1);
+    stream.write( Dvi.BOP );
+    int length = pageNo.length;
+    for( int i = 0; i < length; i++ ) {
+      write4( stream, pageNo[ i ] );
     }
+    write4( stream, lastBop );
+    return 1 + 4 * (length + 1);
+  }
 
 }

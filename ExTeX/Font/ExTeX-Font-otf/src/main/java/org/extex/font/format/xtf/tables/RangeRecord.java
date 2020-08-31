@@ -19,19 +19,19 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * Class for a range record.
- * 
+ *
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Type</b></td>
+ * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -51,80 +51,80 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Coverage Index of first GlyphID in range</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class RangeRecord implements XMLWriterConvertible {
 
-    /**
-     * Last GlyphID in the range.
-     */
-    private final int end;
+  /**
+   * Last GlyphID in the range.
+   */
+  private final int end;
 
-    /**
-     * First GlyphID in the range.
-     */
-    private final int start;
+  /**
+   * First GlyphID in the range.
+   */
+  private final int start;
 
-    /**
-     * Coverage Index of first GlyphID in range.
-     */
-    private final int startCoverageIndex;
+  /**
+   * Coverage Index of first GlyphID in range.
+   */
+  private final int startCoverageIndex;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param rar input
-     * @throws IOException if a io-error occurred.
-     */
-    public RangeRecord(RandomAccessR rar) throws IOException {
+  /**
+   * Creates a new object.
+   *
+   * @param rar input
+   * @throws IOException if a io-error occurred.
+   */
+  public RangeRecord( RandomAccessR rar ) throws IOException {
 
-        start = rar.readUnsignedShort();
-        end = rar.readUnsignedShort();
-        startCoverageIndex = rar.readUnsignedShort();
-    }
+    start = rar.readUnsignedShort();
+    end = rar.readUnsignedShort();
+    startCoverageIndex = rar.readUnsignedShort();
+  }
 
-    /**
-     * Getter for end.
-     * 
-     * @return the end
-     */
-    public int getEnd() {
+  /**
+   * Getter for end.
+   *
+   * @return the end
+   */
+  public int getEnd() {
 
-        return end;
-    }
+    return end;
+  }
 
-    /**
-     * Getter for start.
-     * 
-     * @return the start
-     */
-    public int getStart() {
+  /**
+   * Getter for start.
+   *
+   * @return the start
+   */
+  public int getStart() {
 
-        return start;
-    }
+    return start;
+  }
 
-    /**
-     * Getter for startCoverageIndex.
-     * 
-     * @return the startCoverageIndex
-     */
-    public int getStartCoverageIndex() {
+  /**
+   * Getter for startCoverageIndex.
+   *
+   * @return the startCoverageIndex
+   */
+  public int getStartCoverageIndex() {
 
-        return startCoverageIndex;
-    }
+    return startCoverageIndex;
+  }
 
-    /**
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
+   *org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writer.writeStartElement("rangerecord");
-        writer.writeAttribute("start", start);
-        writer.writeAttribute("end", end);
-        writer.writeAttribute("startCoverageIndex", startCoverageIndex);
-        writer.writeEndElement();
-    }
+    writer.writeStartElement( "rangerecord" );
+    writer.writeAttribute( "start", start );
+    writer.writeAttribute( "end", end );
+    writer.writeAttribute( "startCoverageIndex", startCoverageIndex );
+    writer.writeEndElement();
+  }
 
 }

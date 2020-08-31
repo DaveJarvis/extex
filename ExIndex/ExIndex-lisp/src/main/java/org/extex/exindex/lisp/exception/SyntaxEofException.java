@@ -22,25 +22,25 @@ package org.extex.exindex.lisp.exception;
 /**
  * This exception indicates that the end of file has been encountered
  * unexpectedly.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SyntaxEofException extends SyntaxException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the name of the resource
-     */
-    public SyntaxEofException(String resource) {
+  /**
+   * Creates a new object.
+   *
+   * @param resource the name of the resource
+   */
+  public SyntaxEofException( String resource ) {
 
-        super(resource);
-    }
+    super( resource );
+  }
 
 }

@@ -25,128 +25,122 @@ package org.extex.backend.documentWriter.dvi;
  * This is a implementation of class holding the dvi positions register.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
-*/
+ */
 public class DviPositions implements Cloneable {
 
-    /**
-     * The current horizontal position.
-     *
-     */
-    private int dviH;
+  /**
+   * The current horizontal position.
+   */
+  private int dviH;
 
-    /**
-     * The current vertical position.
-     *
-     */
-    private int dviV;
+  /**
+   * The current vertical position.
+   */
+  private int dviV;
 
-    /**
-     * Variable for repeated horizontal space.
-     *
-     */
-    private int dviW;
+  /**
+   * Variable for repeated horizontal space.
+   */
+  private int dviW;
 
-    /**
-     * Variable for repeated horizontal space.
-     *
-     */
-    private int dviX;
+  /**
+   * Variable for repeated horizontal space.
+   */
+  private int dviX;
 
-    /**
-     * Variable for repeated vertical space.
-     *
-     */
-    private int dviY;
+  /**
+   * Variable for repeated vertical space.
+   */
+  private int dviY;
 
-    /**
-     * Variable for repeated vertical space.
-     *
-     */
-    private int dviZ;
+  /**
+   * Variable for repeated vertical space.
+   */
+  private int dviZ;
 
-    /**
-     * Creates a new instance.
-     *
-     * @param h horizontal position
-     * @param v vertical position
-     * @param w for repeated horizontal space
-     * @param x for repeated horizontal space
-     * @param y for repeated vertical space
-     * @param z for repeated vertical space
-     */
-    public DviPositions(int h, int v, int w, int x,
-            int y, int z) {
+  /**
+   * Creates a new instance.
+   *
+   * @param h horizontal position
+   * @param v vertical position
+   * @param w for repeated horizontal space
+   * @param x for repeated horizontal space
+   * @param y for repeated vertical space
+   * @param z for repeated vertical space
+   */
+  public DviPositions( int h, int v, int w, int x,
+                       int y, int z ) {
 
-        dviH = h;
-        dviV = v;
-        dviW = w;
-        dviX = x;
-        dviY = y;
-        dviZ = z;
+    dviH = h;
+    dviV = v;
+    dviW = w;
+    dviX = x;
+    dviY = y;
+    dviZ = z;
+  }
+
+  /**
+   * Creates and returns a copy of this object.
+   *
+   * @return a clone of this instance
+   */
+  @Override
+  public DviPositions clone() {
+
+    DviPositions obj;
+
+    try {
+      obj = (DviPositions) super.clone();
+      obj.dviH = dviH;
+      obj.dviV = dviV;
+      obj.dviW = dviW;
+      obj.dviX = dviX;
+      obj.dviY = dviY;
+      obj.dviZ = dviZ;
+    } catch( CloneNotSupportedException e ) {
+      obj = new DviPositions( dviH, dviV, dviW, dviX, dviY, dviZ );
     }
 
-    /**
-     * Creates and returns a copy of this object.
-     *
-     * @return a clone of this instance
-     */
-    @Override
-    public DviPositions clone() {
+    return obj;
+  }
 
-        DviPositions obj;
+  /**
+   * Increment horizontal position.
+   *
+   * @param increment for incrementing
+   */
+  public void addToH( int increment ) {
 
-        try {
-            obj = (DviPositions) super.clone();
-            obj.dviH = dviH;
-            obj.dviV = dviV;
-            obj.dviW = dviW;
-            obj.dviX = dviX;
-            obj.dviY = dviY;
-            obj.dviZ = dviZ;
-        } catch (CloneNotSupportedException e) {
-            obj = new DviPositions(dviH, dviV, dviW, dviX, dviY, dviZ);
-        }
+    dviH += increment;
+  }
 
-        return obj;
-    }
+  /**
+   * Increment vertical position.
+   *
+   * @param increment for incrementing
+   */
+  public void addToV( int increment ) {
 
-    /**
-     * Increment horizontal position.
-     *
-     * @param increment for incrementing
-     */
-    public void addToH(int increment) {
+    dviV += increment;
+  }
 
-        dviH += increment;
-    }
+  /**
+   * Get horizontal position.
+   *
+   * @return horizontal position
+   */
+  public int getH() {
 
-    /**
-     * Increment vertical position.
-     *
-     * @param increment for incrementing
-     */
-    public void addToV(int increment) {
+    return dviH;
+  }
 
-        dviV += increment;
-    }
+  /**
+   * Get vertical position.
+   *
+   * @return vertical position
+   */
+  public int getV() {
 
-    /**
-     * Get horizontal position.
-     *
-     * @return horizontal position
-     */
-    public int getH() {
-
-        return dviH;
-    }
-
-    /**
-     * Get vertical position.
-     *
-     * @return vertical position
-     */
-    public int getV() {
-
-        return dviV;
-    }
+    return dviV;
+  }
 }

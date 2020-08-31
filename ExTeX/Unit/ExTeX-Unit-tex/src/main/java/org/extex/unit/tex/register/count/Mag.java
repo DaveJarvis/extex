@@ -42,7 +42,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive {@code \mag}. It
  * sets the named count register to the value given, and as a side effect all
  * prefixes are zeroed.
- * 
+ *
  * <p>The Primitive {@code \mag}</p>
  * <p>
  * The primitive {@code \mag} provides a means to set the magnification factor
@@ -64,182 +64,186 @@ import org.extex.typesetter.exception.TypesetterException;
  * An attempt to assign a non-positive number to {@code \mag} leads to an
  * error.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;mag&rang;
  *      &rarr; &lang;optional prefix&rang; {@code \mag} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;}
  *
  *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  {@code \global}
  *       |  {@code \immediate}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \mag=1600  </pre>
- * 
- * 
+ *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @see org.extex.interpreter.type.code.Advanceable
  * @see org.extex.interpreter.type.code.Divideable
  * @see org.extex.interpreter.type.code.Multiplyable
  * @see org.extex.interpreter.type.Theable
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Mag extends AbstractCount
-        implements
-            ExpandableCode,
-            Advanceable,
-            Multiplyable,
-            Divideable,
-            Theable,
-            CountConvertible {
+    implements
+    ExpandableCode,
+    Advanceable,
+    Multiplyable,
+    Divideable,
+    Theable,
+    CountConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Mag(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Mag( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void advance( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    source.getKeyword( context, "by" );
+
+    long value = source.parseInteger( context, source, null );
+    value += context.getMagnification();
+
+    context.setMagnification( value, true );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    source.getOptionalEquals( context );
+
+    long value = source.parseInteger( context, source, typesetter );
+    context.setMagnification( value, true );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    return context.getMagnification();
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void divide( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    source.getKeyword( context, "by" );
+
+    long value = source.parseInteger( context, source, null );
+
+    if( value == 0 ) {
+      throw new ArithmeticOverflowException( toText( context ) );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void advance(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    value = context.getMagnification() / value;
+    context.setMagnification( value, true );
+  }
 
-        source.getKeyword(context, "by");
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter ) throws HelpingException {
 
-        long value = source.parseInteger(context, source, null);
-        value += context.getMagnification();
-
-        context.setMagnification(value, true);
+    try {
+      source.push( context.getTokenFactory().toTokens(
+          context.getMagnification() ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void init( Context context, TokenSource source, Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
 
-        source.getOptionalEquals(context);
-
-        long value = source.parseInteger(context, source, typesetter);
-        context.setMagnification(value, true);
+    if( source == null ) {
+      return;
     }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        return context.getMagnification();
+    Token t = source.getNonSpace( context );
+    if( t == null ) {
+      return;
     }
+    source.push( t );
+    long value = source.parseInteger( context, source, typesetter );
+    context.setMagnification( value, false );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void divide(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void multiply( Flags prefix, Context context, TokenSource source,
+                        Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        source.getKeyword(context, "by");
+    source.getKeyword( context, "by" );
 
-        long value = source.parseInteger(context, source, null);
+    long value = source.parseInteger( context, source, null );
+    value *= context.getMagnification();
+    context.setMagnification( value, true );
+  }
 
-        if (value == 0) {
-            throw new ArithmeticOverflowException(toText(context));
-        }
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        value = context.getMagnification() / value;
-        context.setMagnification(value, true);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
-
-        try {
-            source.push(context.getTokenFactory().toTokens(
-                context.getMagnification()));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void init(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        if (source == null) {
-            return;
-        }
-        Token t = source.getNonSpace(context);
-        if (t == null) {
-            return;
-        }
-        source.push(t);
-        long value = source.parseInteger(context, source, typesetter);
-        context.setMagnification(value, false);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void multiply(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        source.getKeyword(context, "by");
-
-        long value = source.parseInteger(context, source, null);
-        value *= context.getMagnification();
-        context.setMagnification(value, true);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        return context.getTokenFactory().toTokens(context.getMagnification());
-    }
+    return context.getTokenFactory().toTokens( context.getMagnification() );
+  }
 
 }

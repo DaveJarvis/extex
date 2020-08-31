@@ -19,9 +19,9 @@
 
 package org.extex.framework.configuration;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import org.extex.framework.configuration.exception.*;
+import org.extex.framework.configuration.impl.XmlConfiguration;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -30,315 +30,308 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationIOException;
-import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-import org.extex.framework.configuration.impl.XmlConfiguration;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * Test suite for the configuration factory.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationFactoryTest {
 
-    /**
-     * TODO gene: missing JavaDoc.
-     */
-    public class Xxx implements Configuration {
-
-        /**
-         * Creates a new object.
-         * 
-         * @param resource the resource
-         */
-        public Xxx(String resource) {
-
-        }
-
-    @Override
-        public Configuration findConfiguration(String key)
-                throws ConfigurationInvalidResourceException,
-                    ConfigurationNotFoundException,
-                    ConfigurationSyntaxException,
-                    ConfigurationIOException {
-
-            return null;
-        }
-
-        /**
-    *      java.lang.String)
-         */
-        @Override
-        public Configuration findConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-    @Override
-        public String getAttribute(String name) {
-
-            return null;
-        }
-
-    @Override
-        public Configuration getConfiguration(String key)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-    *      java.lang.String)
-         */
-        @Override
-        public Configuration getConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-    @Override
-        public String getValue() throws ConfigurationException {
-
-            return null;
-        }
-
-    @Override
-        public String getValue(String key) throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-    *      int)
-         */
-        @Override
-        public int getValueAsInteger(String key, int defaultValue)
-                throws ConfigurationException {
-
-            return 0;
-        }
-
-        /**
-    *      java.lang.String)
-         */
-        @Override
-        public void getValues(List<String> list, String key) {
-
-        }
-
-    @Override
-        public List<String> getValues(String key) {
-
-            return null;
-        }
-
-    @Override
-        public Iterator<Configuration> iterator() throws ConfigurationException {
-
-            return null;
-        }
-
-    @Override
-        public Iterator<Configuration> iterator(String key)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-    @Override
-        public void setConfigurationLoader(ConfigurationLoader loader) {
-
-        }
-    }
+  /**
+   * TODO gene: missing JavaDoc.
+   */
+  public class Xxx implements Configuration {
 
     /**
-     * TODO gene: missing JavaDoc.
-     * 
-     */
-    public class Yyy extends Xxx {
-
-        /**
-         * Creates a new object.
-         * 
-         * @param resource the resource
-         */
-        public Yyy(String resource) {
-
-            super(resource);
-            throw new NullPointerException();
-        }
-
-    }
-
-
-    public ConfigurationFactoryTest() {
-
-        Locale.setDefault(Locale.ENGLISH);
-    }
-
-    /**
-     *  Test that null leads to an appropriate error message.
+     * Creates a new object.
      *
+     * @param resource the resource
      */
-    @Test(expected = ConfigurationInvalidResourceException.class)
-    public void testNewInstance01() {
+    public Xxx( String resource ) {
 
-        System.clearProperty("Util.Configuration.class");
-        ConfigurationFactory.newInstance(null);
+    }
+
+    @Override
+    public Configuration findConfiguration( String key )
+        throws ConfigurationInvalidResourceException,
+        ConfigurationNotFoundException,
+        ConfigurationSyntaxException,
+        ConfigurationIOException {
+
+      return null;
     }
 
     /**
-     * Test that the empty string leads to an appropriate error message
-*/
-    @Test(expected = ConfigurationInvalidResourceException.class)
-    public void testNewInstance02() {
-
-        System.clearProperty("Util.Configuration.class");
-        ConfigurationFactory.newInstance("");
-    }
-
-    /**
-     * Test that an undefined configuration leads to an appropriate error message
-*/
-    @Test(expected = ConfigurationNotFoundException.class)
-    public void testNewInstance03() {
-
-        System.clearProperty("Util.Configuration.class");
-        ConfigurationFactory.newInstance("undefined");
-    }
-
-    /**
-     * Test that an invalid configuration leads to an appropriate error message
-* 
-     * Note: Redirecting the Error stream is necessary to get rid of irritating
-     * messages on stderr.
+     * java.lang.String)
      */
-    @Test(expected = ConfigurationSyntaxException.class)
-    public void testNewInstance04() {
+    @Override
+    public Configuration findConfiguration( String key, String attribute )
+        throws ConfigurationException {
 
-        PrintStream err = System.err;
-        System.setErr(new PrintStream(new OutputStream() {
+      return null;
+    }
 
-            @Override
-            public void write(int b) throws IOException {
+    @Override
+    public String getAttribute( String name ) {
 
-            }
-        }));
-        try {
-            System.clearProperty("Util.Configuration.class");
-            ConfigurationFactory
-                .newInstance("org/extex/framework/configuration/EmptyConfiguration.xml");
-        } finally {
-            System.setErr(err);
-        }
+      return null;
+    }
+
+    @Override
+    public Configuration getConfiguration( String key )
+        throws ConfigurationException {
+
+      return null;
     }
 
     /**
-     *  Test that a valid configuration is loaded.
-     * 
-     * @throws ConfigurationException in case of an error
+     * java.lang.String)
      */
-    @Test
-    public void testNewInstance10() throws ConfigurationException {
+    @Override
+    public Configuration getConfiguration( String key, String attribute )
+        throws ConfigurationException {
 
-        System.clearProperty("Util.Configuration.class");
-        Configuration cfg =
-                ConfigurationFactory
-                    .newInstance("org/extex/framework/configuration/Configuration.xml");
-        assertNotNull(cfg);
-        assertEquals("", cfg.getValue());
-        assertFalse(cfg.iterator().hasNext());
+      return null;
+    }
+
+    @Override
+    public String getValue() throws ConfigurationException {
+
+      return null;
+    }
+
+    @Override
+    public String getValue( String key ) throws ConfigurationException {
+
+      return null;
     }
 
     /**
-     *  Test that a valid configuration is loaded.
-     * 
-     * @throws ConfigurationException in case of an error
+     * int)
      */
-    @Test
-    public void testNewInstance11() throws ConfigurationException {
+    @Override
+    public int getValueAsInteger( String key, int defaultValue )
+        throws ConfigurationException {
 
-        System.setProperty("Util.Configuration.class",
-            XmlConfiguration.class.getName());
-        Configuration cfg =
-                ConfigurationFactory
-                    .newInstance("org/extex/framework/configuration/Configuration.xml");
-        assertNotNull(cfg);
-        assertEquals("", cfg.getValue());
-        assertFalse(cfg.iterator().hasNext());
+      return 0;
     }
 
     /**
-     *  Test that an invalid class name leads to an error.
-     * 
-     * @throws ConfigurationException in case of an error
+     * java.lang.String)
      */
-    @Test(expected = ConfigurationClassNotFoundException.class)
-    public void testNewInstance12() throws ConfigurationException {
+    @Override
+    public void getValues( List<String> list, String key ) {
 
-        System.setProperty("Util.Configuration.class", "xyzzy");
+    }
+
+    @Override
+    public List<String> getValues( String key ) {
+
+      return null;
+    }
+
+    @Override
+    public Iterator<Configuration> iterator() throws ConfigurationException {
+
+      return null;
+    }
+
+    @Override
+    public Iterator<Configuration> iterator( String key )
+        throws ConfigurationException {
+
+      return null;
+    }
+
+    @Override
+    public void setConfigurationLoader( ConfigurationLoader loader ) {
+
+    }
+  }
+
+  /**
+   * TODO gene: missing JavaDoc.
+   */
+  public class Yyy extends Xxx {
+
+    /**
+     * Creates a new object.
+     *
+     * @param resource the resource
+     */
+    public Yyy( String resource ) {
+
+      super( resource );
+      throw new NullPointerException();
+    }
+
+  }
+
+
+  public ConfigurationFactoryTest() {
+
+    Locale.setDefault( Locale.ENGLISH );
+  }
+
+  /**
+   * Test that null leads to an appropriate error message.
+   */
+  @Test(expected = ConfigurationInvalidResourceException.class)
+  public void testNewInstance01() {
+
+    System.clearProperty( "Util.Configuration.class" );
+    ConfigurationFactory.newInstance( null );
+  }
+
+  /**
+   * Test that the empty string leads to an appropriate error message
+   */
+  @Test(expected = ConfigurationInvalidResourceException.class)
+  public void testNewInstance02() {
+
+    System.clearProperty( "Util.Configuration.class" );
+    ConfigurationFactory.newInstance( "" );
+  }
+
+  /**
+   * Test that an undefined configuration leads to an appropriate error message
+   */
+  @Test(expected = ConfigurationNotFoundException.class)
+  public void testNewInstance03() {
+
+    System.clearProperty( "Util.Configuration.class" );
+    ConfigurationFactory.newInstance( "undefined" );
+  }
+
+  /**
+   * Test that an invalid configuration leads to an appropriate error message
+   * <p>
+   * Note: Redirecting the Error stream is necessary to get rid of irritating
+   * messages on stderr.
+   */
+  @Test(expected = ConfigurationSyntaxException.class)
+  public void testNewInstance04() {
+
+    PrintStream err = System.err;
+    System.setErr( new PrintStream( new OutputStream() {
+
+      @Override
+      public void write( int b ) throws IOException {
+
+      }
+    } ) );
+    try {
+      System.clearProperty( "Util.Configuration.class" );
+      ConfigurationFactory
+          .newInstance(
+              "org/extex/framework/configuration/EmptyConfiguration.xml" );
+    } finally {
+      System.setErr( err );
+    }
+  }
+
+  /**
+   * Test that a valid configuration is loaded.
+   *
+   * @throws ConfigurationException in case of an error
+   */
+  @Test
+  public void testNewInstance10() throws ConfigurationException {
+
+    System.clearProperty( "Util.Configuration.class" );
+    Configuration cfg =
         ConfigurationFactory
-            .newInstance("org/extex/framework/configuration/Configuration.xml");
-    }
+            .newInstance( "org/extex/framework/configuration/Configuration" +
+                              ".xml" );
+    assertNotNull( cfg );
+    assertEquals( "", cfg.getValue() );
+    assertFalse( cfg.iterator().hasNext() );
+  }
 
-    /**
-     *  Test that an invalid class name leads to an error.
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    @Test(expected = ConfigurationInstantiationException.class)
-    public void testNewInstance13() throws ConfigurationException {
+  /**
+   * Test that a valid configuration is loaded.
+   *
+   * @throws ConfigurationException in case of an error
+   */
+  @Test
+  public void testNewInstance11() throws ConfigurationException {
 
-        System.setProperty("Util.Configuration.class", "java.lang.String");
+    System.setProperty( "Util.Configuration.class",
+                        XmlConfiguration.class.getName() );
+    Configuration cfg =
         ConfigurationFactory
-            .newInstance("org/extex/framework/configuration/Configuration.xml");
-    }
+            .newInstance( "org/extex/framework/configuration/Configuration" +
+                              ".xml" );
+    assertNotNull( cfg );
+    assertEquals( "", cfg.getValue() );
+    assertFalse( cfg.iterator().hasNext() );
+  }
 
-    /**
-     *  Test that a valid configuration is loaded.
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    @Test(expected = ConfigurationInvalidResourceException.class)
-    public void testNewInstance14() throws ConfigurationException {
+  /**
+   * Test that an invalid class name leads to an error.
+   *
+   * @throws ConfigurationException in case of an error
+   */
+  @Test(expected = ConfigurationClassNotFoundException.class)
+  public void testNewInstance12() throws ConfigurationException {
 
-        System.setProperty("Util.Configuration.class",
-            XmlConfiguration.class.getName());
-        ConfigurationFactory.newInstance(null);
-    }
+    System.setProperty( "Util.Configuration.class", "xyzzy" );
+    ConfigurationFactory
+        .newInstance( "org/extex/framework/configuration/Configuration.xml" );
+  }
 
-    /**
-     *  Test that an invalid class leads to an error.
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    @Test(expected = ConfigurationInstantiationException.class)
-    public void testNewInstance15() throws ConfigurationException {
+  /**
+   * Test that an invalid class name leads to an error.
+   *
+   * @throws ConfigurationException in case of an error
+   */
+  @Test(expected = ConfigurationInstantiationException.class)
+  public void testNewInstance13() throws ConfigurationException {
 
-        System.setProperty("Util.Configuration.class", Xxx.class.getName());
-        ConfigurationFactory
-            .newInstance("org/extex/framework/configuration/Configuration.xml");
-    }
+    System.setProperty( "Util.Configuration.class", "java.lang.String" );
+    ConfigurationFactory
+        .newInstance( "org/extex/framework/configuration/Configuration.xml" );
+  }
 
-    /**
-     *  Test that an invalid class leads to an error.
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    @Test(expected = ConfigurationInstantiationException.class)
-    public void testNewInstance16() throws ConfigurationException {
+  /**
+   * Test that a valid configuration is loaded.
+   *
+   * @throws ConfigurationException in case of an error
+   */
+  @Test(expected = ConfigurationInvalidResourceException.class)
+  public void testNewInstance14() throws ConfigurationException {
 
-        System.setProperty("Util.Configuration.class", Yyy.class.getName());
-        ConfigurationFactory
-            .newInstance("org/extex/framework/configuration/Configuration.xml");
-    }
+    System.setProperty( "Util.Configuration.class",
+                        XmlConfiguration.class.getName() );
+    ConfigurationFactory.newInstance( null );
+  }
+
+  /**
+   * Test that an invalid class leads to an error.
+   *
+   * @throws ConfigurationException in case of an error
+   */
+  @Test(expected = ConfigurationInstantiationException.class)
+  public void testNewInstance15() throws ConfigurationException {
+
+    System.setProperty( "Util.Configuration.class", Xxx.class.getName() );
+    ConfigurationFactory
+        .newInstance( "org/extex/framework/configuration/Configuration.xml" );
+  }
+
+  /**
+   * Test that an invalid class leads to an error.
+   *
+   * @throws ConfigurationException in case of an error
+   */
+  @Test(expected = ConfigurationInstantiationException.class)
+  public void testNewInstance16() throws ConfigurationException {
+
+    System.setProperty( "Util.Configuration.class", Yyy.class.getName() );
+    ConfigurationFactory
+        .newInstance( "org/extex/framework/configuration/Configuration.xml" );
+  }
 
 }

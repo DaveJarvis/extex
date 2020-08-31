@@ -26,31 +26,30 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \pdfinfo}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfinfoTest extends NoFlagsButProtectedPrimitiveTester {
 
 
-    public PdfinfoTest() {
+  public PdfinfoTest() {
 
-        super("pdfinfo", "{}", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfinfo", "{}", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    /**
-     * <testcase primitive="\pdfinfo">
-     *  Test case checking that ...
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pdfinfo">
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfinfo b",
-                //--- output message ---
-                "Missing `{' inserted");
-    }
+    assertFailure(//--- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfinfo b",
+                  //--- output message ---
+                  "Missing `{' inserted" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

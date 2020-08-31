@@ -19,16 +19,10 @@
 
 package org.extex.language.hyphenation.liang;
 
-import java.util.logging.Logger;
-
 import org.extex.core.UnicodeChar;
 import org.extex.core.UnicodeCharList;
 import org.extex.language.hyphenation.base.BaseHyphenationTable;
-import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
-import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
-import org.extex.language.hyphenation.exception.IllegalValueHyphenationException;
-import org.extex.language.hyphenation.exception.ImmutableHyphenationException;
+import org.extex.language.hyphenation.exception.*;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
@@ -39,12 +33,14 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 
+import java.util.logging.Logger;
+
 /**
  * This class stores the values for hyphenations and hyphenates words. It uses
  * Liang's algorithm as described in the TeX book.
- * 
+ *
  * <p>Liang's Algorithm</p>
- * 
+ *
  * <p>
  * The hyphenation in TeX is based on Liang's thesis. This algorithm is based on
  * patterns which consist of characters or a special marker for the beginning
@@ -66,8 +62,10 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * </p>
  * <p>
  * The following table shows some more examples taken from the original
- * hyphenation patterns of TeX for English. The character . denotes the beginning or the
- * end of a word. In the TeX patterns the word pattern and the hyphenation codes are
+ * hyphenation patterns of TeX for English. The character . denotes the
+ * beginning or the
+ * end of a word. In the TeX patterns the word pattern and the hyphenation
+ * codes are
  * intermixed and the hyphenation codes 0 are left out.
  * </p>
  * <table>
@@ -117,7 +115,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * <p>
  * In the following figure the patterns for the word ``subtype'' are shown.
  * </p>
- * 
+ *
  * <pre>{@code
  *  <sub> </sub>s<sub> </sub>u<sub> </sub>b<sub> </sub>t<sub> </sub>y<sub> </sub>p<sub> </sub>e
  *  <sub>0</sub>s<sub>0</sub>u<sub>4</sub>b<sub>3</sub>
@@ -136,245 +134,254 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * {@code \righthyphenmin} to 3 for English in TeX. Thus the final hyphen is
  * not considered.
  * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LiangsHyphenationTable extends BaseHyphenationTable {
 
-    /**
-     * The field {@code BORDER} contains the Unicode character internally used
-     * as a marker for the beginning and the end of the word.
-     */
-    private static final UnicodeChar BORDER = null;
+  /**
+   * The field {@code BORDER} contains the Unicode character internally used
+   * as a marker for the beginning and the end of the word.
+   */
+  private static final UnicodeChar BORDER = null;
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 20060305L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 20060305L;
 
-    /**
-     * The field {@code compressed} contains the indicator that the hyphenation
-     * table has been compressed. A compressed table can not be modified any
-     * more.
-     */
-    private boolean compressed = false;
+  /**
+   * The field {@code compressed} contains the indicator that the hyphenation
+   * table has been compressed. A compressed table can not be modified any
+   * more.
+   */
+  private boolean compressed = false;
 
-    /**
-     * The field {@code patterns} contains the tree of hyphenation patterns.
-     */
-    private final HyphenTree patterns = new HyphenTree( new char[0]);
+  /**
+   * The field {@code patterns} contains the tree of hyphenation patterns.
+   */
+  private final HyphenTree patterns = new HyphenTree( new char[ 0 ] );
 
 
-    public LiangsHyphenationTable() {
+  public LiangsHyphenationTable() {
 
+  }
+
+  /**
+   * This methods allows the caller to add another pattern.
+   *
+   * @param pattern a sequence of tokens alternatively of type other and
+   *                letter. The other tokens must be numbers. The letter
+   *                tokens period
+   *                (.) are interpreted as beginning of word or end of word
+   *                marker.
+   * @throws IllegalValueHyphenationException in case that an other token does
+   *                                          not carry a digit
+   * @throws IllegalTokenHyphenationException in case that an illegal token
+   *                                          has been detected in the pattern
+   * @throws DuplicateHyphenationException    in case that a hyphenation
+   * pattern
+   *                                          is tried to be added a second
+   *                                          time
+   * @throws ImmutableHyphenationException    in case that the hyphenation
+   * table
+   *                                          is immutable; i.e. the
+   *                                          compressed flag is set
+   * @see org.extex.language.Language#addPattern(Tokens)
+   */
+  @Override
+  public void addPattern( Tokens pattern )
+      throws IllegalValueHyphenationException,
+      IllegalTokenHyphenationException,
+      DuplicateHyphenationException,
+      ImmutableHyphenationException {
+
+    if( compressed ) {
+      throw new ImmutableHyphenationException( null );
     }
 
-    /**
-     * This methods allows the caller to add another pattern.
-     * 
-     * @param pattern a sequence of tokens alternatively of type other and
-     *        letter. The other tokens must be numbers. The letter tokens period
-     *        (.) are interpreted as beginning of word or end of word marker.
-     * 
-     * @throws IllegalValueHyphenationException in case that an other token does
-     *         not carry a digit
-     * @throws IllegalTokenHyphenationException in case that an illegal token
-     *         has been detected in the pattern
-     * @throws DuplicateHyphenationException in case that a hyphenation pattern
-     *         is tried to be added a second time
-     * @throws ImmutableHyphenationException in case that the hyphenation table
-     *         is immutable; i.e. the compressed flag is set
-     * 
-     * @see org.extex.language.Language#addPattern(Tokens)
-     */
-    @Override
-    public void addPattern(Tokens pattern)
-            throws IllegalValueHyphenationException,
-                IllegalTokenHyphenationException,
-                DuplicateHyphenationException,
-                ImmutableHyphenationException {
+    int length = pattern.length();
 
-        if (compressed) {
-            throw new ImmutableHyphenationException(null);
-        }
-
-        int length = pattern.length();
-
-        if (length == 0) {
-            return;
-        }
-
-        char[] code = new char[(length + 1) / 2];
-        int codeIndex = 0;
-        HyphenTree tree = patterns;
-        boolean expectLetter = false;
-
-        for (int i = 0; i < length; i++) {
-            Token t = pattern.get(i);
-            UnicodeChar c = t.getChar();
-            if (t instanceof OtherToken) {
-                int hyphenCode = c.getCodePoint();
-                if (expectLetter) {
-                    throw new IllegalTokenHyphenationException(t.toString());
-                } else if (hyphenCode < '0' || hyphenCode > '9') {
-                    throw new IllegalValueHyphenationException(t.toString());
-                }
-                code[codeIndex++] = (char) hyphenCode;
-                expectLetter = true;
-            } else if (t instanceof LetterToken) {
-                if (!expectLetter) {
-                    throw new IllegalTokenHyphenationException(t.toString());
-                }
-                tree = tree.insert(c, null);
-                HyphenTree.superimpose(code, 0, tree.getHyphenationCode());
-                expectLetter = false;
-            } else {
-                throw new IllegalTokenHyphenationException(t.toString());
-            }
-        }
-        tree.setHyphenationCode(code);
-        tree.superimposeAll(code);
+    if( length == 0 ) {
+      return;
     }
 
-    /**
-     * Write the tree to a logger.
-     * 
-     * @param logger the target logger
-     */
-    public void dump(Logger logger) {
+    char[] code = new char[ (length + 1) / 2 ];
+    int codeIndex = 0;
+    HyphenTree tree = patterns;
+    boolean expectLetter = false;
 
-        patterns.dump(logger, "");
+    for( int i = 0; i < length; i++ ) {
+      Token t = pattern.get( i );
+      UnicodeChar c = t.getChar();
+      if( t instanceof OtherToken ) {
+        int hyphenCode = c.getCodePoint();
+        if( expectLetter ) {
+          throw new IllegalTokenHyphenationException( t.toString() );
+        }
+        else if( hyphenCode < '0' || hyphenCode > '9' ) {
+          throw new IllegalValueHyphenationException( t.toString() );
+        }
+        code[ codeIndex++ ] = (char) hyphenCode;
+        expectLetter = true;
+      }
+      else if( t instanceof LetterToken ) {
+        if( !expectLetter ) {
+          throw new IllegalTokenHyphenationException( t.toString() );
+        }
+        tree = tree.insert( c, null );
+        HyphenTree.superimpose( code, 0, tree.getHyphenationCode() );
+        expectLetter = false;
+      }
+      else {
+        throw new IllegalTokenHyphenationException( t.toString() );
+      }
+    }
+    tree.setHyphenationCode( code );
+    tree.superimposeAll( code );
+  }
+
+  /**
+   * Write the tree to a logger.
+   *
+   * @param logger the target logger
+   */
+  public void dump( Logger logger ) {
+
+    patterns.dump( logger, "" );
+  }
+
+  /**
+   * Getter for patterns. This method is meant for testing purposes only.
+   *
+   * @return the patterns
+   */
+  protected HyphenTree getPatterns() {
+
+    return this.patterns;
+  }
+
+  /**
+   * org.extex.typesetter.TypesetterOptions, org.extex.core.UnicodeChar,
+   * int, boolean, org.extex.typesetter.type.node.factory.NodeFactory)
+   */
+  @Override
+  public boolean hyphenate( NodeList nodelist, TypesetterOptions context,
+                            UnicodeChar hyphen, int start, boolean forall,
+                            NodeFactory nodeFactory )
+      throws HyphenationException {
+
+    if( hyphen == null || !isHyphenating() || nodelist.size() < 2 ) {
+      return false;
     }
 
-    /**
-     * Getter for patterns. This method is meant for testing purposes only.
-     * 
-     * @return the patterns
-     */
-    protected HyphenTree getPatterns() {
+    Node hn = nodeFactory.getNode( context.getTypesettingContext(), hyphen );
+    if( !(hn instanceof CharNode) ) {
+      return false;
+    }
+    CharNode hyphenNode = (CharNode) hn;
 
-        return this.patterns;
+    UnicodeCharList word = new UnicodeCharList();
+    int next = findWord( nodelist, start, word );
+    boolean modified =
+        hyphenateOne( nodelist, context, start, word, hyphenNode );
+
+    if( forall ) {
+      for( int i = next; i < nodelist.size(); i = next ) {
+        word.clear();
+        next = findWord( nodelist, i, word );
+        modified =
+            (hyphenateOne( nodelist, context, start, word,
+                           hyphenNode ) || modified);
+      }
     }
 
-    /**
-*      org.extex.typesetter.TypesetterOptions, org.extex.core.UnicodeChar,
-     *      int, boolean, org.extex.typesetter.type.node.factory.NodeFactory)
-     */
-    @Override
-    public boolean hyphenate(NodeList nodelist, TypesetterOptions context,
-            UnicodeChar hyphen, int start, boolean forall,
-            NodeFactory nodeFactory) throws HyphenationException {
+    return modified;
+  }
 
-        if (hyphen == null || !isHyphenating() || nodelist.size() < 2) {
-            return false;
-        }
+  /**
+   * org.extex.typesetter.TypesetterOptions, int,
+   * org.extex.core.UnicodeCharList,
+   * org.extex.typesetter.type.node.CharNode)
+   */
+  @Override
+  public boolean hyphenateOne( NodeList nodelist, TypesetterOptions context,
+                               int start, UnicodeCharList word,
+                               CharNode hyphenNode )
+      throws HyphenationException {
 
-        Node hn = nodeFactory.getNode(context.getTypesettingContext(), hyphen);
-        if (!(hn instanceof CharNode)) {
-            return false;
-        }
-        CharNode hyphenNode = (CharNode) hn;
-
-        UnicodeCharList word = new UnicodeCharList();
-        int next = findWord(nodelist, start, word);
-        boolean modified =
-                hyphenateOne(nodelist, context, start, word, hyphenNode);
-
-        if (forall) {
-            for (int i = next; i < nodelist.size(); i = next) {
-                word.clear();
-                next = findWord(nodelist, i, word);
-                modified =
-                        (hyphenateOne(nodelist, context, start, word,
-                            hyphenNode) || modified);
-            }
-        }
-
-        return modified;
+    int len = word.size();
+    if( len <= 1 ) {
+      return false;
     }
 
-    /**
-*      org.extex.typesetter.TypesetterOptions, int,
-     *      org.extex.core.UnicodeCharList,
-     *      org.extex.typesetter.type.node.CharNode)
-     */
-    @Override
-    public boolean hyphenateOne(NodeList nodelist, TypesetterOptions context,
-            int start, UnicodeCharList word, CharNode hyphenNode)
-            throws HyphenationException {
-
-        int len = word.size();
-        if (len <= 1) {
-            return false;
-        }
-
-        if (super.hyphenateOne(nodelist, context, start, word, hyphenNode)) {
-            return true;
-        }
-
-        int leftHyphenMin = (int) getLeftHyphenMin();
-        int rightHyphenMin = (int) getRightHyphenMin();
-        if (len < leftHyphenMin + rightHyphenMin) {
-            return false;
-        }
-
-        char[] hyph = new char[len + 2];
-        UnicodeChar[] chars = new UnicodeChar[len + 2];
-        int idx = 0; // pointer into hyph; in sync with the current char
-        chars[idx++] = BORDER;
-        for (int i = 0; i < len; i++) {
-            chars[idx++] = word.get(i);
-        }
-        chars[idx] = BORDER;
-
-        for (int i = 0; i < len; i++) {
-            HyphenTree.superimpose(hyph, i, patterns.get(chars, i));
-        }
-
-        for (int i = 0; i < leftHyphenMin; i++) {
-            hyph[i] = '0';
-        }
-        for (int i = 0; i < rightHyphenMin; i++) {
-            hyph[hyph.length - i - 1] = '0';
-        }
-
-        boolean hasNoHyphen = true;
-        boolean[] isHyph = new boolean[hyph.length];
-
-        for (int i = 0; i < hyph.length; i++) {
-            if (((hyph[i]) & 1) != 0) {
-                isHyph[i] = true;
-                hasNoHyphen = false;
-            } else {
-                isHyph[i] = false;
-            }
-        }
-        if (hasNoHyphen) {
-            return false;
-        }
-
-        insertShy(nodelist, start, isHyph, hyphenNode);
-
-        return true;
+    if( super.hyphenateOne( nodelist, context, start, word, hyphenNode ) ) {
+      return true;
     }
 
-    /**
-     * Getter for compressed.
-     * 
-     * @return the compressed
-     */
-    protected boolean isCompressed() {
-
-        return this.compressed;
+    int leftHyphenMin = (int) getLeftHyphenMin();
+    int rightHyphenMin = (int) getRightHyphenMin();
+    if( len < leftHyphenMin + rightHyphenMin ) {
+      return false;
     }
 
-    /**
-     * Setter for compressed.
-     */
-    protected void setCompressed() {
-
-        this.compressed = true;
+    char[] hyph = new char[ len + 2 ];
+    UnicodeChar[] chars = new UnicodeChar[ len + 2 ];
+    int idx = 0; // pointer into hyph; in sync with the current char
+    chars[ idx++ ] = BORDER;
+    for( int i = 0; i < len; i++ ) {
+      chars[ idx++ ] = word.get( i );
     }
+    chars[ idx ] = BORDER;
+
+    for( int i = 0; i < len; i++ ) {
+      HyphenTree.superimpose( hyph, i, patterns.get( chars, i ) );
+    }
+
+    for( int i = 0; i < leftHyphenMin; i++ ) {
+      hyph[ i ] = '0';
+    }
+    for( int i = 0; i < rightHyphenMin; i++ ) {
+      hyph[ hyph.length - i - 1 ] = '0';
+    }
+
+    boolean hasNoHyphen = true;
+    boolean[] isHyph = new boolean[ hyph.length ];
+
+    for( int i = 0; i < hyph.length; i++ ) {
+      if( ((hyph[ i ]) & 1) != 0 ) {
+        isHyph[ i ] = true;
+        hasNoHyphen = false;
+      }
+      else {
+        isHyph[ i ] = false;
+      }
+    }
+    if( hasNoHyphen ) {
+      return false;
+    }
+
+    insertShy( nodelist, start, isHyph, hyphenNode );
+
+    return true;
+  }
+
+  /**
+   * Getter for compressed.
+   *
+   * @return the compressed
+   */
+  protected boolean isCompressed() {
+
+    return this.compressed;
+  }
+
+  /**
+   * Setter for compressed.
+   */
+  protected void setCompressed() {
+
+    this.compressed = true;
+  }
 
 }

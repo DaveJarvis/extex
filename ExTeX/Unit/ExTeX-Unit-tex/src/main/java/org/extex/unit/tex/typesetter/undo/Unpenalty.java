@@ -33,65 +33,66 @@ import org.extex.typesetter.type.node.PenaltyNode;
 /**
  * This class provides an implementation for the primitive
  * {@code &#x5c;unpenalty}.
- * 
+ *
  * <p>The Primitive {@code &#x5c;unpenalty}</p>
  * <p>
  * The primitive {@code &#x5c;unpenalty} inspects the current list and
  * removes the last node if it is a penalty node. Otherwise an error is raised.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;unpenalty&rang;
  *        &rarr; {@code &#x5c;unpenalty}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    &#x5c;unpenalty  </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Unpenalty extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Unpenalty(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Unpenalty( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Node node = typesetter.getLastNode();
+    if( node instanceof PenaltyNode ) {
+      typesetter.removeLastNode();
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Node node = typesetter.getLastNode();
-        if (node instanceof PenaltyNode) {
-            typesetter.removeLastNode();
-        } else if (node == null) {
-            throw new HelpingException(getLocalizer(),
-                "TTP.CantDeleteLastPenalty", toText(context),
-                typesetter.getMode().toString());
-        }
+    else if( node == null ) {
+      throw new HelpingException( getLocalizer(),
+                                  "TTP.CantDeleteLastPenalty",
+                                  toText( context ),
+                                  typesetter.getMode().toString() );
     }
+  }
 
 }

@@ -30,35 +30,33 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * junks.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ParagraphBuilder {
 
-    /**
-     * Break a horizontal list into lines.
-     * The horizontal list passed in might be modified under way.
-     *
-     * @param nodes the horizontal node list containing all nodes for the
-     *   paragraph
-     *
-     * @return the
-     *   {@link org.extex.typesetter.type.node.VerticalListNode
-     *   VerticalListNode} containing the hboxes of the lines
-     *
-     * @throws TypesetterException in case of an error
-     */
-    NodeList build(HorizontalListNode nodes) throws TypesetterException;
+  /**
+   * Break a horizontal list into lines.
+   * The horizontal list passed in might be modified under way.
+   *
+   * @param nodes the horizontal node list containing all nodes for the
+   *              paragraph
+   * @return the
+   * {@link org.extex.typesetter.type.node.VerticalListNode
+   * VerticalListNode} containing the hboxes of the lines
+   * @throws TypesetterException in case of an error
+   */
+  NodeList build( HorizontalListNode nodes ) throws TypesetterException;
 
-    /**
-     * Setter for the node factory.
-     *
-     * @param nodeFactory the node factory
-     */
-    void setNodefactory(NodeFactory nodeFactory);
+  /**
+   * Setter for the node factory.
+   *
+   * @param nodeFactory the node factory
+   */
+  void setNodefactory( NodeFactory nodeFactory );
 
-    /**
-     * Setter for options.
-     *
-     * @param options the options to set.
-     */
-    void setOptions(TypesetterOptions options);
+  /**
+   * Setter for options.
+   *
+   * @param options the options to set.
+   */
+  void setOptions( TypesetterOptions options );
 }

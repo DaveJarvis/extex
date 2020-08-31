@@ -30,23 +30,23 @@ import org.extex.typesetter.exception.TypesetterException;
  * This interface describes the capabilities needed for the NativeDef to work on
  * the class. This interface is meant to enable to integration of macro
  * definitions implemented in arbitrary programming languages.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Definer {
 
-    /**
-     * Perform a define operation
-     * 
-     * @param prefix the flags
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    void define(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException;
+  /**
+   * Perform a define operation
+   *
+   * @param prefix     the flags
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  void define( Flags prefix, Context context, TokenSource source,
+               Typesetter typesetter )
+      throws HelpingException, TypesetterException;
 
 }

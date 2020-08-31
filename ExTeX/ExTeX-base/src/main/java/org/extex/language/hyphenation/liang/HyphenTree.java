@@ -19,18 +19,18 @@
 
 package org.extex.language.hyphenation.liang;
 
+import org.extex.core.UnicodeChar;
+import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.extex.core.UnicodeChar;
-import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
-
 /**
  * <h2>Data Structures for Liang's Algorithm</h2>
- * 
+ *
  * <p>
  * The basic data structure to store hyphenation patterns is a tree with
  * arbitrary branching factor. The path from the root to a node determines the
@@ -47,273 +47,270 @@ import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
  * time it is only necessary to retrieve a single code sequence for each
  * position of the word.
  * </p>
- * 
+ * <p>
  * TODO gene: missing JavaDoc (incomplete).
- * 
+ * <p>
  * The value {@code null} as character is interpreted as the left or right
  * word boundary.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 class HyphenTree implements Iterable<HyphenTree>, Serializable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2011L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2011L;
 
-    /**
-     * Superimpose two hyphenation code arrays. The target array is modified. It
-     * is considered from a starting position onwards. The target array has to
-     * be long enough such that the source array fits into it entirely.
-     * <p>
-     * At any position considered the maximum value of target and source is
-     * stored in the target. The comparison of the array is performed at the
-     * positions <i>i</i> in {@code source} and <i>i + start</i> in
-     * {@code target} for each <i>i</i> in pointing to a hyphenation code in
-     * {@code source}.
-     * </p>
-     * <p>
-     * If source is {@code null} then nothing is done.
-     * </p>
-     * 
-     * @param code the target array to modify
-     * @param start the start index in code
-     * @param source the reference array to read from
-     */
-    public static void superimpose(char[] code, int start, char[] source) {
+  /**
+   * Superimpose two hyphenation code arrays. The target array is modified. It
+   * is considered from a starting position onwards. The target array has to
+   * be long enough such that the source array fits into it entirely.
+   * <p>
+   * At any position considered the maximum value of target and source is
+   * stored in the target. The comparison of the array is performed at the
+   * positions <i>i</i> in {@code source} and <i>i + start</i> in
+   * {@code target} for each <i>i</i> in pointing to a hyphenation code in
+   * {@code source}.
+   * </p>
+   * <p>
+   * If source is {@code null} then nothing is done.
+   * </p>
+   *
+   * @param code   the target array to modify
+   * @param start  the start index in code
+   * @param source the reference array to read from
+   */
+  public static void superimpose( char[] code, int start, char[] source ) {
 
-        if (source != null) {
-            int j = start;
+    if( source != null ) {
+      int j = start;
 
-            for (int i = 0; i < source.length; i++) {
-                if (code[j] < source[i]) {
-                    code[j] = source[i];
-                }
-                j++;
-            }
+      for( int i = 0; i < source.length; i++ ) {
+        if( code[ j ] < source[ i ] ) {
+          code[ j ] = source[ i ];
         }
+        j++;
+      }
+    }
+  }
+
+  /**
+   * The field {@code hc} contains the hyphenation code for the position left
+   * of the character represented by this instance.
+   */
+  private char[] hc;
+
+  /**
+   * The field {@code nextTree} contains the map for the next characters.
+   */
+  private Map<UnicodeChar, HyphenTree> nextTree = null;
+
+  /**
+   * Creates a new object.
+   *
+   * @param hc the hyphenation code to start with
+   */
+  public HyphenTree( char[] hc ) {
+
+    this.hc = hc;
+  }
+
+  /**
+   * This method dumps a hyphenation tree to a logger.
+   *
+   * @param logger the target logger
+   * @param prefix the initial string prepended before any line of output
+   */
+  public void dump( Logger logger, String prefix ) {
+
+    logger.info( toString() );
+  }
+
+  /**
+   * Traverse the tree and return the appropriate hyphenation code vector. If
+   * none is found then {@code null} is returned. The hyphenation code
+   * vector returned is the longest vector stored for any sequence of
+   * characters starting with the given word.
+   *
+   * @param chars the array of characters to analyze
+   * @param start the start index in chars to begin with
+   * @return the hyphenation code found or {@code null}
+   */
+  public char[] get( UnicodeChar[] chars, int start ) {
+
+    HyphenTree tree = this;
+    char[] hyph = null;
+
+    if( chars.length == 0 ) {
+      return tree.getHyphenationCode();
     }
 
-    /**
-     * The field {@code hc} contains the hyphenation code for the position left
-     * of the character represented by this instance.
-     */
-    private char[] hc;
-
-    /**
-     * The field {@code nextTree} contains the map for the next characters.
-     */
-    private Map<UnicodeChar, HyphenTree> nextTree = null;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param hc the hyphenation code to start with
-     */
-    public HyphenTree(char[] hc) {
-
-        this.hc = hc;
-    }
-
-    /**
-     * This method dumps a hyphenation tree to a logger.
-     * 
-     * @param logger the target logger
-     * @param prefix the initial string prepended before any line of output
-     */
-    public void dump(Logger logger, String prefix) {
-
-        logger.info(toString());
-    }
-
-    /**
-     * Traverse the tree and return the appropriate hyphenation code vector. If
-     * none is found then {@code null} is returned. The hyphenation code
-     * vector returned is the longest vector stored for any sequence of
-     * characters starting with the given word.
-     * 
-     * @param chars the array of characters to analyze
-     * @param start the start index in chars to begin with
-     * 
-     * @return the hyphenation code found or {@code null}
-     */
-    public char[] get(UnicodeChar[] chars, int start) {
-
-        HyphenTree tree = this;
-        char[] hyph = null;
-
-        if (chars.length == 0) {
-            return tree.getHyphenationCode();
-        }
-
-        for (int i = start; i < chars.length; i++) {
-            char[] code = tree.getHyphenationCode();
-            if (code != null) {
-                hyph = code;
-            }
-            tree = tree.getNext(chars[i]);
-            if (tree == null) {
-                return hyph;
-            }
-        }
-
+    for( int i = start; i < chars.length; i++ ) {
+      char[] code = tree.getHyphenationCode();
+      if( code != null ) {
+        hyph = code;
+      }
+      tree = tree.getNext( chars[ i ] );
+      if( tree == null ) {
         return hyph;
+      }
     }
 
-    /**
-     * Getter for hyphenation code.
-     * 
-     * @return the hyphenation code
-     */
-    public char[] getHyphenationCode() {
+    return hyph;
+  }
 
-        return this.hc;
+  /**
+   * Getter for hyphenation code.
+   *
+   * @return the hyphenation code
+   */
+  public char[] getHyphenationCode() {
+
+    return this.hc;
+  }
+
+  /**
+   * Getter for the next tree.
+   *
+   * @param uc the Unicode character to get the tree for
+   * @return the next tree
+   */
+  public HyphenTree getNext( UnicodeChar uc ) {
+
+    return (this.nextTree != null
+        ? this.nextTree.get( uc )
+        : null);
+  }
+
+  /**
+   * Create a new branch in the HyphenTree for a given character. The
+   * hyphenation code is stored if the branch is new. If the branch exists
+   * already then the hyphenation code is stored in the branch after it has
+   * been checked for an existing value. An existing value leads to an
+   * exception.
+   *
+   * @param uc   the Unicode character to insert
+   * @param hyph the hyphenation code to insert
+   * @return the next branch associated with the character
+   * @throws DuplicateHyphenationException in case that the hyphen code is
+   *                                       already set
+   */
+  public HyphenTree insert( UnicodeChar uc, char[] hyph )
+      throws DuplicateHyphenationException {
+
+    if( nextTree == null ) {
+      nextTree = new HashMap<UnicodeChar, HyphenTree>( 5 );
     }
-
-    /**
-     * Getter for the next tree.
-     * 
-     * @param uc the Unicode character to get the tree for
-     * 
-     * @return the next tree
-     */
-    public HyphenTree getNext(UnicodeChar uc) {
-
-        return (this.nextTree != null
-                ? this.nextTree.get( uc)
-                : null);
+    HyphenTree tree = nextTree.get( uc );
+    if( tree != null ) {
+      tree.setHyphenationCode( hyph );
     }
+    else {
+      tree = new HyphenTree( hyph );
+      nextTree.put( uc, tree );
+    }
+    return tree;
+  }
 
-    /**
-     * Create a new branch in the HyphenTree for a given character. The
-     * hyphenation code is stored if the branch is new. If the branch exists
-     * already then the hyphenation code is stored in the branch after it has
-     * been checked for an existing value. An existing value leads to an
-     * exception.
-     * 
-     * @param uc the Unicode character to insert
-     * @param hyph the hyphenation code to insert
-     * 
-     * @return the next branch associated with the character
-     * 
-     * @throws DuplicateHyphenationException in case that the hyphen code is
-     *         already set
-     */
-    public HyphenTree insert(UnicodeChar uc, char[] hyph)
-            throws DuplicateHyphenationException {
+  /**
+   * Getter for the iterator for the children.
+   *
+   * @return the iterator for the children
+   */
+  @Override
+  public Iterator<HyphenTree> iterator() {
 
-        if (nextTree == null) {
-            nextTree = new HashMap<UnicodeChar, HyphenTree>(5);
+    return nextTree.values().iterator();
+  }
+
+  /**
+   * Setter for hyphenation code.
+   *
+   * @param code the hyphenation code to set
+   */
+  public void setCode( char[] code ) {
+
+    this.hc = code;
+  }
+
+  /**
+   * Setter for the hyphenation code with duplicate check.
+   *
+   * @param code the hyphenation code to set
+   * @throws DuplicateHyphenationException in case that the hyphen code is
+   *                                       already set
+   */
+  public void setHyphenationCode( char[] code )
+      throws DuplicateHyphenationException {
+
+    if( code != null ) {
+      if( this.hc != null ) {
+        throw new DuplicateHyphenationException( null );
+      }
+      this.hc = code;
+    }
+  }
+
+  /**
+   * Superimpose a hyphenation code vector onto the current node and all
+   * descendants.
+   *
+   * @param code the hyphenation code vector to superimpose
+   */
+  public void superimposeAll( char[] code ) {
+
+    if( nextTree == null ) {
+      return;
+    }
+    for( HyphenTree t : nextTree.values() ) {
+      if( t.hc != null ) {
+        superimpose( t.hc, 0, code );
+      }
+      t.superimposeAll( code );
+    }
+  }
+
+  @Override
+  public String toString() {
+
+    StringBuilder sb = new StringBuilder();
+    toString( sb, "" );
+    return sb.toString();
+  }
+
+  /**
+   * Create a printable representation of the tree in a StringBuilder.
+   *
+   * @param sb     the target string buffer
+   * @param prefix the prefix for each line
+   */
+  protected void toString( StringBuilder sb, String prefix ) {
+
+    if( nextTree == null ) {
+      return;
+    }
+    String p = prefix + "  ";
+    for( UnicodeChar key : nextTree.keySet() ) {
+      HyphenTree t = nextTree.get( key );
+      sb.append( prefix );
+      sb.append( "'" );
+      sb.append( key );
+      sb.append( "' " );
+      char[] hyphenationCode = t.getHyphenationCode();
+      if( hyphenationCode == null ) {
+        sb.append( "nil" );
+      }
+      else {
+        sb.append( "(" );
+        for( int i = 0; i < hyphenationCode.length; i++ ) {
+          sb.append( hyphenationCode[ i ] );
         }
-        HyphenTree tree = nextTree.get(uc);
-        if (tree != null) {
-            tree.setHyphenationCode(hyph);
-        } else {
-            tree = new HyphenTree(hyph);
-            nextTree.put(uc, tree);
-        }
-        return tree;
+        sb.append( ")" );
+      }
+      sb.append( "\n" );
+      t.toString( sb, p );
     }
-
-    /**
-     * Getter for the iterator for the children.
-     * 
-     * @return the iterator for the children
-     */
-    @Override
-    public Iterator<HyphenTree> iterator() {
-
-        return nextTree.values().iterator();
-    }
-
-    /**
-     * Setter for hyphenation code.
-     * 
-     * @param code the hyphenation code to set
-     */
-    public void setCode(char[] code) {
-
-        this.hc = code;
-    }
-
-    /**
-     * Setter for the hyphenation code with duplicate check.
-     * 
-     * @param code the hyphenation code to set
-     * 
-     * @throws DuplicateHyphenationException in case that the hyphen code is
-     *         already set
-     */
-    public void setHyphenationCode(char[] code)
-            throws DuplicateHyphenationException {
-
-        if (code != null) {
-            if (this.hc != null) {
-                throw new DuplicateHyphenationException(null);
-            }
-            this.hc = code;
-        }
-    }
-
-    /**
-     * Superimpose a hyphenation code vector onto the current node and all
-     * descendants.
-     * 
-     * @param code the hyphenation code vector to superimpose
-     */
-    public void superimposeAll(char[] code) {
-
-        if (nextTree == null) {
-            return;
-        }
-        for (HyphenTree t : nextTree.values()) {
-            if (t.hc != null) {
-                superimpose(t.hc, 0, code);
-            }
-            t.superimposeAll(code);
-        }
-    }
-
-@Override
-    public String toString() {
-
-        StringBuilder sb = new StringBuilder();
-        toString(sb, "");
-        return sb.toString();
-    }
-
-    /**
-     * Create a printable representation of the tree in a StringBuilder.
-     * 
-     * @param sb the target string buffer
-     * @param prefix the prefix for each line
-     */
-    protected void toString(StringBuilder sb, String prefix) {
-
-        if (nextTree == null) {
-            return;
-        }
-        String p = prefix + "  ";
-        for (UnicodeChar key : nextTree.keySet()) {
-            HyphenTree t = nextTree.get(key);
-            sb.append(prefix);
-            sb.append("'");
-            sb.append(key);
-            sb.append("' ");
-            char[] hyphenationCode = t.getHyphenationCode();
-            if (hyphenationCode == null) {
-                sb.append("nil");
-            } else {
-                sb.append("(");
-                for (int i = 0; i < hyphenationCode.length; i++) {
-                    sb.append(hyphenationCode[i]);
-                }
-                sb.append(")");
-            }
-            sb.append("\n");
-            t.toString(sb, p);
-        }
-    }
+  }
 
 }

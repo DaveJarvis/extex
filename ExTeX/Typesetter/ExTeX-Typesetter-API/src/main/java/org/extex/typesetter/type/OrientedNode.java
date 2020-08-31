@@ -22,17 +22,17 @@ package org.extex.typesetter.type;
 /**
  * This interface describes a node which is oriented in horizontal or vertical
  * direction.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OrientedNode extends Node {
 
-    /**
-     * Check whether this node is in horizontal mode. Otherwise it is in
-     * vertical mode.
-     * 
-     * @return the horizontal indicator
-     */
-    boolean isHorizontal();
+  /**
+   * Check whether this node is in horizontal mode. Otherwise it is in
+   * vertical mode.
+   *
+   * @return the horizontal indicator
+   */
+  boolean isHorizontal();
 
 }

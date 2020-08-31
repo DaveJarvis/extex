@@ -28,21 +28,21 @@ import org.extex.language.word.WordTokenizer;
  * a {@link org.extex.language.ligature.LigatureBuilder LigatureBuilder}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ModifiableLanguage extends Language {
 
-    /**
-     * Setter for the ligature builder.
-     *
-     * @param ligatureBuilder the ligature builder
-     */
-    void setLigatureBuilder(LigatureBuilder ligatureBuilder);
+  /**
+   * Setter for the ligature builder.
+   *
+   * @param ligatureBuilder the ligature builder
+   */
+  void setLigatureBuilder( LigatureBuilder ligatureBuilder );
 
-    /**
-     * Setter for the word tokenizer.
-     *
-     * @param tokenizer the word tokenizer
-     */
-    void setWordTokenizer(WordTokenizer tokenizer);
+  /**
+   * Setter for the word tokenizer.
+   *
+   * @param tokenizer the word tokenizer
+   */
+  void setWordTokenizer( WordTokenizer tokenizer );
 
 }

@@ -38,7 +38,7 @@ import java.util.logging.Logger;
 /**
  * This class provides an implementation for the primitive
  * {@code \closeout}.
- * 
+ *
  * <p>The Primitive {@code \closeout}</p>
  * <p>
  * The primitive takes one expanded integer argument. This argument denotes a
@@ -47,7 +47,7 @@ import java.util.logging.Logger;
  * the input file assigned to the given number has not been opened or has been
  * closed before then this primitive simply does nothing.
  * </p>
- * 
+ *
  * <p>Syntax</p>
  * <p>
  * The formal description of this primitive is the following:
@@ -56,78 +56,79 @@ import java.util.logging.Logger;
  * <pre class="syntax">
  *    &lang;closeout&rang;
  *       &rarr; {@code \closeout} {@linkplain
- *        org.extex.unit.base.file.AbstractFileCode#scanOutFileKey(Context,TokenSource,Typesetter)
+ *        org.extex.unit.base.file.AbstractFileCode#scanOutFileKey(Context, TokenSource, Typesetter)
  *        &lang;outfile&nbsp;name&rang;} </pre>
- * 
+ *
  *
  * <p>Examples</p>
  *
  * <pre class="TeXSample">
  *    \closeout5  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \closeout\count120  </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Closeout extends AbstractCode implements LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the logger to use.
-     */
-    private transient Logger logger = null;
+  /**
+   * The field {@code logger} contains the logger to use.
+   */
+  private transient Logger logger = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Closeout(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Closeout( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param theLogger the new logger
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
-     */
-    public void enableLogging(Logger theLogger) {
+  /**
+   * Setter for the logger.
+   *
+   * @param theLogger the new logger
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(
+   *java.util.logging.Logger)
+   */
+  public void enableLogging( Logger theLogger ) {
 
-        this.logger = theLogger;
-    }
+    this.logger = theLogger;
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String key =
-                AbstractFileCode.scanOutFileKey(context, source, typesetter);
+    String key =
+        AbstractFileCode.scanOutFileKey( context, source, typesetter );
 
-        if (prefix.clearImmediate()) {
-            OutFile file = context.getOutFile(key);
-            if (file != null) {
-                try {
-                    file.close();
-                } catch (IOException e) {
-                    logger.info(e.getLocalizedMessage() + "\n");
-                }
-            }
-        } else {
-            typesetter.add(new WhatsItCloseNode(key));
+    if( prefix.clearImmediate() ) {
+      OutFile file = context.getOutFile( key );
+      if( file != null ) {
+        try {
+          file.close();
+        } catch( IOException e ) {
+          logger.info( e.getLocalizedMessage() + "\n" );
         }
+      }
     }
+    else {
+      typesetter.add( new WhatsItCloseNode( key ) );
+    }
+  }
 
 }

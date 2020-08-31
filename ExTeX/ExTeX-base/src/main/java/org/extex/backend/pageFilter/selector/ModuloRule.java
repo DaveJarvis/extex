@@ -24,43 +24,41 @@ package org.extex.backend.pageFilter.selector;
  * certain divider.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 class ModuloRule implements Rule {
 
-    /**
-     * The field {@code mod} contains the divider.
-     */
-    private final int mod;
+  /**
+   * The field {@code mod} contains the divider.
+   */
+  private final int mod;
 
-    /**
-     * The field {@code rem} contains the remainder.
-     */
-    private final int rem;
+  /**
+   * The field {@code rem} contains the remainder.
+   */
+  private final int rem;
 
-    /**
-     * Creates a new object.
-     *
-     * @param mod the divider
-     * @param rem the remainder
-     */
-    public ModuloRule(int mod, int rem) {
+  /**
+   * Creates a new object.
+   *
+   * @param mod the divider
+   * @param rem the remainder
+   */
+  public ModuloRule( int mod, int rem ) {
 
-        this.mod = mod;
-        this.rem = rem;
-    }
+    this.mod = mod;
+    this.rem = rem;
+  }
 
-    /**
-     * Check that a given page is covered by this rule.
-     *
-     * @param value the number to check
-     *
-     * @return {@code true} iff the number is covered
-     *
-     * @see org.extex.backend.pageFilter.selector.Rule#check(int)
-     */
-    public boolean check(int value) {
+  /**
+   * Check that a given page is covered by this rule.
+   *
+   * @param value the number to check
+   * @return {@code true} iff the number is covered
+   * @see org.extex.backend.pageFilter.selector.Rule#check(int)
+   */
+  public boolean check( int value ) {
 
-        return value % mod == rem;
-    }
+    return value % mod == rem;
+  }
 
 }

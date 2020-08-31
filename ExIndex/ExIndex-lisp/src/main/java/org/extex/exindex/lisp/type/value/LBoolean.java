@@ -23,61 +23,60 @@ import java.io.PrintStream;
 
 /**
  * This class is a node containing a boolean.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class LBoolean implements LValue {
 
-    /**
-     * The field {@code TRUE} contains the constant for true.
-     */
-    public static final LBoolean TRUE = new LBoolean(true);
+  /**
+   * The field {@code TRUE} contains the constant for true.
+   */
+  public static final LBoolean TRUE = new LBoolean( true );
 
-    /**
-     * The field {@code FALSE} contains the constant for false.
-     */
-    public static final LBoolean FALSE = new LBoolean(false);
+  /**
+   * The field {@code FALSE} contains the constant for false.
+   */
+  public static final LBoolean FALSE = new LBoolean( false );
 
-    /**
-     * Get the appropriate instance for a boolean value.
-     * 
-     * @param value the boolean value
-     * 
-     * @return the corresponding LBoolean
-     */
-    public static LBoolean valueOf(boolean value) {
+  /**
+   * Get the appropriate instance for a boolean value.
+   *
+   * @param value the boolean value
+   * @return the corresponding LBoolean
+   */
+  public static LBoolean valueOf( boolean value ) {
 
-        return value ? TRUE : FALSE;
-    }
+    return value ? TRUE : FALSE;
+  }
 
-    /**
-     * The field {@code value} contains the value.
-     */
-    private final boolean value;
+  /**
+   * The field {@code value} contains the value.
+   */
+  private final boolean value;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param value the value
-     */
-    private LBoolean(boolean value) {
+  /**
+   * Creates a new object.
+   *
+   * @param value the value
+   */
+  private LBoolean( boolean value ) {
 
-        this.value = value;
-    }
+    this.value = value;
+  }
 
-    /**
-     * Getter for value.
-     * 
-     * @return the value
-     */
-    public boolean booleanValue() {
+  /**
+   * Getter for value.
+   *
+   * @return the value
+   */
+  public boolean booleanValue() {
 
-        return value;
-    }
+    return value;
+  }
 
-public void print(PrintStream stream) {
+  public void print( PrintStream stream ) {
 
-        stream.print(value ? "t" : "nil");
-    }
+    stream.print( value ? "t" : "nil" );
+  }
 
 }

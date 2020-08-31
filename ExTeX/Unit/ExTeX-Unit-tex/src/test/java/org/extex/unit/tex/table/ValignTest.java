@@ -1,5 +1,6 @@
 /*
- * Copyright 1C) 2005-2007 any ExTeX Group missing individual authors listed below
+ * Copyright 1C) 2005-2007 any ExTeX Group missing individual authors listed
+ * below
  0
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,39 +29,48 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for the primitive {@code \valign}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ValignTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     *
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-        (new JUnitCore()).run(ValignTest.class);
-    }
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
+    (new JUnitCore()).run( ValignTest.class );
+  }
 
-    public ValignTest() {
-        setPrimitive( "valign" );
-        setArguments( "{#\\cr}" );
-        setPrepare( DEFINE_HASH );
-    }
+  public ValignTest() {
+    setPrimitive( "valign" );
+    setArguments( "{#\\cr}" );
+    setPrepare( DEFINE_HASH );
+  }
 
-    @Test
-    @Ignore
-    public void testNoGlobalFlag(){}
-    @Test
-    @Ignore
-    public void testNoLongFlag(){}
-    @Test
-    @Ignore
-    public void testNoOuterFlag(){}
-    @Test
-    @Ignore
-    public void testNoProtectedFlag(){}
-    @Test
-    @Ignore
-    public void testNoImmediateFlag(){}
+  @Test
+  @Ignore
+  public void testNoGlobalFlag() {
+  }
 
-    // TODO implement primitive specific test cases
+  @Test
+  @Ignore
+  public void testNoLongFlag() {
+  }
+
+  @Test
+  @Ignore
+  public void testNoOuterFlag() {
+  }
+
+  @Test
+  @Ignore
+  public void testNoProtectedFlag() {
+  }
+
+  @Test
+  @Ignore
+  public void testNoImmediateFlag() {
+  }
+
+  // TODO implement primitive specific test cases
 }

@@ -21,72 +21,72 @@ package org.extex.font.format.xtf.tables.cff;
 
 /**
  * Four {@link T2Number},
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2FourNumber {
 
-    /**
-     * The value array.
-     */
-    private final T2Number[] val = new T2Number[4];
+  /**
+   * The value array.
+   */
+  private final T2Number[] val = new T2Number[ 4 ];
 
-    /**
-     * Creates a new object.
-     * 
-     * @param a The value a.
-     * @param b The value b.
-     * @param c The value c.
-     * @param d The value d.
-     */
-    public T2FourNumber(T2Number a, T2Number b, T2Number c, T2Number d) {
+  /**
+   * Creates a new object.
+   *
+   * @param a The value a.
+   * @param b The value b.
+   * @param c The value c.
+   * @param d The value d.
+   */
+  public T2FourNumber( T2Number a, T2Number b, T2Number c, T2Number d ) {
 
-        val[0] = a;
-        val[1] = b;
-        val[2] = c;
-        val[3] = d;
+    val[ 0 ] = a;
+    val[ 1 ] = b;
+    val[ 2 ] = c;
+    val[ 3 ] = d;
+  }
+
+  /**
+   * Returns the number.
+   *
+   * @param idx The index.
+   * @return Returns the number.
+   */
+  public T2Number getNumber( int idx ) {
+
+    return val[ idx ];
+  }
+
+  /**
+   * Getter for val.
+   *
+   * @return the val
+   */
+  public T2Number[] getVal() {
+
+    return val;
+  }
+
+  /**
+   * Set the value.
+   *
+   * @param t   The number.
+   * @param idx The index.
+   */
+  public void setValue( T2Number t, int idx ) {
+
+    val[ idx ] = t;
+  }
+
+  @Override
+  public String toString() {
+
+    StringBuilder buf = new StringBuilder();
+    for( int i = 0; i < val.length; i++ ) {
+      buf.append( ' ' ).append( val[ i ].toString() );
     }
-
-    /**
-     * Returns the number.
-     * 
-     * @param idx The index.
-     * @return Returns the number.
-     */
-    public T2Number getNumber(int idx) {
-
-        return val[idx];
-    }
-
-    /**
-     * Getter for val.
-     * 
-     * @return the val
-     */
-    public T2Number[] getVal() {
-
-        return val;
-    }
-
-    /**
-     * Set the value.
-     * 
-     * @param t The number.
-     * @param idx The index.
-     */
-    public void setValue(T2Number t, int idx) {
-
-        val[idx] = t;
-    }
-
-@Override
-    public String toString() {
-
-        StringBuilder buf = new StringBuilder();
-        for (int i = 0; i < val.length; i++) {
-            buf.append(' ').append(val[i].toString());
-        }
-        return buf.toString().trim();
-    }
+    return buf.toString().trim();
+  }
 
 }

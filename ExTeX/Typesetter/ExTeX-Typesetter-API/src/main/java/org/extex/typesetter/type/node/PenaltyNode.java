@@ -29,108 +29,105 @@ import org.extex.typesetter.type.NodeVisitor;
  * This class represents a Node which holds a penalty value. It is used during
  * the paragraph breaking or page breaking to control the algorithm. This node
  * should be ignored by the DocumentWriter.
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class PenaltyNode extends AbstractNode implements Node, Discardable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code penalty} contains the penalty value of this node.
-     */
-    private long penalty = 0;
+  /**
+   * The field {@code penalty} contains the penalty value of this node.
+   */
+  private long penalty = 0;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param thePenalty the penalty value
-*/
-    public PenaltyNode(Count thePenalty) {
+  /**
+   * Creates a new object.
+   *
+   * @param thePenalty the penalty value
+   */
+  public PenaltyNode( Count thePenalty ) {
 
-        this(thePenalty.getValue());
-    }
+    this( thePenalty.getValue() );
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param thePenalty the penalty value
-     */
-    public PenaltyNode(long thePenalty) {
+  /**
+   * Creates a new object.
+   *
+   * @param thePenalty the penalty value
+   */
+  public PenaltyNode( long thePenalty ) {
 
-        this.penalty = thePenalty;
-    }
+    this.penalty = thePenalty;
+  }
 
-    /**
-     * Getter for penalty.
-     * 
-     * @return the penalty.
-     */
-    public long getPenalty() {
+  /**
+   * Getter for penalty.
+   *
+   * @return the penalty.
+   */
+  public long getPenalty() {
 
-        return penalty;
-    }
+    return penalty;
+  }
 
-    /**
-     * This method returns the printable representation. This is meant to
-     * produce a exhaustive form as it is used in tracing output to the log
-     * file.
-     * 
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * @param breadth the breadth
-     * @param depth the depth
-* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
-     *      java.lang.String, int, int)
-     */
-    @Override
-    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
+  /**
+   * This method returns the printable representation. This is meant to
+   * produce a exhaustive form as it is used in tracing output to the log
+   * file.
+   *
+   * @param sb      the output string buffer
+   * @param prefix  the prefix string inserted at the beginning of each line
+   * @param breadth the breadth
+   * @param depth   the depth
+   * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+   * java.lang.String, int, int)
+   */
+  @Override
+  public void toString( StringBuilder sb, String prefix, int breadth,
+                        int depth ) {
 
-        sb.append(getLocalizer()
-            .format("String.Format", Long.toString(penalty)));
-    }
+    sb.append( getLocalizer()
+                   .format( "String.Format", Long.toString( penalty ) ) );
+  }
 
-    /**
-     * This method puts the printable representation into the string buffer.
-     * This is meant to produce a short form only as it is used in error
-     * messages to the user.
-     * 
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * 
-     * @see org.extex.typesetter.type.Node#toText(StringBuilder,
-     *      java.lang.String)
-     */
-    @Override
-    public void toText(StringBuilder sb, String prefix) {
+  /**
+   * This method puts the printable representation into the string buffer.
+   * This is meant to produce a short form only as it is used in error
+   * messages to the user.
+   *
+   * @param sb     the output string buffer
+   * @param prefix the prefix string inserted at the beginning of each line
+   * @see org.extex.typesetter.type.Node#toText(StringBuilder,
+   * java.lang.String)
+   */
+  @Override
+  public void toText( StringBuilder sb, String prefix ) {
 
-        sb.append(getLocalizer().format("Text.Format", Long.toString(penalty)));
-    }
+    sb.append( getLocalizer().format( "Text.Format",
+                                      Long.toString( penalty ) ) );
+  }
 
-    /**
-     * This method provides an entry point for the visitor pattern.
-     * 
-     * @param visitor the visitor to apply
-     * @param value the argument for the visitor
-     * 
-     * @return the result of the method invocation of the visitor
-     * 
-     * @throws GeneralException in case of an error
-     * 
-     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
-     */
-    @Override
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(NodeVisitor visitor, Object value)
-            throws GeneralException {
+  /**
+   * This method provides an entry point for the visitor pattern.
+   *
+   * @param visitor the visitor to apply
+   * @param value   the argument for the visitor
+   * @return the result of the method invocation of the visitor
+   * @throws GeneralException in case of an error
+   * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+   * java.lang.Object)
+   */
+  @Override
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public Object visit( NodeVisitor visitor, Object value )
+      throws GeneralException {
 
-        return visitor.visitPenalty(this, value);
-    }
+    return visitor.visitPenalty( this, value );
+  }
 
 }

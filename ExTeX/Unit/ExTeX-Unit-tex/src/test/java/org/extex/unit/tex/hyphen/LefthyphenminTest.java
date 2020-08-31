@@ -21,16 +21,16 @@ package org.extex.unit.tex.hyphen;
 
 /**
  * This is a test suite for the primitive {@code \lefthyphenmin}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LefthyphenminTest extends AbstractHyphenminTester {
 
 
-    public LefthyphenminTest() {
+  public LefthyphenminTest() {
 
-        super("lefthyphenmin", "", "0");
-    }
+    super( "lefthyphenmin", "", "0" );
+  }
 
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

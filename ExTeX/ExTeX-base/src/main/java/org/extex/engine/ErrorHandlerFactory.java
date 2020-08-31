@@ -30,9 +30,9 @@ import org.extex.interpreter.ErrorHandler;
  * {@link org.extex.interpreter.ErrorHandler ErrorHandler}. This factory
  * inherits its properties from the {@link org.extex.framework.AbstractFactory
  * AbstractFactory}. Among them the support for configuration and logging.
- * 
- *  Configuration
- * 
+ * <p>
+ * Configuration
+ *
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * ErrorHandler. The configuration provides a mapping from a type name to the
@@ -52,7 +52,7 @@ import org.extex.interpreter.ErrorHandler;
  *     &lt;tex class="org.extex.main.errorHandler.ErrorHandlerTeXImpl"/&gt;
  *    &lt;/ErrorHandler&gt;
  *  </pre>
- * 
+ *
  * <p>
  * The named class need to implement the interface
  * {@link org.extex.interpreter.ErrorHandler ErrorHandler}. If this interface is
@@ -60,7 +60,8 @@ import org.extex.interpreter.ErrorHandler;
  * </p>
  * <p>
  * The configuration is passed down to the new instance if it implements the
- * interface {@link org.extex.framework.configuration.Configurable Configurable}.
+ * interface {@link org.extex.framework.configuration.Configurable
+ * Configurable}.
  * </p>
  * <p>
  * If the class implements the interface
@@ -70,50 +71,47 @@ import org.extex.interpreter.ErrorHandler;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ErrorHandlerFactory extends AbstractFactory<ErrorHandler> {
 
 
-    public ErrorHandlerFactory() {
+  public ErrorHandlerFactory() {
 
+  }
+
+  /**
+   * Creates a new object and configures it according to the parameter.
+   *
+   * @param configuration the configuration to use
+   * @throws ConfigurationException in case of an error during configuration
+   */
+  public ErrorHandlerFactory( Configuration configuration )
+      throws ConfigurationException {
+
+    configure( configuration );
+  }
+
+  /**
+   * Get an instance of an error handler. This method selects one of the
+   * entries in the configuration. The selection is done with the help of a
+   * type String. If the type is {@code null} or the empty string then
+   * the default from the configuration is used.
+   *
+   * @param type the type to use
+   * @return a new error handler
+   * @throws ConfigurationException in case of an configuration error
+   */
+  public ErrorHandler newInstance( String type ) throws ConfigurationException {
+
+    ErrorHandler errorHandler = createInstance( type, ErrorHandler.class );
+    Configuration cfg =
+        selectConfiguration( type ).findConfiguration( "EditHandler" );
+    if( cfg != null ) {
+      errorHandler
+          .setEditHandler( (EditHandler) createInstanceForConfiguration(
+              cfg, EditHandler.class ) );
     }
-
-    /**
-     * Creates a new object and configures it according to the parameter.
-     * 
-     * @param configuration the configuration to use
-     * 
-     * @throws ConfigurationException in case of an error during configuration
-     */
-    public ErrorHandlerFactory(Configuration configuration)
-            throws ConfigurationException {
-
-        configure(configuration);
-    }
-
-    /**
-     * Get an instance of an error handler. This method selects one of the
-     * entries in the configuration. The selection is done with the help of a
-     * type String. If the type is {@code null} or the empty string then
-     * the default from the configuration is used.
-     * 
-     * @param type the type to use
-     * 
-     * @return a new error handler
-     * 
-     * @throws ConfigurationException in case of an configuration error
-     */
-    public ErrorHandler newInstance(String type) throws ConfigurationException {
-
-        ErrorHandler errorHandler = createInstance(type, ErrorHandler.class);
-        Configuration cfg =
-                selectConfiguration(type).findConfiguration("EditHandler");
-        if (cfg != null) {
-            errorHandler
-                .setEditHandler((EditHandler) createInstanceForConfiguration(
-                    cfg, EditHandler.class));
-        }
-        return errorHandler;
-    }
+    return errorHandler;
+  }
 
 }

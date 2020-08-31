@@ -41,7 +41,7 @@ import org.extex.typesetter.type.node.DiscretionaryNode;
 /**
  * This class provides an implementation for the primitive
  * {@code \discretionary}.
- * 
+ *
  * <p>The Primitive {@code \discretionary}</p>
  * <p>
  * The primitive {@code \discretionary} can be used to insert an optional
@@ -59,95 +59,104 @@ import org.extex.typesetter.type.node.DiscretionaryNode;
  * <p>
  * In math mode the third part is forced to be empty.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;discretionary&rang;
  *      &rarr; {@code \discretionary}{&lang;pre&rang;}{&lang;post&rang;}{&lang;nobreak&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \discretionary{f-}{fi}{ffi}
  *    \discretionary{-}{}{}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Discretionary extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Discretionary(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Discretionary( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Tokens pre = source.getTokens( context, source, typesetter );
+    Tokens post = source.getTokens( context, source, typesetter );
+    Tokens nobreak = source.getTokens( context, source, typesetter );
+    // CharNodeFactory cnf = new CharNodeFactory();
+    TypesettingContext tc = context.getTypesettingContext();
+    Locator locator = source.getLocator();
+
+    typesetter.add( new DiscretionaryNode( fill( pre, tc, context, source,
+                                                 typesetter, locator ),
+                                           fill( post,
+                                                 tc,
+                                                 context,
+                                                 source,
+                                                 typesetter,
+                                                 locator ),
+                                           fill( nobreak,
+                                                 tc,
+                                                 context,
+                                                 source,
+                                                 typesetter,
+                                                 locator ) ) );
+  }
+
+  /**
+   * This method creates a Node list for a list of tokens.
+   *
+   * @param tokens     the tokens to put into a NodeList
+   * @param tc         the typesetting context
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @param locator    the locator pointing to the start
+   * @return the node list or {@code null} if there are no tokens to
+   * put into the list
+   * @throws TypesetterException    in case of an error
+   * @throws ConfigurationException in case of a configuration error
+   */
+  private NodeList fill( Tokens tokens, TypesettingContext tc,
+                         Context context, TokenSource source,
+                         Typesetter typesetter,
+                         Locator locator ) throws TypesetterException {
+
+    if( tokens.length() == 0 ) {
+      return null;
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    typesetter.pushListMaker( ListMakers.RESTRICTED_HORIZONTAL, locator );
 
-        Tokens pre = source.getTokens(context, source, typesetter);
-        Tokens post = source.getTokens(context, source, typesetter);
-        Tokens nobreak = source.getTokens(context, source, typesetter);
-        // CharNodeFactory cnf = new CharNodeFactory();
-        TypesettingContext tc = context.getTypesettingContext();
-        Locator locator = source.getLocator();
-
-        typesetter.add(new DiscretionaryNode(fill(pre, tc, context, source,
-            typesetter, locator),
-            fill(post, tc, context, source, typesetter, locator),
-            fill(nobreak, tc, context, source, typesetter, locator)));
+    for( Token t : tokens ) {
+      ((TokenDelegateListMaker) typesetter).letter( t.getChar(), tc,
+                                                    context, source, locator );
     }
-
-    /**
-     * This method creates a Node list for a list of tokens.
-     * 
-     * @param tokens the tokens to put into a NodeList
-     * @param tc the typesetting context
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param locator the locator pointing to the start
-     * 
-     * @return the node list or {@code null} if there are no tokens to
-     *         put into the list
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
-     */
-    private NodeList fill(Tokens tokens, TypesettingContext tc,
-            Context context, TokenSource source, Typesetter typesetter,
-            Locator locator) throws TypesetterException {
-
-        if (tokens.length() == 0) {
-            return null;
-        }
-
-        typesetter.pushListMaker(ListMakers.RESTRICTED_HORIZONTAL, locator);
-
-        for (Token t : tokens) {
-            ((TokenDelegateListMaker) typesetter).letter(t.getChar(), tc,
-                context, source, locator);
-        }
-        return typesetter.complete((TypesetterOptions) context);
-    }
+    return typesetter.complete( (TypesetterOptions) context );
+  }
 
 }

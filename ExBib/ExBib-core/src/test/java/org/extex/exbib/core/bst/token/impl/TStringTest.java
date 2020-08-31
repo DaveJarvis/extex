@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -39,114 +39,113 @@ import org.junit.Test;
 
 /**
  * This is a test suite for {@link TString}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TStringTest {
 
-    /**
-     * The field {@code p} contains the processor.
-     */
-    private BstProcessor p = null;
+  /**
+   * The field {@code p} contains the processor.
+   */
+  private BstProcessor p = null;
 
-    /**
-     * Set-up method.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Before
-    public void setUp() throws Exception {
+  /**
+   * Set-up method.
+   *
+   * @throws Exception in case of an error
+   */
+  @Before
+  public void setUp() throws Exception {
 
-        p = new BstInterpreter099c(new DBImpl(), new NullWriter(), null);
-        p.addFunction("abc", TokenFactory.T_ONE, null);
-    }
+    p = new BstInterpreter099c( new DBImpl(), new NullWriter(), null );
+    p.addFunction( "abc", TokenFactory.T_ONE, null );
+  }
 
-    /**
-     * Tear-down method.
-     */
-    @After
-    public void tearDown() {
+  /**
+   * Tear-down method.
+   */
+  @After
+  public void tearDown() {
 
-        p = null;
-    }
+    p = null;
+  }
 
-    /**
-     *  A TString can be executed and returns itself.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testExecute() throws Exception {
+  /**
+   * A TString can be executed and returns itself.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testExecute() throws Exception {
 
-        TString t = new TString("987", null);
-        t.execute(p, null, null);
-        assertEquals("987", p.popString(null).getValue());
-        assertNull(p.popUnchecked());
-    }
+    TString t = new TString( "987", null );
+    t.execute( p, null, null );
+    assertEquals( "987", p.popString( null ).getValue() );
+    assertNull( p.popUnchecked() );
+  }
 
-    /**
-     *  getValue() of a null value returns the empty string.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGetValue1() throws Exception {
+  /**
+   * getValue() of a null value returns the empty string.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGetValue1() throws Exception {
 
-        TString t = new TString(null, null);
-        assertEquals("", t.getValue());
-    }
+    TString t = new TString( null, null );
+    assertEquals( "", t.getValue() );
+  }
 
-    /**
-     * A TString can be stored in a Hash and retrieved with another instance
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testHash1() throws Exception {
+  /**
+   * A TString can be stored in a Hash and retrieved with another instance
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testHash1() throws Exception {
 
-        TString t = new TString("abc", null);
-        Map<Token, String> map = new HashMap<Token, String>();
-        map.put(t, "value");
-        String s = map.get(new TString("abc", null));
-        assertNotNull(s);
-        assertEquals("value", s);
-    }
+    TString t = new TString( "abc", null );
+    Map<Token, String> map = new HashMap<Token, String>();
+    map.put( t, "value" );
+    String s = map.get( new TString( "abc", null ) );
+    assertNotNull( s );
+    assertEquals( "value", s );
+  }
 
-    /**
-     *  isNull() can detect a null value.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIsNull1() throws Exception {
+  /**
+   * isNull() can detect a null value.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testIsNull1() throws Exception {
 
-        assertTrue(new TString(null, null).isNull());
-    }
+    assertTrue( new TString( null, null ).isNull() );
+  }
 
-    /**
-     *  isNull() can detect a null value.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIsNull2() throws Exception {
+  /**
+   * isNull() can detect a null value.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testIsNull2() throws Exception {
 
-        assertFalse(new TString("", null).isNull());
-    }
+    assertFalse( new TString( "", null ).isNull() );
+  }
 
-    /**
-     *  Test the visiting.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVisit() throws Exception {
+  /**
+   * Test the visiting.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testVisit() throws Exception {
 
-        TString t = new TString("x-1", null);
-        RecordingTokenVisitor tv = new RecordingTokenVisitor();
-        t.visit(tv);
-        assertEquals(t, tv.getVisited());
-    }
+    TString t = new TString( "x-1", null );
+    RecordingTokenVisitor tv = new RecordingTokenVisitor();
+    t.visit( tv );
+    assertEquals( t, tv.getVisited() );
+  }
 
 }

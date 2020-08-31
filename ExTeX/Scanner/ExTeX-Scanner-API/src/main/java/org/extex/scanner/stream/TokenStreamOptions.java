@@ -27,25 +27,23 @@ import org.extex.scanner.type.tokens.FixedTokens;
  * options.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface TokenStreamOptions {
 
-    /**
-     * Getter for a count register.
-     *
-     * @param name the name of the register
-     *
-     * @return the content of the count register
-     */
-    FixedCount getCountOption(String name);
+  /**
+   * Getter for a count register.
+   *
+   * @param name the name of the register
+   * @return the content of the count register
+   */
+  FixedCount getCountOption( String name );
 
-    /**
-     * Getter for a tokens register.
-     *
-     * @param name the name of the register
-     *
-     * @return the content of the tokens register
-     */
-    FixedTokens getToksOption(String name);
+  /**
+   * Getter for a tokens register.
+   *
+   * @param name the name of the register
+   * @return the content of the tokens register
+   */
+  FixedTokens getToksOption( String name );
 
 }

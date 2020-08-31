@@ -21,27 +21,27 @@ package org.extex.font.format.xtf.tables.cff;
 
 /**
  * Dummy number.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2DummyNumber extends T2Number {
 
-@Override
-    public short[] getBytes() {
+  @Override
+  public short[] getBytes() {
 
-        return new short[]{};
-    }
+    return new short[]{};
+  }
 
-@Override
-    public double getDouble() {
+  @Override
+  public double getDouble() {
 
-        return 0;
-    }
+    return 0;
+  }
 
-@Override
-    public int getInteger() {
+  @Override
+  public int getInteger() {
 
-        return 0;
-    }
+    return 0;
+  }
 
 }

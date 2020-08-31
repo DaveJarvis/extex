@@ -25,117 +25,117 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \ifinner}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IfinnerTest extends ConditionalTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IfinnerTest.class);
-    }
+    (new JUnitCore()).run( IfinnerTest.class );
+  }
 
 
-    public IfinnerTest() {
+  public IfinnerTest() {
 
-        super("ifinner", "\\else");
-    }
+    super( "ifinner", "\\else" );
+  }
 
-    /**
-     * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
-     * is false in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
+   * is false in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifinner a\\else b\\fi\\end",
-            // --- output channel ---
-            "b" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifinner a\\else b\\fi\\end",
+                  // --- output channel ---
+                  "b" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
-     * is false in horizontal mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
+   * is false in horizontal mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "x\\ifinner a\\else b\\fi\\end",
-            // --- output channel ---
-            "xb" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "x\\ifinner a\\else b\\fi\\end",
+                  // --- output channel ---
+                  "xb" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
-     * is false in displaymath mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
+   * is false in displaymath mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                    + "$$\\ifinner a\\else b\\fi$$\\end",
-            // --- output channel ---
-            "b" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+                      + "$$\\ifinner a\\else b\\fi$$\\end",
+                  // --- output channel ---
+                  "b" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
-     * is true in inner vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test4() throws Exception {
+  /**
+   * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
+   * is true in inner vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test4() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\vbox{\\ifinner a\\else b\\fi}\\end",
-            // --- output channel ---
-            "a\n\n" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\vbox{\\ifinner a\\else b\\fi}\\end",
+                  // --- output channel ---
+                  "a\n\n" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
-     * is true in restricted horizontal mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test5() throws Exception {
+  /**
+   * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
+   * is true in restricted horizontal mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test5() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\hbox{\\ifinner a\\else b\\fi}\\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\hbox{\\ifinner a\\else b\\fi}\\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
-     * is true in math mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test6() throws Exception {
+  /**
+   * <testcase primitive="\ifinner"> Test case checking that {@code \ifinner}
+   * is true in math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test6() throws Exception {
 
-        assertSuccess(// --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                    + "$\\ifinner a\\else b\\fi$\\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+                      + "$\\ifinner a\\else b\\fi$\\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
 }

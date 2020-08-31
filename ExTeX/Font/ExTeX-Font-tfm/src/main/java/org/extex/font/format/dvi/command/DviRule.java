@@ -21,96 +21,96 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: rule: draw a rule.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviRule extends DviCommand {
 
-    /**
-     * the height
-     */
-    private final int height;
+  /**
+   * the height
+   */
+  private final int height;
 
-    /**
-     * the width
-     */
-    private final int width;
+  /**
+   * the width
+   */
+  private final int width;
 
-    /**
-     * put-mode (The 'put' commands are exactly like the 'set' commands, except
-     * that they simply put out a character or a rule without moving the
-     * reference point afterwards.)
-     */
-    private final boolean put;
+  /**
+   * put-mode (The 'put' commands are exactly like the 'set' commands, except
+   * that they simply put out a character or a rule without moving the
+   * reference point afterwards.)
+   */
+  private final boolean put;
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param a the height
-     * @param b the width
-     */
-    public DviRule(final int opc, final int sp, final int a, final int b) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param a   the height
+   * @param b   the width
+   */
+  public DviRule( final int opc, final int sp, final int a, final int b ) {
 
-        this(opc, sp, a, b, false);
+    this( opc, sp, a, b, false );
+  }
+
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param a   the height
+   * @param b   the width
+   * @param pm  the put mode
+   */
+  public DviRule( final int opc, final int sp, final int a, final int b,
+                  final boolean pm ) {
+
+    super( opc, sp );
+    height = a;
+    width = b;
+    put = pm;
+  }
+
+  /**
+   * Returns the height.
+   *
+   * @return Returns the height.
+   */
+  public int getHeight() {
+
+    return height;
+  }
+
+  @Override
+  public String getName() {
+
+    if( put ) {
+      return "putrule";
     }
+    return "setrule";
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param a the height
-     * @param b the width
-     * @param pm the put mode
-     */
-    public DviRule(final int opc, final int sp, final int a, final int b,
-            final boolean pm) {
+  /**
+   * Returns the width.
+   *
+   * @return Returns the width.
+   */
+  public int getWidth() {
 
-        super(opc, sp);
-        height = a;
-        width = b;
-        put = pm;
-    }
+    return width;
+  }
 
-    /**
-     * Returns the height.
-     * 
-     * @return Returns the height.
-     */
-    public int getHeight() {
+  /**
+   * Returns the put.
+   *
+   * @return Returns the put.
+   */
+  public boolean isPut() {
 
-        return height;
-    }
-
-@Override
-    public String getName() {
-
-        if (put) {
-            return "putrule";
-        }
-        return "setrule";
-    }
-
-    /**
-     * Returns the width.
-     * 
-     * @return Returns the width.
-     */
-    public int getWidth() {
-
-        return width;
-    }
-
-    /**
-     * Returns the put.
-     * 
-     * @return Returns the put.
-     */
-    public boolean isPut() {
-
-        return put;
-    }
+    return put;
+  }
 }

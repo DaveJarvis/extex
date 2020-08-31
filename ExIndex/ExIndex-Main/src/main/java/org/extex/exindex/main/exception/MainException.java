@@ -21,42 +21,42 @@ package org.extex.exindex.main.exception;
 
 /**
  * This exception signals that something went wrong.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MainException extends RuntimeException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param message the argument
-     */
-    public MainException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the argument
+   */
+  public MainException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param message the argument
-     * @param cause the cause
-     */
-    public MainException(String message, Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the argument
+   * @param cause   the cause
+   */
+  public MainException( String message, Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-@Override
-    public String getLocalizedMessage() {
+  @Override
+  public String getLocalizedMessage() {
 
-        return getMessage();
-    }
+    return getMessage();
+  }
 
 }

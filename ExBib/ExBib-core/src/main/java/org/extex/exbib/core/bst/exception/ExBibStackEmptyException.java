@@ -25,25 +25,25 @@ import org.extex.exbib.core.io.Locator;
 /**
  * This Exception is thrown when the attempt is made to access an element from
  * an empty stack.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibStackEmptyException extends ExBibException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param locator the locator
-     */
-    public ExBibStackEmptyException(Locator locator) {
+  /**
+   * Create a new object.
+   *
+   * @param locator the locator
+   */
+  public ExBibStackEmptyException( Locator locator ) {
 
-        super(null, locator);
-    }
+    super( null, locator );
+  }
 
 }

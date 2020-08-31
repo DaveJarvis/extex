@@ -28,41 +28,42 @@ import static org.junit.Assert.assertNotEquals;
 
 /**
  * Test cases for right brace tokens.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RightBraceTokenTest extends TokenTester {
 
-    /**
-     * The field {@code token} contains the reference token.
-     */
-    private static final Token token = new RightBraceToken( UnicodeChar.get( 'x'));
+  /**
+   * The field {@code token} contains the reference token.
+   */
+  private static final Token token =
+      new RightBraceToken( UnicodeChar.get( 'x' ) );
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LeftBraceTokenTest.class);
-    }
+    (new JUnitCore()).run( LeftBraceTokenTest.class );
+  }
 
 
-    public RightBraceTokenTest() {
+  public RightBraceTokenTest() {
 
-        setToken(token);
-        setCatcode( Catcode.RIGHTBRACE);
-        setText( "x");
-        setStr( "end-group character x");
-    }
+    setToken( token );
+    setCatcode( Catcode.RIGHTBRACE );
+    setText( "x" );
+    setStr( "end-group character x" );
+  }
 
-@Test
-    public void testEqualsToken1() {
+  @Test
+  public void testEqualsToken1() {
 
-        Token t1 = new RightBraceToken(UnicodeChar.get(' '));
-        Token t2 = new SpaceToken(" ");
-        assertNotEquals( t1, t2 );
-    }
+    Token t1 = new RightBraceToken( UnicodeChar.get( ' ' ) );
+    Token t2 = new SpaceToken( " " );
+    assertNotEquals( t1, t2 );
+  }
 
 }

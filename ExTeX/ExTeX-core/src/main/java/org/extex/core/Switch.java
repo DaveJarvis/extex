@@ -27,50 +27,50 @@ package org.extex.core;
  * This class cures the deficiency of Java to provide booleans as first-class
  * objects.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Switch {
 
-    /**
-     * The field {@code value} contains the encapsulated boolean value.
-     */
-    private boolean value;
+  /**
+   * The field {@code value} contains the encapsulated boolean value.
+   */
+  private boolean value;
 
-    /**
-     * Creates a new object with a given boolean value.
-     * 
-     * @param on the initial value
-     */
-    public Switch(boolean on) {
+  /**
+   * Creates a new object with a given boolean value.
+   *
+   * @param on the initial value
+   */
+  public Switch( boolean on ) {
 
-        this.value = on;
-    }
+    this.value = on;
+  }
 
-    /**
-     * Getter for value.
-     * 
-     * @return the value.
-     */
-    public boolean isOn() {
+  /**
+   * Getter for value.
+   *
+   * @return the value.
+   */
+  public boolean isOn() {
 
-        return value;
-    }
+    return value;
+  }
 
-    /**
-     * Setter for value.
-     * 
-     * @param on the value to set.
-     */
-    public void set(boolean on) {
+  /**
+   * Setter for value.
+   *
+   * @param on the value to set.
+   */
+  public void set( boolean on ) {
 
-        this.value = on;
-    }
+    this.value = on;
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        return this.value ? "on" : "off";
-    }
+    return this.value ? "on" : "off";
+  }
 
 }

@@ -25,55 +25,56 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitives defined with {@code \ocp}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OcpTest extends ExTeXLauncher {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(OcpTest.class);
-    }
+    (new JUnitCore()).run( OcpTest.class );
+  }
 
 
-    public OcpTest() {
+  public OcpTest() {
 
-        setConfig("omega-test");
-    }
+    setConfig( "omega-test" );
+  }
 
-    /**
-     *  Test case checking that an OCP needs ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErrEof1() throws Exception {
+  /**
+   * Test case checking that an OCP needs ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErrEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy " + "\\x ",
-            // --- output channel ---
-            "To use ocps, use the \\pushocplist primitive");
-    }
+    assertFailure(// --- input code ---
+                  "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy " + "\\x ",
+                  // --- output channel ---
+                  "To use ocps, use the \\pushocplist primitive" );
+  }
 
-    /**
-     *  Test case checking that an OCP is showable.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test case checking that an OCP is showable.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy "
-                    + "\\show\\x ",
-            // --- output channel ---
-            "> \\x=select ocp ../ExTeX-Unit-omega/src/test/resources/destroy.\n");
-    }
+    assertFailure(// --- input code ---
+                  "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy "
+                      + "\\show\\x ",
+                  // --- output channel ---
+                  "> \\x=select ocp ../ExTeX-Unit-omega/src/test/resources" +
+                      "/destroy.\n" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

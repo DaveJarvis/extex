@@ -19,86 +19,83 @@
 
 package org.extex.exindex.makeindex;
 
-import java.util.HashMap;
-
 import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LNumber;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
+import java.util.HashMap;
+
 /**
  * This class encapsulates a set of parameters of type int, char, and String.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Parameters extends HashMap<String, LValue> {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2009L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2009L;
 
-    /**
-     * Getter for a named character parameter.
-     * 
-     * @param name the name of the parameter
-     * 
-     * @return the character or 0 if none is defined
-     */
-    public char getChar(String name) {
+  /**
+   * Getter for a named character parameter.
+   *
+   * @param name the name of the parameter
+   * @return the character or 0 if none is defined
+   */
+  public char getChar( String name ) {
 
-        LValue value = get(name);
-        if (value instanceof LChar) {
-            return ((LChar) value).getValue();
-        }
-        return 0;
+    LValue value = get( name );
+    if( value instanceof LChar ) {
+      return ((LChar) value).getValue();
     }
+    return 0;
+  }
 
-    /**
-     * Getter for a named number parameter.
-     * 
-     * @param name the name of the parameter
-     * 
-     * @return the number or 0 if not defined or not a number
-     */
-    public long getNumber(String name) {
+  /**
+   * Getter for a named number parameter.
+   *
+   * @param name the name of the parameter
+   * @return the number or 0 if not defined or not a number
+   */
+  public long getNumber( String name ) {
 
-        LValue value = get(name);
-        if (value instanceof LNumber) {
-            return ((LNumber) value).getValue();
-        }
-        return 0;
+    LValue value = get( name );
+    if( value instanceof LNumber ) {
+      return ((LNumber) value).getValue();
     }
+    return 0;
+  }
 
-    /**
-     * Getter for a named String parameter.
-     * 
-     * @param name the name of the parameter
-     * 
-     * @return the string or {@code null} if not defined
-     */
-    public String getString(String name) {
+  /**
+   * Getter for a named String parameter.
+   *
+   * @param name the name of the parameter
+   * @return the string or {@code null} if not defined
+   */
+  public String getString( String name ) {
 
-        LValue value = get(name);
-        if (value instanceof LString) {
-            return ((LString) value).getValue();
-        }
-        if (value != null) {
-            return value.toString();
-        }
-        return null;
+    LValue value = get( name );
+    if( value instanceof LString ) {
+      return ((LString) value).getValue();
     }
-
-    /**
-     * Setter for the value.
-     * 
-     * @param name the name
-     * @param value the value
-     */
-    public void set(String name, LValue value) {
-
-        put(name, value);
+    if( value != null ) {
+      return value.toString();
     }
+    return null;
+  }
+
+  /**
+   * Setter for the value.
+   *
+   * @param name  the name
+   * @param value the value
+   */
+  public void set( String name, LValue value ) {
+
+    put( name, value );
+  }
 
 }

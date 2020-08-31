@@ -31,7 +31,7 @@ import org.extex.typesetter.Typesetter;
  * This class provides an implementation for the primitive {@code \long}.
  * It does simply nothing, but as a side effect the prefix <i>LONG</i> is added
  * to the prefixes.
- * 
+ *
  * <p>The Prefix Primitive {@code \long}</p>
  * <p>
  * The primitive {@code \long} is a prefix modifying the operation of a
@@ -43,53 +43,52 @@ import org.extex.typesetter.Typesetter;
  * <p>
  * Multiple {@code \long} prefixes act identical to a single one.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;long&rang;
  *      &rarr; {@code \long}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \long\def#1{--#1--}  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \long\long\def#1{--#1--}  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Long extends AbstractCode implements PrefixCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Long(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Long( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter ) {
 
-        prefix.setLong();
-    }
+    prefix.setLong();
+  }
 
 }

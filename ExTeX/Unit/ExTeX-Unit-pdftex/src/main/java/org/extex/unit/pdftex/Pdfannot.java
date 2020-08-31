@@ -35,83 +35,89 @@ import org.extex.typesetter.type.node.RuleNode;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdfannot}.
- * 
+ *
  * <p>The Primitive {@code \pdfannot}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;pdfannot&rang;
  *       &rarr; {@code \pdfannot} ... </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \pdfannot {abc.png}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdfannot extends AbstractPdftexCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdfannot(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdfannot( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
+
+    PdftexSupport writer = ensurePdftex( context, typesetter );
+
+    FixedDimen width = Dimen.ONE_PT; // TODO gene:provide correct
+    // default;
+    FixedDimen height = Dimen.ONE_PT; // TODO gene:provide correct
+    // default;
+    FixedDimen depth = Dimen.ONE_PT; // TODO gene:provide correct
+    // default;
+
+    for( ; ; ) {
+      if( source.getKeyword( context, "width" ) ) {
+        width = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "height" ) ) {
+        height = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "depth" ) ) {
+        depth = source.parseDimen( context, source, typesetter );
+      }
+      else {
+        break;
+      }
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+    String annotation = source.scanTokensAsString( context, getToken() );
+    PdfAnnotation a =
+        writer.getAnnotation( new RuleNode( width,
+                                            height,
+                                            depth,
+                                            context.getTypesettingContext(),
+                                            true ), annotation );
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
-
-        FixedDimen width = Dimen.ONE_PT; // TODO gene:provide correct
-                                            // default;
-        FixedDimen height = Dimen.ONE_PT; // TODO gene:provide correct
-                                            // default;
-        FixedDimen depth = Dimen.ONE_PT; // TODO gene:provide correct
-                                            // default;
-
-        for (;;) {
-            if (source.getKeyword(context, "width")) {
-                width = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "height")) {
-                height = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "depth")) {
-                depth = source.parseDimen(context, source, typesetter);
-            } else {
-                break;
-            }
-        }
-
-        String annotation = source.scanTokensAsString(context, getToken());
-        PdfAnnotation a =
-                writer.getAnnotation(new RuleNode(width, height, depth,
-                    context.getTypesettingContext(), true), annotation);
-
-        typesetter.add(a);
-        prefix.clearImmediate();
-    }
+    typesetter.add( a );
+    prefix.clearImmediate();
+  }
 
 }

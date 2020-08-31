@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -20,12 +20,12 @@
  * BibTeX-compatible database. It is an
  * attempt to provide an implementation of a bibliographic database to
  * be used with LaTeX and friends.
- *   
+ *
  * <h2>Objectives</h2>
- *   
+ * <p>
  * The development of εχBib has been lead by several
  * objectives:
- *   
+ *
  * <ol>
  *   <li>The result of εχBib in compatibility mode
  *     should imitate as much as possible the behavior of
@@ -57,7 +57,8 @@
  *     Java to make use of the Unicode features of this languages as
  *     well as to be closer to εχTeX.
  *   </li>
- *   <li>As much as possible the inherent knowledge about TeX should be eliminated. If not possible it should be
+ *   <li>As much as possible the inherent knowledge about TeX should be
+ *   eliminated. If not possible it should be
  *     encapsulated in separate components to be exchangeable.
  *   </li>
  *   <li>εχBib should be multi-lingual in the sense
@@ -71,9 +72,9 @@
  *     provided whenever necessary.
  *   </li>
  * </ol>
- *   
+ *
  * <h2>Extensions</h2>
- *   
+ * <p>
  * The following extensions can be envisaged:
  * <ol>
  *   <li>Implement the new features of BibTeX 1.0.</li>
@@ -88,12 +89,12 @@
  *   </li>
  *   <li>Implement the features of BibTeX 8.</li>
  * </ol>
- * 
+ *
  * <h2>Bug Fixes</h2>
- *   
+ * <p>
  * The following defects of BibTeX should be cured:
  * <ol>
- *   <li>No restriction on the sequence of entries in the database. 
+ *   <li>No restriction on the sequence of entries in the database.
  *     I.e. referenced entries may preceded or follow the referencing entries.
  *   </li>
  *   <li>Better sorting has to be provided taking into account the various
@@ -106,7 +107,6 @@
  *     when {@code newline$} is encountered.
  *   </li>
  * </ol>
- *
  */
 
 package org.extex.exbib.core;

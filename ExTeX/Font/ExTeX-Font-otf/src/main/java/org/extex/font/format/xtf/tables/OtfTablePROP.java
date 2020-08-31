@@ -19,62 +19,62 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * The 'PROP' ... TODO incomplete
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class OtfTablePROP extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
 
-    /**
-     * Create a new object
-     * 
-     * @param tablemap the table map
-     * @param de entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public OtfTablePROP(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object
+   *
+   * @param tablemap the table map
+   * @param de       entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public OtfTablePROP( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap);
-        rar.seek(de.getOffset());
+    super( tablemap );
+    rar.seek( de.getOffset() );
 
-        // incomplete
-    }
+    // incomplete
+  }
 
-public String getShortcut() {
+  public String getShortcut() {
 
-        return "prop";
-    }
+    return "prop";
+  }
 
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
 
-        return XtfReader.PROP;
-    }
+    return XtfReader.PROP;
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writeStartElement(writer);
-        writer.writeComment("incomplete");
-        writer.writeEndElement();
-    }
+    writeStartElement( writer );
+    writer.writeComment( "incomplete" );
+    writer.writeEndElement();
+  }
 }

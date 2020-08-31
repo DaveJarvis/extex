@@ -27,47 +27,46 @@ import java.io.IOException;
  * <p>
  * Example:
  * </p>
- * 
+ *
  * <pre>"abc{def}ghi"</pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class VString extends AbstractValueItem {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param content the content of the string
-     */
-    public VString(String content) {
+  /**
+   * Creates a new object.
+   *
+   * @param content the content of the string
+   */
+  public VString( String content ) {
 
-        super(content);
-    }
+    super( content );
+  }
 
-    /**
-     * Return a String representation of the object suitable for a
-     * BibTeX file.
-     * 
-     * @return the string representation
-     */
-    @Override
-    public String toString() {
+  /**
+   * Return a String representation of the object suitable for a
+   * BibTeX file.
+   *
+   * @return the string representation
+   */
+  @Override
+  public String toString() {
 
-        return "\"" + getContent() + "\"";
-    }
+    return "\"" + getContent() + "\"";
+  }
 
-    /**
-     * This is the method which is invoked when this object is visited.
-     * 
-     * @param visitor the visitor
-     * @param db the database context
-     * 
-     * @throws IOException just in case
-     */
-    @Override
-    public void visit(ValueVisitor visitor, DB db) throws IOException {
+  /**
+   * This is the method which is invoked when this object is visited.
+   *
+   * @param visitor the visitor
+   * @param db      the database context
+   * @throws IOException just in case
+   */
+  @Override
+  public void visit( ValueVisitor visitor, DB db ) throws IOException {
 
-        visitor.visitString(this, db);
-    }
+    visitor.visitString( this, db );
+  }
 
 }

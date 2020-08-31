@@ -23,73 +23,73 @@ package org.extex.font.format.tfm;
  * Constants for the TFM font.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class TfmConstants {
 
-    /**
-     * 0xff.
-     */
-    public static final int CONST_XFF = 0xff;
+  /**
+   * 0xff.
+   */
+  public static final int CONST_XFF = 0xff;
 
-    /**
-     * 0x0f.
-     */
-    public static final int CONST_X0F = 0x0f;
+  /**
+   * 0x0f.
+   */
+  public static final int CONST_X0F = 0x0f;
 
-    /**
-     * 0x3f.
-     */
-    public static final int CONST_X3F = 0x3f;
+  /**
+   * 0x3f.
+   */
+  public static final int CONST_X3F = 0x3f;
 
-    /**
-     * 0x03.
-     */
-    public static final int CONST_X03 = 0x03;
+  /**
+   * 0x03.
+   */
+  public static final int CONST_X03 = 0x03;
 
-    /**
-     * 0x80.
-     */
-    public static final int CONST_X80 = 0x80;
+  /**
+   * 0x80.
+   */
+  public static final int CONST_X80 = 0x80;
 
-    /**
-     * 2.
-     */
-    public static final int CONST_2 = 2;
+  /**
+   * 2.
+   */
+  public static final int CONST_2 = 2;
 
-    /**
-     * 4.
-     */
-    public static final int CONST_4 = 4;
+  /**
+   * 4.
+   */
+  public static final int CONST_4 = 4;
 
-    /**
-     * 8.
-     */
-    public static final int CONST_8 = 8;
+  /**
+   * 8.
+   */
+  public static final int CONST_8 = 8;
 
-    /**
-     * 5.
-     */
-    public static final int CONST_5 = 5;
+  /**
+   * 5.
+   */
+  public static final int CONST_5 = 5;
 
-    /**
-     * 6.
-     */
-    public static final int CONST_6 = 6;
+  /**
+   * 6.
+   */
+  public static final int CONST_6 = 6;
 
-    /**
-     * 10.
-     */
-    public static final int CONST_10 = 10;
+  /**
+   * 10.
+   */
+  public static final int CONST_10 = 10;
 
-    /**
-     * 127.
-     */
-    public static final int CONST_127 = 127;
+  /**
+   * 127.
+   */
+  public static final int CONST_127 = 127;
 
-    /**
-     * 1000.
-     */
-    public static final int CONST_1000 = 1000;
+  /**
+   * 1000.
+   */
+  public static final int CONST_1000 = 1000;
 
 }

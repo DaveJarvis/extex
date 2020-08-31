@@ -25,74 +25,73 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \currentgrouplevel}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CurrentgrouplevelTest extends AbstractReadonlyCountRegisterTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(CurrentgrouplevelTest.class);
-    }
+    (new JUnitCore()).run( CurrentgrouplevelTest.class );
+  }
 
 
-    public CurrentgrouplevelTest() {
+  public CurrentgrouplevelTest() {
 
-        super("currentgrouplevel", "0");
-        setConfig("etex-test");
-    }
+    super( "currentgrouplevel", "0" );
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouplevel"> Test case checking that
-     * {@code \currentgrouplevel} inside a group returns 1.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLevel1() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouplevel"> Test case checking that
+   * {@code \currentgrouplevel} inside a group returns 1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLevel1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "{\\the\\currentgrouplevel}\\end",
-            // --- log message ---
-            "1" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "{\\the\\currentgrouplevel}\\end",
+                  // --- log message ---
+                  "1" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouplevel"> Test case checking that
-     * {@code \currentgrouplevel} inside a group in a group returns 2.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLevel2() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouplevel"> Test case checking that
+   * {@code \currentgrouplevel} inside a group in a group returns 2.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLevel2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "{{\\the\\currentgrouplevel}}\\end",
-            // --- log message ---
-            "2" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "{{\\the\\currentgrouplevel}}\\end",
+                  // --- log message ---
+                  "2" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\currentgrouplevel"> Test case checking that
-     * {@code \currentgrouplevel} is count convertible.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testConvertible1() throws Exception {
+  /**
+   * <testcase primitive="\currentgrouplevel"> Test case checking that
+   * {@code \currentgrouplevel} is count convertible.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testConvertible1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES
-                    + "{{\\count0=\\currentgrouplevel \\the\\count0}}\\end",
-            // --- log message ---
-            "2" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES
+                      + "{{\\count0=\\currentgrouplevel \\the\\count0}}\\end",
+                  // --- log message ---
+                  "2" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

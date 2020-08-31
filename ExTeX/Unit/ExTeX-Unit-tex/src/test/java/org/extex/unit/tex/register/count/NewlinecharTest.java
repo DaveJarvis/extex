@@ -26,23 +26,24 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for the primitive {@code \newlinechar}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NewlinecharTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(NewlinecharTest.class);
-    }
+    (new JUnitCore()).run( NewlinecharTest.class );
+  }
 
 
-    public NewlinecharTest() {
+  public NewlinecharTest() {
 
-        super("newlinechar", "", "0");
-    }
+    super( "newlinechar", "", "0" );
+  }
 
-    //TODO implement the primitive specific test cases
+  //TODO implement the primitive specific test cases
 }

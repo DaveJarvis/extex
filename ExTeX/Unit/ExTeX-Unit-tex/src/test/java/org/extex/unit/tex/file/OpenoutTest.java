@@ -19,176 +19,179 @@
 
 package org.extex.unit.tex.file;
 
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-
 import org.extex.test.NoFlagsButGlobalAndImmediatePrimitiveTester;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import java.io.File;
+
+import static org.junit.Assert.assertTrue;
+
 /**
  * This is a test suite for the primitive {@code \openout}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(OpenoutTest.class);
+    (new JUnitCore()).run( OpenoutTest.class );
+  }
+
+
+  public OpenoutTest() {
+
+    super( "openout", "1 texput.test" );
+  }
+
+  /**
+   * <testcase primitive="\openout"> Test case checking that a lonely
+   * {@code \openout} leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
+
+    assertFailure(// --- input code ---
+                  "\\openout ",
+                  // --- log message ---
+                  "Missing number, treated as zero" );
+  }
+
+  /**
+   * <testcase primitive="\openout"> Test case checking that a lonely
+   * {@code \openout} with an index leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof2() throws Exception {
+
+    assertFailure(// --- input code ---
+                  "\\openout 2",
+                  // --- log message ---
+                  "Unexpected end of file while processing \\openout" );
+  }
+
+  /**
+   * <testcase primitive="\openout"> Test case checking that an unknown
+   * encoding for immediate {@code \openout} leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
+
+    String enc = System.setProperty( "extex.encoding", "uuu" );
+
+    try {
+      assertFailure(
+          // --- input code ---
+          "\\immediate \\openout 2 texput.tmp ",
+          // --- log message ---
+          "Unsupported encoding uuu" );
+    } finally {
+      if( enc != null ) {
+        System.setProperty( "extex.encoding", enc );
+      }
+      else {
+        System.clearProperty( "extex.encoding" );
+      }
+      new File( "texput.tmp" ).delete();
     }
+  }
 
+  /**
+   * <testcase primitive="\openout"> Test case checking that an unknown
+   * encoding for non-immediate {@code \openout} leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-    public OpenoutTest() {
+    String enc = System.setProperty( "extex.encoding", "uuu" );
 
-        super("openout", "1 texput.test");
+    try {
+      assertFailure(
+          // --- input code ---
+          "\\openout 2 texput.tmp ",
+          // --- log message ---
+          "Unsupported encoding uuu\n" );
+    } finally {
+      if( enc != null ) {
+        System.setProperty( "extex.encoding", enc );
+      }
+      else {
+        System.clearProperty( "extex.encoding" );
+      }
+      new File( "texput.tmp" ).delete();
     }
+  }
 
-    /**
-     * <testcase primitive="\openout"> Test case checking that a lonely
-     * {@code \openout} leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\openout"> Test case checking that an immediate
+   * {@code \openout} works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\openout ",
-            // --- log message ---
-            "Missing number, treated as zero");
+    String enc = System.setProperty( "extex.encoding", "UTF-8" );
+
+    try {
+      assertSuccess(
+          // --- input code ---
+          "\\immediate \\openout 2 texput.tmp \\closeout2\\end",
+          // --- log message ---
+          "\n" );
+      assertTrue( new File( "texput.tmp" ).exists() );
+    } finally {
+      if( enc != null ) {
+        System.setProperty( "extex.encoding", enc );
+      }
+      else {
+        System.clearProperty( "extex.encoding" );
+      }
+      new File( "texput.tmp" ).delete();
     }
+  }
 
-    /**
-     * <testcase primitive="\openout"> Test case checking that a lonely
-     * {@code \openout} with an index leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof2() throws Exception {
+  /**
+   * <testcase primitive="\openout"> Test case checking that a non-immediate
+   * {@code \openout} works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\openout 2",
-            // --- log message ---
-            "Unexpected end of file while processing \\openout");
+    String enc = System.setProperty( "extex.encoding", "UTF-8" );
+
+    try {
+      assertSuccess(
+          // --- input code ---
+          "\\openout 2 texput.tmp \\closeout2\\end",
+          // --- log message ---
+          "\n" );
+      assertTrue( new File( "texput.tmp" ).exists() );
+    } finally {
+      if( enc != null ) {
+        System.setProperty( "extex.encoding", enc );
+      }
+      else {
+        System.clearProperty( "extex.encoding" );
+      }
+      new File( "texput.tmp" ).delete();
     }
-
-    /**
-     * <testcase primitive="\openout"> Test case checking that an unknown
-     * encoding for immediate {@code \openout} leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
-
-        String enc = System.setProperty("extex.encoding", "uuu");
-
-        try {
-            assertFailure(
-            // --- input code ---
-                "\\immediate \\openout 2 texput.tmp ",
-                // --- log message ---
-                "Unsupported encoding uuu");
-        } finally {
-            if (enc != null) {
-                System.setProperty("extex.encoding", enc);
-            } else {
-                System.clearProperty("extex.encoding");
-            }
-            new File("texput.tmp").delete();
-        }
-    }
-
-    /**
-     * <testcase primitive="\openout"> Test case checking that an unknown
-     * encoding for non-immediate {@code \openout} leads to an error.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
-
-        String enc = System.setProperty("extex.encoding", "uuu");
-
-        try {
-            assertFailure(
-            // --- input code ---
-                "\\openout 2 texput.tmp ",
-                // --- log message ---
-                "Unsupported encoding uuu\n");
-        } finally {
-            if (enc != null) {
-                System.setProperty("extex.encoding", enc);
-            } else {
-                System.clearProperty("extex.encoding");
-            }
-            new File("texput.tmp").delete();
-        }
-    }
-
-    /**
-     * <testcase primitive="\openout"> Test case checking that an immediate
-     * {@code \openout} works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
-
-        String enc = System.setProperty("extex.encoding", "UTF-8");
-
-        try {
-            assertSuccess(
-            // --- input code ---
-                "\\immediate \\openout 2 texput.tmp \\closeout2\\end",
-                // --- log message ---
-                "\n");
-            assertTrue(new File("texput.tmp").exists());
-        } finally {
-            if (enc != null) {
-                System.setProperty("extex.encoding", enc);
-            } else {
-                System.clearProperty("extex.encoding");
-            }
-            new File("texput.tmp").delete();
-        }
-    }
-
-    /**
-     * <testcase primitive="\openout"> Test case checking that a non-immediate
-     * {@code \openout} works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
-
-        String enc = System.setProperty("extex.encoding", "UTF-8");
-
-        try {
-            assertSuccess(
-            // --- input code ---
-                "\\openout 2 texput.tmp \\closeout2\\end",
-                // --- log message ---
-                "\n");
-            assertTrue(new File("texput.tmp").exists());
-        } finally {
-            if (enc != null) {
-                System.setProperty("extex.encoding", enc);
-            } else {
-                System.clearProperty("extex.encoding");
-            }
-            new File("texput.tmp").delete();
-        }
-    }
+  }
 
 }

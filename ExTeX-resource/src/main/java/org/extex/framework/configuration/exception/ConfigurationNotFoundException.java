@@ -21,60 +21,60 @@ package org.extex.framework.configuration.exception;
 
 /**
  * This Exception is thrown when a configuration could not be found.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationNotFoundException extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2010L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2010L;
 
-    /**
-     * The field {@code configName} contains the name of the missing
-     * configuration.
-     */
-    private final String configName;
+  /**
+   * The field {@code configName} contains the name of the missing
+   * configuration.
+   */
+  private final String configName;
 
-    /**
-     * Create a new object.
-     * 
-     * @param name the name of the missing configuration
-     * @param source the the name of the file for which this exception occurred
-     */
-    public ConfigurationNotFoundException(String name, String source) {
+  /**
+   * Create a new object.
+   *
+   * @param name   the name of the missing configuration
+   * @param source the the name of the file for which this exception occurred
+   */
+  public ConfigurationNotFoundException( String name, String source ) {
 
-        super(null, source);
-        this.configName = name;
-    }
+    super( null, source );
+    this.configName = name;
+  }
 
-    /**
-     * Getter for configName.
-     * 
-     * @return the configName
-     */
-    public String getConfigName() {
+  /**
+   * Getter for configName.
+   *
+   * @return the configName
+   */
+  public String getConfigName() {
 
-        return configName;
-    }
+    return configName;
+  }
 
-    /**
-     * Getter for the text prefix of this
-     * {@link org.extex.framework.configuration.exception.ConfigurationException
-     * ConfigurationException}. The text is taken from the resource bundle
-     * {@code ConfigurationEception} under the key
-     * {@code ConfigurationNotFoundException.Text}. The argument {0} is
-     * replaced by the name of the missing configuration as passed to the
-     * constructor.
-     * 
-     * @return the text
-     */
-    @Override
-    protected String getText() {
+  /**
+   * Getter for the text prefix of this
+   * {@link org.extex.framework.configuration.exception.ConfigurationException
+   * ConfigurationException}. The text is taken from the resource bundle
+   * {@code ConfigurationEception} under the key
+   * {@code ConfigurationNotFoundException.Text}. The argument {0} is
+   * replaced by the name of the missing configuration as passed to the
+   * constructor.
+   *
+   * @return the text
+   */
+  @Override
+  protected String getText() {
 
-        return getLocalizer().format("ConfigurationNotFoundException.Text",
-            configName == null ? "" : configName);
-    }
+    return getLocalizer().format( "ConfigurationNotFoundException.Text",
+                                  configName == null ? "" : configName );
+  }
 
 }

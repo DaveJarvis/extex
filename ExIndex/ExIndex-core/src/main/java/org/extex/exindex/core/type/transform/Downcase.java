@@ -23,30 +23,29 @@ import java.io.PrintStream;
 
 /**
  * This transformer translates all characters to their lowercase counterpart.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Downcase implements Transform {
 
-    /**
-     * Creates a new object.
-     * 
-     */
-    public Downcase() {
+  /**
+   * Creates a new object.
+   */
+  public Downcase() {
 
-    }
+  }
 
-public void print(PrintStream stream) {
+  public void print( PrintStream stream ) {
 
-        stream.print("downcase");
-    }
+    stream.print( "downcase" );
+  }
 
-    /**
-*      java.lang.String)
-     */
-    public String transform(String in) {
+  /**
+   * java.lang.String)
+   */
+  public String transform( String in ) {
 
-        return in.toLowerCase();
-    }
+    return in.toLowerCase();
+  }
 
 }

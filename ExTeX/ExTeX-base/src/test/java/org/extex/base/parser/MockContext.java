@@ -19,8 +19,6 @@
 
 package org.extex.base.parser;
 
-import java.util.Iterator;
-
 import org.extex.color.Color;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
@@ -68,767 +66,769 @@ import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.math.MathCode;
 import org.extex.typesetter.type.math.MathDelimiter;
 
+import java.util.Iterator;
+
 /**
  * This mock implementation of a context does nothing useful but provide dummy
  * methods. It is meant as a base for derived mock implementations in test
  * classes.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MockContext implements Context, TypesetterOptions {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
+
+  /**
+   * The field {@code tc} contains the typesetting context.
+   */
+  private TypesettingContext tc = new TypesettingContextImpl();
+
+  /**
+   * The field {@code tokenFactory} contains the token factory.
+   */
+  private transient TokenFactory tokenFactory = new TokenFactoryImpl();
 
-    /**
-     * The field {@code tc} contains the typesetting context.
-     */
-    private TypesettingContext tc = new TypesettingContextImpl();
 
-    /**
-     * The field {@code tokenFactory} contains the token factory.
-     */
-    private transient TokenFactory tokenFactory = new TokenFactoryImpl();
+  public MockContext() {
 
+  }
 
-    public MockContext() {
+  /**
+   * Add a unit to the list of loaded units. The units can be notified when
+   * the context is loaded from a format.
+   *
+   * @param info the info of the unit loaded
+   * @see org.extex.interpreter.context.Context#addUnit(org.extex.interpreter.unit.UnitInfo)
+   */
+  @Override
+  public void addUnit( UnitInfo info ) {
+
+    // not needed
+  }
+
+  /**
+   * Register a observer to be called at the end of the group. The end of the
+   * group is reached when the group is closed.
+   *
+   * @param observer the observer to register
+   * @see org.extex.interpreter.context.ContextGroup#afterGroup(org.extex.interpreter.context.observer.group.AfterGroupObserver)
+   */
+  @Override
+  public void afterGroup( AfterGroupObserver observer ) {
+
+    throw new RuntimeException( "unimplemented" );
+  }
+
+  @Override
+  public void afterGroup( Token t ) {
 
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-     * Add a unit to the list of loaded units. The units can be notified when
-     * the context is loaded from a format.
-     * 
-     * @param info the info of the unit loaded
-     * 
-     * @see org.extex.interpreter.context.Context#addUnit(org.extex.interpreter.unit.UnitInfo)
-     */
-    @Override
-    public void addUnit(UnitInfo info) {
-
-        // not needed
-    }
+  /**
+   * This method clears all split marks.
+   *
+   * @see org.extex.interpreter.context.ContextMark#clearSplitMarks()
+   */
+  @Override
+  public void clearSplitMarks() {
 
-    /**
-     * Register a observer to be called at the end of the group. The end of the
-     * group is reached when the group is closed.
-     * 
-     * @param observer the observer to register
-     * 
-     * @see org.extex.interpreter.context.ContextGroup#afterGroup(org.extex.interpreter.context.observer.group.AfterGroupObserver)
-     */
-    @Override
-    public void afterGroup(AfterGroupObserver observer) {
-
-        throw new RuntimeException("unimplemented");
-    }
+    // not needed
+  }
 
-@Override
-    public void afterGroup(Token t) {
+  /**
+   * org.extex.interpreter.TokenSource)
+   */
+  @Override
+  public void closeGroup( Typesetter typesetter, TokenSource source ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-     * This method clears all split marks.
-     * 
-     * @see org.extex.interpreter.context.ContextMark#clearSplitMarks()
-     */
-    @Override
-    public void clearSplitMarks() {
-
-        // not needed
-    }
+  @Override
+  public String esc( String name ) {
 
-    /**
-*      org.extex.interpreter.TokenSource)
-     */
-    @Override
-    public void closeGroup(Typesetter typesetter, TokenSource source) {
+    return "\\" + name;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public String esc( Token token ) {
 
-@Override
-    public String esc(String name) {
+    return token.toText();
+  }
 
-        return "\\" + name;
-    }
+  @Override
+  public UnicodeChar escapechar() {
 
-@Override
-    public String esc(Token token) {
+    return UnicodeChar.get( '\\' );
+  }
 
-        return token.toText();
-    }
+  /**
+   * java.lang.Object)
+   */
+  @Override
+  public Object get( Object extension, Object key ) {
 
-@Override
-    public UnicodeChar escapechar() {
+    return null;
+  }
 
-        return UnicodeChar.get('\\');
-    }
+  @Override
+  public Token getAfterassignment() {
 
-    /**
-*      java.lang.Object)
-     */
-    @Override
-    public Object get(Object extension, Object key) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return null;
-    }
+  @Override
+  public Tokens getBottomMark( Object name ) {
 
-@Override
-    public Token getAfterassignment() {
+    return null;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public Box getBox( String name ) {
 
-@Override
-    public Tokens getBottomMark(Object name) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return null;
+  @Override
+  public Catcode getCatcode( UnicodeChar c ) {
+
+    if( c.isLetter() ) {
+      return Catcode.LETTER;
+    }
+    switch( c.getCodePoint() ) {
+      case ' ':
+        return Catcode.SPACE;
+      case '{':
+        return Catcode.LEFTBRACE;
+      case '}':
+        return Catcode.RIGHTBRACE;
+      case '\\':
+        return Catcode.ESCAPE;
+      default:
+        return Catcode.OTHER;
     }
+  }
 
-@Override
-    public Box getBox(String name) {
+  @Override
+  public Code getCode( CodeToken t ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    return null;
+  }
 
-@Override
-    public Catcode getCatcode(UnicodeChar c) {
-
-        if (c.isLetter()) {
-            return Catcode.LETTER;
-        }
-        switch (c.getCodePoint()) {
-            case ' ':
-                return Catcode.SPACE;
-            case '{':
-                return Catcode.LEFTBRACE;
-            case '}':
-                return Catcode.RIGHTBRACE;
-            case '\\':
-                return Catcode.ESCAPE;
-            default:
-                return Catcode.OTHER;
-        }
-    }
+  @Override
+  public Conditional getConditional() {
 
-@Override
-    public Code getCode(CodeToken t) {
+    return null;
+  }
 
-        return null;
-    }
+  @Override
+  public Count getCount( String name ) {
 
-@Override
-    public Conditional getConditional() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return null;
-    }
+  @Override
+  public FixedCount getCountOption( String name ) {
 
-@Override
-    public Count getCount(String name) {
+    return null;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public MathDelimiter getDelcode( UnicodeChar c ) {
 
-@Override
-    public FixedCount getCountOption(String name) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return null;
-    }
+  @Override
+  public Dimen getDimen( String name ) {
 
-@Override
-    public MathDelimiter getDelcode(UnicodeChar c) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public FixedDimen getDimenOption( String name ) {
 
-@Override
-    public Dimen getDimen(String name) {
+    return null;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public int getErrorCount() {
 
-@Override
-    public FixedDimen getDimenOption(String name) {
+    return 0;
+  }
 
-        return null;
-    }
+  @Override
+  public Tokens getFirstMark( Object name ) {
 
-@Override
-    public int getErrorCount() {
+    return null;
+  }
 
-        return 0;
-    }
+  @Override
+  public Font getFont( String name ) {
 
-@Override
-    public Tokens getFirstMark(Object name) {
+    return tc.getFont();
+  }
 
-        return null;
-    }
+  @Override
+  public CoreFontFactory getFontFactory() {
 
-@Override
-    public Font getFont(String name) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return tc.getFont();
-    }
+  @Override
+  public Glue getGlue( String name ) {
 
-@Override
-    public CoreFontFactory getFontFactory() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public FixedGlue getGlueOption( String name ) {
 
-@Override
-    public Glue getGlue(String name) {
+    return null;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public GroupInfo[] getGroupInfos() {
 
-@Override
-    public FixedGlue getGlueOption(String name) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return null;
-    }
+  @Override
+  public long getGroupLevel() {
 
-@Override
-    public GroupInfo[] getGroupInfos() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public GroupType getGroupType() {
 
-@Override
-    public long getGroupLevel() {
+    return null;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public String getId() {
 
-@Override
-    public GroupType getGroupType() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return null;
-    }
+  @Override
+  public long getIfLevel() {
 
-@Override
-    public String getId() {
+    return 0;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public InFile getInFile( String name ) {
 
-@Override
-    public long getIfLevel() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return 0;
-    }
+  @Override
+  public Interaction getInteraction() {
 
-@Override
-    public InFile getInFile(String name) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public Language getLanguage( String language ) throws HelpingException {
 
-@Override
-    public Interaction getInteraction() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public LanguageManager getLanguageManager() {
 
-@Override
-    public Language getLanguage(String language) throws HelpingException {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public UnicodeChar getLccode( UnicodeChar uc ) {
 
-@Override
-    public LanguageManager getLanguageManager() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public long getMagnification() {
 
-@Override
-    public UnicodeChar getLccode(UnicodeChar uc) {
+    return 1000;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public MathCode getMathcode( UnicodeChar uc ) {
 
-@Override
-    public long getMagnification() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return 1000;
-    }
+  @Override
+  public Muskip getMuskip( String name ) {
 
-@Override
-    public MathCode getMathcode(UnicodeChar uc) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public String getNamespace() {
 
-@Override
-    public Muskip getMuskip(String name) {
+    return Namespace.DEFAULT_NAMESPACE;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public OutFile getOutFile( String name ) {
 
-@Override
-    public String getNamespace() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return Namespace.DEFAULT_NAMESPACE;
-    }
+  @Override
+  public ParagraphShape getParshape() {
 
-@Override
-    public OutFile getOutFile(String name) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public FixedCount getSfcode( UnicodeChar uc ) {
 
-@Override
-    public ParagraphShape getParshape() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public Tokens getSplitBottomMark( Object name ) {
 
-@Override
-    public FixedCount getSfcode(UnicodeChar uc) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public Tokens getSplitFirstMark( Object name ) {
 
-@Override
-    public Tokens getSplitBottomMark(Object name) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public TokenStream getStandardTokenStream() {
 
-@Override
-    public Tokens getSplitFirstMark(Object name) {
+    return null;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public TokenFactory getTokenFactory() {
 
-@Override
-    public TokenStream getStandardTokenStream() {
+    return tokenFactory;
+  }
 
-        return null;
-    }
+  @Override
+  public Tokenizer getTokenizer() {
 
-@Override
-    public TokenFactory getTokenFactory() {
+    return this;
+  }
 
-        return tokenFactory;
-    }
+  @Override
+  public Tokens getToks( String name ) {
 
-@Override
-    public Tokenizer getTokenizer() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return this;
-    }
+  @Override
+  public Tokens getToksOrNull( String name ) {
 
-@Override
-    public Tokens getToks(String name) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public Tokens getTopMark( Object name ) {
 
-@Override
-    public Tokens getToksOrNull(String name) {
+    return null;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public TypesettingContext getTypesettingContext() {
 
-@Override
-    public Tokens getTopMark(Object name) {
+    return tc;
+  }
 
-        return null;
-    }
+  @Override
+  public TypesettingContextFactory getTypesettingContextFactory() {
 
-@Override
-    public TypesettingContext getTypesettingContext() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return tc;
-    }
+  @Override
+  public UnicodeChar getUccode( UnicodeChar lc ) {
 
-@Override
-    public TypesettingContextFactory getTypesettingContextFactory() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public int incrementErrorCount() {
 
-@Override
-    public UnicodeChar getUccode(UnicodeChar lc) {
+    return 0;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public boolean isGlobalGroup() {
 
-@Override
-    public int incrementErrorCount() {
+    return false;
+  }
 
-        return 0;
-    }
+  /**
+   * org.extex.core.Locator, org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void openGroup( GroupType id, Locator locator, Token start )
+      throws ConfigurationException,
+      HelpingException {
 
-@Override
-    public boolean isGlobalGroup() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return false;
-    }
+  @Override
+  public Conditional popConditional() throws HelpingException {
 
-    /**
-*      org.extex.core.Locator, org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void openGroup(GroupType id, Locator locator, Token start)
-            throws ConfigurationException,
-                HelpingException {
-
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-@Override
-    public Conditional popConditional() throws HelpingException {
+  @Override
+  public Direction popDirection() {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-@Override
-    public Direction popDirection() {
+  /**
+   * boolean, org.extex.interpreter.type.Code, long, boolean)
+   */
+  @Override
+  public void pushConditional( Locator locator, boolean value, Code primitive,
+                               long branch, boolean neg ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      boolean, org.extex.interpreter.type.Code, long, boolean)
-     */
-    @Override
-    public void pushConditional(Locator locator, boolean value, Code primitive,
-            long branch, boolean neg) {
-
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public void pushDirection( Direction dir ) {
 
-@Override
-    public void pushDirection(Direction dir) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * boolean)
+   */
+  @Override
+  public void set( Color color, boolean global ) throws ConfigurationException {
 
-    /**
-*      boolean)
-     */
-    @Override
-    public void set(Color color, boolean global) throws ConfigurationException {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * boolean)
+   */
+  @Override
+  public void set( Direction direction, boolean global ) {
 
-    /**
-*      boolean)
-     */
-    @Override
-    public void set(Direction direction, boolean global) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * boolean)
+   */
+  @Override
+  public void set( Font font, boolean global ) {
 
-    /**
-*      boolean)
-     */
-    @Override
-    public void set(Font font, boolean global) {
+    ((TypesettingContextImpl) tc).setFont( font );
+  }
 
-        ((TypesettingContextImpl) tc).setFont(font);
-    }
+  /**
+   * boolean)
+   */
+  @Override
+  public void set( Language language, boolean global ) {
 
-    /**
-*      boolean)
-     */
-    @Override
-    public void set(Language language, boolean global) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * java.lang.Object, java.lang.Object, boolean)
+   */
+  @Override
+  public void set( Object extension, Object key, Object value,
+                   boolean global ) {
 
-    /**
-*      java.lang.Object, java.lang.Object, boolean)
-     */
-    @Override
-    public void set(Object extension, Object key, Object value, boolean global) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * boolean)
+   */
+  @Override
+  public void set( TypesettingContext context, boolean global ) {
 
-    /**
-*      boolean)
-     */
-    @Override
-    public void set(TypesettingContext context, boolean global) {
+    tc = context;
+  }
 
-        tc = context;
-    }
+  @Override
+  public void setAfterassignment( Token token ) {
 
-@Override
-    public void setAfterassignment(Token token) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * org.extex.interpreter.type.box.Box, boolean)
+   */
+  @Override
+  public void setBox( String name, Box value, boolean global ) {
 
-    /**
-*      org.extex.interpreter.type.box.Box, boolean)
-     */
-    @Override
-    public void setBox(String name, Box value, boolean global) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * org.extex.scanner.type.Catcode, boolean)
+   */
+  @Override
+  public void setCatcode( UnicodeChar c, Catcode cc, boolean global ) {
 
-    /**
-*      org.extex.scanner.type.Catcode, boolean)
-     */
-    @Override
-    public void setCatcode(UnicodeChar c, Catcode cc, boolean global) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * org.extex.interpreter.type.Code, boolean)
+   */
+  @Override
+  public void setCode( CodeToken t, Code code, boolean global ) {
 
-    /**
-*      org.extex.interpreter.type.Code, boolean)
-     */
-    @Override
-    public void setCode(CodeToken t, Code code, boolean global) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * long, boolean)
+   */
+  @Override
+  public void setCount( String name, long value, boolean global )
+      throws HelpingException {
 
-    /**
-*      long, boolean)
-     */
-    @Override
-    public void setCount(String name, long value, boolean global)
-            throws HelpingException {
-
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      long)
-     */
-    @Override
-    public void setCountOption(String name, long value) {
+  /**
+   * long)
+   */
+  @Override
+  public void setCountOption( String name, long value ) {
 
-        // not needed
-    }
+    // not needed
+  }
 
-    /**
-*      MathDelimiter, boolean)
-     */
-    @Override
-    public void setDelcode(UnicodeChar c, MathDelimiter delimiter,
-            boolean global) {
-
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * MathDelimiter, boolean)
+   */
+  @Override
+  public void setDelcode( UnicodeChar c, MathDelimiter delimiter,
+                          boolean global ) {
 
-    /**
-*      org.extex.core.dimen.Dimen, boolean)
-     */
-    @Override
-    public void setDimen(String name, Dimen value, boolean global)
-            throws HelpingException {
-
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      long, boolean)
-     */
-    @Override
-    public void setDimen(String name, long value, boolean global) {
+  /**
+   * org.extex.core.dimen.Dimen, boolean)
+   */
+  @Override
+  public void setDimen( String name, Dimen value, boolean global )
+      throws HelpingException {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      org.extex.typesetter.tc.font.Font, boolean)
-     */
-    @Override
-    public void setFont(String name, Font font, boolean global) {
+  /**
+   * long, boolean)
+   */
+  @Override
+  public void setDimen( String name, long value, boolean global ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-@Override
-    public void setFontFactory(CoreFontFactory fontFactory) {
+  /**
+   * org.extex.typesetter.tc.font.Font, boolean)
+   */
+  @Override
+  public void setFont( String name, Font font, boolean global ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      org.extex.core.glue.Glue, boolean)
-     */
-    @Override
-    public void setGlue(String name, Glue value, boolean global)
-            throws HelpingException {
-
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public void setFontFactory( CoreFontFactory fontFactory ) {
 
-@Override
-    public void setId(String id) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * org.extex.core.glue.Glue, boolean)
+   */
+  @Override
+  public void setGlue( String name, Glue value, boolean global )
+      throws HelpingException {
 
-    /**
-*      org.extex.scanner.type.file.InFile, boolean)
-     */
-    @Override
-    public void setInFile(String name, InFile file, boolean global) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public void setId( String id ) {
 
-@Override
-    public void setInteraction(Interaction interaction) throws HelpingException {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * org.extex.scanner.type.file.InFile, boolean)
+   */
+  @Override
+  public void setInFile( String name, InFile file, boolean global ) {
 
-@Override
-    public void setLanguageManager(LanguageManager manager) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public void setInteraction( Interaction interaction )
+      throws HelpingException {
 
-    /**
-*      org.extex.core.UnicodeChar, boolean)
-     */
-    @Override
-    public void setLccode(UnicodeChar uc, UnicodeChar lc, boolean global) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public void setLanguageManager( LanguageManager manager ) {
 
-    /**
-*      boolean)
-     */
-    @Override
-    public void setMagnification(long mag, boolean lock)
-            throws HelpingException {
-
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      org.extex.scanner.type.tokens.Tokens)
-     */
-    @Override
-    public void setMark(Object name, Tokens mark) {
+  /**
+   * org.extex.core.UnicodeChar, boolean)
+   */
+  @Override
+  public void setLccode( UnicodeChar uc, UnicodeChar lc, boolean global ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      MathCode, boolean)
-     */
-    @Override
-    public void setMathcode(UnicodeChar uc, MathCode code, boolean global) {
+  /**
+   * boolean)
+   */
+  @Override
+  public void setMagnification( long mag, boolean lock )
+      throws HelpingException {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      org.extex.core.muskip.Muskip, boolean)
-     */
-    @Override
-    public void setMuskip(String name, Muskip value, boolean global) {
+  /**
+   * org.extex.scanner.type.tokens.Tokens)
+   */
+  @Override
+  public void setMark( Object name, Tokens mark ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      boolean)
-     */
-    @Override
-    public void setNamespace(String namespace, boolean global) {
+  /**
+   * MathCode, boolean)
+   */
+  @Override
+  public void setMathcode( UnicodeChar uc, MathCode code, boolean global ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      org.extex.scanner.type.file.OutFile, boolean)
-     */
-    @Override
-    public void setOutFile(String name, OutFile file, boolean global) {
+  /**
+   * org.extex.core.muskip.Muskip, boolean)
+   */
+  @Override
+  public void setMuskip( String name, Muskip value, boolean global ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-@Override
-    public void setParshape(ParagraphShape shape) {
+  /**
+   * boolean)
+   */
+  @Override
+  public void setNamespace( String namespace, boolean global ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      org.extex.core.count.Count, boolean)
-     */
-    @Override
-    public void setSfcode(UnicodeChar uc, Count code, boolean global) {
+  /**
+   * org.extex.scanner.type.file.OutFile, boolean)
+   */
+  @Override
+  public void setOutFile( String name, OutFile file, boolean global ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-    /**
-*      org.extex.scanner.type.tokens.Tokens)
-     */
-    @Override
-    public void setSplitMark(Object name, Tokens mark) {
+  @Override
+  public void setParshape( ParagraphShape shape ) {
 
-        // not needed
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-@Override
-    public void setStandardTokenStream(TokenStream standardTokenStream) {
+  /**
+   * org.extex.core.count.Count, boolean)
+   */
+  @Override
+  public void setSfcode( UnicodeChar uc, Count code, boolean global ) {
 
-        throw new RuntimeException("unimplemented");
-    }
+    throw new RuntimeException( "unimplemented" );
+  }
 
-@Override
-    public void setTokenFactory(TokenFactory factory) {
+  /**
+   * org.extex.scanner.type.tokens.Tokens)
+   */
+  @Override
+  public void setSplitMark( Object name, Tokens mark ) {
 
-        tokenFactory = factory;
-    }
+    // not needed
+  }
 
-    /**
-*      org.extex.scanner.type.tokens.Tokens, boolean)
-     */
-    @Override
-    public void setToks(String name, Tokens toks, boolean global)
-            throws HelpingException {
-
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public void setStandardTokenStream( TokenStream standardTokenStream ) {
 
-    /**
-*      org.extex.core.UnicodeChar, boolean)
-     */
-    @Override
-    public void setUccode(UnicodeChar lc, UnicodeChar uc, boolean global) {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  @Override
+  public void setTokenFactory( TokenFactory factory ) {
 
-@Override
-    public void startMarks() {
+    tokenFactory = factory;
+  }
 
-        throw new RuntimeException("unimplemented");
-    }
+  /**
+   * org.extex.scanner.type.tokens.Tokens, boolean)
+   */
+  @Override
+  public void setToks( String name, Tokens toks, boolean global )
+      throws HelpingException {
 
-@Override
-    public Iterator<UnitInfo> unitIterator() {
+    throw new RuntimeException( "unimplemented" );
+  }
 
-        return null;
-    }
+  /**
+   * org.extex.core.UnicodeChar, boolean)
+   */
+  @Override
+  public void setUccode( UnicodeChar lc, UnicodeChar uc, boolean global ) {
+
+    throw new RuntimeException( "unimplemented" );
+  }
+
+  @Override
+  public void startMarks() {
+
+    throw new RuntimeException( "unimplemented" );
+  }
+
+  @Override
+  public Iterator<UnitInfo> unitIterator() {
+
+    return null;
+  }
 
 }

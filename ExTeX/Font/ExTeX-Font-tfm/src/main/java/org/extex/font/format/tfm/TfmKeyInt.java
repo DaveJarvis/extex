@@ -25,52 +25,54 @@ import java.io.Serializable;
  * TFM: key-value-container.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class TfmKeyInt implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * key.
-     */
-    private final int key;
+  /**
+   * key.
+   */
+  private final int key;
 
-    /**
-     * int-value.
-     */
-    private final int val;
+  /**
+   * int-value.
+   */
+  private final int val;
 
-    /**
-     * Create a new object.
-     *
-     * @param k the key
-     * @param v the value
-     */
-    TfmKeyInt(int k, int v) {
+  /**
+   * Create a new object.
+   *
+   * @param k the key
+   * @param v the value
+   */
+  TfmKeyInt( int k, int v ) {
 
-        key = k;
-        val = v;
-    }
+    key = k;
+    val = v;
+  }
 
-    /**
-     * Returns the key.
-     * @return Returns the key.
-     */
-    public int getKey() {
+  /**
+   * Returns the key.
+   *
+   * @return Returns the key.
+   */
+  public int getKey() {
 
-        return key;
-    }
+    return key;
+  }
 
-    /**
-     * Returns the val.
-     * @return Returns the val.
-     */
-    public int getVal() {
+  /**
+   * Returns the val.
+   *
+   * @return Returns the val.
+   */
+  public int getVal() {
 
-        return val;
-    }
+    return val;
+  }
 }

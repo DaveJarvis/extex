@@ -22,62 +22,60 @@ package org.extex.typesetter.paragraphBuilder.impl;
 /**
  * This class provides a finite enumeration for fitness values.
  *
- * @see "TTP [817]"
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see "TTP [817]"
+ */
 public final class Fitness {
 
-    /**
-     * The field {@code TIGHT} contains the fitness of class 3.
-     */
-    public static final Fitness TIGHT = new Fitness(3);
+  /**
+   * The field {@code TIGHT} contains the fitness of class 3.
+   */
+  public static final Fitness TIGHT = new Fitness( 3 );
 
-    /**
-     * The field {@code LOOSE} contains the fitness of class 1.
-     */
-    public static final Fitness LOOSE = new Fitness(1);
+  /**
+   * The field {@code LOOSE} contains the fitness of class 1.
+   */
+  public static final Fitness LOOSE = new Fitness( 1 );
 
-    /**
-     * The field {@code VERY_LOOSE} contains the fitness of class 0.
-     */
-    public static final Fitness VERY_LOOSE = new Fitness(0);
+  /**
+   * The field {@code VERY_LOOSE} contains the fitness of class 0.
+   */
+  public static final Fitness VERY_LOOSE = new Fitness( 0 );
 
-    /**
-     * The field {@code DESCENT} contains the fitness of class 2.
-     */
-    public static final Fitness DECENT = new Fitness(2);
+  /**
+   * The field {@code DESCENT} contains the fitness of class 2.
+   */
+  public static final Fitness DECENT = new Fitness( 2 );
 
-    /**
-     * The field {@code order} contains the order of the fitness.
-     */
-    private final int order;
+  /**
+   * The field {@code order} contains the order of the fitness.
+   */
+  private final int order;
 
-    /**
-     * Creates a new object.
-     * The constructor is private since only the static instances defined
-     * above are allowed.
-     *
-     * @param theOrder the fitness class
-     */
-    private Fitness(int theOrder) {
+  /**
+   * Creates a new object.
+   * The constructor is private since only the static instances defined
+   * above are allowed.
+   *
+   * @param theOrder the fitness class
+   */
+  private Fitness( int theOrder ) {
 
-        this.order = theOrder;
-    }
+    this.order = theOrder;
+  }
 
-    /**
-     * Determine whether the given fitness has the same order or a class which
-     * is one less or one more than the own order.
-     *
-     * @param fitness the fitness to compare to
-     *
-     * @return {@code true} iff the order of the given fitness is equal
-     *  or adjacent to the given one.
-     */
-    public boolean adjacent(Fitness fitness) {
+  /**
+   * Determine whether the given fitness has the same order or a class which
+   * is one less or one more than the own order.
+   *
+   * @param fitness the fitness to compare to
+   * @return {@code true} iff the order of the given fitness is equal
+   * or adjacent to the given one.
+   */
+  public boolean adjacent( Fitness fitness ) {
 
-        return (fitness.order == order
-                || fitness.order + 1 == order
-                || fitness.order - 1 == order);
-    }
+    return (fitness.order == order
+        || fitness.order + 1 == order
+        || fitness.order - 1 == order);
+  }
 }

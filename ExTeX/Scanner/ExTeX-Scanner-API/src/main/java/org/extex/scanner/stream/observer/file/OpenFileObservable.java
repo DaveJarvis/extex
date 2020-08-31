@@ -24,14 +24,14 @@ package org.extex.scanner.stream.observer.file;
  * open file event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OpenFileObservable {
 
-    /**
-     * Register an open file observer for later use.
-     *
-     * @param observer the observer to be registered
-     */
-    void registerObserver(OpenFileObserver observer);
+  /**
+   * Register an open file observer for later use.
+   *
+   * @param observer the observer to be registered
+   */
+  void registerObserver( OpenFileObserver observer );
 
 }

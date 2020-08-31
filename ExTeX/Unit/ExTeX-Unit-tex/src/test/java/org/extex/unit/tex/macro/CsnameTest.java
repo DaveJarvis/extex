@@ -24,232 +24,230 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \csname}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CsnameTest extends ExTeXLauncher {
 
 
-    public CsnameTest() {
+  public CsnameTest() {
 
-    }
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that the normal
-     * operation is performed on letter inputs only. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLetters1() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that the normal
+   * operation is performed on letter inputs only.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLetters1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\def\\abc{-a-b-c-}"
-                    + "\\csname abc\\endcsname\\end",
-            // --- output channel ---
-            "-a-b-c-" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\def\\abc{-a-b-c-}"
+                      + "\\csname abc\\endcsname\\end",
+                  // --- output channel ---
+                  "-a-b-c-" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that the normal
-     * operation is performed on letter inputs only and white-space is ignored.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLetters2() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that the normal
+   * operation is performed on letter inputs only and white-space is ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLetters2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\def\\abc{-a-b-c-}"
-                    + "\\csname a b  c\\endcsname\\end",
-            // --- output channel ---
-            "-a-b-c-" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\def\\abc{-a-b-c-}"
+                      + "\\csname a b  c\\endcsname\\end",
+                  // --- output channel ---
+                  "-a-b-c-" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that the primitive
-     * \string can be used to insert special characters. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testString1() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that the primitive
+   * \string can be used to insert special characters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testString1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\csname \\string\\par \\endcsname\\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\csname \\string\\par \\endcsname\\end",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that the normal
-     * operation is performed on letter and digit inputs only. Undefined control
-     * sequences are treated as {@code \relax}. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMixed1() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that the normal
+   * operation is performed on letter and digit inputs only. Undefined control
+   * sequences are treated as {@code \relax}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMixed1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\def\\abc{-a-b-c-}"
-                    + "\\csname abc 123\\endcsname\\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\def\\abc{-a-b-c-}"
+                      + "\\csname abc 123\\endcsname\\end",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that the normal
-     * operation is performed on letter and digit inputs only. Undefined control
-     * sequences are treated as {@code \relax}. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMixed2() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that the normal
+   * operation is performed on letter and digit inputs only. Undefined control
+   * sequences are treated as {@code \relax}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMixed2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\catcode`{=1" + "\\catcode`}=2" + "\\catcode`#=6"
-                    + "\\def\\abc{-a-b-c-}"
-                    + "\\csname abc # 123\\endcsname\\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\catcode`{=1" + "\\catcode`}=2" + "\\catcode`#=6"
+                      + "\\def\\abc{-a-b-c-}"
+                      + "\\csname abc # 123\\endcsname\\end",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that the normal
-     * operation is performed on letter and digit inputs only. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that the normal
+   * operation is performed on letter and digit inputs only.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\csname abc \\par\\endcsname\\end",
-            // --- log message ---
-            "Missing \\endcsname inserted");
-    }
+    assertFailure(// --- input code ---
+                  "\\csname abc \\par\\endcsname\\end",
+                  // --- log message ---
+                  "Missing \\endcsname inserted" );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that the normal
-     * operation is performed on letter and digit inputs only. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that the normal
+   * operation is performed on letter and digit inputs only.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\csname abc \\relax\\endcsname\\end",
-            // --- log message ---
-            "Missing \\endcsname inserted");
-    }
+    assertFailure(// --- input code ---
+                  "\\csname abc \\relax\\endcsname\\end",
+                  // --- log message ---
+                  "Missing \\endcsname inserted" );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that {@code \csname}
-     * returns something equivalent to {@code \relax} if nor defined
-     * otherwise. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessageErr5() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that {@code \csname}
+   * returns something equivalent to {@code \relax} if nor defined
+   * otherwise.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessageErr5() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\scrollmode" + DEFINE_BRACES
-                    + "\\message{a\\csname xyz \\endcsname b}" + "\\end ",
-            // --- log message ---
-            "a\\xyz b");
-    }
+    assertFailure(// --- input code ---
+                  "\\scrollmode" + DEFINE_BRACES
+                      + "\\message{a\\csname xyz \\endcsname b}" + "\\end ",
+                  // --- log message ---
+                  "a\\xyz b" );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that {@code \csname}
-     * complains an undefined control sequence. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testUndef1() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that {@code \csname}
+   * complains an undefined control sequence.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testUndef1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\csname \\xxx ",
-            // --- log message ---
-            "Undefined control sequence \\xxx");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\csname \\xxx ",
+                  // --- log message ---
+                  "Undefined control sequence \\xxx" );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that {@code \csname}
-     * complains a missing \endcsname. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that {@code \csname}
+   * complains a missing \endcsname.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\csname jobname ",
-            // --- log message ---
-            "Unexpected end of file");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\csname jobname ",
+                  // --- log message ---
+                  "Unexpected end of file" );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that eof is recognized.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEOF1() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that eof is recognized.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEOF1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\expandafter\\meaning\\csname ",
-            // --- log message ---
-            "Unexpected end of file");
-    }
+    assertFailure(// --- input code ---
+                  "\\expandafter\\meaning\\csname ",
+                  // --- log message ---
+                  "Unexpected end of file" );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that \csname creates a
-     * defined control sequence. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testExpand0() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that \csname creates a
+   * defined control sequence.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testExpand0() throws Exception {
 
-        assertOutput(
+    assertOutput(
         // --- input code ---
-            DEFINE_BRACES
-                    + "\\expandafter\\let \\csname abc\\expandafter\\endcsname\n"
-                    + "   \\csname cba\\endcsname\n"
-                    + "\\message{\\csname abc\\endcsname}\n" + "\\end",
-            // --- log channel ---
-            "\\abc",
-            // --- output channel ---
-            "");
-    }
+        DEFINE_BRACES
+            + "\\expandafter\\let \\csname abc\\expandafter\\endcsname\n"
+            + "   \\csname cba\\endcsname\n"
+            + "\\message{\\csname abc\\endcsname}\n" + "\\end",
+        // --- log channel ---
+        "\\abc",
+        // --- output channel ---
+        "" );
+  }
 
-    /**
-     * <testcase primitive="\csname"> Test case checking that non-letters can be
-     * embedded in the defined control sequence. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testExpand1() throws Exception {
+  /**
+   * <testcase primitive="\csname"> Test case checking that non-letters can be
+   * embedded in the defined control sequence.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testExpand1() throws Exception {
 
-        assertOutput(
+    assertOutput(
         // --- input code ---
-            DEFINE_BRACES
-                    + "\\expandafter\\def\\csname a-cba\\endcsname{A B C}\n"
-                    + "\\expandafter\\let \\csname a-abc\\expandafter\\endcsname\n"
-                    + "   \\csname a-cba\\endcsname\n"
-                    + "\\message{\\csname a-abc\\endcsname}\n" + "\\end",
-            // --- log channel ---
-            "A B C",
-            // --- output channel ---
-            "");
-    }
+        DEFINE_BRACES
+            + "\\expandafter\\def\\csname a-cba\\endcsname{A B C}\n"
+            + "\\expandafter\\let \\csname a-abc\\expandafter\\endcsname\n"
+            + "   \\csname a-cba\\endcsname\n"
+            + "\\message{\\csname a-abc\\endcsname}\n" + "\\end",
+        // --- log channel ---
+        "A B C",
+        // --- output channel ---
+        "" );
+  }
 
 }

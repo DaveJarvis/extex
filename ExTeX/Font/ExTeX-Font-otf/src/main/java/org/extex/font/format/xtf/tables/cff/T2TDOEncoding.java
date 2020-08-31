@@ -19,12 +19,12 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
-import java.io.IOException;
-import java.util.List;
-
 import org.extex.font.format.xtf.tables.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Encoding.
@@ -40,191 +40,195 @@ import org.extex.util.xml.XMLStreamWriter;
  * described by a format-type identifier byte followed by format-specific data.
  * Two formats are currently defined.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOEncoding extends T2TDONumber {
 
-    /**
-     * ExpertEncoding
-     */
-    public static final int EXPERT_ENCODING = 1;
+  /**
+   * ExpertEncoding
+   */
+  public static final int EXPERT_ENCODING = 1;
 
-    /**
-     * FontDefined
-     */
-    public static final int FONT_DEFINED = 2;
+  /**
+   * FontDefined
+   */
+  public static final int FONT_DEFINED = 2;
 
-    /**
-     * StandardEncoding
-     */
-    public static final int STANDARD_ENCODING = 0;
+  /**
+   * StandardEncoding
+   */
+  public static final int STANDARD_ENCODING = 0;
 
-    /**
-     * The cff table.
-     */
-    private OtfTableCFF cff;
+  /**
+   * The cff table.
+   */
+  private OtfTableCFF cff;
 
-    /**
-     * The encoding vector.
-     */
-    private final String[] enc = new String[256];
+  /**
+   * The encoding vector.
+   */
+  private final String[] enc = new String[ 256 ];
 
-    /**
-     * The encoding of the font.
-     */
-    private int encoding = STANDARD_ENCODING;
+  /**
+   * The encoding of the font.
+   */
+  private int encoding = STANDARD_ENCODING;
 
-    /**
-     * The name of the encoding.
-     */
-    private String encodingName = "StandardEncoding";
+  /**
+   * The name of the encoding.
+   */
+  private String encodingName = "StandardEncoding";
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2TDOEncoding(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2TDOEncoding( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{CFF_ENCODING});
+    super( stack, new short[]{CFF_ENCODING} );
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * <p>
+   * It use the default cff encoding.
+   * </p>
+   *
+   * @param cff            The cff table.
+   * @param numberOfGlyphs The number of glyphs.
+   * @param charset        The charset.
+   */
+  public T2TDOEncoding( OtfTableCFF cff, int numberOfGlyphs,
+                        T2TDOCharset charset ) {
+
+    this.cff = cff;
+    createDefaultEncodingTable( numberOfGlyphs, charset );
+  }
+
+  /**
+   * Crete the default encoding.
+   *
+   * @param numberOfGlyphs The number of glyphs.
+   * @param charset        The charset.
+   */
+  private void createDefaultEncodingTable( int numberOfGlyphs,
+                                           T2TDOCharset charset ) {
+
+    // We take into account the fact a CFF font can use a predefined
+    // encoding without containing all of the glyphs encoded by this
+    // encoding (see the note at the end of section 12 in the CFF
+    // specification).
+
+    for( int i = 0; i < enc.length; i++ ) {
+
+      // copy the default encoding
+      if( encoding == STANDARD_ENCODING ) {
+        enc[ i ] = T2StandardEncoding.getString( i );
+      }
+      else {
+        enc[ i ] = T2ExpertEncoding.getString( i );
+      }
+
+      // if not defined, use the name from the charset
+      if( enc[ i ].equals( ".notdef" ) ) {
+        enc[ i ] = charset.getNameForPos( i );
+      }
+    }
+  }
+
+  /**
+   * Getter for encodingName.
+   *
+   * @return the encodingName
+   */
+  public String getEncodingName() {
+
+    return encodingName;
+  }
+
+  /**
+   * Returns the name of the glyph.
+   *
+   * @param pos The position in the encoding.
+   * @return Returns the name of the glyph.
+   */
+  public String getGlyphName( int pos ) {
+
+    if( pos >= 0 && pos < enc.length ) {
+      String name = enc[ pos ];
+      if( name != null ) {
+        return name;
+      }
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * <p>
-     * It use the default cff encoding.
-     * </p>
-     * 
-     * @param cff The cff table.
-     * @param numberOfGlyphs The number of glyphs.
-     * @param charset The charset.
-     */
-    public T2TDOEncoding(OtfTableCFF cff, int numberOfGlyphs,
-            T2TDOCharset charset) {
+    return ".notdef";
+  }
 
-        this.cff = cff;
-        createDefaultEncodingTable(numberOfGlyphs, charset);
+  @Override
+  public int getID() {
+
+    return T2TopDICTOperator.TYPE_ENCODING;
+  }
+
+  @Override
+  public String getName() {
+
+    return "encoding";
+  }
+
+  /**
+   * org.extex.font.format.xtf.tables.OtfTableCFF, int,
+   * org.extex.font.format.xtf.tables.cff.CffFont)
+   */
+  @Override
+  public void init( RandomAccessR rar, OtfTableCFF cff, int baseoffset,
+                    CffFont cffFont ) throws IOException {
+
+    int offset = getInteger();
+    this.cff = cff;
+
+    if( offset == 0 ) {
+      encoding = STANDARD_ENCODING;
+      encodingName = "StandardEncoding";
     }
-
-    /**
-     * Crete the default encoding.
-     * 
-     * @param numberOfGlyphs The number of glyphs.
-     * @param charset The charset.
-     */
-    private void createDefaultEncodingTable(int numberOfGlyphs,
-            T2TDOCharset charset) {
-
-        // We take into account the fact a CFF font can use a predefined
-        // encoding without containing all of the glyphs encoded by this
-        // encoding (see the note at the end of section 12 in the CFF
-        // specification).
-
-        for (int i = 0; i < enc.length; i++) {
-
-            // copy the default encoding
-            if (encoding == STANDARD_ENCODING) {
-                enc[i] = T2StandardEncoding.getString(i);
-            } else {
-                enc[i] = T2ExpertEncoding.getString(i);
-            }
-
-            // if not defined, use the name from the charset
-            if (enc[i].equals(".notdef")) {
-                enc[i] = charset.getNameForPos(i);
-            }
-        }
+    else if( offset == 1 ) {
+      encoding = EXPERT_ENCODING;
+      encodingName = "ExpertEncoding";
     }
+    else {
+      encoding = FONT_DEFINED;
+      encodingName = "FontDefined";
 
-    /**
-     * Getter for encodingName.
-     * 
-     * @return the encodingName
-     */
-    public String getEncodingName() {
+      rar.seek( baseoffset + offset );
 
-        return encodingName;
+      /* int format = */
+      rar.readUnsignedByte();
+
+      // TODO mgn: incomplete
     }
+  }
 
-    /**
-     * Returns the name of the glyph.
-     * 
-     * @param pos The position in the encoding.
-     * @return Returns the name of the glyph.
-     */
-    public String getGlyphName(int pos) {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        if (pos >= 0 && pos < enc.length) {
-            String name = enc[pos];
-            if (name != null) {
-                return name;
-            }
-        }
-
-        return ".notdef";
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "name", getEncodingName() );
+    for( int i = 0; i < enc.length; i++ ) {
+      writer.writeStartElement( "sid" );
+      writer.writeAttribute( "id", i );
+      writer.writeAttribute( "name", getGlyphName( i ) );
+      writer.writeEndElement();
     }
+    writer.writeEndElement();
 
-@Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_ENCODING;
-    }
-
-@Override
-    public String getName() {
-
-        return "encoding";
-    }
-
-    /**
-*      org.extex.font.format.xtf.tables.OtfTableCFF, int,
-     *      org.extex.font.format.xtf.tables.cff.CffFont)
-     */
-    @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
-            CffFont cffFont) throws IOException {
-
-        int offset = getInteger();
-        this.cff = cff;
-
-        if (offset == 0) {
-            encoding = STANDARD_ENCODING;
-            encodingName = "StandardEncoding";
-        } else if (offset == 1) {
-            encoding = EXPERT_ENCODING;
-            encodingName = "ExpertEncoding";
-        } else {
-            encoding = FONT_DEFINED;
-            encodingName = "FontDefined";
-
-            rar.seek(baseoffset + offset);
-
-            /* int format = */rar.readUnsignedByte();
-
-            // TODO mgn: incomplete
-        }
-    }
-
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("name", getEncodingName());
-        for (int i = 0; i < enc.length; i++) {
-            writer.writeStartElement("sid");
-            writer.writeAttribute("id", i);
-            writer.writeAttribute("name", getGlyphName(i));
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-
-    }
+  }
 
 }

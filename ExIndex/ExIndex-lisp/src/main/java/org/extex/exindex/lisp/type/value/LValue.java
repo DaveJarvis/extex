@@ -23,15 +23,15 @@ import java.io.PrintStream;
 
 /**
  * This is a interface describing values.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface LValue {
 
-    /**
-     * Print the value to a stream.
-     * 
-     * @param stream the output stream
-     */
-    void print(PrintStream stream);
+  /**
+   * Print the value to a stream.
+   *
+   * @param stream the output stream
+   */
+  void print( PrintStream stream );
 }

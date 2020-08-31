@@ -19,60 +19,60 @@
 
 package org.extex.unit.tex;
 
-import java.util.Properties;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.test.ExTeXLauncher;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import java.util.Properties;
+
 /**
  * This is a test suite for the ligature management.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LigatureTest extends ExTeXLauncher {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LigatureTest.class);
-    }
+    (new JUnitCore()).run( LigatureTest.class );
+  }
 
 
-    public LigatureTest() {
+  public LigatureTest() {
 
-    }
+  }
 
-    /**
-     *  Test case checking that a ligature node is inserted.
-     *
-     *
-     * Ignored, possibly a font issue?
-     * 
-     * @throws HelpingException in case of an error
-     */
-    @Test
-    @Ignore
-    public void testXyz() throws HelpingException {
+  /**
+   * Test case checking that a ligature node is inserted.
+   * <p>
+   * <p>
+   * Ignored, possibly a font issue?
+   *
+   * @throws HelpingException in case of an error
+   */
+  @Test
+  @Ignore
+  public void testXyz() throws HelpingException {
 
-        Properties properties = getProps();
-        properties.setProperty("extex.output", "dump");
+    Properties properties = getProps();
+    properties.setProperty( "extex.output", "dump" );
 
-        assertSuccess(properties,
-        // --- input code ---
-            "\\font\\f=cmr10 \\f " + "Affe",
-            // --- output channel ---
-            "\\vbox(6.94444pt+0.0pt)x3000.0pt\n"
-                    + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n"
-                    + "..A\n"
-                    + "..?\n"
-                    + "..e\n");
-    }
+    assertSuccess( properties,
+                   // --- input code ---
+                   "\\font\\f=cmr10 \\f " + "Affe",
+                   // --- output channel ---
+                   "\\vbox(6.94444pt+0.0pt)x3000.0pt\n"
+                       + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n"
+                       + "..A\n"
+                       + "..?\n"
+                       + "..e\n" );
+  }
 
 }

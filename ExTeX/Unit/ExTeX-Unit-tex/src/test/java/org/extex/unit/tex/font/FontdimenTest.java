@@ -26,134 +26,135 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \fontdimen}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class FontdimenTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(FontdimenTest.class);
-    }
+    (new JUnitCore()).run( FontdimenTest.class );
+  }
 
 
-    public FontdimenTest() {
+  public FontdimenTest() {
 
-        setPrimitive("fontdimen");setArguments("0\\nullfont=123pt ");
-    }
+    setPrimitive( "fontdimen" );
+    setArguments( "0\\nullfont=123pt " );
+  }
 
-    /**
-     * <testcase primitive="\fontdimen"> Test case checking that \fontdimen
-     * needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\fontdimen"> Test case checking that \fontdimen
+   * needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\fontdimen",
-            // --- output channel ---
-            "Unexpected end of file while processing \\fontdimen");
-    }
+    assertFailure(// --- input code ---
+                  "\\fontdimen",
+                  // --- output channel ---
+                  "Unexpected end of file while processing \\fontdimen" );
+  }
 
-    /**
-     * <testcase primitive="\fontdimen"> Test case checking that \fontdimen
-     * needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof2() throws Exception {
+  /**
+   * <testcase primitive="\fontdimen"> Test case checking that \fontdimen
+   * needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\the\\fontdimen",
-            // --- output channel ---
-            "Unexpected end of file while processing \\fontdimen");
-    }
+    assertFailure(// --- input code ---
+                  "\\the\\fontdimen",
+                  // --- output channel ---
+                  "Unexpected end of file while processing \\fontdimen" );
+  }
 
-    /**
-     * <testcase primitive="\fontdimen"> Test case checking that \fontdimen on
-     * unset keys returns 0 pt.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testUnset1() throws Exception {
+  /**
+   * <testcase primitive="\fontdimen"> Test case checking that \fontdimen on
+   * unset keys returns 0 pt.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testUnset1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\the\\fontdimen0\\nullfont " + "\\end",
-            // --- output channel ---
-            "0.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\the\\fontdimen0\\nullfont " + "\\end",
+                  // --- output channel ---
+                  "0.0pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontdimen"> Test case checking that \fontdimen on
-     * unset keys returns 0 pt.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testUnset2() throws Exception {
+  /**
+   * <testcase primitive="\fontdimen"> Test case checking that \fontdimen on
+   * unset keys returns 0 pt.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testUnset2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\the\\fontdimen65000\\nullfont " + "\\end",
-            // --- output channel ---
-            "0.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\the\\fontdimen65000\\nullfont " + "\\end",
+                  // --- output channel ---
+                  "0.0pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontdimen"> Test case checking that \fontdimen can
-     * be set and read back for \nullfont.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSet1() throws Exception {
+  /**
+   * <testcase primitive="\fontdimen"> Test case checking that \fontdimen can
+   * be set and read back for \nullfont.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testSet1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\fontdimen65000\\nullfont=42pt "
-                    + "\\the\\fontdimen65000\\nullfont " + "\\end",
-            // --- output channel ---
-            "42.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\fontdimen65000\\nullfont=42pt "
+                      + "\\the\\fontdimen65000\\nullfont " + "\\end",
+                  // --- output channel ---
+                  "42.0pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontdimen"> Test case checking that \fontdimen can
-     * be set and read back for cmtt12.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testSet2() throws Exception {
+  /**
+   * <testcase primitive="\fontdimen"> Test case checking that \fontdimen can
+   * be set and read back for cmtt12.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void testSet2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\fnt=cmtt12\\relax " + "\\fontdimen65000\\fnt=42pt "
-                    + "\\the\\fontdimen65000\\fnt " + "\\end",
-            // --- output channel ---
-            "42.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\fnt=cmtt12\\relax " + "\\fontdimen65000\\fnt=42pt "
+                      + "\\the\\fontdimen65000\\fnt " + "\\end",
+                  // --- output channel ---
+                  "42.0pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontdimen"> Test case checking that \fontdimen is
-     * an assignment.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAssign1() throws Exception {
+  /**
+   * <testcase primitive="\fontdimen"> Test case checking that \fontdimen is
+   * an assignment.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAssign1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\afterassignment abc" + "\\fontdimen0\\nullfont=42pt"
-                    + "\\the\\fontdimen0\\nullfont " + "\\end",
-            // --- output channel ---
-            "bca42.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\afterassignment abc" + "\\fontdimen0\\nullfont=42pt"
+                      + "\\the\\fontdimen0\\nullfont " + "\\end",
+                  // --- output channel ---
+                  "bca42.0pt" + TERM );
+  }
 
 }

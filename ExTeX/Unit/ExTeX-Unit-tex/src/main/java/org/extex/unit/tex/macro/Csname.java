@@ -44,7 +44,7 @@ import org.extex.unit.base.Relax;
 
 /**
  * This class provides an implementation for the primitive {@code \csname}.
- * 
+ *
  * <p>The Primitive {@code \csname}</p>
  * <p>
  * The primitive {@code \csname} absorbs further tokens until a matching
@@ -62,166 +62,170 @@ import org.extex.unit.base.Relax;
  * <p>
  * If a non-expandable token is encountered then an error is raised.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;csname&rang;
  *      &rarr; {@code \csname} &lang;expandable tokens&rang; {@code \endcsname}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \csname abc\endcsname  </pre>
- * 
+ *
  * <p>
  * This results in the control sequence {@code \abc}.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *    \csname ab#de\endcsname  </pre>
- * 
+ *
  * <p>
  * The example is valid. It shows that even non-character tokens might be
  * contained.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *    \csname \TeX\endcsname  </pre>
- * 
+ *
  * <p>
  * This is usually illegal since {@code \TeX} is defined in plain to contain
  * some non-expandable primitives.
  * </p>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Expand tokens and collect the result until {@code \endcsname} is
-     * found. In fact the termination condition is that a Token is found which
-     * is assigned to {@link Endcsname Endcsname}.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param loc the localizer
-     * 
-     * @return the Tokens found while scanning the input tokens
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     * @throws ConfigurationException in case of an configuration error
-     */
-    public static String scanToEndCsname(Context context, TokenSource source,
-            Typesetter typesetter, Localizer loc)
-            throws HelpingException,
-                ConfigurationException,
-                TypesetterException {
+  /**
+   * Expand tokens and collect the result until {@code \endcsname} is
+   * found. In fact the termination condition is that a Token is found which
+   * is assigned to {@link Endcsname Endcsname}.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @param loc        the localizer
+   * @return the Tokens found while scanning the input tokens
+   * @throws HelpingException       in case of an error
+   * @throws TypesetterException    in case of an error in the typesetter
+   * @throws ConfigurationException in case of an configuration error
+   */
+  public static String scanToEndCsname( Context context, TokenSource source,
+                                        Typesetter typesetter, Localizer loc )
+      throws HelpingException,
+      ConfigurationException,
+      TypesetterException {
 
-        Tokens toks = new Tokens();
-        for (Token t = source.getToken(context); t != null; t =
-                source.getToken(context)) {
+    Tokens toks = new Tokens();
+    for( Token t = source.getToken( context ); t != null; t =
+        source.getToken( context ) ) {
 
-            if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
+      if( t instanceof CodeToken ) {
+        Code code = context.getCode( (CodeToken) t );
 
-                if (code instanceof Endcsname) {
+        if( code instanceof Endcsname ) {
 
-                    return toks.toText();
+          return toks.toText();
 
-                } else if (code instanceof ExpandableCode) {
-
-                    ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                        typesetter);
-
-                } else if (code == null) {
-
-                    throw new UndefinedControlSequenceException(t.toText());
-
-                } else {
-
-                    throw new HelpingException(loc, "TTP.MissingEndcsname",
-                        context.esc("endcsname"), context.esc(t));
-                }
-
-            } else if (!(t instanceof SpaceToken)) {
-
-                toks.add(t);
-            }
         }
-        throw new EofException();
-    }
+        else if( code instanceof ExpandableCode ) {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Csname(CodeToken token) {
+          ((ExpandableCode) code).expand( Flags.NONE, context, source,
+                                          typesetter );
 
-        super(token);
-    }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String s = scanToEndCsname(context, source, typesetter, getLocalizer());
-
-        try {
-            CodeToken t =
-                    (CodeToken) context.getTokenFactory().createToken(
-                        Catcode.ESCAPE, context.escapechar(), s,
-                        context.getNamespace());
-            if (context.getCode(t) == null) {
-                context.setCode(t, new Relax(t), true);
-            }
-            source.push(t);
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
         }
-    }
+        else if( code == null ) {
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException,
-                ConfigurationException,
-                TypesetterException {
+          throw new UndefinedControlSequenceException( t.toText() );
 
-        String s = scanToEndCsname(context, source, typesetter, getLocalizer());
-
-        try {
-            CodeToken t =
-                    (CodeToken) context.getTokenFactory().createToken(
-                        Catcode.ESCAPE, context.escapechar(), s,
-                        context.getNamespace());
-            if (context.getCode(t) == null) {
-                context.setCode(t, new Relax(t), true);
-            }
-            source.push(t);
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
         }
+        else {
+
+          throw new HelpingException( loc,
+                                      "TTP.MissingEndcsname",
+                                      context.esc( "endcsname" ),
+                                      context.esc( t ) );
+        }
+
+      }
+      else if( !(t instanceof SpaceToken) ) {
+
+        toks.add( t );
+      }
     }
+    throw new EofException();
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Csname( CodeToken token ) {
+
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String s = scanToEndCsname( context, source, typesetter, getLocalizer() );
+
+    try {
+      CodeToken t =
+          (CodeToken) context.getTokenFactory().createToken(
+              Catcode.ESCAPE, context.escapechar(), s,
+              context.getNamespace() );
+      if( context.getCode( t ) == null ) {
+        context.setCode( t, new Relax( t ), true );
+      }
+      source.push( t );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
+    }
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException,
+      ConfigurationException,
+      TypesetterException {
+
+    String s = scanToEndCsname( context, source, typesetter, getLocalizer() );
+
+    try {
+      CodeToken t =
+          (CodeToken) context.getTokenFactory().createToken(
+              Catcode.ESCAPE, context.escapechar(), s,
+              context.getNamespace() );
+      if( context.getCode( t ) == null ) {
+        context.setCode( t, new Relax( t ), true );
+      }
+      source.push( t );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
+    }
+  }
 
 }

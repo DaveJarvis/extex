@@ -24,65 +24,65 @@ import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * Lookup tables provide a way of looking up information about a glyph index.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public abstract class XtfLookupTable implements XMLWriterConvertible {
 
-    /**
-     * The subtable count.
-     */
-    protected int count;
+  /**
+   * The subtable count.
+   */
+  protected int count;
 
-    /**
-     * The table format
-     */
-    private final int format;
+  /**
+   * The table format
+   */
+  private final int format;
 
-    /**
-     * The glyph name.
-     */
-    private final XtfGlyphName xtfGlyph;
+  /**
+   * The glyph name.
+   */
+  private final XtfGlyphName xtfGlyph;
 
-    /**
-     * Create a new object.
-     * 
-     * @param f the format.
-     * @param xtfGlyph The glyph name.
-     */
-    public XtfLookupTable(int f, XtfGlyphName xtfGlyph) {
+  /**
+   * Create a new object.
+   *
+   * @param f        the format.
+   * @param xtfGlyph The glyph name.
+   */
+  public XtfLookupTable( int f, XtfGlyphName xtfGlyph ) {
 
-        format = f;
-        this.xtfGlyph = xtfGlyph;
-    }
+    format = f;
+    this.xtfGlyph = xtfGlyph;
+  }
 
-    /**
-     * Getter for count.
-     * 
-     * @return the count
-     */
-    public int getCount() {
+  /**
+   * Getter for count.
+   *
+   * @return the count
+   */
+  public int getCount() {
 
-        return count;
-    }
+    return count;
+  }
 
-    /**
-     * Returns the format.
-     * 
-     * @return Returns the format.
-     */
-    public int getFormat() {
+  /**
+   * Returns the format.
+   *
+   * @return Returns the format.
+   */
+  public int getFormat() {
 
-        return format;
-    }
+    return format;
+  }
 
-    /**
-     * Getter for xtfGlyph.
-     * 
-     * @return the xtfGlyph
-     */
-    public XtfGlyphName getXtfGlyph() {
+  /**
+   * Getter for xtfGlyph.
+   *
+   * @return the xtfGlyph
+   */
+  public XtfGlyphName getXtfGlyph() {
 
-        return xtfGlyph;
-    }
+    return xtfGlyph;
+  }
 }

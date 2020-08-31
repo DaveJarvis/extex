@@ -47,7 +47,7 @@ import java.util.logging.Logger;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 @SuppressWarnings("unused")
 public class LoadableXtfFont
     implements

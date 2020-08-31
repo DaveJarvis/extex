@@ -29,41 +29,41 @@ import java.nio.charset.CoderResult;
  * This class provides a table-based {@link CharsetDecoder}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TableDecoder extends CharsetDecoder {
 
-    /**
-     * The field {@code table} contains the table.
-     */
-    private final char[] table;
+  /**
+   * The field {@code table} contains the table.
+   */
+  private final char[] table;
 
-    /**
-     * Creates a new object.
-     *
-     * @param cs the character set
-     * @param table the table
-     */
-    public TableDecoder(Charset cs, char[] table) {
+  /**
+   * Creates a new object.
+   *
+   * @param cs    the character set
+   * @param table the table
+   */
+  public TableDecoder( Charset cs, char[] table ) {
 
-        super(cs, 1.0f, 1.0f);
-        this.table = table;
+    super( cs, 1.0f, 1.0f );
+    this.table = table;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see java.nio.charset.CharsetDecoder#decodeLoop(java.nio.ByteBuffer,
+   * java.nio.CharBuffer)
+   */
+  @Override
+  protected CoderResult decodeLoop( ByteBuffer in, CharBuffer out ) {
+
+    for( int i = 0; i < in.limit(); i++ ) {
+      byte c = in.get();
+      out.put( table[ c ] );
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see java.nio.charset.CharsetDecoder#decodeLoop(java.nio.ByteBuffer,
-     *      java.nio.CharBuffer)
-     */
-    @Override
-    protected CoderResult decodeLoop(ByteBuffer in, CharBuffer out) {
-
-        for (int i = 0; i < in.limit(); i++) {
-            byte c = in.get();
-            out.put(table[c]);
-        }
-
-        return null;
-    }
+    return null;
+  }
 
 }

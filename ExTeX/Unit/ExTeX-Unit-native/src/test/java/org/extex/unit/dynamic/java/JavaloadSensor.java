@@ -27,58 +27,56 @@ import org.extex.typesetter.Typesetter;
  * Dummy Loadable which just records that the load has been requested.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class JavaloadSensor implements Loadable {
 
-    /**
-     * The field {@code sensed} contains the boolean indicating that the
-     * load method has been invoked.
-     */
-    private static boolean sensed = false;
+  /**
+   * The field {@code sensed} contains the boolean indicating that the
+   * load method has been invoked.
+   */
+  private static boolean sensed = false;
 
-    /**
-     * Getter for sensed.
-     *
-     * @return the sensed
-     */
-    public static boolean isSensed() {
+  /**
+   * Getter for sensed.
+   *
+   * @return the sensed
+   */
+  public static boolean isSensed() {
 
-        return sensed;
-    }
+    return sensed;
+  }
 
-    /**
-     * Setter for sensed.
-     *
-     * @param sensed the sensed to set
-     */
-    public static void setSensed(boolean sensed) {
+  /**
+   * Setter for sensed.
+   *
+   * @param sensed the sensed to set
+   */
+  public static void setSensed( boolean sensed ) {
 
-        JavaloadSensor.sensed = sensed;
-    }
+    JavaloadSensor.sensed = sensed;
+  }
 
 
-    public JavaloadSensor() {
+  public JavaloadSensor() {
 
-        sensed = false;
-    }
+    sensed = false;
+  }
 
-    /**
-     * Perform any initializations desirable after the component has been
-     * loaded.
-     *
-     * @param context the processor context
-     * @param typesetter the current typesetter
-     *
-     * @throws GeneralException in case of an error
-     *
-     * @see org.extex.unit.dynamic.java.Loadable#init(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.Typesetter)
-     */
-    public void init(Context context, Typesetter typesetter)
-            throws GeneralException {
+  /**
+   * Perform any initializations desirable after the component has been
+   * loaded.
+   *
+   * @param context    the processor context
+   * @param typesetter the current typesetter
+   * @throws GeneralException in case of an error
+   * @see org.extex.unit.dynamic.java.Loadable#init(
+   *org.extex.interpreter.context.Context,
+   * org.extex.typesetter.Typesetter)
+   */
+  public void init( Context context, Typesetter typesetter )
+      throws GeneralException {
 
-        sensed = true;
-    }
+    sensed = true;
+  }
 
 }

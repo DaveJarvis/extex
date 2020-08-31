@@ -23,7 +23,7 @@ package org.extex.font.format;
  * Marker interface for a font with afm metrics.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface AfmMetricFont {
 
 }

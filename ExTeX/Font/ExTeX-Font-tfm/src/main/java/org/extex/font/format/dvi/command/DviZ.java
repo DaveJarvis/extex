@@ -21,78 +21,78 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: z
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviZ extends DviCommand {
 
-    /**
-     * z0
-     */
-    private static final int Z0 = 166;
+  /**
+   * z0
+   */
+  private static final int Z0 = 166;
 
-    /**
-     * the value
-     */
-    private final int value;
+  /**
+   * the value
+   */
+  private final int value;
 
-    /**
-     * the z0
-     */
-    private final boolean z0;
+  /**
+   * the z0
+   */
+  private final boolean z0;
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param v the value
-     */
-    public DviZ(final int opc, final int sp, final int v) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param v   the value
+   */
+  public DviZ( final int opc, final int sp, final int v ) {
 
-        this(opc, sp, v, false);
-    }
+    this( opc, sp, v, false );
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param v the value
-     * @param z the z0
-     */
-    public DviZ(final int opc, final int sp, final int v, final boolean z) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param v   the value
+   * @param z   the z0
+   */
+  public DviZ( final int opc, final int sp, final int v, final boolean z ) {
 
-        super(opc, sp);
-        value = v;
-        z0 = z;
-    }
+    super( opc, sp );
+    value = v;
+    z0 = z;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return new StringBuilder('z').append(getOpcode() - Z0).toString();
-    }
+    return new StringBuilder( 'z' ).append( getOpcode() - Z0 ).toString();
+  }
 
-    /**
-     * Returns the value.
-     * 
-     * @return Returns the value.
-     */
-    public int getValue() {
+  /**
+   * Returns the value.
+   *
+   * @return Returns the value.
+   */
+  public int getValue() {
 
-        return value;
-    }
+    return value;
+  }
 
-    /**
-     * Returns the z0.
-     * 
-     * @return Returns the zy0.
-     */
-    public boolean isZ0() {
+  /**
+   * Returns the z0.
+   *
+   * @return Returns the zy0.
+   */
+  public boolean isZ0() {
 
-        return z0;
-    }
+    return z0;
+  }
 
 }

@@ -32,71 +32,72 @@ import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
  * This WhatsIt node writes some expanded tokens to an out file on shipping.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class WhatsItWriteNode extends WhatsItNode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code key} contains the key of the output file to write to.
-     */
-    private final String key;
+  /**
+   * The field {@code key} contains the key of the output file to write to.
+   */
+  private final String key;
 
-    /**
-     * The field {@code tokens} contains the tokens to expand and write.
-     */
-    private final Tokens tokens;
+  /**
+   * The field {@code tokens} contains the tokens to expand and write.
+   */
+  private final Tokens tokens;
 
-    /**
-     * The field {@code writer} contains the writer used as target when the
-     * node is shipped out.
-     */
-    private final transient TokensWriter writer;
+  /**
+   * The field {@code writer} contains the writer used as target when the
+   * node is shipped out.
+   */
+  private final transient TokensWriter writer;
 
-    /**
-     * The field {@code source} contains the token source for expansion.
-     */
-    private final transient TokenSource source;
+  /**
+   * The field {@code source} contains the token source for expansion.
+   */
+  private final transient TokenSource source;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param key the key for the OutFile
-     * @param tokens the tokens to write (after expansion)
-     * @param source the interpreter for expansion
-     * @param writer the target writer
-     */
-    public WhatsItWriteNode(String key, Tokens tokens, TokenSource source,
-            TokensWriter writer) {
+  /**
+   * Creates a new object.
+   *
+   * @param key    the key for the OutFile
+   * @param tokens the tokens to write (after expansion)
+   * @param source the interpreter for expansion
+   * @param writer the target writer
+   */
+  public WhatsItWriteNode( String key, Tokens tokens, TokenSource source,
+                           TokensWriter writer ) {
 
-        this.key = key;
-        this.tokens = tokens;
-        this.source = source;
-        this.writer = writer;
+    this.key = key;
+    this.tokens = tokens;
+    this.source = source;
+    this.writer = writer;
+  }
+
+  /**
+   * org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
+   * org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
+   */
+  @Override
+  public Node atShipping( PageContext context, Typesetter typesetter,
+                          FixedDimen posX, FixedDimen posY )
+      throws GeneralException {
+
+    Tokens toks = source.expand( tokens, typesetter );
+    if( !(context instanceof Context) ) {
+      // TODO gene: unimplemented
+      throw new RuntimeException( "unimplemented" );
     }
+    writer.write( key, toks, (Context) context );
 
-    /**
-*      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
-     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
-     */
-    @Override
-    public Node atShipping(PageContext context, Typesetter typesetter,
-            FixedDimen posX, FixedDimen posY) throws GeneralException {
-
-        Tokens toks = source.expand(tokens, typesetter);
-        if (!(context instanceof Context)) {
-            // TODO gene: unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-        writer.write(key, toks, (Context) context);
-
-        return null;
-    }
+    return null;
+  }
 
 }

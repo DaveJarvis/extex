@@ -24,249 +24,252 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \message}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MessageTest extends NoFlagsPrimitiveTester {
 
 
-    public MessageTest() {
+  public MessageTest() {
 
-        setPrimitive("message");setArguments("{}");setPrepare("");
-    }
+    setPrimitive( "message" );
+    setArguments( "{}" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message prints
-     * its plain argument. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessage1() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message prints
+   * its plain argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessage1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\errorstopmode" + DEFINE_BRACES + "\\message{Hello world!}"
-                    + "\\end ",
-            // --- log message ---
-            "Hello world!");
-    }
+    assertFailure(// --- input code ---
+                  "\\errorstopmode" + DEFINE_BRACES + "\\message{Hello world!}"
+                      + "\\end ",
+                  // --- log message ---
+                  "Hello world!" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message expands
-     * macros in the argument. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessage10() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message expands
+   * macros in the argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessage10() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\scrollmode" + DEFINE_BRACES + "\\def\\x{abc}" + "\\message{\\x}"
-                    + "\\end ",
-            // --- log message ---
-            "abc");
-    }
+    assertFailure(// --- input code ---
+                  "\\scrollmode" + DEFINE_BRACES + "\\def\\x{abc}" + 
+                      "\\message{\\x}"
+                      + "\\end ",
+                  // --- log message ---
+                  "abc" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message prints
-     * its plain argument. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessage2() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message prints
+   * its plain argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessage2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\batchmode" + DEFINE_BRACES + "\\message{Hello world!}"
-                    + "\\end ",
-            // --- log message ---
-            "Hello world!");
-    }
+    assertFailure(// --- input code ---
+                  "\\batchmode" + DEFINE_BRACES + "\\message{Hello world!}"
+                      + "\\end ",
+                  // --- log message ---
+                  "Hello world!" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message prints
-     * its plain argument. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessage3() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message prints
+   * its plain argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessage3() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\nonstopmode" + DEFINE_BRACES + "\\message{Hello world!}"
-                    + "\\end ",
-            // --- log message ---
-            "Hello world!");
-    }
+    assertFailure(// --- input code ---
+                  "\\nonstopmode" + DEFINE_BRACES + "\\message{Hello world!}"
+                      + "\\end ",
+                  // --- log message ---
+                  "Hello world!" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message prints
-     * its plain argument. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessage4() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message prints
+   * its plain argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessage4() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\scrollmode" + DEFINE_BRACES + "\\message{Hello world!}"
-                    + "\\end ",
-            // --- log message ---
-            "Hello world!");
-    }
+    assertFailure(// --- input code ---
+                  "\\scrollmode" + DEFINE_BRACES + "\\message{Hello world!}"
+                      + "\\end ",
+                  // --- log message ---
+                  "Hello world!" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message
-     * complains about undefined control sequences as argument. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessageErr1() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message
+   * complains about undefined control sequences as argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessageErr1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\scrollmode" + DEFINE_BRACES + "\\message{\\x}" + "\\end ",
-            // --- log message ---
-            "Undefined control sequence the control sequence \\x");
-    }
+    assertFailure(// --- input code ---
+                  "\\scrollmode" + DEFINE_BRACES + "\\message{\\x}" + "\\end ",
+                  // --- log message ---
+                  "Undefined control sequence the control sequence \\x" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message
-     * complains about undefined control sequences embedded in the argument.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessageErr2() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message
+   * complains about undefined control sequences embedded in the argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessageErr2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\scrollmode" + DEFINE_BRACES + "\\message{a\\x b}" + "\\end ",
-            // --- log message ---
-            "Undefined control sequence the control sequence \\x");
-    }
+    assertFailure(// --- input code ---
+                  "\\scrollmode" + DEFINE_BRACES + "\\message{a\\x b}" + 
+                      "\\end ",
+                  // --- log message ---
+                  "Undefined control sequence the control sequence \\x" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message on
-     * embedded primitives works. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessageErr3() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message on
+   * embedded primitives works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessageErr3() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\scrollmode" + DEFINE_BRACES + "\\message{a\\hfill b}" + "\\end ",
-            // --- log message ---
-            "a\\hfill b");
-    }
+    assertFailure(// --- input code ---
+                  "\\scrollmode" + DEFINE_BRACES + "\\message{a\\hfill b}" + 
+                      "\\end ",
+                  // --- log message ---
+                  "a\\hfill b" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message on
-     * embedded primitives works. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessageErr4() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message on
+   * embedded primitives works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessageErr4() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\scrollmode" + DEFINE_BRACES + "\\message{a\\par b}" + "\\end ",
-            // --- log message ---
-            "a\\par b");
-    }
+    assertFailure(// --- input code ---
+                  "\\scrollmode" + DEFINE_BRACES + "\\message{a\\par b}" + 
+                      "\\end ",
+                  // --- log message ---
+                  "a\\par b" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message can be
-     * redirected. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessageLog1() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message can be
+   * redirected.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessageLog1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\message to log {x}",
-            // --- log message ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\message to log {x}",
+                  // --- log message ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message needs an
-     * argument for {@code to}. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessageLog2() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message needs an
+   * argument for {@code to}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessageLog2() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\message to {x}",
-            // --- log message ---
-            "`log' target missing");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\message to {x}",
+                  // --- log message ---
+                  "`log' target missing" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that \message in
-     * default mode complains about an undefined control sequence. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessageUndef1() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that \message in
+   * default mode complains about an undefined control sequence.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMessageUndef1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\message{\\x}",
-            // --- log message ---
-            "Undefined control sequence the control sequence \\x");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\message{\\x}",
+                  // --- log message ---
+                  "Undefined control sequence the control sequence \\x" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that {@code \message}
-     * results in an error message, if the following token is not a left brace.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMissingBrace1() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that {@code \message}
+   * results in an error message, if the following token is not a left brace.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMissingBrace1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\message }" + "\\end ",
-            // --- log message ---
-            "Missing `{' inserted");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\message }" + "\\end ",
+                  // --- log message ---
+                  "Missing `{' inserted" );
+  }
 
-    /**
-     * <testcase primitive="\message"> Test case checking that {@code \message}
-     * results in an error message, if the following token is not a left brace.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMissingBrace2() throws Exception {
+  /**
+   * <testcase primitive="\message"> Test case checking that {@code \message}
+   * results in an error message, if the following token is not a left brace.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMissingBrace2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\message {" + "\\end ",
-            // --- log message ---
-            "Missing `{' inserted");
-    }
+    assertFailure(// --- input code ---
+                  "\\message {" + "\\end ",
+                  // --- log message ---
+                  "Missing `{' inserted" );
+  }
 
-    // /**
-    // * <testcase primitive="\message"> Test case checking that \message . . .
-    // * 
-    // *
-    // * @throws Exception in case of an error
-    // */
-    // @Test
-    // public void testMessageProtected1() throws Exception {
+  // /**
+  // * <testcase primitive="\message"> Test case checking that \message . . .
+  // * 
+  // *
+  // * @throws Exception in case of an error
+  // */
+  // @Test
+  // public void testMessageProtected1() throws Exception {
 
-    // assertFailure(//--- input code ---
-    // DEFINE_BRACES
-    // + "\\protected\\def\\x{abc}"
-    // + "\\message{\\x}",
-    // //--- log message ---
-    // "\\x");
-    // }
+  // assertFailure(//--- input code ---
+  // DEFINE_BRACES
+  // + "\\protected\\def\\x{abc}"
+  // + "\\message{\\x}",
+  // //--- log message ---
+  // "\\x");
+  // }
 }

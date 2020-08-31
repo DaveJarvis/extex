@@ -26,15 +26,15 @@ import java.io.Reader;
  * a new reader-based stream has been opened.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OpenReaderObserver {
 
-    /**
-     * This method is meant to be invoked just after a new reader-based stream
-     * has been opened.
-     *
-     * @param reader the reader to be processed
-     */
-    void update(Reader reader);
+  /**
+   * This method is meant to be invoked just after a new reader-based stream
+   * has been opened.
+   *
+   * @param reader the reader to be processed
+   */
+  void update( Reader reader );
 
 }

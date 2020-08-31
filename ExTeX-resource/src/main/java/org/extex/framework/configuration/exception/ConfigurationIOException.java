@@ -23,41 +23,41 @@ package org.extex.framework.configuration.exception;
  * This Exception is thrown when a configuration is requested with the path
  * {@code null} or the empty string. Alternatively it can be used when
  * some other kind of configuration information is missing.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationIOException extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2010L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2010L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the next {@link Throwable} in the list
-     */
-    public ConfigurationIOException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the next {@link Throwable} in the list
+   */
+  public ConfigurationIOException( Throwable cause ) {
 
-        super(null, cause);
-    }
+    super( null, cause );
+  }
 
-    /**
-     * Getter for the text prefix of this Exception. The text is taken from the
-     * resource bundle {@code ConfigurationEception} under the key
-     * {@code ConfigurationIOException.Text}.
-     * 
-     * @return the text
-     */
-    @Override
-    protected String getText() {
+  /**
+   * Getter for the text prefix of this Exception. The text is taken from the
+   * resource bundle {@code ConfigurationEception} under the key
+   * {@code ConfigurationIOException.Text}.
+   *
+   * @return the text
+   */
+  @Override
+  protected String getText() {
 
-        Throwable cause = getCause();
-        String localizedMessage =
-                (cause == null ? "" : cause.getLocalizedMessage());
-        return getLocalizer().format("ConfigurationIOException.Text",
-            localizedMessage);
-    }
+    Throwable cause = getCause();
+    String localizedMessage =
+        (cause == null ? "" : cause.getLocalizedMessage());
+    return getLocalizer().format( "ConfigurationIOException.Text",
+                                  localizedMessage );
+  }
 
 }

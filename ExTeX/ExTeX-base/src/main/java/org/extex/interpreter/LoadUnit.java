@@ -19,9 +19,6 @@
 
 package org.extex.interpreter;
 
-import java.util.Iterator;
-import java.util.logging.Logger;
-
 import org.extex.backend.outputStream.OutputStreamConsumer;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.core.UnicodeChar;
@@ -50,12 +47,15 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.macro.LetCode;
 
+import java.util.Iterator;
+import java.util.logging.Logger;
+
 /**
  * This is a factory load to units from a configuration. A unit is a
  * configuration consisting of an optional setup class and a set of primitives.
  * When the unit is loaded the setup class is instantiated and run. Then the
  * primitives are created and registered in the context.
- * 
+ *
  * <pre>
  *  &lt;unit name="the name"
  *        class="the.setup.Class"&gt;
@@ -66,184 +66,197 @@ import org.extex.unit.base.macro.LetCode;
  *    &lt;/primitive&gt;
  *  &lt;/unit&gt;
  * </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class LoadUnit extends AbstractFactory<Code> {
 
-    /**
-     * The field {@code DEFINE_TAG} contains the tag name used to find
-     * definitions for primitives.
-     */
-    private static final String DEFINE_TAG = "define";
-
-    /**
-     * The constant {@code NAME_ATTRIBUTE} contains the name of the attribute
-     * holding the name of the primitive to define.
-     */
-    private static final String NAME_ATTRIBUTE = "name";
-
-    /**
-     * The field {@code NAMESPACE_ATTRIBUTE} contains the attribute name to
-     * find the name space for the new primitive.
-     */
-    private static final String NAMESPACE_ATTRIBUTE = "namespace";
-
-    /**
-     * Prepare the primitives according to their configuration. The given
-     * configuration may contain sub-configurations with the name
-     * {@code primitives} which includes the definition of primitives. Those
-     * primitives are defined no matter if they are already defined or not.
-     * 
-     * @param configuration the configuration
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param logger the logger to use
-     * @param outputFactory the output stream factory
-     * @param resourcefinder the resource finder
-     * 
-     * @throws ConfigurationException in case of a configuration error
-     * @throws GeneralException in case of an error
-     */
-    public static void loadUnit(Configuration configuration, Context context,
-            TokenSource source, Typesetter typesetter, Logger logger,
-            OutputStreamFactory outputFactory, ResourceFinder resourcefinder)
-            throws GeneralException {
-
-        TokenFactory tokenFactory = context.getTokenFactory();
-        LoadUnit primitiveFactory = new LoadUnit();
-
-        String name = configuration.getAttribute(NAME_ATTRIBUTE);
-        if (name == null) {
-            name = "?";
-        }
-        UnitInfo unitInfo;
-
-        if (configuration.getAttribute(CLASS_ATTRIBUTE) != null) {
-            UnitInfoFactory factory = new UnitInfoFactory();
-            factory.enableLogging(logger);
-            factory.configure(configuration);
-            unitInfo = factory.createUnitInfo();
-            unitInfo.setName(name);
-        } else {
-            unitInfo = new UnitInfo(name);
-        }
-
-        context.addUnit(unitInfo);
-
-        if (unitInfo instanceof Loader) {
-            ((Loader) unitInfo).load(context, source, typesetter);
-        }
-
-        Iterator<Configuration> iterator = configuration.iterator("primitives");
-        while (iterator.hasNext()) {
-            primitiveFactory.define(iterator.next(), tokenFactory, context,
-                typesetter, logger, outputFactory, resourcefinder);
-        }
-
-        iterator = configuration.iterator("import");
-        while (iterator.hasNext()) {
-            String ns = iterator.next().getAttribute("namespace");
-            Tokens export = context.getToks(ns + "\bexport");
-            String namespace = context.getNamespace();
-            int length = export.length();
-
-            for (int i = 0; i < length; i++) {
-                Token t = export.get(i);
-                if (t instanceof CodeToken) {
-                    if (context.getCode((CodeToken) t) == null) {
-                        throw new HelpingException(
-                            LocalizerFactory.getLocalizer(LoadUnit.class),
-                            "Loader.Import.undef", t.toString());
-                    }
-                    context.setCode(
-                        ((CodeToken) t).cloneInNamespace(namespace),
-                        (t instanceof CodeToken 
-                                ? context.getCode((CodeToken) t)
-                                : new LetCode(t)), 
-                        false);
-                }
-            }
-        }
-
-        if (unitInfo instanceof StartableUnit) {
-            ((StartableUnit) unitInfo).start(context, source, typesetter);
-        }
-    }
-
-    /**
-     * The field {@code stringSource} contains the reused object for string
-     * parsing.
-     */
-    private final StringSource stringSource = new StringSource();
-
-
-    private LoadUnit() {
-
-    }
+  /**
+   * The field {@code DEFINE_TAG} contains the tag name used to find
+   * definitions for primitives.
+   */
+  private static final String DEFINE_TAG = "define";
 
   /**
-     * Scan a configuration and define the primitives found.
-     * 
-     * @param configuration the configuration to scan
-     * @param tokenFactory the token factory to use
-     * @param context the interpreter context to register the primitive in
-     * @param typesetter the typesetter
-     * @param outputLogger the logger to produce output to
-     * @param outputFactory the factory for new output streams
-     * @param resourcefinder the resource finder
-     * 
-     * @throws GeneralException In case of an error
-     * @throws ConfigurationException in case of an error
-     *         <ul>
-     *         <li>ConfigurationMissingAttributeException in case of a missing
-     *         argument</li>
-     *         <li>ConfigurationInstantiationException in case of an error
-     *         during instantiation</li>
-     *         <li>ConfigurationClassNotFoundException in case of a missing
-     *         class</li>
-     *         <li>ConfigurationWrapperException in case of another error which
-     *         is wrapped</li>
-     *         </ul>
-     */
-    public void define(Configuration configuration, TokenFactory tokenFactory,
-            Context context, Typesetter typesetter, Logger outputLogger,
-            OutputStreamFactory outputFactory, ResourceFinder resourcefinder)
-            throws GeneralException {
+   * The constant {@code NAME_ATTRIBUTE} contains the name of the attribute
+   * holding the name of the primitive to define.
+   */
+  private static final String NAME_ATTRIBUTE = "name";
 
-        enableLogging(outputLogger);
-        UnicodeChar esc = UnicodeChar.get('\\');
-        Iterator<Configuration> iterator = configuration.iterator(DEFINE_TAG);
+  /**
+   * The field {@code NAMESPACE_ATTRIBUTE} contains the attribute name to
+   * find the name space for the new primitive.
+   */
+  private static final String NAMESPACE_ATTRIBUTE = "namespace";
 
-        while (iterator.hasNext()) {
-            Configuration cfg = iterator.next();
+  /**
+   * Prepare the primitives according to their configuration. The given
+   * configuration may contain sub-configurations with the name
+   * {@code primitives} which includes the definition of primitives. Those
+   * primitives are defined no matter if they are already defined or not.
+   *
+   * @param configuration  the configuration
+   * @param context        the interpreter context
+   * @param source         the source for new tokens
+   * @param typesetter     the typesetter
+   * @param logger         the logger to use
+   * @param outputFactory  the output stream factory
+   * @param resourcefinder the resource finder
+   * @throws ConfigurationException in case of a configuration error
+   * @throws GeneralException       in case of an error
+   */
+  public static void loadUnit( Configuration configuration, Context context,
+                               TokenSource source, Typesetter typesetter,
+                               Logger logger,
+                               OutputStreamFactory outputFactory,
+                               ResourceFinder resourcefinder )
+      throws GeneralException {
 
-            String name = cfg.getAttribute(NAME_ATTRIBUTE);
-            Token t = tokenFactory.createToken(Catcode.ESCAPE, 
-                UnicodeChar.get('\\'), name, Namespace.DEFAULT_NAMESPACE);
-            Code code = createInstanceForConfiguration(cfg, Code.class, t);
+    TokenFactory tokenFactory = context.getTokenFactory();
+    LoadUnit primitiveFactory = new LoadUnit();
 
-            String namespace = cfg.getAttribute(NAMESPACE_ATTRIBUTE);
-            if (namespace == null) {
-                namespace = Namespace.DEFAULT_NAMESPACE;
-            }
-
-            context.setCode((CodeToken) tokenFactory.createToken(
-                Catcode.ESCAPE, esc, name, namespace), code, true);
-            if (code instanceof InitializableCode) {
-
-                stringSource.reset(cfg.getValue());
-                ((InitializableCode) code).init(context, stringSource,
-                    typesetter);
-            }
-            if (code instanceof OutputStreamConsumer) {
-                ((OutputStreamConsumer) code)
-                    .setOutputStreamFactory(outputFactory);
-            }
-            if (code instanceof ResourceAware) {
-                ((ResourceAware) code).setResourceFinder(resourcefinder);
-            }
-        }
+    String name = configuration.getAttribute( NAME_ATTRIBUTE );
+    if( name == null ) {
+      name = "?";
     }
+    UnitInfo unitInfo;
+
+    if( configuration.getAttribute( CLASS_ATTRIBUTE ) != null ) {
+      UnitInfoFactory factory = new UnitInfoFactory();
+      factory.enableLogging( logger );
+      factory.configure( configuration );
+      unitInfo = factory.createUnitInfo();
+      unitInfo.setName( name );
+    }
+    else {
+      unitInfo = new UnitInfo( name );
+    }
+
+    context.addUnit( unitInfo );
+
+    if( unitInfo instanceof Loader ) {
+      ((Loader) unitInfo).load( context, source, typesetter );
+    }
+
+    Iterator<Configuration> iterator = configuration.iterator( "primitives" );
+    while( iterator.hasNext() ) {
+      primitiveFactory.define( iterator.next(),
+                               tokenFactory,
+                               context,
+                               typesetter,
+                               logger,
+                               outputFactory,
+                               resourcefinder );
+    }
+
+    iterator = configuration.iterator( "import" );
+    while( iterator.hasNext() ) {
+      String ns = iterator.next().getAttribute( "namespace" );
+      Tokens export = context.getToks( ns + "\bexport" );
+      String namespace = context.getNamespace();
+      int length = export.length();
+
+      for( int i = 0; i < length; i++ ) {
+        Token t = export.get( i );
+        if( t instanceof CodeToken ) {
+          if( context.getCode( (CodeToken) t ) == null ) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer( LoadUnit.class ),
+                "Loader.Import.undef", t.toString() );
+          }
+          context.setCode(
+              ((CodeToken) t).cloneInNamespace( namespace ),
+              (t instanceof CodeToken
+                  ? context.getCode( (CodeToken) t )
+                  : new LetCode( t )),
+              false );
+        }
+      }
+    }
+
+    if( unitInfo instanceof StartableUnit ) {
+      ((StartableUnit) unitInfo).start( context, source, typesetter );
+    }
+  }
+
+  /**
+   * The field {@code stringSource} contains the reused object for string
+   * parsing.
+   */
+  private final StringSource stringSource = new StringSource();
+
+
+  private LoadUnit() {
+
+  }
+
+  /**
+   * Scan a configuration and define the primitives found.
+   *
+   * @param configuration  the configuration to scan
+   * @param tokenFactory   the token factory to use
+   * @param context        the interpreter context to register the primitive in
+   * @param typesetter     the typesetter
+   * @param outputLogger   the logger to produce output to
+   * @param outputFactory  the factory for new output streams
+   * @param resourcefinder the resource finder
+   * @throws GeneralException       In case of an error
+   * @throws ConfigurationException in case of an error
+   *                                <ul>
+   *                                <li>ConfigurationMissingAttributeException in case of a missing
+   *                                argument</li>
+   *                                <li>ConfigurationInstantiationException
+   *                                in case of an error
+   *                                during instantiation</li>
+   *                                <li>ConfigurationClassNotFoundException
+   *                                in case of a missing
+   *                                class</li>
+   *                                <li>ConfigurationWrapperException in case
+   *                                of another error which
+   *                                is wrapped</li>
+   *                                </ul>
+   */
+  public void define( Configuration configuration, TokenFactory tokenFactory,
+                      Context context, Typesetter typesetter,
+                      Logger outputLogger,
+                      OutputStreamFactory outputFactory,
+                      ResourceFinder resourcefinder )
+      throws GeneralException {
+
+    enableLogging( outputLogger );
+    UnicodeChar esc = UnicodeChar.get( '\\' );
+    Iterator<Configuration> iterator = configuration.iterator( DEFINE_TAG );
+
+    while( iterator.hasNext() ) {
+      Configuration cfg = iterator.next();
+
+      String name = cfg.getAttribute( NAME_ATTRIBUTE );
+      Token t = tokenFactory.createToken( Catcode.ESCAPE,
+                                          UnicodeChar.get( '\\' ),
+                                          name,
+                                          Namespace.DEFAULT_NAMESPACE );
+      Code code = createInstanceForConfiguration( cfg, Code.class, t );
+
+      String namespace = cfg.getAttribute( NAMESPACE_ATTRIBUTE );
+      if( namespace == null ) {
+        namespace = Namespace.DEFAULT_NAMESPACE;
+      }
+
+      context.setCode( (CodeToken) tokenFactory.createToken(
+          Catcode.ESCAPE, esc, name, namespace ), code, true );
+      if( code instanceof InitializableCode ) {
+
+        stringSource.reset( cfg.getValue() );
+        ((InitializableCode) code).init( context, stringSource,
+                                         typesetter );
+      }
+      if( code instanceof OutputStreamConsumer ) {
+        ((OutputStreamConsumer) code)
+            .setOutputStreamFactory( outputFactory );
+      }
+      if( code instanceof ResourceAware ) {
+        ((ResourceAware) code).setResourceFinder( resourcefinder );
+      }
+    }
+  }
 }

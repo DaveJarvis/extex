@@ -24,25 +24,25 @@ import org.extex.exbib.core.io.Locator;
 /**
  * This {@link ExBibException ExBibException} is thrown when the end of file has
  * been reached unexpectedly while reading a block.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibEofInBlockException extends ExBibEofException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param locator the locator
-     */
-    public ExBibEofInBlockException(Locator locator) {
+  /**
+   * Create a new object.
+   *
+   * @param locator the locator
+   */
+  public ExBibEofInBlockException( Locator locator ) {
 
-        super(null, locator);
-    }
+    super( null, locator );
+  }
 
 }

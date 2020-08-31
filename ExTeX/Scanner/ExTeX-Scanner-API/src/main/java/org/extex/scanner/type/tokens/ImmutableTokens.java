@@ -28,52 +28,50 @@ import org.extex.scanner.type.token.Token;
  * it has been created.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ImmutableTokens extends Tokens {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     * The new object has no items in it.
-     */
-    public ImmutableTokens() {
+  /**
+   * Creates a new object.
+   * The new object has no items in it.
+   */
+  public ImmutableTokens() {
 
-    }
+  }
 
-    /**
-     * Add another token to the end of the Tokens.
-     * This operation is unsupported and leads to an exception.
-     *
-     * @param t The token to add
-     *
-     * @see org.extex.scanner.type.tokens.Tokens#add(
-     *      org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void add(Token t) {
+  /**
+   * Add another token to the end of the Tokens.
+   * This operation is unsupported and leads to an exception.
+   *
+   * @param t The token to add
+   * @see org.extex.scanner.type.tokens.Tokens#add(
+   *org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void add( Token t ) {
 
-        throw new UnsupportedOperationException(
-            "Unable to add to an immutable object");
-    }
+    throw new UnsupportedOperationException(
+        "Unable to add to an immutable object" );
+  }
 
-    /**
-     * Add another token list to the end of the Tokens.
-     * This operation is unsupported and leads to an exception.
-     *
-     * @param toks the tokens to add
-     *
-     * @see org.extex.scanner.type.tokens.Tokens#add(
-     *      org.extex.scanner.type.tokens.Tokens)
-     */
-    @Override
-    public void add(Tokens toks) {
+  /**
+   * Add another token list to the end of the Tokens.
+   * This operation is unsupported and leads to an exception.
+   *
+   * @param toks the tokens to add
+   * @see org.extex.scanner.type.tokens.Tokens#add(
+   *org.extex.scanner.type.tokens.Tokens)
+   */
+  @Override
+  public void add( Tokens toks ) {
 
-        throw new UnsupportedOperationException(
-            "Unable to add to an immutable object");
-    }
+    throw new UnsupportedOperationException(
+        "Unable to add to an immutable object" );
+  }
 
 }

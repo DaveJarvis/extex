@@ -24,62 +24,61 @@ import java.util.Map;
 
 /**
  * This class provides a map of arrays with a default value.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MarkupNum extends Markup {
 
-    /**
-     * The field {@code numMap} contains the content.
-     */
-    private final Map<String, int[]> numMap = new HashMap<String, int[]>();
+  /**
+   * The field {@code numMap} contains the content.
+   */
+  private final Map<String, int[]> numMap = new HashMap<String, int[]>();
 
-    /**
-     * Creates a new object.
-     * 
-     * @param displayName the name for debugging
-     */
-    public MarkupNum(String displayName) {
+  /**
+   * Creates a new object.
+   *
+   * @param displayName the name for debugging
+   */
+  public MarkupNum( String displayName ) {
 
-        super(displayName);
+    super( displayName );
+  }
+
+  /**
+   * Get an element at a certain position. If the position is empty then an
+   * attempt is made to use the default value at position {@code null}.
+   * If everything fails 0 is returned.
+   *
+   * @param key   the key
+   * @param index the index
+   * @return the specified element or {@code nil}
+   */
+  public int getNumber( String key, int index ) {
+
+    int[] value = numMap.get( key );
+    if( value == null && key != null ) {
+      value = numMap.get( null );
     }
+    return (value == null ? 0 : value[ index ]);
+  }
 
-    /**
-     * Get an element at a certain position. If the position is empty then an
-     * attempt is made to use the default value at position {@code null}.
-     * If everything fails 0 is returned.
-     * 
-     * @param key the key
-     * @param index the index
-     * 
-     * @return the specified element or {@code nil}
-     */
-    public int getNumber(String key, int index) {
+  /**
+   * Add a value to the end.
+   *
+   * @param key   the key
+   * @param index the index
+   * @param value the value to add
+   */
+  public void setNumber( String key, int index, int value ) {
 
-        int[] value = numMap.get(key);
-        if (value == null && key != null) {
-            value = numMap.get(null);
-        }
-        return (value == null ? 0 : value[index]);
+    int[] a = numMap.get( key );
+    if( a == null ) {
+      a = new int[ 2 ];
+      numMap.put( key, a );
+      a[ 0 ] = 0;
+      a[ 1 ] = 0;
     }
-
-    /**
-     * Add a value to the end.
-     * 
-     * @param key the key
-     * @param index the index
-     * @param value the value to add
-     */
-    public void setNumber(String key, int index, int value) {
-
-        int[] a = numMap.get(key);
-        if (a == null) {
-            a = new int[2];
-            numMap.put(key, a);
-            a[0] = 0;
-            a[1] = 0;
-        }
-        a[index] = value;
-    }
+    a[ index ] = value;
+  }
 
 }

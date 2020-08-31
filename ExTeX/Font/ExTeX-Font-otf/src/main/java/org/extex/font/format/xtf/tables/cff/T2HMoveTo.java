@@ -19,105 +19,104 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * hmoveto: dx1 hmoveto (22).
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2HMoveTo extends T2PathConstruction {
 
-    /**
-     * dx.
-     */
-    private final T2Number dx;
+  /**
+   * dx.
+   */
+  private final T2Number dx;
 
-    /**
-     * The width (optional).
-     */
-    private T2Number width = null;
+  /**
+   * The width (optional).
+   */
+  private T2Number width = null;
 
-    /**
-     * Create a new object.
-     * 
-     * @param ch The char string.
-     * @param stack The stack.
-     * 
-     * @throws IOException in case of an error
-     */
-    public T2HMoveTo(List<T2CharString> stack, CharString ch)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param ch    The char string.
+   * @param stack The stack.
+   * @throws IOException in case of an error
+   */
+  public T2HMoveTo( List<T2CharString> stack, CharString ch )
+      throws IOException {
 
-        super(stack, new short[]{T2HMOVETO}, ch);
+    super( stack, new short[]{T2HMOVETO}, ch );
 
-        int n = stack.size();
+    int n = stack.size();
 
-        if (n > 1) {
-            width = checkWidth(stack, ch);
-        }
-        n = stack.size();
-        if (n != 1) {
-            throw new T2MissingNumberException();
-        }
-
-        dx = (T2Number) stack.get(0);
-
+    if( n > 1 ) {
+      width = checkWidth( stack, ch );
+    }
+    n = stack.size();
+    if( n != 1 ) {
+      throw new T2MissingNumberException();
     }
 
-    /**
-     * Getter for dx.
-     * 
-     * @return the dx
-     */
-    public T2Number getDx() {
+    dx = (T2Number) stack.get( 0 );
 
-        return dx;
+  }
+
+  /**
+   * Getter for dx.
+   *
+   * @return the dx
+   */
+  public T2Number getDx() {
+
+    return dx;
+  }
+
+  @Override
+  public int getID() {
+
+    return TYPE_HMOVETO;
+  }
+
+  @Override
+  public String getName() {
+
+    return "hmoveto";
+  }
+
+  @Override
+  public Object getValue() {
+
+    T2Number[] arr = new T2Number[ 1 ];
+    arr[ 0 ] = dx;
+    return arr;
+  }
+
+  @Override
+  public String toText() {
+
+    StringBuilder buf = new StringBuilder();
+    if( width != null ) {
+      buf.append( width.toString() ).append( ' ' );
+    }
+    if( dx != null ) {
+      buf.append( dx.toString() ).append( ' ' );
     }
 
-@Override
-    public int getID() {
+    return buf.append( getName() ).toString();
+  }
 
-        return TYPE_HMOVETO;
-    }
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-@Override
-    public String getName() {
-
-        return "hmoveto";
-    }
-
-@Override
-    public Object getValue() {
-
-        T2Number[] arr = new T2Number[1];
-        arr[0] = dx;
-        return arr;
-    }
-
-@Override
-    public String toText() {
-
-        StringBuilder buf = new StringBuilder();
-        if (width != null) {
-            buf.append(width.toString()).append(' ');
-        }
-        if (dx != null) {
-            buf.append(dx.toString()).append(' ');
-        }
-
-        return buf.append(getName()).toString();
-    }
-
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("dx", dx);
-        writer.writeEndElement();
-    }
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "dx", dx );
+    writer.writeEndElement();
+  }
 
 }

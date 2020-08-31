@@ -32,44 +32,45 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an abstract base class for the displacement primitives.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractBoxPrimitive extends AbstractCode
-        implements
-            Boxable {
+    implements
+    Boxable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractBoxPrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractBoxPrimitive( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Flags flags = prefix.copy();
+    prefix.clear();
+    Box box = getBox( context, source, typesetter, null );
+    if( box != null ) {
+      typesetter.add( box.getNodes() );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Flags flags = prefix.copy();
-        prefix.clear();
-        Box box = getBox(context, source, typesetter, null);
-        if (box != null) {
-            typesetter.add(box.getNodes());
-        }
-        prefix.set(flags);
-    }
+    prefix.set( flags );
+  }
 
 }

@@ -26,198 +26,179 @@ import org.extex.font.exception.FontException;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.typesetter.type.node.AdjustNode;
-import org.extex.typesetter.type.node.AfterMathNode;
-import org.extex.typesetter.type.node.AlignedLeadersNode;
-import org.extex.typesetter.type.node.BeforeMathNode;
-import org.extex.typesetter.type.node.CenteredLeadersNode;
-import org.extex.typesetter.type.node.CharNode;
-import org.extex.typesetter.type.node.DiscretionaryNode;
-import org.extex.typesetter.type.node.ExpandedLeadersNode;
-import org.extex.typesetter.type.node.GlueNode;
-import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.typesetter.type.node.InsertionNode;
-import org.extex.typesetter.type.node.KernNode;
-import org.extex.typesetter.type.node.LigatureNode;
-import org.extex.typesetter.type.node.MarkNode;
-import org.extex.typesetter.type.node.PenaltyNode;
-import org.extex.typesetter.type.node.RuleNode;
-import org.extex.typesetter.type.node.SpaceNode;
-import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.typesetter.type.node.VirtualCharNode;
-import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.node.*;
 
 /**
  * Node visitor, which collect all nodes.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class CollectNodeVisitor implements NodeVisitor<Object, Object> {
 
-    /**
-     * The backend manager.
-     */
-    private final BackendFontManager manager;
+  /**
+   * The backend manager.
+   */
+  private final BackendFontManager manager;
 
-    public CollectNodeVisitor(BackendFontManager manager) {
+  public CollectNodeVisitor( BackendFontManager manager ) {
 
-        this.manager = manager;
+    this.manager = manager;
+  }
+
+  @Override
+  public Object visitAdjust( AdjustNode node, Object value ) {
+
+    return null;
+  }
+
+  @Override
+  public Object visitAfterMath( AfterMathNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitAlignedLeaders( AlignedLeadersNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitBeforeMath( BeforeMathNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitCenteredLeaders( CenteredLeadersNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitChar( CharNode node, Object value )
+      throws GeneralException {
+
+    try {
+
+      UnicodeChar uc = node.getCharacter();
+      Font font = node.getTypesettingContext().getFont();
+      manager.recognize( font.getFontKey(), uc );
+
+    } catch( FontException e ) {
+      throw new GeneralException( e.getLocalizedMessage() );
     }
 
-    @Override
-    public Object visitAdjust(AdjustNode node, Object value) {
+    return null;
+  }
 
-        return null;
+  @Override
+  public Object visitDiscretionary( DiscretionaryNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitExpandedLeaders( ExpandedLeadersNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitGlue( GlueNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitHorizontalList( HorizontalListNode node, Object value )
+      throws GeneralException {
+
+    for( Node n : node ) {
+      n.visit( this, node );
+    }
+    return null;
+  }
+
+  @Override
+  public Object visitInsertion( InsertionNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitKern( KernNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitLigature( LigatureNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitMark( MarkNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitPenalty( PenaltyNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitRule( RuleNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitSpace( SpaceNode node, Object value )
+      throws GeneralException {
+
+    return null;
+  }
+
+  @Override
+  public Object visitVerticalList( VerticalListNode node, Object value )
+      throws GeneralException {
+
+    for( Node n : node ) {
+      n.visit( this, node );
     }
 
-    @Override
-    public Object visitAfterMath(AfterMathNode node, Object value)
-            throws GeneralException {
+    return null;
+  }
 
-        return null;
-    }
+  @Override
+  public Object visitVirtualChar( VirtualCharNode node, Object value )
+      throws GeneralException {
 
-    @Override
-    public Object visitAlignedLeaders(AlignedLeadersNode node, Object value)
-            throws GeneralException {
+    return null;
+  }
 
-        return null;
-    }
+  @Override
+  public Object visitWhatsIt( WhatsItNode node, Object value )
+      throws GeneralException {
 
-    @Override
-    public Object visitBeforeMath(BeforeMathNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitCenteredLeaders(CenteredLeadersNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitChar(CharNode node, Object value)
-            throws GeneralException {
-
-        try {
-
-            UnicodeChar uc = node.getCharacter();
-            Font font = node.getTypesettingContext().getFont();
-            manager.recognize(font.getFontKey(), uc);
-
-        } catch (FontException e) {
-            throw new GeneralException(e.getLocalizedMessage());
-        }
-
-        return null;
-    }
-
-    @Override
-    public Object visitDiscretionary(DiscretionaryNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitExpandedLeaders(ExpandedLeadersNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitGlue(GlueNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitHorizontalList(HorizontalListNode node, Object value)
-            throws GeneralException {
-
-        for (Node n : node) {
-            n.visit(this, node);
-        }
-        return null;
-    }
-
-    @Override
-    public Object visitInsertion(InsertionNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitKern(KernNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitLigature(LigatureNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitMark(MarkNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitPenalty(PenaltyNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitRule(RuleNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitSpace(SpaceNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitVerticalList(VerticalListNode node, Object value)
-            throws GeneralException {
-
-        for (Node n : node) {
-            n.visit(this, node);
-        }
-
-        return null;
-    }
-
-    @Override
-    public Object visitVirtualChar(VirtualCharNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
-
-    @Override
-    public Object visitWhatsIt(WhatsItNode node, Object value)
-            throws GeneralException {
-
-        return null;
-    }
+    return null;
+  }
 
 }

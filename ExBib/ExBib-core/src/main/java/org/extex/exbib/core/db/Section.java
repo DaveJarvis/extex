@@ -19,77 +19,73 @@
 
 package org.extex.exbib.core.db;
 
-import java.io.IOException;
-
 import org.extex.exbib.core.io.Writer;
+
+import java.io.IOException;
 
 /**
  * Enumeration for sections.
  */
 public enum Section {
 
+  /**
+   * The field {@code Preamble} contains the preamble section.
+   */
+  Preamble {
     /**
-     * The field {@code Preamble} contains the preamble section.
+     *      org.extex.exbib.core.io.Writer,
+     *      org.extex.exbib.core.db.SectionVisitor,
+     *      org.extex.exbib.core.db.DB)
      */
-    Preamble {
+    @Override
+    public void visit( Writer writer, SectionVisitor visitor, DB db )
+        throws IOException {
 
-        /**
-    *      org.extex.exbib.core.io.Writer,
-         *      org.extex.exbib.core.db.SectionVisitor,
-         *      org.extex.exbib.core.db.DB)
-         */
-        @Override
-        public void visit(Writer writer, SectionVisitor visitor, DB db)
-                throws IOException {
-
-            visitor.visitPreamble(db);
-        }
-    },
+      visitor.visitPreamble( db );
+    }
+  },
+  /**
+   * The field {@code Strings} contains the strings section.
+   */
+  Strings {
     /**
-     * The field {@code Strings} contains the strings section.
+     *      org.extex.exbib.core.io.Writer,
+     *      org.extex.exbib.core.db.SectionVisitor,
+     *      org.extex.exbib.core.db.DB)
      */
-    Strings {
+    @Override
+    public void visit( Writer writer, SectionVisitor visitor, DB db )
+        throws IOException {
 
-        /**
-    *      org.extex.exbib.core.io.Writer,
-         *      org.extex.exbib.core.db.SectionVisitor,
-         *      org.extex.exbib.core.db.DB)
-         */
-        @Override
-        public void visit(Writer writer, SectionVisitor visitor, DB db)
-                throws IOException {
-
-            visitor.visitStrings(db);
-        }
-    },
+      visitor.visitStrings( db );
+    }
+  },
+  /**
+   * The field {@code Entries} contains the entries section.
+   */
+  Entries {
     /**
-     * The field {@code Entries} contains the entries section.
+     *      org.extex.exbib.core.io.Writer,
+     *      org.extex.exbib.core.db.SectionVisitor,
+     *      org.extex.exbib.core.db.DB)
      */
-    Entries {
+    @Override
+    public void visit( Writer writer, SectionVisitor visitor, DB db )
+        throws IOException {
 
-        /**
-    *      org.extex.exbib.core.io.Writer,
-         *      org.extex.exbib.core.db.SectionVisitor,
-         *      org.extex.exbib.core.db.DB)
-         */
-        @Override
-        public void visit(Writer writer, SectionVisitor visitor, DB db)
-                throws IOException {
+      visitor.visitEntries( db );
+    }
+  };
 
-            visitor.visitEntries(db);
-        }
-    };
-
-    /**
-     * Invoke the visitor's appropriate method.
-     * 
-     * @param writer the writer
-     * @param visitor the visitor
-     * @param db the database
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    public abstract void visit(Writer writer, SectionVisitor visitor, DB db)
-            throws IOException;
+  /**
+   * Invoke the visitor's appropriate method.
+   *
+   * @param writer  the writer
+   * @param visitor the visitor
+   * @param db      the database
+   * @throws IOException in case of an I/O error
+   */
+  public abstract void visit( Writer writer, SectionVisitor visitor, DB db )
+      throws IOException;
 
 }

@@ -25,15 +25,15 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
  * This is a test suite for the primitive {@code \pdfendlink}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfendlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
 
-    public PdfendlinkTest() {
+  public PdfendlinkTest() {
 
-        super("pdfendlink", "", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfendlink", "", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

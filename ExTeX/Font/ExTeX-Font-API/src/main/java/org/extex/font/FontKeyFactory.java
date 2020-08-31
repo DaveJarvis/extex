@@ -19,150 +19,149 @@
 
 package org.extex.font;
 
+import org.extex.core.dimen.FixedDimen;
+
 import java.util.List;
 import java.util.Map;
 
-import org.extex.core.dimen.FixedDimen;
-
 /**
  * Factory for the {@link FontKey}.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class FontKeyFactory {
 
-    /**
-     * Fontkey for null.
-     */
-    public static final FontKey NULL_KEY = new FontKey("nullfont");
+  /**
+   * Fontkey for null.
+   */
+  public static final FontKey NULL_KEY = new FontKey( "nullfont" );
 
-    /**
-     * Create a new object.
-     */
-    public FontKeyFactory() {
+  /**
+   * Create a new object.
+   */
+  public FontKeyFactory() {
 
-    }
+  }
 
-    /**
-     * Returns a new font key instance.
-     * 
-     * @param fk The font key.
-     * @param tag The list of tags.
-     * @return Returns a new font key instance.
-     */
-    public FontKey newInstance(FontKey fk, List<String> tag) {
+  /**
+   * Returns a new font key instance.
+   *
+   * @param fk  The font key.
+   * @param tag The list of tags.
+   * @return Returns a new font key instance.
+   */
+  public FontKey newInstance( FontKey fk, List<String> tag ) {
 
-        FontKey newfk = new FontKey(fk);
-        newfk.add(tag);
+    FontKey newfk = new FontKey( fk );
+    newfk.add( tag );
 
-        return newfk;
-    }
+    return newfk;
+  }
 
-    /**
-     * Returns a new font key instance.
-     * 
-     * @param fk The font key.
-     * @param theMap The map with key value entries.
-     * @return Returns a new font key instance.
-     */
-    public FontKey newInstance(FontKey fk, Map<String, ?> theMap) {
+  /**
+   * Returns a new font key instance.
+   *
+   * @param fk     The font key.
+   * @param theMap The map with key value entries.
+   * @return Returns a new font key instance.
+   */
+  public FontKey newInstance( FontKey fk, Map<String, ?> theMap ) {
 
-        FontKey newfk = new FontKey(fk);
-        newfk.put(theMap);
+    FontKey newfk = new FontKey( fk );
+    newfk.put( theMap );
 
-        return newfk;
-    }
+    return newfk;
+  }
 
-    /**
-     * Returns a new font key instance.
-     * 
-     * @param fk The font key.
-     * @param theMap The map with key value entries.
-     * @param tag The list of tags.
-     * @return Returns a new font key instance.
-     */
-    public FontKey newInstance(FontKey fk, Map<String, ?> theMap,
-            List<String> tag) {
+  /**
+   * Returns a new font key instance.
+   *
+   * @param fk     The font key.
+   * @param theMap The map with key value entries.
+   * @param tag    The list of tags.
+   * @return Returns a new font key instance.
+   */
+  public FontKey newInstance( FontKey fk, Map<String, ?> theMap,
+                              List<String> tag ) {
 
-        FontKey newfk = new FontKey(fk);
-        newfk.put(theMap);
-        newfk.add(tag);
+    FontKey newfk = new FontKey( fk );
+    newfk.put( theMap );
+    newfk.add( tag );
 
-        return newfk;
-    }
+    return newfk;
+  }
 
-    /**
-     * Returns a new font key instance.
-     * 
-     * @param fk The font key.
-     * @param key The key.
-     * @param value The value.
-     * @return Returns a new font key instance.
-     */
-    public FontKey newInstance(FontKey fk, String key, boolean value) {
+  /**
+   * Returns a new font key instance.
+   *
+   * @param fk    The font key.
+   * @param key   The key.
+   * @param value The value.
+   * @return Returns a new font key instance.
+   */
+  public FontKey newInstance( FontKey fk, String key, boolean value ) {
 
-        FontKey newfk = new FontKey(fk);
-        newfk.put(key, value);
+    FontKey newfk = new FontKey( fk );
+    newfk.put( key, value );
 
-        return newfk;
-    }
+    return newfk;
+  }
 
-    /**
-     * Returns a new font key instance.
-     * 
-     * @param fk The font key.
-     * @param key The key.
-     * @param value The value.
-     * @return Returns a new font key instance.
-     */
-    public FontKey newInstance(FontKey fk, String key, FixedDimen value) {
+  /**
+   * Returns a new font key instance.
+   *
+   * @param fk    The font key.
+   * @param key   The key.
+   * @param value The value.
+   * @return Returns a new font key instance.
+   */
+  public FontKey newInstance( FontKey fk, String key, FixedDimen value ) {
 
-        FontKey newfk = new FontKey(fk);
-        newfk.put(key, value);
+    FontKey newfk = new FontKey( fk );
+    newfk.put( key, value );
 
-        return newfk;
-    }
+    return newfk;
+  }
 
-    /**
-     * Returns a new font key instance.
-     * 
-     * @param fk The font key.
-     * @param key The key.
-     * @param value The value.
-     * @return Returns a new font key instance.
-     */
-    public FontKey newInstance(FontKey fk, String key, String value) {
+  /**
+   * Returns a new font key instance.
+   *
+   * @param fk    The font key.
+   * @param key   The key.
+   * @param value The value.
+   * @return Returns a new font key instance.
+   */
+  public FontKey newInstance( FontKey fk, String key, String value ) {
 
-        FontKey newfk = new FontKey(fk);
-        newfk.put(key, value);
+    FontKey newfk = new FontKey( fk );
+    newfk.put( key, value );
 
-        return newfk;
-    }
+    return newfk;
+  }
 
-    /**
-     * Returns a new font key instance.
-     * 
-     * @param theFontname The font name.
-     * @return Returns a new font key instance.
-     */
-    public FontKey newInstance(String theFontname) {
+  /**
+   * Returns a new font key instance.
+   *
+   * @param theFontname The font name.
+   * @return Returns a new font key instance.
+   */
+  public FontKey newInstance( String theFontname ) {
 
-        return new FontKey(theFontname);
-    }
+    return new FontKey( theFontname );
+  }
 
-    /**
-     * Returns a new font key instance.
-     * 
-     * @param theFontname The font name.
-     * @param size The size.
-     * 
-     * @return Returns a new font key instance.
-     */
-    public FontKey newInstance(String theFontname, FixedDimen size) {
+  /**
+   * Returns a new font key instance.
+   *
+   * @param theFontname The font name.
+   * @param size        The size.
+   * @return Returns a new font key instance.
+   */
+  public FontKey newInstance( String theFontname, FixedDimen size ) {
 
-        FontKey newfk = new FontKey(theFontname);
-        newfk.put(FontKey.SIZE, size);
+    FontKey newfk = new FontKey( theFontname );
+    newfk.put( FontKey.SIZE, size );
 
-        return newfk;
-    }
+    return newfk;
+  }
 }

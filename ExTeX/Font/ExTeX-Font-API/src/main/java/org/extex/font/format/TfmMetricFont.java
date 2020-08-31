@@ -21,9 +21,9 @@ package org.extex.font.format;
 
 /**
  * Marker interface for a font with tfm metrics.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface TfmMetricFont {
 
 }

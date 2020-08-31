@@ -19,68 +19,68 @@
 
 package org.extex.font.format.afm;
 
-import java.io.FileInputStream;
-
 import junit.framework.TestCase;
+
+import java.io.FileInputStream;
 
 /**
  * Test for the afm parser.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class AfmParserTest extends TestCase {
 
-    /**
-     * test01.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void test01() throws Exception {
+  /**
+   * test01.
+   *
+   * @throws Exception if an error occurred.
+   */
+  public void test01() throws Exception {
 
-        AfmParser parser =
-                new AfmParser(new FileInputStream(
-                    "../ExTeX-Font-afm/src/font/fxlr.afm"));
+    AfmParser parser =
+        new AfmParser( new FileInputStream(
+            "../ExTeX-Font-afm/src/font/fxlr.afm" ) );
 
-        assertNotNull(parser);
+    assertNotNull( parser );
 
-        AfmHeader header = parser.getHeader();
+    AfmHeader header = parser.getHeader();
 
-        assertEquals("LinLibertine", header.getFontName());
-        assertEquals("Linux Libertine", header.getFamilyName());
-        assertEquals(431, header.getXheight(), 0);
-        assertEquals(-231, header.getDescender(), 0);
+    assertEquals( "LinLibertine", header.getFontName() );
+    assertEquals( "Linux Libertine", header.getFamilyName() );
+    assertEquals( 431, header.getXheight(), 0 );
+    assertEquals( -231, header.getDescender(), 0 );
 
-        AfmCharMetric cm = parser.getAfmCharMetric("zero");
-        assertNotNull(cm);
+    AfmCharMetric cm = parser.getAfmCharMetric( "zero" );
+    assertNotNull( cm );
 
-        assertEquals(438, cm.getWx(), 0);
-        assertEquals(48, cm.getC(), 0);
+    assertEquals( 438, cm.getWx(), 0 );
+    assertEquals( 48, cm.getC(), 0 );
 
-    }
+  }
 
-    /**
-     * test02.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void test02() throws Exception {
+  /**
+   * test02.
+   *
+   * @throws Exception if an error occurred.
+   */
+  public void test02() throws Exception {
 
-        AfmParser parser =
-                new AfmParser(new FileInputStream(
-                    "../ExTeX-Font-afm/src/font/fxlr.afm"));
+    AfmParser parser =
+        new AfmParser( new FileInputStream(
+            "../ExTeX-Font-afm/src/font/fxlr.afm" ) );
 
-        assertNotNull(parser);
+    assertNotNull( parser );
 
-        AfmCharMetric cm = parser.getAfmCharMetric("at");
-        assertNotNull(cm);
+    AfmCharMetric cm = parser.getAfmCharMetric( "at" );
+    assertNotNull( cm );
 
-        assertEquals(1004, cm.getWx(), 0);
-        assertEquals(64, cm.getC(), 0);
+    assertEquals( 1004, cm.getWx(), 0 );
+    assertEquals( 64, cm.getC(), 0 );
 
-        AfmKernPairs kp = cm.getAfmKernPair("Delta");
-        assertNotNull(kp);
-        assertEquals(-29, kp.getKerningsize(), 0);
+    AfmKernPairs kp = cm.getAfmKernPair( "Delta" );
+    assertNotNull( kp );
+    assertEquals( -29, kp.getKerningsize(), 0 );
 
-    }
+  }
 
 }

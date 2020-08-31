@@ -38,120 +38,121 @@ import org.extex.typesetter.type.NodeList;
 /**
  * This class provides an implementation for the primitive
  * {@code \setlanguage}.
- * 
+ *
  * <p>The Primitive {@code \\}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;setlanguage&rang;
  *       &rarr; {@code \setlanguage} &lang;number&rang; </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \setlanguage2  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Setlanguage extends AbstractCode {
 
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
+
+  /**
+   * This observer can be used to restore the value of the registers
+   * {@code language} and {@code lang} t the end of a paragraph.
+   *
+   * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+   */
+  private static class ParObserver implements ParagraphObserver {
+
     /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
+     * The field {@code context} contains the interpreter context.
      */
-    protected static final long serialVersionUID = 2007L;
+    private final Context context;
 
     /**
-     * This observer can be used to restore the value of the registers
-     * {@code language} and {@code lang} t the end of a paragraph.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-    */
-    private static class ParObserver implements ParagraphObserver {
+     * The field {@code language} contains the value of the language
+     * register to restore.
+     */
+    private final long language;
 
-        /**
-         * The field {@code context} contains the interpreter context.
-         */
-        private final Context context;
-
-        /**
-         * The field {@code language} contains the value of the language
-         * register to restore.
-         */
-        private final long language;
-
-        /**
-         * The field {@code toks} contains the value of the register lang to
-         * restore.
-         */
-        private final Tokens lang;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param context the context
-         */
-        public ParObserver(Context context) {
-
-            this.context = context;
-            language = context.getCount("language").getValue();
-            lang = context.getToks("lang");
-        }
-
-        /**
-    *      org.extex.typesetter.type.NodeList)
-         */
-        public void atParagraph(NodeList nodes) throws Exception {
-
-            context.setCount("language", language, false);
-            context.setToks("lang", lang, false);
-        }
-    }
+    /**
+     * The field {@code toks} contains the value of the register lang to
+     * restore.
+     */
+    private final Tokens lang;
 
     /**
      * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
+     *
+     * @param context the context
      */
-    public Setlanguage(CodeToken token) {
+    public ParObserver( Context context ) {
 
-        super(token);
+      this.context = context;
+      language = context.getCount( "language" ).getValue();
+      lang = context.getToks( "lang" );
     }
 
     /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     * org.extex.typesetter.type.NodeList)
      */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    public void atParagraph( NodeList nodes ) throws Exception {
 
-        typesetter.afterParagraph(new ParObserver(context));
-
-        Token token = source.getToken(context);
-        source.push(token);
-
-        if (token instanceof LeftBraceToken) {
-            Tokens tokens;
-            try {
-                tokens = source.getTokens(context, source, typesetter);
-            } catch (EofException e) {
-                throw new EofInToksException(toText(context));
-            }
-            context.setToks("lang", tokens, false);
-        } else {
-            long no = source.parseInteger(context, source, typesetter);
-            context.setCount("language", no, false);
-            context.setToks("lang", Tokens.EMPTY, false);
-        }
+      context.setCount( "language", language, false );
+      context.setToks( "lang", lang, false );
     }
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Setlanguage( CodeToken token ) {
+
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    typesetter.afterParagraph( new ParObserver( context ) );
+
+    Token token = source.getToken( context );
+    source.push( token );
+
+    if( token instanceof LeftBraceToken ) {
+      Tokens tokens;
+      try {
+        tokens = source.getTokens( context, source, typesetter );
+      } catch( EofException e ) {
+        throw new EofInToksException( toText( context ) );
+      }
+      context.setToks( "lang", tokens, false );
+    }
+    else {
+      long no = source.parseInteger( context, source, typesetter );
+      context.setCount( "language", no, false );
+      context.setToks( "lang", Tokens.EMPTY, false );
+    }
+  }
 
 }

@@ -25,42 +25,44 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \export}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExportTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ExportTest.class);
-    }
+    (new JUnitCore()).run( ExportTest.class );
+  }
 
 
-    public ExportTest() {
+  public ExportTest() {
 
-        setPrimitive("export");setArguments("{\\a}");setPrepare(DEFINE_BRACES);
-        setConfig("namespace-test");
-    }
+    setPrimitive( "export" );
+    setArguments( "{\\a}" );
+    setPrepare( DEFINE_BRACES );
+    setConfig( "namespace-test" );
+  }
 
-    /**
-     * <testcase primitive="\export"> Test case checking that {@code \export}
-     * needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\export"> Test case checking that {@code \export}
+   * needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\export",
-            // --- output channel ---
-            "File ended while scanning text of \\export");
-    }
+    assertFailure(// --- input code ---
+                  "\\export",
+                  // --- output channel ---
+                  "File ended while scanning text of \\export" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

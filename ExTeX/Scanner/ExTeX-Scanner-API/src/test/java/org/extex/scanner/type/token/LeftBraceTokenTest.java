@@ -19,50 +19,51 @@
 
 package org.extex.scanner.type.token;
 
-import static org.junit.Assert.assertFalse;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import static org.junit.Assert.assertFalse;
+
 /**
  * This class contains the test cases for left brace tokens.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LeftBraceTokenTest extends TokenTester {
 
-    /**
-     * The field {@code token} contains the reference token.
-     */
-    private static final Token token = new LeftBraceToken( UnicodeChar.get( 'x'));
+  /**
+   * The field {@code token} contains the reference token.
+   */
+  private static final Token token =
+      new LeftBraceToken( UnicodeChar.get( 'x' ) );
 
-    /**
-     * Command line interface
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LeftBraceTokenTest.class);
-    }
+    (new JUnitCore()).run( LeftBraceTokenTest.class );
+  }
 
 
-    public LeftBraceTokenTest() {
+  public LeftBraceTokenTest() {
 
-        setToken(token);
-setCatcode( Catcode.LEFTBRACE);
-setText( "x");
-setStr( "begin-group character x");
-    }
+    setToken( token );
+    setCatcode( Catcode.LEFTBRACE );
+    setText( "x" );
+    setStr( "begin-group character x" );
+  }
 
-@Test
-    public void testEqualsToken1() {
+  @Test
+  public void testEqualsToken1() {
 
-        Token t1 = new LeftBraceToken(UnicodeChar.get(' '));
-        Token t2 = new SpaceToken(" ");
-        assertFalse(t1.equals(t2));
-    }
+    Token t1 = new LeftBraceToken( UnicodeChar.get( ' ' ) );
+    Token t2 = new SpaceToken( " " );
+    assertFalse( t1.equals( t2 ) );
+  }
 
 }

@@ -19,9 +19,6 @@
 
 package org.extex.test.documentWriter;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.SingleDocumentStream;
@@ -41,516 +38,508 @@ import org.extex.pdf.api.node.PdfXForm;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.typesetter.type.node.AdjustNode;
-import org.extex.typesetter.type.node.AfterMathNode;
-import org.extex.typesetter.type.node.AlignedLeadersNode;
-import org.extex.typesetter.type.node.BeforeMathNode;
-import org.extex.typesetter.type.node.CenteredLeadersNode;
-import org.extex.typesetter.type.node.CharNode;
-import org.extex.typesetter.type.node.DiscretionaryNode;
-import org.extex.typesetter.type.node.ExpandedLeadersNode;
-import org.extex.typesetter.type.node.GlueNode;
-import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.typesetter.type.node.InsertionNode;
-import org.extex.typesetter.type.node.KernNode;
-import org.extex.typesetter.type.node.LigatureNode;
-import org.extex.typesetter.type.node.MarkNode;
-import org.extex.typesetter.type.node.PenaltyNode;
-import org.extex.typesetter.type.node.RuleNode;
-import org.extex.typesetter.type.node.SpaceNode;
-import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.typesetter.type.node.VirtualCharNode;
-import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.node.*;
 import org.extex.typesetter.type.page.Page;
+
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * This is an implementation of a document writer which can act both as sample
  * and as tool for testing.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TestPdfDocumentWriter
-        implements
-            DocumentWriter,
-            SingleDocumentStream,
-            PdftexSupport,
-            Configurable {
-
-    /**
-     * The field {@code nodeVisitor} contains the node visitor instance to use
-     * in the form of an anonymous inner class.
-     */
-    private final NodeVisitor<Object, Object> nodeVisitor =
-            new NodeVisitor<Object, Object>() {
-
-                /**
-                 * The field {@code vmode} contains the indicator that a vlist
-                 * is processed.
-                 */
-                private boolean vmode = false;
-
-                /**
-                 * Print a new line in vertical mode.
-                 * 
-                 * @throws GeneralException in case of an error
-                 */
-                private void nl() throws GeneralException {
-
-                    if (vmode) {
-                        try {
-                            out.write('\n');
-                        } catch (IOException e) {
-                            throw new GeneralException(e);
-                        }
-                    }
-                }
-
-        @Override
-                public Object visitAdjust(AdjustNode node, Object oOut)
-                        throws GeneralException {
-
-                    write("\n");
-                    return null;
-                }
-
-        @Override
-                public Object visitAfterMath(AfterMathNode node, Object oOut)
-                        throws GeneralException {
-
-                    if (node.getWidth().ne(Dimen.ZERO_PT)) {
-                        write(' ');
-                    }
-                    return null;
-                }
-
-        @Override
-                public Object visitAlignedLeaders(AlignedLeadersNode node,
-                        Object oOut) throws GeneralException {
-
-                    write(" ");
-                    node.visit(this, oOut);
-                    node.visit(this, oOut);
-                    write("  ");
-                    return null;
-                }
-
-        @Override
-                public Object visitBeforeMath(BeforeMathNode node, Object oOut)
-                        throws GeneralException {
-
-                    if (node.getWidth().ne(Dimen.ZERO_PT)) {
-                        write(' ');
-                    }
-                    return null;
-                }
-
-        @Override
-                public Object visitCenteredLeaders(CenteredLeadersNode node,
-                        Object oOut) throws GeneralException {
-
-                    write("  ");
-                    node.visit(this, oOut);
-                    node.visit(this, oOut);
-                    write("  ");
-                    return null;
-                }
-
-        @Override
-                public Object visitChar(CharNode node, Object oOut)
-                        throws GeneralException {
-
-                    write(node.getCharacter().getCodePoint());
-                    return null;
-                }
-
-        @Override
-                public Object visitDiscretionary(DiscretionaryNode node,
-                        Object oOut) throws GeneralException {
-
-                    write("--");
-                    return null;
-                }
-
-        @Override
-                public Object visitExpandedLeaders(ExpandedLeadersNode node,
-                        Object oOut) throws GeneralException {
-
-                    write("  ");
-                    node.visit(this, oOut);
-                    node.visit(this, oOut);
-                    write(" ");
-                    return null;
-                }
-
-        @Override
-                public Object visitGlue(GlueNode node, Object oOut)
-                        throws GeneralException {
-
-                    if (vmode) {
-                        if (node.getHeight().ne(Dimen.ZERO_PT)
-                                && node.getDepth().ne(Dimen.ZERO_PT)) {
-                            write('\n');
-                        }
-                    } else {
-                        if (node.getWidth().ne(Dimen.ZERO_PT)) {
-                            write(' ');
-                        }
-                    }
-                    return null;
-                }
-
-        @Override
-                public Object visitHorizontalList(HorizontalListNode list,
-                        Object oOut) throws GeneralException {
-
-                    boolean mode = vmode;
-                    vmode = false;
-                    for (int i = 0; i < list.size(); i++) {
-                        list.get(i).visit(this, oOut);
-                    }
-                    vmode = mode;
-                    nl();
-                    return null;
-                }
-
-        @Override
-                public Object visitInsertion(InsertionNode node, Object oOut)
-                        throws GeneralException {
-
-                    return null;
-                }
-
-        @Override
-                public Object visitKern(KernNode node, Object oOut)
-                        throws GeneralException {
-
-                    return null;
-                }
-
-        @Override
-                public Object visitLigature(LigatureNode node, Object oOut)
-                        throws GeneralException {
-
-                    write(node.getCharacter().getCodePoint());
-                    return null;
-                }
-
-        @Override
-                public Object visitMark(MarkNode node, Object oOut)
-                        throws GeneralException {
-
-                    return null;
-                }
-
-        @Override
-                public Object visitPenalty(PenaltyNode node, Object oOut)
-                        throws GeneralException {
-
-                    return null;
-                }
-
-        @Override
-                public Object visitRule(RuleNode node, Object oOut)
-                        throws GeneralException {
-
-                    write("---");
-                    return null;
-                }
-
-        @Override
-                public Object visitSpace(SpaceNode node, Object oOut)
-                        throws GeneralException {
-
-                    write(' ');
-                    return null;
-                }
-
-        @Override
-                public Object visitVerticalList(VerticalListNode list,
-                        Object oOut) throws GeneralException {
-
-                    boolean mode = vmode;
-                    vmode = true;
-                    for (int i = 0; i < list.size(); i++) {
-                        list.get(i).visit(this, oOut);
-                    }
-                    vmode = mode;
-                    nl();
-                    return null;
-                }
-
-        @Override
-                public Object visitVirtualChar(VirtualCharNode node, Object oOut)
-                        throws GeneralException {
-
-                    write(node.getCharacter().getCodePoint());
-                    return null;
-                }
-
-        @Override
-                public Object visitWhatsIt(WhatsItNode node, Object oOut)
-                        throws GeneralException {
-
-                    return null;
-                }
-
-                /**
-                 * Write a char to out.
-                 * 
-                 * @param s the char to write
-                 * 
-                 * @throws GeneralException in case of an error
-                 */
-                private void write(int s) throws GeneralException {
-
-                    try {
-                        out.write(s);
-                    } catch (IOException e) {
-                        throw new GeneralException(e);
-                    }
-                }
-
-                /**
-                 * Write a string to out.
-                 * 
-                 * @param s the string to write
-                 * 
-                 * @throws GeneralException in case of an error
-                 */
-                private void write(String s) throws GeneralException {
-
-                    try {
-                        out.write(s.getBytes());
-                        if (vmode) {
-                            out.write('\n');
-                        }
-                    } catch (IOException e) {
-                        throw new GeneralException(e);
-                    }
-
-                }
-            };
-
-    /**
-     * The field {@code out} contains the output stream to use.
-     */
-    private OutputStream out = null;
-
-    /**
-     * The field {@code tree} contains the indicator whether to use the tree
-     * representation.
-     */
-    private boolean tree = true;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param opts the dynamic access to the context
-     */
-    public TestPdfDocumentWriter(DocumentWriterOptions opts) {
-
-    }
-
-@Override
-    public void close() throws IOException {
-
-        if (out != null) {
-            out.close();
-            out = null;
-        }
-    }
-
-@Override
-    public void configure(Configuration config) throws ConfigurationException {
-
-        tree = Boolean.valueOf(config.getAttribute("tree")).booleanValue();
-    }
-
-    /**
-*      java.lang.String)
-     */
-    @Override
-    public PdfAnnotation getAnnotation(RuleNode node, String annotation)
-            throws HelpingException {
-
-        // TODO gene: getAnnotation unimplemented
-        return null;
-    }
-
-@Override
-    public String getExtension() {
-
-        return "out";
-    }
-
-    /**
-*      java.lang.String)
-     */
-    @Override
-    public PdfObject getObject(String attr, boolean isStream, String text)
-            throws HelpingException {
-
-        // TODO gene: getObject unimplemented
-        return null;
-    }
-
-    /**
-*      java.lang.String, org.extex.typesetter.type.NodeList)
-     */
-    @Override
-    public PdfXForm getXForm(String attr, String resources, NodeList list)
-            throws HelpingException {
-
-        // TODO gene: getXForm unimplemented
-        return null;
-    }
-
-    /**
-*      org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
-     *      boolean)
-     */
-    @Override
-    public PdfRefXImage getXImage(String resource, RuleNode rule, String attr,
-            long page, boolean immediate) throws HelpingException {
-
-        // TODO gene: getXImage unimplemented
-        return null;
-    }
-
-    /**
-*      org.extex.pdf.api.action.ActionSpec)
-     */
-    @Override
-    public void pdfcatalog(String text, ActionSpec action) {
-
-        // TODO gene: pdfcatalog unimplemented
-
-    }
-
-@Override
-    public String pdffontname(Font font) {
-
-        // TODO gene: pdffontname unimplemented
-        return null;
-    }
-
-@Override
-    public long pdffontobjnum(Font font) {
-
-        // TODO gene: pdffontobjnum unimplemented
-        return 0;
-    }
-
-    /**
-*      java.lang.String)
-     */
-    @Override
-    public void pdfincludechars(Font font, String text) {
-
-        // TODO gene: pdfincludechars unimplemented
-
-    }
-
-@Override
-    public void pdfinfo(String text) {
-
-        // TODO gene: pdfinfo unimplemented
-
-    }
-
-@Override
-    public long pdflastannot() {
-
-        // TODO gene: pdflastannot unimplemented
-        return 0;
-    }
-
-@Override
-    public long pdflastobj() {
-
-        // TODO gene: pdflastobj unimplemented
-        return 0;
-    }
-
-@Override
-    public long pdflastxform() {
-
-        // TODO gene: pdflastxform unimplemented
-        return 0;
-    }
-
-@Override
-    public long pdflastximage() {
-
-        // TODO gene: pdflastximage unimplemented
-        return 0;
-    }
-
-@Override
-    public void pdfnames(String text) {
-
-        // TODO gene: pdfnames unimplemented
-
-    }
-
-    /**
-*      long, java.lang.String)
-     */
-    @Override
-    public void pdfoutline(ActionSpec action, long count, String text) {
-
-        // TODO gene: pdfoutline unimplemented
-
-    }
-
-@Override
-    public void setOutputStream(OutputStream outStream) {
-
-        out = outStream;
-    }
-
-    /**
-*      java.lang.String)
-     */
-    @Override
-    public void setParameter(String name, String value) {
-
-        // not needed
-    }
-
-    /**
-     * Setter for tree.
-     * 
-     * @param tree the tree to set
-     */
-    public void setTree(boolean tree) {
-
-        this.tree = tree;
-    }
-
-@Override
-    public int shipout(Page page) throws DocumentWriterException {
-
-        NodeList nodes = page.getNodes();
-        try {
-            if (tree) {
-                StringBuilder sb = new StringBuilder();
-                nodes.toString(sb, "\n", Integer.MAX_VALUE, Integer.MAX_VALUE);
-                out.write(sb.toString().getBytes());
-                out.write('\n');
-            } else {
-                nodes.visit(nodeVisitor, out);
-                out.write('\n');
+    implements
+    DocumentWriter,
+    SingleDocumentStream,
+    PdftexSupport,
+    Configurable {
+
+  /**
+   * The field {@code nodeVisitor} contains the node visitor instance to use
+   * in the form of an anonymous inner class.
+   */
+  private final NodeVisitor<Object, Object> nodeVisitor =
+      new NodeVisitor<Object, Object>() {
+
+        /**
+         * The field {@code vmode} contains the indicator that a vlist
+         * is processed.
+         */
+        private boolean vmode = false;
+
+        /**
+         * Print a new line in vertical mode.
+         *
+         * @throws GeneralException in case of an error
+         */
+        private void nl() throws GeneralException {
+
+          if( vmode ) {
+            try {
+              out.write( '\n' );
+            } catch( IOException e ) {
+              throw new GeneralException( e );
             }
-        } catch (IOException e) {
-            throw new DocumentWriterException(e);
-        } catch (GeneralException e) {
-            Throwable ex = e.getCause();
-            throw (ex instanceof DocumentWriterException 
-                    ? (DocumentWriterException) ex 
-                    : new DocumentWriterException(e.getLocalizedMessage()));
+          }
         }
-        return 1;
+
+        @Override
+        public Object visitAdjust( AdjustNode node, Object oOut )
+            throws GeneralException {
+
+          write( "\n" );
+          return null;
+        }
+
+        @Override
+        public Object visitAfterMath( AfterMathNode node, Object oOut )
+            throws GeneralException {
+
+          if( node.getWidth().ne( Dimen.ZERO_PT ) ) {
+            write( ' ' );
+          }
+          return null;
+        }
+
+        @Override
+        public Object visitAlignedLeaders( AlignedLeadersNode node,
+                                           Object oOut )
+            throws GeneralException {
+
+          write( " " );
+          node.visit( this, oOut );
+          node.visit( this, oOut );
+          write( "  " );
+          return null;
+        }
+
+        @Override
+        public Object visitBeforeMath( BeforeMathNode node, Object oOut )
+            throws GeneralException {
+
+          if( node.getWidth().ne( Dimen.ZERO_PT ) ) {
+            write( ' ' );
+          }
+          return null;
+        }
+
+        @Override
+        public Object visitCenteredLeaders( CenteredLeadersNode node,
+                                            Object oOut )
+            throws GeneralException {
+
+          write( "  " );
+          node.visit( this, oOut );
+          node.visit( this, oOut );
+          write( "  " );
+          return null;
+        }
+
+        @Override
+        public Object visitChar( CharNode node, Object oOut )
+            throws GeneralException {
+
+          write( node.getCharacter().getCodePoint() );
+          return null;
+        }
+
+        @Override
+        public Object visitDiscretionary( DiscretionaryNode node,
+                                          Object oOut )
+            throws GeneralException {
+
+          write( "--" );
+          return null;
+        }
+
+        @Override
+        public Object visitExpandedLeaders( ExpandedLeadersNode node,
+                                            Object oOut )
+            throws GeneralException {
+
+          write( "  " );
+          node.visit( this, oOut );
+          node.visit( this, oOut );
+          write( " " );
+          return null;
+        }
+
+        @Override
+        public Object visitGlue( GlueNode node, Object oOut )
+            throws GeneralException {
+
+          if( vmode ) {
+            if( node.getHeight().ne( Dimen.ZERO_PT )
+                && node.getDepth().ne( Dimen.ZERO_PT ) ) {
+              write( '\n' );
+            }
+          }
+          else {
+            if( node.getWidth().ne( Dimen.ZERO_PT ) ) {
+              write( ' ' );
+            }
+          }
+          return null;
+        }
+
+        @Override
+        public Object visitHorizontalList( HorizontalListNode list,
+                                           Object oOut )
+            throws GeneralException {
+
+          boolean mode = vmode;
+          vmode = false;
+          for( int i = 0; i < list.size(); i++ ) {
+            list.get( i ).visit( this, oOut );
+          }
+          vmode = mode;
+          nl();
+          return null;
+        }
+
+        @Override
+        public Object visitInsertion( InsertionNode node, Object oOut )
+            throws GeneralException {
+
+          return null;
+        }
+
+        @Override
+        public Object visitKern( KernNode node, Object oOut )
+            throws GeneralException {
+
+          return null;
+        }
+
+        @Override
+        public Object visitLigature( LigatureNode node, Object oOut )
+            throws GeneralException {
+
+          write( node.getCharacter().getCodePoint() );
+          return null;
+        }
+
+        @Override
+        public Object visitMark( MarkNode node, Object oOut )
+            throws GeneralException {
+
+          return null;
+        }
+
+        @Override
+        public Object visitPenalty( PenaltyNode node, Object oOut )
+            throws GeneralException {
+
+          return null;
+        }
+
+        @Override
+        public Object visitRule( RuleNode node, Object oOut )
+            throws GeneralException {
+
+          write( "---" );
+          return null;
+        }
+
+        @Override
+        public Object visitSpace( SpaceNode node, Object oOut )
+            throws GeneralException {
+
+          write( ' ' );
+          return null;
+        }
+
+        @Override
+        public Object visitVerticalList( VerticalListNode list,
+                                         Object oOut ) throws GeneralException {
+
+          boolean mode = vmode;
+          vmode = true;
+          for( int i = 0; i < list.size(); i++ ) {
+            list.get( i ).visit( this, oOut );
+          }
+          vmode = mode;
+          nl();
+          return null;
+        }
+
+        @Override
+        public Object visitVirtualChar( VirtualCharNode node, Object oOut )
+            throws GeneralException {
+
+          write( node.getCharacter().getCodePoint() );
+          return null;
+        }
+
+        @Override
+        public Object visitWhatsIt( WhatsItNode node, Object oOut )
+            throws GeneralException {
+
+          return null;
+        }
+
+        /**
+         * Write a char to out.
+         *
+         * @param s the char to write
+         *
+         * @throws GeneralException in case of an error
+         */
+        private void write( int s ) throws GeneralException {
+
+          try {
+            out.write( s );
+          } catch( IOException e ) {
+            throw new GeneralException( e );
+          }
+        }
+
+        /**
+         * Write a string to out.
+         *
+         * @param s the string to write
+         *
+         * @throws GeneralException in case of an error
+         */
+        private void write( String s ) throws GeneralException {
+
+          try {
+            out.write( s.getBytes() );
+            if( vmode ) {
+              out.write( '\n' );
+            }
+          } catch( IOException e ) {
+            throw new GeneralException( e );
+          }
+
+        }
+      };
+
+  /**
+   * The field {@code out} contains the output stream to use.
+   */
+  private OutputStream out = null;
+
+  /**
+   * The field {@code tree} contains the indicator whether to use the tree
+   * representation.
+   */
+  private boolean tree = true;
+
+  /**
+   * Creates a new object.
+   *
+   * @param opts the dynamic access to the context
+   */
+  public TestPdfDocumentWriter( DocumentWriterOptions opts ) {
+
+  }
+
+  @Override
+  public void close() throws IOException {
+
+    if( out != null ) {
+      out.close();
+      out = null;
     }
+  }
+
+  @Override
+  public void configure( Configuration config ) throws ConfigurationException {
+
+    tree = Boolean.valueOf( config.getAttribute( "tree" ) ).booleanValue();
+  }
+
+  /**
+   * java.lang.String)
+   */
+  @Override
+  public PdfAnnotation getAnnotation( RuleNode node, String annotation )
+      throws HelpingException {
+
+    // TODO gene: getAnnotation unimplemented
+    return null;
+  }
+
+  @Override
+  public String getExtension() {
+
+    return "out";
+  }
+
+  /**
+   * java.lang.String)
+   */
+  @Override
+  public PdfObject getObject( String attr, boolean isStream, String text )
+      throws HelpingException {
+
+    // TODO gene: getObject unimplemented
+    return null;
+  }
+
+  /**
+   * java.lang.String, org.extex.typesetter.type.NodeList)
+   */
+  @Override
+  public PdfXForm getXForm( String attr, String resources, NodeList list )
+      throws HelpingException {
+
+    // TODO gene: getXForm unimplemented
+    return null;
+  }
+
+  /**
+   * org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
+   * boolean)
+   */
+  @Override
+  public PdfRefXImage getXImage( String resource, RuleNode rule, String attr,
+                                 long page, boolean immediate )
+      throws HelpingException {
+
+    // TODO gene: getXImage unimplemented
+    return null;
+  }
+
+  /**
+   * org.extex.pdf.api.action.ActionSpec)
+   */
+  @Override
+  public void pdfcatalog( String text, ActionSpec action ) {
+
+    // TODO gene: pdfcatalog unimplemented
+
+  }
+
+  @Override
+  public String pdffontname( Font font ) {
+
+    // TODO gene: pdffontname unimplemented
+    return null;
+  }
+
+  @Override
+  public long pdffontobjnum( Font font ) {
+
+    // TODO gene: pdffontobjnum unimplemented
+    return 0;
+  }
+
+  /**
+   * java.lang.String)
+   */
+  @Override
+  public void pdfincludechars( Font font, String text ) {
+
+    // TODO gene: pdfincludechars unimplemented
+
+  }
+
+  @Override
+  public void pdfinfo( String text ) {
+
+    // TODO gene: pdfinfo unimplemented
+
+  }
+
+  @Override
+  public long pdflastannot() {
+
+    // TODO gene: pdflastannot unimplemented
+    return 0;
+  }
+
+  @Override
+  public long pdflastobj() {
+
+    // TODO gene: pdflastobj unimplemented
+    return 0;
+  }
+
+  @Override
+  public long pdflastxform() {
+
+    // TODO gene: pdflastxform unimplemented
+    return 0;
+  }
+
+  @Override
+  public long pdflastximage() {
+
+    // TODO gene: pdflastximage unimplemented
+    return 0;
+  }
+
+  @Override
+  public void pdfnames( String text ) {
+
+    // TODO gene: pdfnames unimplemented
+
+  }
+
+  /**
+   * long, java.lang.String)
+   */
+  @Override
+  public void pdfoutline( ActionSpec action, long count, String text ) {
+
+    // TODO gene: pdfoutline unimplemented
+
+  }
+
+  @Override
+  public void setOutputStream( OutputStream outStream ) {
+
+    out = outStream;
+  }
+
+  /**
+   * java.lang.String)
+   */
+  @Override
+  public void setParameter( String name, String value ) {
+
+    // not needed
+  }
+
+  /**
+   * Setter for tree.
+   *
+   * @param tree the tree to set
+   */
+  public void setTree( boolean tree ) {
+
+    this.tree = tree;
+  }
+
+  @Override
+  public int shipout( Page page ) throws DocumentWriterException {
+
+    NodeList nodes = page.getNodes();
+    try {
+      if( tree ) {
+        StringBuilder sb = new StringBuilder();
+        nodes.toString( sb, "\n", Integer.MAX_VALUE, Integer.MAX_VALUE );
+        out.write( sb.toString().getBytes() );
+        out.write( '\n' );
+      }
+      else {
+        nodes.visit( nodeVisitor, out );
+        out.write( '\n' );
+      }
+    } catch( IOException e ) {
+      throw new DocumentWriterException( e );
+    } catch( GeneralException e ) {
+      Throwable ex = e.getCause();
+      throw (ex instanceof DocumentWriterException
+          ? (DocumentWriterException) ex
+          : new DocumentWriterException( e.getLocalizedMessage() ));
+    }
+    return 1;
+  }
 
 }

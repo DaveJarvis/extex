@@ -27,18 +27,17 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * Often it is desirable to have a generic way how objects can be configured.
  * This is accomplished by this interface.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Configurable {
 
-    /**
-     * Configure an object according to a given Configuration.
-     * 
-     * @param config the configuration object to consider
-     * 
-     * @throws ConfigurationException in case that something went wrong
-     */
-    void configure(Configuration config) throws ConfigurationException;
+  /**
+   * Configure an object according to a given Configuration.
+   *
+   * @param config the configuration object to consider
+   * @throws ConfigurationException in case that something went wrong
+   */
+  void configure( Configuration config ) throws ConfigurationException;
 
 }

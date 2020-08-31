@@ -19,46 +19,46 @@
 
 package org.extex.scanner.base;
 
-import java.io.IOException;
-import java.io.StringReader;
-
 import org.extex.scanner.api.TokenStream;
 import org.junit.runner.JUnitCore;
 
+import java.io.IOException;
+import java.io.StringReader;
+
 /**
  * Test cases for the string implementation of a token stream.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(TokenStreamReaderImplTest.class);
-    }
+    (new JUnitCore()).run( TokenStreamReaderImplTest.class );
+  }
 
 
-    public TokenStreamReaderImplTest() {
+  public TokenStreamReaderImplTest() {
 
-    }
+  }
 
-    /**
-     * Create a stream of tokens fed from a string.
-     * 
-     * @param line the input string
-     * @return the new token stream
-     * @throws IOException in case of an error
-     */
-    @Override
-    protected TokenStream makeStream(String line) throws IOException {
+  /**
+   * Create a stream of tokens fed from a string.
+   *
+   * @param line the input string
+   * @return the new token stream
+   * @throws IOException in case of an error
+   */
+  @Override
+  protected TokenStream makeStream( String line ) throws IOException {
 
-        return new TokenStreamImpl(null, null, new StringReader(line),
-            Boolean.FALSE, "test");
-    }
+    return new TokenStreamImpl( null, null, new StringReader( line ),
+                                Boolean.FALSE, "test" );
+  }
 
 }

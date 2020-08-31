@@ -24,266 +24,266 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \ifcat}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IfcatTest extends ConditionalTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IfcatTest.class);
-    }
+    (new JUnitCore()).run( IfcatTest.class );
+  }
 
 
-    public IfcatTest() {
+  public IfcatTest() {
 
-        super("ifcat", " xx");
-    }
+    super( "ifcat", " xx" );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * needs an argument
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * needs an argument
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ifcat",
-            // --- output channel ---
-            "Unexpected end of file while processing \\ifcat");
-    }
+    assertFailure(// --- input code ---
+                  "\\ifcat",
+                  // --- output channel ---
+                  "Unexpected end of file while processing \\ifcat" );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * needs two arguments
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * needs two arguments
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ifcat \\relax",
-            // --- output channel ---
-            "Unexpected end of file while processing \\ifcat");
-    }
+    assertFailure(// --- input code ---
+                  "\\ifcat \\relax",
+                  // --- output channel ---
+                  "Unexpected end of file while processing \\ifcat" );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * detects two identical letters.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLetter1() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * detects two identical letters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLetter1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifcat AA a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifcat AA a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * detects two different letters.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLetter2() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * detects two different letters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLetter2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifcat AB a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifcat AB a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies a letter and an other character as different.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLetter3() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies a letter and an other character as different.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLetter3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifcat A1 a\\else b\\fi \\end",
-            // --- output channel ---
-            "b" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifcat A1 a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "b" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies a letter and a control sequence as different.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLetter4() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies a letter and a control sequence as different.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLetter4() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifcat A\\relax a\\else b\\fi \\end",
-            // --- output channel ---
-            "b" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifcat A\\relax a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "b" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies two identical control sequences as equal.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCs1() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies two identical control sequences as equal.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCs1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifcat \\relax\\relax a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifcat \\relax\\relax a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies two different control sequences as equal.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCs2() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies two different control sequences as equal.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCs2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifcat \\abc\\relax a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifcat \\abc\\relax a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies two identical other characters as equal.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testOther1() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies two identical other characters as equal.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testOther1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\ifcat 11 a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\ifcat 11 a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies two different other characters as equal.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testOther2() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies two different other characters as equal.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testOther2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\ifcat 12 a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\ifcat 12 a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies two math shift characters as equal.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMath1() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies two math shift characters as equal.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMath1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\ifcat $$ a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\ifcat $$ a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies two subscript characters as equal.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSub1() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies two subscript characters as equal.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testSub1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\ifcat __ a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\ifcat __ a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies two tab mark characters as equal.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSuper1() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies two tab mark characters as equal.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testSuper1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\ifcat && a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\ifcat && a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies two open group characters as equal.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testOpen1() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies two open group characters as equal.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testOpen1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\ifcat {{ a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\ifcat {{ a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies two close group characters as equal.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testClose1() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies two close group characters as equal.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testClose1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\ifcat }} a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\ifcat }} a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
-     * classifies two macro parameter characters as equal.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMacro1() throws Exception {
+  /**
+   * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+   * classifies two macro parameter characters as equal.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMacro1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\ifcat ## a\\else b\\fi \\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_CATCODES + "\\ifcat ## a\\else b\\fi \\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

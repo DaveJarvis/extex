@@ -29,60 +29,59 @@ import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive {@code \ifvmode}.
- * 
+ *
  * <p>The Primitive {@code \ifvmode}</p>
  * <p>
  * The primitive does not take any further arguments. The conditional is true
  * iff the typesetter is in a vertical mode. This is either the internal
  * vertical mode or the vertical mode.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;ifvmode&rang;
  *      &rarr; {@code \ifvmode} &lang;true text&rang; {@code \fi}
  *      | {@code \ifvmode} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \ifvmode abc \fi  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Ifvmode extends AbstractIf {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Ifvmode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Ifvmode( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public boolean conditional( Context context, TokenSource source,
+                              Typesetter typesetter ) throws HelpingException {
 
-        Mode mode = typesetter.getMode();
-        return mode.isVmode();
-    }
+    Mode mode = typesetter.getMode();
+    return mode.isVmode();
+  }
 
 }

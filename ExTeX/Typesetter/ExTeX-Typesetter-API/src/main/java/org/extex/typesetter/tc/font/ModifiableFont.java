@@ -25,14 +25,14 @@ import org.extex.font.ExtexFont;
  * This interface descries the ability to receive an internal font.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ModifiableFont extends Font {
 
-    /**
-     * Setter for the font.
-     *
-     * @param font the font to set
-     */
-    void setFont(ExtexFont font);
+  /**
+   * Setter for the font.
+   *
+   * @param font the font to set
+   */
+  void setFont( ExtexFont font );
 
 }

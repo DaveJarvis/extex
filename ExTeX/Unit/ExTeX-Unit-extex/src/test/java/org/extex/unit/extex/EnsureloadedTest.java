@@ -24,84 +24,86 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \ensureloaded}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EnsureloadedTest extends NoFlagsPrimitiveTester {
 
 
-    public EnsureloadedTest() {
+  public EnsureloadedTest() {
 
-        setPrimitive("ensureloaded");setArguments("{tex}");setPrepare("");
-        setConfig("extex-test");
-    }
+    setPrimitive( "ensureloaded" );
+    setArguments( "{tex}" );
+    setPrepare( "" );
+    setConfig( "extex-test" );
+  }
 
-    /**
-     * <testcase primitive="\ensureloaded"> Test case checking that
-     * {@code \ensureloaded} needs an argument; i.e. the end of file is
-     * reported as error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\ensureloaded"> Test case checking that
+   * {@code \ensureloaded} needs an argument; i.e. the end of file is
+   * reported as error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\ensureloaded",
-            // --- log message ---
-            "Unexpected end of file while processing \\ensureloaded");
-    }
+        DEFINE_BRACES + "\\ensureloaded",
+        // --- log message ---
+        "Unexpected end of file while processing \\ensureloaded" );
+  }
 
-    /**
-     * <testcase primitive="\ensureloaded"> Test case checking that
-     * {@code \ensureloaded} can report the named unit as missing when it
-     * does not exist.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\ensureloaded"> Test case checking that
+   * {@code \ensureloaded} can report the named unit as missing when it
+   * does not exist.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\ensureloaded{xxx}",
-            // --- log message ---
-            "I don't know the unit `xxx'");
-    }
+        DEFINE_BRACES + "\\ensureloaded{xxx}",
+        // --- log message ---
+        "I don't know the unit `xxx'" );
+  }
 
-    /**
-     * <testcase primitive="\ensureloaded"> Test case checking that
-     * {@code \ensureloaded} can load a named unit if it exists.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\ensureloaded"> Test case checking that
+   * {@code \ensureloaded} can load a named unit if it exists.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\ensureloaded{extex}" + "\\the\\ignorevoid"
-                    + " \\end",
-            // --- log message ---
-            "0" + TERM);
-    }
+        DEFINE_BRACES + "\\ensureloaded{extex}" + "\\the\\ignorevoid"
+            + " \\end",
+        // --- log message ---
+        "0" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ensureloaded"> Test case checking that
-     * {@code \ensureloaded} can load a named unit if it exists.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\ensureloaded"> Test case checking that
+   * {@code \ensureloaded} can load a named unit if it exists.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\ensureloaded{extex}"
-                    + "\\ifx\\relax\\everymathend\\else ok\\fi" + " \\end",
-            // --- log message ---
-            "ok" + TERM);
-    }
+        DEFINE_BRACES + "\\ensureloaded{extex}"
+            + "\\ifx\\relax\\everymathend\\else ok\\fi" + " \\end",
+        // --- log message ---
+        "ok" + TERM );
+  }
 
 }

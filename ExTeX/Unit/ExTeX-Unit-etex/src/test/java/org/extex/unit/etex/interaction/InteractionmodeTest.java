@@ -25,150 +25,151 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \interactionmode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InteractionmodeTest extends ExTeXLauncher {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(InteractionmodeTest.class);
-    }
+    (new JUnitCore()).run( InteractionmodeTest.class );
+  }
 
 
-    public InteractionmodeTest() {
+  public InteractionmodeTest() {
 
-        setConfig("etex-test");
-    }
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * <testcase primitive="\interactionmode"> Test case checking that batch
-     * mode is reported as 0.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\interactionmode"> Test case checking that batch
+   * mode is reported as 0.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\batchmode\\count0=\\interactionmode" + " \\the\\count0 \\end",
-            // --- output channel ---
-            "0" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\batchmode\\count0=\\interactionmode" + " \\the\\count0 " +
+                      "\\end",
+                  // --- output channel ---
+                  "0" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\interactionmode"> Test case checking that non-stop
-     * mode is reported as 1.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\interactionmode"> Test case checking that non-stop
+   * mode is reported as 1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\nonstopmode\\count0=\\interactionmode" + " \\the\\count0 \\end",
-            // --- output channel ---
-            "1" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\nonstopmode\\count0=\\interactionmode" + " \\the\\count0" +
+                      " \\end",
+                  // --- output channel ---
+                  "1" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\interactionmode"> Test case checking that scroll
-     * mode is reported as 2.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\interactionmode"> Test case checking that scroll
+   * mode is reported as 2.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\scrollmode\\count0=\\interactionmode" + " \\the\\count0 \\end",
-            // --- output channel ---
-            "2" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\scrollmode\\count0=\\interactionmode" + " \\the\\count0 " +
+                      "\\end",
+                  // --- output channel ---
+                  "2" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\interactionmode"> Test case checking that error
-     * stop mode is reported as 3.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\interactionmode"> Test case checking that error
+   * stop mode is reported as 3.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\errorstopmode\\count0=\\interactionmode"
-                    + " \\the\\count0 \\end",
-            // --- output channel ---
-            "3" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\errorstopmode\\count0=\\interactionmode"
+                      + " \\the\\count0 \\end",
+                  // --- output channel ---
+                  "3" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\interactionmode"> Test case checking that
-     * {@code \interactionmode} can be used to set the interaction mode.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSet1() throws Exception {
+  /**
+   * <testcase primitive="\interactionmode"> Test case checking that
+   * {@code \interactionmode} can be used to set the interaction mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testSet1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\interactionmode=3 \\count0=\\interactionmode"
-                    + " \\the\\count0 \\end",
-            // --- output channel ---
-            "3" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\interactionmode=3 \\count0=\\interactionmode"
+                      + " \\the\\count0 \\end",
+                  // --- output channel ---
+                  "3" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\interactionmode"> Test case checking that
-     * {@code \interactionmode} can be used to set the interaction mode.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSet2() throws Exception {
+  /**
+   * <testcase primitive="\interactionmode"> Test case checking that
+   * {@code \interactionmode} can be used to set the interaction mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testSet2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\interactionmode 3 \\count0=\\interactionmode"
-                    + " \\the\\count0 \\end",
-            // --- output channel ---
-            "3" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\interactionmode 3 \\count0=\\interactionmode"
+                      + " \\the\\count0 \\end",
+                  // --- output channel ---
+                  "3" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\interactionmode"> Test case checking that
-     * {@code \interactionmode} does not accept 4.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSetErr1() throws Exception {
+  /**
+   * <testcase primitive="\interactionmode"> Test case checking that
+   * {@code \interactionmode} does not accept 4.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testSetErr1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\interactionmode=4 ",
-            // --- log message ---
-            "Bad interaction mode (4)");
-    }
+    assertFailure(// --- input code ---
+                  "\\interactionmode=4 ",
+                  // --- log message ---
+                  "Bad interaction mode (4)" );
+  }
 
-    /**
-     * <testcase primitive="\interactionmode"> Test case checking that
-     * {@code \interactionmode} does not accept -1.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSetErr2() throws Exception {
+  /**
+   * <testcase primitive="\interactionmode"> Test case checking that
+   * {@code \interactionmode} does not accept -1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testSetErr2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\interactionmode=-1 ",
-            // --- log message ---
-            "Bad interaction mode (-1)");
-    }
+    assertFailure(// --- input code ---
+                  "\\interactionmode=-1 ",
+                  // --- log message ---
+                  "Bad interaction mode (-1)" );
+  }
 
 }

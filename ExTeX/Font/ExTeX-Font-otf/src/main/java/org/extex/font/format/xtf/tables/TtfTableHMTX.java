@@ -19,18 +19,18 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
 /**
  * The 'hmtx' table contains metric information for the horizontal layout each
  * of the glyphs in the font.
- * 
+ *
  *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Field</b></td>
@@ -54,241 +54,242 @@ import org.extex.util.xml.XMLWriterConvertible;
  * numGlyphs (from &lsquo;maxp&rsquo; table) minus numberOfHMetrics. This
  * generally is used with a run of monospaced glyphs (e.g., Kanji fonts or
  * Courier fonts). Only one run is allowed and it must be at the end. This
- * allows a monospaced font to vary the left side bearing values for each glyph.</td>
+ * allows a monospaced font to vary the left side bearing values for each
+ * glyph.</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTableHMTX extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
 
-    /**
-     * buffer
-     */
-    private byte[] buf = null;
+  /**
+   * buffer
+   */
+  private byte[] buf = null;
 
-    /**
-     * horizontal metricx
-     */
-    private int[] hMetrics = null;
+  /**
+   * horizontal metricx
+   */
+  private int[] hMetrics = null;
 
-    /**
-     * length of hmetrics
-     */
-    private int hMetricslength;
+  /**
+   * length of hmetrics
+   */
+  private int hMetricslength;
 
-    /**
-     * leftsidebearing
-     */
-    private short[] leftSideBearing = null;
+  /**
+   * leftsidebearing
+   */
+  private short[] leftSideBearing = null;
 
-    /**
-     * length of lsb
-     */
-    private int lsblength;
+  /**
+   * length of lsb
+   */
+  private int lsblength;
 
-    /**
-     * Create a new object
-     * 
-     * @param tablemap the tablemap
-     * @param de entray
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public TtfTableHMTX(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object
+   *
+   * @param tablemap the tablemap
+   * @param de       entray
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public TtfTableHMTX( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap);
-        rar.seek(de.getOffset());
-        buf = new byte[de.getLength()];
-        rar.readFully(buf);
+    super( tablemap );
+    rar.seek( de.getOffset() );
+    buf = new byte[ de.getLength() ];
+    rar.readFully( buf );
 
-        // buf !!!
+    // buf !!!
+  }
+
+  /**
+   * Returns the advanced width
+   *
+   * @param i index
+   * @return Returns the advanced width
+   */
+  public int getAdvanceWidth( int i ) {
+
+    if( hMetrics == null ) {
+      return 0;
+    }
+    if( i < hMetrics.length ) {
+      return hMetrics[ i ] >> XtfConstants.SHIFT16;
+    }
+    return hMetrics[ hMetrics.length - 1 ] >> XtfConstants.SHIFT16;
+
+  }
+
+  @Override
+  public int getInitOrder() {
+
+    return 1;
+  }
+
+  /**
+   * Return the left side bearing
+   *
+   * @param i index
+   * @return Return the left side bearing
+   */
+  public short getLeftSideBearing( int i ) {
+
+    if( hMetrics == null ) {
+      return 0;
+    }
+    if( i < hMetrics.length ) {
+      return (short) (hMetrics[ i ] & XtfConstants.CONSTXFFFF);
+    }
+    return leftSideBearing[ i - hMetrics.length ];
+
+  }
+
+  public String getShortcut() {
+
+    return "hmtx";
+  }
+
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
+
+    return XtfReader.HMTX;
+  }
+
+  /**
+   * @see org.extex.font.format.xtf.tables.AbstractXtfTable#init()
+   */
+  @Override
+  public void init() {
+
+    TtfTableHHEA hhea = (TtfTableHHEA) getTableMap().get( XtfReader.HHEA );
+    TtfTableMAXP maxp = (TtfTableMAXP) getTableMap().get( XtfReader.MAXP );
+    if( hhea == null || maxp == null ) {
+      return;
     }
 
-    /**
-     * Returns the advanced width
-     * 
-     * @param i index
-     * @return Returns the advanced width
-     */
-    public int getAdvanceWidth(int i) {
+    int numberOfHMetrics = hhea.getNumberOfHMetrics();
+    int lsbCount = maxp.getNumGlyphs() - hhea.getNumberOfHMetrics();
 
-        if (hMetrics == null) {
-            return 0;
-        }
-        if (i < hMetrics.length) {
-            return hMetrics[i] >> XtfConstants.SHIFT16;
-        }
-        return hMetrics[hMetrics.length - 1] >> XtfConstants.SHIFT16;
-
+    if( buf == null ) {
+      return;
     }
 
-@Override
-    public int getInitOrder() {
+    hMetricslength = numberOfHMetrics;
+    lsblength = lsbCount;
 
-        return 1;
+    hMetrics = new int[ numberOfHMetrics ];
+    ByteArrayInputStream bais = new ByteArrayInputStream( buf );
+    for( int i = 0; i < numberOfHMetrics; i++ ) {
+      hMetrics[ i ] =
+          (bais.read() << XtfConstants.SHIFT24
+              | bais.read() << XtfConstants.SHIFT16
+              | bais.read() << XtfConstants.SHIFT8 | bais.read());
     }
-
-    /**
-     * Return the left side bearing
-     * 
-     * @param i index
-     * @return Return the left side bearing
-     */
-    public short getLeftSideBearing(int i) {
-
-        if (hMetrics == null) {
-            return 0;
-        }
-        if (i < hMetrics.length) {
-            return (short) (hMetrics[i] & XtfConstants.CONSTXFFFF);
-        }
-        return leftSideBearing[i - hMetrics.length];
-
+    if( lsbCount > 0 ) {
+      leftSideBearing = new short[ lsbCount ];
+      for( int i = 0; i < lsbCount; i++ ) {
+        leftSideBearing[ i ] =
+            (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                .read());
+      }
     }
+    buf = null;
+  }
 
-public String getShortcut() {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        return "hmtx";
+    writeStartElement( writer );
+    writer.writeStartElement( "hmetrics" );
+    for( int i = 0; i < hMetricslength; i++ ) {
+      writer.writeStartElement( "hmetric" );
+      writer.writeAttribute( "id", String.valueOf( i ) );
+      writer.writeAttribute( "value", String.valueOf( hMetrics[ i ] ) );
+      writer.writeEndElement();
     }
-
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.HMTX;
+    writer.writeEndElement();
+    writer.writeStartElement( "leftsidebearing" );
+    for( int i = 0; i < lsblength; i++ ) {
+      writer.writeStartElement( "lsb" );
+      writer.writeAttribute( "id", String.valueOf( i ) );
+      writer.writeAttribute( "value", String.valueOf( leftSideBearing[ i ] ) );
+      writer.writeEndElement();
     }
+    writer.writeEndElement();
+    TtfTableMAXP maxp = (TtfTableMAXP) getTableMap().get( XtfReader.MAXP );
+    TtfTablePOST post = (TtfTablePOST) getTableMap().get( XtfReader.POST );
+    TtfTableGLYF glyf = (TtfTableGLYF) getTableMap().get( XtfReader.GLYF );
 
-    /**
-     * @see org.extex.font.format.xtf.tables.AbstractXtfTable#init()
-     */
-    @Override
-    public void init() {
+    if( maxp != null && post != null ) {
+      writer.writeStartElement( "glyphs" );
+      int numGlyphs = maxp.getNumGlyphs();
+      for( int i = 0; i < numGlyphs; i++ ) {
+        writer.writeStartElement( "glyph" );
+        writer.writeAttribute( "id", String.valueOf( i ) );
+        int aw = getAdvanceWidth( i );
+        writer.writeAttribute( "width", String.valueOf( aw ) );
+        int lsb = getLeftSideBearing( i );
+        writer.writeAttribute( "lsb", String.valueOf( lsb ) );
 
-        TtfTableHHEA hhea = (TtfTableHHEA) getTableMap().get(XtfReader.HHEA);
-        TtfTableMAXP maxp = (TtfTableMAXP) getTableMap().get(XtfReader.MAXP);
-        if (hhea == null || maxp == null) {
-            return;
+        String postGylphName = post.getGlyphName( i );
+
+        if( postGylphName == null ) {
+          // search in cff
+          XtfTable cff = getTableMap().get( XtfReader.CFF );
+          if( cff != null && cff instanceof OtfTableCFF ) {
+            OtfTableCFF cfftab = (OtfTableCFF) cff;
+            // TODO mgn fontnumber 0
+            postGylphName = cfftab.mapGlyphPosToGlyphName( i, 0 );
+          }
         }
-
-        int numberOfHMetrics = hhea.getNumberOfHMetrics();
-        int lsbCount = maxp.getNumGlyphs() - hhea.getNumberOfHMetrics();
-
-        if (buf == null) {
-            return;
+        if( postGylphName == null ) {
+          postGylphName = "???";
         }
+        writer.writeAttribute( "name", postGylphName );
 
-        hMetricslength = numberOfHMetrics;
-        lsblength = lsbCount;
+        if( glyf != null ) {
+          // For any glyph, xmax and xmin are given in glyf table,
+          // lsb and aw are given in hmtx table.
+          // rsb is calculated as follows: rsb = aw - (lsb + xmax -
+          // xmin)
+          TtfTableGLYF.Descript des = glyf.getDescription( i );
+          if( des != null ) {
+            int xmax = des.getXMax();
+            int xmin = des.getXMin();
+            int rsb = aw - (lsb + xmax - xmin);
+            writer.writeAttribute( "xmax", String.valueOf( xmax ) );
+            writer.writeAttribute( "xmin", String.valueOf( xmin ) );
+            writer.writeAttribute( "rsb", String.valueOf( rsb ) );
 
-        hMetrics = new int[numberOfHMetrics];
-        ByteArrayInputStream bais = new ByteArrayInputStream(buf);
-        for (int i = 0; i < numberOfHMetrics; i++) {
-            hMetrics[i] =
-                    (bais.read() << XtfConstants.SHIFT24
-                            | bais.read() << XtfConstants.SHIFT16
-                            | bais.read() << XtfConstants.SHIFT8 | bais.read());
-        }
-        if (lsbCount > 0) {
-            leftSideBearing = new short[lsbCount];
-            for (int i = 0; i < lsbCount; i++) {
-                leftSideBearing[i] =
-                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                            .read());
-            }
-        }
-        buf = null;
-    }
-
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writeStartElement(writer);
-        writer.writeStartElement("hmetrics");
-        for (int i = 0; i < hMetricslength; i++) {
-            writer.writeStartElement("hmetric");
-            writer.writeAttribute("id", String.valueOf(i));
-            writer.writeAttribute("value", String.valueOf(hMetrics[i]));
-            writer.writeEndElement();
+            // If pp1 and pp2 are phantom points used to control lsb
+            // and rsb, their initial position in x is calculated
+            // as follows:
+            // pp1 = xmin - lsb
+            // pp2 = pp1 + aw
+            int pp1 = xmin - lsb;
+            int pp2 = pp1 + aw;
+            writer.writeAttribute( "pp1", String.valueOf( pp1 ) );
+            writer.writeAttribute( "pp2", String.valueOf( pp2 ) );
+          }
         }
         writer.writeEndElement();
-        writer.writeStartElement("leftsidebearing");
-        for (int i = 0; i < lsblength; i++) {
-            writer.writeStartElement("lsb");
-            writer.writeAttribute("id", String.valueOf(i));
-            writer.writeAttribute("value", String.valueOf(leftSideBearing[i]));
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-        TtfTableMAXP maxp = (TtfTableMAXP) getTableMap().get(XtfReader.MAXP);
-        TtfTablePOST post = (TtfTablePOST) getTableMap().get(XtfReader.POST);
-        TtfTableGLYF glyf = (TtfTableGLYF) getTableMap().get(XtfReader.GLYF);
-
-        if (maxp != null && post != null) {
-            writer.writeStartElement("glyphs");
-            int numGlyphs = maxp.getNumGlyphs();
-            for (int i = 0; i < numGlyphs; i++) {
-                writer.writeStartElement("glyph");
-                writer.writeAttribute("id", String.valueOf(i));
-                int aw = getAdvanceWidth(i);
-                writer.writeAttribute("width", String.valueOf(aw));
-                int lsb = getLeftSideBearing(i);
-                writer.writeAttribute("lsb", String.valueOf(lsb));
-
-                String postGylphName = post.getGlyphName(i);
-
-                if (postGylphName == null) {
-                    // search in cff
-                    XtfTable cff = getTableMap().get(XtfReader.CFF);
-                    if (cff != null && cff instanceof OtfTableCFF) {
-                        OtfTableCFF cfftab = (OtfTableCFF) cff;
-                        // TODO mgn fontnumber 0
-                        postGylphName = cfftab.mapGlyphPosToGlyphName(i, 0);
-                    }
-                }
-                if (postGylphName == null) {
-                    postGylphName = "???";
-                }
-                writer.writeAttribute("name", postGylphName);
-
-                if (glyf != null) {
-                    // For any glyph, xmax and xmin are given in glyf table,
-                    // lsb and aw are given in hmtx table.
-                    // rsb is calculated as follows: rsb = aw - (lsb + xmax -
-                    // xmin)
-                    TtfTableGLYF.Descript des = glyf.getDescription(i);
-                    if (des != null) {
-                        int xmax = des.getXMax();
-                        int xmin = des.getXMin();
-                        int rsb = aw - (lsb + xmax - xmin);
-                        writer.writeAttribute("xmax", String.valueOf(xmax));
-                        writer.writeAttribute("xmin", String.valueOf(xmin));
-                        writer.writeAttribute("rsb", String.valueOf(rsb));
-
-                        // If pp1 and pp2 are phantom points used to control lsb
-                        // and rsb, their initial position in x is calculated
-                        // as follows:
-                        // pp1 = xmin - lsb
-                        // pp2 = pp1 + aw
-                        int pp1 = xmin - lsb;
-                        int pp2 = pp1 + aw;
-                        writer.writeAttribute("pp1", String.valueOf(pp1));
-                        writer.writeAttribute("pp2", String.valueOf(pp2));
-                    }
-                }
-                writer.writeEndElement();
-            }
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
+      }
+      writer.writeEndElement();
     }
+    writer.writeEndElement();
+  }
 }

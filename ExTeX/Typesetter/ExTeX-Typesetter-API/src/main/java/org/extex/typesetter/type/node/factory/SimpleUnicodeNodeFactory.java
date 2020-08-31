@@ -31,46 +31,44 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * and virtual chars.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SimpleUnicodeNodeFactory extends SimpleNodeFactory {
 
 
-    public SimpleUnicodeNodeFactory() {
+  public SimpleUnicodeNodeFactory() {
 
+  }
+
+  /**
+   * Create a new instance for the node.
+   * If the character is not defined in the font given then {@code null}
+   * is returned instead.
+   *
+   * @param typesettingContext the typographic context for the node
+   * @param uc                 the Unicode character
+   * @return the new character node
+   * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
+   *org.extex.typesetter.tc.TypesettingContext,
+   * org.extex.core.UnicodeChar)
+   */
+  @Override
+  public Node getNode( TypesettingContext typesettingContext,
+                       UnicodeChar uc ) {
+
+    if( uc.equals( UnicodeChar.SHY ) ) {
+      UnicodeChar hyphen = typesettingContext.getFont().getHyphenChar();
+      if( hyphen == null ) {
+        return null;
+      }
+      Node node = super.getNode( typesettingContext, hyphen );
+      if( node == null ) {
+        return null;
+      }
+      return new DiscretionaryNode( null, new HorizontalListNode( node ),
+                                    null );
     }
 
-    /**
-     * Create a new instance for the node.
-     * If the character is not defined in the font given then {@code null}
-     * is returned instead.
-     *
-     * @param typesettingContext the typographic context for the node
-     * @param uc the Unicode character
-     *
-     * @return the new character node
-     *
-     * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
-     *      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.UnicodeChar)
-     */
-    @Override
-    public Node getNode(TypesettingContext typesettingContext,
-            UnicodeChar uc) {
-
-        if (uc.equals(UnicodeChar.SHY)) {
-            UnicodeChar hyphen = typesettingContext.getFont().getHyphenChar();
-            if (hyphen == null) {
-                return null;
-            }
-            Node node = super.getNode(typesettingContext, hyphen);
-            if (node == null) {
-                return null;
-            }
-            return new DiscretionaryNode(null, new HorizontalListNode(node),
-                null);
-        }
-
-        return super.getNode(typesettingContext, uc);
-    }
+    return super.getNode( typesettingContext, uc );
+  }
 
 }

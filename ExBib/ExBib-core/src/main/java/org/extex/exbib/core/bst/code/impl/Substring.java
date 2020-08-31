@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -56,13 +56,13 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *   cite$ #1 #3 substring$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation:</dt>
  * <dd>Pops the top three literals (they are the two integers literals
@@ -73,7 +73,7 @@ import org.extex.exbib.core.io.Locator;
  * <i>start</i> is negative (where the first character from the end is the last
  * character).</dd>
  * </dl>
- * 
+ *
  * <dl>
  * <dt>BibTeX web documentation:</dt>
  * <dd>The {@code built_in} function {@code substring$} pops the top
@@ -86,92 +86,99 @@ import org.extex.exbib.core.io.Locator;
  * negative (where the first character from the end is the last character). If
  * any of the types is incorrect, it complain and pushes the null string.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Substring extends AbstractCode {
 
-    /**
-     * Compute a substring according to the definition of
-     * BibTeX.
-     * 
-     * @param s the string
-     * @param st the start index &ndash; 1 based
-     * @param len the length
-     * 
-     * @return the requested substring
-     */
-    public static String substring(String s, int st, int len) {
+  /**
+   * Compute a substring according to the definition of
+   * BibTeX.
+   *
+   * @param s   the string
+   * @param st  the start index &ndash; 1 based
+   * @param len the length
+   * @return the requested substring
+   */
+  public static String substring( String s, int st, int len ) {
 
-        int slen = s.length();
-        int end;
-        int start = st;
-        if (len <= 0 || start == 0) {
-            start = 0;
-            end = 0;
-        } else if (start-- > 0) {
-            end = (start + len >= slen ? slen : start + len);
-        } else {
-            end = slen + start + 2;
-            start = (end <= len ? 0 : end - len);
-        }
-
-        if (start >= end) {
-            return "";
-        } else if (start == 0 && end >= slen) {
-            return s;
-        } else {
-            return s.substring(start, end);
-        }
+    int slen = s.length();
+    int end;
+    int start = st;
+    if( len <= 0 || start == 0 ) {
+      start = 0;
+      end = 0;
+    }
+    else if( start-- > 0 ) {
+      end = (start + len >= slen ? slen : start + len);
+    }
+    else {
+      end = slen + start + 2;
+      start = (end <= len ? 0 : end - len);
     }
 
-    /**
-     * Create a new object.
-     */
-    public Substring() {
+    if( start >= end ) {
+      return "";
+    }
+    else if( start == 0 && end >= slen ) {
+      return s;
+    }
+    else {
+      return s.substring( start, end );
+    }
+  }
 
+  /**
+   * Create a new object.
+   */
+  public Substring() {
+
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Substring( String name ) {
+
+    super( name );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  @Override
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    int len = processor.popInteger( locator ).getInt();
+    int start = processor.popInteger( locator ).getInt();
+    TString t = processor.popString( locator );
+    String s = t.getValue();
+    int slen = s.length();
+    int end;
+
+    if( len <= 0 || start == 0 ) {
+      start = 0;
+      end = 0;
+    }
+    else if( start-- > 0 ) {
+      end = (start + len >= slen ? slen : start + len);
+    }
+    else {
+      end = slen + start + 2;
+      start = (end <= len ? 0 : end - len);
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Substring(String name) {
-
-        super(name);
+    if( start >= end ) {
+      processor.push( TokenFactory.T_EMPTY );
     }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    @Override
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        int len = processor.popInteger(locator).getInt();
-        int start = processor.popInteger(locator).getInt();
-        TString t = processor.popString(locator);
-        String s = t.getValue();
-        int slen = s.length();
-        int end;
-
-        if (len <= 0 || start == 0) {
-            start = 0;
-            end = 0;
-        } else if (start-- > 0) {
-            end = (start + len >= slen ? slen : start + len);
-        } else {
-            end = slen + start + 2;
-            start = (end <= len ? 0 : end - len);
-        }
-
-        if (start >= end) {
-            processor.push(TokenFactory.T_EMPTY);
-        } else if (start == 0 && end >= slen) {
-            processor.push(t);
-        } else {
-            processor.push(new TString(s.substring(start, end), locator));
-        }
+    else if( start == 0 && end >= slen ) {
+      processor.push( t );
     }
+    else {
+      processor.push( new TString( s.substring( start, end ), locator ) );
+    }
+  }
 }

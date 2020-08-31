@@ -25,39 +25,42 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \afterassignment}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AfterassignmentTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(AfterassignmentTest.class);
-    }
+    (new JUnitCore()).run( AfterassignmentTest.class );
+  }
 
 
-    public AfterassignmentTest() {
+  public AfterassignmentTest() {
 
-        setPrimitive("afterassignment");setArguments(" x");setPrepare("");
-    }
+    setPrimitive( "afterassignment" );
+    setArguments( " x" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\afterassignment"> Test case checking that
-     * {@code \afterassignment} needs a token.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\afterassignment"> Test case checking that
+   * {@code \afterassignment} needs a token.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure("\\afterassignment ", 
-            "Unexpected end of file while processing \\afterassignment");
-    }
+    assertFailure( "\\afterassignment ",
+                   "Unexpected end of file while processing " +
+                       "\\afterassignment" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

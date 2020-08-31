@@ -27,45 +27,44 @@ import org.extex.typesetter.type.page.Page;
  * in a new node list.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface PagePipe {
 
-    /**
-     * This method is invoked upon the end of the processing.
-     *
-     * @throws BackendException in case of a back-end error
-     */
-    void close() throws BackendException;
+  /**
+   * This method is invoked upon the end of the processing.
+   *
+   * @throws BackendException in case of a back-end error
+   */
+  void close() throws BackendException;
 
-    /**
-     * This is the entry point for the document writer. Here it receives a
-     * complete node list to be sent to the output writer. It can be assumed
-     * that all values for width, height, and depth of the node lists are
-     * properly filled. Thus all information should be present to place the
-     * ink on the paper.
-     *
-     * @param page the page to send
-     *
-     * @throws BackendException in case of an error
-     */
-    void shipout(Page page) throws BackendException;
+  /**
+   * This is the entry point for the document writer. Here it receives a
+   * complete node list to be sent to the output writer. It can be assumed
+   * that all values for width, height, and depth of the node lists are
+   * properly filled. Thus all information should be present to place the
+   * ink on the paper.
+   *
+   * @param page the page to send
+   * @throws BackendException in case of an error
+   */
+  void shipout( Page page ) throws BackendException;
 
-    /**
-     * Setter for the output node pipe.
-     *
-     * @param out the output node pipe
-     */
-    void setOutput(PagePipe out);
+  /**
+   * Setter for the output node pipe.
+   *
+   * @param out the output node pipe
+   */
+  void setOutput( PagePipe out );
 
-    /**
-     * Setter for a named parameter.
-     * Parameters are a general mechanism to influence the behavior of the
-     * document writer. Any parameter not known by the document writer has to
-     * be ignored.
-     *
-     * @param name the name of the parameter
-     * @param value the value of the parameter
-     */
-    void setParameter(String name, String value);
+  /**
+   * Setter for a named parameter.
+   * Parameters are a general mechanism to influence the behavior of the
+   * document writer. Any parameter not known by the document writer has to
+   * be ignored.
+   *
+   * @param name  the name of the parameter
+   * @param value the value of the parameter
+   */
+  void setParameter( String name, String value );
 
 }

@@ -27,83 +27,77 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \left}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LeftTest extends AbstractMathTester {
 
 
-    public LeftTest() {
+  public LeftTest() {
 
-        setPrimitive("left");setArguments("123 ");setPrepare("");
-    }
+    setPrimitive( "left" );
+    setArguments( "123 " );
+    setPrepare( "" );
+  }
 
-    /**
-     * 
-     *  Test case checking that {@code \left} needs a delimiter.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr1() throws Exception {
+  /**
+   * Test case checking that {@code \left} needs a delimiter.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr1() throws Exception {
 
-        assertFailure(
+    assertFailure(
         //--- input code ---
-            DEFINE_MATH + "$\\left $\\end",
-            //--- output channel ---
-            "Missing delimiter (. inserted)");
-    }
+        DEFINE_MATH + "$\\left $\\end",
+        //--- output channel ---
+        "Missing delimiter (. inserted)" );
+  }
 
-    /**
-     * 
-     *  Test case checking that {@code \left} needs closing {@code \right}.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr2() throws Exception {
+  /**
+   * Test case checking that {@code \left} needs closing {@code \right}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr2() throws Exception {
 
-        assertFailure(
+    assertFailure(
         //--- input code ---
-            DEFINE_MATH + "$\\left. $\\end",
-            //--- output channel ---
-            "Missing \\right. inserted");
-    }
+        DEFINE_MATH + "$\\left. $\\end",
+        //--- output channel ---
+        "Missing \\right. inserted" );
+  }
 
-    /**
-     * 
-     *  Test case checking that {@code \left} needs closing {@code \right}.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr3() throws Exception {
+  /**
+   * Test case checking that {@code \left} needs closing {@code \right}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr3() throws Exception {
 
-        assertFailure(
+    assertFailure(
         //--- input code ---
-            DEFINE_BRACES + DEFINE_MATH + "$\\left. } $\\end",
-            //--- output channel ---
-            "Too many }'s");
-    }
+        DEFINE_BRACES + DEFINE_MATH + "$\\left. } $\\end",
+        //--- output channel ---
+        "Too many }'s" );
+  }
 
-    /**
-     * 
-     *  Test case checking that {@code \left} needs closing {@code \right}.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test1() throws Exception {
+  /**
+   * Test case checking that {@code \left} needs closing {@code \right}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         //--- input code ---
-            DEFINE_BRACES + DEFINE_MATH + DEFINE_MATH_FONTS
-                    + "$\\left. A \\right. $\\end",
-            //--- output channel ---
-            "A" + TERM);
-    }
+        DEFINE_BRACES + DEFINE_MATH + DEFINE_MATH_FONTS
+            + "$\\left. A \\right. $\\end",
+        //--- output channel ---
+        "A" + TERM );
+  }
 
 }

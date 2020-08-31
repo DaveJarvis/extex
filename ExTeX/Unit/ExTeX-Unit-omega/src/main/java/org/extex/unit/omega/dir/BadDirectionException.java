@@ -27,23 +27,22 @@ import org.extex.framework.i18n.LocalizerFactory;
  * encountered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BadDirectionException extends HelpingException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     *
-     */
-    public BadDirectionException() {
+  /**
+   * Creates a new object.
+   */
+  public BadDirectionException() {
 
-        super(LocalizerFactory.getLocalizer(BadDirectionException.class),
-            "Omega.BadDirection");
-    }
+    super( LocalizerFactory.getLocalizer( BadDirectionException.class ),
+           "Omega.BadDirection" );
+  }
 
 }

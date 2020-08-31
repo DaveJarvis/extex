@@ -40,7 +40,7 @@ import org.extex.typesetter.type.node.KernNode;
 /**
  * This class provides an implementation for the primitive
  * {@code \lastkern}.
- * 
+ *
  * <p>The Primitive {@code \lastkern}</p>
  * <p>
  * TODO missing documentation
@@ -53,71 +53,74 @@ import org.extex.typesetter.type.node.KernNode;
  *    \dimen1=\lastkern  </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Lastkern extends AbstractCode
-        implements
-            CountConvertible,
-            DimenConvertible,
-            Theable {
+    implements
+    CountConvertible,
+    DimenConvertible,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Lastkern(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Lastkern( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Node node = typesetter.getLastNode();
+    return (node instanceof KernNode ? node.getWidth()
+                                           .getValue() : 0);
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertDimen( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Node node = typesetter.getLastNode();
+    return (node instanceof KernNode ? node.getWidth()
+                                           .getValue() : 0);
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
+
+    Node node = typesetter.getLastNode();
+    FixedDimen pen =
+        (node instanceof KernNode
+            ? node.getWidth()
+            : Dimen.ZERO_PT);
+    try {
+      return context.getTokenFactory().toTokens( pen.toString() );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Node node = typesetter.getLastNode();
-        return (node instanceof KernNode ? node.getWidth()
-                                               .getValue() : 0);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Node node = typesetter.getLastNode();
-        return (node instanceof KernNode ? node.getWidth()
-                                               .getValue() : 0);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        Node node = typesetter.getLastNode();
-        FixedDimen pen =
-                (node instanceof KernNode
-                        ? node.getWidth()
-                        : Dimen.ZERO_PT);
-        try {
-            return context.getTokenFactory().toTokens(pen.toString());
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
+  }
 
 }

@@ -19,11 +19,6 @@
 
 package org.extex.backend.documentWriter.postscript.converter;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
-
 import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.backend.documentWriter.postscript.util.FontManager;
 import org.extex.backend.documentWriter.postscript.util.HeaderManager;
@@ -33,167 +28,172 @@ import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.typesetter.type.node.SpecialNode;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
+
 /**
  * This is the abstract base class for an PS converter.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractConverter implements PsConverter, ResourceAware {
 
-    /**
-     * The field {@code headerManager} contains the header manager.
-     */
-    private HeaderManager headerManager;
+  /**
+   * The field {@code headerManager} contains the header manager.
+   */
+  private HeaderManager headerManager;
 
-    /**
-     * The field {@code finder} contains the resource finder.
-     */
-    private ResourceFinder finder;
+  /**
+   * The field {@code finder} contains the resource finder.
+   */
+  private ResourceFinder finder;
 
-    /**
-     * The field {@code fontManager} contains the font manager.
-     */
-    private FontManager fontManager;
+  /**
+   * The field {@code fontManager} contains the font manager.
+   */
+  private FontManager fontManager;
 
-    
-    /**
-     * Getter for fontManager.
-     *
-     * @return the fontManager
-     */
-    protected FontManager getFontManager() {
-    
-        return fontManager;
+
+  /**
+   * Getter for fontManager.
+   *
+   * @return the fontManager
+   */
+  protected FontManager getFontManager() {
+
+    return fontManager;
+  }
+
+
+  public AbstractConverter() {
+
+  }
+
+  /**
+   * org.extex.backend.documentWriter.postscript.util.HeaderManager,
+   * org.extex.backend.documentWriter.postscript.util.FontManager)
+   */
+  public void init( HeaderManager headerMan, FontManager fontMan )
+      throws IOException {
+
+    headerManager = headerMan;
+    fontManager = fontMan;
+  }
+
+  /**
+   * org.extex.resource.ResourceFinder)
+   */
+  public void setResourceFinder( ResourceFinder resourceFinder ) {
+
+    this.finder = resourceFinder;
+  }
+
+  /**
+   * Add some text from a resource to the header section.
+   *
+   * @param name the name of the resource to add as header
+   * @throws GeneralException in case of an error
+   */
+  private void specialHeader( String name ) throws GeneralException {
+
+    try {
+      InputStream s = finder.findResource( name, "pro" );
+      if( s != null ) {
+        headerManager.add( s, name );
+        s.close();
+      }
+      else {
+        throw new DocumentWriterIOException( new FileNotFoundException() );
+      }
+    } catch( ConfigurationException e ) {
+      throw new GeneralException( e );
+    } catch( IOException e ) {
+      throw new GeneralException( e );
     }
+  }
 
+  /**
+   * Find a PS resource and include its contents into the output stream.
+   *
+   * @param out  the target buffer
+   * @param name the name of the resource
+   * @throws GeneralException in case of an error
+   */
+  private void specialPsfile( PrintStream out, String name )
+      throws GeneralException {
 
-    public AbstractConverter() {
-
+    try {
+      InputStream s = finder.findResource( name, "ps" );
+      if( s != null ) {
+        int c;
+        while( (c = s.read()) >= 0 ) {
+          out.append( (char) c );
+        }
+        s.close();
+      }
+      else {
+        throw new DocumentWriterIOException( new FileNotFoundException() );
+      }
+    } catch( ConfigurationException e ) {
+      throw new GeneralException( e );
+    } catch( IOException e ) {
+      throw new GeneralException( e );
     }
+  }
 
-    /**
-*      org.extex.backend.documentWriter.postscript.util.HeaderManager,
-     *      org.extex.backend.documentWriter.postscript.util.FontManager)
-     */
-    public void init(HeaderManager headerMan, FontManager fontMan)
-            throws IOException {
+  /**
+   * Process a special node.
+   *
+   * @param out         the output stream
+   * @param specialNode the node
+   * @throws GeneralException in case of an error
+   */
+  protected void treatSpecial( PrintStream out, SpecialNode specialNode )
+      throws GeneralException {
 
-        headerManager = headerMan;
-        fontManager = fontMan;
+    String text = specialNode.getText();
+    if( text == null || text.length() == 0 ) {
+      return;
     }
-
-    /**
-*      org.extex.resource.ResourceFinder)
-     */
-    public void setResourceFinder(ResourceFinder resourceFinder) {
-
-        this.finder = resourceFinder;
-    }
-
-    /**
-     * Add some text from a resource to the header section.
-     * 
-     * @param name the name of the resource to add as header
-     * 
-     * @throws GeneralException in case of an error
-     */
-    private void specialHeader(String name) throws GeneralException {
-
+    switch( text.charAt( 0 ) ) {
+      case 'p':
+        if( text.startsWith( "ps:" ) ) {
+          out.append( text.substring( 3 ) );
+        }
+        else if( text.startsWith( "psfile=" ) ) {
+          specialPsfile( out, text.substring( 7 ) );
+        }
+        break;
+      case 'h':
+        if( text.startsWith( "header=" ) ) {
+          specialHeader( text.substring( 7 ) );
+        }
+        break;
+      case '"':
+        out.append( "gsave " );
+        out.append( text.substring( 1 ) );
+        out.append( "grestore\n" );
+        break;
+      case '!':
         try {
-            InputStream s = finder.findResource(name, "pro");
-            if (s != null) {
-                headerManager.add(s, name);
-                s.close();
-            } else {
-                throw new DocumentWriterIOException(new FileNotFoundException());
-            }
-        } catch (ConfigurationException e) {
-            throw new GeneralException(e);
-        } catch (IOException e) {
-            throw new GeneralException(e);
+          headerManager.add( text.substring( 1 ), "!" );
+        } catch( IOException e ) {
+          throw new GeneralException( e );
         }
+        break;
+      default:
+        // ignored on purpose
     }
+  }
 
-    /**
-     * Find a PS resource and include its contents into the output stream.
-     * 
-     * @param out the target buffer
-     * @param name the name of the resource
-     * 
-     * @throws GeneralException in case of an error
-     */
-    private void specialPsfile(PrintStream out, String name)
-            throws GeneralException {
+  /**
+   * PrintStream)
+   */
+  public void writeHeaders( PrintStream stream ) throws IOException {
 
-        try {
-            InputStream s = finder.findResource(name, "ps");
-            if (s != null) {
-                int c;
-                while ((c = s.read()) >= 0) {
-                    out.append((char) c);
-                }
-                s.close();
-            } else {
-                throw new DocumentWriterIOException(new FileNotFoundException());
-            }
-        } catch (ConfigurationException e) {
-            throw new GeneralException(e);
-        } catch (IOException e) {
-            throw new GeneralException(e);
-        }
-    }
-
-    /**
-     * Process a special node.
-     * 
-     * @param out the output stream
-     * @param specialNode the node
-     * 
-     * @throws GeneralException in case of an error
-     */
-    protected void treatSpecial(PrintStream out, SpecialNode specialNode)
-            throws GeneralException {
-
-        String text = specialNode.getText();
-        if (text == null || text.length() == 0) {
-            return;
-        }
-        switch (text.charAt(0)) {
-            case 'p':
-                if (text.startsWith("ps:")) {
-                    out.append(text.substring(3));
-                } else if (text.startsWith("psfile=")) {
-                    specialPsfile(out, text.substring(7));
-                }
-                break;
-            case 'h':
-                if (text.startsWith("header=")) {
-                    specialHeader(text.substring(7));
-                }
-                break;
-            case '"':
-                out.append("gsave ");
-                out.append(text.substring(1));
-                out.append("grestore\n");
-                break;
-            case '!':
-                try {
-                    headerManager.add(text.substring(1), "!");
-                } catch (IOException e) {
-                    throw new GeneralException(e);
-                }
-                break;
-            default:
-                // ignored on purpose
-        }
-    }
-
-    /**
-*      PrintStream)
-     */
-    public void writeHeaders(PrintStream stream) throws IOException {
-
-        headerManager.write(stream);
-    }
+    headerManager.write( stream );
+  }
 
 }

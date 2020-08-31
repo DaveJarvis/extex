@@ -24,27 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \noDefaultInputMode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoDefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(NoDefaultInputModeTest.class);
-    }
+    (new JUnitCore()).run( NoDefaultInputModeTest.class );
+  }
 
 
-    public NoDefaultInputModeTest() {
+  public NoDefaultInputModeTest() {
 
-        setPrimitive("noDefaultInputMode");setArguments("");
-        setConfig("omega-test");
-    }
+    setPrimitive( "noDefaultInputMode" );
+    setArguments( "" );
+    setConfig( "omega-test" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

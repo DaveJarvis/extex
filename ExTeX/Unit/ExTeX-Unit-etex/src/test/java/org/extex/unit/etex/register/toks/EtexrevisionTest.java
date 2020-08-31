@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \eTeXrevision}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EtexrevisionTest extends AbstractToksRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(EtexrevisionTest.class);
-    }
+    (new JUnitCore()).run( EtexrevisionTest.class );
+  }
 
 
-    public EtexrevisionTest() {
+  public EtexrevisionTest() {
 
-        super("eTeXrevision", "", ".141592");
-        setConfig("etex-test");
-    }
+    super( "eTeXrevision", "", ".141592" );
+    setConfig( "etex-test" );
+  }
 
 }

@@ -19,79 +19,83 @@
 
 package org.extex.unit.dynamic.java;
 
-import static org.junit.Assert.assertTrue;
-
 import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
+import static org.junit.Assert.assertTrue;
+
 /**
  * This is a test suite for the primitive {@code \javaload}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class JavaloadTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * The constant {@code SENSOR} contains the name of the sensor class.
-     */
-    private static final String SENSOR = JavaloadSensor.class.getName();
+  /**
+   * The constant {@code SENSOR} contains the name of the sensor class.
+   */
+  private static final String SENSOR = JavaloadSensor.class.getName();
 
 
-    public JavaloadTest() {
+  public JavaloadTest() {
 
-        setPrimitive("javaload");setArguments("{" + SENSOR + "}");setPrepare("");
-        setConfig("native-test");
-    }
+    setPrimitive( "javaload" );
+    setArguments( "{" + SENSOR + "}" );
+    setPrepare( "" );
+    setConfig( "native-test" );
+  }
 
-    /**
-     * <testcase primitive="\javaload"> Test case checking that
-     * {@code \javaload} needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\javaload"> Test case checking that
+   * {@code \javaload} needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\javaload",
-            // --- log message ---
-            "File ended while scanning text of \\javaload");
-    }
+        DEFINE_BRACES + "\\javaload",
+        // --- log message ---
+        "File ended while scanning text of \\javaload" );
+  }
 
-    /**
-     * <testcase primitive="\javaload"> Test case checking that
-     * {@code \javaload} invokes the sensor class.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="\javaload"> Test case checking that
+   * {@code \javaload} invokes the sensor class.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\javaload" + "{" + getClass().getName() + "}"
-                    + " \\end",
-            // --- log message ---
-            "The class org.extex.unit.dynamic.java.JavaloadTest does not implement the\n"
-                    + "required interface org.extex.unit.dynamic.java.Loadable.");
-    }
+        DEFINE_BRACES + "\\javaload" + "{" + getClass().getName() + "}"
+            + " \\end",
+        // --- log message ---
+        "The class org.extex.unit.dynamic.java.JavaloadTest does not " +
+            "implement the\n"
+            +
+            "required interface org.extex.unit.dynamic.java.Loadable." );
+  }
 
-    /**
-     * <testcase primitive="\javaload"> Test case checking that
-     * {@code \javaload} invokes the sensor class.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\javaload"> Test case checking that
+   * {@code \javaload} invokes the sensor class.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\javaload" + "{" + SENSOR + "}" + " \\end",
-            // --- log message ---
-            "");
-        assertTrue(JavaloadSensor.isSensed());
-    }
+        DEFINE_BRACES + "\\javaload" + "{" + SENSOR + "}" + " \\end",
+        // --- log message ---
+        "" );
+    assertTrue( JavaloadSensor.isSensed() );
+  }
 
 }

@@ -24,63 +24,63 @@ import java.util.ArrayList;
 
 /**
  * This class provides a type-safe list of observers for the open file event.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class OpenFileObserverList extends ArrayList<OpenFileObserver>
-        implements
-            OpenFileObserver {
+    implements
+    OpenFileObserver {
 
-    /**
-     * The field {@code serialVersionUID} contains th version number for
-     * serialization
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains th version number for
+   * serialization
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Take a list and add an observer. If the list is {@code null} then
-     * a new one is created.
-     * 
-     * @param list the input list or {@code null}
-     * @param observer the observer to add
-     * 
-     * @return the input list or a new one with the observer added
-     */
-    public static OpenFileObserver register(OpenFileObserver list,
-            OpenFileObserver observer) {
+  /**
+   * Take a list and add an observer. If the list is {@code null} then
+   * a new one is created.
+   *
+   * @param list     the input list or {@code null}
+   * @param observer the observer to add
+   * @return the input list or a new one with the observer added
+   */
+  public static OpenFileObserver register( OpenFileObserver list,
+                                           OpenFileObserver observer ) {
 
-        if (list instanceof OpenFileObserverList) {
-            ((OpenFileObserverList) list).add(observer);
-        } else if (list == null) {
-            OpenFileObserverList result = new OpenFileObserverList();
-            result.add(observer);
-            return result;
-        } else {
-            OpenFileObserverList result = new OpenFileObserverList();
-            result.add(list);
-            result.add(observer);
-            return result;
-        }
-        return list;
+    if( list instanceof OpenFileObserverList ) {
+      ((OpenFileObserverList) list).add( observer );
     }
-
-    /**
-     * Invoke all observers on the list to inform them of the file which has
-     * been opened.
-     * 
-     * @param filename the name of the file to be opened
-     * @param filetype the type of the file to be opened. The type is resolved
-     *        via the configuration to a file name pattern
-     * @param stream the input stream to read from
-     * 
-     * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(
-     *      java.lang.String, java.lang.String, java.io.InputStream)
-     */
-    public void update(String filename, String filetype, InputStream stream) {
-
-        for (OpenFileObserver obs : this) {
-            obs.update(filename, filetype, stream);
-        }
+    else if( list == null ) {
+      OpenFileObserverList result = new OpenFileObserverList();
+      result.add( observer );
+      return result;
     }
+    else {
+      OpenFileObserverList result = new OpenFileObserverList();
+      result.add( list );
+      result.add( observer );
+      return result;
+    }
+    return list;
+  }
+
+  /**
+   * Invoke all observers on the list to inform them of the file which has
+   * been opened.
+   *
+   * @param filename the name of the file to be opened
+   * @param filetype the type of the file to be opened. The type is resolved
+   *                 via the configuration to a file name pattern
+   * @param stream   the input stream to read from
+   * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(
+   *java.lang.String, java.lang.String, java.io.InputStream)
+   */
+  public void update( String filename, String filetype, InputStream stream ) {
+
+    for( OpenFileObserver obs : this ) {
+      obs.update( filename, filetype, stream );
+    }
+  }
 
 }

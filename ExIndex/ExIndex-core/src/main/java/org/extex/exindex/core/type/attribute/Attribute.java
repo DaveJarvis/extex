@@ -21,129 +21,130 @@ package org.extex.exindex.core.type.attribute;
 
 /**
  * This class represents an attribute description.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Attribute {
 
-    /**
-     * The field {@code alias} contains the attribute alias.
-     */
-    private String alias = null;
+  /**
+   * The field {@code alias} contains the attribute alias.
+   */
+  private String alias = null;
 
-    /**
-     * The field {@code drop} contains the drop indicator.
-     */
-    private boolean drop = false;
+  /**
+   * The field {@code drop} contains the drop indicator.
+   */
+  private boolean drop = false;
 
-    /**
-     * The field {@code name} contains the name.
-     */
-    private final String name;
+  /**
+   * The field {@code name} contains the name.
+   */
+  private final String name;
 
-    /**
-     * The field {@code ord} contains the ordering.
-     */
-    private final int ord;
+  /**
+   * The field {@code ord} contains the ordering.
+   */
+  private final int ord;
 
-    /**
-     * The field {@code group} contains the group number.
-     */
-    private final int group;
+  /**
+   * The field {@code group} contains the group number.
+   */
+  private final int group;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the name
-     * @param ord the order
-     * @param group the attribute group
-     */
-    public Attribute(String name, int ord, int group) {
+  /**
+   * Creates a new object.
+   *
+   * @param name  the name
+   * @param ord   the order
+   * @param group the attribute group
+   */
+  public Attribute( String name, int ord, int group ) {
 
-        this.name = name;
-        this.ord = ord;
-        this.group = group;
+    this.name = name;
+    this.ord = ord;
+    this.group = group;
+  }
+
+  /**
+   * Getter for attribute.
+   *
+   * @return the attribute
+   */
+  public String getAlias() {
+
+    return alias;
+  }
+
+  /**
+   * Getter for group.
+   *
+   * @return the group
+   */
+  public int getGroup() {
+
+    return group;
+  }
+
+  /**
+   * Getter for name.
+   *
+   * @return the name
+   */
+  public String getName() {
+
+    return name;
+  }
+
+  /**
+   * Getter for ord.
+   *
+   * @return the ord
+   */
+  public int getOrd() {
+
+    return ord;
+  }
+
+  /**
+   * Getter for drop.
+   *
+   * @return the drop
+   */
+  public boolean isDrop() {
+
+    return drop;
+  }
+
+  /**
+   * Setter for the alias.
+   *
+   * @param alias the alias
+   */
+  public void setAlias( String alias ) {
+
+    this.alias = alias;
+  }
+
+  /**
+   * Setter for the drop indicator.
+   *
+   * @param drop the new value
+   */
+  public void setDrop( boolean drop ) {
+
+    this.drop = drop;
+  }
+
+  @Override
+  public String toString() {
+
+    if( drop ) {
+      return "<attribute " + name + " :drop>";
     }
-
-    /**
-     * Getter for attribute.
-     * 
-     * @return the attribute
-     */
-    public String getAlias() {
-
-        return alias;
+    else if( alias != null ) {
+      return "<attribute " + name + " :merge-to " + alias + ">";
     }
-
-    /**
-     * Getter for group.
-     * 
-     * @return the group
-     */
-    public int getGroup() {
-
-        return group;
-    }
-
-    /**
-     * Getter for name.
-     * 
-     * @return the name
-     */
-    public String getName() {
-
-        return name;
-    }
-
-    /**
-     * Getter for ord.
-     * 
-     * @return the ord
-     */
-    public int getOrd() {
-
-        return ord;
-    }
-
-    /**
-     * Getter for drop.
-     * 
-     * @return the drop
-     */
-    public boolean isDrop() {
-
-        return drop;
-    }
-
-    /**
-     * Setter for the alias.
-     * 
-     * @param alias the alias
-     */
-    public void setAlias(String alias) {
-
-        this.alias = alias;
-    }
-
-    /**
-     * Setter for the drop indicator.
-     * 
-     * @param drop the new value
-     */
-    public void setDrop(boolean drop) {
-
-        this.drop = drop;
-    }
-
-@Override
-    public String toString() {
-
-        if (drop) {
-            return "<attribute " + name + " :drop>";
-        } else if (alias != null) {
-            return "<attribute " + name + " :merge-to " + alias + ">";
-        }
-        return "<attribute " + name + ">";
-    }
+    return "<attribute " + name + ">";
+  }
 
 }

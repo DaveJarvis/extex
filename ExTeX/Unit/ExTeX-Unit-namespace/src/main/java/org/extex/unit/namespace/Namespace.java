@@ -38,7 +38,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \namespace}.
- * 
+ *
  * <p>The Primitive {@code \namespace}</p>
  * <p>
  * The primitive {@code \namespace} witches the name space. For this purpose it
@@ -50,91 +50,91 @@ import org.extex.typesetter.exception.TypesetterException;
  * The name space corresponding to the empty list of characters is the default
  * name space.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;namespace&rang;
  *      &rarr; {@code \namespace} {@linkplain
- *      org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *      org.extex.interpreter.TokenSource#getTokens(Context, TokenSource, Typesetter)
  *      &lang;replacement text&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \namespace{org.dante.dtk}  </pre>
- * 
  *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @see org.extex.unit.namespace.Export
  * @see org.extex.unit.namespace.Import
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Namespace extends AbstractAssignment
-        implements
-            Theable,
-            ExpandableCode {
+    implements
+    Theable,
+    ExpandableCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Namespace(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Namespace( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Tokens toks;
+    try {
+      toks = source.getTokens( context, source, typesetter );
+    } catch( EofException e ) {
+      throw new EofInToksException( toText() );
     }
+    context.setNamespace( toks.toText(), prefix.clearGlobal() );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter ) throws HelpingException {
 
-        Tokens toks;
-        try {
-            toks = source.getTokens(context, source, typesetter);
-        } catch (EofException e) {
-            throw new EofInToksException(toText());
-        }
-        context.setNamespace(toks.toText(), prefix.clearGlobal());
+    try {
+      source.push( context.getTokenFactory().toTokens(
+          context.getNamespace() ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        try {
-            source.push(context.getTokenFactory().toTokens(
-                context.getNamespace()));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        return context.getTokenFactory().toTokens(context.getNamespace());
-    }
+    return context.getTokenFactory().toTokens( context.getNamespace() );
+  }
 
 }

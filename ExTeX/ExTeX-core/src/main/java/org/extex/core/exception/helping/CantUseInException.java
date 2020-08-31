@@ -25,29 +25,29 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception is raised when a macro is encountered in a mode for which it
  * is not meant.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code TTP.CantUseIn}.
+ * The localization format is taken from the Localizer under the key
+ * {@code TTP.CantUseIn}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CantUseInException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param macro the name of the macro in which the eof has been encountered
-     * @param mode the current mode
-     */
-    public CantUseInException(String macro, String mode) {
+  /**
+   * Creates a new object.
+   *
+   * @param macro the name of the macro in which the eof has been encountered
+   * @param mode  the current mode
+   */
+  public CantUseInException( String macro, String mode ) {
 
-        super(LocalizerFactory.getLocalizer(CantUseInException.class),
-                "TTP.CantUseIn", macro, mode);
-    }
+    super( LocalizerFactory.getLocalizer( CantUseInException.class ),
+           "TTP.CantUseIn", macro, mode );
+  }
 
 }

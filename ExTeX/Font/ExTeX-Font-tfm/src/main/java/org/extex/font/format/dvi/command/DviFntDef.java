@@ -24,172 +24,172 @@ import org.extex.core.dimen.Dimen;
 
 /**
  * DVI: fnt_def: Define a font.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviFntDef extends DviCommand {
 
-    /**
-     * fnt_def_1
-     */
-    private static final int FNT_DEF1 = 243;
+  /**
+   * fnt_def_1
+   */
+  private static final int FNT_DEF1 = 243;
 
-    /**
-     * round
-     */
-    private static final double ROUND = 0.5d;
+  /**
+   * round
+   */
+  private static final double ROUND = 0.5d;
 
-    /**
-     * the area
-     */
-    private final String area;
+  /**
+   * the area
+   */
+  private final String area;
 
-    /**
-     * the checkusm
-     */
-    private final int checksum;
+  /**
+   * the checkusm
+   */
+  private final int checksum;
 
-    /**
-     * the design size
-     */
-    private final int designsize;
+  /**
+   * the design size
+   */
+  private final int designsize;
 
-    /**
-     * the name
-     */
-    private final String fname;
+  /**
+   * the name
+   */
+  private final String fname;
 
-    /**
-     * the font (number)
-     */
-    private final int font;
+  /**
+   * the font (number)
+   */
+  private final int font;
 
-    /**
-     * the scalefactor
-     */
-    private final int scale;
+  /**
+   * the scalefactor
+   */
+  private final int scale;
 
-    /**
-     * Create a new object.
-     * 
-     * @param oc the opcode
-     * @param sp the start pointer
-     * @param k the font (number)
-     * @param c the checksum
-     * @param s the scalefactor
-     * @param d the designsize
-     * @param a the area
-     * @param l the name
-     */
-    public DviFntDef(final int oc, final int sp, final int k, final int c,
-            final int s, final int d, final String a, final String l) {
+  /**
+   * Create a new object.
+   *
+   * @param oc the opcode
+   * @param sp the start pointer
+   * @param k  the font (number)
+   * @param c  the checksum
+   * @param s  the scalefactor
+   * @param d  the designsize
+   * @param a  the area
+   * @param l  the name
+   */
+  public DviFntDef( final int oc, final int sp, final int k, final int c,
+                    final int s, final int d, final String a, final String l ) {
 
-        super(oc, sp);
-        font = k;
-        checksum = c;
-        scale = s;
-        designsize = d;
-        area = a;
-        fname = l;
-    }
+    super( oc, sp );
+    font = k;
+    checksum = c;
+    scale = s;
+    designsize = d;
+    area = a;
+    fname = l;
+  }
 
-    /**
-     * Returns the area.
-     * 
-     * @return Returns the area.
-     */
-    public String getArea() {
+  /**
+   * Returns the area.
+   *
+   * @return Returns the area.
+   */
+  public String getArea() {
 
-        return area;
-    }
+    return area;
+  }
 
-    /**
-     * Returns the checksum.
-     * 
-     * @return Returns the checksum.
-     */
-    public int getChecksum() {
+  /**
+   * Returns the checksum.
+   *
+   * @return Returns the checksum.
+   */
+  public int getChecksum() {
 
-        return checksum;
-    }
+    return checksum;
+  }
 
-    /**
-     * Returns the designsize.
-     * 
-     * @return Returns the designsize.
-     */
-    public int getDesignsize() {
+  /**
+   * Returns the designsize.
+   *
+   * @return Returns the designsize.
+   */
+  public int getDesignsize() {
 
-        return designsize;
-    }
+    return designsize;
+  }
 
-    /**
-     * Returns the fname.
-     * 
-     * @return Returns the fname.
-     */
-    public String getFName() {
+  /**
+   * Returns the fname.
+   *
+   * @return Returns the fname.
+   */
+  public String getFName() {
 
-        return fname;
-    }
+    return fname;
+  }
 
-    /**
-     * Returns the font.
-     * 
-     * @return Returns the font.
-     */
-    public int getFont() {
+  /**
+   * Returns the font.
+   *
+   * @return Returns the font.
+   */
+  public int getFont() {
 
-        return font;
-    }
+    return font;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return new StringBuilder("fntdef").append(getOpcode() - FNT_DEF1 + 1)
-            .toString();
-    }
+    return new StringBuilder( "fntdef" ).append( getOpcode() - FNT_DEF1 + 1 )
+                                        .toString();
+  }
 
-    /**
-     * Returns the scale.
-     * 
-     * @return Returns the scale.
-     */
-    public int getScale() {
+  /**
+   * Returns the scale.
+   *
+   * @return Returns the scale.
+   */
+  public int getScale() {
 
-        return scale;
-    }
+    return scale;
+  }
 
-    /**
-     * Returns the scale as {@code Dimen}.
-     * 
-     * @return Returns the scale as {@code Dimen}.
-     */
-    public Dimen getScaleAsDimen() {
+  /**
+   * Returns the scale as {@code Dimen}.
+   *
+   * @return Returns the scale as {@code Dimen}.
+   */
+  public Dimen getScaleAsDimen() {
 
-        return new Dimen(scale);
-    }
+    return new Dimen( scale );
+  }
 
-    /**
-     * Calculate the scaled from a font (with times 1000).
-     * 
-     * @param mag the maginification
-     * @return Returns the scaled.
-     */
-    public int getScaled(final int mag) {
+  /**
+   * Calculate the scaled from a font (with times 1000).
+   *
+   * @param mag the maginification
+   * @return Returns the scaled.
+   */
+  public int getScaled( final int mag ) {
 
-        return (int) ((double) mag * scale / designsize + ROUND);
-    }
+    return (int) ((double) mag * scale / designsize + ROUND);
+  }
 
-    /**
-     * Returns the scaled from a font as {@code Count}.
-     * 
-     * @param mag the maginification
-     * @return Returns the scaled from a font as {@code Count}.
-     */
-    public Count getScaledAsCount(final int mag) {
+  /**
+   * Returns the scaled from a font as {@code Count}.
+   *
+   * @param mag the maginification
+   * @return Returns the scaled from a font as {@code Count}.
+   */
+  public Count getScaledAsCount( final int mag ) {
 
-        return new Count(getScaled(mag));
-    }
+    return new Count( getScaled( mag ) );
+  }
 }

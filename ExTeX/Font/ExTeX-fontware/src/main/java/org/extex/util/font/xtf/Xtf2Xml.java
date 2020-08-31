@@ -19,115 +19,112 @@
 
 package org.extex.util.font.xtf;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.font.AbstractFontUtil;
 import org.extex.util.xml.XMLStreamWriter;
 
+import java.io.*;
+
 /**
  * Convert a xtf font to a xml file.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Xtf2Xml extends AbstractFontUtil {
 
-    /**
-     * The encoding for the xml output.
-     */
-    private static final String ENCODING = "ISO8859-1";
+  /**
+   * The encoding for the xml output.
+   */
+  private static final String ENCODING = "ISO8859-1";
 
-    /**
-     * parameter.
-     */
-    private static final int PARAMETER = 1;
+  /**
+   * parameter.
+   */
+  private static final int PARAMETER = 1;
 
-    /**
-     * main.
-     * 
-     * @param args The command line.
-     * @throws Exception if an error occurred.
-     */
-    public static void main(String[] args) throws Exception {
+  /**
+   * main.
+   *
+   * @param args The command line.
+   * @throws Exception if an error occurred.
+   */
+  public static void main( String[] args ) throws Exception {
 
-        Xtf2Xml xtf = new Xtf2Xml();
+    Xtf2Xml xtf = new Xtf2Xml();
 
-        if (args.length < PARAMETER) {
-            xtf.getLogger().severe(xtf.getLocalizer().format("Xtf2Xml.Call"));
-            System.exit(1);
-        }
-
-        String afmfile = "null";
-
-        int i = 0;
-        do {
-            if ("-o".equals(args[i]) || "--outdir".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    xtf.setOutdir(args[++i]);
-                }
-
-            } else {
-                afmfile = args[i];
-            }
-            i++;
-        } while (i < args.length);
-
-        xtf.doIt(afmfile);
-
+    if( args.length < PARAMETER ) {
+      xtf.getLogger().severe( xtf.getLocalizer().format( "Xtf2Xml.Call" ) );
+      System.exit( 1 );
     }
 
+    String afmfile = "null";
 
-    public Xtf2Xml() {
-
-        super(Xtf2Xml.class);
-    }
-
-    /**
-     * do it.
-     * 
-     * @param file The afm file name.
-     * @throws Exception if an error occurs.
-     */
-    public void doIt(String file) throws Exception {
-
-        getLogger().severe(getLocalizer().format("Xtf2Xml.start", file));
-
-        InputStream xtfin = null;
-
-        // find directly the afm file.
-        File xtffile = new File(file);
-
-        if (xtffile.canRead()) {
-            xtfin = new FileInputStream(xtffile);
+    int i = 0;
+    do {
+      if( "-o".equals( args[ i ] ) || "--outdir".equals( args[ i ] ) ) {
+        if( i + 1 < args.length ) {
+          xtf.setOutdir( args[ ++i ] );
         }
 
-        if (xtfin == null) {
-            throw new FileNotFoundException(file);
-        }
+      }
+      else {
+        afmfile = args[ i ];
+      }
+      i++;
+    } while( i < args.length );
 
-        XtfReader parser = new XtfReader(xtfin);
+    xtf.doIt( afmfile );
 
-        String xmlfile =
-                getOutdir()
-                        + File.separator
-                        + xtffile.getName().replaceAll("\\.[tToO][tT][fF]",
-                            ".xml");
+  }
 
-        XMLStreamWriter writer =
-                new XMLStreamWriter(new FileOutputStream(xmlfile), ENCODING);
-        writer.setBeauty(true);
-        writer.setRemoveWhiteSpace(true);
-        writer.writeStartDocument();
-        parser.writeXML(writer);
-        writer.writeEndDocument();
-        writer.close();
 
-        getLogger().severe(getLocalizer().format("Xtf2Xml.end", xmlfile));
+  public Xtf2Xml() {
 
+    super( Xtf2Xml.class );
+  }
+
+  /**
+   * do it.
+   *
+   * @param file The afm file name.
+   * @throws Exception if an error occurs.
+   */
+  public void doIt( String file ) throws Exception {
+
+    getLogger().severe( getLocalizer().format( "Xtf2Xml.start", file ) );
+
+    InputStream xtfin = null;
+
+    // find directly the afm file.
+    File xtffile = new File( file );
+
+    if( xtffile.canRead() ) {
+      xtfin = new FileInputStream( xtffile );
     }
+
+    if( xtfin == null ) {
+      throw new FileNotFoundException( file );
+    }
+
+    XtfReader parser = new XtfReader( xtfin );
+
+    String xmlfile =
+        getOutdir()
+            + File.separator
+            + xtffile.getName().replaceAll( "\\.[tToO][tT][fF]",
+                                            ".xml" );
+
+    XMLStreamWriter writer =
+        new XMLStreamWriter( new FileOutputStream( xmlfile ), ENCODING );
+    writer.setBeauty( true );
+    writer.setRemoveWhiteSpace( true );
+    writer.writeStartDocument();
+    parser.writeXML( writer );
+    writer.writeEndDocument();
+    writer.close();
+
+    getLogger().severe( getLocalizer().format( "Xtf2Xml.end", xmlfile ) );
+
+  }
 
 }

@@ -20,24 +20,23 @@ package org.extex.font.format.pl;
 
 /**
  * Abstract class for a pl command.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*
  */
 public abstract class AbstractPlCommand implements PlCommand {
 
-    /**
-     * The parameter.
-     */
-    protected String param;
+  /**
+   * The parameter.
+   */
+  protected String param;
 
-public String getParameter() {
+  public String getParameter() {
 
-        return param;
-    }
+    return param;
+  }
 
-public void setParameter(String p) {
+  public void setParameter( String p ) {
 
-        param = p;
-    }
+    param = p;
+  }
 }

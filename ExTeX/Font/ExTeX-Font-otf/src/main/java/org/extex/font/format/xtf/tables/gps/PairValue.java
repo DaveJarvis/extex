@@ -21,51 +21,51 @@ package org.extex.font.format.xtf.tables.gps;
 
 /**
  * Class for a pair of {@link ValueRecord}s.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class PairValue {
 
-    /**
-     * The value 1.
-     */
-    private final ValueRecord value1;
+  /**
+   * The value 1.
+   */
+  private final ValueRecord value1;
 
-    /**
-     * The value 2.
-     */
-    private final ValueRecord value2;
+  /**
+   * The value 2.
+   */
+  private final ValueRecord value2;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param val1 The value 1.
-     * @param val2 The value 2.
-     */
-    public PairValue(ValueRecord val1, ValueRecord val2) {
+  /**
+   * Creates a new object.
+   *
+   * @param val1 The value 1.
+   * @param val2 The value 2.
+   */
+  public PairValue( ValueRecord val1, ValueRecord val2 ) {
 
-        value1 = val1;
-        value2 = val2;
-    }
+    value1 = val1;
+    value2 = val2;
+  }
 
-    /**
-     * Getter for value1.
-     * 
-     * @return the value1
-     */
-    public ValueRecord getValue1() {
+  /**
+   * Getter for value1.
+   *
+   * @return the value1
+   */
+  public ValueRecord getValue1() {
 
-        return value1;
-    }
+    return value1;
+  }
 
-    /**
-     * Getter for value2.
-     * 
-     * @return the value2
-     */
-    public ValueRecord getValue2() {
+  /**
+   * Getter for value2.
+   *
+   * @return the value2
+   */
+  public ValueRecord getValue2() {
 
-        return value2;
-    }
+    return value2;
+  }
 
 }

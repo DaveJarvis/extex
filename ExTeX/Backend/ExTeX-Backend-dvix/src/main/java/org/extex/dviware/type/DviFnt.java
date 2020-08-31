@@ -19,48 +19,45 @@
 
 package org.extex.dviware.type;
 
+import org.extex.dviware.Dvi;
+
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.extex.dviware.Dvi;
 
 /**
  * This class represents the DVI instruction {@code fnt}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviFnt extends AbstractDviCode {
 
-    /**
-     * The field {@code index} contains the index of the font to use.
-     */
-    private final int index;
+  /**
+   * The field {@code index} contains the index of the font to use.
+   */
+  private final int index;
 
-    /**
-     * Creates a new object.
-     *
-     * @param index the index of the font to use
-     */
-    public DviFnt(int index) {
+  /**
+   * Creates a new object.
+   *
+   * @param index the index of the font to use
+   */
+  public DviFnt( int index ) {
 
-        super("fnt" + variant(index));
-        this.index = index;
-    }
+    super( "fnt" + variant( index ) );
+    this.index = index;
+  }
 
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
 
-        return opcode(Dvi.FNT1, index, stream);
-    }
+    return opcode( Dvi.FNT1, index, stream );
+  }
 
 }

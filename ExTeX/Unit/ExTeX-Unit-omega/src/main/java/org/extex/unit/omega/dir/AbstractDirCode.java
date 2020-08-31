@@ -35,84 +35,84 @@ import org.extex.typesetter.tc.Direction.Dir;
  * This is the abstract base class for primitives acquiring a direction.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AbstractDirCode extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param token the initial token for the primitive
-     */
-    public AbstractDirCode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractDirCode( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Scan a direction specification.
+   *
+   * @param source  the source for new tokens
+   * @param context the interpreter context
+   * @return the direction or null
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  protected Direction scanDir( TokenSource source, Context context )
+      throws HelpingException, TypesetterException {
+
+    Dir a = scan( source, context );
+    if( a == null ) {
+      return null;
+    }
+    Dir b = scan( source, context );
+    if( b == null ) {
+      return null;
+    }
+    Dir c = scan( source, context );
+    if( c == null ) {
+      return null;
     }
 
-    /**
-     * Scan a direction specification.
-     *
-     * @param source the source for new tokens
-     * @param context the interpreter context
-     *
-     * @return the direction or null
-     *
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    protected Direction scanDir(TokenSource source, Context context)
-            throws HelpingException, TypesetterException {
+    return new Direction( a, b, c );
+  }
 
-        Dir a = scan(source, context);
-        if (a == null) {
-            return null;
-        }
-        Dir b = scan(source, context);
-        if (b == null) {
-            return null;
-        }
-        Dir c = scan(source, context);
-        if (c == null) {
-            return null;
-        }
+  /**
+   * Scan a direction component specification.
+   *
+   * @param source  the source for new tokens
+   * @param context the interpreter context
+   * @return the direction found
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  private Dir scan( TokenSource source, Context context )
+      throws HelpingException, TypesetterException {
 
-        return new Direction(a, b, c);
+    Token t = source.scanToken( context );
+
+    if( t == null ) {
+      throw new EofException();
+    }
+    else if( t.eq( Catcode.LETTER, 'L' ) ) {
+      return Direction.Dir.L;
+    }
+    else if( t.eq( Catcode.LETTER, 'R' ) ) {
+      return Direction.Dir.R;
+    }
+    else if( t.eq( Catcode.LETTER, 'T' ) ) {
+      return Direction.Dir.T;
+    }
+    else if( t.eq( Catcode.LETTER, 'B' ) ) {
+      return Direction.Dir.B;
     }
 
-    /**
-     * Scan a direction component specification.
-     *
-     * @param source the source for new tokens
-     * @param context the interpreter context
-     *
-     * @return the direction found
-     *
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    private Dir scan(TokenSource source, Context context)
-            throws HelpingException, TypesetterException {
-
-        Token t = source.scanToken(context);
-
-        if (t == null) {
-            throw new EofException();
-        } else if (t.eq(Catcode.LETTER, 'L')) {
-            return Direction.Dir.L;
-        } else if (t.eq(Catcode.LETTER, 'R')) {
-            return Direction.Dir.R;
-        } else if (t.eq(Catcode.LETTER, 'T')) {
-            return Direction.Dir.T;
-        } else if (t.eq(Catcode.LETTER, 'B')) {
-            return Direction.Dir.B;
-        }
-
-        source.push(t);
-        throw new BadDirectionException();
-    }
+    source.push( t );
+    throw new BadDirectionException();
+  }
 
 }

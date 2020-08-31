@@ -40,31 +40,31 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 
 /**
  * This is the list maker for the display math formulae.
- * 
+ *
  * <p>The Tokens Parameter {@code \everydisplayend}</p>
  * <p>
  * The tokens parameter {@code \everydisplayend} contains a list of tokens
  * which is inserted at the end of display math. Those tokens take effect just
  * before the math mode is ended but after any tokens given explicitly.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;everydisplayend&rang;
  *      &rarr; {@code \everydisplayend} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,org.extex.typesetter.Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context, TokenSource, org.extex.typesetter.Typesetter)
  *        &lang;tokens&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \everydisplayend={\,}  </pre>
- * 
+ *
  *
  * <p>The Tokens Parameter {@code \everydisplay}</p>
  * <p>
@@ -72,137 +72,140 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * is inserted at the beginning of display math. Those tokens take effect after
  * the math mode has been entered but before any tokens given explicitly.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;everydisplay&rang;
  *      &rarr; {@code \everydisplay} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,org.extex.typesetter.Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context, TokenSource, org.extex.typesetter.Typesetter)
  *        &lang;tokens&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \everydisplay={\,}  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
 
-    /**
-     * The field {@code eqno} contains the math list for the equation number.
-     * It is {@code null} if no equation number is set.
-     */
-    private MathList eqno = null;
+  /**
+   * The field {@code eqno} contains the math list for the equation number.
+   * It is {@code null} if no equation number is set.
+   */
+  private MathList eqno = null;
 
-    /**
-     * The field {@code leq} contains the indicator for the side of the
-     * equation number. A value of {@code true} indicates an equation
-     * number on the left side.
-     */
-    private boolean leq = false;
+  /**
+   * The field {@code leq} contains the indicator for the side of the
+   * equation number. A value of {@code true} indicates an equation
+   * number on the left side.
+   */
+  private boolean leq = false;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param manager the manager to ask for global changes
-     * @param locator the locator
-     */
-    public DisplaymathListMaker(ListManager manager, Locator locator) {
+  /**
+   * Creates a new object.
+   *
+   * @param manager the manager to ask for global changes
+   * @param locator the locator
+   */
+  public DisplaymathListMaker( ListManager manager, Locator locator ) {
 
-        super(manager, locator);
+    super( manager, locator );
+  }
+
+  @Override
+  public NodeList complete( TypesetterOptions context )
+      throws TypesetterException {
+
+    // see [TTP 1195]
+    if( insufficientSymbolFonts( context ) ) {
+      throw new TypesetterException( new HelpingException( getLocalizer(),
+                                                           "TTP.InsufficientSymbolFonts" ) );
+    }
+    // see [TTP 1195]
+    if( insufficientExtensionFonts( context ) ) {
+      throw new TypesetterException( new HelpingException( getLocalizer(),
+                                                           "TTP.InsufficientExtensionFonts" ) );
     }
 
-@Override
-    public NodeList complete(TypesetterOptions context)
-            throws TypesetterException {
+    HorizontalListNode list = new HorizontalListNode();
 
-        // see [TTP 1195]
-        if (insufficientSymbolFonts(context)) {
-            throw new TypesetterException(new HelpingException(getLocalizer(),
-                "TTP.InsufficientSymbolFonts"));
-        }
-        // see [TTP 1195]
-        if (insufficientExtensionFonts(context)) {
-            throw new TypesetterException(new HelpingException(getLocalizer(),
-                "TTP.InsufficientExtensionFonts"));
-        }
-
-        HorizontalListNode list = new HorizontalListNode();
-
-        if (eqno != null && leq) {
-            // TODO gene: leqno unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        getNoads().typeset(null, null, 0, list,
-            new MathContext(StyleNoad.DISPLAYSTYLE, context), getLogger());
-
-        if (eqno != null && !leq) {
-            // TODO gene: eqno unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        // see [TTP 1200]
-        getManager().setSpacefactor(Count.THOUSAND);
-        // TODO gene: set space factor 1000 etc
-
-        return list;
+    if( eqno != null && leq ) {
+      // TODO gene: leqno unimplemented
+      throw new RuntimeException( "unimplemented" );
     }
 
-@Override
-    public Mode getMode() {
+    getNoads().typeset( null,
+                        null,
+                        0,
+                        list,
+                        new MathContext( StyleNoad.DISPLAYSTYLE, context ),
+                        getLogger() );
 
-        return Mode.DISPLAYMATH;
+    if( eqno != null && !leq ) {
+      // TODO gene: eqno unimplemented
+      throw new RuntimeException( "unimplemented" );
     }
 
-    /**
-*      org.extex.interpreter.TokenSource,
-     *      org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void mathShift(Context context, TokenSource source, Token t)
-            throws TypesetterException,
-                HelpingException {
+    // see [TTP 1200]
+    getManager().setSpacefactor( Count.THOUSAND );
+    // TODO gene: set space factor 1000 etc
 
-        if (!isClosing()) {
-            Tokens toks = context.getToks("everydisplayend");
-            if (toks != null && toks.length() != 0) {
-                source.push(t);
-                source.push(toks);
-                setClosing(true);
-                return;
-            }
-        }
+    return list;
+  }
 
-        Token token = source.getToken(context);
-        if (token == null) {
-            throw new EofException("$$");
-        } else if (!t.equals(token)) {
-            // see [TTP 1197]
-            throw new HelpingException(getLocalizer(), "TTP.DisplayMathEnd");
-        }
+  @Override
+  public Mode getMode() {
 
-        getManager().endParagraph();
+    return Mode.DISPLAYMATH;
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource,
+   * org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void mathShift( Context context, TokenSource source, Token t )
+      throws TypesetterException,
+      HelpingException {
+
+    if( !isClosing() ) {
+      Tokens toks = context.getToks( "everydisplayend" );
+      if( toks != null && toks.length() != 0 ) {
+        source.push( t );
+        source.push( toks );
+        setClosing( true );
+        return;
+      }
     }
 
-@Override
-    public void switchToNumber(boolean left) throws CantUseInException {
-
-        if (eqno != null) {
-            throw new CantUseInException(null, null);
-        }
-
-        leq = left;
-        eqno = new MathList();
-        setInsertionPoint(eqno);
+    Token token = source.getToken( context );
+    if( token == null ) {
+      throw new EofException( "$$" );
     }
+    else if( !t.equals( token ) ) {
+      // see [TTP 1197]
+      throw new HelpingException( getLocalizer(), "TTP.DisplayMathEnd" );
+    }
+
+    getManager().endParagraph();
+  }
+
+  @Override
+  public void switchToNumber( boolean left ) throws CantUseInException {
+
+    if( eqno != null ) {
+      throw new CantUseInException( null, null );
+    }
+
+    leq = left;
+    eqno = new MathList();
+    setInsertionPoint( eqno );
+  }
 
 }

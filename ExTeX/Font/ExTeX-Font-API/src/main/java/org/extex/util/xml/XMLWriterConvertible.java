@@ -24,17 +24,17 @@ import java.io.IOException;
 /**
  * This is an interface which describes the feature to write the data to a
  * XMLStreamWriter.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface XMLWriterConvertible {
 
-    /**
-     * Write the data to a XMLStreamWriter.
-     * 
-     * @param writer the XML-Writer
-     * @throws IOException if an IO-error occurs.
-     */
-    void writeXML(XMLStreamWriter writer) throws IOException;
+  /**
+   * Write the data to a XMLStreamWriter.
+   *
+   * @param writer the XML-Writer
+   * @throws IOException if an IO-error occurs.
+   */
+  void writeXML( XMLStreamWriter writer ) throws IOException;
 
 }

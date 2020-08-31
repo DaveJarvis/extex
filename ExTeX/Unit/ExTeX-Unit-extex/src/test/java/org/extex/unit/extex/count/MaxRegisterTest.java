@@ -25,57 +25,57 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \maxRegister}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MaxRegisterTest extends AbstractNonGroupIntegerTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MaxRegisterTest.class);
-    }
+    (new JUnitCore()).run( MaxRegisterTest.class );
+  }
 
 
-    public MaxRegisterTest() {
+  public MaxRegisterTest() {
 
-        super("maxRegister", "", "-1", DEFINE_BRACES + "\\namespace{system}");
-        setConfig("extex-test");
-    }
+    super( "maxRegister", "", "-1", DEFINE_BRACES + "\\namespace{system}" );
+    setConfig( "extex-test" );
+  }
 
-    /**
-     * Test case showing that {@code \maxRegister} controls count registers
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCount1() throws Exception {
+  /**
+   * Test case showing that {@code \maxRegister} controls count registers
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCount1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "{\\namespace{system}\\maxRegister=128}"
-                    + "\\count129=1 ",
-            // --- error channel ---
-            "Bad register code (129)");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "{\\namespace{system}\\maxRegister=128}"
+                      + "\\count129=1 ",
+                  // --- error channel ---
+                  "Bad register code (129)" );
+  }
 
-    /**
-     * Test case showing that {@code \maxRegister} controls count registers
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCount2() throws Exception {
+  /**
+   * Test case showing that {@code \maxRegister} controls count registers
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCount2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "{\\namespace{system}\\maxRegister=256}"
-                    + "\\count129=1 ",
-            // --- error channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "{\\namespace{system}\\maxRegister=256}"
+                      + "\\count129=1 ",
+                  // --- error channel ---
+                  "" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

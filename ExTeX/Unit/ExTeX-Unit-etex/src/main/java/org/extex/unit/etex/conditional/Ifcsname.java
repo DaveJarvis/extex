@@ -34,7 +34,7 @@ import org.extex.unit.tex.macro.Csname;
 /**
  * This class provides an implementation for the primitive
  * {@code \ifcsname}.
- * 
+ *
  * <p>The Primitive {@code \ifcsname}</p>
  * <p>
  * The primitive {@code \ifcsname} checks if a certain control sequence is
@@ -42,62 +42,63 @@ import org.extex.unit.tex.macro.Csname;
  * {@code \csname} does until {@code \endcsname} is encountered. It does
  * not define the control sequence if it is not defined.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;ifcsname&rang;
  *      &rarr; {@code \ifcsname} ... {@code \endcsname} &lang;true text&rang; {@code \fi}
  *       |  {@code \ifcsname} ... {@code \endcsname} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *     \ifcsname def\endcsname ok\fi  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Ifcsname extends AbstractIf {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Ifcsname(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Ifcsname( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public boolean conditional( Context context, TokenSource source,
+                              Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String csname =
+        Csname.scanToEndCsname( context, source, typesetter,
+                                getLocalizer() );
+    try {
+      return context.getCode( (CodeToken) context.getTokenFactory()
+                                                 .createToken( Catcode.ESCAPE,
+                                                               null,
+                                                               csname,
+                                                               context.getNamespace() ) ) != null;
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String csname =
-                Csname.scanToEndCsname(context, source, typesetter,
-                    getLocalizer());
-        try {
-            return context.getCode((CodeToken) context.getTokenFactory()
-                .createToken(Catcode.ESCAPE, null, csname,
-                    context.getNamespace())) != null;
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
+  }
 
 }

@@ -19,127 +19,128 @@
 
 package org.extex.typesetter.type.math;
 
-import java.io.Serializable;
-
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.typesetter.type.noad.MathGlyph;
 
+import java.io.Serializable;
+
 /**
  * This class represents a mathematical character. It consists of a class, a
  * family and a character code.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathCode implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2006L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2006L;
 
-    /**
-     * The constant {@code CHAR_MASK} contains the mask for filtering a
-     * character code from an integer.
-     */
-    private static final int CHAR_MASK = 0xff;
+  /**
+   * The constant {@code CHAR_MASK} contains the mask for filtering a
+   * character code from an integer.
+   */
+  private static final int CHAR_MASK = 0xff;
 
-    /**
-     * The field {@code CLASS_SHIFT} contains the shift value for the class.
-     */
-    private static final int CLASS_SHIFT = 12;
+  /**
+   * The field {@code CLASS_SHIFT} contains the shift value for the class.
+   */
+  private static final int CLASS_SHIFT = 12;
 
-    /**
-     * The constant {@code FAMILY_MASK} contains the mask for filtering the
-     * family from an integer.
-     */
-    private static final int FAMILY_MASK = 0xf;
+  /**
+   * The constant {@code FAMILY_MASK} contains the mask for filtering the
+   * family from an integer.
+   */
+  private static final int FAMILY_MASK = 0xf;
 
-    /**
-     * The field {@code mathGlyph} contains the glyph.
-     */
-    private final MathGlyph mathGlyph;
+  /**
+   * The field {@code mathGlyph} contains the glyph.
+   */
+  private final MathGlyph mathGlyph;
 
-    /**
-     * The field {@code mathClass} contains the class.
-     */
-    private final MathClass mathClass;
+  /**
+   * The field {@code mathClass} contains the class.
+   */
+  private final MathClass mathClass;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param code the integer to analyze for the desired field values
-     * 
-     * @throws HelpingException in case of an error
-     */
-    public MathCode(long code) throws HelpingException {
+  /**
+   * Creates a new object.
+   *
+   * @param code the integer to analyze for the desired field values
+   * @throws HelpingException in case of an error
+   */
+  public MathCode( long code ) throws HelpingException {
 
-        if (code < 0 || code > 0x8000) {
-            throw new HelpingException(
-                LocalizerFactory.getLocalizer(MathCode.class),
-                "TTP.InvalidCode",
-                Long.toString(code));
-        } else if (code == 0x8000) {
-            mathClass = null;
-            mathGlyph = null;
-        } else {
-            mathClass = MathClass.getMathClass((int) (code >> CLASS_SHIFT));
-            mathGlyph =
-                    new MathGlyph((int) (code >> 8) & FAMILY_MASK,
-                        UnicodeChar.get((int) (code & CHAR_MASK)));
-        }
+    if( code < 0 || code > 0x8000 ) {
+      throw new HelpingException(
+          LocalizerFactory.getLocalizer( MathCode.class ),
+          "TTP.InvalidCode",
+          Long.toString( code ) );
     }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param mathClass the class
-     * @param mathGlyph the glyph
-     */
-    public MathCode(MathClass mathClass, MathGlyph mathGlyph) {
-
-        this.mathClass = mathClass;
-        this.mathGlyph = mathGlyph;
+    else if( code == 0x8000 ) {
+      mathClass = null;
+      mathGlyph = null;
     }
-
-    /**
-     * Getter for mathClass.
-     * 
-     * @return the mathClass.
-     */
-    public MathClass getMathClass() {
-
-        return mathClass;
+    else {
+      mathClass = MathClass.getMathClass( (int) (code >> CLASS_SHIFT) );
+      mathGlyph =
+          new MathGlyph( (int) (code >> 8) & FAMILY_MASK,
+                         UnicodeChar.get( (int) (code & CHAR_MASK) ) );
     }
+  }
 
-    /**
-     * Getter for mathGlyph.
-     * 
-     * @return the mathGlyph
-     */
-    public MathGlyph getMathGlyph() {
+  /**
+   * Creates a new object.
+   *
+   * @param mathClass the class
+   * @param mathGlyph the glyph
+   */
+  public MathCode( MathClass mathClass, MathGlyph mathGlyph ) {
 
-        return this.mathGlyph;
-    }
+    this.mathClass = mathClass;
+    this.mathGlyph = mathGlyph;
+  }
 
-@Override
-    public String toString() {
+  /**
+   * Getter for mathClass.
+   *
+   * @return the mathClass.
+   */
+  public MathClass getMathClass() {
 
-        return mathClass.toString() + " " + mathGlyph.toString();
-    }
+    return mathClass;
+  }
 
-    /**
-     * Print the instance to a StringBuilder.
-     * 
-     * @param sb the target string buffer
-     */
-    public void toString(StringBuilder sb) {
+  /**
+   * Getter for mathGlyph.
+   *
+   * @return the mathGlyph
+   */
+  public MathGlyph getMathGlyph() {
 
-        mathClass.toString(sb);
-        sb.append(' ');
-        mathGlyph.toString(sb);
-    }
+    return this.mathGlyph;
+  }
+
+  @Override
+  public String toString() {
+
+    return mathClass.toString() + " " + mathGlyph.toString();
+  }
+
+  /**
+   * Print the instance to a StringBuilder.
+   *
+   * @param sb the target string buffer
+   */
+  public void toString( StringBuilder sb ) {
+
+    mathClass.toString( sb );
+    sb.append( ' ' );
+    mathGlyph.toString( sb );
+  }
 
 }

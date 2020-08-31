@@ -32,25 +32,25 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \pdfobj}.
- * 
+ *
  * <p>The Primitive {@code \pdfobj}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;pdfobj&rang;
  *       &rarr; {@code \pdfobj} &lang;optional attr&rang; &lang;optional stream or file&rang; {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context, boolean, boolean, CodeToken)
  *          &lang;general text&rang;}
  *
  *    &lang;optional attr&rang;
  *       &rarr; {@code attr} {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context, boolean, boolean, CodeToken)
  *          &lang;general text&rang;}
  *       |
  *
@@ -59,64 +59,64 @@ import org.extex.typesetter.exception.TypesetterException;
  *       |  {@code stream}
  *       |
  *    </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \pdfobj {abc.png}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdfobj extends AbstractPdftexCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdfobj(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdfobj( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException,
+      ConfigurationException {
+
+    PdftexSupport writer = ensurePdftex( context, typesetter );
+    String attr = null;
+    boolean isStream = false;
+
+    if( source.getKeyword( context, "attr" ) ) {
+      attr = source.scanTokensAsString( context, getToken() );
+    }
+    if( source.getKeyword( context, "stream" ) ) {
+      isStream = true;
+    }
+    else if( source.getKeyword( context, "file" ) ) {
+      isStream = false;
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException,
-                ConfigurationException {
+    String text = source.scanTokensAsString( context, getToken() );
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
-        String attr = null;
-        boolean isStream = false;
+    PdfObject a = writer.getObject( attr, isStream, text );
+    typesetter.add( a );
 
-        if (source.getKeyword(context, "attr")) {
-            attr = source.scanTokensAsString(context, getToken());
-        }
-        if (source.getKeyword(context, "stream")) {
-            isStream = true;
-        } else if (source.getKeyword(context, "file")) {
-            isStream = false;
-        }
-
-        String text = source.scanTokensAsString(context, getToken());
-
-        PdfObject a = writer.getObject(attr, isStream, text);
-        typesetter.add(a);
-
-        prefix.clearImmediate();
-    }
+    prefix.clearImmediate();
+  }
 
 }

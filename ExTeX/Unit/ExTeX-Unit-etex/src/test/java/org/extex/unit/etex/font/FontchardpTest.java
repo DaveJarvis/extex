@@ -24,137 +24,137 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \fontchardp}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class FontchardpTest extends ExTeXLauncher {
 
 
-    public FontchardpTest() {
+  public FontchardpTest() {
 
-        setConfig("etex-test");
-    }
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * <testcase primitive="\fontchardp"> Test case checking that
-     * {@code \fontchardp} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVertical1() throws Exception {
+  /**
+   * <testcase primitive="\fontchardp"> Test case checking that
+   * {@code \fontchardp} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testVertical1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\fontchardp ",
-            // --- log message ---
-            "You can't use `\\fontchardp' in vertical mode");
-    }
+    assertFailure(// --- input code ---
+                  "\\fontchardp ",
+                  // --- log message ---
+                  "You can't use `\\fontchardp' in vertical mode" );
+  }
 
-    /**
-     * <testcase primitive="\fontchardp"> Test case checking that
-     * {@code \fontchardp} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * <testcase primitive="\fontchardp"> Test case checking that
+   * {@code \fontchardp} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\dimen0=\\fontchardp ",
-            // --- log message ---
-            "Unexpected end of file while processing \\fontchardp");
-    }
+    assertFailure(// --- input code ---
+                  "\\dimen0=\\fontchardp ",
+                  // --- log message ---
+                  "Unexpected end of file while processing \\fontchardp" );
+  }
 
-    /**
-     * <testcase primitive="\fontchardp"> Test case checking that
-     * {@code \fontchardp} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof2() throws Exception {
+  /**
+   * <testcase primitive="\fontchardp"> Test case checking that
+   * {@code \fontchardp} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof2() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\dimen0=\\fontchardp\\nullfont ",
-            // --- log message ---
-            "Missing number, treated as zero");
-    }
+    assertFailure(// --- input code ---
+                  "\\dimen0=\\fontchardp\\nullfont ",
+                  // --- log message ---
+                  "Missing number, treated as zero" );
+  }
 
-    /**
-     * <testcase primitive="\fontchardp"> Test case checking that
-     * {@code \fontchardp} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCmrA() throws Exception {
+  /**
+   * <testcase primitive="\fontchardp"> Test case checking that
+   * {@code \fontchardp} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCmrA() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\cmr cmr10 " + "\\the\\fontchardp\\cmr `a\\end",
-            // --- output message ---
-            "0.0pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\cmr cmr10 " + "\\the\\fontchardp\\cmr `a\\end",
+                  // --- output message ---
+                  "0.0pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontchardp" checked="etex"> Test case checking that
-     * {@code \fontchardp} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCmrG() throws Exception {
+  /**
+   * <testcase primitive="\fontchardp" checked="etex"> Test case checking that
+   * {@code \fontchardp} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCmrG() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\cmr cmr10 " + "\\the\\fontchardp\\cmr `g\\end",
-            // --- output message ---
-            "1.94444pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\cmr cmr10 " + "\\the\\fontchardp\\cmr `g\\end",
+                  // --- output message ---
+                  "1.94444pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontchardp" checked="etex"> Test case checking that
-     * {@code \fontchardp} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCmrPlus() throws Exception {
+  /**
+   * <testcase primitive="\fontchardp" checked="etex"> Test case checking that
+   * {@code \fontchardp} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCmrPlus() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\cmr cmr10 " + "\\the\\fontchardp\\cmr `+\\end",
-            // --- output message ---
-            "0.83333pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\cmr cmr10 " + "\\the\\fontchardp\\cmr `+\\end",
+                  // --- output message ---
+                  "0.83333pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontchardp" checked="etex"> Test case checking that
-     * {@code \fontchardp} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCmrPlus2() throws Exception {
+  /**
+   * <testcase primitive="\fontchardp" checked="etex"> Test case checking that
+   * {@code \fontchardp} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCmrPlus2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\cmr cmr10 "
-                    + "\\dimen0\\fontchardp\\cmr `+\\the\\dimen0\\end",
-            // --- output message ---
-            "0.83333pt" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\cmr cmr10 "
+                      + "\\dimen0\\fontchardp\\cmr `+\\the\\dimen0\\end",
+                  // --- output message ---
+                  "0.83333pt" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\fontchardp"> Test case checking that
-     * {@code \fontchardp} can not be used in vertical mode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCmrPlus3() throws Exception {
+  /**
+   * <testcase primitive="\fontchardp"> Test case checking that
+   * {@code \fontchardp} can not be used in vertical mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCmrPlus3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\font\\cmr cmr10 "
-                    + "\\count0=\\fontchardp\\cmr `+\\the\\count0\\end",
-            // --- output message ---
-            "54613" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\font\\cmr cmr10 "
+                      + "\\count0=\\fontchardp\\cmr `+\\the\\count0\\end",
+                  // --- output message ---
+                  "54613" + TERM );
+  }
 
 }

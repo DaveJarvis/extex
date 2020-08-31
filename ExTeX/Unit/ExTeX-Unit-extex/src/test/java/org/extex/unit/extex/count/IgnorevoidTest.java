@@ -25,110 +25,110 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \ignorevoid}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IgnorevoidTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IgnorevoidTest.class);
-    }
+    (new JUnitCore()).run( IgnorevoidTest.class );
+  }
 
 
-    public IgnorevoidTest() {
+  public IgnorevoidTest() {
 
-        super("ignorevoid", "", "0");
-        setConfig("extex-test");
-    }
+    super( "ignorevoid", "", "0" );
+    setConfig( "extex-test" );
+  }
 
-    /**
-     * <testcase primitive="\ignorevoid"> Test case checking that
-     * {@code \ignorevoid} is 0 initially.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\ignorevoid"> Test case checking that
+   * {@code \ignorevoid} is 0 initially.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\the\\ignorevoid" + " \\end",
-            // --- log message ---
-            "0" + TERM);
-    }
+        DEFINE_BRACES + "\\the\\ignorevoid" + " \\end",
+        // --- log message ---
+        "0" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ignorevoid"> Test case checking that if
-     * {@code \ignorevoid} is 0 then an undefined control sequence leads to
-     * an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\ignorevoid"> Test case checking that if
+   * {@code \ignorevoid} is 0 then an undefined control sequence leads to
+   * an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\ignorevoid=0" + " \\undefined\\end",
-            // --- log message ---
-            "Undefined control sequence \\undefined");
-    }
+        DEFINE_BRACES + "\\ignorevoid=0" + " \\undefined\\end",
+        // --- log message ---
+        "Undefined control sequence \\undefined" );
+  }
 
-    /**
-     * <testcase primitive="\ignorevoid"> Test case checking that if
-     * {@code \ignorevoid} is 0 then an undefined active character leads to
-     * an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\ignorevoid"> Test case checking that if
+   * {@code \ignorevoid} is 0 then an undefined active character leads to
+   * an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            DEFINE_BRACES + "\\catcode`\\*=13 \\ignorevoid=0" + " *\\end",
-            // --- log message ---
-            "Undefined control sequence *");
-    }
+        DEFINE_BRACES + "\\catcode`\\*=13 \\ignorevoid=0" + " *\\end",
+        // --- log message ---
+        "Undefined control sequence *" );
+  }
 
-    /**
-     * <testcase primitive="\ignorevoid"> Test case checking that if
-     * {@code \ignorevoid} is not 0 then an undefined control sequence is
-     * ignored.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test4() throws Exception {
+  /**
+   * <testcase primitive="\ignorevoid"> Test case checking that if
+   * {@code \ignorevoid} is not 0 then an undefined control sequence is
+   * ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test4() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\ignorevoid=1" + " \\undefined\\end",
-            // --- log message ---
-            "");
-    }
+        DEFINE_BRACES + "\\ignorevoid=1" + " \\undefined\\end",
+        // --- log message ---
+        "" );
+  }
 
-    /**
-     * <testcase primitive="\ignorevoid"> Test case checking that if
-     * {@code \ignorevoid} is not 0 then an undefined control sequence is
-     * ignored.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test5() throws Exception {
+  /**
+   * <testcase primitive="\ignorevoid"> Test case checking that if
+   * {@code \ignorevoid} is not 0 then an undefined control sequence is
+   * ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test5() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\catcode`\\*=13 \\ignorevoid=1" + " *\\end",
-            // --- log message ---
-            "");
-    }
+        DEFINE_BRACES + "\\catcode`\\*=13 \\ignorevoid=1" + " *\\end",
+        // --- log message ---
+        "" );
+  }
 
 }

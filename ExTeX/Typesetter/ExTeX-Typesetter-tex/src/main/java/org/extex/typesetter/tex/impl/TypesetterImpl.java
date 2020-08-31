@@ -19,10 +19,6 @@
 
 package org.extex.typesetter.tex.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
-
 import org.extex.backend.BackendDriver;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
@@ -38,13 +34,7 @@ import org.extex.interpreter.ListMakers;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.token.Token;
-import org.extex.typesetter.ListMaker;
-import org.extex.typesetter.ListMakerType;
-import org.extex.typesetter.ListManager;
-import org.extex.typesetter.Mode;
-import org.extex.typesetter.ParagraphObserver;
-import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.*;
 import org.extex.typesetter.exception.InvalidSpacefactorException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.exception.TypesetterUnsupportedException;
@@ -63,838 +53,792 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * This is a reference implementation of the
  * {@link org.extex.typesetter.Typesetter Typesetter} interface.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TypesetterImpl extends ListMakerFactory
-        implements
-            Typesetter,
-            ListManager,
-            TokenDelegateListMaker,
-            LogEnabled {
+    implements
+    Typesetter,
+    ListManager,
+    TokenDelegateListMaker,
+    LogEnabled {
 
-    /**
-     * The field {@code backend} contains the back-end driver for producing the
-     * output.
-     */
-    private BackendDriver backend = null;
+  /**
+   * The field {@code backend} contains the back-end driver for producing the
+   * output.
+   */
+  private BackendDriver backend = null;
 
-    /**
-     * The field {@code listMaker} contains the current list maker for
-     * efficiency. Thus we can avoid to peek at the stack whenever the list
-     * maker is needed.
-     */
-    private TokenDelegateListMaker listMaker;
+  /**
+   * The field {@code listMaker} contains the current list maker for
+   * efficiency. Thus we can avoid to peek at the stack whenever the list
+   * maker is needed.
+   */
+  private TokenDelegateListMaker listMaker;
 
-    /**
-     * The field {@code localizer} contains the localizer.
-     */
-    private Localizer localizer;
+  /**
+   * The field {@code localizer} contains the localizer.
+   */
+  private Localizer localizer;
 
-    /**
-     * The field {@code logger} contains the logger to use.
-     */
-    private Logger logger = null;
+  /**
+   * The field {@code logger} contains the logger to use.
+   */
+  private Logger logger = null;
 
-    /**
-     * The field {@code charNodeFactory} contains the factory to produce glyph
-     * nodes.
-     */
-    private NodeFactory nodeFactory = new CachingNodeFactory();
+  /**
+   * The field {@code charNodeFactory} contains the factory to produce glyph
+   * nodes.
+   */
+  private NodeFactory nodeFactory = new CachingNodeFactory();
 
-    /**
-     * The field {@code options} contains the context for accessing parameters.
-     */
-    private TypesetterOptions options;
+  /**
+   * The field {@code options} contains the context for accessing parameters.
+   */
+  private TypesetterOptions options;
 
-    /**
-     * The field {@code outputRoutine} contains the output routine.
-     */
-    private OutputRoutine outputRoutine = null;
+  /**
+   * The field {@code outputRoutine} contains the output routine.
+   */
+  private OutputRoutine outputRoutine = null;
 
-    /**
-     * The field {@code pageBuilder} contains the current page builder.
-     */
-    private PageBuilder pageBuilder = null;
+  /**
+   * The field {@code pageBuilder} contains the current page builder.
+   */
+  private PageBuilder pageBuilder = null;
 
-    /**
-     * The field {@code paragraphBuilder} contains the current paragraph
-     * builder.
-     */
-    private ParagraphBuilder paragraphBuilder = null;
+  /**
+   * The field {@code paragraphBuilder} contains the current paragraph
+   * builder.
+   */
+  private ParagraphBuilder paragraphBuilder = null;
 
-    /**
-     * The field {@code saveStack} contains the stack of list makers.
-     */
-    private final List<ListMaker> saveStack = new ArrayList<ListMaker>();
+  /**
+   * The field {@code saveStack} contains the stack of list makers.
+   */
+  private final List<ListMaker> saveStack = new ArrayList<ListMaker>();
 
-    /**
-     * The field {@code shipoutMark} contains the recorded state of the
-     * ship-out mark. Initially the ship-out mark is {@code false}.
-     */
-    private boolean shipoutMark = false;
+  /**
+   * The field {@code shipoutMark} contains the recorded state of the
+   * ship-out mark. Initially the ship-out mark is {@code false}.
+   */
+  private boolean shipoutMark = false;
 
-    /**
-     * Creates a new object and initializes it to receive material. To make it
-     * fully functionality is required that the paragraph builder and the
-     * ligature builder are provided before they are used.
-     */
-    public TypesetterImpl() {
+  /**
+   * Creates a new object and initializes it to receive material. To make it
+   * fully functionality is required that the paragraph builder and the
+   * ligature builder are provided before they are used.
+   */
+  public TypesetterImpl() {
 
-        listMaker = createListMaker(this, ListMakers.VERTICAL,
-            new Locator("", 0, "", 0));
-        // TODO gene: find better initial locator
+    listMaker = createListMaker( this, ListMakers.VERTICAL,
+                                 new Locator( "", 0, "", 0 ) );
+    // TODO gene: find better initial locator
+  }
+
+  /**
+   * Add a glue node to the list.
+   *
+   * @param glue the glue to add
+   * @throws TypesetterException in case of an error
+   * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
+   */
+  @Override
+  public void add( FixedGlue glue ) throws TypesetterException {
+
+    listMaker.add( glue );
+  }
+
+  /**
+   * Add an arbitrary node to the internal list of nodes gathered so far. The
+   * node should not be one of the special nodes treated by methods of their
+   * own.
+   *
+   * @param node the node to add
+   * @throws TypesetterException                                                in case of an error
+   * @throws org.extex.framework.configuration.exception.ConfigurationException in case of a configuration error
+   * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
+   */
+  @Override
+  public void add( Node node ) throws TypesetterException {
+
+    if( node == null ) {
+      return;
     }
 
-    /**
-     * Add a glue node to the list.
-     * 
-     * @param glue the glue to add
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
-     */
-    @Override
-    public void add(FixedGlue glue) throws TypesetterException {
+    listMaker.add( node );
 
-        listMaker.add(glue);
+    if( saveStack == null
+        && (node instanceof PenaltyNode
+        || node instanceof InsertionNode
+        || node instanceof HorizontalListNode
+        || node instanceof VerticalListNode) ) {
+
+      pageBuilder.inspectAndBuild(
+          (VerticalListNode) listMaker.complete( options ), this );
     }
+  }
 
-    /**
-     * Add an arbitrary node to the internal list of nodes gathered so far. The
-     * node should not be one of the special nodes treated by methods of their
-     * own.
-     * 
-     * @param node the node to add
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *         in case of a configuration error
-     * 
-     * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
-     */
-    @Override
-    public void add(Node node) throws TypesetterException {
+  /**
+   * Add a node list to the current list maker and adjust the spacing between
+   * the elements of the list.
+   *
+   * @param list    the list
+   * @param options the options to use
+   * @throws TypesetterException                                                in case of an error
+   * @throws org.extex.framework.configuration.exception.ConfigurationException in case of a configuration error
+   * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
+   * org.extex.typesetter.TypesetterOptions)
+   */
+  @Override
+  public void addAndAdjust( NodeList list, TypesetterOptions options )
+      throws TypesetterException {
 
-        if (node == null) {
-            return;
-        }
+    listMaker.addAndAdjust( list, options );
+  }
 
-        listMaker.add(node);
+  /**
+   * Add a space node to the list.
+   *
+   * @param typesettingContext the typesetting context for the space
+   * @param spacefactor        the space factor to use for this space or
+   *                           {@code null} to indicate that the default 
+   *                           space factor should
+   *                           be used.
+   * @throws TypesetterException                                                in case of an error
+   * @throws org.extex.framework.configuration.exception.ConfigurationException in case of a configuration error
+   * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
+   * FixedCount)
+   */
+  @Override
+  public void addSpace( TypesettingContext typesettingContext,
+                        FixedCount spacefactor ) throws TypesetterException {
 
-        if (saveStack == null
-                && (node instanceof PenaltyNode
-                        || node instanceof InsertionNode
-                        || node instanceof HorizontalListNode
-                || node instanceof VerticalListNode)) {
+    listMaker.addSpace( typesettingContext, null );
+  }
 
-            pageBuilder.inspectAndBuild(
-                (VerticalListNode) listMaker.complete(options), this);
-        }
+  /**
+   * Register an observer to be invoked at the end of the paragraph.
+   *
+   * @param observer the observer to register
+   * @see org.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
+   */
+  @Override
+  public void afterParagraph( ParagraphObserver observer ) {
+
+    listMaker.afterParagraph( observer );
+  }
+
+  /**
+   * Invoke the paragraph builder on a list of nodes.
+   *
+   * @param nodes the nodes to make a paragraph from
+   * @return the vertical node list containing the lines of the paragraph
+   * @throws TypesetterException in case of an error
+   * @see org.extex.typesetter.ListManager#buildParagraph(org.extex.typesetter.type.node.HorizontalListNode)
+   */
+  @Override
+  public NodeList buildParagraph( HorizontalListNode nodes )
+      throws TypesetterException {
+
+    return this.paragraphBuilder.build( nodes );
+  }
+
+  /**
+   * Clear the internal state about ship-outs. The ship-out mark is reset to
+   * {@code false}.
+   *
+   * @see #isShipoutMark()
+   * @see org.extex.typesetter.Typesetter#clearShipoutMark()
+   */
+  @Override
+  public void clearShipoutMark() {
+
+    shipoutMark = false;
+  }
+
+  /**
+   * Close the node list. This means that everything is done to ship the
+   * closed node list to the document writer. Nevertheless the invoking
+   * application might decide not to modify the node list and continue
+   * processing. In the other case some nodes might be taken from the node
+   * list returned by this method. Then the processing has to continue with
+   * the reduced node list.
+   *
+   * @param context the typesetter options mapping a fragment of the
+   *                interpreter context
+   * @return the node list enclosed in this instance
+   * @throws TypesetterException                                                in case of an error
+   * @throws org.extex.framework.configuration.exception.ConfigurationException in case of a configuration error
+   * @see org.extex.typesetter.ListMaker#complete(org.extex.typesetter.TypesetterOptions)
+   */
+  @Override
+  public NodeList complete( TypesetterOptions context )
+      throws TypesetterException {
+
+    NodeList nodes = listMaker.complete( context );
+    pop();
+    return nodes;
+  }
+
+  /**
+   * org.extex.typesetter.tc.TypesettingContext,
+   * org.extex.core.UnicodeChar)
+   */
+  @Override
+  public void cr( Context context, TypesettingContext tc, UnicodeChar uc )
+      throws TypesetterException {
+
+    listMaker.cr( context, tc, uc );
+  }
+
+  /**
+   * Setter for the logger.
+   *
+   * @param theLogger the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+   */
+  @Override
+  public void enableLogging( Logger theLogger ) {
+
+    logger = theLogger;
+    if( pageBuilder instanceof LogEnabled ) {
+      ((LogEnabled) pageBuilder).enableLogging( theLogger );
     }
-
-    /**
-     * Add a node list to the current list maker and adjust the spacing between
-     * the elements of the list.
-     * 
-     * @param list the list
-     * @param options the options to use
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *         in case of a configuration error
-     * 
-     * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.TypesetterOptions)
-     */
-    @Override
-    public void addAndAdjust(NodeList list, TypesetterOptions options)
-            throws TypesetterException {
-
-        listMaker.addAndAdjust(list, options);
+    if( paragraphBuilder instanceof LogEnabled ) {
+      ((LogEnabled) paragraphBuilder).enableLogging( theLogger );
     }
+  }
 
-    /**
-     * Add a space node to the list.
-     * 
-     * @param typesettingContext the typesetting context for the space
-     * @param spacefactor the space factor to use for this space or
-     *        {@code null} to indicate that the default space factor should
-     *        be used.
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *         in case of a configuration error
-     * 
-     * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
-     *      FixedCount)
-     */
-    @Override
-    public void addSpace(TypesettingContext typesettingContext,
-            FixedCount spacefactor) throws TypesetterException {
+  /**
+   * End the current paragraph.
+   *
+   * @throws TypesetterException                                                in case of an error
+   * @throws org.extex.framework.configuration.exception.ConfigurationException in case of an configuration problem
+   * @see org.extex.typesetter.ListManager#endParagraph()
+   */
+  @Override
+  public void endParagraph() throws TypesetterException {
 
-        listMaker.addSpace(typesettingContext, null);
+    NodeList list = listMaker.complete( options );
+    pop();
+    if( list instanceof VerticalListNode ) {
+      listMaker.addAndAdjust( list, options );
     }
-
-    /**
-     * Register an observer to be invoked at the end of the paragraph.
-     * 
-     * @param observer the observer to register
-     * 
-     * @see org.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
-     */
-    @Override
-    public void afterParagraph(ParagraphObserver observer) {
-
-        listMaker.afterParagraph(observer);
+    else if( list instanceof HorizontalListNode ) {
+      listMaker.add( list );
     }
-
-    /**
-     * Invoke the paragraph builder on a list of nodes.
-     * 
-     * @param nodes the nodes to make a paragraph from
-     * 
-     * @return the vertical node list containing the lines of the paragraph
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListManager#buildParagraph(org.extex.typesetter.type.node.HorizontalListNode)
-     */
-    @Override
-    public NodeList buildParagraph(HorizontalListNode nodes)
-            throws TypesetterException {
-
-        return this.paragraphBuilder.build(nodes);
+    else {
+      int size = list.size();
+      for( int i = 0; i < size; i++ ) {
+        listMaker.add( list.get( i ) );
+      }
     }
+  }
 
-    /**
-     * Clear the internal state about ship-outs. The ship-out mark is reset to
-     * {@code false}.
-     * 
-     * @see #isShipoutMark()
-     * 
-     * @see org.extex.typesetter.Typesetter#clearShipoutMark()
-     */
-    @Override
-    public void clearShipoutMark() {
+  /**
+   * Switch to horizontal mode if necessary. If the current mode is a
+   * horizontal mode then nothing is done.
+   *
+   * @param locator the locator
+   * @return the horizontal list maker
+   * @throws TypesetterException in case of an error
+   * @see org.extex.typesetter.ListManager#ensureHorizontalMode(org.extex.core.Locator)
+   */
+  @Override
+  public ListMaker ensureHorizontalMode( Locator locator )
+      throws TypesetterException {
 
-        shipoutMark = false;
+    if( !(listMaker instanceof HorizontalListMaker) ) { // TODO gene: dirty!
+      pushListMaker( ListMakers.HORIZONTAL, locator );
     }
+    return listMaker;
+  }
 
-    /**
-     * Close the node list. This means that everything is done to ship the
-     * closed node list to the document writer. Nevertheless the invoking
-     * application might decide not to modify the node list and continue
-     * processing. In the other case some nodes might be taken from the node
-     * list returned by this method. Then the processing has to continue with
-     * the reduced node list.
-     * 
-     * @param context the typesetter options mapping a fragment of the
-     *        interpreter context
-     * 
-     * @return the node list enclosed in this instance
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *         in case of a configuration error
-     * 
-     * @see org.extex.typesetter.ListMaker#complete(org.extex.typesetter.TypesetterOptions)
-     */
-    @Override
-    public NodeList complete(TypesetterOptions context)
-            throws TypesetterException {
+  /**
+   * Instructs the typesetter to perform any actions necessary for cleaning up
+   * everything at the end of processing. This should involve a ship-out of
+   * any material still left unprocessed.
+   *
+   * @throws TypesetterException                                                in case of an error
+   * @throws org.extex.framework.configuration.exception.ConfigurationException in case of an configuration problem
+   * @see org.extex.typesetter.Typesetter#finish()
+   */
+  @Override
+  public void finish() throws TypesetterException {
 
-        NodeList nodes = listMaker.complete(context);
-        pop();
-        return nodes;
+    par();
+    pageBuilder.flush( listMaker.complete( options ), this );
+    if( saveStack != null && saveStack.size() != 0 ) {
+      throw new InternalError( "typesetter.saveStack.notEmpty" );
     }
+    pageBuilder.close();
+  }
 
-    /**
-*      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.UnicodeChar)
-     */
-    @Override
-    public void cr(Context context, TypesettingContext tc, UnicodeChar uc)
-            throws TypesetterException {
+  /**
+   * Getter for back-end.
+   *
+   * @return the back-end
+   * @see org.extex.typesetter.Typesetter#getBackendDriver()
+   */
+  @Override
+  public BackendDriver getBackendDriver() {
 
-        listMaker.cr(context, tc, uc);
+    return this.backend;
+  }
+
+  /**
+   * Access the last node on the list.
+   *
+   * @return the last node in the current list or {@code null} if the
+   * list is empty
+   * @see org.extex.typesetter.ListMaker#getLastNode()
+   */
+  @Override
+  public Node getLastNode() {
+
+    return listMaker.getLastNode();
+  }
+
+  /**
+   * Getter for the current list maker.
+   *
+   * @return the top list maker or {@code null} if the stack is empty
+   * @see org.extex.typesetter.Typesetter#getListMaker()
+   */
+  @Override
+  public ListMaker getListMaker() {
+
+    return listMaker;
+  }
+
+  /**
+   * Getter for the locator.
+   *
+   * @return the locator
+   * @see org.extex.typesetter.ListMaker#getLocator()
+   */
+  @Override
+  public Locator getLocator() {
+
+    return listMaker.getLocator();
+  }
+
+  /**
+   * Getter for the manager of the list maker stack. This instance also acts
+   * as a manager.
+   *
+   * @return this instance
+   * @see org.extex.typesetter.Typesetter#getManager()
+   */
+  @Override
+  public ListManager getManager() {
+
+    return this;
+  }
+
+  /**
+   * Getter for the current mode.
+   *
+   * @return the mode which is one of the values defined in
+   * {@link org.extex.typesetter.Mode Mode}.
+   * @see org.extex.typesetter.Typesetter#getMode()
+   */
+  @Override
+  public Mode getMode() {
+
+    return listMaker.getMode();
+  }
+
+  /**
+   * Getter for the NodeFactory.
+   *
+   * @return the node factory
+   * @see org.extex.typesetter.Typesetter#getNodeFactory()
+   */
+  @Override
+  public NodeFactory getNodeFactory() {
+
+    return nodeFactory;
+  }
+
+  /**
+   * Getter for the options object.
+   *
+   * @return the options
+   * @see org.extex.typesetter.ListManager#getOptions()
+   */
+  @Override
+  public TypesetterOptions getOptions() {
+
+    return options;
+  }
+
+  /**
+   * Getter for the previous depth parameter.
+   *
+   * @return the previous depth
+   * @throws TypesetterUnsupportedException in case of an error
+   * @see org.extex.typesetter.ListMaker#getPrevDepth()
+   */
+  @Override
+  public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
+
+    return this.listMaker.getPrevDepth();
+  }
+
+  /**
+   * Getter for the space factor.
+   *
+   * @return the space factor
+   * @throws TypesetterUnsupportedException in case of an error
+   * @see org.extex.typesetter.ListMaker#getSpacefactor()
+   */
+  @Override
+  public long getSpacefactor() throws TypesetterUnsupportedException {
+
+    return this.listMaker.getSpacefactor();
+  }
+
+  @Override
+  public boolean isShipoutMark() {
+
+    return shipoutMark;
+  }
+
+  /**
+   * Notification method to deal the case that a left brace has been
+   * encountered.
+   */
+  @Override
+  public void leftBrace() {
+
+    listMaker.leftBrace();
+  }
+
+  /**
+   * org.extex.typesetter.tc.TypesettingContext,
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.core.Locator)
+   */
+  @Override
+  public boolean letter( UnicodeChar uc, TypesettingContext tc,
+                         Context context, TokenSource source, Locator locator )
+      throws TypesetterException {
+
+    return listMaker.letter( uc, tc, context, source, locator );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource,
+   * org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void mathShift( Context context, TokenSource source, Token t )
+      throws TypesetterException,
+      HelpingException {
+
+    ensureHorizontalMode( source.getLocator() );
+    listMaker.mathShift( context, source, t );
+  }
+
+  /**
+   * Emit a new paragraph. This might be a noop under certain circumstances.
+   *
+   * @throws TypesetterException                                                in case of an error
+   * @throws org.extex.framework.configuration.exception.ConfigurationException in case of a configuration error
+   * @see org.extex.typesetter.ListMaker#par()
+   */
+  @Override
+  public void par() throws TypesetterException {
+
+    listMaker.par();
+
+    if( saveStack.size() == 0 ) {
+      pageBuilder.inspectAndBuild(
+          (VerticalListNode) listMaker.complete( options ), this );
     }
+  }
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param theLogger the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
-    public void enableLogging(Logger theLogger) {
+  /**
+   * Discard the top of the stack of list makers.
+   *
+   * @return the list maker popped from the stack
+   * @throws TypesetterException in case of an error
+   * @see org.extex.typesetter.ListManager#pop()
+   */
+  @Override
+  public TokenDelegateListMaker pop() throws TypesetterException {
 
-        logger = theLogger;
-        if (pageBuilder instanceof LogEnabled) {
-            ((LogEnabled) pageBuilder).enableLogging(theLogger);
-        }
-        if (paragraphBuilder instanceof LogEnabled) {
-            ((LogEnabled) paragraphBuilder).enableLogging(theLogger);
-        }
+    if( saveStack.isEmpty() ) {
+      throw new ImpossibleException( "Typesetter.EmptyStack" );
     }
+    TokenDelegateListMaker current = listMaker;
+    // TODO gene: beware of ClassCastException
+    this.listMaker =
+        (TokenDelegateListMaker) saveStack.remove( saveStack.size() - 1 );
+    return current;
+  }
 
-    /**
-     * End the current paragraph.
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *         in case of an configuration problem
-     * 
-     * @see org.extex.typesetter.ListManager#endParagraph()
-     */
-    @Override
-    public void endParagraph() throws TypesetterException {
+  /**
+   * Push a new element to the stack of list makers.
+   *
+   * @param listMaker the new element to push
+   * @throws TypesetterException in case of an error
+   * @see org.extex.typesetter.ListManager#push(org.extex.typesetter.ListMaker)
+   */
+  @Override
+  public void push( ListMaker listMaker ) throws TypesetterException {
 
-        NodeList list = listMaker.complete(options);
-        pop();
-        if (list instanceof VerticalListNode) {
-            listMaker.addAndAdjust(list, options);
-        } else if (list instanceof HorizontalListNode) {
-            listMaker.add(list);
-        } else {
-            int size = list.size();
-            for (int i = 0; i < size; i++) {
-                listMaker.add(list.get(i));
-            }
-        }
+    saveStack.add( this.listMaker );
+    if( listMaker instanceof TokenDelegateListMaker ) {
+      this.listMaker = (TokenDelegateListMaker) listMaker;
     }
-
-    /**
-     * Switch to horizontal mode if necessary. If the current mode is a
-     * horizontal mode then nothing is done.
-     * 
-     * @param locator the locator
-     * 
-     * @return the horizontal list maker
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListManager#ensureHorizontalMode(org.extex.core.Locator)
-     */
-    @Override
-    public ListMaker ensureHorizontalMode(Locator locator)
-            throws TypesetterException {
-
-        if (!(listMaker instanceof HorizontalListMaker)) { // TODO gene: dirty!
-            pushListMaker(ListMakers.HORIZONTAL, locator);
-        }
-        return listMaker;
+    else {
+      throw new RuntimeException( "unimpemented" );
     }
+  }
 
-    /**
-     * Instructs the typesetter to perform any actions necessary for cleaning up
-     * everything at the end of processing. This should involve a ship-out of
-     * any material still left unprocessed.
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *         in case of an configuration problem
-     * 
-     * @see org.extex.typesetter.Typesetter#finish()
-     */
-    @Override
-    public void finish() throws TypesetterException {
+  /**
+   * org.extex.core.Locator)
+   */
+  @Override
+  public ListMaker pushListMaker( ListMakerType type, Locator locator )
+      throws UnsupportedOperationException,
+      TypesetterException {
 
-        par();
-        pageBuilder.flush(listMaker.complete(options), this);
-        if (saveStack != null && saveStack.size() != 0) {
-            throw new InternalError("typesetter.saveStack.notEmpty");
-        }
-        pageBuilder.close();
+    TokenDelegateListMaker lm = createListMaker( this, type, locator );
+    push( lm );
+    return lm;
+  }
+
+  /**
+   * Removes the last node from the list. If the list is empty then nothing is
+   * done.
+   *
+   * @see org.extex.typesetter.ListMaker#removeLastNode()
+   */
+  @Override
+  public void removeLastNode() {
+
+    if( listMaker != null ) {
+      listMaker.removeLastNode();
     }
+  }
 
-    /**
-     * Getter for back-end.
-     * 
-     * @return the back-end
-     * 
-     * @see org.extex.typesetter.Typesetter#getBackendDriver()
-     */
-    @Override
-    public BackendDriver getBackendDriver() {
+  /**
+   * Notification method to deal the case that a right brace has been
+   * encountered.
+   *
+   * @throws TypesetterException in case of an error
+   * @see org.extex.typesetter.ListMaker#rightBrace()
+   */
+  @Override
+  public void rightBrace() throws TypesetterException {
 
-        return this.backend;
+    listMaker.rightBrace();
+  }
+
+  @Override
+  public void setBackend( BackendDriver driver ) {
+
+    backend = driver;
+    pageBuilder.setBackend( driver );
+  }
+
+  /**
+   * Setter for the node factory.
+   *
+   * @param nodeFactory the node factory
+   * @see org.extex.typesetter.Typesetter#setNodeFactory(org.extex.typesetter.type.node.factory.NodeFactory)
+   */
+  @Override
+  public void setNodeFactory( NodeFactory nodeFactory ) {
+
+    this.nodeFactory = nodeFactory;
+  }
+
+  /**
+   * Setter for the typesetter specific options.
+   *
+   * @param options the options to use
+   * @see org.extex.typesetter.Typesetter#setOptions(org.extex.typesetter.TypesetterOptions)
+   */
+  @Override
+  public void setOptions( TypesetterOptions options ) {
+
+    this.options = options;
+    pageBuilder.setOptions( options );
+  }
+
+  /**
+   * Setter for the output routine.
+   *
+   * @param output the output routine
+   * @see org.extex.typesetter.Typesetter#setOutputRoutine(org.extex.typesetter.output.OutputRoutine)
+   */
+  @Override
+  public void setOutputRoutine( OutputRoutine output ) {
+
+    this.outputRoutine = output;
+    if( this.pageBuilder != null ) {
+      this.pageBuilder.setOutputRoutine( output );
     }
+  }
 
-    /**
-     * Access the last node on the list.
-     * 
-     * @return the last node in the current list or {@code null} if the
-     *         list is empty
-     * 
-     * @see org.extex.typesetter.ListMaker#getLastNode()
-     */
-    @Override
-    public Node getLastNode() {
+  /**
+   * Setter for the page builder.
+   *
+   * @param pageBuilder the new page builder
+   * @see org.extex.typesetter.Typesetter#setPageBuilder(org.extex.typesetter.pageBuilder.PageBuilder)
+   */
+  @Override
+  public void setPageBuilder( PageBuilder pageBuilder ) {
 
-        return listMaker.getLastNode();
+    this.pageBuilder = pageBuilder;
+    pageBuilder.setBackend( backend );
+    pageBuilder.setOutputRoutine( this.outputRoutine );
+    if( pageBuilder instanceof LogEnabled ) {
+      ((LogEnabled) pageBuilder).enableLogging( logger );
     }
+  }
 
-    /**
-     * Getter for the current list maker.
-     * 
-     * @return the top list maker or {@code null} if the stack is empty
-     * 
-     * @see org.extex.typesetter.Typesetter#getListMaker()
-     */
-    @Override
-    public ListMaker getListMaker() {
+  /**
+   * Setter for paragraph builder.
+   *
+   * @param parBuilder the paragraph builder to set.
+   */
+  @Override
+  public void setParagraphBuilder( ParagraphBuilder parBuilder ) {
 
-        return listMaker;
+    paragraphBuilder = parBuilder;
+    if( paragraphBuilder instanceof LogEnabled ) {
+      ((LogEnabled) paragraphBuilder).enableLogging( logger );
     }
+  }
 
-    /**
-     * Getter for the locator.
-     * 
-     * @return the locator
-     * 
-     * @see org.extex.typesetter.ListMaker#getLocator()
-     */
-    @Override
-    public Locator getLocator() {
+  /**
+   * Setter for the previous depth parameter.
+   *
+   * @param pd the previous depth parameter
+   * @throws TypesetterUnsupportedException in case of an error
+   * @see org.extex.typesetter.ListMaker#setPrevDepth(org.extex.core.dimen.FixedDimen)
+   */
+  @Override
+  public void setPrevDepth( FixedDimen pd )
+      throws TypesetterUnsupportedException {
 
-        return listMaker.getLocator();
+    listMaker.setPrevDepth( pd );
+  }
+
+  /**
+   * Setter for the space factor.
+   *
+   * @param sf the space factor to set
+   * @throws TypesetterUnsupportedException in case of an error
+   * @throws InvalidSpacefactorException    in case of an invalid space factor
+   * @see org.extex.typesetter.ListMaker#setSpacefactor(org.extex.core.count.FixedCount)
+   */
+  @Override
+  public void setSpacefactor( FixedCount sf )
+      throws TypesetterUnsupportedException,
+      InvalidSpacefactorException {
+
+    listMaker.setSpacefactor( sf );
+  }
+
+  /**
+   * This is the entry point for the document writer. Here it receives a
+   * complete node list to be sent to the output writer.
+   *
+   * @param nodes the nodes to send
+   * @throws TypesetterException in case of an error
+   * @see org.extex.typesetter.Typesetter#shipout(org.extex.typesetter.type.NodeList)
+   */
+  @Override
+  public void shipout( NodeList nodes ) throws TypesetterException {
+
+    pageBuilder.shipout( nodes, this );
+    shipoutMark = true;
+  }
+
+  @Override
+  public void showlist( StringBuilder sb, long depth, long breadth ) {
+
+    listMaker.showlist( sb, depth, breadth );
+  }
+
+  @Override
+  public void showlists( StringBuilder sb, long depth, long breadth ) {
+
+    localizer = LocalizerFactory.getLocalizer( getClass() );
+
+    sb.append( localizer.format( "Showlist.Format",
+                                 listMaker.getMode()
+                                          .toString(),
+                                 Integer.toString( listMaker.getLocator()
+                                                            .getLineNumber() ) ) );
+    listMaker.showlist( sb, depth, breadth );
+
+    for( int i = saveStack.size() - 1; i >= 0; i-- ) {
+      ListMaker lm = saveStack.get( i );
+      sb.append( localizer.format( "Showlist.Format",
+                                   lm.getMode().toString(),
+                                   Integer.toString( lm.getLocator()
+                                                       .getLineNumber() ) ) );
+      lm.showlist( sb, depth, breadth );
     }
-
-    /**
-     * Getter for the manager of the list maker stack. This instance also acts
-     * as a manager.
-     * 
-     * @return this instance
-     * 
-     * @see org.extex.typesetter.Typesetter#getManager()
-     */
-    @Override
-    public ListManager getManager() {
-
-        return this;
-    }
-
-    /**
-     * Getter for the current mode.
-     * 
-     * @return the mode which is one of the values defined in
-     *         {@link org.extex.typesetter.Mode Mode}.
-     * 
-     * @see org.extex.typesetter.Typesetter#getMode()
-     */
-    @Override
-    public Mode getMode() {
-
-        return listMaker.getMode();
-    }
-
-    /**
-     * Getter for the NodeFactory.
-     * 
-     * @return the node factory
-     * 
-     * @see org.extex.typesetter.Typesetter#getNodeFactory()
-     */
-    @Override
-    public NodeFactory getNodeFactory() {
-
-        return nodeFactory;
-    }
-
-    /**
-     * Getter for the options object.
-     * 
-     * @return the options
-     * 
-     * @see org.extex.typesetter.ListManager#getOptions()
-     */
-    @Override
-    public TypesetterOptions getOptions() {
-
-        return options;
-    }
-
-    /**
-     * Getter for the previous depth parameter.
-     * 
-     * @return the previous depth
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#getPrevDepth()
-     */
-    @Override
-    public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
-
-        return this.listMaker.getPrevDepth();
-    }
-
-    /**
-     * Getter for the space factor.
-     * 
-     * @return the space factor
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#getSpacefactor()
-     */
-    @Override
-    public long getSpacefactor() throws TypesetterUnsupportedException {
-
-        return this.listMaker.getSpacefactor();
-    }
-
-@Override
-    public boolean isShipoutMark() {
-
-        return shipoutMark;
-    }
-
-    /**
-     * Notification method to deal the case that a left brace has been
-     * encountered.
-     */
-    @Override
-    public void leftBrace() {
-
-        listMaker.leftBrace();
-    }
-
-    /**
-*      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
-     */
-    @Override
-    public boolean letter(UnicodeChar uc, TypesettingContext tc,
-            Context context, TokenSource source, Locator locator)
-            throws TypesetterException {
-
-        return listMaker.letter(uc, tc, context, source, locator);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource,
-     *      org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void mathShift(Context context, TokenSource source, Token t)
-            throws TypesetterException,
-                HelpingException {
-
-        ensureHorizontalMode(source.getLocator());
-        listMaker.mathShift(context, source, t);
-    }
-
-    /**
-     * Emit a new paragraph. This might be a noop under certain circumstances.
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *         in case of a configuration error
-     * 
-     * @see org.extex.typesetter.ListMaker#par()
-     */
-    @Override
-    public void par() throws TypesetterException {
-
-        listMaker.par();
-
-        if (saveStack.size() == 0) {
-            pageBuilder.inspectAndBuild(
-                (VerticalListNode) listMaker.complete(options), this);
-        }
-    }
-
-    /**
-     * Discard the top of the stack of list makers.
-     * 
-     * @return the list maker popped from the stack
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListManager#pop()
-     */
-    @Override
-    public TokenDelegateListMaker pop() throws TypesetterException {
-
-        if (saveStack.isEmpty()) {
-            throw new ImpossibleException("Typesetter.EmptyStack");
-        }
-        TokenDelegateListMaker current = listMaker;
-        // TODO gene: beware of ClassCastException
-        this.listMaker =
-                (TokenDelegateListMaker) saveStack.remove(saveStack.size() - 1);
-        return current;
-    }
-
-    /**
-     * Push a new element to the stack of list makers.
-     * 
-     * @param listMaker the new element to push
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListManager#push(org.extex.typesetter.ListMaker)
-     */
-    @Override
-    public void push(ListMaker listMaker) throws TypesetterException {
-
-        saveStack.add(this.listMaker);
-        if (listMaker instanceof TokenDelegateListMaker) {
-            this.listMaker = (TokenDelegateListMaker) listMaker;
-        } else {
-            throw new RuntimeException("unimpemented");
-        }
-    }
-
-    /**
-*      org.extex.core.Locator)
-     */
-    @Override
-    public ListMaker pushListMaker(ListMakerType type, Locator locator)
-            throws UnsupportedOperationException,
-                TypesetterException {
-
-        TokenDelegateListMaker lm = createListMaker(this, type, locator);
-        push(lm);
-        return lm;
-    }
-
-    /**
-     * Removes the last node from the list. If the list is empty then nothing is
-     * done.
-     * 
-     * @see org.extex.typesetter.ListMaker#removeLastNode()
-     */
-    @Override
-    public void removeLastNode() {
-
-        if (listMaker != null) {
-            listMaker.removeLastNode();
-        }
-    }
-
-    /**
-     * Notification method to deal the case that a right brace has been
-     * encountered.
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#rightBrace()
-     */
-    @Override
-    public void rightBrace() throws TypesetterException {
-
-        listMaker.rightBrace();
-    }
-
-@Override
-    public void setBackend(BackendDriver driver) {
-
-        backend = driver;
-        pageBuilder.setBackend(driver);
-    }
-
-    /**
-     * Setter for the node factory.
-     * 
-     * @param nodeFactory the node factory
-     * 
-     * @see org.extex.typesetter.Typesetter#setNodeFactory(org.extex.typesetter.type.node.factory.NodeFactory)
-     */
-    @Override
-    public void setNodeFactory(NodeFactory nodeFactory) {
-
-        this.nodeFactory = nodeFactory;
-    }
-
-    /**
-     * Setter for the typesetter specific options.
-     * 
-     * @param options the options to use
-     * 
-     * @see org.extex.typesetter.Typesetter#setOptions(org.extex.typesetter.TypesetterOptions)
-     */
-    @Override
-    public void setOptions(TypesetterOptions options) {
-
-        this.options = options;
-        pageBuilder.setOptions(options);
-    }
-
-    /**
-     * Setter for the output routine.
-     * 
-     * @param output the output routine
-     * 
-     * @see org.extex.typesetter.Typesetter#setOutputRoutine(org.extex.typesetter.output.OutputRoutine)
-     */
-    @Override
-    public void setOutputRoutine(OutputRoutine output) {
-
-        this.outputRoutine = output;
-        if (this.pageBuilder != null) {
-            this.pageBuilder.setOutputRoutine(output);
-        }
-    }
-
-    /**
-     * Setter for the page builder.
-     * 
-     * @param pageBuilder the new page builder
-     * 
-     * @see org.extex.typesetter.Typesetter#setPageBuilder(org.extex.typesetter.pageBuilder.PageBuilder)
-     */
-    @Override
-    public void setPageBuilder(PageBuilder pageBuilder) {
-
-        this.pageBuilder = pageBuilder;
-        pageBuilder.setBackend(backend);
-        pageBuilder.setOutputRoutine(this.outputRoutine);
-        if (pageBuilder instanceof LogEnabled) {
-            ((LogEnabled) pageBuilder).enableLogging(logger);
-        }
-    }
-
-    /**
-     * Setter for paragraph builder.
-     * 
-     * @param parBuilder the paragraph builder to set.
-     */
-    @Override
-    public void setParagraphBuilder(ParagraphBuilder parBuilder) {
-
-        paragraphBuilder = parBuilder;
-        if (paragraphBuilder instanceof LogEnabled) {
-            ((LogEnabled) paragraphBuilder).enableLogging(logger);
-        }
-    }
-
-    /**
-     * Setter for the previous depth parameter.
-     * 
-     * @param pd the previous depth parameter
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#setPrevDepth(org.extex.core.dimen.FixedDimen)
-     */
-    @Override
-    public void setPrevDepth(FixedDimen pd)
-            throws TypesetterUnsupportedException {
-
-        listMaker.setPrevDepth(pd);
-    }
-
-    /**
-     * Setter for the space factor.
-     * 
-     * @param sf the space factor to set
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     * @throws InvalidSpacefactorException in case of an invalid space factor
-     * 
-     * @see org.extex.typesetter.ListMaker#setSpacefactor(org.extex.core.count.FixedCount)
-     */
-    @Override
-    public void setSpacefactor(FixedCount sf)
-            throws TypesetterUnsupportedException,
-                InvalidSpacefactorException {
-
-        listMaker.setSpacefactor(sf);
-    }
-
-    /**
-     * This is the entry point for the document writer. Here it receives a
-     * complete node list to be sent to the output writer.
-     * 
-     * @param nodes the nodes to send
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.Typesetter#shipout(org.extex.typesetter.type.NodeList)
-     */
-    @Override
-    public void shipout(NodeList nodes) throws TypesetterException {
-
-        pageBuilder.shipout(nodes, this);
-        shipoutMark = true;
-    }
-
-@Override
-    public void showlist(StringBuilder sb, long depth, long breadth) {
-
-        listMaker.showlist(sb, depth, breadth);
-    }
-
-@Override
-    public void showlists(StringBuilder sb, long depth, long breadth) {
-
-        localizer = LocalizerFactory.getLocalizer(getClass());
-
-        sb.append(localizer.format("Showlist.Format", listMaker.getMode()
-            .toString(), Integer.toString(listMaker.getLocator()
-            .getLineNumber())));
-        listMaker.showlist(sb, depth, breadth);
-
-        for (int i = saveStack.size() - 1; i >= 0; i--) {
-            ListMaker lm = saveStack.get(i);
-            sb.append(localizer.format("Showlist.Format",
-                lm.getMode().toString(),
-                Integer.toString(lm.getLocator().getLineNumber())));
-            lm.showlist(sb, depth, breadth);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void subscriptMark(Context context, TokenSource source,
-            Typesetter typesetter, Token t)
-            throws TypesetterException,
-                HelpingException {
-
-        listMaker.subscriptMark(context, source, typesetter, t);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void superscriptMark(Context context, TokenSource source,
-            Typesetter typesetter, Token t)
-            throws TypesetterException,
-                HelpingException {
-
-        listMaker.superscriptMark(context, source, typesetter, t);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource,
-     *      org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void tab(Context context, TokenSource source, Token t)
-            throws TypesetterException {
-
-        listMaker.tab(context, source, t);
-    }
-
-@Override
-    public String toString() {
-
-        return "stackSize = " + saveStack.size() + "\n" + listMaker.toString();
-    }
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+   * org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void subscriptMark( Context context, TokenSource source,
+                             Typesetter typesetter, Token t )
+      throws TypesetterException,
+      HelpingException {
+
+    listMaker.subscriptMark( context, source, typesetter, t );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+   * org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void superscriptMark( Context context, TokenSource source,
+                               Typesetter typesetter, Token t )
+      throws TypesetterException,
+      HelpingException {
+
+    listMaker.superscriptMark( context, source, typesetter, t );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource,
+   * org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void tab( Context context, TokenSource source, Token t )
+      throws TypesetterException {
+
+    listMaker.tab( context, source, t );
+  }
+
+  @Override
+  public String toString() {
+
+    return "stackSize = " + saveStack.size() + "\n" + listMaker.toString();
+  }
 
 }

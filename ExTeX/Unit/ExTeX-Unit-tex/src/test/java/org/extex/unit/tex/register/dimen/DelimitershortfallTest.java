@@ -24,26 +24,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \delimitershortfall}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DelimitershortfallTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DelimitershortfallTest.class);
-    }
+    (new JUnitCore()).run( DelimitershortfallTest.class );
+  }
 
 
-    public DelimitershortfallTest() {
+  public DelimitershortfallTest() {
 
-        super("delimitershortfall", "", "0.0pt");
-    }
+    super( "delimitershortfall", "", "0.0pt" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

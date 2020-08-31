@@ -24,33 +24,33 @@ import java.util.List;
 
 /**
  * CIDFontType.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOCIDFontType extends T2TDONumber {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2TDOCIDFontType(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2TDOCIDFontType( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{ESCAPE_BYTE, CFF_CIDFONTTYPE});
-    }
+    super( stack, new short[]{ESCAPE_BYTE, CFF_CIDFONTTYPE} );
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return T2TopDICTOperator.TYPE_CIDFONTTYPE;
-    }
+    return T2TopDICTOperator.TYPE_CIDFONTTYPE;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "CIDFontType";
-    }
+    return "CIDFontType";
+  }
 
 }

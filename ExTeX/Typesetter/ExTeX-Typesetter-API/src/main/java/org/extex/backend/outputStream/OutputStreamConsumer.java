@@ -24,14 +24,14 @@ package org.extex.backend.outputStream;
  * This interface describes a consumer of an output stream factory.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OutputStreamConsumer {
 
-    /**
-     * This method takes an output stream factory for further use.
-     *
-     * @param factory the output stream factory to use
-     */
-    void setOutputStreamFactory(OutputStreamFactory factory);
+  /**
+   * This method takes an output stream factory for further use.
+   *
+   * @param factory the output stream factory to use
+   */
+  void setOutputStreamFactory( OutputStreamFactory factory );
 
 }

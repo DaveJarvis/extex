@@ -1,112 +1,113 @@
 /*
  * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *Contains backends of εχTeX which are responsible for writing the constructed pages to
+ * Contains backends of εχTeX which are responsible for writing the 
+ * constructed pages to
  * an appropriate file. For instance a PDF writer and a PostScript writer are
  * located in a sub-package.
  *
  * <p>Writing a DocumentWriter</p>
  * <p>
- *  To write a document writer you start to create a class which
- *  implements the interface {@link
- *  org.extex.backend.documentWriter.DocumentWriter DocumentWriter}.
- *  This interface describes the ability to receive some nodes for
- *  processing. This is usually not enough. In addition it is necessary
- *  to send the result to some destination. This is accomplished by the
- *  interfaces {@link
- *  org.extex.backend.documentWriter.SingleDocumentStream
- *  SingleDocumentStream} and {@link
- *  org.extex.backend.documentWriter.MultipleDocumentStream
- *  MultipleDocumentStream}.
+ * To write a document writer you start to create a class which
+ * implements the interface {@link
+ * org.extex.backend.documentWriter.DocumentWriter DocumentWriter}.
+ * This interface describes the ability to receive some nodes for
+ * processing. This is usually not enough. In addition it is necessary
+ * to send the result to some destination. This is accomplished by the
+ * interfaces {@link
+ * org.extex.backend.documentWriter.SingleDocumentStream
+ * SingleDocumentStream} and {@link
+ * org.extex.backend.documentWriter.MultipleDocumentStream
+ * MultipleDocumentStream}.
  * </p>
  *
  * <p>Output Streams</p>
-
+ *
  * <p>
- *  The decoupling of the actual output stream and the writing of the
- *  document is necessary to relief the document writer from the task
- *  and concentrate the same routine for each document writer in one
- *  place. On the other side with this approach it is possible to
- *  transparently add some processing before or after the document
- *  writer. It would also be possible not only to direct the output to
- *  some file but send it to a display immediately.
+ * The decoupling of the actual output stream and the writing of the
+ * document is necessary to relief the document writer from the task
+ * and concentrate the same routine for each document writer in one
+ * place. On the other side with this approach it is possible to
+ * transparently add some processing before or after the document
+ * writer. It would also be possible not only to direct the output to
+ * some file but send it to a display immediately.
  * </p>
  * <p>
- *  The interface {@link
- *  org.extex.backend.documentWriter.SingleDocumentStream
- *  SingleDocumentStream} is used by those document writers which send
- *  the output to a single destination. At startup the method
- *  setOutputStream() is invoked and the output stream is passed to the
- *  document writer. As an example consider a classical dvi document
- *  writer which tries to produce one output file.
+ * The interface {@link
+ * org.extex.backend.documentWriter.SingleDocumentStream
+ * SingleDocumentStream} is used by those document writers which send
+ * the output to a single destination. At startup the method
+ * setOutputStream() is invoked and the output stream is passed to the
+ * document writer. As an example consider a classical dvi document
+ * writer which tries to produce one output file.
  * </p>
  * <p>
- *  The interface {@link
- *  org.extex.backend.documentWriter.MultipleDocumentStream
- *  MultipleDocumentStream} is used by those document writers which
- *  send the output to several destinations. As an example consider an
- *  EPS writer which produces one file per page. Here the method
- *  setOutputStreamFactory() is invoked at startup and a factory is
- *  passed to the document writer which can be used to acquire the next
- *  output stream. In fact MultipleDocumentStream can also be used in
- *  the case of a single output stream but the SingleDocumentStream is
- *  a little bit easier to use.
+ * The interface {@link
+ * org.extex.backend.documentWriter.MultipleDocumentStream
+ * MultipleDocumentStream} is used by those document writers which
+ * send the output to several destinations. As an example consider an
+ * EPS writer which produces one file per page. Here the method
+ * setOutputStreamFactory() is invoked at startup and a factory is
+ * passed to the document writer which can be used to acquire the next
+ * output stream. In fact MultipleDocumentStream can also be used in
+ * the case of a single output stream but the SingleDocumentStream is
+ * a little bit easier to use.
  * </p>
  *
  * <p>Configuration</p>
-
+ *
  * <p>
- *  The document writer can implement the interface {@link
- *  org.extex.framework.configuration.Configurable Configurable}.
- *  In this case the configuration object is passed to the document
- *  writer at startup.
+ * The document writer can implement the interface {@link
+ * org.extex.framework.configuration.Configurable Configurable}.
+ * In this case the configuration object is passed to the document
+ * writer at startup.
  * </p>
  * <p>
- *  The document writer can implement the interface {@link
- *  org.extex.resource.PropertyAware PropertyAware}.
- *  In this case the properties with the user's settings are passed to
- *  the document writer at startup.
+ * The document writer can implement the interface {@link
+ * org.extex.resource.PropertyAware PropertyAware}.
+ * In this case the properties with the user's settings are passed to
+ * the document writer at startup.
  * </p>
  *
  * <p>Logging</p>
-
+ *
  * <p>
- *  The document writer can implement the interface {@link
- *  org.extex.framework.logger.LogEnabled LogEnabled}. In this case
- *  the logger is passed to the document writer at startup. It can be
- *  used to send some informative or debugging messages to the log
- *  file.
+ * The document writer can implement the interface {@link
+ * org.extex.framework.logger.LogEnabled LogEnabled}. In this case
+ * the logger is passed to the document writer at startup. It can be
+ * used to send some informative or debugging messages to the log
+ * file.
  * </p>
  *
  * <p>Color</p>
-
+ *
  * <p>
- *  The document writer can implement the interface {@link
- *  org.extex.color.ColorAware ColorAware}. In this case a color
- *  converter is passed to the document writer.
+ * The document writer can implement the interface {@link
+ * org.extex.color.ColorAware ColorAware}. In this case a color
+ * converter is passed to the document writer.
  * </p>
  *
  * <p>Resource Access</p>
-
+ *
  * <p>
- *  The document writer can implement the interface {@link
- *  org.extex.resource.ResourceAware ResourceAware}. In this
- *  case a resource finder is passed to the document writer.
+ * The document writer can implement the interface {@link
+ * org.extex.resource.ResourceAware ResourceAware}. In this
+ * case a resource finder is passed to the document writer.
  * </p>
  */
 

@@ -19,24 +19,24 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.util.file.random.RandomAccessR;
+
+import java.io.IOException;
 
 /**
  * Class for a ClassRangeRecord.
- * 
+ *
  * <p>
  * Each ClassRangeRecord consists of a Start glyph index, an End glyph index,
  * and a Class value. All GlyphIDs in a range, from Start to End inclusive,
  * constitute the class identified by the Class value. Any glyph not covered by
  * a ClassRangeRecord is assumed to belong to Class 0.
  * </p>
- * 
+ *
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Type</b></td>
+ * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -56,66 +56,66 @@ import org.extex.util.file.random.RandomAccessR;
  * <td>Applied to all glyphs in the range</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class ClassRangeRecord {
 
-    /**
-     * Last GlyphID in the range.
-     */
-    private final int end;
+  /**
+   * Last GlyphID in the range.
+   */
+  private final int end;
 
-    /**
-     * Applied to all glyphs in the range.
-     */
-    private final int gclass;
+  /**
+   * Applied to all glyphs in the range.
+   */
+  private final int gclass;
 
-    /**
-     * First GlyphID in the range.
-     */
-    private final int start;
+  /**
+   * First GlyphID in the range.
+   */
+  private final int start;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param rar The input.
-     * @throws IOException if a IO-error occurred.
-     */
-    public ClassRangeRecord(RandomAccessR rar) throws IOException {
+  /**
+   * Creates a new object.
+   *
+   * @param rar The input.
+   * @throws IOException if a IO-error occurred.
+   */
+  public ClassRangeRecord( RandomAccessR rar ) throws IOException {
 
-        start = rar.readUnsignedShort();
-        end = rar.readUnsignedShort();
-        gclass = rar.readUnsignedShort();
-    }
+    start = rar.readUnsignedShort();
+    end = rar.readUnsignedShort();
+    gclass = rar.readUnsignedShort();
+  }
 
-    /**
-     * Getter for end.
-     * 
-     * @return the end
-     */
-    public int getEnd() {
+  /**
+   * Getter for end.
+   *
+   * @return the end
+   */
+  public int getEnd() {
 
-        return end;
-    }
+    return end;
+  }
 
-    /**
-     * Getter for gclass.
-     * 
-     * @return the gclass
-     */
-    public int getGclass() {
+  /**
+   * Getter for gclass.
+   *
+   * @return the gclass
+   */
+  public int getGclass() {
 
-        return gclass;
-    }
+    return gclass;
+  }
 
-    /**
-     * Getter for start.
-     * 
-     * @return the start
-     */
-    public int getStart() {
+  /**
+   * Getter for start.
+   *
+   * @return the start
+   */
+  public int getStart() {
 
-        return start;
-    }
+    return start;
+  }
 }

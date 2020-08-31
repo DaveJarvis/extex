@@ -24,14 +24,14 @@ package org.extex.scanner.stream.observer.writer;
  * open reader event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OpenWriterObservable {
 
-    /**
-     * Register an open reader observer for later use.
-     *
-     * @param observer the observer to be registered
-     */
-    void registerObserver(OpenWriterObserver observer);
+  /**
+   * Register an open reader observer for later use.
+   *
+   * @param observer the observer to be registered
+   */
+  void registerObserver( OpenWriterObserver observer );
 
 }

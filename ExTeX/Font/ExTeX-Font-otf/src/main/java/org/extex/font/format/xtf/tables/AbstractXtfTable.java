@@ -19,89 +19,90 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.xml.XMLStreamWriter;
 
+import java.io.IOException;
+
 /**
  * Abstract class for all TTF/OTF tables.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public abstract class AbstractXtfTable implements XtfTable, XtfGlyphName {
 
-    private final XtfTableMap tablemap;
+  private final XtfTableMap tablemap;
 
-    public AbstractXtfTable(XtfTableMap tm) {
+  public AbstractXtfTable( XtfTableMap tm ) {
 
-        tablemap = tm;
+    tablemap = tm;
+  }
+
+  /**
+   * Returns the glyph name of an index.
+   *
+   * @param idx The index.
+   * @return Returns the glyph name of an index.
+   */
+  public String getGlyphName( int idx ) {
+
+    String gylphName = null;
+
+    // first look in the post-table
+    XtfTable post = getTableMap().get( XtfReader.POST );
+    if( post instanceof TtfTablePOST ) {
+      gylphName = ((TtfTablePOST) post).getGlyphName( idx );
     }
 
-    /**
-     * Returns the glyph name of an index.
-     * 
-     * @param idx The index.
-     * @return Returns the glyph name of an index.
-     */
-    public String getGlyphName(int idx) {
+    // second search in cff
+    if( gylphName == null ) {
 
-        String gylphName = null;
-
-        // first look in the post-table
-        XtfTable post = getTableMap().get(XtfReader.POST);
-        if ( post instanceof TtfTablePOST ) {
-            gylphName = ((TtfTablePOST) post).getGlyphName(idx);
-        }
-
-        // second search in cff
-        if (gylphName == null) {
-
-            XtfTable cff = getTableMap().get(XtfReader.CFF);
-            if ( cff instanceof OtfTableCFF ) {
-                OtfTableCFF cfftab = (OtfTableCFF) cff;
-                // TODO mgn fontnumber 0
-                gylphName = cfftab.mapGlyphPosToGlyphName(idx, 0);
-            }
-        }
-
-        // else
-        if (gylphName == null) {
-            gylphName = "???";
-        }
-        return gylphName;
+      XtfTable cff = getTableMap().get( XtfReader.CFF );
+      if( cff instanceof OtfTableCFF ) {
+        OtfTableCFF cfftab = (OtfTableCFF) cff;
+        // TODO mgn fontnumber 0
+        gylphName = cfftab.mapGlyphPosToGlyphName( idx, 0 );
+      }
     }
 
-public int getInitOrder() {
-
-        return 0;
+    // else
+    if( gylphName == null ) {
+      gylphName = "???";
     }
+    return gylphName;
+  }
 
-public XtfTableMap getTableMap() {
+  public int getInitOrder() {
 
-        return tablemap;
-    }
+    return 0;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.XtfTable#init()
-     */
-    public void init() throws IOException {
+  public XtfTableMap getTableMap() {
 
-        // do nothing
-    }
+    return tablemap;
+  }
 
-    /**
-     * Write the tag an the id attribute for the table element.
-     * 
-     * @param writer The xml stream writer.
-     * @throws IOException if an IO-error occurred.
-     */
-    protected void writeStartElement(XMLStreamWriter writer) throws IOException {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.XtfTable#init()
+   */
+  public void init() throws IOException {
 
-        writer.writeStartElement(getShortcut());
-        writer.writeAttribute("id", XtfReader.convertIntToHexString(getType()));
+    // do nothing
+  }
 
-    }
+  /**
+   * Write the tag an the id attribute for the table element.
+   *
+   * @param writer The xml stream writer.
+   * @throws IOException if an IO-error occurred.
+   */
+  protected void writeStartElement( XMLStreamWriter writer )
+      throws IOException {
+
+    writer.writeStartElement( getShortcut() );
+    writer.writeAttribute( "id", XtfReader.convertIntToHexString( getType() ) );
+
+  }
 }

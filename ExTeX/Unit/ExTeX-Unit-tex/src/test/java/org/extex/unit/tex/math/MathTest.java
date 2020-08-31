@@ -26,88 +26,85 @@ import org.junit.Test;
  * This is a test suite for math.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathTest extends ExTeXLauncher {
 
 
-    public MathTest() {
+  public MathTest() {
 
-    }
+  }
 
-    /**
-     *
-     *  Test case checking that missing fonts leads to an error.
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMathError1() throws Exception {
+  /**
+   * Test case checking that missing fonts leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMathError1() throws Exception {
 
-        assertFailure(//--- input code ---
-            DEFINE_MATH + "$a$ \\end",
-            //--- output channel ---
-            "Math formula deleted: Insufficient symbol fonts");
-    }
+    assertFailure(//--- input code ---
+                  DEFINE_MATH + "$a$ \\end",
+                  //--- output channel ---
+                  "Math formula deleted: Insufficient symbol fonts" );
+  }
 
-    /**
-     *
-     *  Test case checking that a simple character can be typeset in math mode.
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMath1() throws Exception {
+  /**
+   * Test case checking that a simple character can be typeset in math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testMath1() throws Exception {
 
-        assertSuccess(//--- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + "$a$ \\end",
-            //--- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + "$a$ " +
+                      "\\end",
+                  //--- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     *
-     *  Test case checking that a simple character can be typeset in math mode.
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSubscript1() throws Exception {
+  /**
+   * Test case checking that a simple character can be typeset in math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testSubscript1() throws Exception {
 
-        assertSuccess(
-            showNodesProperties(),
-            //--- input code ---
-            "\\hsize=100pt" + AbstractMathTester.DEFINE_MATH_FONTS
-                    + DEFINE_CATCODES + "$a_b$ \\end",
-            //--- output channel ---
-            "\\vbox(4.8611pt+0.0pt)x100.0pt\n"
-                    + ".\\hbox(4.8611pt+0.0pt)x100.0pt\n"
-                    + "..\\hbox(4.8611pt+0.0pt)x8.80255pt\n"
-                    + "...a\n"
-                    + "...\\hbox(4.8611pt+0.0pt)x3.51666pt, shifted 1.49998pt\n"
-                    + "....b\n");
-    }
+    assertSuccess(
+        showNodesProperties(),
+        //--- input code ---
+        "\\hsize=100pt" + AbstractMathTester.DEFINE_MATH_FONTS
+            + DEFINE_CATCODES + "$a_b$ \\end",
+        //--- output channel ---
+        "\\vbox(4.8611pt+0.0pt)x100.0pt\n"
+            + ".\\hbox(4.8611pt+0.0pt)x100.0pt\n"
+            + "..\\hbox(4.8611pt+0.0pt)x8.80255pt\n"
+            + "...a\n"
+            + "...\\hbox(4.8611pt+0.0pt)x3.51666pt, shifted 1.49998pt\n"
+            + "....b\n" );
+  }
 
-    /**
-     *
-     *  Test case checking that a simple character can be typeset in math mode.
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSuperscript1() throws Exception {
+  /**
+   * Test case checking that a simple character can be typeset in math mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testSuperscript1() throws Exception {
 
-        assertSuccess(
-            showNodesProperties(),
-            //--- input code ---
-            "\\hsize=100pt" + AbstractMathTester.DEFINE_MATH_FONTS
-                    + DEFINE_CATCODES + "$a^b$ \\end",
-            //--- output channel ---
-            "\\vbox(4.8611pt+0.0pt)x100.0pt\n"
-                    + ".\\hbox(4.8611pt+0.0pt)x100.0pt\n"
-                    + "..\\hbox(4.8611pt+0.0pt)x8.80255pt\n"
-                    + "...a\n"
-                    + "...\\hbox(4.8611pt+0.0pt)x3.51666pt, shifted -5.93748pt\n"
-                    + "....b\n");
-    }
+    assertSuccess(
+        showNodesProperties(),
+        //--- input code ---
+        "\\hsize=100pt" + AbstractMathTester.DEFINE_MATH_FONTS
+            + DEFINE_CATCODES + "$a^b$ \\end",
+        //--- output channel ---
+        "\\vbox(4.8611pt+0.0pt)x100.0pt\n"
+            + ".\\hbox(4.8611pt+0.0pt)x100.0pt\n"
+            + "..\\hbox(4.8611pt+0.0pt)x8.80255pt\n"
+            + "...a\n"
+            + "...\\hbox(4.8611pt+0.0pt)x3.51666pt, shifted -5.93748pt\n"
+            + "....b\n" );
+  }
 
 }

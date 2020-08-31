@@ -33,96 +33,96 @@ import org.extex.typesetter.type.OrientedNode;
  * {@code \leaders}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AlignedLeadersNode extends AbstractLeadersNode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param node the node or node list to stretch or repeat
-     * @param glue the desired size
-     */
-    public AlignedLeadersNode(OrientedNode node, FixedGlue glue) {
+  /**
+   * Creates a new object.
+   *
+   * @param node the node or node list to stretch or repeat
+   * @param glue the desired size
+   */
+  public AlignedLeadersNode( OrientedNode node, FixedGlue glue ) {
 
-        super(node, glue);
+    super( node, glue );
+  }
+
+  @Override
+  protected Node fillHorizontally( long total, Node node, FixedDimen posX,
+                                   FixedDimen posY ) {
+
+    // TODO: check with TeX how it works there
+
+    long w = node.getWidth().getValue();
+    if( w <= 0 ) {
+      return this;
+    }
+    long offset = posX.getValue() % w;
+    if( w + offset > total ) {
+      return this;
     }
 
-    @Override
-    protected Node fillHorizontally(long total, Node node, FixedDimen posX,
-            FixedDimen posY) {
+    long n = (total - offset) / w;
+    // Possible improvement: If n==1 && offset == 0 return node?
+    NodeList nl = new HorizontalListNode();
 
-        // TODO: check with TeX how it works there
-
-        long w = node.getWidth().getValue();
-        if (w <= 0) {
-            return this;
-        }
-        long offset = posX.getValue() % w;
-        if (w + offset > total) {
-            return this;
-        }
-
-        long n = (total - offset) / w;
-        // Possible improvement: If n==1 && offset == 0 return node?
-        NodeList nl = new HorizontalListNode();
-
-        if (offset > 0) {
-            nl.add(new ImplicitKernNode(new Dimen(offset), true));
-        }
-
-        while (n-- > 0) {
-            nl.add(node);
-        }
-
-        nl.setDepth(getDepth());
-        nl.setHeight(getHeight());
-        nl.setWidth(getWidth());
-        return nl;
+    if( offset > 0 ) {
+      nl.add( new ImplicitKernNode( new Dimen( offset ), true ) );
     }
 
-    @Override
-    protected Node fillVertically(long total, Node node, FixedDimen posX,
-            FixedDimen posY) {
-
-        // TODO: check with TeX how it works there
-
-        long h = node.getHeight().getValue() + node.getDepth().getValue();
-        if (h <= 0) {
-            return this;
-        }
-        long offset = posX.getValue() % h;
-        if (h + offset > total) {
-            return this;
-        }
-
-        long n = (total - offset) / h;
-        // Possible improvement: If n==1 && offset == 0 return node?
-        NodeList nl = new VerticalListNode();
-
-        if (offset > 0) {
-            nl.add(new ImplicitKernNode(new Dimen(offset), false));
-        }
-
-        while (n-- > 0) {
-            nl.add(node);
-        }
-
-        nl.setDepth(getDepth());
-        nl.setHeight(getHeight());
-        nl.setWidth(getWidth());
-        return nl;
+    while( n-- > 0 ) {
+      nl.add( node );
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(NodeVisitor visitor, Object value)
-            throws GeneralException {
+    nl.setDepth( getDepth() );
+    nl.setHeight( getHeight() );
+    nl.setWidth( getWidth() );
+    return nl;
+  }
 
-        return visitor.visitAlignedLeaders(this, value);
+  @Override
+  protected Node fillVertically( long total, Node node, FixedDimen posX,
+                                 FixedDimen posY ) {
+
+    // TODO: check with TeX how it works there
+
+    long h = node.getHeight().getValue() + node.getDepth().getValue();
+    if( h <= 0 ) {
+      return this;
     }
+    long offset = posX.getValue() % h;
+    if( h + offset > total ) {
+      return this;
+    }
+
+    long n = (total - offset) / h;
+    // Possible improvement: If n==1 && offset == 0 return node?
+    NodeList nl = new VerticalListNode();
+
+    if( offset > 0 ) {
+      nl.add( new ImplicitKernNode( new Dimen( offset ), false ) );
+    }
+
+    while( n-- > 0 ) {
+      nl.add( node );
+    }
+
+    nl.setDepth( getDepth() );
+    nl.setHeight( getHeight() );
+    nl.setWidth( getWidth() );
+    return nl;
+  }
+
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public Object visit( NodeVisitor visitor, Object value )
+      throws GeneralException {
+
+    return visitor.visitAlignedLeaders( this, value );
+  }
 
 }

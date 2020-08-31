@@ -19,58 +19,56 @@
 
 package org.extex.engine;
 
-import java.util.logging.Handler;
-import java.util.logging.Level;
-
 import org.extex.interpreter.context.ContextInternals;
 import org.extex.interpreter.context.observer.interaction.InteractionObserver;
 import org.extex.interpreter.interaction.Interaction;
 
+import java.util.logging.Handler;
+import java.util.logging.Level;
+
 /**
  * This observer is used to transport the interaction mode changes to the
  * logger. Thus it is guaranteed that only the appropriate messages are shown.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InteractionModeObserver implements InteractionObserver {
 
-    /**
-     * The field {@code handler} contains the
-     * {@link java.util.logging.Handler Handler} at which the logging should be
-     * directed.
-     */
-    private final Handler handler;
+  /**
+   * The field {@code handler} contains the
+   * {@link java.util.logging.Handler Handler} at which the logging should be
+   * directed.
+   */
+  private final Handler handler;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param theHandler the target handler
-     */
-    public InteractionModeObserver(Handler theHandler) {
+  /**
+   * Creates a new object.
+   *
+   * @param theHandler the target handler
+   */
+  public InteractionModeObserver( Handler theHandler ) {
 
-        this.handler = theHandler;
-    }
+    this.handler = theHandler;
+  }
 
-    /**
-     * Receive a notification on a count change. If the interaction mode
-     * received is batchmode then the handler encapsulated is switched to log
-     * level severe.Otherwise it is switched to log level info.
-     * 
-     * @param context the interpreter context
-     * @param mode the new interaction mode.
-     * 
-     * @throws Exception in case of a problem
-     * 
-     * @see org.extex.interpreter.context.observer.interaction.InteractionObserver#receiveInteractionChange(
-     *      org.extex.interpreter.context.ContextInternals,
-     *      org.extex.interpreter.interaction.Interaction)
-     */
-    public void receiveInteractionChange(ContextInternals context,
-            Interaction mode) throws Exception {
+  /**
+   * Receive a notification on a count change. If the interaction mode
+   * received is batchmode then the handler encapsulated is switched to log
+   * level severe.Otherwise it is switched to log level info.
+   *
+   * @param context the interpreter context
+   * @param mode    the new interaction mode.
+   * @throws Exception in case of a problem
+   * @see org.extex.interpreter.context.observer.interaction.InteractionObserver#receiveInteractionChange(
+   *org.extex.interpreter.context.ContextInternals,
+   * org.extex.interpreter.interaction.Interaction)
+   */
+  public void receiveInteractionChange( ContextInternals context,
+                                        Interaction mode ) throws Exception {
 
-        handler.setLevel(mode == Interaction.BATCHMODE 
-                ? Level.SEVERE
-                : Level.INFO);
-    }
+    handler.setLevel( mode == Interaction.BATCHMODE
+                          ? Level.SEVERE
+                          : Level.INFO );
+  }
 
 }

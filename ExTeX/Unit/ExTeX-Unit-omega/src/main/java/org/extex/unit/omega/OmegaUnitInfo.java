@@ -19,8 +19,6 @@
 
 package org.extex.unit.omega;
 
-import java.io.InputStream;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,65 +27,67 @@ import org.extex.interpreter.unit.UnitInfo;
 import org.extex.scanner.stream.InputStreamInterceptor;
 import org.extex.typesetter.Typesetter;
 
+import java.io.InputStream;
+
 /**
  * This class provides the setup for the unit <b>omega</b>.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
 
-    /**
-     * This class provides a stream decorator which is capable to access the
-     * context.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-    */
-    private final class Interceptor implements InputStreamInterceptor {
-
-        /**
-         * The field {@code context} contains the interpreter context.
-         */
-        private final Context context;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param context the context
-         */
-        public Interceptor(Context context) {
-
-            this.context = context;
-        }
-
-        /**
-    *      java.io.InputStream)
-         */
-        public InputStream pipe(InputStream stream) {
-
-            return new OmegaInputStream(stream, context);
-        }
-    }
+  /**
+   * This class provides a stream decorator which is capable to access the
+   * context.
+   *
+   * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+   */
+  private final class Interceptor implements InputStreamInterceptor {
 
     /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
+     * The field {@code context} contains the interpreter context.
      */
-    protected static final long serialVersionUID = 2007L;
+    private final Context context;
 
+    /**
+     * Creates a new object.
+     *
+     * @param context the context
+     */
+    public Interceptor( Context context ) {
 
-    public OmegaUnitInfo() {
-
+      this.context = context;
     }
 
     /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     * java.io.InputStream)
      */
-    public void receiveLoaded(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+    public InputStream pipe( InputStream stream ) {
 
-        source.getTokenStreamFactory().register(new Interceptor(context));
-
+      return new OmegaInputStream( stream, context );
     }
+  }
+
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
+
+
+  public OmegaUnitInfo() {
+
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void receiveLoaded( Context context, TokenSource source,
+                             Typesetter typesetter ) throws HelpingException {
+
+    source.getTokenStreamFactory().register( new Interceptor( context ) );
+
+  }
 
 }

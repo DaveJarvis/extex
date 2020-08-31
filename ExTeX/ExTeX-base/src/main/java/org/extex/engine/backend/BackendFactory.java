@@ -19,9 +19,6 @@
 
 package org.extex.engine.backend;
 
-import java.util.Iterator;
-import java.util.Properties;
-
 import org.extex.backend.BackendDriver;
 import org.extex.backend.documentWriter.DocumentWriterFactory;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
@@ -41,10 +38,13 @@ import org.extex.resource.PropertyAware;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
+import java.util.Iterator;
+import java.util.Properties;
+
 /**
  * This class provides a factory for the back-end.
- * 
- * 
+ *
+ *
  * <p>
  * The class to be instantiated can implements one or more interfaces which
  * trigger special actions:
@@ -69,105 +69,107 @@ import org.extex.resource.ResourceFinder;
  * {@link org.extex.color.ColorConverter ColorConverter} instance is passed in
  * with the interface method.</dd>
  * </dl>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BackendFactory extends AbstractFactory<BackendDriver> {
 
-    /**
-     * The field {@code options} contains the document writer options.
-     */
-    private DocumentWriterOptions options;
+  /**
+   * The field {@code options} contains the document writer options.
+   */
+  private DocumentWriterOptions options;
 
 
-    public BackendFactory() {
+  public BackendFactory() {
 
+  }
+
+  /**
+   * Acquire an instance of a back-end driver.
+   *
+   * @param type           the type of the document writer
+   * @param outFactory     the output stream factory
+   * @param finder         the resource finder
+   * @param properties     the properties
+   * @param creator        the creator string
+   * @param fontFactory    the font factory
+   * @param colorConverter the color converter
+   * @return the new instance
+   * @throws DocumentWriterException in case of an error
+   * @throws ConfigurationException  in case of an error in the configuration
+   */
+  public BackendDriver newInstance( String type,
+                                    OutputStreamFactory outFactory,
+                                    ResourceFinder finder,
+                                    Properties properties, String creator,
+                                    CoreFontFactory fontFactory,
+                                    ColorConverter colorConverter )
+      throws DocumentWriterException {
+
+    BackendDriver backend = createInstance( BackendDriver.class );
+    DocumentWriterFactory factory =
+        new DocumentWriterFactory( getConfiguration().getConfiguration(
+            "DocumentWriter" ), getLogger() );
+    factory.setResourceFinder( finder );
+    factory.setOptions( options );
+
+    try {
+      backend.setDocumentWriterType( type );
+    } catch( BackendException e ) {
+      throw new DocumentWriterException( e ); // this should not happen
     }
 
-    /**
-     * Acquire an instance of a back-end driver.
-     * 
-     * @param type the type of the document writer
-     * @param outFactory the output stream factory
-     * @param finder the resource finder
-     * @param properties the properties
-     * @param creator the creator string
-     * @param fontFactory the font factory
-     * @param colorConverter the color converter
-     * 
-     * @return the new instance
-     * 
-     * @throws DocumentWriterException in case of an error
-     * @throws ConfigurationException in case of an error in the configuration
-     */
-    public BackendDriver newInstance(String type,
-            OutputStreamFactory outFactory, ResourceFinder finder,
-            Properties properties, String creator, CoreFontFactory fontFactory,
-            ColorConverter colorConverter) throws DocumentWriterException {
-
-        BackendDriver backend = createInstance(BackendDriver.class);
-        DocumentWriterFactory factory =
-                new DocumentWriterFactory(getConfiguration().getConfiguration(
-                    "DocumentWriter"), getLogger());
-        factory.setResourceFinder(finder);
-        factory.setOptions(options);
-
-        try {
-            backend.setDocumentWriterType(type);
-        } catch (BackendException e) {
-            throw new DocumentWriterException(e); // this should not happen
-        }
-
-        if (backend instanceof MultipleDocumentStream) {
-            ((MultipleDocumentStream) backend)
-                .setOutputStreamFactory(outFactory);
-        }
-
-        backend.setDocumentWriterFactory(factory);
-        if (backend instanceof PropertyAware) {
-            ((PropertyAware) backend).setProperties(properties);
-        }
-        if (backend instanceof ColorAware) {
-            ((ColorAware) backend).setColorConverter(colorConverter);
-        }
-        if (backend instanceof ResourceAware) {
-            ((ResourceAware) backend).setResourceFinder(finder);
-        }
-        if (backend instanceof FontAware) {
-            ((FontAware) backend).setFontFactory(fontFactory);
-        }
-        backend.setParameter("Creator", creator);
-
-        Iterator<Configuration> iterator =
-                getConfiguration().iterator("parameter");
-        while (iterator.hasNext()) {
-            Configuration p = iterator.next();
-            String name = p.getAttribute("name");
-            String s = p.getAttribute("value");
-            if (s != null) {
-                backend.setParameter(name, s);
-            } else {
-                s = p.getAttribute("property");
-                if (s != null) {
-                    backend.setParameter(name, properties.getProperty(s));
-                } else {
-                    throw new ConfigurationMissingAttributeException("value", p);
-                }
-            }
-        }
-
-        return backend;
+    if( backend instanceof MultipleDocumentStream ) {
+      ((MultipleDocumentStream) backend)
+          .setOutputStreamFactory( outFactory );
     }
 
-    /**
-     * Setter for options.
-     * 
-     * @param options the options to set
-     */
-    public void setOptions(DocumentWriterOptions options) {
-
-        this.options = options;
+    backend.setDocumentWriterFactory( factory );
+    if( backend instanceof PropertyAware ) {
+      ((PropertyAware) backend).setProperties( properties );
     }
+    if( backend instanceof ColorAware ) {
+      ((ColorAware) backend).setColorConverter( colorConverter );
+    }
+    if( backend instanceof ResourceAware ) {
+      ((ResourceAware) backend).setResourceFinder( finder );
+    }
+    if( backend instanceof FontAware ) {
+      ((FontAware) backend).setFontFactory( fontFactory );
+    }
+    backend.setParameter( "Creator", creator );
+
+    Iterator<Configuration> iterator =
+        getConfiguration().iterator( "parameter" );
+    while( iterator.hasNext() ) {
+      Configuration p = iterator.next();
+      String name = p.getAttribute( "name" );
+      String s = p.getAttribute( "value" );
+      if( s != null ) {
+        backend.setParameter( name, s );
+      }
+      else {
+        s = p.getAttribute( "property" );
+        if( s != null ) {
+          backend.setParameter( name, properties.getProperty( s ) );
+        }
+        else {
+          throw new ConfigurationMissingAttributeException( "value", p );
+        }
+      }
+    }
+
+    return backend;
+  }
+
+  /**
+   * Setter for options.
+   *
+   * @param options the options to set
+   */
+  public void setOptions( DocumentWriterOptions options ) {
+
+    this.options = options;
+  }
 
 }

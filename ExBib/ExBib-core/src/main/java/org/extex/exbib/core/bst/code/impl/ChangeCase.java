@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -30,7 +30,8 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code change.case}
  * <p>
  * This function performs case conversion. It takes two arguments from the
@@ -69,13 +70,13 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *   edition "l" change.case$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation:</dt>
  * <dd>Pops the top two (string) literals; it changes the case of the second
@@ -97,7 +98,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * the strings {@code t} and {@code T} are equivalent for the purposes
  * of this built-in function.)</dd>
  * </dl>
- * 
+ *
  * <dl>
  * <dt>BibTeX web documentation:</dt>
  * <dd>
@@ -122,153 +123,160 @@ import org.extex.framework.i18n.LocalizerFactory;
  * {@code T} are equivalent for the purposes of this {@code built_in}
  * function.)</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ChangeCase extends AbstractCode {
 
-    /**
-     * Perform the case conversion like {@code change.case$}.
-     * 
-     * @param fmt the format; i.e. one of the following:
-     *        <ul>
-     *        <li>"u" or "u" for upper case</li>
-     *        <li>"l" or "L" for lower case</li>
-     *        <li>"t" or "T" for title case</li>
-     *        </ul>
-     * @param input the initial string
-     * 
-     * @return the changed string
-     * 
-     * @throws IllegalArgumentException in case of illegal format
-     */
-    public static String changeCase(String fmt, String input)
-            throws IllegalArgumentException {
+  /**
+   * Perform the case conversion like {@code change.case$}.
+   *
+   * @param fmt   the format; i.e. one of the following:
+   *              <ul>
+   *              <li>"u" or "u" for upper case</li>
+   *              <li>"l" or "L" for lower case</li>
+   *              <li>"t" or "T" for title case</li>
+   *              </ul>
+   * @param input the initial string
+   * @return the changed string
+   * @throws IllegalArgumentException in case of illegal format
+   */
+  public static String changeCase( String fmt, String input )
+      throws IllegalArgumentException {
 
-        StringBuilder sb = new StringBuilder(input);
-        int level = 0;
+    StringBuilder sb = new StringBuilder( input );
+    int level = 0;
 
-        if (fmt == null || fmt.length() != 1) {
-            throw new IllegalArgumentException("change.case$");
+    if( fmt == null || fmt.length() != 1 ) {
+      throw new IllegalArgumentException( "change.case$" );
+    }
+
+    switch( fmt.charAt( 0 ) ) {
+      case 't':
+      case 'T':
+        boolean sc = true;
+
+        for( int i = 0; i < sb.length(); i++ ) {
+          char c = sb.charAt( i );
+
+          if( c == '{' ) {
+            level++;
+            sc = false;
+          }
+          else if( c == '}' ) {
+            level--;
+          }
+          else if( level > 0 ) {
+
+          }
+          else if( c == ':' ) {
+            if( i == sb.length() ) {
+              break;
+            }
+
+            c = sb.charAt( ++i );
+
+            if( Character.isWhitespace( c ) ) {
+              i++;
+            }
+          }
+          else if( sc && Character.isLetter( c ) ) {
+            sc = false;
+          }
+          else {
+            char lc = Character.toLowerCase( c );
+
+            if( lc != c ) {
+              sb.setCharAt( i, lc );
+            }
+          }
         }
+        break;
+      case 'l':
+      case 'L':
+        for( int i = 0; i < sb.length(); i++ ) {
+          char c = sb.charAt( i );
 
-        switch (fmt.charAt(0)) {
-            case 't':
-            case 'T':
-                boolean sc = true;
+          if( c == '{' ) {
+            level++;
+          }
+          else if( c == '}' ) {
+            level--;
+          }
+          else if( level < 1 ) {
+            char lc = Character.toLowerCase( c );
 
-                for (int i = 0; i < sb.length(); i++) {
-                    char c = sb.charAt(i);
-
-                    if (c == '{') {
-                        level++;
-                        sc = false;
-                    } else if (c == '}') {
-                        level--;
-                    } else if (level > 0) {
-
-                    } else if (c == ':') {
-                        if (i == sb.length()) {
-                            break;
-                        }
-
-                        c = sb.charAt(++i);
-
-                        if (Character.isWhitespace(c)) {
-                            i++;
-                        }
-                    } else if (sc && Character.isLetter(c)) {
-                        sc = false;
-                    } else {
-                        char lc = Character.toLowerCase(c);
-
-                        if (lc != c) {
-                            sb.setCharAt(i, lc);
-                        }
-                    }
-                }
-                break;
-            case 'l':
-            case 'L':
-                for (int i = 0; i < sb.length(); i++) {
-                    char c = sb.charAt(i);
-
-                    if (c == '{') {
-                        level++;
-                    } else if (c == '}') {
-                        level--;
-                    } else if (level < 1) {
-                        char lc = Character.toLowerCase(c);
-
-                        if (lc != c) {
-                            sb.setCharAt(i, lc);
-                        }
-                    }
-                }
-                break;
-            case 'u':
-            case 'U':
-                for (int i = 0; i < sb.length(); i++) {
-                    char c = sb.charAt(i);
-
-                    if (c == '{') {
-                        level++;
-                    } else if (c == '}') {
-                        level--;
-                    } else if (level == 0) {
-                        char lc = Character.toUpperCase(c);
-
-                        if (lc != c) {
-                            sb.setCharAt(i, lc);
-                        }
-                    }
-                }
-                break;
-            default:
-                throw new IllegalArgumentException();
+            if( lc != c ) {
+              sb.setCharAt( i, lc );
+            }
+          }
         }
+        break;
+      case 'u':
+      case 'U':
+        for( int i = 0; i < sb.length(); i++ ) {
+          char c = sb.charAt( i );
 
-        return sb.toString();
-    }
+          if( c == '{' ) {
+            level++;
+          }
+          else if( c == '}' ) {
+            level--;
+          }
+          else if( level == 0 ) {
+            char lc = Character.toUpperCase( c );
 
-    /**
-     * Create a new object.
-     */
-    public ChangeCase() {
-
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public ChangeCase(String name) {
-
-        super(name);
-    }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    @Override
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        String fmt = processor.popString(locator).getValue();
-        TString tvalue = processor.popString(locator);
-        String value = tvalue.getValue();
-        String result;
-        try {
-            result = changeCase(fmt, value);
-        } catch (IllegalArgumentException e) {
-            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
-            throw new ExBibIllegalValueException(localizer.format(
-                "invalid.spec", fmt), locator);
+            if( lc != c ) {
+              sb.setCharAt( i, lc );
+            }
+          }
         }
-        processor.push(!value.equals(result)
-                ? new TString(result, locator)
-                : tvalue);
+        break;
+      default:
+        throw new IllegalArgumentException();
     }
+
+    return sb.toString();
+  }
+
+  /**
+   * Create a new object.
+   */
+  public ChangeCase() {
+
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public ChangeCase( String name ) {
+
+    super( name );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  @Override
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    String fmt = processor.popString( locator ).getValue();
+    TString tvalue = processor.popString( locator );
+    String value = tvalue.getValue();
+    String result;
+    try {
+      result = changeCase( fmt, value );
+    } catch( IllegalArgumentException e ) {
+      Localizer localizer = LocalizerFactory.getLocalizer( getClass() );
+      throw new ExBibIllegalValueException( localizer.format(
+          "invalid.spec", fmt ), locator );
+    }
+    processor.push( !value.equals( result )
+                        ? new TString( result, locator )
+                        : tvalue );
+  }
 
 }

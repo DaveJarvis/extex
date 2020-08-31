@@ -23,23 +23,23 @@ package org.extex.backend.documentWriter.exception;
  * This exception is used to signal that an output stream could not be opened.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OutputStreamOpenException extends DocumentWriterException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the error message
-     * @param cause the root of all evil
-     */
-    public OutputStreamOpenException(String message, Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the error message
+   * @param cause   the root of all evil
+   */
+  public OutputStreamOpenException( String message, Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
 }

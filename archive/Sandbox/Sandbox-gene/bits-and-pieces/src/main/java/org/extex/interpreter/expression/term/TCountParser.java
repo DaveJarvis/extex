@@ -254,8 +254,7 @@ public final class TCountParser implements ETypeParser {
             /**
              * {@inheritDoc}
              *
-             * @see org.extex.interpreter.expression.UnaryFunction#apply(
-             *      org.extex.interpreter.expression.EType)
+
              */
             public EType apply(EType accumulator)
                     throws HelpingException {

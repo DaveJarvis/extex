@@ -24,33 +24,33 @@ import java.util.List;
 
 /**
  * SyntheticBase.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOSyntheticBase extends T2TDONumber {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2TDOSyntheticBase(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2TDOSyntheticBase( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{ESCAPE_BYTE, CFF_SYNTHETICBASE});
-    }
+    super( stack, new short[]{ESCAPE_BYTE, CFF_SYNTHETICBASE} );
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return T2TopDICTOperator.TYPE_SYNTHETICBASE;
-    }
+    return T2TopDICTOperator.TYPE_SYNTHETICBASE;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "syntheticbase";
-    }
+    return "syntheticbase";
+  }
 
 }

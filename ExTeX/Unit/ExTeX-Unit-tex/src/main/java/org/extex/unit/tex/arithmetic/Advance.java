@@ -36,7 +36,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \advance}.
- * 
+ *
  * <p>The Primitive {@code \advance}</p>
  * <p>
  * This primitive implements an assignment. The variable given as next tokens is
@@ -46,11 +46,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * The exact operation of {@code \advance} is determined by the quantity
  * following the {@code \advance} keyword.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *   &lang;advance&rang;
  *     &rarr; &lang;optional prefix&rang; {@code \advance} &lang;advancable&rang;
@@ -69,61 +69,64 @@ import org.extex.typesetter.exception.TypesetterException;
  *     &rarr; [by]
  *      |  &lang;optional spaces&rang;
  *   </pre>
- * 
+ *
  * <p>Examples</p>
  *
  * <pre class="TeXSample">
  *    \advance\count12 345  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \advance\count12 by -345  </pre>
- * 
- * @see org.extex.interpreter.type.code.Advanceable
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see org.extex.interpreter.type.code.Advanceable
+ */
 public class Advance extends AbstractAssignment {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Advance(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Advance( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Token cs = source.getToken( context );
+
+    if( cs instanceof CodeToken ) {
+      Code code = context.getCode( (CodeToken) cs );
+
+      if( code instanceof Advanceable ) {
+
+        ((Advanceable) code).advance( prefix, context, source,
+                                      typesetter );
+        return;
+
+      }
+      else if( code == null ) {
+        throw new UndefinedControlSequenceException( cs.toText() );
+      }
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Token cs = source.getToken(context);
-
-        if (cs instanceof CodeToken) {
-            Code code = context.getCode((CodeToken) cs);
-
-            if (code instanceof Advanceable) {
-
-                ((Advanceable) code).advance(prefix, context, source,
-                    typesetter);
-                return;
-
-            } else if (code == null) {
-                throw new UndefinedControlSequenceException(cs.toText());
-            }
-        } else if (cs == null) {
-            throw new EofException(toText());
-        }
-        throw new CantUseAfterException(cs.toString(), toText());
+    else if( cs == null ) {
+      throw new EofException( toText() );
     }
+    throw new CantUseAfterException( cs.toString(), toText() );
+  }
 
 }

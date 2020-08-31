@@ -23,26 +23,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \belowdisplayskip}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BelowdisplayskipTest extends AbstractSkipRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(BelowdisplayskipTest.class);
-    }
+    (new JUnitCore()).run( BelowdisplayskipTest.class );
+  }
 
 
-    public BelowdisplayskipTest() {
+  public BelowdisplayskipTest() {
 
-        super("belowdisplayskip", "", "0.0pt");
-    }
+    super( "belowdisplayskip", "", "0.0pt" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

@@ -28,54 +28,54 @@ import java.util.Map;
  * This class implements Liang's algorithm for hyphenation with a compressed
  * hyphenation tree. The hyphenation tree is compressed when the object is
  * serialized. Afterwards no more patterns can be added.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2011L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2011L;
 
-    /**
-     * This compression method traverses the hyphenation tree and makes
-     * provisions to use common instances for equal hyphenation codes.
-     * 
-     * @param tree the tree to traverse
-     * @param map the map of common codes
-     */
-    private void compress(HyphenTree tree, Map<char[], char[]> map) {
+  /**
+   * This compression method traverses the hyphenation tree and makes
+   * provisions to use common instances for equal hyphenation codes.
+   *
+   * @param tree the tree to traverse
+   * @param map  the map of common codes
+   */
+  private void compress( HyphenTree tree, Map<char[], char[]> map ) {
 
-        char[] hc = tree.getHyphenationCode();
-        char[] code = map.get(hc);
-        if (code == null) {
-            map.put(hc, hc);
-        } else {
-            tree.setCode(code);
-        }
-
-        for (HyphenTree t : tree) {
-            compress(t, map);
-        }
-
+    char[] hc = tree.getHyphenationCode();
+    char[] code = map.get( hc );
+    if( code == null ) {
+      map.put( hc, hc );
+    }
+    else {
+      tree.setCode( code );
     }
 
-    /**
-     * This method compresses the table upon dumping. It is one of the magic
-     * methods invoked during serialization.
-     * 
-     * @param out the output stream
-     * 
-     * @throws IOException in case of an IO error
-     */
-    private void writeObject(ObjectOutputStream out) throws IOException {
-
-        if (!isCompressed()) {
-            compress(getPatterns(), new HashMap<>());
-            setCompressed();
-        }
-        out.defaultWriteObject();
+    for( HyphenTree t : tree ) {
+      compress( t, map );
     }
+
+  }
+
+  /**
+   * This method compresses the table upon dumping. It is one of the magic
+   * methods invoked during serialization.
+   *
+   * @param out the output stream
+   * @throws IOException in case of an IO error
+   */
+  private void writeObject( ObjectOutputStream out ) throws IOException {
+
+    if( !isCompressed() ) {
+      compress( getPatterns(), new HashMap<>() );
+      setCompressed();
+    }
+    out.defaultWriteObject();
+  }
 
 }

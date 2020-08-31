@@ -19,116 +19,111 @@
 
 package org.extex.typesetter.tex.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.core.Locator;
 import org.extex.interpreter.ListMakers;
 import org.extex.typesetter.ListMakerType;
 import org.extex.typesetter.ListManager;
-import org.extex.typesetter.listMaker.HorizontalListMaker;
-import org.extex.typesetter.listMaker.InnerVerticalListMaker;
-import org.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
-import org.extex.typesetter.listMaker.TokenDelegateListMaker;
-import org.extex.typesetter.listMaker.VerticalListMaker;
+import org.extex.typesetter.listMaker.*;
 import org.extex.typesetter.listMaker.math.MathListMaker;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * TODO gene: missing JavaDoc.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class ListMakerFactory {
 
-    /**
-     * This interface describes a function object to create a list manager.
-     */
-    protected interface CC {
-
-        /**
-         * This is the creator function.
-         * 
-         * @param manager the manager
-         * @param locator the locator
-         * 
-         * @return the new instance
-         */
-        TokenDelegateListMaker create(ListManager manager, Locator locator);
-    }
+  /**
+   * This interface describes a function object to create a list manager.
+   */
+  protected interface CC {
 
     /**
-     * The field {@code CREATORS} contains the mapping from symbolic names to
-     * the creator function.
-     */
-    private static final Map<ListMakerType, CC> CREATORS =
-            new HashMap<ListMakerType, CC>();
-
-    static {
-        CREATORS.put(ListMakers.HORIZONTAL, new CC() {
-
-            public TokenDelegateListMaker create(ListManager manager,
-                    Locator locator) {
-
-                return new HorizontalListMaker(manager, locator);
-            }
-        });
-        CREATORS.put(ListMakers.VERTICAL, new CC() {
-
-            public TokenDelegateListMaker create(ListManager manager,
-                    Locator locator) {
-
-                return new VerticalListMaker(manager, locator);
-            }
-        });
-        CREATORS.put(ListMakers.RESTRICTED_HORIZONTAL, new CC() {
-
-            public TokenDelegateListMaker create(ListManager manager,
-                    Locator locator) {
-
-                return new RestrictedHorizontalListMaker(manager, locator);
-            }
-        });
-        CREATORS.put(ListMakers.INNER_VERTICAL, new CC() {
-
-            public TokenDelegateListMaker create(ListManager manager,
-                    Locator locator) {
-
-                return new InnerVerticalListMaker(manager, locator);
-            }
-        });
-        CREATORS.put(ListMakers.MATH, new CC() {
-
-            public TokenDelegateListMaker create(ListManager manager,
-                    Locator locator) {
-
-                return new MathListMaker(manager, locator);
-            }
-        });
-    }
-
-
-    public ListMakerFactory() {
-
-    }
-
-    /**
-     * Create a new list maker according to the specified type. If the requested
-     * type is not known then an UnsupportedOperationException is thrown.
-     * 
-     * @param manager the typesetter
-     * @param type the type
+     * This is the creator function.
+     *
+     * @param manager the manager
      * @param locator the locator
-     * 
      * @return the new instance
      */
-    protected TokenDelegateListMaker createListMaker(ListManager manager,
-            ListMakerType type, Locator locator) {
+    TokenDelegateListMaker create( ListManager manager, Locator locator );
+  }
 
-        CC cc = CREATORS.get(type);
-        if (cc == null) {
-            throw new UnsupportedOperationException(type.toString());
-        }
-        return cc.create(manager, locator);
+  /**
+   * The field {@code CREATORS} contains the mapping from symbolic names to
+   * the creator function.
+   */
+  private static final Map<ListMakerType, CC> CREATORS =
+      new HashMap<ListMakerType, CC>();
+
+  static {
+    CREATORS.put( ListMakers.HORIZONTAL, new CC() {
+
+      public TokenDelegateListMaker create( ListManager manager,
+                                            Locator locator ) {
+
+        return new HorizontalListMaker( manager, locator );
+      }
+    } );
+    CREATORS.put( ListMakers.VERTICAL, new CC() {
+
+      public TokenDelegateListMaker create( ListManager manager,
+                                            Locator locator ) {
+
+        return new VerticalListMaker( manager, locator );
+      }
+    } );
+    CREATORS.put( ListMakers.RESTRICTED_HORIZONTAL, new CC() {
+
+      public TokenDelegateListMaker create( ListManager manager,
+                                            Locator locator ) {
+
+        return new RestrictedHorizontalListMaker( manager, locator );
+      }
+    } );
+    CREATORS.put( ListMakers.INNER_VERTICAL, new CC() {
+
+      public TokenDelegateListMaker create( ListManager manager,
+                                            Locator locator ) {
+
+        return new InnerVerticalListMaker( manager, locator );
+      }
+    } );
+    CREATORS.put( ListMakers.MATH, new CC() {
+
+      public TokenDelegateListMaker create( ListManager manager,
+                                            Locator locator ) {
+
+        return new MathListMaker( manager, locator );
+      }
+    } );
+  }
+
+
+  public ListMakerFactory() {
+
+  }
+
+  /**
+   * Create a new list maker according to the specified type. If the requested
+   * type is not known then an UnsupportedOperationException is thrown.
+   *
+   * @param manager the typesetter
+   * @param type    the type
+   * @param locator the locator
+   * @return the new instance
+   */
+  protected TokenDelegateListMaker createListMaker( ListManager manager,
+                                                    ListMakerType type,
+                                                    Locator locator ) {
+
+    CC cc = CREATORS.get( type );
+    if( cc == null ) {
+      throw new UnsupportedOperationException( type.toString() );
     }
+    return cc.create( manager, locator );
+  }
 
 }

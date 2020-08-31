@@ -19,116 +19,114 @@
 
 package org.extex.framework.configuration.exception;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import org.junit.Test;
 
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * This is a test suite for {@link ConfigurationWrapperException}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationWrapperExceptionTest {
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetLocalizedMessage() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetLocalizedMessage() {
 
-        ConfigurationWrapperException e =
-                new ConfigurationWrapperException(new Exception("abc"));
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Configuration error\n\tcaused by abc",
-            e.getLocalizedMessage());
-    }
+    ConfigurationWrapperException e =
+        new ConfigurationWrapperException( new Exception( "abc" ) );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Configuration error\n\tcaused by abc",
+                  e.getLocalizedMessage() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetLocalizer() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetLocalizer() {
 
-        ConfigurationWrapperException e =
-                new ConfigurationWrapperException(null);
-        Locale.setDefault(Locale.ENGLISH);
-        assertNotNull(e.getLocalizer());
-    }
+    ConfigurationWrapperException e =
+        new ConfigurationWrapperException( null );
+    Locale.setDefault( Locale.ENGLISH );
+    assertNotNull( e.getLocalizer() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetMessage1() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetMessage1() {
 
-        ConfigurationWrapperException e =
-                new ConfigurationWrapperException(null);
-        Locale.setDefault(Locale.ENGLISH);
-        assertNull(e.getMessage());
-    }
+    ConfigurationWrapperException e =
+        new ConfigurationWrapperException( null );
+    Locale.setDefault( Locale.ENGLISH );
+    assertNull( e.getMessage() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetMessage2() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetMessage2() {
 
-        ConfigurationWrapperException e =
-                new ConfigurationWrapperException(new Exception("abc"));
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals(null, e.getMessage());
-    }
+    ConfigurationWrapperException e =
+        new ConfigurationWrapperException( new Exception( "abc" ) );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( null, e.getMessage() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetSource1() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetSource1() {
 
-        ConfigurationWrapperException e =
-                new ConfigurationWrapperException(null);
-        Locale.setDefault(Locale.ENGLISH);
-        assertNull(e.getSource());
-    }
+    ConfigurationWrapperException e =
+        new ConfigurationWrapperException( null );
+    Locale.setDefault( Locale.ENGLISH );
+    assertNull( e.getSource() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetSource2() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetSource2() {
 
-        ConfigurationWrapperException e =
-                new ConfigurationWrapperException(new Exception("abc"));
-        Locale.setDefault(Locale.ENGLISH);
-        assertNull(e.getSource());
-    }
+    ConfigurationWrapperException e =
+        new ConfigurationWrapperException( new Exception( "abc" ) );
+    Locale.setDefault( Locale.ENGLISH );
+    assertNull( e.getSource() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetText1() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetText1() {
 
-        ConfigurationWrapperException e =
-                new ConfigurationWrapperException(null);
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Configuration error", e.getText());
-    }
+    ConfigurationWrapperException e =
+        new ConfigurationWrapperException( null );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Configuration error", e.getText() );
+  }
 
-    /**
-     *  ...
-     */
-    @Test
-    public void testGetText2() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetText2() {
 
-        ConfigurationWrapperException e =
-                new ConfigurationWrapperException(new Exception("abc"));
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Configuration error", e.getText());
-    }
+    ConfigurationWrapperException e =
+        new ConfigurationWrapperException( new Exception( "abc" ) );
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "Configuration error", e.getText() );
+  }
 
 }

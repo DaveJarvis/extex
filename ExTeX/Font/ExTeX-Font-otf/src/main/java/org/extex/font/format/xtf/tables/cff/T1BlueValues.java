@@ -24,26 +24,26 @@ import java.util.List;
 
 /**
  * BlueValues.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T1BlueValues extends T1DictDelta {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO.error occurs.
-     */
-    public T1BlueValues(List<T2Number> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO.error occurs.
+   */
+  public T1BlueValues( List<T2Number> stack ) throws IOException {
 
-        super(stack, new short[]{BLUE_VALUES});
-    }
+    super( stack, new short[]{BLUE_VALUES} );
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "BlueValues";
-    }
+    return "BlueValues";
+  }
 
 }

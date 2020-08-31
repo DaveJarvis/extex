@@ -23,15 +23,15 @@ package org.extex.font.format.xtf.tables.cff;
  * Arithmetic.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public abstract class T2Arithmetic extends T2Operator {
 
-    /**
-     * Create a new object
-     */
-    protected T2Arithmetic() {
+  /**
+   * Create a new object
+   */
+  protected T2Arithmetic() {
 
-    }
+  }
 
 }

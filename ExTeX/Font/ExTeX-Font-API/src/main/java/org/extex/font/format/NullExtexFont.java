@@ -30,101 +30,101 @@ import org.extex.font.FontKey;
 
 /**
  * This class implements a dummy font which does not contain any characters.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class NullExtexFont implements ExtexFont {
 
-public FontKey getActualFontKey() {
+  public FontKey getActualFontKey() {
 
-        return null;
-    }
+    return null;
+  }
 
-public FixedDimen getActualSize() {
+  public FixedDimen getActualSize() {
 
-        return Dimen.ZERO_PT;
-    }
+    return Dimen.ZERO_PT;
+  }
 
-public FixedGlue getDepth(UnicodeChar uc) {
+  public FixedGlue getDepth( UnicodeChar uc ) {
 
-        return FixedGlue.ZERO;
-    }
+    return FixedGlue.ZERO;
+  }
 
-public FixedDimen getDesignSize() {
+  public FixedDimen getDesignSize() {
 
-        return Dimen.ONE_PT;
-    }
+    return Dimen.ONE_PT;
+  }
 
-public FixedDimen getEm() {
+  public FixedDimen getEm() {
 
-        return Dimen.ZERO_PT;
-    }
+    return Dimen.ZERO_PT;
+  }
 
-public FixedDimen getEx() {
+  public FixedDimen getEx() {
 
-        return Dimen.ZERO_PT;
-    }
+    return Dimen.ZERO_PT;
+  }
 
-public FixedDimen getFontDimen(String name) {
+  public FixedDimen getFontDimen( String name ) {
 
-        return null;
-    }
+    return null;
+  }
 
-public FontKey getFontKey() {
+  public FontKey getFontKey() {
 
-        return null;
-    }
+    return null;
+  }
 
-public String getFontName() {
+  public String getFontName() {
 
-        return "nullfont";
-    }
+    return "nullfont";
+  }
 
-public FixedGlue getHeight(UnicodeChar uc) {
+  public FixedGlue getHeight( UnicodeChar uc ) {
 
-        return FixedGlue.ZERO;
-    }
+    return FixedGlue.ZERO;
+  }
 
-public FixedDimen getItalicCorrection(UnicodeChar uc) {
+  public FixedDimen getItalicCorrection( UnicodeChar uc ) {
 
-        return Dimen.ZERO_PT;
-    }
+    return Dimen.ZERO_PT;
+  }
 
-    /**
-*      org.extex.core.UnicodeChar)
-     */
-    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
+  /**
+   * org.extex.core.UnicodeChar)
+   */
+  public FixedDimen getKerning( UnicodeChar uc1, UnicodeChar uc2 ) {
 
-        return Dimen.ZERO_PT;
-    }
+    return Dimen.ZERO_PT;
+  }
 
-    /**
-*      org.extex.core.UnicodeChar)
-     */
-    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
+  /**
+   * org.extex.core.UnicodeChar)
+   */
+  public UnicodeChar getLigature( UnicodeChar uc1, UnicodeChar uc2 ) {
 
-        return null;
-    }
+    return null;
+  }
 
-public FixedCount getScaleFactor() {
+  public FixedCount getScaleFactor() {
 
-        return Count.THOUSAND;
-    }
+    return Count.THOUSAND;
+  }
 
-public FixedGlue getSpace() {
+  public FixedGlue getSpace() {
 
-        return FixedGlue.ZERO;
-    }
+    return FixedGlue.ZERO;
+  }
 
-public FixedGlue getWidth(UnicodeChar uc) {
+  public FixedGlue getWidth( UnicodeChar uc ) {
 
-        return FixedGlue.ZERO;
-    }
+    return FixedGlue.ZERO;
+  }
 
-public boolean hasGlyph(UnicodeChar uc) {
+  public boolean hasGlyph( UnicodeChar uc ) {
 
-        return false;
-    }
+    return false;
+  }
 
 }

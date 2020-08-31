@@ -25,24 +25,24 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception is raised when direction is needed but has not been found.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 
 public class MissingOcplistException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param t the token encountered
-     */
-    public MissingOcplistException(String t) {
+  /**
+   * Creates a new object.
+   *
+   * @param t the token encountered
+   */
+  public MissingOcplistException( String t ) {
 
-        super(LocalizerFactory.getLocalizer(MissingOcplistException.class),
-            "Omega.MissingOcplist", t);
-    }
+    super( LocalizerFactory.getLocalizer( MissingOcplistException.class ),
+           "Omega.MissingOcplist", t );
+  }
 
 }

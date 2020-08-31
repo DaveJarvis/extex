@@ -26,130 +26,116 @@ import org.junit.Test;
  * This is a test suite.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractBoxDimenTester
     extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * The field {@code primitive} contains the name of the primitive.
-     */
-    private String primitive;
+  /**
+   * The field {@code primitive} contains the name of the primitive.
+   */
+  private String primitive;
 
-    public AbstractBoxDimenTester() {
-        super.setArguments( "1=0pt" );
-        super.setPrepare( "0" );
-    }
+  public AbstractBoxDimenTester() {
+    super.setArguments( "1=0pt" );
+    super.setPrepare( "0" );
+  }
 
-    @Override
-    public void setPrimitive( final String primitive ) {
-        super.setPrimitive( primitive );
-        this.primitive = primitive;
-    }
+  @Override
+  public void setPrimitive( final String primitive ) {
+    super.setPrimitive( primitive );
+    this.primitive = primitive;
+  }
 
-    /**
-     *
-     *  Test case checking that the primitive needs a key.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof1() throws Exception {
+  /**
+   * Test case checking that the primitive needs a key.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof1() throws Exception {
 
-        assertFailure("\\dimen0=\\" + primitive,
-            "Missing number, treated as zero");
-    }
+    assertFailure( "\\dimen0=\\" + primitive,
+                   "Missing number, treated as zero" );
+  }
 
-    /**
-     *
-     *  Test case checking that the primitive needs a key.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEof3() throws Exception {
+  /**
+   * Test case checking that the primitive needs a key.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEof3() throws Exception {
 
-        assertFailure("\\the\\" + primitive,
-            "Missing number, treated as zero");
-    }
+    assertFailure( "\\the\\" + primitive,
+                   "Missing number, treated as zero" );
+  }
 
-    /**
-     *
-     *  Test case checking that the primitive respects \afterassignment.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAfterassignment1() throws Exception {
+  /**
+   * Test case checking that the primitive respects \afterassignment.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAfterassignment1() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\afterassignment x-\\" + primitive
-                    + "1=2pt\\end ",
-            "-x" + TERM);
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\afterassignment x-\\" + primitive
+            + "1=2pt\\end ",
+        "-x" + TERM );
+  }
 
-    /**
-     *
-     *  Test case checking that the primitive respects \global.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGlobal1() throws Exception {
+  /**
+   * Test case checking that the primitive respects \global.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testGlobal1() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\global\\" + primitive + "1=2pt\\end ",
-            "");
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\global\\" + primitive + "1=2pt\\end ",
+        "" );
+  }
 
-    /**
-     *
-     *  Test case checking that the primitive is applicable on a hbox.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testHbox1() throws Exception {
+  /**
+   * Test case checking that the primitive is applicable on a hbox.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testHbox1() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\setbox1=\\hbox{x}\\" + primitive
-                    + "1=2pt \\the\\" + primitive + "1\\end ",
-            "2.0pt" + TERM);
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\setbox1=\\hbox{x}\\" + primitive
+            + "1=2pt \\the\\" + primitive + "1\\end ",
+        "2.0pt" + TERM );
+  }
 
-    /**
-     *
-     *  Test case checking that the primitive is count convertible on a void box.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCount1() throws Exception {
+  /**
+   * Test case checking that the primitive is count convertible on a void box.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCount1() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\count0=\\" + primitive + "1 \\the\\count0\\end ",
-            "0" + TERM);
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\count0=\\" + primitive + "1 \\the\\count0\\end ",
+        "0" + TERM );
+  }
 
-    /**
-     *
-     *  Test case checking that the primitive is dimen convertible on a void box.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testDimen1() throws Exception {
+  /**
+   * Test case checking that the primitive is dimen convertible on a void box.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testDimen1() throws Exception {
 
-        assertSuccess(
-            DEFINE_BRACES + "\\dimen0=\\" + primitive + "1 \\the\\dimen0\\end ",
-            "0.0pt" + TERM);
-    }
+    assertSuccess(
+        DEFINE_BRACES + "\\dimen0=\\" + primitive + "1 \\the\\dimen0\\end ",
+        "0.0pt" + TERM );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

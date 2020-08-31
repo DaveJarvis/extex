@@ -25,100 +25,102 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \lowercase}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LowercaseTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LowercaseTest.class);
-    }
+    (new JUnitCore()).run( LowercaseTest.class );
+  }
 
 
-    public LowercaseTest() {
+  public LowercaseTest() {
 
-        setPrimitive("lowercase");setArguments("{abc}");setPrepare("");
-    }
+    setPrimitive( "lowercase" );
+    setArguments( "{abc}" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\lowercase"> Test case checking that
-     * {@code \lowercase} throws an error on eof.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEOF1() throws Exception {
+  /**
+   * <testcase primitive="\lowercase"> Test case checking that
+   * {@code \lowercase} throws an error on eof.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEOF1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\lowercase",
-            // --- log message ---
-            "File ended while scanning text of \\lowercase");
-    }
+    assertFailure(// --- input code ---
+                  "\\lowercase",
+                  // --- log message ---
+                  "File ended while scanning text of \\lowercase" );
+  }
 
-    /**
-     * <testcase primitive="\lowercase"> Test case checking that
-     * {@code \lowercase} is invariant on lowercase letters.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\lowercase"> Test case checking that
+   * {@code \lowercase} is invariant on lowercase letters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\lowercase{abc}\\end",
-            // --- output channel ---
-            "abc" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\lowercase{abc}\\end",
+                  // --- output channel ---
+                  "abc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\lowercase"> Test case checking that
-     * {@code \lowercase} translates uppercase letters.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\lowercase"> Test case checking that
+   * {@code \lowercase} translates uppercase letters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\lowercase{ABC}\\end",
-            // --- output channel ---
-            "abc" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\lowercase{ABC}\\end",
+                  // --- output channel ---
+                  "abc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\lowercase"> Test case checking that
-     * {@code \lowercase} translates mixed letters.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\lowercase"> Test case checking that
+   * {@code \lowercase} translates mixed letters.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\lowercase{aBc}\\end",
-            // --- output channel ---
-            "abc" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\lowercase{aBc}\\end",
+                  // --- output channel ---
+                  "abc" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\lowercase"> Test case checking that
-     * {@code \lowercase} respects lccode.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test10() throws Exception {
+  /**
+   * <testcase primitive="\lowercase"> Test case checking that
+   * {@code \lowercase} respects lccode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test10() throws Exception {
 
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\lccode`B=`1 " + "\\lowercase{ABC}\\end",
-            // --- output channel ---
-            "a1c" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  DEFINE_BRACES + "\\lccode`B=`1 " + "\\lowercase{ABC}\\end",
+                  // --- output channel ---
+                  "a1c" + TERM );
+  }
 
 }

@@ -25,17 +25,16 @@ import java.io.OutputStream;
  * This interface describes the ability of a class to produce a single
  * output document. For this purpose the class receives a single OutputStream.
  *
- * @see org.extex.backend.documentWriter.MultipleDocumentStream
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see org.extex.backend.documentWriter.MultipleDocumentStream
+ */
 public interface SingleDocumentStream {
 
-    /**
-     * Setter for the output stream.
-     *
-     * @param writer the output stream
-     */
-    void setOutputStream(OutputStream writer);
+  /**
+   * Setter for the output stream.
+   *
+   * @param writer the output stream
+   */
+  void setOutputStream( OutputStream writer );
 
 }

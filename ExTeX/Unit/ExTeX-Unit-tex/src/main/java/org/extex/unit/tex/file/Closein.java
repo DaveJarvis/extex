@@ -32,7 +32,7 @@ import org.extex.unit.base.file.AbstractFileCode;
 
 /**
  * This class provides an implementation for the primitive {@code \closein}.
- * 
+ *
  * <p>The Primitive {@code \closein}</p>
  * <p>
  * The primitive takes one expanded integer argument. This argument denotes a
@@ -41,63 +41,62 @@ import org.extex.unit.base.file.AbstractFileCode;
  * input file assigned to the given number has not been opened or has been
  * closed before then this primitive simply does nothing.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;closein&rang;
  *       &rarr; {@code \closein}  {@linkplain
- *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
+ *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context, TokenSource, Typesetter)
  *        &lang;infile&nbsp;name&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \closein5  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \closein\count120  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Closein extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Closein(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Closein( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key =
+        AbstractFileCode.scanInFileKey( context, source, typesetter );
+    InFile file = context.getInFile( key );
+
+    if( file != null ) {
+      file.close();
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String key =
-                AbstractFileCode.scanInFileKey(context, source, typesetter);
-        InFile file = context.getInFile(key);
-
-        if (file != null) {
-            file.close();
-        }
-        prefix.clearImmediate(); // strange; does this make any sense?
-    }
+    prefix.clearImmediate(); // strange; does this make any sense?
+  }
 
 }

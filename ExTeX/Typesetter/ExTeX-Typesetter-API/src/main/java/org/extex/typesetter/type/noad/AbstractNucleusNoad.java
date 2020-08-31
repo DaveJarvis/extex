@@ -24,84 +24,84 @@ import org.extex.typesetter.tc.TypesettingContext;
 
 /**
  * This abstract noad represents a Noad with a nucleus.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractNucleusNoad extends AbstractNoad {
 
-    /**
-     * The field {@code nucleus} contains the nucleus.
-     */
-    private final Noad nucleus;
+  /**
+   * The field {@code nucleus} contains the nucleus.
+   */
+  private final Noad nucleus;
 
-    /**
-     * The field {@code tc} contains the typesetting context.
-     */
-    private final TypesettingContext tc;
+  /**
+   * The field {@code tc} contains the typesetting context.
+   */
+  private final TypesettingContext tc;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param nucleus the nucleus of inner noads
-     * @param tc the typesetting context for the color
-     */
-    public AbstractNucleusNoad(Noad nucleus, TypesettingContext tc) {
+  /**
+   * Creates a new object.
+   *
+   * @param nucleus the nucleus of inner noads
+   * @param tc      the typesetting context for the color
+   */
+  public AbstractNucleusNoad( Noad nucleus, TypesettingContext tc ) {
 
-        this.nucleus = nucleus;
-        this.tc = tc;
+    this.nucleus = nucleus;
+    this.tc = tc;
+  }
+
+  /**
+   * Getter for color.
+   *
+   * @return the color
+   */
+  public Color getColor() {
+
+    return this.tc.getColor();
+  }
+
+  /**
+   * Getter for nucleus.
+   *
+   * @return the nucleus
+   */
+  public Noad getNucleus() {
+
+    return this.nucleus;
+  }
+
+  /**
+   * Getter for the typesetting context.
+   *
+   * @return the typesetting context
+   */
+  protected TypesettingContext getTypesettingContext() {
+
+    return this.tc;
+  }
+
+  /**
+   * Produce a printable representation to a certain depth of the noad.
+   *
+   * @param sb    the string buffer
+   * @param depth the depth to which the full information should be given
+   * @see "TTP [696]"
+   * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
+   */
+  @Override
+  public void toString( StringBuilder sb, int depth ) {
+
+    if( depth < 0 ) {
+      sb.append( " {}" );
     }
-
-    /**
-     * Getter for color.
-     * 
-     * @return the color
-     */
-    public Color getColor() {
-
-        return this.tc.getColor();
+    else {
+      sb.append( '\\' );
+      toStringAdd( sb, depth );
+      toStringSubsidiaray( sb, nucleus, depth, "." );
+      toStringSubsidiaray( sb, getSuperscript(), depth, "^" );
+      toStringSubsidiaray( sb, getSubscript(), depth, "_" );
     }
-
-    /**
-     * Getter for nucleus.
-     * 
-     * @return the nucleus
-     */
-    public Noad getNucleus() {
-
-        return this.nucleus;
-    }
-
-    /**
-     * Getter for the typesetting context.
-     * 
-     * @return the typesetting context
-     */
-    protected TypesettingContext getTypesettingContext() {
-
-        return this.tc;
-    }
-
-    /**
-     * Produce a printable representation to a certain depth of the noad.
-     * 
-     * @param sb the string buffer
-     * @param depth the depth to which the full information should be given
-     * 
-     * @see "TTP [696]"
-     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
-     */
-    @Override
-    public void toString(StringBuilder sb, int depth) {
-
-        if (depth < 0) {
-            sb.append(" {}");
-        } else {
-            sb.append('\\');
-            toStringAdd(sb, depth);
-            toStringSubsidiaray(sb, nucleus, depth, ".");
-            toStringSubsidiaray(sb, getSuperscript(), depth, "^");
-            toStringSubsidiaray(sb, getSubscript(), depth, "_");
-        }
-    }
+  }
 
 }

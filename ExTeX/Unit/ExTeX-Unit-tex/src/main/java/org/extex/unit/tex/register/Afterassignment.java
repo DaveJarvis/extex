@@ -32,7 +32,7 @@ import org.extex.typesetter.Typesetter;
 /**
  * This class provides an implementation for the primitive
  * {@code \afterassignment}.
- * 
+ *
  * <p>The Primitive {@code \afterassignment}</p>
  * <p>
  * The primitive {@code \afterassignment} registers the token to be inserted
@@ -40,62 +40,60 @@ import org.extex.typesetter.Typesetter;
  * inserted after the next assignment. Thus the primitive may overwrite any
  * previously registered token.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;afterassignment&rang;
  *      &rarr; {@code \afterassignment} {@linkplain
  *         org.extex.interpreter.TokenSource#getToken(Context)
  *         &lang;token&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \afterassignment\abc  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \afterassignment X  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \afterassignment ~  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Afterassignment extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Afterassignment(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Afterassignment( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter ) throws HelpingException {
+
+    Token t = source.getToken( context );
+    if( t == null ) {
+      throw new EofException( toText( context ) );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
-
-        Token t = source.getToken(context);
-        if (t == null) {
-            throw new EofException(toText(context));
-        }
-        context.setAfterassignment(t);
-    }
+    context.setAfterassignment( t );
+  }
 
 }

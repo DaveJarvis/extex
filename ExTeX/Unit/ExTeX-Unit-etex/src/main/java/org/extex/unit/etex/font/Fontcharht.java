@@ -44,131 +44,132 @@ import org.extex.typesetter.tc.font.Font;
 /**
  * This class provides an implementation for the primitive
  * {@code \fontcharht}.
- * 
+ *
  * <p>The Primitive {@code \fontcharht}</p>
  * <p>
  * The primitive {@code \fontcharht} is a read-only dimen register which
  * corresponds to the height of a character in a given font. If the character is
  * not defined in the font then 0pt is returned.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;fontcharht&rang;
  *       &rarr; {@code \fontcharht} {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(Context,CodeToken)
+ *          org.extex.interpreter.TokenSource#getFont(Context, CodeToken)
  *          &lang;font&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,CodeToken)
+ *          org.extex.interpreter.TokenSource#scanCharacterCode(Context, Typesetter, CodeToken)
  *          &lang;character code&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \fontcharht\tenrm `a  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Fontcharht extends AbstractCode
-        implements
-            ExpandableCode,
-            CountConvertible,
-            DimenConvertible,
-            Theable {
+    implements
+    ExpandableCode,
+    CountConvertible,
+    DimenConvertible,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Fontcharht(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Fontcharht( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    return convertDimen( context, source, typesetter );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertDimen( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    return get( context, source, typesetter ).getValue();
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    source.push( the( context, source, typesetter ) );
+  }
+
+  /**
+   * Get the dimen value of the height. If the character is not defined in the
+   * font then ZERO_PT is returned.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the dimen value of the height
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  private FixedDimen get( Context context, TokenSource source,
+                          Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Font fnt = source.getFont( context, getToken() );
+    try {
+      UnicodeChar uc =
+          source.scanCharacterCode( context, typesetter, null );
+      FixedGlue d = fnt.getHeight( uc );
+      return (d != null ? d.getLength() : Dimen.ZERO_PT);
+
+    } catch( EofException e ) {
+      throw new EofException( toText( context ) );
     }
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
 
-        return convertDimen(context, source, typesetter);
+    try {
+      FixedDimen height = get( context, source, typesetter );
+      return context.getTokenFactory().toTokens( height.toString() );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        return get(context, source, typesetter).getValue();
-    }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        source.push(the(context, source, typesetter));
-    }
-
-    /**
-     * Get the dimen value of the height. If the character is not defined in the
-     * font then ZERO_PT is returned.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the dimen value of the height
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    private FixedDimen get(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Font fnt = source.getFont(context, getToken());
-        try {
-            UnicodeChar uc =
-                    source.scanCharacterCode(context, typesetter, null);
-            FixedGlue d = fnt.getHeight(uc);
-            return (d != null ? d.getLength() : Dimen.ZERO_PT);
-
-        } catch (EofException e) {
-            throw new EofException(toText(context));
-        }
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        try {
-            FixedDimen height = get(context, source, typesetter);
-            return context.getTokenFactory().toTokens(height.toString());
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
+  }
 
 }

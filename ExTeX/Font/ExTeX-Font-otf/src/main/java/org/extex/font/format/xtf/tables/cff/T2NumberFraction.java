@@ -19,86 +19,86 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.XtfConstants;
 import org.extex.util.file.random.RandomAccessR;
 
+import java.io.IOException;
+
 /**
  * T2 Number Fraction.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2NumberFraction extends T2Number {
 
-    /**
-     * the bytes as short-array
-     */
-    private final short[] bytes;
+  /**
+   * the bytes as short-array
+   */
+  private final short[] bytes;
 
-    /**
-     * den (nenner)
-     */
-    private final int den;
+  /**
+   * den (nenner)
+   */
+  private final int den;
 
-    /**
-     * num (zaehler)
-     */
-    private final int num;
+  /**
+   * num (zaehler)
+   */
+  private final int num;
 
-    /**
-     * Create a new object.
-     * 
-     * @param rar the input
-     * @param b0 the b0
-     * @throws IOException if an IO-error occurs.
-     */
-    T2NumberFraction(RandomAccessR rar, int b0) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param rar the input
+   * @param b0  the b0
+   * @throws IOException if an IO-error occurs.
+   */
+  T2NumberFraction( RandomAccessR rar, int b0 ) throws IOException {
 
-        int b1 = rar.readUnsignedByte();
-        int b2 = rar.readUnsignedByte();
-        int b3 = rar.readUnsignedByte();
-        int b4 = rar.readUnsignedByte();
-        num = (b1 << XtfConstants.SHIFT8) + b2;
-        den = (b3 << XtfConstants.SHIFT8) + b4;
+    int b1 = rar.readUnsignedByte();
+    int b2 = rar.readUnsignedByte();
+    int b3 = rar.readUnsignedByte();
+    int b4 = rar.readUnsignedByte();
+    num = (b1 << XtfConstants.SHIFT8) + b2;
+    den = (b3 << XtfConstants.SHIFT8) + b4;
 
-        bytes = new short[5];
-        bytes[0] = (short) b0;
-        bytes[1] = (short) b1;
-        bytes[2] = (short) b2;
-        bytes[3] = (short) b3;
-        bytes[4] = (short) b4;
-    }
+    bytes = new short[ 5 ];
+    bytes[ 0 ] = (short) b0;
+    bytes[ 1 ] = (short) b1;
+    bytes[ 2 ] = (short) b2;
+    bytes[ 3 ] = (short) b3;
+    bytes[ 4 ] = (short) b4;
+  }
 
-@Override
-    public short[] getBytes() {
+  @Override
+  public short[] getBytes() {
 
-        return bytes;
-    }
+    return bytes;
+  }
 
-@Override
-    public double getDouble() {
+  @Override
+  public double getDouble() {
 
-        return num + (double) den / 0xffff;
-    }
+    return num + (double) den / 0xffff;
+  }
 
-@Override
-    public int getInteger() {
+  @Override
+  public int getInteger() {
 
-        return num;
-    }
+    return num;
+  }
 
-@Override
-    public boolean isDouble() {
+  @Override
+  public boolean isDouble() {
 
-        return true;
-    }
+    return true;
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        return String.valueOf(getDouble());
-    }
+    return String.valueOf( getDouble() );
+  }
 
 }

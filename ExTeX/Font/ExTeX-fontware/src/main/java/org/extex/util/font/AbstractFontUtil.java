@@ -19,6 +19,11 @@
 
 package org.extex.util.font;
 
+import org.extex.ExTeX;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.logging.LogFormatter;
+
 import java.io.File;
 import java.util.Calendar;
 import java.util.logging.ConsoleHandler;
@@ -26,169 +31,164 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.ExTeX;
-import org.extex.framework.i18n.Localizer;
-import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.logging.LogFormatter;
-
 /**
  * Abstract class for all font utilities.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class AbstractFontUtil {
 
-    /**
-     * The console handler.
-     */
-    private final Handler consoleHandler;
+  /**
+   * The console handler.
+   */
+  private final Handler consoleHandler;
 
-    /**
-     * The field {@code localizer} contains the localizer. It is initiated with
-     * a localizer for the name of this class.
-     */
-    private Localizer localizer = LocalizerFactory
-        .getLocalizer(AbstractFontUtil.class);
+  /**
+   * The field {@code localizer} contains the localizer. It is initiated with
+   * a localizer for the name of this class.
+   */
+  private Localizer localizer = LocalizerFactory
+      .getLocalizer( AbstractFontUtil.class );
 
-    /**
-     * The field {@code logger} contains the logger currently in use.
-     */
-    private final Logger logger;
+  /**
+   * The field {@code logger} contains the logger currently in use.
+   */
+  private final Logger logger;
 
-    /**
-     * The directory for the output.
-     */
-    private String outdir = ".";
+  /**
+   * The directory for the output.
+   */
+  private String outdir = ".";
 
-    /**
-     * Create a new object.
-     */
-    public AbstractFontUtil() {
+  /**
+   * Create a new object.
+   */
+  public AbstractFontUtil() {
 
-        this(AbstractFontUtil.class);
-    }
+    this( AbstractFontUtil.class );
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param loggerclass The class for the logger
-     */
-    public AbstractFontUtil(Class<?> loggerclass) {
+  /**
+   * Create a new object.
+   *
+   * @param loggerclass The class for the logger
+   */
+  public AbstractFontUtil( Class<?> loggerclass ) {
 
-        // logger
-        logger = Logger.getLogger(loggerclass.getName());
-        logger.setUseParentHandlers(false);
-        logger.setLevel(Level.ALL);
+    // logger
+    logger = Logger.getLogger( loggerclass.getName() );
+    logger.setUseParentHandlers( false );
+    logger.setLevel( Level.ALL );
 
-        consoleHandler = new ConsoleHandler();
-        consoleHandler.setFormatter(new LogFormatter());
-        consoleHandler.setLevel(Level.WARNING);
-        logger.addHandler(consoleHandler);
+    consoleHandler = new ConsoleHandler();
+    consoleHandler.setFormatter( new LogFormatter() );
+    consoleHandler.setLevel( Level.WARNING );
+    logger.addHandler( consoleHandler );
 
-        localizer = LocalizerFactory.getLocalizer(loggerclass);
+    localizer = LocalizerFactory.getLocalizer( loggerclass );
 
-    }
+  }
 
-    /**
-     * Create the comment with ExTeX-version and date.
-     * 
-     * @param key The key for the property.
-     * @return Returns the comment with the ExTeX-Version and the date.
-     */
-    protected String createVersion(String key) {
+  /**
+   * Create the comment with ExTeX-version and date.
+   *
+   * @param key The key for the property.
+   * @return Returns the comment with the ExTeX-Version and the date.
+   */
+  protected String createVersion( String key ) {
 
-        Calendar cal = Calendar.getInstance();
-        return getLocalizer().format(key, ExTeX.getVersion(),
-            cal.getTime().toString());
-    }
+    Calendar cal = Calendar.getInstance();
+    return getLocalizer().format( key, ExTeX.getVersion(),
+                                  cal.getTime().toString() );
+  }
 
-    /**
-     * Getter for consoleHandler.
-     * 
-     * @return the consoleHandler
-     */
-    public Handler getConsoleHandler() {
+  /**
+   * Getter for consoleHandler.
+   *
+   * @return the consoleHandler
+   */
+  public Handler getConsoleHandler() {
 
-        return consoleHandler;
-    }
+    return consoleHandler;
+  }
 
-    /**
-     * Getter for localizer.
-     * 
-     * @return the localizer
-     */
-    public Localizer getLocalizer() {
+  /**
+   * Getter for localizer.
+   *
+   * @return the localizer
+   */
+  public Localizer getLocalizer() {
 
-        return localizer;
-    }
+    return localizer;
+  }
 
-    /**
-     * Getter for logger.
-     * 
-     * @return the logger
-     */
-    public Logger getLogger() {
+  /**
+   * Getter for logger.
+   *
+   * @return the logger
+   */
+  public Logger getLogger() {
 
-        return logger;
-    }
+    return logger;
+  }
 
-    /**
-     * Getter for outdir.
-     * 
-     * @return the outdir
-     */
-    public String getOutdir() {
+  /**
+   * Getter for outdir.
+   *
+   * @return the outdir
+   */
+  public String getOutdir() {
 
-        return outdir;
-    }
+    return outdir;
+  }
 
-    /**
-     * Returns only the name of a file.
-     * 
-     * @param f The file.
-     * @return Returns only the name of a file.
-     */
-    protected String removeExtensions(File f) {
+  /**
+   * Returns only the name of a file.
+   *
+   * @param f The file.
+   * @return Returns only the name of a file.
+   */
+  protected String removeExtensions( File f ) {
 
-        return removeExtensions(f.getName());
-    }
+    return removeExtensions( f.getName() );
+  }
 
-    /**
-     * Returns only the name of a file.
-     * 
-     * @param n The name.
-     * @return Returns only the name of a file.
-     */
-    protected String removeExtensions(String n) {
+  /**
+   * Returns only the name of a file.
+   *
+   * @param n The name.
+   * @return Returns only the name of a file.
+   */
+  protected String removeExtensions( String n ) {
 
-        StringBuilder buf = new StringBuilder();
+    StringBuilder buf = new StringBuilder();
 
-        boolean dotfound = false;
-        for (int i = n.length() - 1; i >= 0; i--) {
-            char c = n.charAt(i);
-            if (!dotfound && c == '.') {
-                dotfound = true;
-                continue;
-            }
-            if (dotfound) {
-                if (c == '/' || c == '\\') {
-                    break;
-                }
-                buf.insert(0, c);
-            }
+    boolean dotfound = false;
+    for( int i = n.length() - 1; i >= 0; i-- ) {
+      char c = n.charAt( i );
+      if( !dotfound && c == '.' ) {
+        dotfound = true;
+        continue;
+      }
+      if( dotfound ) {
+        if( c == '/' || c == '\\' ) {
+          break;
         }
-
-        return buf.toString();
+        buf.insert( 0, c );
+      }
     }
 
-    /**
-     * Setter for outdir.
-     * 
-     * @param outdir the outdir to set
-     */
-    public void setOutdir(String outdir) {
+    return buf.toString();
+  }
 
-        this.outdir = outdir;
-    }
+  /**
+   * Setter for outdir.
+   *
+   * @param outdir the outdir to set
+   */
+  public void setOutdir( String outdir ) {
+
+    this.outdir = outdir;
+  }
 
 }

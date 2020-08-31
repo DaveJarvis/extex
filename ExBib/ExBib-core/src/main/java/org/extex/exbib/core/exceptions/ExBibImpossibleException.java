@@ -24,36 +24,36 @@ import org.extex.exbib.core.io.Locator;
 /**
  * This ExBibException is thrown in branches of the program which should not be
  * reachable. This means they normally indicate a programming error.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibImpossibleException extends ExBibException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     */
-    public ExBibImpossibleException(String message) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   */
+  public ExBibImpossibleException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     * @param locator the locator
-     */
-    public ExBibImpossibleException(String message, Locator locator) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   * @param locator the locator
+   */
+  public ExBibImpossibleException( String message, Locator locator ) {
 
-        super(message, locator);
-    }
+    super( message, locator );
+  }
 
 }

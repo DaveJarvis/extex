@@ -23,20 +23,20 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 
 /**
  * This is a test suite for the primitive {@code \pdflastximage}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdflastximageTest extends AbstractReadonlyCountRegisterTester {
 
-    /**
-     * Creates a new ximageect.
-     */
-    public PdflastximageTest() {
+  /**
+   * Creates a new ximageect.
+   */
+  public PdflastximageTest() {
 
-        super("pdflastximage", "", "0", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdflastximage", "", "0", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 
 }

@@ -28,57 +28,56 @@ import org.extex.framework.i18n.LocalizerFactory;
  * operation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RegistrarFontNotFoundException extends RegistrarException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 24012007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 24012007L;
 
-    /**
-     * The field {@code key} contains the font key which caused the problem.
-     */
-    private final FontKey key;
+  /**
+   * The field {@code key} contains the font key which caused the problem.
+   */
+  private final FontKey key;
 
-    /**
-     * Creates a new object.
-     *
-     * @param key the key of the fount in question
-     */
-    public RegistrarFontNotFoundException(FontKey key) {
+  /**
+   * Creates a new object.
+   *
+   * @param key the key of the fount in question
+   */
+  public RegistrarFontNotFoundException( FontKey key ) {
 
-        this.key = key;
-    }
+    this.key = key;
+  }
 
-    /**
-     * Getter for key.
-     *
-     * @return the key
-     */
-    public FontKey getKey() {
+  /**
+   * Getter for key.
+   *
+   * @return the key
+   */
+  public FontKey getKey() {
 
-        return key;
-    }
+    return key;
+  }
 
-    /**
-     * Creates a localized description of this throwable.
-     * Subclasses may override this method in order to produce a
-     * locale-specific message.  For subclasses that do not override this
-     * method, the default implementation returns the same result as
-     * {@code getMessage()}.
-     *
-     * @return  The localized description of this throwable.
-     *
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * Creates a localized description of this throwable.
+   * Subclasses may override this method in order to produce a
+   * locale-specific message.  For subclasses that do not override this
+   * method, the default implementation returns the same result as
+   * {@code getMessage()}.
+   *
+   * @return The localized description of this throwable.
+   * @see java.lang.Throwable#getLocalizedMessage()
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        return LocalizerFactory.getLocalizer(
-            RegistrarFontNotFoundException.class).format("FontNotFound",
-            key.getName());
-    }
+    return LocalizerFactory.getLocalizer(
+        RegistrarFontNotFoundException.class ).format( "FontNotFound",
+                                                       key.getName() );
+  }
 
 }

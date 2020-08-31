@@ -23,25 +23,25 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * This exception is thrown when an attribute name is missing.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibMissingAttributeNameException extends ExBibSyntaxException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param locator the locator
-     */
-    public ExBibMissingAttributeNameException(Locator locator) {
+  /**
+   * Create a new object.
+   *
+   * @param locator the locator
+   */
+  public ExBibMissingAttributeNameException( Locator locator ) {
 
-        super(null, locator);
-    }
+    super( null, locator );
+  }
 
 }

@@ -26,82 +26,82 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \long}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LongTest extends PrefixTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LongTest.class);
-    }
+    (new JUnitCore()).run( LongTest.class );
+  }
 
 
-    public LongTest() {
+  public LongTest() {
 
-        super("long");
-    }
+    super( "long" );
+  }
 
-    /**
-     * <testcase primitive="\long"> Test case checking that \long sets the long
-     * flag.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test10() throws Exception {
+  /**
+   * <testcase primitive="\long"> Test case checking that \long sets the long
+   * flag.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test10() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\long\\showprefix\\end",
-            // --- error channel ---
-            "long\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\long\\showprefix\\end",
+                  // --- error channel ---
+                  "long\n",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\long"> Test case checking that double
-     * {@code \long} has the same effect as one.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test11() throws Exception {
+  /**
+   * <testcase primitive="\long"> Test case checking that double
+   * {@code \long} has the same effect as one.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test11() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\long\\long\\showprefix\\end",
-            // --- error channel ---
-            "long\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\long\\long\\showprefix\\end",
+                  // --- error channel ---
+                  "long\n",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\long"> Test case checking that \long interacts with
-     * \outer.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test12() throws Exception {
+  /**
+   * <testcase primitive="\long"> Test case checking that \long interacts with
+   * \outer.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test12() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\long\\outer\\showprefix\\end",
-            // --- error channel ---
-            "long and outer\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\long\\outer\\showprefix\\end",
+                  // --- error channel ---
+                  "long and outer\n",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

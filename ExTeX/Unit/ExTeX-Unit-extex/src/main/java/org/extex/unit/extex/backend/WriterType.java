@@ -41,7 +41,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \writerType}.
- * 
+ *
  * <p>The Primitive {@code \writerType}</p>
  * <p>
  * The primitive {@code \writerType} provides access to the type of the
@@ -52,110 +52,113 @@ import org.extex.typesetter.exception.TypesetterException;
  * The primitive can be used wherever a token register is applicable. It acts
  * like a read only register.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;writerType&rang;
  *      &rarr; {@code \writerType}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \writerType  </pre>
- * 
+ *
  * <p>
  * This invocation might expand to "dvi" or "ps".
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class WriterType extends AbstractCode
-        implements
-            ExpandableCode,
-            Theable,
-            TokensConvertible {
+    implements
+    ExpandableCode,
+    Theable,
+    TokensConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public WriterType(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public WriterType( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens convertTokens( Context context, TokenSource source,
+                               Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String type = typesetter.getBackendDriver().getDocumentWriterType();
+    try {
+      return context.getTokenFactory().toTokens( type == null ? "" : type );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens convertTokens(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        String type = typesetter.getBackendDriver().getDocumentWriterType();
-        try {
-            return context.getTokenFactory().toTokens(type == null ? "" : type);
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
+    source.getOptionalEquals( context );
+    String type = source.scanTokensAsString( context, getToken() );
+    try {
+      BackendDriver backendDriver = typesetter.getBackendDriver();
+      backendDriver.setDocumentWriterType( type );
+    } catch( BackendDocumentWriterDefinedException e ) {
+      throw new HelpingException( getLocalizer(), "DocumentWriterDefined",
+                                  type );
+    } catch( BackendUnknownDocumentWriterException e ) {
+      throw new HelpingException( getLocalizer(), "DocumentWriterUnknown",
+                                  type );
     }
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws ConfigurationException,
+      HelpingException,
+      TypesetterException {
 
-        source.getOptionalEquals(context);
-        String type = source.scanTokensAsString(context, getToken());
-        try {
-            BackendDriver backendDriver = typesetter.getBackendDriver();
-            backendDriver.setDocumentWriterType(type);
-        } catch (BackendDocumentWriterDefinedException e) {
-            throw new HelpingException(getLocalizer(), "DocumentWriterDefined",
-                type);
-        } catch (BackendUnknownDocumentWriterException e) {
-            throw new HelpingException(getLocalizer(), "DocumentWriterUnknown",
-                type);
-        }
-    }
+    source.push( convertTokens( context, source, typesetter ) );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      ConfigurationException,
+      HelpingException,
+      TypesetterException {
 
-        source.push(convertTokens(context, source, typesetter));
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                ConfigurationException,
-                HelpingException,
-                TypesetterException {
-
-        return convertTokens(context, source, typesetter);
-    }
+    return convertTokens( context, source, typesetter );
+  }
 
 }

@@ -24,91 +24,91 @@ import java.io.IOException;
 
 /**
  * Interface for random access (read only)
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface RandomAccessR extends DataInput {
 
-    /**
-     * kill the highest 8 bit (by a 32 bit int)
-     */
-    int KILL32 = 0xff000000;
+  /**
+   * kill the highest 8 bit (by a 32 bit int)
+   */
+  int KILL32 = 0xff000000;
 
-    /**
-     * get bit 24
-     */
-    int X24 = 0x800000;
+  /**
+   * get bit 24
+   */
+  int X24 = 0x800000;
 
-    void close() throws IOException;
+  void close() throws IOException;
 
-    /**
-     * Returns the data.
-     *
-     * @return the data.
-     * @throws IOException if an IO error occurs
-     */
-    byte[] getData() throws IOException;
+  /**
+   * Returns the data.
+   *
+   * @return the data.
+   * @throws IOException if an IO error occurs
+   */
+  byte[] getData() throws IOException;
 
-    /**
-     * Returns the pointer in the buffer.
-     * 
-     * @throws IOException if an IO error occurs
-     * @return Returns the pointer in the buffer
-     */
-    long getPointer() throws IOException;
+  /**
+   * Returns the pointer in the buffer.
+   *
+   * @return Returns the pointer in the buffer
+   * @throws IOException if an IO error occurs
+   */
+  long getPointer() throws IOException;
 
-    /**
-     * Check, if EOF is reached.
-     * 
-     * @return Returns {@code true}, if EOF is reached.
-     * @throws IOException if an IO error occurs.
-     */
-    boolean isEOF() throws IOException;
+  /**
+   * Check, if EOF is reached.
+   *
+   * @return Returns {@code true}, if EOF is reached.
+   * @throws IOException if an IO error occurs.
+   */
+  boolean isEOF() throws IOException;
 
-    long length() throws IOException;
+  long length() throws IOException;
 
-    /**
-     * Reads a byte of data from this file. The byte is returned as an integer
-     * in the range 0 to 255 ({@code 0x00-0x0ff}).
-     * 
-     * @throws IOException if an IO error occurs.
-     * @return the next byte of data.
-     */
-    int readByteAsInt() throws IOException;
+  /**
+   * Reads a byte of data from this file. The byte is returned as an integer
+   * in the range 0 to 255 ({@code 0x00-0x0ff}).
+   *
+   * @return the next byte of data.
+   * @throws IOException if an IO error occurs.
+   */
+  int readByteAsInt() throws IOException;
 
-    /**
-     * Reads a int with 16 bit (2x8).
-     * 
-     * @return Returns a int value.
-     * @throws IOException if an IO error occurs.
-     */
-    int readInt16() throws IOException;
+  /**
+   * Reads a int with 16 bit (2x8).
+   *
+   * @return Returns a int value.
+   * @throws IOException if an IO error occurs.
+   */
+  int readInt16() throws IOException;
 
-    /**
-     * Reads a int with 24 bit (3x8).
-     * 
-     * @return Returns a int value.
-     * @throws IOException if an IO error occurs.
-     */
-    int readInt24() throws IOException;
+  /**
+   * Reads a int with 24 bit (3x8).
+   *
+   * @return Returns a int value.
+   * @throws IOException if an IO error occurs.
+   */
+  int readInt24() throws IOException;
 
-    /**
-     * Reads a int with 8 bit (1x8).
-     * 
-     * @return Returns a int value.
-     * @throws IOException if an IO error occurs.
-     */
-    int readInt8() throws IOException;
+  /**
+   * Reads a int with 8 bit (1x8).
+   *
+   * @return Returns a int value.
+   * @throws IOException if an IO error occurs.
+   */
+  int readInt8() throws IOException;
 
-    /**
-     * Reads a sign int with 24 bit (3x8). The sign is calculated with the
-     * b-complement.
-     * 
-     * @return Returns a int value.
-     * @throws IOException if an IO error occurs.
-     */
-    int readSignInt24() throws IOException;
+  /**
+   * Reads a sign int with 24 bit (3x8). The sign is calculated with the
+   * b-complement.
+   *
+   * @return Returns a int value.
+   * @throws IOException if an IO error occurs.
+   */
+  int readSignInt24() throws IOException;
 
-    void seek(long arg0) throws IOException;
+  void seek( long arg0 ) throws IOException;
 
 }

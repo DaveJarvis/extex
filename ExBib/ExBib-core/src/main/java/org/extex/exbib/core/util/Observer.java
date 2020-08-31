@@ -22,18 +22,18 @@ package org.extex.exbib.core.util;
 /**
  * An Observer is a object which is able to receive a notification from an
  * {@link org.extex.exbib.core.util.Observable Observable}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Observer {
 
-    /**
-     * The callback method which is invoked when the Observable has some action
-     * to be monitored.
-     * 
-     * @param observable the object which initiates the method call
-     * @param item some arbitrary parameter passed to the Observer
-     */
-    void update(Observable observable, Object item);
+  /**
+   * The callback method which is invoked when the Observable has some action
+   * to be monitored.
+   *
+   * @param observable the object which initiates the method call
+   * @param item       some arbitrary parameter passed to the Observer
+   */
+  void update( Observable observable, Object item );
 
 }

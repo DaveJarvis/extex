@@ -25,74 +25,74 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code &#005c;unexpanded}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class UnexpandedTest extends ExTeXLauncher {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(UnexpandedTest.class);
-    }
+    (new JUnitCore()).run( UnexpandedTest.class );
+  }
 
 
-    public UnexpandedTest() {
+  public UnexpandedTest() {
 
-        setConfig("etex-test");
-    }
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * <testcase primitive="&#005c;unexpanded"> Test case checking that
-     * {@code &#005c;unexpanded} needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="&#005c;unexpanded"> Test case checking that
+   * {@code &#005c;unexpanded} needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            "\\unexpanded",
-            // --- error channel ---
-            "Unexpected end of file while processing \\unexpanded");
-    }
+        "\\unexpanded",
+        // --- error channel ---
+        "Unexpected end of file while processing \\unexpanded" );
+  }
 
-    /**
-     * <testcase primitive="&#005c;unexpanded"> Test case checking that
-     * {@code &#005c;unexpanded} needs a group argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
+  /**
+   * <testcase primitive="&#005c;unexpanded"> Test case checking that
+   * {@code &#005c;unexpanded} needs a group argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError2() throws Exception {
 
-        assertFailure(
+    assertFailure(
         // --- input code ---
-            "\\unexpanded a",
-            // --- error channel ---
-            "Missing `{' inserted");
-    }
+        "\\unexpanded a",
+        // --- error channel ---
+        "Missing `{' inserted" );
+  }
 
-    /**
-     * <testcase primitive="&#005c;unexpanded"> Test case checking that
-     * {@code &#005c;unexpanded} sets the flag.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="&#005c;unexpanded"> Test case checking that
+   * {@code &#005c;unexpanded} sets the flag.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(
+    assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\unexpanded{abc}\\end",
-            // --- output channel ---
-            "abc" + TERM);
-    }
+        DEFINE_BRACES + "\\unexpanded{abc}\\end",
+        // --- output channel ---
+        "abc" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

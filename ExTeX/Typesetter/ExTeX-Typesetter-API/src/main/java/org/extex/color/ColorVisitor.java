@@ -69,7 +69,8 @@ import org.extex.core.exception.GeneralException;
  *
  * <p>
  * A detailed description of the mechanics of a visitor can be found in the
- * documentation for the {@link org.extex.typesetter.type.NodeVisitor NodeVisitor}.
+ * documentation for the {@link org.extex.typesetter.type.NodeVisitor
+ * NodeVisitor}.
  * </p>
  *
  * <p>Example Source Code</p>
@@ -158,66 +159,57 @@ import org.extex.core.exception.GeneralException;
  * colors it is possible to use another class as visitor, e.g. an inner class.
  * </p>
  *
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ColorVisitor {
 
-    /**
-     * This method is called when an
-     * {@link org.extex.color.model.CmykColor CmykColor}
-     * has been encountered.
-     *
-     * @param color the first parameter for the visitor is the color visited
-     * @param value the second parameter is a visitor specific object
-     *
-     * @return the visitor specific value
-     *
-     * @throws GeneralException in case of an error
-     */
-    Object visitCmyk(CmykColor color, Object value) throws GeneralException;
+  /**
+   * This method is called when an
+   * {@link org.extex.color.model.CmykColor CmykColor}
+   * has been encountered.
+   *
+   * @param color the first parameter for the visitor is the color visited
+   * @param value the second parameter is a visitor specific object
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  Object visitCmyk( CmykColor color, Object value ) throws GeneralException;
 
-    /**
-     * This method is called when an
-     * {@link org.extex.color.model.GrayscaleColor GrayscaleColor}
-     * has been encountered.
-     *
-     * @param color the first parameter for the visitor is the color visited
-     * @param value the second parameter is a visitor specific object
-     *
-     * @return the visitor specific value
-     *
-     * @throws GeneralException in case of an error
-     */
-    Object visitGray(GrayscaleColor color, Object value)
-            throws GeneralException;
+  /**
+   * This method is called when an
+   * {@link org.extex.color.model.GrayscaleColor GrayscaleColor}
+   * has been encountered.
+   *
+   * @param color the first parameter for the visitor is the color visited
+   * @param value the second parameter is a visitor specific object
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  Object visitGray( GrayscaleColor color, Object value )
+      throws GeneralException;
 
-    /**
-     * This method is called when an
-     * {@link org.extex.color.model.HsvColor HsvColor}
-     * has been encountered.
-     *
-     * @param color the first parameter for the visitor is the color visited
-     * @param value the second parameter is a visitor specific object
-     *
-     * @return the visitor specific value
-     *
-     * @throws GeneralException in case of an error
-     */
-    Object visitHsv(HsvColor color, Object value) throws GeneralException;
+  /**
+   * This method is called when an
+   * {@link org.extex.color.model.HsvColor HsvColor}
+   * has been encountered.
+   *
+   * @param color the first parameter for the visitor is the color visited
+   * @param value the second parameter is a visitor specific object
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  Object visitHsv( HsvColor color, Object value ) throws GeneralException;
 
-    /**
-     * This method is called when an
-     * {@link org.extex.color.model.RgbColor RgbColor}
-     * has been encountered.
-     *
-     * @param color the first parameter for the visitor is the color visited
-     * @param value the second parameter is a visitor specific object
-     *
-     * @return the visitor specific value
-     *
-     * @throws GeneralException in case of an error
-     */
-    Object visitRgb(RgbColor color, Object value) throws GeneralException;
+  /**
+   * This method is called when an
+   * {@link org.extex.color.model.RgbColor RgbColor}
+   * has been encountered.
+   *
+   * @param color the first parameter for the visitor is the color visited
+   * @param value the second parameter is a visitor specific object
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  Object visitRgb( RgbColor color, Object value ) throws GeneralException;
 
 }

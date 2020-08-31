@@ -22,42 +22,42 @@ package org.extex.framework.configuration.exception;
 /**
  * This Exception is thrown when a configuration tries to use an unsupported
  * encoding.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationUnsupportedEncodingException
-        extends
-            ConfigurationException {
+    extends
+    ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2010L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2010L;
 
-    /**
-     * Create a new object.
-     * 
-     * @param message the message string
-     * @param source the the name of the file for which this exception occurred
-     */
-    public ConfigurationUnsupportedEncodingException(String message,
-            String source) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message string
+   * @param source  the the name of the file for which this exception occurred
+   */
+  public ConfigurationUnsupportedEncodingException( String message,
+                                                    String source ) {
 
-        super(message, source);
-    }
+    super( message, source );
+  }
 
-    /**
-     * Getter for the text prefix of this ConfigException. The text is taken
-     * from the resource bundle {@code ConfigurationEception} under the key
-     * {@code ConfigurationUnsupportedEncodingException.Text}.
-     * 
-     * @return the text
-     */
-    @Override
-    protected String getText() {
+  /**
+   * Getter for the text prefix of this ConfigException. The text is taken
+   * from the resource bundle {@code ConfigurationEception} under the key
+   * {@code ConfigurationUnsupportedEncodingException.Text}.
+   *
+   * @return the text
+   */
+  @Override
+  protected String getText() {
 
-        return getLocalizer().format(
-            "ConfigurationUnsupportedEncodingException.Text");
-    }
+    return getLocalizer().format(
+        "ConfigurationUnsupportedEncodingException.Text" );
+  }
 
 }

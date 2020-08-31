@@ -39,98 +39,99 @@ import org.extex.typesetter.tc.font.Font;
  * context.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NamedFont extends AbstractAssignment
-        implements
-            FontConvertible,
-            Theable {
+    implements
+    FontConvertible,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param token the initial token for the primitive
-     */
-    public NamedFont(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public NamedFont( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.interpreter.type.AbstractAssignment#assign(
+   *org.extex.interpreter.Flags,
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource,
+   * org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context,
+                      TokenSource source, Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = getKey( context, source, typesetter );
+    source.getOptionalEquals( context );
+
+    Font font = source.getFont( context, getToken() );
+    context.setFont( key, font, prefix.clearGlobal() );
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
+   *org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource,
+   * org.extex.typesetter.Typesetter)
+   */
+  public Font convertFont( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    return context.getFont( getKey( context, source, typesetter ) );
+  }
+
+  /**
+   * Return the key (the number) for the font register.
+   *
+   * @param context    the interpreter context to use
+   * @param source     the source for the next tokens &ndash; if required
+   * @param typesetter the typesetter
+   * @return the key for the font register
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    if( Namespace.SUPPORT_NAMESPACE_FONT ) {
+      return context.getNamespace() + "\b" + getName();
     }
+    return getName();
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.interpreter.type.Theable#the(
+   *org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource,
+   * org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException, HelpingException, TypesetterException {
 
-        String key = getKey(context, source, typesetter);
-        source.getOptionalEquals(context);
-
-        Font font = source.getFont(context, getToken());
-        context.setFont(key, font, prefix.clearGlobal());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
-     */
-    public Font convertFont(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        return context.getFont(getKey(context, source, typesetter));
-    }
-
-    /**
-     * Return the key (the number) for the font register.
-     *
-     * @param context the interpreter context to use
-     * @param source the source for the next tokens &ndash; if required
-     * @param typesetter the typesetter
-     *
-     * @return the key for the font register
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        if (Namespace.SUPPORT_NAMESPACE_FONT) {
-            return context.getNamespace() + "\b" + getName();
-        }
-        return getName();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws CatcodeException, HelpingException, TypesetterException {
-
-        String key = getKey(context, source, typesetter);
-        Font font = context.getFont(key);
-        return context.getTokenFactory().toTokens(
-            context.esc(font.getFontName()));
-    }
+    String key = getKey( context, source, typesetter );
+    Font font = context.getFont( key );
+    return context.getTokenFactory().toTokens(
+        context.esc( font.getFontName() ) );
+  }
 
 }

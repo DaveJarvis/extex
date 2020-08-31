@@ -24,14 +24,14 @@ package org.extex.resource;
  * provider.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface InteractionAware {
 
-    /**
-     * Setter for the interaction provider.
-     *
-     * @param provider the provider
-     */
-    void setInteractionProvider(InteractionIndicator provider);
+  /**
+   * Setter for the interaction provider.
+   *
+   * @param provider the provider
+   */
+  void setInteractionProvider( InteractionIndicator provider );
 
 }

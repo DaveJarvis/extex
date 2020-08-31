@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *Contains definitions and implementations for the
+ * Contains definitions and implementations for the
  * TFM-font-metric handling in ExTeX.
  * <h2>TFM format</h2>
  *

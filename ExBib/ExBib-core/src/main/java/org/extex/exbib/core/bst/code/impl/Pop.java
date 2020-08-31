@@ -27,7 +27,8 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code pop$}
  * <p>
  * This function pops a string from the stack and prints it as a message to the
@@ -37,7 +38,7 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  * FUNCTION {output}
  * { duplicate$ empty$
@@ -46,51 +47,51 @@ import org.extex.exbib.core.io.Locator;
  *   if$
  * }
  * </pre>
- * 
+ *
  * <hr>
- * 
- * 
- * 
+ *
+ *
+ *
  * <dl>
  * <dt>BibTeX documentation:</dt>
  * <dd>Pops the top of the stack but doesn't print it; this gets rid of an
  * unwanted stack literal.</dd>
  * </dl>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation:</dt>
  * <dd>The {@code built_in} function {@code pop$} pops the top of the
  * stack but doesn't print it.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pop extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public Pop() {
+  /**
+   * Create a new object.
+   */
+  public Pop() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Pop(String name) {
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Pop( String name ) {
 
-        super(name);
-    }
+    super( name );
+  }
 
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
 
-        processor.pop(locator);
-    }
+    processor.pop( locator );
+  }
 
 }

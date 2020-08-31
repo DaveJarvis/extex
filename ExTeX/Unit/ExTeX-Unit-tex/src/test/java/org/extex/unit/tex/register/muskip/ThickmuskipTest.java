@@ -23,26 +23,26 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \thickmuskip}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ThickmuskipTest extends AbstractMuskipRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ThickmuskipTest.class);
-    }
+    (new JUnitCore()).run( ThickmuskipTest.class );
+  }
 
 
-    public ThickmuskipTest() {
+  public ThickmuskipTest() {
 
-        super("thickmuskip", "", "0.0mu");
-    }
+    super( "thickmuskip", "", "0.0mu" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

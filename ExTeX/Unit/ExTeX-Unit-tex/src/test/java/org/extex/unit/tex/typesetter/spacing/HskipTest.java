@@ -25,85 +25,87 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \hskip}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HskipTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(HskipTest.class);
-    }
+    (new JUnitCore()).run( HskipTest.class );
+  }
 
 
-    public HskipTest() {
+  public HskipTest() {
 
-        setPrimitive("hskip");setArguments("12pt");setPrepare("A");
-    }
+    setPrimitive( "hskip" );
+    setArguments( "12pt" );
+    setPrepare( "A" );
+  }
 
-    /**
-     * <testcase primitive="\hskip"> Test case checking that {@code \hskip}
-     * switches to horizontal mode and inserts a glue node with the appropriate
-     * value.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\hskip"> Test case checking that {@code \hskip}
+   * switches to horizontal mode and inserts a glue node with the appropriate
+   * value.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "x\\hskip 123pt x\\end ",
-            // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
-                    "..x\n" +
-                    "..\\glue123.0pt\n" +
-                    "..x\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "x\\hskip 123pt x\\end ",
+                   // --- output channel ---
+                   "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
+                       ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
+                       "..x\n" +
+                       "..\\glue123.0pt\n" +
+                       "..x\n" );
+  }
 
-    /**
-     * <testcase primitive="\hskip"> Test case checking that {@code \hskip}
-     * switches to horizontal mode and inserts a glue node with the appropriate
-     * value.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\hskip"> Test case checking that {@code \hskip}
+   * switches to horizontal mode and inserts a glue node with the appropriate
+   * value.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "x\\hskip 123pt plus 1.2fil x\\end ",
-            // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
-                    "..x\n" +
-                    "..\\glue123.0pt plus 1.2fil\n" +
-                    "..x\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "x\\hskip 123pt plus 1.2fil x\\end ",
+                   // --- output channel ---
+                   "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
+                       ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
+                       "..x\n" +
+                       "..\\glue123.0pt plus 1.2fil\n" +
+                       "..x\n" );
+  }
 
-    /**
-     * <testcase primitive="\hskip"> Test case checking that a lonely
-     * {@code \hskip} is discarded.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIgnore1() throws Exception {
+  /**
+   * <testcase primitive="\hskip"> Test case checking that a lonely
+   * {@code \hskip} is discarded.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testIgnore1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "\\hskip 123pt\\end ",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   "\\hskip 123pt\\end ",
+                   // --- output channel ---
+                   "" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 
 }

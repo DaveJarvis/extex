@@ -41,147 +41,150 @@ import org.extex.typesetter.exception.TypesetterUnsupportedException;
 /**
  * This class provides an implementation for the primitive
  * {@code \prevdepth}.
- * 
+ *
  * <p>The Primitive {@code \prevdepth}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;prevdepth&rang;
  *      &rarr; {@code \prevdepth} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} &lang;dimen value&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \prevdepth=123pt  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *    \dimen0=\prevdepth  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Prevdepth extends AbstractAssignment
-        implements
-            CountConvertible,
-            DimenConvertible,
-            Theable {
+    implements
+    CountConvertible,
+    DimenConvertible,
+    Theable {
 
-    /**
-     * The field {@code IGNORE} contains the numerical value which represents
-     * the ignored value. This will be mapped to null.
-     */
-    private static final long IGNORE = -65536000;
+  /**
+   * The field {@code IGNORE} contains the numerical value which represents
+   * the ignored value. This will be mapped to null.
+   */
+  private static final long IGNORE = -65536000;
 
-    /**
-     * The field {@code IGNORE_DIMEN} contains the value which represents the
-     * ignored value. This will be mapped to null.
-     */
-    private static final Dimen IGNORE_DIMEN = new Dimen(IGNORE);
+  /**
+   * The field {@code IGNORE_DIMEN} contains the value which represents the
+   * ignored value. This will be mapped to null.
+   */
+  private static final Dimen IGNORE_DIMEN = new Dimen( IGNORE );
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Prevdepth(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Prevdepth( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    source.getOptionalEquals( context );
+    Dimen pd = source.parseDimen( context, source, typesetter );
+    if( pd.getValue() < IGNORE ) {
+      pd = null;
+    }
+    try {
+      typesetter.setPrevDepth( pd );
+    } catch( TypesetterUnsupportedException e ) {
+      throw new CantUseInException( toText(),
+                                    typesetter.getMode().toString() );
+    }
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    FixedDimen prevDepth;
+    try {
+      prevDepth = typesetter.getListMaker().getPrevDepth();
+    } catch( TypesetterUnsupportedException e ) {
+      throw new HelpingException( getLocalizer(), "TTP.ImproperSForPD",
+                                  toText() );
     }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    return prevDepth != null ? prevDepth.getValue() : IGNORE;
+  }
 
-        source.getOptionalEquals(context);
-        Dimen pd = source.parseDimen(context, source, typesetter);
-        if (pd.getValue() < IGNORE) {
-            pd = null;
-        }
-        try {
-            typesetter.setPrevDepth(pd);
-        } catch (TypesetterUnsupportedException e) {
-            throw new CantUseInException(toText(),
-                typesetter.getMode().toString());
-        }
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertDimen( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    FixedDimen prevDepth;
+    try {
+      prevDepth = typesetter.getListMaker().getPrevDepth();
+    } catch( TypesetterUnsupportedException e ) {
+      throw new HelpingException( getLocalizer(), "TTP.ImproperSForPD",
+                                  toText() );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    return prevDepth != null ? prevDepth.getValue() : IGNORE;
+  }
 
-        FixedDimen prevDepth;
-        try {
-            prevDepth = typesetter.getListMaker().getPrevDepth();
-        } catch (TypesetterUnsupportedException e) {
-            throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
-                toText());
-        }
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
 
-        return prevDepth != null ? prevDepth.getValue() : IGNORE;
+    FixedDimen prevDepth;
+    try {
+      prevDepth = typesetter.getListMaker().getPrevDepth();
+    } catch( TypesetterUnsupportedException e ) {
+      throw new HelpingException( getLocalizer(), "TTP.ImproperSForPD",
+                                  toText( context ) );
     }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        FixedDimen prevDepth;
-        try {
-            prevDepth = typesetter.getListMaker().getPrevDepth();
-        } catch (TypesetterUnsupportedException e) {
-            throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
-                toText());
-        }
-
-        return prevDepth != null ? prevDepth.getValue() : IGNORE;
+    if( prevDepth == null ) {
+      prevDepth = IGNORE_DIMEN;
     }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        FixedDimen prevDepth;
-        try {
-            prevDepth = typesetter.getListMaker().getPrevDepth();
-        } catch (TypesetterUnsupportedException e) {
-            throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
-                toText(context));
-        }
-
-        if (prevDepth == null) {
-            prevDepth = IGNORE_DIMEN;
-        }
-
-        try {
-            return context.getTokenFactory().toTokens(prevDepth.toString());
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
+    try {
+      return context.getTokenFactory().toTokens( prevDepth.toString() );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
 }

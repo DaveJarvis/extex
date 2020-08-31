@@ -19,86 +19,87 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.XtfGlyphName;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * Class for a {@code Class2Record}.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Class2Record implements XMLWriterConvertible {
 
-    /**
-     * The index.
-     */
-    private final int idx;
+  /**
+   * The index.
+   */
+  private final int idx;
 
-    /**
-     * Positioning data for the first and second glyph.
-     */
-    private final PairValue pairValue;
+  /**
+   * Positioning data for the first and second glyph.
+   */
+  private final PairValue pairValue;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param rar The input.
-     * @param posOffset The offset of the pos table (GSUB, GPOS).
-     * @param xtfGlyph The glyph name.
-     * @param idx The index.
-     * @param valueFormat2 The format for the second glyph.
-     * @param valueFormat1 The format for the first glyph.
-     * @throws IOException if a io-error occurred.
-     */
-    public Class2Record(RandomAccessR rar, int posOffset,
-            XtfGlyphName xtfGlyph, int idx, int valueFormat1, int valueFormat2)
-            throws IOException {
+  /**
+   * Creates a new object.
+   *
+   * @param rar          The input.
+   * @param posOffset    The offset of the pos table (GSUB, GPOS).
+   * @param xtfGlyph     The glyph name.
+   * @param idx          The index.
+   * @param valueFormat2 The format for the second glyph.
+   * @param valueFormat1 The format for the first glyph.
+   * @throws IOException if a io-error occurred.
+   */
+  public Class2Record( RandomAccessR rar, int posOffset,
+                       XtfGlyphName xtfGlyph, int idx, int valueFormat1,
+                       int valueFormat2 )
+      throws IOException {
 
-        this.idx = idx;
-        ValueRecord value1 =
-                new ValueRecord(rar, posOffset, xtfGlyph, valueFormat1);
-        ValueRecord value2 =
-                new ValueRecord(rar, posOffset, xtfGlyph, valueFormat2);
-        pairValue = new PairValue(value1, value2);
-    }
+    this.idx = idx;
+    ValueRecord value1 =
+        new ValueRecord( rar, posOffset, xtfGlyph, valueFormat1 );
+    ValueRecord value2 =
+        new ValueRecord( rar, posOffset, xtfGlyph, valueFormat2 );
+    pairValue = new PairValue( value1, value2 );
+  }
 
-    /**
-     * Getter for pairValue.
-     * 
-     * @return the pairValue
-     */
-    public PairValue getPairValue() {
+  /**
+   * Getter for pairValue.
+   *
+   * @return the pairValue
+   */
+  public PairValue getPairValue() {
 
-        return pairValue;
-    }
+    return pairValue;
+  }
 
-    /**
-     * Initialize the {@link ValueRecord}.
-     * 
-     * @param rar The input.
-     * @param posOffset The offset of the pos table.
-     * @throws IOException if a IO-error occurred.
-     */
-    public void init(RandomAccessR rar, int posOffset) throws IOException {
+  /**
+   * Initialize the {@link ValueRecord}.
+   *
+   * @param rar       The input.
+   * @param posOffset The offset of the pos table.
+   * @throws IOException if a IO-error occurred.
+   */
+  public void init( RandomAccessR rar, int posOffset ) throws IOException {
 
-        pairValue.getValue1().init(rar, posOffset);
-        pairValue.getValue2().init(rar, posOffset);
+    pairValue.getValue1().init( rar, posOffset );
+    pairValue.getValue2().init( rar, posOffset );
 
-    }
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writer.writeStartElement("class2record");
-        writer.writeAttribute("class", idx);
-        pairValue.getValue1().writeXML(writer);
-        pairValue.getValue2().writeXML(writer);
-        writer.writeEndElement();
-    }
+    writer.writeStartElement( "class2record" );
+    writer.writeAttribute( "class", idx );
+    pairValue.getValue1().writeXML( writer );
+    pairValue.getValue2().writeXML( writer );
+    writer.writeEndElement();
+  }
 }

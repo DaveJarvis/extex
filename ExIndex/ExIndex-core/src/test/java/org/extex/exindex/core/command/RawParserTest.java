@@ -19,8 +19,15 @@
 
 package org.extex.exindex.core.command;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import org.extex.exindex.core.Indexer;
+import org.extex.exindex.core.type.attribute.Attribute;
+import org.extex.exindex.core.type.attribute.AttributesContainer;
+import org.extex.exindex.lisp.exception.LException;
+import org.extex.exindex.lisp.exception.LMissingArgumentsException;
+import org.extex.exindex.lisp.exception.SyntaxException;
+import org.extex.logging.LogFormatter;
+import org.junit.Ignore;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.StringReader;
@@ -32,258 +39,250 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
-import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.type.attribute.Attribute;
-import org.extex.exindex.core.type.attribute.AttributesContainer;
-import org.extex.exindex.lisp.exception.LException;
-import org.extex.exindex.lisp.exception.LMissingArgumentsException;
-import org.extex.exindex.lisp.exception.SyntaxException;
-import org.extex.logging.LogFormatter;
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * This is a test suite for (define-attributes).
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RawParserTest {
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test01() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test01() throws Exception {
 
-        SomeTestUtilities.runTest("(define-attributes ())");
-    }
+    SomeTestUtilities.runTest( "(define-attributes ())" );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test02() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test02() throws Exception {
 
-        AttributesContainer def =
-                SomeTestUtilities.runTest("(define-attributes (\"abc\"))");
-        Attribute att = def.lookupAttribute("abc");
-        assertNotNull(att);
-        assertEquals(0, att.getGroup());
-        assertEquals(0, att.getOrd());
-    }
+    AttributesContainer def =
+        SomeTestUtilities.runTest( "(define-attributes (\"abc\"))" );
+    Attribute att = def.lookupAttribute( "abc" );
+    assertNotNull( att );
+    assertEquals( 0, att.getGroup() );
+    assertEquals( 0, att.getOrd() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test03() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test03() throws Exception {
 
-        AttributesContainer def =
-                SomeTestUtilities
-                    .runTest("(define-attributes (\"abc\" \"def\"))");
-        Attribute att = def.lookupAttribute("abc");
-        assertNotNull(att);
-        assertEquals(0, att.getGroup());
-        assertEquals(0, att.getOrd());
-        att = def.lookupAttribute("def");
-        assertNotNull(att);
-        assertEquals(1, att.getGroup());
-        assertEquals(1, att.getOrd());
-    }
+    AttributesContainer def =
+        SomeTestUtilities
+            .runTest( "(define-attributes (\"abc\" \"def\"))" );
+    Attribute att = def.lookupAttribute( "abc" );
+    assertNotNull( att );
+    assertEquals( 0, att.getGroup() );
+    assertEquals( 0, att.getOrd() );
+    att = def.lookupAttribute( "def" );
+    assertNotNull( att );
+    assertEquals( 1, att.getGroup() );
+    assertEquals( 1, att.getOrd() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test10() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test10() throws Exception {
 
-        AttributesContainer def =
-                SomeTestUtilities.runTest("(define-attributes ((\"abc\")))");
-        Attribute att = def.lookupAttribute("abc");
-        assertNotNull(att);
-        assertEquals(0, att.getGroup());
-        assertEquals(0, att.getOrd());
-    }
+    AttributesContainer def =
+        SomeTestUtilities.runTest( "(define-attributes ((\"abc\")))" );
+    Attribute att = def.lookupAttribute( "abc" );
+    assertNotNull( att );
+    assertEquals( 0, att.getGroup() );
+    assertEquals( 0, att.getOrd() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test11() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test11() throws Exception {
 
-        AttributesContainer def =
-                SomeTestUtilities
-                    .runTest("(define-attributes ((\"abc\" \"def\")))");
-        Attribute att = def.lookupAttribute("abc");
-        assertNotNull(att);
-        assertEquals(0, att.getGroup());
-        assertEquals(0, att.getOrd());
-        att = def.lookupAttribute("def");
-        assertNotNull(att);
-        assertEquals(0, att.getGroup());
-        assertEquals(1, att.getOrd());
-    }
+    AttributesContainer def =
+        SomeTestUtilities
+            .runTest( "(define-attributes ((\"abc\" \"def\")))" );
+    Attribute att = def.lookupAttribute( "abc" );
+    assertNotNull( att );
+    assertEquals( 0, att.getGroup() );
+    assertEquals( 0, att.getOrd() );
+    att = def.lookupAttribute( "def" );
+    assertNotNull( att );
+    assertEquals( 0, att.getGroup() );
+    assertEquals( 1, att.getOrd() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = LMissingArgumentsException.class)
-    public final void testError01() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = LMissingArgumentsException.class)
+  public final void testError01() throws Exception {
 
-        SomeTestUtilities.runTest("(define-attributes )");
-    }
+    SomeTestUtilities.runTest( "(define-attributes )" );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = LException.class)
-    public final void testError02() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = LException.class)
+  public final void testError02() throws Exception {
 
-        SomeTestUtilities.runTest("(define-attributes \"abc\")");
-    }
+    SomeTestUtilities.runTest( "(define-attributes \"abc\")" );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = LException.class)
-    public final void testError03() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = LException.class)
+  public final void testError03() throws Exception {
 
-        SomeTestUtilities.runTest("(define-attributes ((())))");
-    }
+    SomeTestUtilities.runTest( "(define-attributes ((())))" );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = SyntaxException.class)
-    public final void testError04() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = SyntaxException.class)
+  public final void testError04() throws Exception {
 
-        SomeTestUtilities.runTest("(define-attributes (123)");
-    }
+    SomeTestUtilities.runTest( "(define-attributes (123)" );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = LException.class)
-    public final void testError05() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = LException.class)
+  public final void testError05() throws Exception {
 
-        SomeTestUtilities.runTest("(define-attributes (\"x\" \"x\"))");
-    }
+    SomeTestUtilities.runTest( "(define-attributes (\"x\" \"x\"))" );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = LException.class)
-    public final void testError06() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = LException.class)
+  public final void testError06() throws Exception {
 
-        SomeTestUtilities.runTest("(define-attributes (\"x\" (\"x\")))");
-    }
+    SomeTestUtilities.runTest( "(define-attributes (\"x\" (\"x\")))" );
+  }
 
-    /**
-     *  Test that an undefined attribute leads to a message.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public final void testFull01Fail() throws Exception {
+  /**
+   * Test that an undefined attribute leads to a message.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public final void testFull01Fail() throws Exception {
 
-        Locale.setDefault(Locale.ENGLISH);
+    Locale.setDefault( Locale.ENGLISH );
 
-        Indexer indexer = new ATestableIndexer(SomeTestUtilities.DIRECT_FINDER);
+    Indexer indexer = new ATestableIndexer( SomeTestUtilities.DIRECT_FINDER );
 
-        indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
-            "<reader>");
-        List<String> rsc = new ArrayList<String>();
-        rsc.add("(indexentry :tkey ((\"abc\")) :locref \"123\" :attr \"none\")");
-        ByteArrayOutputStream log = new ByteArrayOutputStream();
-        Logger logger = SomeTestUtilities.makeLogger();
-        Handler handler = new StreamHandler(log, new LogFormatter());
-        logger.setLevel(Level.INFO);
-        handler.setLevel(Level.INFO);
-        logger.addHandler(handler);
-        indexer.run(null, rsc, null, logger);
-        handler.flush();
-        handler.close();
-        assertEquals("Das Attribut none ist unbekannt.\n", log.toString());
-    }
+    indexer.load( new StringReader( "(define-attributes ((\"abc\")))" ),
+                  "<reader>" );
+    List<String> rsc = new ArrayList<String>();
+    rsc.add( "(indexentry :tkey ((\"abc\")) :locref \"123\" :attr \"none\")" );
+    ByteArrayOutputStream log = new ByteArrayOutputStream();
+    Logger logger = SomeTestUtilities.makeLogger();
+    Handler handler = new StreamHandler( log, new LogFormatter() );
+    logger.setLevel( Level.INFO );
+    handler.setLevel( Level.INFO );
+    logger.addHandler( handler );
+    indexer.run( null, rsc, null, logger );
+    handler.flush();
+    handler.close();
+    assertEquals( "Das Attribut none ist unbekannt.\n", log.toString() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testFull01Ok() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testFull01Ok() throws Exception {
 
-        Indexer indexer = new ATestableIndexer(SomeTestUtilities.DIRECT_FINDER);
-        indexer.load(new StringReader("(define-attributes ((\"none\")))"),
-            "<reader>");
-        List<String> rsc = new ArrayList<String>();
-        rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
-        indexer.run(null, rsc, null, SomeTestUtilities.makeLogger());
-    }
+    Indexer indexer = new ATestableIndexer( SomeTestUtilities.DIRECT_FINDER );
+    indexer.load( new StringReader( "(define-attributes ((\"none\")))" ),
+                  "<reader>" );
+    List<String> rsc = new ArrayList<String>();
+    rsc.add( "(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")" );
+    indexer.run( null, rsc, null, SomeTestUtilities.makeLogger() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testFull02Ok() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testFull02Ok() throws Exception {
 
-        Indexer indexer = new ATestableIndexer(SomeTestUtilities.DIRECT_FINDER);
-        List<String> rsc = new ArrayList<String>();
-        rsc.add("(indexentry :key (\"abc\") :locref \"123\")");
-        indexer.run(null, rsc, null, SomeTestUtilities.makeLogger());
-    }
+    Indexer indexer = new ATestableIndexer( SomeTestUtilities.DIRECT_FINDER );
+    List<String> rsc = new ArrayList<String>();
+    rsc.add( "(indexentry :key (\"abc\") :locref \"123\")" );
+    indexer.run( null, rsc, null, SomeTestUtilities.makeLogger() );
+  }
 
 }

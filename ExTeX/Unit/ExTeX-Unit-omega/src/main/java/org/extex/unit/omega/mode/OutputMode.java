@@ -31,15 +31,15 @@ import org.extex.unit.omega.OmegaExtension;
 /**
  * This class provides an implementation for the primitive
  * {@code \OutputMode}.
- * 
+ *
  * <p>The Primitive {@code \OutputMode}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;OutputMode&rang;
  *      &rarr; {@code \OutputMode} &lang;mode&rang;
@@ -49,46 +49,45 @@ import org.extex.unit.omega.OmegaExtension;
  *       |  {@code ebcdic}
  *       |  {@code twobyte}
  *       |  {@code twobyteLE}     </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \OutputMode onebyte  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OutputMode extends AbstractModeCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public OutputMode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public OutputMode( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException, HelpingException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException, HelpingException {
 
-        OmegaMode mode = scanOutputMode(context, source);
-        context.set(OmegaExtension.NAME, OUTPUT_MODE, mode,
-            prefix.clearGlobal());
-    }
+    OmegaMode mode = scanOutputMode( context, source );
+    context.set( OmegaExtension.NAME, OUTPUT_MODE, mode,
+                 prefix.clearGlobal() );
+  }
 
 }

@@ -19,63 +19,63 @@
 
 package org.extex.exbib.core.io;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is a test class for {@link Locator}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LocatorTest {
 
-    /**
-     * Test that the constructor with three arguments store the values properly
-*/
-    @Test
-    public void test1() {
+  /**
+   * Test that the constructor with three arguments store the values properly
+   */
+  @Test
+  public void test1() {
 
-        Locator locator = new Locator("abc", 12, 34);
-        assertEquals("abc", locator.getResourceName());
-        assertEquals(12, locator.getLineNumber());
-        assertEquals(34, locator.getLinePointer());
-    }
+    Locator locator = new Locator( "abc", 12, 34 );
+    assertEquals( "abc", locator.getResourceName() );
+    assertEquals( 12, locator.getLineNumber() );
+    assertEquals( 34, locator.getLinePointer() );
+  }
 
-    /**
-     * Test that the constructor with two arguments store the values properly
-*/
-    @Test
-    public void test2() {
+  /**
+   * Test that the constructor with two arguments store the values properly
+   */
+  @Test
+  public void test2() {
 
-        Locator locator = new Locator("abc", 12);
-        assertEquals("abc", locator.getResourceName());
-        assertEquals(12, locator.getLineNumber());
-        assertEquals(0, locator.getLinePointer());
-    }
+    Locator locator = new Locator( "abc", 12 );
+    assertEquals( "abc", locator.getResourceName() );
+    assertEquals( 12, locator.getLineNumber() );
+    assertEquals( 0, locator.getLinePointer() );
+  }
 
-    /**
-     * Test that toString() produces the proper message for the German locale
-*/
-    @Test
-    public void testToString1de() {
+  /**
+   * Test that toString() produces the proper message for the German locale
+   */
+  @Test
+  public void testToString1de() {
 
-        Locale.setDefault(Locale.GERMAN);
-        assertEquals("Zeile 12 von Datei abc",
-            new Locator("abc", 12, 34).toString());
-    }
+    Locale.setDefault( Locale.GERMAN );
+    assertEquals( "Zeile 12 von Datei abc",
+                  new Locator( "abc", 12, 34 ).toString() );
+  }
 
-    /**
-     * Test that toString() produces the proper message for the English locale
-*/
-    @Test
-    public void testToString1en() {
+  /**
+   * Test that toString() produces the proper message for the English locale
+   */
+  @Test
+  public void testToString1en() {
 
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("line 12 of file abc",
-            new Locator("abc", 12, 34).toString());
-    }
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "line 12 of file abc",
+                  new Locator( "abc", 12, 34 ).toString() );
+  }
 
 }

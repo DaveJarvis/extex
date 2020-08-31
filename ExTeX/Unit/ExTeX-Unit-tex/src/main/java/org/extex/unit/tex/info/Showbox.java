@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.info;
 
-import java.util.logging.Logger;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
@@ -33,146 +31,147 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.register.box.Setbox;
 
+import java.util.logging.Logger;
+
 /**
  * This class provides an implementation for the primitive {@code \showbox}
  * .
- * 
+ *
  * <p>The Primitive {@code \showbox}</p>
  * <p>
  * The primitive {@code \showbox} produces a listing of the box register given
  * as parameter. The listing is restricted in breadth and depth by the count
  * registers {@code \showboxbreadth} and {@code \showboxdepth} respectively.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;showbox&rang;
  *      &rarr; {@code \showbox} {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context, TokenSource, Typesetter, CodeToken)
  *        &lang;box&nbsp;register&nbsp;name&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \showbox 1  </pre>
- * 
  *
- * 
+ *
+ *
  * <p>The Count Parameter {@code \showboxbreadth}</p>
  * <p>
  * The count register {@code \showboxbreadth} contains the breadth to which the
  * box produced by {@code \showbox} should be presented.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;showboxbreadth&rang;
  *      &rarr; {@code \showboxbreadth} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \showboxbreadth=16  </pre>
- * 
  *
- * 
+ *
+ *
  * <p>The Count Parameter {@code \showboxdepth}</p>
  * <p>
  * The count register {@code \showboxdepth} contains the depth to which the box
  * produced by {@code \showbox} should be presented.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;showboxdepth&rang;
  *      &rarr; {@code \showboxdepth} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \showboxdepth=16  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Showbox extends AbstractCode implements LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the target channel for the message.
-     */
-    private transient Logger logger = null;
+  /**
+   * The field {@code logger} contains the target channel for the message.
+   */
+  private transient Logger logger = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Showbox(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Showbox( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Setter for the logger.
+   *
+   * @param log the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+   */
+  @Override
+  public void enableLogging( Logger log ) {
+
+    this.logger = log;
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String key = Setbox.getKey( context, source, typesetter, getToken() );
+    Box b = context.getBox( key );
+
+    if( b == null ) {
+      logger.info( getLocalizer().format( "TTP.Show.void",
+                                          context.esc( "box" + key ) ) );
     }
-
-    /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
-    public void enableLogging(Logger log) {
-
-        this.logger = log;
+    else {
+      long depth = context.getCount( "showboxdepth" ).getValue();
+      long width = context.getCount( "showboxbreadth" ).getValue();
+      StringBuilder sb = new StringBuilder();
+      sb.append( context.esc( "box" + key ) );
+      sb.append( "=\n" );
+      b.getNodes().toString( sb, "", (int) depth, (int) width );
+      sb.append( "\n" );
+      logger.info( sb.toString() );
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String key = Setbox.getKey(context, source, typesetter, getToken());
-        Box b = context.getBox(key);
-
-        if (b == null) {
-            logger.info(getLocalizer().format("TTP.Show.void",
-                context.esc("box" + key)));
-        } else {
-            long depth = context.getCount("showboxdepth").getValue();
-            long width = context.getCount("showboxbreadth").getValue();
-            StringBuilder sb = new StringBuilder();
-            sb.append(context.esc("box" + key));
-            sb.append("=\n");
-            b.getNodes().toString(sb, "", (int) depth, (int) width);
-            sb.append("\n");
-            logger.info(sb.toString());
-        }
-        logger.info(getLocalizer().format("TTP.Show.OK"));
-    }
+    logger.info( getLocalizer().format( "TTP.Show.OK" ) );
+  }
 
 }

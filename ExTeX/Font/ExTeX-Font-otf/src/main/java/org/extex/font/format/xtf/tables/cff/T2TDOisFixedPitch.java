@@ -24,33 +24,33 @@ import java.util.List;
 
 /**
  * isFixedPitch.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOisFixedPitch extends T2TDOBoolean {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2TDOisFixedPitch(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2TDOisFixedPitch( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{ESCAPE_BYTE, CFF_ISFIXEDPITCH});
-    }
+    super( stack, new short[]{ESCAPE_BYTE, CFF_ISFIXEDPITCH} );
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return T2TopDICTOperator.TYPE_ISFIXEDPITCH;
-    }
+    return T2TopDICTOperator.TYPE_ISFIXEDPITCH;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "isfixedpitch";
-    }
+    return "isfixedpitch";
+  }
 
 }

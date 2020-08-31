@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \pdfimageresolution}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfimageresolutionTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PdfimageresolutionTest.class);
-    }
+    (new JUnitCore()).run( PdfimageresolutionTest.class );
+  }
 
 
-    public PdfimageresolutionTest() {
+  public PdfimageresolutionTest() {
 
-        super("pdfimageresolution", "", "600");
-        setConfig("pdftex-test");
-    }
+    super( "pdfimageresolution", "", "600" );
+    setConfig( "pdftex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

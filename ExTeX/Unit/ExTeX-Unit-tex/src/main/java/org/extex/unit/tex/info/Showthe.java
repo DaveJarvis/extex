@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.info;
 
-import java.util.logging.Logger;
-
 import org.extex.core.exception.helping.CantUseAfterException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -38,9 +36,11 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
+import java.util.logging.Logger;
+
 /**
  * This class provides an implementation for the primitive {@code \showthe}.
- * 
+ *
  * <p>The Primitive {@code \showthe}</p>
  * <p>
  * The primitive {@code \showthe} produces on the terminal and the error log
@@ -55,15 +55,15 @@ import org.extex.typesetter.exception.TypesetterException;
  * Different entities might have different ideas about what the result of this
  * primitive is. In doubt consult the documentation of the primitive.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;showthe&rang;
  *      &rarr; {@code \showthe} &lang;internal quantity&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
  *
  * <pre class="TeXSample">
@@ -73,71 +73,71 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Showthe extends AbstractCode implements LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code logger} contains the target channel for the message.
-     */
-    private transient Logger logger;
+  /**
+   * The field {@code logger} contains the target channel for the message.
+   */
+  private transient Logger logger;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Showthe(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Showthe( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
-     */
-    public void enableLogging(Logger log) {
+  /**
+   * Setter for the logger.
+   *
+   * @param log the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(
+   *java.util.logging.Logger)
+   */
+  public void enableLogging( Logger log ) {
 
-        this.logger = log;
-    }
+    this.logger = log;
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Token cs = source.getToken(context);
+    Token cs = source.getToken( context );
 
-        if (cs instanceof CodeToken) {
+    if( cs instanceof CodeToken ) {
 
-            Code code = context.getCode((CodeToken) cs);
+      Code code = context.getCode( (CodeToken) cs );
 
-            if ( code instanceof Theable ) {
-                Tokens toks;
-                try {
-                    toks = ((Theable) code).the(context, source, typesetter);
-                } catch (CatcodeException e) {
-                    throw new NoHelpException(e);
-                }
-                logger.info(getLocalizer().format("TTP.Format", toks.toText()));
-                return;
-            }
+      if( code instanceof Theable ) {
+        Tokens toks;
+        try {
+          toks = ((Theable) code).the( context, source, typesetter );
+        } catch( CatcodeException e ) {
+          throw new NoHelpException( e );
         }
-
-        throw new CantUseAfterException(cs.toString(),
-            toText(context));
+        logger.info( getLocalizer().format( "TTP.Format", toks.toText() ) );
+        return;
+      }
     }
+
+    throw new CantUseAfterException( cs.toString(),
+                                     toText( context ) );
+  }
 
 }

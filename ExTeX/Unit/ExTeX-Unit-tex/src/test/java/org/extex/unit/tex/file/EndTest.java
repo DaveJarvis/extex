@@ -25,70 +25,72 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \end}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EndTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(EndTest.class);
-    }
+    (new JUnitCore()).run( EndTest.class );
+  }
 
 
-    public EndTest() {
+  public EndTest() {
 
-        setPrimitive("end");setArguments("");setPrepare("");
-    }
+    setPrimitive( "end" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\end"> Test case checking that a {@code \end}
-     * works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\end"> Test case checking that a {@code \end}
+   * works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\end",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\end"> Test case checking that any tokens after
-     * {@code \end} are ignored.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\end"> Test case checking that any tokens after
+   * {@code \end} are ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\end abc",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\end abc",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\end"> Test case checking that any tokens after
-     * {@code \end} are ignored.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\end"> Test case checking that any tokens after
+   * {@code \end} are ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\end \nabc",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\end \nabc",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

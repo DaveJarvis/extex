@@ -21,78 +21,78 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: w: move right
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviW extends DviCommand {
 
-    /**
-     * w0
-     */
-    private static final int W0 = 147;
+  /**
+   * w0
+   */
+  private static final int W0 = 147;
 
-    /**
-     * the value
-     */
-    private final int value;
+  /**
+   * the value
+   */
+  private final int value;
 
-    /**
-     * the w0
-     */
-    private final boolean w0;
+  /**
+   * the w0
+   */
+  private final boolean w0;
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param v the value
-     */
-    public DviW(final int opc, final int sp, final int v) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param v   the value
+   */
+  public DviW( final int opc, final int sp, final int v ) {
 
-        this(opc, sp, v, false);
-    }
+    this( opc, sp, v, false );
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param v the value
-     * @param w the w0
-     */
-    public DviW(final int opc, final int sp, final int v, final boolean w) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param v   the value
+   * @param w   the w0
+   */
+  public DviW( final int opc, final int sp, final int v, final boolean w ) {
 
-        super(opc, sp);
-        value = v;
-        w0 = w;
-    }
+    super( opc, sp );
+    value = v;
+    w0 = w;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return new StringBuilder().append("w").append(getOpcode() - W0)
-            .toString();
-    }
+    return new StringBuilder().append( "w" ).append( getOpcode() - W0 )
+                              .toString();
+  }
 
-    /**
-     * Returns the value.
-     * 
-     * @return Returns the value.
-     */
-    public int getValue() {
+  /**
+   * Returns the value.
+   *
+   * @return Returns the value.
+   */
+  public int getValue() {
 
-        return value;
-    }
+    return value;
+  }
 
-    /**
-     * Returns the w0.
-     * 
-     * @return Returns the w0.
-     */
-    public boolean isW0() {
+  /**
+   * Returns the w0.
+   *
+   * @return Returns the w0.
+   */
+  public boolean isW0() {
 
-        return w0;
-    }
+    return w0;
+  }
 }

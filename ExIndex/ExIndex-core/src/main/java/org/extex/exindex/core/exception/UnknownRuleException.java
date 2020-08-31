@@ -24,26 +24,26 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals that an unknown argument has been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class UnknownRuleException extends IndexerException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     * @param message the argument
-     */
-    public UnknownRuleException(ResourceLocator locator, String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   * @param message the argument
+   */
+  public UnknownRuleException( ResourceLocator locator, String message ) {
 
-        super(locator, LocalizerFactory.getLocalizer(
-            UnknownRuleException.class).format("Message", message));
-    }
+    super( locator, LocalizerFactory.getLocalizer(
+        UnknownRuleException.class ).format( "Message", message ) );
+  }
 }

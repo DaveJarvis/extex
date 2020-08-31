@@ -25,20 +25,19 @@ import java.io.Reader;
  * This interface describes the ability to manipulate an
  * {@link java.io.Reader Reader} by attaching additional processing units in a
  * pipe manner.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ReaderInterceptor {
 
-    /**
-     * Attach a processor to an input stream. If the interceptor decides that no
-     * additional pipe element is required it should simply return the reader
-     * passed in as argument.
-     * 
-     * @param reader the reader to add some processing unit to
-     * 
-     * @return the new reader. This value should never be {@code null}.
-     */
-    Reader pipe(Reader reader);
+  /**
+   * Attach a processor to an input stream. If the interceptor decides that no
+   * additional pipe element is required it should simply return the reader
+   * passed in as argument.
+   *
+   * @param reader the reader to add some processing unit to
+   * @return the new reader. This value should never be {@code null}.
+   */
+  Reader pipe( Reader reader );
 
 }

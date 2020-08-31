@@ -24,33 +24,33 @@ import java.util.List;
 
 /**
  * FDSelect.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOFDSelect extends T2TDONumber {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2TDOFDSelect(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2TDOFDSelect( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{ESCAPE_BYTE, CFF_FDSELECT});
-    }
+    super( stack, new short[]{ESCAPE_BYTE, CFF_FDSELECT} );
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return T2TopDICTOperator.TYPE_FDSELECT;
-    }
+    return T2TopDICTOperator.TYPE_FDSELECT;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "FDSelect";
-    }
+    return "FDSelect";
+  }
 
 }

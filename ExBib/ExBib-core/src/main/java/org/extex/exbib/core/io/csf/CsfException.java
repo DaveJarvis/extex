@@ -23,25 +23,25 @@ import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
  * This exception signals an error during the reading of a csf.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CsfException extends ExBibException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param message the message
-     */
-    public CsfException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   */
+  public CsfException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
 }

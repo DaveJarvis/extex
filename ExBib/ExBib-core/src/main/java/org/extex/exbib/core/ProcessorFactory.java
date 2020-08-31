@@ -39,36 +39,35 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ProcessorFactory extends AbstractFactory<Processor> {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param configuration the configuration to use
-     */
-    public ProcessorFactory(Configuration configuration) {
+  /**
+   * Creates a new object.
+   *
+   * @param configuration the configuration to use
+   */
+  public ProcessorFactory( Configuration configuration ) {
 
-        super(configuration);
-    }
+    super( configuration );
+  }
 
-    /**
-     * Get an instance of a {@link Processor Processor}.
-     * 
-     * @param type the type for lookup in the configuration; the value
-     *        {@code null} signals the use of the default configuration
-     * @param db the database
-     * 
-     * @return the {@link Processor Processor}
-     * 
-     * @throws ConfigurationException if the item {@code class} can not be
-     *         found in the configuration or the class can not be instantiated.
-     */
-    public Processor newInstance(String type, DB db)
-            throws ConfigurationException {
+  /**
+   * Get an instance of a {@link Processor Processor}.
+   *
+   * @param type the type for lookup in the configuration; the value
+   *             {@code null} signals the use of the default configuration
+   * @param db   the database
+   * @return the {@link Processor Processor}
+   * @throws ConfigurationException if the item {@code class} can not be
+   *                                found in the configuration or the class
+   *                                can not be instantiated.
+   */
+  public Processor newInstance( String type, DB db )
+      throws ConfigurationException {
 
-        Processor processor = createInstance(type, Processor.class);
-        processor.setDb(db);
-        return processor;
-    }
+    Processor processor = createInstance( type, Processor.class );
+    processor.setDb( db );
+    return processor;
+  }
 }

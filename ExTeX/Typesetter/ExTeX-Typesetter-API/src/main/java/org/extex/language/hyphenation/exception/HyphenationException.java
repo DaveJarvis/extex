@@ -26,32 +26,32 @@ import org.extex.typesetter.exception.TypesetterException;
  * components.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HyphenationException extends TypesetterException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     */
-    public HyphenationException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   */
+  public HyphenationException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the cause
-     */
-    public HyphenationException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause
+   */
+  public HyphenationException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
 }

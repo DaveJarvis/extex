@@ -21,8 +21,9 @@ package org.extex.typesetter.tex.paragraph;
 
 import org.extex.core.glue.WideGlue;
 
-/** 822.
- *
+/**
+ * 822.
+ * <p>
  * The active list also contains "delta" nodes that help the
  * algorithm compute the badness of individual lines. Such nodes
  * appear only between two active nodes, and they have
@@ -30,7 +31,8 @@ import org.extex.core.glue.WideGlue;
  * <i>q</i> is a delta node between them, so that <i>link(p)=q</i> and
  * <i>link(q)=r</i>, then <i>q</i> tells the space difference between lines
  * in the horizontal list that
- * start after breakpoint <i>p</i> and lines that start after breakpoint <i>r</i>.
+ * start after breakpoint <i>p</i> and lines that start after breakpoint 
+ * <i>r</i>.
  * In other words, if we know the length of the line that starts
  * after <i>p</i> and ends at our current position, then the corresponding
  * length of the line that starts after <i>r</i> is obtained by adding the
@@ -43,17 +45,17 @@ import org.extex.core.glue.WideGlue;
  * used.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DeltaNode extends WideGlue {
 
-    /**
-     * Creates a new object.
-     *
-     * @param glue the glue to copy
-     */
-    public DeltaNode(WideGlue glue) {
+  /**
+   * Creates a new object.
+   *
+   * @param glue the glue to copy
+   */
+  public DeltaNode( WideGlue glue ) {
 
-        set(glue);
-    }
+    set( glue );
+  }
 
 }

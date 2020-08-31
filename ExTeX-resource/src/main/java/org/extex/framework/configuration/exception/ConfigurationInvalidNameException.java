@@ -24,47 +24,47 @@ package org.extex.framework.configuration.exception;
  * {@code null} or the empty string.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationInvalidNameException extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new object.
-     *
-     * @param message the message string
-     */
-    public ConfigurationInvalidNameException(String message) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message string
+   */
+  public ConfigurationInvalidNameException( String message ) {
 
-        super(message, (String) null);
-    }
+    super( message, (String) null );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message message the message string
-     * @param cause the next Throwable in the list
-     */
-    public ConfigurationInvalidNameException(String message,
-            Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message message the message string
+   * @param cause   the next Throwable in the list
+   */
+  public ConfigurationInvalidNameException( String message,
+                                            Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Getter for the text prefix of this ConfigException.
-     * The text is taken from the resource bundle {@code ConfigurationEception}
-     * under the key {@code ConfigurationInvalidNameException.Text}.
-     *
-     * @return the text
-     */
-    @Override
-    protected String getText() {
+  /**
+   * Getter for the text prefix of this ConfigException.
+   * The text is taken from the resource bundle {@code ConfigurationEception}
+   * under the key {@code ConfigurationInvalidNameException.Text}.
+   *
+   * @return the text
+   */
+  @Override
+  protected String getText() {
 
-        return getLocalizer().format("ConfigurationInvalidNameException.Text");
-    }
+    return getLocalizer().format( "ConfigurationInvalidNameException.Text" );
+  }
 
 }

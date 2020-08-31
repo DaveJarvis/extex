@@ -21,49 +21,49 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: right
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviRight extends DviCommand {
 
-    /**
-     * right1
-     */
-    private static final int RIGHT1 = 143;
+  /**
+   * right1
+   */
+  private static final int RIGHT1 = 143;
 
-    /**
-     * the value
-     */
-    private final int value;
+  /**
+   * the value
+   */
+  private final int value;
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param v the value
-     */
-    public DviRight(final int opc, final int sp, final int v) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param v   the value
+   */
+  public DviRight( final int opc, final int sp, final int v ) {
 
-        super(opc, sp);
-        value = v;
-    }
+    super( opc, sp );
+    value = v;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return new StringBuilder("right").append(getOpcode() - RIGHT1 + 1)
-            .toString();
-    }
+    return new StringBuilder( "right" ).append( getOpcode() - RIGHT1 + 1 )
+                                       .toString();
+  }
 
-    /**
-     * Returns the value.
-     * 
-     * @return Returns the value.
-     */
-    public int getValue() {
+  /**
+   * Returns the value.
+   *
+   * @return Returns the value.
+   */
+  public int getValue() {
 
-        return value;
-    }
+    return value;
+  }
 }

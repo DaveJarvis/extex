@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -33,15 +33,15 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This is the adapter for the L system to define a location class.
- * 
-*
+ *
+ *
  * <p>The Command {@code define-location-class}</p>
- * 
+ *
  * <p>
  * The command {@code define-location-class} can be used to define a location
  * class.
  * </p>
- * 
+ *
  * <pre>
  *  (define-location-class
  *     <i>location-class-name</i>
@@ -50,27 +50,27 @@ import org.extex.framework.i18n.LocalizerFactory;
  *     [:hierdepth <i>depth</i>]
  *     [:var]
  *  )   </pre>
- * 
+ *
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
- * 
+ *
  * <pre>
  *  (define-location-class "pages" ("arabic-numbers"))   </pre>
- * 
+ *
  * <p>
  * Two arguments are mandatory. The first mandatory argument is the name of the
  * location class. It has a string value. In the example above the name is
  * {@code pages}
  * </p>
- * 
+ *
  * <p>
  * The second mandatory argument is a layer list. A layer list is a list of
  * location classes and separator specifications.
  * </p>
- * 
+ * <p>
  * TODO documentation incomplete
- * 
+ *
  * <p>
  * The following build-in location classes exist.
  * </p>
@@ -95,113 +95,113 @@ import org.extex.framework.i18n.LocalizerFactory;
  * letters. In the range of Unicode letters some special number symbols for
  * roman letters are defined as well. They are considered as well-</dd>
  * </dl>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LDefineLocationClass extends LFunction {
 
-    /**
-     * The constant {@code SEP} contains the tag :sep.
-     */
-    private static final LSymbol SEP = LSymbol.get(":sep");
+  /**
+   * The constant {@code SEP} contains the tag :sep.
+   */
+  private static final LSymbol SEP = LSymbol.get( ":sep" );
 
-    /**
-     * The field {@code container} contains the container for location classes.
-     */
-    private final LocationClassContainer container;
+  /**
+   * The field {@code container} contains the container for location classes.
+   */
+  private final LocationClassContainer container;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the name of the function
-     * @param container the container to store the information in
-     * 
-     * @throws NoSuchMethodException in case that no method corresponding to the
-     * argument specification could be found
-     * @throws SecurityException in case a security problem occurred
-     */
-    public LDefineLocationClass(String name, LocationClassContainer container)
-            throws SecurityException,
-                NoSuchMethodException {
+  /**
+   * Creates a new object.
+   *
+   * @param name      the name of the function
+   * @param container the container to store the information in
+   * @throws NoSuchMethodException in case that no method corresponding to the
+   *                               argument specification could be found
+   * @throws SecurityException     in case a security problem occurred
+   */
+  public LDefineLocationClass( String name, LocationClassContainer container )
+      throws SecurityException,
+      NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.STRING, Arg.QLIST,
-                Arg.OPT_NUMBER(":min-range-length", Integer.valueOf(0)),
-                Arg.OPT_NUMBER(":hierdepth", Integer.valueOf(0)),
-                Arg.OPT_BOOLEAN(":var", Boolean.FALSE)});
-        this.container = container;
+    super( name, new Arg[]{Arg.STRING, Arg.QLIST,
+        Arg.OPT_NUMBER( ":min-range-length", Integer.valueOf( 0 ) ),
+        Arg.OPT_NUMBER( ":hierdepth", Integer.valueOf( 0 ) ),
+        Arg.OPT_BOOLEAN( ":var", Boolean.FALSE )} );
+    this.container = container;
+  }
+
+  /**
+   * Take a sort rule and store it.
+   *
+   * @param interpreter    the interpreter
+   * @param name           the name of the location class
+   * @param layerList      the list of layers
+   * @param minRangeLength the minimum length of a range
+   * @param hierdepth      the hierarchy depth
+   * @param var            the var indicator
+   * @return {@code nil}
+   * @throws LException in case of an error
+   */
+  public LValue evaluate( LInterpreter interpreter, String name,
+                          LList layerList, Integer minRangeLength,
+                          Integer hierdepth,
+                          Boolean var ) throws LException {
+
+    LocationClass lc;
+
+    if( !var.booleanValue() ) {
+      if( layerList.size() != 1 ) {
+        throw new LException( LocalizerFactory.getLocalizer( getClass() )
+                                              .format( "NonVarLengthMismatch" ) );
+      }
+      String s = LString.stringValue( layerList.get( 0 ) );
+      lc = container.lookupLocationClass( s );
+      if( lc == null ) {
+        throw new LException( LocalizerFactory.getLocalizer( getClass() )
+                                              .format( "UnknownClass", s ) );
+      }
+
     }
+    else if( minRangeLength.longValue() != 0 ) {
+      throw new LException( LocalizerFactory.getLocalizer( getClass() )
+                                            .format( "VarAndMinRange" ) );
+    }
+    else {
+      VarLocationClass varPage = new VarLocationClass();
+      lc = varPage;
+      boolean sep = false;
+      for( LValue val : layerList ) {
 
-    /**
-     * Take a sort rule and store it.
-     * 
-     * @param interpreter the interpreter
-     * @param name the name of the location class
-     * @param layerList the list of layers
-     * @param minRangeLength the minimum length of a range
-     * @param hierdepth the hierarchy depth
-     * @param var the var indicator
-     * 
-     * @return {@code nil}
-     * 
-     * @throws LException in case of an error
-     */
-    public LValue evaluate(LInterpreter interpreter, String name,
-            LList layerList, Integer minRangeLength, Integer hierdepth,
-            Boolean var) throws LException {
-
-        LocationClass lc;
-
-        if (!var.booleanValue()) {
-            if (layerList.size() != 1) {
-                throw new LException(LocalizerFactory.getLocalizer(getClass())
-                    .format("NonVarLengthMismatch"));
-            }
-            String s = LString.stringValue(layerList.get(0));
-            lc = container.lookupLocationClass(s);
-            if (lc == null) {
-                throw new LException(LocalizerFactory.getLocalizer(getClass())
-                    .format("UnknownClass", s));
-            }
-
-        } else if (minRangeLength.longValue() != 0) {
-            throw new LException(LocalizerFactory.getLocalizer(getClass())
-                .format("VarAndMinRange"));
-        } else {
-            VarLocationClass varPage = new VarLocationClass();
-            lc = varPage;
-            boolean sep = false;
-            for (LValue val : layerList) {
-
-                if (val == SEP) {
-                    if (sep) {
-                        throw new LException(LocalizerFactory.getLocalizer(
-                            getClass()).format("DoubleSep"));
-                    }
-                    sep = true;
-                } else {
-                    String s = LString.stringValue(val);
-                    if (sep) {
-                        varPage.add(s);
-                    } else {
-                        LocationClass p = container.lookupLocationClass(s);
-                        if (s == null) {
-                            throw new LException(LocalizerFactory.getLocalizer(
-                                getClass()).format("UnknownClass", s));
-                        }
-                        varPage.add(p);
-                    }
-                }
-            }
-            if (sep) {
-                throw new LException(LocalizerFactory.getLocalizer(getClass())
-                    .format("MissingArg"));
-            }
+        if( val == SEP ) {
+          if( sep ) {
+            throw new LException( LocalizerFactory.getLocalizer(
+                getClass() ).format( "DoubleSep" ) );
+          }
+          sep = true;
         }
-
-        container.addLocationClass(name, lc);
-        return null;
+        else {
+          String s = LString.stringValue( val );
+          if( sep ) {
+            varPage.add( s );
+          }
+          else {
+            LocationClass p = container.lookupLocationClass( s );
+            if( s == null ) {
+              throw new LException( LocalizerFactory.getLocalizer(
+                  getClass() ).format( "UnknownClass", s ) );
+            }
+            varPage.add( p );
+          }
+        }
+      }
+      if( sep ) {
+        throw new LException( LocalizerFactory.getLocalizer( getClass() )
+                                              .format( "MissingArg" ) );
+      }
     }
+
+    container.addLocationClass( name, lc );
+    return null;
+  }
 
 }

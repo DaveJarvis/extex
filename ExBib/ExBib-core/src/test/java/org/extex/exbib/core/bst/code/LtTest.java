@@ -1,25 +1,22 @@
 /*
  * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
@@ -34,235 +31,235 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 /**
  * Test suite for {@code &lt;}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LtTest {
 
-    /**
-     * The field {@code p} contains the processor.
-     */
-    private BstProcessor p = null;
+  /**
+   * The field {@code p} contains the processor.
+   */
+  private BstProcessor p = null;
 
-    /**
-     * Run a test case.
-     * 
-     * @param t1 the first number
-     * @param t2 the second number
-     * 
-     * @throws Exception in case of an error
-     */
-    private void runTest(int t1, int t2) throws Exception {
+  /**
+   * Run a test case.
+   *
+   * @param t1 the first number
+   * @param t2 the second number
+   * @throws Exception in case of an error
+   */
+  private void runTest( int t1, int t2 ) throws Exception {
 
-        p.push(new TInteger(t2, null));
-        p.push(new TInteger(t1, null));
-        new Lt("<").execute(p, null, null);
-        assertEquals((t2 < t1 ? 1 : 0), p.popInteger(null).getInt());
-        assertNull(p.popUnchecked());
-    }
+    p.push( new TInteger( t2, null ) );
+    p.push( new TInteger( t1, null ) );
+    new Lt( "<" ).execute( p, null, null );
+    assertEquals( (t2 < t1 ? 1 : 0), p.popInteger( null ).getInt() );
+    assertNull( p.popUnchecked() );
+  }
 
-    /**
-     * Set-up method.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Before
-    public void setUp() throws Exception {
+  /**
+   * Set-up method.
+   *
+   * @throws Exception in case of an error
+   */
+  @Before
+  public void setUp() throws Exception {
 
-        p = new BstInterpreter099c(new DBImpl(), new NullWriter(), null);
-    }
+    p = new BstInterpreter099c( new DBImpl(), new NullWriter(), null );
+  }
 
-    /**
-     * Tear-down method.
-     */
-    @After
-    public void tearDown() {
+  /**
+   * Tear-down method.
+   */
+  @After
+  public void tearDown() {
 
-        p = null;
-    }
+    p = null;
+  }
 
-    /**
-     *  A short stack leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibStackEmptyException.class)
-    public void test1Stack() throws Exception {
+  /**
+   * A short stack leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibStackEmptyException.class)
+  public void test1Stack() throws Exception {
 
-        p.push(new TInteger(2, null));
-        new Lt("<").execute(p, null, null);
-    }
+    p.push( new TInteger( 2, null ) );
+    new Lt( "<" ).execute( p, null, null );
+  }
 
-    /**
-     *  An empty stack leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibStackEmptyException.class)
-    public void testEmptyStack() throws Exception {
+  /**
+   * An empty stack leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibStackEmptyException.class)
+  public void testEmptyStack() throws Exception {
 
-        new Lt("<").execute(p, null, null);
-    }
+    new Lt( "<" ).execute( p, null, null );
+  }
 
-    /**
-     *  Test 0 &lt; 0.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLt00() throws Exception {
+  /**
+   * Test 0 &lt; 0.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLt00() throws Exception {
 
-        runTest(0, 0);
-    }
+    runTest( 0, 0 );
+  }
 
-    /**
-     *  Test 1 &lt; 0.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLt10() throws Exception {
+  /**
+   * Test 1 &lt; 0.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLt10() throws Exception {
 
-        runTest(1, 0);
-    }
+    runTest( 1, 0 );
+  }
 
-    /**
-     *  Test 1 &lt; 1.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLt11() throws Exception {
+  /**
+   * Test 1 &lt; 1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLt11() throws Exception {
 
-        runTest(1, 1);
-    }
+    runTest( 1, 1 );
+  }
 
-    /**
-     *  Test 1 &lt; 2.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLt12() throws Exception {
+  /**
+   * Test 1 &lt; 2.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLt12() throws Exception {
 
-        runTest(1, 2);
-    }
+    runTest( 1, 2 );
+  }
 
-    /**
-     *  Test 123 &lt; 123.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLt123123() throws Exception {
+  /**
+   * Test 123 &lt; 123.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLt123123() throws Exception {
 
-        runTest(123, 123);
-    }
+    runTest( 123, 123 );
+  }
 
-    /**
-     *  Test 123 &lt; -123.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLt123Minus123() throws Exception {
+  /**
+   * Test 123 &lt; -123.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLt123Minus123() throws Exception {
 
-        runTest(123, -123);
-    }
+    runTest( 123, -123 );
+  }
 
-    /**
-     *  Test 1 &lt; -1.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLt1Minus1() throws Exception {
+  /**
+   * Test 1 &lt; -1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLt1Minus1() throws Exception {
 
-        runTest(1, -1);
-    }
+    runTest( 1, -1 );
+  }
 
-    /**
-     *  Test 2 &lt; 1.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLt21() throws Exception {
+  /**
+   * Test 2 &lt; 1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLt21() throws Exception {
 
-        runTest(2, 1);
-    }
+    runTest( 2, 1 );
+  }
 
-    /**
-     *  Test 2 &lt; 2.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLt22() throws Exception {
+  /**
+   * Test 2 &lt; 2.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLt22() throws Exception {
 
-        runTest(2, 2);
-    }
+    runTest( 2, 2 );
+  }
 
-    /**
-     *  Test -123 &lt; 123.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLtMinus123123() throws Exception {
+  /**
+   * Test -123 &lt; 123.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLtMinus123123() throws Exception {
 
-        runTest(-123, 123);
-    }
+    runTest( -123, 123 );
+  }
 
-    /**
-     *  Test -1 &lt; -2.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testLtMinus1Minus2() throws Exception {
+  /**
+   * Test -1 &lt; -2.
+   *
+   * @throws Exception in case of an error
+   */
+  public void testLtMinus1Minus2() throws Exception {
 
-        runTest(-1, -2);
-    }
+    runTest( -1, -2 );
+  }
 
-    /**
-     *  Test -2 &lt; -1.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLtMinus2Minus1() throws Exception {
+  /**
+   * Test -2 &lt; -1.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLtMinus2Minus1() throws Exception {
 
-        runTest(-2, -1);
-    }
+    runTest( -2, -1 );
+  }
 
-    /**
-     *  A type error in the first argument leads to an error.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibMissingNumberException.class)
-    public void testTypeError1() throws Exception {
+  /**
+   * A type error in the first argument leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibMissingNumberException.class)
+  public void testTypeError1() throws Exception {
 
-        p.push(new TString("2", null));
-        p.push(new TInteger(2, null));
-        new Lt("<").execute(p, null, null);
-    }
+    p.push( new TString( "2", null ) );
+    p.push( new TInteger( 2, null ) );
+    new Lt( "<" ).execute( p, null, null );
+  }
 
-    /**
-     *  A type error in the second argument leads to an error.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibMissingNumberException.class)
-    public void testTypeError2() throws Exception {
+  /**
+   * A type error in the second argument leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibMissingNumberException.class)
+  public void testTypeError2() throws Exception {
 
-        p.push(new TString("2", null));
-        p.push(new TInteger(2, null));
-        new Lt("<").execute(p, null, null);
-    }
+    p.push( new TString( "2", null ) );
+    p.push( new TInteger( 2, null ) );
+    new Lt( "<" ).execute( p, null, null );
+  }
 
 }

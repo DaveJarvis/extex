@@ -52,13 +52,13 @@ package org.extex.typesetter.type.math;
  * the appropriate method from the visitor interface is invoked. Thus as a
  * result the math class and the algorithm are decoupled.
  * </p>
- * 
+ *
  * <p>Example Source Code</p>
  * <p>
  * Consider you have a class with a method which needs to react differently on
  * different mode classes. The first approximation looks as follows:
  * </p>
- * 
+ *
  * <pre class="JavaSample">
  *
  * public class MyClass {
@@ -68,12 +68,12 @@ package org.extex.typesetter.type.math;
  *     }
  * }
  * </pre>
- * 
+ *
  * <p>
  * Now we can add the MathClassVisitor interface. Thus we are forced to define a
  * bunch of methods declared in this interface:
  * </p>
- * 
+ *
  * <pre class="JavaSample">
  *
  * public class MyClass <b>implements NodeVisitor</b> {
@@ -94,7 +94,7 @@ package org.extex.typesetter.type.math;
  * </b>
  * }
  * </pre>
- * 
+ *
  * <p>
  * Now we just have to make sure that those methods are invoked. This is done
  * with the method {@code visit()} of the MathClass. The signature allows us
@@ -111,94 +111,84 @@ package org.extex.typesetter.type.math;
  * math class it is possible to use another class as visitor, e.g. an inner
  * class.
  * </p>
- * 
- * 
+ *
  * @param <RET_TYPE> the return type
- * @param <A1_TYPE> the type of argument 1
- * @param <A2_TYPE> the type of argument 2
- * 
+ * @param <A1_TYPE>  the type of argument 1
+ * @param <A2_TYPE>  the type of argument 2
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface MathClassVisitor<RET_TYPE, A1_TYPE, A2_TYPE> {
 
-    /**
-     * Invoke the visitor method for a binary operator.
-     * 
-     * @param arg the argument
-     * @param arg2 the second argument
-     * 
-     * @return the result
-     */
-    RET_TYPE visitBinary(A1_TYPE arg, A2_TYPE arg2);
+  /**
+   * Invoke the visitor method for a binary operator.
+   *
+   * @param arg  the argument
+   * @param arg2 the second argument
+   * @return the result
+   */
+  RET_TYPE visitBinary( A1_TYPE arg, A2_TYPE arg2 );
 
-    /**
-     * Invoke the visitor method for a closing delimiter.
-     * 
-     * @param arg the argument
-     * @param arg2 the second argument
-     * 
-     * @return the result
-     */
-    RET_TYPE visitClosing(A1_TYPE arg, A2_TYPE arg2);
+  /**
+   * Invoke the visitor method for a closing delimiter.
+   *
+   * @param arg  the argument
+   * @param arg2 the second argument
+   * @return the result
+   */
+  RET_TYPE visitClosing( A1_TYPE arg, A2_TYPE arg2 );
 
-    /**
-     * Invoke the visitor method for a large operator.
-     * 
-     * @param arg the argument
-     * @param arg2 the second argument
-     * 
-     * @return the result
-     */
-    RET_TYPE visitLarge(A1_TYPE arg, A2_TYPE arg2);
+  /**
+   * Invoke the visitor method for a large operator.
+   *
+   * @param arg  the argument
+   * @param arg2 the second argument
+   * @return the result
+   */
+  RET_TYPE visitLarge( A1_TYPE arg, A2_TYPE arg2 );
 
-    /**
-     * Invoke the visitor method for a opening delimiter.
-     * 
-     * @param arg the argument
-     * @param arg2 the second argument
-     * 
-     * @return the result
-     */
-    RET_TYPE visitOpening(A1_TYPE arg, A2_TYPE arg2);
+  /**
+   * Invoke the visitor method for a opening delimiter.
+   *
+   * @param arg  the argument
+   * @param arg2 the second argument
+   * @return the result
+   */
+  RET_TYPE visitOpening( A1_TYPE arg, A2_TYPE arg2 );
 
-    /**
-     * Invoke the visitor method for an ordinary symbol .
-     * 
-     * @param arg the argument
-     * @param arg2 the second argument
-     * 
-     * @return the result
-     */
-    RET_TYPE visitOrdinary(A1_TYPE arg, A2_TYPE arg2);
+  /**
+   * Invoke the visitor method for an ordinary symbol .
+   *
+   * @param arg  the argument
+   * @param arg2 the second argument
+   * @return the result
+   */
+  RET_TYPE visitOrdinary( A1_TYPE arg, A2_TYPE arg2 );
 
-    /**
-     * Invoke the visitor method for a punctation symbol.
-     * 
-     * @param arg the argument
-     * @param arg2 the second argument
-     * 
-     * @return the result
-     */
-    RET_TYPE visitPunctation(A1_TYPE arg, A2_TYPE arg2);
+  /**
+   * Invoke the visitor method for a punctation symbol.
+   *
+   * @param arg  the argument
+   * @param arg2 the second argument
+   * @return the result
+   */
+  RET_TYPE visitPunctation( A1_TYPE arg, A2_TYPE arg2 );
 
-    /**
-     * Invoke the visitor method for a relation operator.
-     * 
-     * @param arg the argument
-     * @param arg2 the second argument
-     * 
-     * @return the result
-     */
-    RET_TYPE visitRelation(A1_TYPE arg, A2_TYPE arg2);
+  /**
+   * Invoke the visitor method for a relation operator.
+   *
+   * @param arg  the argument
+   * @param arg2 the second argument
+   * @return the result
+   */
+  RET_TYPE visitRelation( A1_TYPE arg, A2_TYPE arg2 );
 
-    /**
-     * Invoke the visitor method for a variable width symbol.
-     * 
-     * @param arg the argument
-     * @param arg2 the second argument
-     * 
-     * @return the result
-     */
-    RET_TYPE visitVariable(A1_TYPE arg, A2_TYPE arg2);
+  /**
+   * Invoke the visitor method for a variable width symbol.
+   *
+   * @param arg  the argument
+   * @param arg2 the second argument
+   * @return the result
+   */
+  RET_TYPE visitVariable( A1_TYPE arg, A2_TYPE arg2 );
 
 }

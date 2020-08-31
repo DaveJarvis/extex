@@ -26,26 +26,26 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception signals that an outer primitive has been encountered in the
  * definition of a macro. This means either in the pattern or the replacement
  * text.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EofInDefException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param primitive the mane of the primitive
-     */
-    public EofInDefException(String primitive) {
+  /**
+   * Creates a new object.
+   *
+   * @param primitive the mane of the primitive
+   */
+  public EofInDefException( String primitive ) {
 
-        super(LocalizerFactory.getLocalizer(EofInDefException.class),
-            "TTP.EofInDef", primitive);
-    }
+    super( LocalizerFactory.getLocalizer( EofInDefException.class ),
+           "TTP.EofInDef", primitive );
+  }
 
 }

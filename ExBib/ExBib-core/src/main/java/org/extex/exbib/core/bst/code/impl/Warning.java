@@ -30,7 +30,8 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code warning$}
  * <p>
  * This function pops a string from the stack and prints it as a warning to the
@@ -45,19 +46,19 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
- *   "there's a number but no series in " cite$ * warning$ 
+ *   "there's a number but no series in " cite$ * warning$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Pops the top (string) literal and prints it following a warning message.
  * This also increments a count of the number of warning messages issued.</dd>
  * </dl>
- * 
+ *
  * <dl>
  * <dt>BibTeX web documentation:</dt>
  * <dd>The {@code built_in} function {@code warning$} pops the top
@@ -65,46 +66,46 @@ import org.extex.framework.i18n.LocalizerFactory;
  * implemented as a special {@code built_in} function rather than using the
  * {@code top$} function so that it can {@code mark_warning}.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Warning extends AbstractCode {
 
-    /**
-     * The field {@code localizer} contains the cached localizer.
-     */
-    private transient Localizer localizer = null;
+  /**
+   * The field {@code localizer} contains the cached localizer.
+   */
+  private transient Localizer localizer = null;
 
-    /**
-     * Create a new object.
-     */
-    public Warning() {
+  /**
+   * Create a new object.
+   */
+  public Warning() {
 
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Warning( String name ) {
+
+    super( name );
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    Token arg = processor.popString( locator );
+
+    if( localizer == null ) {
+      localizer = LocalizerFactory.getLocalizer( getClass() );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Warning(String name) {
-
-        super(name);
-    }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        Token arg = processor.popString(locator);
-
-        if (localizer == null) {
-            localizer = LocalizerFactory.getLocalizer(getClass());
-        }
-
-        processor.warning(localizer.format("Message", arg.getValue()));
-    }
+    processor.warning( localizer.format( "Message", arg.getValue() ) );
+  }
 
 }

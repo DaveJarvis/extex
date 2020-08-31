@@ -40,9 +40,9 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * Typesetter}. This factory inherits its properties from the
  * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them the
  * support for configuration and logging.
- * 
- *  Configuration
- * 
+ * <p>
+ * Configuration
+ *
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * Typesetter. The configuration provides a mapping from a type name to the
@@ -68,7 +68,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  *     &lt;/develop&gt;
  *   &lt;/Typesetter&gt;
  *  </pre>
- * 
+ *
  * <p>
  * The named class need to implement the interface
  * {@link org.extex.typesetter.Typesetter Typesetter}. If this interface is not
@@ -85,140 +85,135 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * passed to the new instance. For this purpose the factory itself is log
  * enabled to receive the logger.
  * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TypesetterFactory extends AbstractFactory<Object> {
 
 
-    public TypesetterFactory() {
+  public TypesetterFactory() {
 
+  }
+
+  /**
+   * Make the node factory according to the specification.
+   *
+   * @param config the configuration to use
+   * @return the node factory
+   * @throws ConfigurationException in case of an configuration error
+   */
+  private NodeFactory makeNodeFactory( Configuration config )
+      throws ConfigurationException {
+
+    Configuration cfg = config.getConfiguration( "NodeFactory" );
+    NodeFactory nodeFactory =
+        (NodeFactory) createInstanceForConfiguration( cfg,
+                                                      NodeFactory.class );
+    if( nodeFactory instanceof LogEnabled ) {
+      ((LogEnabled) nodeFactory).enableLogging( getLogger() );
     }
+    if( nodeFactory instanceof Configurable ) {
+      ((Configurable) nodeFactory).configure( cfg );
+    }
+    return nodeFactory;
+  }
 
-    /**
-     * Make the node factory according to the specification.
-     * 
-     * @param config the configuration to use
-     * 
-     * @return the node factory
-     * 
-     * @throws ConfigurationException in case of an configuration error
+  /**
+   * Make a new page builder according to the specification in the
+   * configuration. The sub-configuration {@code PageBuilder} is used to
+   * determine the requested properties.
+   *
+   * @param config     the configuration to use
+   * @param context    the interpreter context
+   * @param typesetter the typesetter associated with it
+   * @return a new instance
+   * @throws ConfigurationException in case of an configuration error
+   * @throws TypesetterException    in case of an error
+   */
+  private PageBuilder makePageBuilder( Configuration config, Context context,
+                                       Typesetter typesetter )
+      throws TypesetterException {
+
+    Configuration cfg = config.getConfiguration( "PageBuilder" );
+    PageBuilder pageBuilder =
+        (PageBuilder) createInstanceForConfiguration( cfg,
+                                                      PageBuilder.class );
+    pageBuilder.setContext( context );
+    PageFactoryImpl pageFactory = new PageFactoryImpl();
+    pageFactory.enableLogging( getLogger() );
+    pageBuilder.setPageFactory( pageFactory );
+    return pageBuilder;
+  }
+
+  /**
+   * Make a new paragraph builder according to the specification in the
+   * configuration. The sub-configuration {@code ParagraphBuilder} is
+   * used to determine the requested properties.
+   *
+   * @param config      the configuration to use
+   * @param options     the typesetter options
+   * @param nodeFactory the node factory
+   * @return the new instance
+   * @throws ConfigurationException in case of an configuration error
+   */
+  private ParagraphBuilder makeParagraphBuilder( Configuration config,
+                                                 TypesetterOptions options,
+                                                 NodeFactory nodeFactory ) {
+
+    Configuration cfg = config.getConfiguration( "ParagraphBuilder" );
+    ParagraphBuilder builder =
+        (ParagraphBuilder) createInstanceForConfiguration( cfg,
+                                                           ParagraphBuilder.class );
+    /*
+     * if (builder instanceof HyphenationEnabled) { cfg =
+     * cfg.getConfiguration("Hyphenator"); Hyphenator hyphenator =
+     * (Hyphenator) createInstanceForConfiguration( cfg, Hyphenator.class);
+     * ((HyphenationEnabled) builder).enableHyphenation(hyphenator); }
      */
-    private NodeFactory makeNodeFactory(Configuration config)
-            throws ConfigurationException {
+    builder.setOptions( options );
+    builder.setNodefactory( nodeFactory );
+    return builder;
+  }
 
-        Configuration cfg = config.getConfiguration("NodeFactory");
-        NodeFactory nodeFactory =
-                (NodeFactory) createInstanceForConfiguration(cfg,
-                    NodeFactory.class);
-        if (nodeFactory instanceof LogEnabled) {
-            ((LogEnabled) nodeFactory).enableLogging(getLogger());
-        }
-        if (nodeFactory instanceof Configurable) {
-            ((Configurable) nodeFactory).configure(cfg);
-        }
-        return nodeFactory;
-    }
+  /**
+   * Get an instance of a typesetter.
+   *
+   * @param type        the symbolic name of the configuration to use
+   * @param context     the interpreter context
+   * @param backend     the back-end driver
+   * @param interpreter the interpreter
+   * @return a new typesetter
+   * @throws ConfigurationException in case of an configuration error
+   * @throws TypesetterException    in case of another error
+   */
+  public Typesetter newInstance( String type, Context context,
+                                 BackendDriver backend,
+                                 Interpreter interpreter )
+      throws TypesetterException {
 
-    /**
-     * Make a new page builder according to the specification in the
-     * configuration. The sub-configuration {@code PageBuilder} is used to
-     * determine the requested properties.
-     * 
-     * @param config the configuration to use
-     * @param context the interpreter context
-     * @param typesetter the typesetter associated with it
-     * 
-     * @return a new instance
-     * 
-     * @throws ConfigurationException in case of an configuration error
-     * @throws TypesetterException in case of an error
-     */
-    private PageBuilder makePageBuilder(Configuration config, Context context,
-            Typesetter typesetter) throws TypesetterException {
+    Configuration cfg = selectConfiguration( type );
 
-        Configuration cfg = config.getConfiguration("PageBuilder");
-        PageBuilder pageBuilder =
-                (PageBuilder) createInstanceForConfiguration(cfg,
-                    PageBuilder.class);
-        pageBuilder.setContext(context);
-        PageFactoryImpl pageFactory = new PageFactoryImpl();
-        pageFactory.enableLogging(getLogger());
-        pageBuilder.setPageFactory(pageFactory);
-        return pageBuilder;
-    }
+    Typesetter typesetter =
+        (Typesetter) createInstance( type, Typesetter.class );
+    NodeFactory nodeFactory = makeNodeFactory( cfg );
+    typesetter.setNodeFactory( nodeFactory );
 
-    /**
-     * Make a new paragraph builder according to the specification in the
-     * configuration. The sub-configuration {@code ParagraphBuilder} is
-     * used to determine the requested properties.
-     * 
-     * @param config the configuration to use
-     * @param options the typesetter options
-     * @param nodeFactory the node factory
-     * 
-     * @return the new instance
-     * 
-     * @throws ConfigurationException in case of an configuration error
-     */
-    private ParagraphBuilder makeParagraphBuilder(Configuration config,
-            TypesetterOptions options, NodeFactory nodeFactory) {
+    typesetter.setParagraphBuilder( makeParagraphBuilder( cfg,
+                                                          (TypesetterOptions) context,
+                                                          nodeFactory ) );
 
-        Configuration cfg = config.getConfiguration("ParagraphBuilder");
-        ParagraphBuilder builder =
-                (ParagraphBuilder) createInstanceForConfiguration(cfg,
-                    ParagraphBuilder.class);
-        /*
-         * if (builder instanceof HyphenationEnabled) { cfg =
-         * cfg.getConfiguration("Hyphenator"); Hyphenator hyphenator =
-         * (Hyphenator) createInstanceForConfiguration( cfg, Hyphenator.class);
-         * ((HyphenationEnabled) builder).enableHyphenation(hyphenator); }
-         */
-        builder.setOptions(options);
-        builder.setNodefactory(nodeFactory);
-        return builder;
-    }
+    typesetter.setPageBuilder( makePageBuilder( cfg, context, typesetter ) );
 
-    /**
-     * Get an instance of a typesetter.
-     * 
-     * @param type the symbolic name of the configuration to use
-     * @param context the interpreter context
-     * @param backend the back-end driver
-     * @param interpreter the interpreter
-     * 
-     * @return a new typesetter
-     * 
-     * @throws ConfigurationException in case of an configuration error
-     * @throws TypesetterException in case of another error
-     */
-    public Typesetter newInstance(String type, Context context,
-            BackendDriver backend, Interpreter interpreter)
-            throws TypesetterException {
+    typesetter.setOptions( (TypesetterOptions) context );
+    typesetter.setBackend( backend );
 
-        Configuration cfg = selectConfiguration(type);
+    OutputRoutineFactory outputRoutineFactory = new OutputRoutineFactory();
+    outputRoutineFactory.configure( cfg.getConfiguration( "OutputRoutine" ) );
+    outputRoutineFactory.enableLogging( getLogger() );
+    typesetter.setOutputRoutine(
+        outputRoutineFactory.newInstance( interpreter ) );
 
-        Typesetter typesetter =
-                (Typesetter) createInstance(type, Typesetter.class);
-        NodeFactory nodeFactory = makeNodeFactory(cfg);
-        typesetter.setNodeFactory(nodeFactory);
-
-        typesetter.setParagraphBuilder(makeParagraphBuilder(cfg,
-            (TypesetterOptions) context, nodeFactory));
-
-        typesetter.setPageBuilder(makePageBuilder(cfg, context, typesetter));
-
-        typesetter.setOptions((TypesetterOptions) context);
-        typesetter.setBackend(backend);
-
-        OutputRoutineFactory outputRoutineFactory = new OutputRoutineFactory();
-        outputRoutineFactory.configure(cfg.getConfiguration("OutputRoutine"));
-        outputRoutineFactory.enableLogging(getLogger());
-        typesetter.setOutputRoutine(
-            outputRoutineFactory.newInstance(interpreter));
-
-        return typesetter;
-    }
+    return typesetter;
+  }
 
 }

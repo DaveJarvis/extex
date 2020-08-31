@@ -24,60 +24,60 @@ import java.util.ArrayList;
 
 /**
  * This class provides a type-safe list of observers for the open reader event.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class OpenReaderObserverList extends ArrayList<OpenReaderObserver>
-        implements
-            OpenReaderObserver {
+    implements
+    OpenReaderObserver {
 
-    /**
-     * The field {@code serialVersionUID} contains th version number for
-     * serialization
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains th version number for
+   * serialization
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Take a list and add an observer. If the list is {@code null} then
-     * a new one is created.
-     * 
-     * @param list the input list or {@code null}
-     * @param observer the observer to add
-     * 
-     * @return the input list or a new one with the observer added
-     */
-    public static OpenReaderObserver register(OpenReaderObserver list,
-            OpenReaderObserver observer) {
+  /**
+   * Take a list and add an observer. If the list is {@code null} then
+   * a new one is created.
+   *
+   * @param list     the input list or {@code null}
+   * @param observer the observer to add
+   * @return the input list or a new one with the observer added
+   */
+  public static OpenReaderObserver register( OpenReaderObserver list,
+                                             OpenReaderObserver observer ) {
 
-        if (list instanceof OpenReaderObserverList) {
-            ((OpenReaderObserverList) list).add(observer);
-        } else if (list == null) {
-            OpenReaderObserverList result = new OpenReaderObserverList();
-            result.add(observer);
-            return result;
-        } else {
-            OpenReaderObserverList result = new OpenReaderObserverList();
-            result.add(list);
-            result.add(observer);
-            return result;
-        }
-        return list;
+    if( list instanceof OpenReaderObserverList ) {
+      ((OpenReaderObserverList) list).add( observer );
     }
-
-    /**
-     * Invoke all observers on the list to inform them of the reader which has
-     * been opened.
-     * 
-     * @param reader the reader to be processed
-     * 
-     * @see org.extex.scanner.stream.observer.reader.OpenReaderObserver#update(
-     *      java.io.Reader)
-     */
-    public void update(Reader reader) {
-
-        for (OpenReaderObserver obs : this) {
-            obs.update(reader);
-        }
+    else if( list == null ) {
+      OpenReaderObserverList result = new OpenReaderObserverList();
+      result.add( observer );
+      return result;
     }
+    else {
+      OpenReaderObserverList result = new OpenReaderObserverList();
+      result.add( list );
+      result.add( observer );
+      return result;
+    }
+    return list;
+  }
+
+  /**
+   * Invoke all observers on the list to inform them of the reader which has
+   * been opened.
+   *
+   * @param reader the reader to be processed
+   * @see org.extex.scanner.stream.observer.reader.OpenReaderObserver#update(
+   *java.io.Reader)
+   */
+  public void update( Reader reader ) {
+
+    for( OpenReaderObserver obs : this ) {
+      obs.update( reader );
+    }
+  }
 
 }

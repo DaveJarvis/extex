@@ -24,47 +24,47 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is thrown when a helping exception is required and no help is
  * available. It simply acts as a wrapper for other exceptions.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoHelpException extends HelpingException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the cause
-     */
-    public NoHelpException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause
+   */
+  public NoHelpException( Throwable cause ) {
 
-        super(cause);
+    super( cause );
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param message the parameter to be inserted into the test template of
+   *                this exception
+   */
+  public NoHelpException( String message ) {
+
+    super( LocalizerFactory.getLocalizer( NoHelpException.class ), "Text",
+           message );
+  }
+
+  @Override
+  public String getLocalizedMessage() {
+
+    Throwable e = getCause();
+    if( e != null ) {
+      return e.getLocalizedMessage();
     }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param message the parameter to be inserted into the test template of
-     *        this exception
-     */
-    public NoHelpException(String message) {
-
-        super(LocalizerFactory.getLocalizer(NoHelpException.class), "Text",
-            message);
-    }
-
-@Override
-    public String getLocalizedMessage() {
-
-        Throwable e = getCause();
-        if (e != null) {
-            return e.getLocalizedMessage();
-        }
-        return super.getLocalizedMessage();
-    }
+    return super.getLocalizedMessage();
+  }
 
 }

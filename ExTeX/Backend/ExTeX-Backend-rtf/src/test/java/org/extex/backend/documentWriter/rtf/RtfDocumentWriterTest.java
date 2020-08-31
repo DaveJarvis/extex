@@ -19,140 +19,134 @@
 
 package org.extex.backend.documentWriter.rtf;
 
-import static org.junit.Assert.assertEquals;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationLoader;
+import org.extex.framework.configuration.exception.*;
+import org.junit.Test;
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.ConfigurationLoader;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationIOException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is the test suite for the RTF writer.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RtfDocumentWriterTest {
 
-    /**
-     *  Test that the default extension is {@code rtf}.
-     *
-     */
-    @Test
-    public final void testGetExtension1() {
+  /**
+   * Test that the default extension is {@code rtf}.
+   */
+  @Test
+  public final void testGetExtension1() {
 
-        assertEquals("rtf", new RtfDocumentWriter(null).getExtension());
-    }
+    assertEquals( "rtf", new RtfDocumentWriter( null ).getExtension() );
+  }
 
-    /**
-     *  Test that the extension is {@code rtf}.
-     */
-    @Test
-    public final void testConfigure1() {
+  /**
+   * Test that the extension is {@code rtf}.
+   */
+  @Test
+  public final void testConfigure1() {
 
-        RtfDocumentWriter rtfDocumentWriter = new RtfDocumentWriter(null);
-        rtfDocumentWriter.configure(new Configuration() {
+    RtfDocumentWriter rtfDocumentWriter = new RtfDocumentWriter( null );
+    rtfDocumentWriter.configure( new Configuration() {
 
-            public Configuration findConfiguration(String key)
-                    throws ConfigurationInvalidResourceException,
-                        ConfigurationNotFoundException,
-                        ConfigurationSyntaxException,
-                        ConfigurationIOException {
+      public Configuration findConfiguration( String key )
+          throws ConfigurationInvalidResourceException,
+          ConfigurationNotFoundException,
+          ConfigurationSyntaxException,
+          ConfigurationIOException {
 
-                throw new ConfigurationNotFoundException("", "");
-            }
+        throw new ConfigurationNotFoundException( "", "" );
+      }
 
-            public Configuration findConfiguration(String key, String attribute)
-                    throws ConfigurationException {
+      public Configuration findConfiguration( String key, String attribute )
+          throws ConfigurationException {
 
-                throw new ConfigurationNotFoundException("", "");
-            }
+        throw new ConfigurationNotFoundException( "", "" );
+      }
 
-            public String getAttribute(String name) {
+      public String getAttribute( String name ) {
 
-                if (name.equals("extension")) {
-                    return "abc";
-                }
-                throw new ConfigurationNotFoundException("", "");
-            }
+        if( name.equals( "extension" ) ) {
+          return "abc";
+        }
+        throw new ConfigurationNotFoundException( "", "" );
+      }
 
-            public Configuration getConfiguration(String key)
-                    throws ConfigurationException {
+      public Configuration getConfiguration( String key )
+          throws ConfigurationException {
 
-                throw new ConfigurationNotFoundException("", "");
-            }
+        throw new ConfigurationNotFoundException( "", "" );
+      }
 
-            public Configuration getConfiguration(String key, String attribute)
-                    throws ConfigurationException {
+      public Configuration getConfiguration( String key, String attribute )
+          throws ConfigurationException {
 
-                throw new ConfigurationNotFoundException("", "");
-            }
+        throw new ConfigurationNotFoundException( "", "" );
+      }
 
-            public String getValue() throws ConfigurationException {
+      public String getValue() throws ConfigurationException {
 
-                throw new ConfigurationNotFoundException("", "");
-            }
+        throw new ConfigurationNotFoundException( "", "" );
+      }
 
-            public String getValue(String key) throws ConfigurationException {
+      public String getValue( String key ) throws ConfigurationException {
 
-                throw new ConfigurationNotFoundException("", "");
-            }
+        throw new ConfigurationNotFoundException( "", "" );
+      }
 
-            public int getValueAsInteger(String key, int defaultValue)
-                    throws ConfigurationException {
+      public int getValueAsInteger( String key, int defaultValue )
+          throws ConfigurationException {
 
-                return 42;
-            }
+        return 42;
+      }
 
-            public List<String> getValues(String key) {
+      public List<String> getValues( String key ) {
 
-                return null;
-            }
+        return null;
+      }
 
-            public void getValues(List<String> list, String key) {
+      public void getValues( List<String> list, String key ) {
 
-                // nothing to do
-            }
+        // nothing to do
+      }
 
-            public Iterator<Configuration> iterator()
-                    throws ConfigurationException {
+      public Iterator<Configuration> iterator()
+          throws ConfigurationException {
 
-                throw new ConfigurationNotFoundException("", "");
-            }
+        throw new ConfigurationNotFoundException( "", "" );
+      }
 
-            public Iterator<Configuration> iterator(String key)
-                    throws ConfigurationException {
+      public Iterator<Configuration> iterator( String key )
+          throws ConfigurationException {
 
-                throw new ConfigurationNotFoundException("", "");
-            }
+        throw new ConfigurationNotFoundException( "", "" );
+      }
 
-            public void setConfigurationLoader(ConfigurationLoader loader) {
+      public void setConfigurationLoader( ConfigurationLoader loader ) {
 
-                // nothing to do
-            }
+        // nothing to do
+      }
 
-        });
-        assertEquals("abc", rtfDocumentWriter.getExtension());
-    }
+    } );
+    assertEquals( "abc", rtfDocumentWriter.getExtension() );
+  }
 
-    /**
-     *  Test that a {@code null} page is not shipped.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testShipout1() throws Exception {
+  /**
+   * Test that a {@code null} page is not shipped.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testShipout1() throws Exception {
 
-        RtfDocumentWriter writer = new RtfDocumentWriter(null);
-        assertEquals(0, writer.shipout(null));
-    }
+    RtfDocumentWriter writer = new RtfDocumentWriter( null );
+    assertEquals( 0, writer.shipout( null ) );
+  }
 
-    // TODO implement more test cases
+  // TODO implement more test cases
 }

@@ -21,113 +21,113 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: pre: Beginning of the preamble.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviPre extends DviCommand {
 
-    /**
-     * the comment
-     */
-    private final String comment;
+  /**
+   * the comment
+   */
+  private final String comment;
 
-    /**
-     * the den
-     */
-    private final int den;
+  /**
+   * the den
+   */
+  private final int den;
 
-    /**
-     * the identifier
-     */
-    private final int identifier;
+  /**
+   * the identifier
+   */
+  private final int identifier;
 
-    /**
-     * the mag
-     */
-    private final int mag;
+  /**
+   * the mag
+   */
+  private final int mag;
 
-    /**
-     * the num
-     */
-    private final int num;
+  /**
+   * the num
+   */
+  private final int num;
 
-    /**
-     * Create a new object.
-     * 
-     * @param oc the opcode
-     * @param sp the start pointer
-     * @param i the indentification
-     * @param anum the num
-     * @param aden the den
-     * @param amag the mag
-     * @param com the comment
-     */
-    public DviPre(final int oc, final int sp, final int i, final int anum,
-            final int aden, final int amag, final String com) {
+  /**
+   * Create a new object.
+   *
+   * @param oc   the opcode
+   * @param sp   the start pointer
+   * @param i    the indentification
+   * @param anum the num
+   * @param aden the den
+   * @param amag the mag
+   * @param com  the comment
+   */
+  public DviPre( final int oc, final int sp, final int i, final int anum,
+                 final int aden, final int amag, final String com ) {
 
-        super(oc, sp);
-        identifier = i;
-        num = anum;
-        den = aden;
-        mag = amag;
-        comment = com;
+    super( oc, sp );
+    identifier = i;
+    num = anum;
+    den = aden;
+    mag = amag;
+    comment = com;
 
-    }
+  }
 
-    /**
-     * Returns the comment.
-     * 
-     * @return Returns the comment.
-     */
-    public String getComment() {
+  /**
+   * Returns the comment.
+   *
+   * @return Returns the comment.
+   */
+  public String getComment() {
 
-        return comment;
-    }
+    return comment;
+  }
 
-    /**
-     * Returns the den.
-     * 
-     * @return Returns the den.
-     */
-    public int getDen() {
+  /**
+   * Returns the den.
+   *
+   * @return Returns the den.
+   */
+  public int getDen() {
 
-        return den;
-    }
+    return den;
+  }
 
-    /**
-     * Returns the identifier.
-     * 
-     * @return Returns the identifier.
-     */
-    public int getIdentifier() {
+  /**
+   * Returns the identifier.
+   *
+   * @return Returns the identifier.
+   */
+  public int getIdentifier() {
 
-        return identifier;
-    }
+    return identifier;
+  }
 
-    /**
-     * Returns the mag.
-     * 
-     * @return Returns the mag.
-     */
-    public int getMag() {
+  /**
+   * Returns the mag.
+   *
+   * @return Returns the mag.
+   */
+  public int getMag() {
 
-        return mag;
-    }
+    return mag;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "pre";
-    }
+    return "pre";
+  }
 
-    /**
-     * Returns the num.
-     * 
-     * @return Returns the num.
-     */
-    public int getNum() {
+  /**
+   * Returns the num.
+   *
+   * @return Returns the num.
+   */
+  public int getNum() {
 
-        return num;
-    }
+    return num;
+  }
 }

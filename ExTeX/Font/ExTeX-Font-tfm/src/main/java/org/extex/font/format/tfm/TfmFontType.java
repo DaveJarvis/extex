@@ -23,132 +23,141 @@ import java.io.Serializable;
 
 /**
  * BaseFont type.
- * 
+ *
  * <p>
  * VANILLA, MATHSY, MATHEX
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TfmFontType implements Serializable {
 
-    /**
-     * Type (type-safe class).
-     */
-    private static final class Type implements Serializable {
-
-        /**
-         * The field {@code serialVersionUID} ...
-         */
-        private static final long serialVersionUID = 1L;
-
-    
-        public Type() {
-
-        }
-    }
+  /**
+   * Type (type-safe class).
+   */
+  private static final class Type implements Serializable {
 
     /**
-     * TeX Math Extension font metric.
-     */
-    public static final Type MATHEX = new Type();
-
-    /**
-     * TeX Math Symbols font metric.
-     */
-    public static final Type MATHSY = new Type();
-
-    /**
-     * Other font metric.
-     */
-    public static final Type OTHER = new Type();
-
-    /**
-     * The field {@code serialVersionUID}.
+     * The field {@code serialVersionUID} ...
      */
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Typewriter font metric.
-     */
-    public static final Type TYPEWRITER = new Type();
 
-    /**
-     * Normal TeX font metric.
-     */
-    public static final Type VANILLA = new Type();
-
-    /**
-     * the type.
-     */
-    private final Type type;
-
-    /**
-     * Create a new object.
-     * 
-     * @param codingscheme the coding scheme
-     */
-    public TfmFontType(String codingscheme) {
-
-        if (codingscheme == null) {
-            type = OTHER;
-        } else if (codingscheme.startsWith("TEX MATH SY")) {
-            type = MATHSY;
-        } else if (codingscheme.startsWith("TEX MATH EX")) {
-            type = MATHEX;
-        } else if (codingscheme.startsWith("TEX TEXT")) {
-            type = VANILLA;
-        } else if (codingscheme.startsWith("TEX TYPEWRITER TEXT")) {
-            type = TYPEWRITER;
-        } else {
-            type = OTHER;
-        }
-    }
-
-    /**
-     * Returns the type.
-     * 
-     * @return Returns the type.
-     */
-    public Type getType() {
-
-        return type;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        if (type == MATHEX) {
-            return "MATHEX";
-        } else if (type == MATHSY) {
-            return "MATHSY";
-        } else if (type == VANILLA) {
-            return "VANILLA";
-        }
-        return "OTHER";
+    public Type() {
 
     }
+  }
 
-    /**
-     * Returns the font type name for font metric file.
-     * 
-     * @return Returns the font type name for font metric file.
-     */
-    public String toTFMString() {
+  /**
+   * TeX Math Extension font metric.
+   */
+  public static final Type MATHEX = new Type();
 
-        if (type == MATHEX) {
-            return "tfm-mathext";
-        } else if (type == MATHSY) {
-            return "tfm-mathsyml";
-        } else if (type == VANILLA) {
-            return "tfm-normal";
-        }
-        return "tfm -other";
+  /**
+   * TeX Math Symbols font metric.
+   */
+  public static final Type MATHSY = new Type();
+
+  /**
+   * Other font metric.
+   */
+  public static final Type OTHER = new Type();
+
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Typewriter font metric.
+   */
+  public static final Type TYPEWRITER = new Type();
+
+  /**
+   * Normal TeX font metric.
+   */
+  public static final Type VANILLA = new Type();
+
+  /**
+   * the type.
+   */
+  private final Type type;
+
+  /**
+   * Create a new object.
+   *
+   * @param codingscheme the coding scheme
+   */
+  public TfmFontType( String codingscheme ) {
+
+    if( codingscheme == null ) {
+      type = OTHER;
     }
+    else if( codingscheme.startsWith( "TEX MATH SY" ) ) {
+      type = MATHSY;
+    }
+    else if( codingscheme.startsWith( "TEX MATH EX" ) ) {
+      type = MATHEX;
+    }
+    else if( codingscheme.startsWith( "TEX TEXT" ) ) {
+      type = VANILLA;
+    }
+    else if( codingscheme.startsWith( "TEX TYPEWRITER TEXT" ) ) {
+      type = TYPEWRITER;
+    }
+    else {
+      type = OTHER;
+    }
+  }
+
+  /**
+   * Returns the type.
+   *
+   * @return Returns the type.
+   */
+  public Type getType() {
+
+    return type;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+
+    if( type == MATHEX ) {
+      return "MATHEX";
+    }
+    else if( type == MATHSY ) {
+      return "MATHSY";
+    }
+    else if( type == VANILLA ) {
+      return "VANILLA";
+    }
+    return "OTHER";
+
+  }
+
+  /**
+   * Returns the font type name for font metric file.
+   *
+   * @return Returns the font type name for font metric file.
+   */
+  public String toTFMString() {
+
+    if( type == MATHEX ) {
+      return "tfm-mathext";
+    }
+    else if( type == MATHSY ) {
+      return "tfm-mathsyml";
+    }
+    else if( type == VANILLA ) {
+      return "tfm-normal";
+    }
+    return "tfm -other";
+  }
 
 }

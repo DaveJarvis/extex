@@ -23,15 +23,15 @@ import org.extex.test.AbstractHfillTester;
 
 /**
  * This is a test suite for the primitive {@code \hfilneg}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HfilnegTest extends AbstractHfillTester {
 
-    public HfilnegTest() {
-        setPrimitive( "hfilneg" );
-        setFil( "-1.0fil" );
-    }
+  public HfilnegTest() {
+    setPrimitive( "hfilneg" );
+    setFil( "-1.0fil" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

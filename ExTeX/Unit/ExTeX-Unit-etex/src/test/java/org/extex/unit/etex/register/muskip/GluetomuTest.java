@@ -25,60 +25,59 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \gluetomu}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class GluetomuTest extends NonExecuteTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(GluetomuTest.class);
-    }
+    (new JUnitCore()).run( GluetomuTest.class );
+  }
 
 
-    public GluetomuTest() {
+  public GluetomuTest() {
 
-        super("gluetomu", "");
-        setConfig("etex-test");
-    }
+    super( "gluetomu", "" );
+    setConfig( "etex-test" );
+  }
 
-    /**
-     * Test case showing that a constant in points translates identical to mu
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test case showing that a constant in points translates identical to mu
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertOutput(
+    assertOutput(
         // --- input code ---
-            "\\muskip0=\\gluetomu1.2pt \\showthe\\muskip0 \\end",
-            // --- output channel ---
-            "> 1.2mu.\n", "");
-    }
+        "\\muskip0=\\gluetomu1.2pt \\showthe\\muskip0 \\end",
+        // --- output channel ---
+        "> 1.2mu.\n", "" );
+  }
 
-    /**
-     *  Test case showing that \gluetomu can be applied to \show.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testShowthe1() throws Exception {
+  /**
+   * Test case showing that \gluetomu can be applied to \show.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testShowthe1() throws Exception {
 
-        assertOutput(
-            // --- input code ---
-            "\\showthe\\gluetomu1.2pt \\end",
-            // --- output channel ---
-            "You can't use `the control sequence \\gluetomu' after \\showthe",
-            "");
-    }
+    assertOutput(
+        // --- input code ---
+        "\\showthe\\gluetomu1.2pt \\end",
+        // --- output channel ---
+        "You can't use `the control sequence \\gluetomu' after \\showthe",
+        "" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 
 }

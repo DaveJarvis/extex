@@ -33,7 +33,7 @@ import org.extex.typesetter.type.math.MathDelimiter;
 /**
  * This class provides an implementation for the primitive
  * {@code \odelimiter}.
- * 
+ *
  * <p>The Math Primitive {@code \odelimiter}</p>
  * <p>
  * The math primitive {@code \odelimiter} can be used to insert a delimiter.
@@ -41,60 +41,59 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * assigned to single characters.
  * </p>
  * TODO missing documentation
- * 
+ *
  * <p>Syntax</p>
-
+ *
  * <p>
  * The formal description of this primitive is the following:
  * </p>
- * 
+ *
  * <pre class="syntax">
  *    &lang;odelimiter&rang;
  *       &rarr; {@code \odelimiter} &lang;delcode&rang; </pre>
- * 
- * 
+ *
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \odelimiter "426830A </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Odelimiter extends AbstractOmegaDelimiter {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Odelimiter(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Odelimiter( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws ConfigurationException,
+      HelpingException,
+      TypesetterException {
 
-        NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del =
-                parseDelimiter(context, source, typesetter, getToken());
-        nc.add(del);
-    }
+    NoadConsumer nc = getListMaker( context, typesetter );
+    MathDelimiter del =
+        parseDelimiter( context, source, typesetter, getToken() );
+    nc.add( del );
+  }
 
 }

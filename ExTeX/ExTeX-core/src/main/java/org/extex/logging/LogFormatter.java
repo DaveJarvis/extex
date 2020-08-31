@@ -30,132 +30,130 @@ import java.util.logging.LogRecord;
  * is honored.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LogFormatter extends Formatter {
 
-    /**
-     * The constant {@code LINE_LENGTH} contains the target line length for
-     * line breaking in the log file.
-     */
-    private static final int LINE_LENGTH = 80;
+  /**
+   * The constant {@code LINE_LENGTH} contains the target line length for
+   * line breaking in the log file.
+   */
+  private static final int LINE_LENGTH = 80;
 
-    /**
-     * The field {@code col} contains the current column for the next
-     * output character.
-     */
-    private int col;
+  /**
+   * The field {@code col} contains the current column for the next
+   * output character.
+   */
+  private int col;
 
 
-    public LogFormatter() {
+  public LogFormatter() {
 
-        this.col = 0;
+    this.col = 0;
+  }
+
+  /**
+   * Format the given log record and return the formatted string.
+   *
+   * @param record the log record to be formatted
+   * @return the formatted log record
+   * @see java.util.logging.Formatter#format(java.util.logging.LogRecord)
+   */
+  @Override
+  public String format( LogRecord record ) {
+
+    String message = record.getMessage();
+    StringBuilder msg = new StringBuilder( message == null ? "" : message );
+    StringBuilder out = new StringBuilder();
+    int start = 0;
+
+    for( int i = msg.indexOf( "\n", start ); i >= 0; i = msg.indexOf( "\n",
+                                                                      start ) ) {
+      print( out, msg.subSequence( start, i + 1 ) );
+      start = i + 1;
+    }
+    print( out, msg.subSequence( start, msg.length() ) );
+
+    Throwable t = record.getThrown();
+
+    if( t != null ) {
+
+      ByteArrayOutputStream os = new ByteArrayOutputStream();
+      PrintWriter writer = new PrintWriter( os );
+      writer.write( "\n" );
+      t.printStackTrace( writer );
+      writer.write( "\n" );
+      writer.flush();
+      out.append( os );
+      col = 0;
     }
 
-    /**
-     * Format the given log record and return the formatted string.
-     *
-     * @param record the log record to be formatted
-     *
-     * @return the formatted log record
-     *
-     * @see java.util.logging.Formatter#format(java.util.logging.LogRecord)
-     */
-    @Override
-    public String format(LogRecord record) {
+    return out.toString();
+  }
 
-        String message = record.getMessage();
-        StringBuilder msg = new StringBuilder(message == null ? "" : message);
-        StringBuilder out = new StringBuilder();
-        int start = 0;
+  /**
+   * Print a string which may contain a newline at most at the end.
+   *
+   * @param out the target buffer
+   * @param msg the message to process
+   */
+  private void print( StringBuilder out, CharSequence msg ) {
 
-        for (int i = msg.indexOf("\n", start); i >= 0; i = msg.indexOf("\n",
-                start)) {
-            print(out, msg.subSequence(start, i + 1));
-            start = i + 1;
-        }
-        print(out, msg.subSequence(start, msg.length()));
+    CharSequence s = msg;
+    int length = msg.length();
+    if( length == 0 ) {
+      return;
+    }
+    boolean skip = false;
 
-        Throwable t = record.getThrown();
-
-        if (t != null) {
-
-            ByteArrayOutputStream os = new ByteArrayOutputStream();
-            PrintWriter writer = new PrintWriter(os);
-            writer.write("\n");
-            t.printStackTrace(writer);
-            writer.write("\n");
-            writer.flush();
-            out.append(os);
-            col = 0;
-        }
-
-        return out.toString();
+    if( col == 0 ) {
+      char c = msg.charAt( 0 );
+      if( c == '\n' || c == '\r' || c == ' ' ) {
+        skip = true;
+      }
     }
 
-    /**
-     * Print a string which may contain a newline at most at the end.
-     *
-     * @param out the target buffer
-     * @param msg the message to process
-     */
-    private void print(StringBuilder out, CharSequence msg) {
+    if( col + s.length() + (skip ? 1 : 0) >= LINE_LENGTH ) {
 
-        CharSequence s = msg;
-        int length = msg.length();
-        if (length == 0) {
-            return;
-        }
-        boolean skip = false;
-
-        if (col == 0) {
-            char c = msg.charAt(0);
-            if (c == '\n' || c == '\r' || c == ' ') {
-                skip = true;
-            }
-        }
-
-        if (col + s.length() + (skip ? 1 : 0) >= LINE_LENGTH) {
-
-            s = breakLine(out, s);
-            col = 0;
-            length = s.length();
-            char c = s.charAt(0);
-            skip =  (c == '\n' || c == '\r' || c == ' ');
-        }
-
-        col += length + (skip ? 1 : 0);
-
-        if (skip) {
-            out.append(s.subSequence(1, length));
-        } else {
-            out.append(s);
-        }
-        if (msg.charAt(length - 1) == '\n') {
-            col = 0;
-        }
+      s = breakLine( out, s );
+      col = 0;
+      length = s.length();
+      char c = s.charAt( 0 );
+      skip = (c == '\n' || c == '\r' || c == ' ');
     }
 
-    /**
-     * Find a break point at a white-space and break the line there.
-     *
-     * @param out the target buffer
-     * @param msg the message to process
-     *
-     * @return the message
-     */
-    private CharSequence breakLine(StringBuilder out,
-            CharSequence msg) {
+    col += length + (skip ? 1 : 0);
 
-        for (int i = LINE_LENGTH - col - 1; i >= 0; i--) {
-            char c = msg.charAt(i);
-            if (c == ' ' || c == '\t') {
-                out.append(msg.subSequence(0, i));
-                out.append('\n');
-                return msg.subSequence(i, msg.length());
-            }
-        }
-        out.append('\n');
-        return msg;
+    if( skip ) {
+      out.append( s.subSequence( 1, length ) );
     }
+    else {
+      out.append( s );
+    }
+    if( msg.charAt( length - 1 ) == '\n' ) {
+      col = 0;
+    }
+  }
+
+  /**
+   * Find a break point at a white-space and break the line there.
+   *
+   * @param out the target buffer
+   * @param msg the message to process
+   * @return the message
+   */
+  private CharSequence breakLine( StringBuilder out,
+                                  CharSequence msg ) {
+
+    for( int i = LINE_LENGTH - col - 1; i >= 0; i-- ) {
+      char c = msg.charAt( i );
+      if( c == ' ' || c == '\t' ) {
+        out.append( msg.subSequence( 0, i ) );
+        out.append( '\n' );
+        return msg.subSequence( i, msg.length() );
+      }
+    }
+    out.append( '\n' );
+    return msg;
+  }
 
 }

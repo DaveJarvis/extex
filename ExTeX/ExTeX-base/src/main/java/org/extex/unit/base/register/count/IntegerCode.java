@@ -41,174 +41,179 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an object which acts like a count register.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IntegerCode extends AbstractAssignment
-        implements
-            CountConvertible,
-            Theable,
-            Multiplyable,
-            Divideable,
-            Advanceable,
-            ExpandableCode,
-            InitializableCode {
+    implements
+    CountConvertible,
+    Theable,
+    Multiplyable,
+    Divideable,
+    Advanceable,
+    ExpandableCode,
+    InitializableCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 20060607L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 20060607L;
 
-    /**
-     * The field {@code value} contains the value stored in this object.
-     */
-    private long value;
+  /**
+   * The field {@code value} contains the value stored in this object.
+   */
+  private long value;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public IntegerCode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public IntegerCode( CodeToken token ) {
 
-        super(token);
-        this.value = 0;
+    super( token );
+    this.value = 0;
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   * @param value the initial value
+   */
+  public IntegerCode( CodeToken token, long value ) {
+
+    super( token );
+    this.value = value;
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void advance( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    source.getKeyword( context, "by" );
+    long v = source.parseInteger( context, source, typesetter );
+    value += v;
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    source.getOptionalEquals( context );
+    long v = source.parseInteger( context, source, typesetter );
+    value = v;
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter ) throws TypesetterException {
+
+    return value;
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void divide( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    source.getKeyword( context, "by" );
+    long v = source.parseInteger( context, source, typesetter );
+    if( v == 0 ) {
+      throw new ArithmeticOverflowException(
+          toText( context ) );
     }
+    value /= v;
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     * @param value the initial value
-     */
-    public IntegerCode(CodeToken token, long value) {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter ) throws HelpingException {
 
-        super(token);
-        this.value = value;
+    try {
+      source.push( context.getTokenFactory().toTokens( value ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void advance(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * Getter for value.
+   *
+   * @return the value
+   */
+  public long getValue() {
 
-        source.getKeyword(context, "by");
-        long v = source.parseInteger(context, source, typesetter);
-        value += v;
+    return this.value;
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void init( Context context, TokenSource source, Typesetter typesetter )
+      throws HelpingException,
+      TypesetterException {
+
+    if( source == null ) {
+      return;
     }
+    value = source.parseInteger( context, source, typesetter );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void multiply( Flags prefix, Context context, TokenSource source,
+                        Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        source.getOptionalEquals(context);
-        long v = source.parseInteger(context, source, typesetter);
-        value = v;
-    }
+    source.getKeyword( context, "by" );
+    long v = source.parseInteger( context, source, typesetter );
+    value *= v;
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException {
+  /**
+   * Setter for value.
+   *
+   * @param value the value to set
+   */
+  public void setValue( long value ) {
 
-        return value;
-    }
+    this.value = value;
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void divide(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        source.getKeyword(context, "by");
-        long v = source.parseInteger(context, source, typesetter);
-        if (v == 0) {
-            throw new ArithmeticOverflowException(
-                toText(context));
-        }
-        value /= v;
-    }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
-
-        try {
-            source.push(context.getTokenFactory().toTokens(value));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-     * Getter for value.
-     * 
-     * @return the value
-     */
-    public long getValue() {
-
-        return this.value;
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void init(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        if (source == null) {
-            return;
-        }
-        value = source.parseInteger(context, source, typesetter);
-    }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void multiply(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        source.getKeyword(context, "by");
-        long v = source.parseInteger(context, source, typesetter);
-        value *= v;
-    }
-
-    /**
-     * Setter for value.
-     * 
-     * @param value the value to set
-     */
-    public void setValue(long value) {
-
-        this.value = value;
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        return context.getTokenFactory().toTokens(value);
-    }
+    return context.getTokenFactory().toTokens( value );
+  }
 
 }

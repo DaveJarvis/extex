@@ -25,14 +25,16 @@ import org.extex.unit.tex.math.AbstractMathTester;
  * This is a test suite for the primitive {@code \atop}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AtopTest extends AbstractMathTester {
 
 
-    public AtopTest() {
+  public AtopTest() {
 
-        setPrimitive("atop");setArguments(" a$");setPrepare("b");
-    }
+    setPrimitive( "atop" );
+    setArguments( " a$" );
+    setPrepare( "b" );
+  }
 
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

@@ -31,62 +31,62 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \pdfnames}.
- * 
+ *
  * <p>The PDF Primitive {@code \pdfnames}</p>
  * <p>
  * This primitive inserts text into the PDF {@code /Names} array.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;pdfnames&rang;
  *       &rarr; {@code \pdfnames} {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context, boolean, boolean, CodeToken)
  *          &lang;general text&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \pdfnames {...}  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Pdfnames extends AbstractPdftexCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Pdfnames(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Pdfnames( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        PdftexSupport writer = ensurePdftex(context, typesetter);
+    PdftexSupport writer = ensurePdftex( context, typesetter );
 
-        String text = source.scanTokensAsString(context, getToken());
+    String text = source.scanTokensAsString( context, getToken() );
 
-        writer.pdfnames(text);
-    }
+    writer.pdfnames( text );
+  }
 
 }

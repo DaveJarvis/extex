@@ -41,172 +41,173 @@ import java.util.List;
 
 /**
  * This is the derived class for a list maker in inner vertical list mode.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InnerVerticalListMaker extends AbstractListMaker {
 
-    /**
-     * The field {@code afterParagraphObservers} contains the observers to be
-     * invoked after the paragraph has been completed.
-     */
-    private final List<ParagraphObserver> afterParagraphObservers =
-        new ArrayList<>();
+  /**
+   * The field {@code afterParagraphObservers} contains the observers to be
+   * invoked after the paragraph has been completed.
+   */
+  private final List<ParagraphObserver> afterParagraphObservers =
+      new ArrayList<>();
 
-    /**
-     * The field {@code nodes} contains the list of nodes encapsulated.
-     */
-    private final VerticalListNode nodes = new VerticalListNode();
+  /**
+   * The field {@code nodes} contains the list of nodes encapsulated.
+   */
+  private final VerticalListNode nodes = new VerticalListNode();
 
-    /**
-     * This value contains the previous depth for baseline calculations. In
-     * contrast to TeX the value null is used to indicate that the next box on
-     * the vertical list should be exempt from the baseline calculations.
-*/
-    private Dimen prevDepth = null;
+  /**
+   * This value contains the previous depth for baseline calculations. In
+   * contrast to TeX the value null is used to indicate that the next box on
+   * the vertical list should be exempt from the baseline calculations.
+   */
+  private Dimen prevDepth = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param manager the manager to ask for global changes
-     * @param locator the locator
-     */
-    public InnerVerticalListMaker(ListManager manager, Locator locator) {
+  /**
+   * Creates a new object.
+   *
+   * @param manager the manager to ask for global changes
+   * @param locator the locator
+   */
+  public InnerVerticalListMaker( ListManager manager, Locator locator ) {
 
-        super(manager, locator);
+    super( manager, locator );
+  }
+
+  @Override
+  public void add( FixedGlue g ) throws TypesetterException {
+
+    nodes.addSkip( g );
+  }
+
+  @Override
+  public void add( Node n ) {
+
+    nodes.add( n );
+  }
+
+  @Override
+  public void addAndAdjust( NodeList list, TypesetterOptions options )
+      throws TypesetterException,
+      ConfigurationException {
+
+    int size = list.size();
+    for( int i = 0; i < size; i++ ) {
+      nodes.add( list.get( i ) );
     }
+  }
 
-    @Override
-    public void add(FixedGlue g) throws TypesetterException {
+  @Override
+  public void addSpace( TypesettingContext typesettingContext,
+                        FixedCount spacefactor ) {
 
-        nodes.addSkip(g);
+    // spaces are ignored in vertical mode
+  }
+
+  @Override
+  public void afterParagraph( ParagraphObserver observer ) {
+
+    afterParagraphObservers.add( observer );
+  }
+
+  @Override
+  public NodeList complete( TypesetterOptions context ) {
+
+    return nodes;
+  }
+
+  @Override
+  public void cr( Context context, TypesettingContext tc, UnicodeChar uc )
+      throws TypesetterException {
+
+    // TODO gene: CR in vertical mode
+  }
+
+  @Override
+  public Node getLastNode() {
+
+    return (nodes.isEmpty() ? null : nodes.get( nodes.size() - 1 ));
+  }
+
+  @Override
+  public Mode getMode() {
+
+    return Mode.INNER_VERTICAL;
+  }
+
+  @Override
+  public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
+
+    return prevDepth;
+  }
+
+  @Override
+  public boolean letter( UnicodeChar symbol, TypesettingContext tc,
+                         Context context, TokenSource source, Locator locator )
+      throws TypesetterException {
+
+    ListMaker lm = getManager().ensureHorizontalMode( locator );
+    if( !(lm instanceof TokenDelegateListMaker) ) {
+      // TODO gene: letter unimplemented
+      throw new RuntimeException( "unimplemented" );
     }
+    return ((TokenDelegateListMaker) lm).letter( symbol, tc, context,
+                                                 source, locator );
+  }
 
-    @Override
-    public void add(Node n) {
+  /**
+   * {@code \par} s are silently ignored in vertical mode.
+   */
+  @Override
+  public void par() throws TypesetterException, ConfigurationException {
 
-        nodes.add(n);
+    try {
+      // Note: the observers have to be run in reverse order to restore
+      // the language properly.
+      for( int i = afterParagraphObservers.size() - 1; i >= 0; i-- ) {
+        afterParagraphObservers.get( i ).atParagraph( nodes );
+      }
+    } catch( Exception e ) {
+      throw new TypesetterException( e );
     }
+    // nothing more to do
+  }
 
-    @Override
-    public void addAndAdjust(NodeList list, TypesetterOptions options)
-            throws TypesetterException,
-                ConfigurationException {
+  @Override
+  public void removeLastNode() {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            nodes.add(list.get(i));
-        }
+    nodes.remove( nodes.size() - 1 );
+  }
+
+  @Override
+  public void setPrevDepth( FixedDimen pd ) {
+
+    if( prevDepth == null ) {
+      prevDepth = new Dimen( pd );
     }
-
-    @Override
-    public void addSpace(TypesettingContext typesettingContext,
-            FixedCount spacefactor) {
-
-        // spaces are ignored in vertical mode
+    else {
+      prevDepth.set( pd );
     }
+  }
 
-    @Override
-    public void afterParagraph(ParagraphObserver observer) {
+  public void showlist( StringBuilder sb, long l, long m ) {
 
-        afterParagraphObservers.add(observer);
+    sb.append( "prevdepth " );
+    if( prevDepth == null ) {
+      sb.append( "ignored" );
     }
-
-    @Override
-    public NodeList complete(TypesetterOptions context) {
-
-        return nodes;
+    else {
+      prevDepth.toString( sb );
     }
+    sb.append( '\n' );
+  }
 
-    @Override
-    public void cr(Context context, TypesettingContext tc, UnicodeChar uc)
-            throws TypesetterException {
+  @Override
+  public String toString() {
 
-        // TODO gene: CR in vertical mode
-    }
-
-    @Override
-    public Node getLastNode() {
-
-        return (nodes.isEmpty() ? null : nodes.get(nodes.size() - 1));
-    }
-
-    @Override
-    public Mode getMode() {
-
-        return Mode.INNER_VERTICAL;
-    }
-
-    @Override
-    public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
-
-        return prevDepth;
-    }
-
-    @Override
-    public boolean letter(UnicodeChar symbol, TypesettingContext tc,
-            Context context, TokenSource source, Locator locator)
-            throws TypesetterException {
-
-        ListMaker lm = getManager().ensureHorizontalMode(locator);
-        if (!(lm instanceof TokenDelegateListMaker)) {
-            // TODO gene: letter unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-        return ((TokenDelegateListMaker) lm).letter(symbol, tc, context,
-            source, locator);
-    }
-
-    /**
-     * {@code \par} s are silently ignored in vertical mode.
-     * 
-*/
-    @Override
-    public void par() throws TypesetterException, ConfigurationException {
-
-        try {
-            // Note: the observers have to be run in reverse order to restore
-            // the language properly.
-            for (int i = afterParagraphObservers.size() - 1; i >= 0; i--) {
-                afterParagraphObservers.get(i).atParagraph(nodes);
-            }
-        } catch (Exception e) {
-            throw new TypesetterException(e);
-        }
-        // nothing more to do
-    }
-
-@Override
-    public void removeLastNode() {
-
-        nodes.remove(nodes.size() - 1);
-    }
-
-@Override
-    public void setPrevDepth(FixedDimen pd) {
-
-        if (prevDepth == null) {
-            prevDepth = new Dimen(pd);
-        } else {
-            prevDepth.set(pd);
-        }
-    }
-
-public void showlist(StringBuilder sb, long l, long m) {
-
-        sb.append("prevdepth ");
-        if (prevDepth == null) {
-            sb.append("ignored");
-        } else {
-            prevDepth.toString(sb);
-        }
-        sb.append('\n');
-    }
-
-@Override
-    public String toString() {
-
-        return super.toString() + "\n" + nodes.toString();
-    }
+    return super.toString() + "\n" + nodes.toString();
+  }
 
 }

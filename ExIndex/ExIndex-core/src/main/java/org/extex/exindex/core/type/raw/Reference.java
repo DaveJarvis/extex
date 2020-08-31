@@ -19,49 +19,48 @@
 
 package org.extex.exindex.core.type.raw;
 
-import java.util.List;
-import java.util.logging.Logger;
-
 import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * This interface describes a reference specification.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Reference {
 
-    /**
-     * Check the reference for validity.
-     * 
-     * @param logger the logger
-     * @param entry the current index entry
-     * @param index the index for cross-reference lookup
-     * @param crossrefClass the container for cross-reference classes
-     * @param openPages the list of open pages
-     * @param attributes the defined attributes
-     * 
-     * @return {@code true} iff everything is ok
-     */
-    boolean check(Logger logger, RawIndexentry entry, StructuredIndex index,
-            LocationClassContainer crossrefClass,
-            List<OpenLocationReference> openPages,
-            AttributesContainer attributes);
+  /**
+   * Check the reference for validity.
+   *
+   * @param logger        the logger
+   * @param entry         the current index entry
+   * @param index         the index for cross-reference lookup
+   * @param crossrefClass the container for cross-reference classes
+   * @param openPages     the list of open pages
+   * @param attributes    the defined attributes
+   * @return {@code true} iff everything is ok
+   */
+  boolean check( Logger logger, RawIndexentry entry, StructuredIndex index,
+                 LocationClassContainer crossrefClass,
+                 List<OpenLocationReference> openPages,
+                 AttributesContainer attributes );
 
-    /**
-     * Getter for the layer.
-     * 
-     * @return the layer or {@code null}
-     */
-    String getLayer();
+  /**
+   * Getter for the layer.
+   *
+   * @return the layer or {@code null}
+   */
+  String getLayer();
 
-    /**
-     * Getter for the location.
-     * 
-     * @return the location
-     */
-    String[] getLocation();
+  /**
+   * Getter for the location.
+   *
+   * @return the location
+   */
+  String[] getLocation();
 
 }

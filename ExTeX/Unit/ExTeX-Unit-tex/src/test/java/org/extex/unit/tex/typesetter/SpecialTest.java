@@ -25,42 +25,44 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \special}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SpecialTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SpecialTest.class);
-    }
+    (new JUnitCore()).run( SpecialTest.class );
+  }
 
 
-    public SpecialTest() {
+  public SpecialTest() {
 
-        setPrimitive("special");setArguments("{}");setPrepare("");
-    }
+    setPrimitive( "special" );
+    setArguments( "{}" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\special"> Test case checking that {@code \special}
-     * inserts a special node. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\special"> Test case checking that {@code \special}
+   * inserts a special node.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            DEFINE_BRACES + "\\special{abc}\\end ",
-            // --- output channel ---
-            "\\vbox(0.0pt+0.0pt)x0.0pt\n" +
-                    ".\\special{abc}\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   DEFINE_BRACES + "\\special{abc}\\end ",
+                   // --- output channel ---
+                   "\\vbox(0.0pt+0.0pt)x0.0pt\n" +
+                       ".\\special{abc}\n" );
+  }
 
 }

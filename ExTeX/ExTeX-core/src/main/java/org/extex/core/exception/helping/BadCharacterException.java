@@ -24,47 +24,47 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is raised when a bad character code is encountered.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code TTP.BadChar}.
+ * The localization format is taken from the Localizer under the key
+ * {@code TTP.BadChar}.
  * </p>
  * <p>
- *  The format receives one argument which contains the character code.
+ * The format receives one argument which contains the character code.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BadCharacterException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * The field {@code cc} contains the invalid character.
-     */
-    private final long cc;
+  /**
+   * The field {@code cc} contains the invalid character.
+   */
+  private final long cc;
 
-    /**
-     * Creates a new object.
-     *
-     * @param code the bad character code
-     */
-    public BadCharacterException(long code) {
+  /**
+   * Creates a new object.
+   *
+   * @param code the bad character code
+   */
+  public BadCharacterException( long code ) {
 
-        super(LocalizerFactory.getLocalizer(BadCharacterException.class),
-                "TTP.BadChar", Long.toString(code));
-        cc = code;
-    }
+    super( LocalizerFactory.getLocalizer( BadCharacterException.class ),
+           "TTP.BadChar", Long.toString( code ) );
+    cc = code;
+  }
 
-    /**
-     * Getter for cc.
-     *
-     * @return the cc
-     */
-    public long getChar() {
+  /**
+   * Getter for cc.
+   *
+   * @return the cc
+   */
+  public long getChar() {
 
-        return this.cc;
-    }
+    return this.cc;
+  }
 
 }

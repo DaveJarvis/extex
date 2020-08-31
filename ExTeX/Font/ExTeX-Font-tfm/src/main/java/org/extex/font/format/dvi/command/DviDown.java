@@ -21,50 +21,50 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: down
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviDown extends DviCommand {
 
-    /**
-     * down1
-     */
-    private static final int DOWN1 = 157;
+  /**
+   * down1
+   */
+  private static final int DOWN1 = 157;
 
-    /**
-     * the value
-     */
-    private final int value;
+  /**
+   * the value
+   */
+  private final int value;
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param v the value
-     */
-    public DviDown(final int opc, final int sp, final int v) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param v   the value
+   */
+  public DviDown( final int opc, final int sp, final int v ) {
 
-        super(opc, sp);
-        value = v;
-    }
+    super( opc, sp );
+    value = v;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return new StringBuilder("down").append(getOpcode() - DOWN1 + 1)
-            .toString();
-    }
+    return new StringBuilder( "down" ).append( getOpcode() - DOWN1 + 1 )
+                                      .toString();
+  }
 
-    /**
-     * Returns the value.
-     * 
-     * @return Returns the value.
-     */
-    public int getValue() {
+  /**
+   * Returns the value.
+   *
+   * @return Returns the value.
+   */
+  public int getValue() {
 
-        return value;
-    }
+    return value;
+  }
 
 }

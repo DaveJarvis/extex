@@ -31,59 +31,55 @@ import org.extex.typesetter.type.NodeList;
  * This is the derived class for a list maker in restricted horizontal mode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RestrictedHorizontalListMaker extends HorizontalListMaker {
 
-    /**
-     * Creates a new object.
-     *
-     * @param manager the manager to ask for global changes
-     * @param locator the locator
-     */
-    public RestrictedHorizontalListMaker(ListManager manager,
-            Locator locator) {
+  /**
+   * Creates a new object.
+   *
+   * @param manager the manager to ask for global changes
+   * @param locator the locator
+   */
+  public RestrictedHorizontalListMaker( ListManager manager,
+                                        Locator locator ) {
 
-        super(manager, locator);
-    }
+    super( manager, locator );
+  }
 
-    /**
-     * Getter for the current mode.
-     *
-     * @return the mode which is one of the values defined in
-     * {@link org.extex.typesetter.Mode Mode}.
-     *
-     * @see org.extex.typesetter.ListMaker#getMode()
-     */
-    @Override
-    public Mode getMode() {
+  /**
+   * Getter for the current mode.
+   *
+   * @return the mode which is one of the values defined in
+   * {@link org.extex.typesetter.Mode Mode}.
+   * @see org.extex.typesetter.ListMaker#getMode()
+   */
+  @Override
+  public Mode getMode() {
 
-        return Mode.RESTRICTED_HORIZONTAL;
-    }
+    return Mode.RESTRICTED_HORIZONTAL;
+  }
 
-    /**
-     * Close the node list. This means that everything is done to ship the
-     * closed node list to the document writer. Nevertheless the invoking
-     * application might decide not to modify the node list and continue
-     * processing. In the other case some  nodes might be taken from the node
-     * list returned by this method. Then the processing has to continue with
-     * the reduced node list.
-     *
-     * @param context the typesetter options mapping a fragment of the
-     *  interpreter context
-     *
-     * @return the node list enclosed in this instance
-     *
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
-     *
-     * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
-     */
-    @Override
-    public NodeList complete(TypesetterOptions context)
-            throws TypesetterException,
-                ConfigurationException {
+  /**
+   * Close the node list. This means that everything is done to ship the
+   * closed node list to the document writer. Nevertheless the invoking
+   * application might decide not to modify the node list and continue
+   * processing. In the other case some  nodes might be taken from the node
+   * list returned by this method. Then the processing has to continue with
+   * the reduced node list.
+   *
+   * @param context the typesetter options mapping a fragment of the
+   *                interpreter context
+   * @return the node list enclosed in this instance
+   * @throws TypesetterException    in case of an error
+   * @throws ConfigurationException in case of a configuration error
+   * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
+   */
+  @Override
+  public NodeList complete( TypesetterOptions context )
+      throws TypesetterException,
+      ConfigurationException {
 
-        return getNodes(); //TODO gene: correct?
-    }
+    return getNodes(); //TODO gene: correct?
+  }
 
 }

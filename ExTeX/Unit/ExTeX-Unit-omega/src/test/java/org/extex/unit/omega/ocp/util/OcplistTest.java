@@ -25,55 +25,56 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitives defined with {@code \ocplist}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OcplistTest extends ExTeXLauncher {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(OcplistTest.class);
-    }
+    (new JUnitCore()).run( OcplistTest.class );
+  }
 
 
-    public OcplistTest() {
+  public OcplistTest() {
 
-        setConfig("omega-test");
-    }
+    setConfig( "omega-test" );
+  }
 
-    /**
-     *  Test case checking that an OCP list needs ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * Test case checking that an OCP list needs ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ocplist\\a \\nullocplist \\show\\a\\end",
-            // --- output channel ---
-            "> \\a=select ocp list .\n");
-    }
+    assertFailure(// --- input code ---
+                  "\\ocplist\\a \\nullocplist \\show\\a\\end",
+                  // --- output channel ---
+                  "> \\a=select ocp list .\n" );
+  }
 
-    /**
-     *  Test case checking that an OCP list needs ...
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test case checking that an OCP list needs ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy "
-                    + "\\ocplist\\a \\addbeforeocplist 1 \\x \\nullocplist \\show\\a\\end",
-            // --- output channel ---
-            "> \\a=select ocp list .\n");
-    }
+    assertFailure(// --- input code ---
+                  "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy "
+                      + "\\ocplist\\a \\addbeforeocplist 1 \\x \\nullocplist " +
+                      "\\show\\a\\end",
+                  // --- output channel ---
+                  "> \\a=select ocp list .\n" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

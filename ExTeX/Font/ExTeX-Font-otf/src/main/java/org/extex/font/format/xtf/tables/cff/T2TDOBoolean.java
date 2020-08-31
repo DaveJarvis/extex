@@ -19,96 +19,96 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * Abstract class for all boolean-values.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public abstract class T2TDOBoolean extends T2TopDICTOperator {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @param id the operator-id for the value
-     * @throws IOException if an IO-error occurs.
-     */
-    protected T2TDOBoolean(List<T2CharString> stack, short[] id)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @param id    the operator-id for the value
+   * @throws IOException if an IO-error occurs.
+   */
+  protected T2TDOBoolean( List<T2CharString> stack, short[] id )
+      throws IOException {
 
-        if (stack.size() < 1) {
-            throw new T2MissingNumberException();
-        }
-        int v = ((T2Number) stack.get(0)).getInteger();
-        bytes = convertStackaddID(stack, id);
-
-      value = v != 0;
+    if( stack.size() < 1 ) {
+      throw new T2MissingNumberException();
     }
+    int v = ((T2Number) stack.get( 0 )).getInteger();
+    bytes = convertStackaddID( stack, id );
 
-    /**
-     * bytes
-     */
-    private final short[] bytes;
+    value = v != 0;
+  }
 
-    /**
-     * Check, if the object is a boolean.
-     * 
-     * @return Returns {@code true}, if the object is a boolean.
-     */
-    @Override
-    public boolean isBoolean() {
+  /**
+   * bytes
+   */
+  private final short[] bytes;
 
-        return true;
-    }
+  /**
+   * Check, if the object is a boolean.
+   *
+   * @return Returns {@code true}, if the object is a boolean.
+   */
+  @Override
+  public boolean isBoolean() {
 
-    /**
-     * value
-     */
-    private final boolean value;
+    return true;
+  }
 
-@Override
-    public short[] getBytes() {
+  /**
+   * value
+   */
+  private final boolean value;
 
-        return bytes;
-    }
+  @Override
+  public short[] getBytes() {
 
-@Override
-    public String toString() {
+    return bytes;
+  }
 
-        return String.valueOf(value);
-    }
+  @Override
+  public String toString() {
 
-    /**
-     * Returns the value.
-     * 
-     * @return Returns the value.
-     */
-    public boolean isValue() {
+    return String.valueOf( value );
+  }
 
-        return value;
-    }
+  /**
+   * Returns the value.
+   *
+   * @return Returns the value.
+   */
+  public boolean isValue() {
 
-@Override
-    public Object getValue() {
+    return value;
+  }
 
-        return new Boolean(value);
-    }
+  @Override
+  public Object getValue() {
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+    return new Boolean( value );
+  }
 
-        writer.writeStartElement(getName());
-        writer.writeAttribute("value", value);
-        writer.writeEndElement();
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-    }
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "value", value );
+    writer.writeEndElement();
+
+  }
 
 }

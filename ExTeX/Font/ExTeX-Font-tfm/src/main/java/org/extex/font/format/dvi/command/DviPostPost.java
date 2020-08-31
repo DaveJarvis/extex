@@ -21,61 +21,61 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: post post: Ending of the postamble.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviPostPost extends DviCommand {
 
-    /**
-     * the identification
-     */
-    private final int identification;
+  /**
+   * the identification
+   */
+  private final int identification;
 
-    /**
-     * the pointer of the final post
-     */
-    private final int pointer;
+  /**
+   * the pointer of the final post
+   */
+  private final int pointer;
 
-    /**
-     * Create a new object.
-     * 
-     * @param oc the opcode
-     * @param sp the start pointer
-     * @param p the pointer
-     * @param i the identification
-     */
-    public DviPostPost(final int oc, final int sp, final int p, final int i) {
+  /**
+   * Create a new object.
+   *
+   * @param oc the opcode
+   * @param sp the start pointer
+   * @param p  the pointer
+   * @param i  the identification
+   */
+  public DviPostPost( final int oc, final int sp, final int p, final int i ) {
 
-        super(oc, sp);
-        pointer = p;
-        identification = i;
+    super( oc, sp );
+    pointer = p;
+    identification = i;
 
-    }
+  }
 
-    /**
-     * Returns the identification.
-     * 
-     * @return Returns the identification.
-     */
-    public int getIdentification() {
+  /**
+   * Returns the identification.
+   *
+   * @return Returns the identification.
+   */
+  public int getIdentification() {
 
-        return identification;
-    }
+    return identification;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "post_post";
-    }
+    return "post_post";
+  }
 
-    /**
-     * Returns the pointer.
-     * 
-     * @return Returns the pointer.
-     */
-    public int getPointer() {
+  /**
+   * Returns the pointer.
+   *
+   * @return Returns the pointer.
+   */
+  public int getPointer() {
 
-        return pointer;
-    }
+    return pointer;
+  }
 }

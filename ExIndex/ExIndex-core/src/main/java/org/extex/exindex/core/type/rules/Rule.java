@@ -23,107 +23,105 @@ import java.util.List;
 
 /**
  * This is the abstract base class for rules.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class Rule {
 
-    /**
-     * Apply a list of rules to a string.
-     * 
-     * @param rules the rules to apply
-     * @param text the initial text to apply it to
-     * 
-     * @return the transformed text
-     */
-    public static String apply(List<Rule> rules, String text) {
+  /**
+   * Apply a list of rules to a string.
+   *
+   * @param rules the rules to apply
+   * @param text  the initial text to apply it to
+   * @return the transformed text
+   */
+  public static String apply( List<Rule> rules, String text ) {
 
-        StringBuilder sb = new StringBuilder(text);
-        int mod = 0;
-        for (Rule rule : rules) {
-            int m = rule.apply(sb, mod);
-            if (m >= 0) {
-                mod = m;
-            }
-        }
-        return sb.toString();
+    StringBuilder sb = new StringBuilder( text );
+    int mod = 0;
+    for( Rule rule : rules ) {
+      int m = rule.apply( sb, mod );
+      if( m >= 0 ) {
+        mod = m;
+      }
     }
+    return sb.toString();
+  }
 
-    /**
-     * The field {@code again} contains the flag :again.
-     */
-    private boolean again = false;
+  /**
+   * The field {@code again} contains the flag :again.
+   */
+  private boolean again = false;
 
-    /**
-     * The field {@code pattern} contains the pattern.
-     */
-    private final String pattern;
+  /**
+   * The field {@code pattern} contains the pattern.
+   */
+  private final String pattern;
 
-    /**
-     * The field {@code replacement} contains the replacement text.
-     */
-    private final String replacement;
+  /**
+   * The field {@code replacement} contains the replacement text.
+   */
+  private final String replacement;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param pattern the pattern
-     * @param replacement the replacement text
-     * @param again the indicator for repetition
-     */
-    public Rule(String pattern, String replacement, boolean again) {
+  /**
+   * Creates a new object.
+   *
+   * @param pattern     the pattern
+   * @param replacement the replacement text
+   * @param again       the indicator for repetition
+   */
+  public Rule( String pattern, String replacement, boolean again ) {
 
-        this.pattern = pattern;
-        this.replacement = replacement;
-        this.again = again;
-    }
+    this.pattern = pattern;
+    this.replacement = replacement;
+    this.again = again;
+  }
 
-    /**
-     * Apply the rule to a word.
-     * 
-     * @param word the word to apply the rule to
-     * @param index the index to start applying the rule
-     * 
-     * @return the index to continue the application or a negative value if this
-     *         rule did not make any changes
-     */
-    public abstract int apply(StringBuilder word, int index);
+  /**
+   * Apply the rule to a word.
+   *
+   * @param word  the word to apply the rule to
+   * @param index the index to start applying the rule
+   * @return the index to continue the application or a negative value if this
+   * rule did not make any changes
+   */
+  public abstract int apply( StringBuilder word, int index );
 
-    /**
-     * Getter for pattern.
-     * 
-     * @return the pattern
-     */
-    public String getPattern() {
+  /**
+   * Getter for pattern.
+   *
+   * @return the pattern
+   */
+  public String getPattern() {
 
-        return pattern;
-    }
+    return pattern;
+  }
 
-    /**
-     * Getter for replacement.
-     * 
-     * @return the replacement
-     */
-    public String getReplacement() {
+  /**
+   * Getter for replacement.
+   *
+   * @return the replacement
+   */
+  public String getReplacement() {
 
-        return replacement;
-    }
+    return replacement;
+  }
 
-    /**
-     * Getter for again.
-     * 
-     * @return the again
-     */
-    public boolean isAgain() {
+  /**
+   * Getter for again.
+   *
+   * @return the again
+   */
+  public boolean isAgain() {
 
-        return again;
-    }
+    return again;
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        return ">" + pattern + "< ==> >" + replacement
-                + (again ? "< :again" : "<");
-    }
+    return ">" + pattern + "< ==> >" + replacement
+        + (again ? "< :again" : "<");
+  }
 
 }

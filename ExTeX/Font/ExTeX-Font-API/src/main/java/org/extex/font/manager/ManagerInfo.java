@@ -19,116 +19,116 @@
 
 package org.extex.font.manager;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.extex.font.BackendCharacter;
 import org.extex.font.BackendFont;
 import org.extex.font.BackendFontManager;
 import org.extex.font.FontKey;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Class for the info of used fonts and characters.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class ManagerInfo implements Iterable<BackendCharacter> {
 
-    /**
-     * The List for the characters.
-     */
-    private final List<BackendCharacter> backendCharacterList =
-            new ArrayList<BackendCharacter>();
+  /**
+   * The List for the characters.
+   */
+  private final List<BackendCharacter> backendCharacterList =
+      new ArrayList<BackendCharacter>();
 
-    /**
-     * The backend font.
-     */
-    private BackendFont backendFont;
+  /**
+   * The backend font.
+   */
+  private BackendFont backendFont;
 
-    /**
-     * The font key.
-     */
-    private final FontKey fontKey;
+  /**
+   * The font key.
+   */
+  private final FontKey fontKey;
 
-    /**
-     * The {@link BackendFontManager} for this info.
-     */
-    private final BackendFontManager manager;
+  /**
+   * The {@link BackendFontManager} for this info.
+   */
+  private final BackendFontManager manager;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param fontKey The font key.
-     * @param manager The {@link BackendFontManager}.
-     */
-    public ManagerInfo(FontKey fontKey, BackendFontManager manager) {
+  /**
+   * Creates a new object.
+   *
+   * @param fontKey The font key.
+   * @param manager The {@link BackendFontManager}.
+   */
+  public ManagerInfo( FontKey fontKey, BackendFontManager manager ) {
 
-        this.fontKey = fontKey;
-        this.manager = manager;
+    this.fontKey = fontKey;
+    this.manager = manager;
+  }
+
+  /**
+   * Add the char to the list.
+   *
+   * @param ch The char to add.
+   */
+  public void add( BackendCharacter ch ) {
+
+    if( !backendCharacterList.contains( ch ) ) {
+      backendCharacterList.add( ch );
     }
+  }
 
-    /**
-     * Add the char to the list.
-     * 
-     * @param ch The char to add.
-     */
-    public void add(BackendCharacter ch) {
+  /**
+   * Getter for backendFont.
+   *
+   * @return the backendFont
+   */
+  public BackendFont getBackendFont() {
 
-        if (!backendCharacterList.contains(ch)) {
-            backendCharacterList.add(ch);
-        }
-    }
+    return backendFont;
+  }
 
-    /**
-     * Getter for backendFont.
-     * 
-     * @return the backendFont
-     */
-    public BackendFont getBackendFont() {
+  /**
+   * Getter for fontKey.
+   *
+   * @return the fontKey
+   */
+  public FontKey getFontKey() {
 
-        return backendFont;
-    }
+    return fontKey;
+  }
 
-    /**
-     * Getter for fontKey.
-     * 
-     * @return the fontKey
-     */
-    public FontKey getFontKey() {
+  /**
+   * Getter for manager.
+   *
+   * @return the manager
+   */
+  public BackendFontManager getManager() {
 
-        return fontKey;
-    }
+    return manager;
+  }
 
-    /**
-     * Getter for manager.
-     * 
-     * @return the manager
-     */
-    public BackendFontManager getManager() {
+  /**
+   * Returns the iterator for the {@link BackendCharacter}s.
+   *
+   * @return Returns the iterator for the {@link BackendCharacter}s.
+   */
+  @Override
+  public Iterator<BackendCharacter> iterator() {
 
-        return manager;
-    }
+    return backendCharacterList.iterator();
+  }
 
-    /**
-     * Returns the iterator for the {@link BackendCharacter}s.
-     * 
-     * @return Returns the iterator for the {@link BackendCharacter}s.
-     */
-    @Override
-    public Iterator<BackendCharacter> iterator() {
+  /**
+   * Setter for backendFont.
+   *
+   * @param backendFont the backendFont to set
+   */
+  public void setBackendFont( BackendFont backendFont ) {
 
-        return backendCharacterList.iterator();
-    }
-
-    /**
-     * Setter for backendFont.
-     * 
-     * @param backendFont the backendFont to set
-     */
-    public void setBackendFont(BackendFont backendFont) {
-
-        this.backendFont = backendFont;
-    }
+    this.backendFont = backendFont;
+  }
 
 }

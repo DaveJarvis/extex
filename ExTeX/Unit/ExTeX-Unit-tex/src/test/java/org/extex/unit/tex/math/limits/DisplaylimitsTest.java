@@ -23,7 +23,7 @@ package org.extex.unit.tex.math.limits;
  * This is a test suite for the primitive {@code \displaylimits}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DisplaylimitsTest extends AbstractLimitsTester {
 
   public DisplaylimitsTest() {

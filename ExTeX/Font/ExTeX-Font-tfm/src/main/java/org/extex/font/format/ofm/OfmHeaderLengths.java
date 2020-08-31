@@ -19,86 +19,86 @@
 
 package org.extex.font.format.ofm;
 
-import java.io.IOException;
-
 import org.extex.font.format.tfm.TfmHeaderLengths;
 import org.extex.util.file.random.RandomAccessR;
 
+import java.io.IOException;
+
 /**
  * Class for the OFM header length table.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class OfmHeaderLengths extends TfmHeaderLengths {
 
-    /**
-     * Bytes in the Header of the OFM-file.
-     */
-    private static final int HEADERBYTES = 14;
+  /**
+   * Bytes in the Header of the OFM-file.
+   */
+  private static final int HEADERBYTES = 14;
 
-    /**
-     * max chars.
-     */
-    private static final int MAXCHARS = 65535;
+  /**
+   * max chars.
+   */
+  private static final int MAXCHARS = 65535;
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * The direction of font.
-     */
-    private final int fontDirection;
+  /**
+   * The direction of font.
+   */
+  private final int fontDirection;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param rar The input.
-     * @throws IOException if a io-error occurred.
-     */
-    public OfmHeaderLengths(RandomAccessR rar) throws IOException {
+  /**
+   * Creates a new object.
+   *
+   * @param rar The input.
+   * @throws IOException if a io-error occurred.
+   */
+  public OfmHeaderLengths( RandomAccessR rar ) throws IOException {
 
-        lf = rar.readInt();
-        lh = rar.readInt();
-        bc = rar.readInt();
-        ec = rar.readInt();
-        nw = rar.readInt();
-        nh = rar.readInt();
-        nd = rar.readInt();
-        ni = rar.readInt();
-        nl = rar.readInt();
-        nk = rar.readInt();
-        ne = rar.readInt();
-        np = rar.readInt();
-        fontDirection = rar.readInt();
+    lf = rar.readInt();
+    lh = rar.readInt();
+    bc = rar.readInt();
+    ec = rar.readInt();
+    nw = rar.readInt();
+    nh = rar.readInt();
+    nd = rar.readInt();
+    ni = rar.readInt();
+    nl = rar.readInt();
+    nk = rar.readInt();
+    ne = rar.readInt();
+    np = rar.readInt();
+    fontDirection = rar.readInt();
 
-        // check
-        if (lf == 0
-                || ((bc - 1) <= ec && ec >= MAXCHARS)
-                || (lf != HEADERBYTES + lh + 2 * (ec - bc + 1) + nw + nh + nd
-                        + ni + 2 * nl + nk + 2 * ne + np)) {
-            throw new IOException();
-            // mgn: umbauen
-            // throw new TFMReadFileException();
-        }
-
-        cc = ec + 1 - bc;
-
-        if (cc == 0) {
-            bc = 0;
-        }
-
+    // check
+    if( lf == 0
+        || ((bc - 1) <= ec && ec >= MAXCHARS)
+        || (lf != HEADERBYTES + lh + 2 * (ec - bc + 1) + nw + nh + nd
+        + ni + 2 * nl + nk + 2 * ne + np) ) {
+      throw new IOException();
+      // mgn: umbauen
+      // throw new TFMReadFileException();
     }
 
-    /**
-     * Getter for fontDirection.
-     * 
-     * @return the fontDirection
-     */
-    public int getFontDirection() {
+    cc = ec + 1 - bc;
 
-        return fontDirection;
+    if( cc == 0 ) {
+      bc = 0;
     }
+
+  }
+
+  /**
+   * Getter for fontDirection.
+   *
+   * @return the fontDirection
+   */
+  public int getFontDirection() {
+
+    return fontDirection;
+  }
 
 }

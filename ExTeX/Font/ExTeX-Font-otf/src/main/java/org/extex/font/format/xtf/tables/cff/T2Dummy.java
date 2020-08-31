@@ -19,92 +19,91 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * T2 dummy.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2Dummy extends T2Operator {
 
-    /**
-     * The command.
-     */
-    private final String cmd;
+  /**
+   * The command.
+   */
+  private final String cmd;
 
-    /**
-     * The values of the stack.
-     */
-    private final T2CharString[] cs;
+  /**
+   * The values of the stack.
+   */
+  private final T2CharString[] cs;
 
-    /**
-     * Create a new object.
-     * 
-     * @param ch The char string.
-     * @param stack The stack.
-     * @param cmd TODO
-     * 
-     * @throws IOException in case of an error
-     */
-    public T2Dummy(List<T2CharString> stack, CharString ch, String cmd)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param ch    The char string.
+   * @param stack The stack.
+   * @param cmd   TODO
+   * @throws IOException in case of an error
+   */
+  public T2Dummy( List<T2CharString> stack, CharString ch, String cmd )
+      throws IOException {
 
-        this.cmd = cmd;
-        int n = stack.size();
+    this.cmd = cmd;
+    int n = stack.size();
 
-        cs = new T2CharString[n];
-        for (int i = 0; i < n; i++) {
-            cs[i] = stack.get(i);
-        }
+    cs = new T2CharString[ n ];
+    for( int i = 0; i < n; i++ ) {
+      cs[ i ] = stack.get( i );
     }
+  }
 
-@Override
-    public short[] getBytes() {
+  @Override
+  public short[] getBytes() {
 
-        return new short[0];
+    return new short[ 0 ];
+  }
+
+  @Override
+  public int getID() {
+
+    return -1;
+  }
+
+  @Override
+  public String getName() {
+
+    return "dummy";
+  }
+
+  @Override
+  public Object getValue() {
+
+    return cs;
+  }
+
+  @Override
+  public String toText() {
+
+    return "dummy";
+  }
+
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "name", cmd );
+    for( int i = 0; i < cs.length; i++ ) {
+      if( cs[ i ] instanceof T2Operator ) {
+        T2Operator t2 = (T2Operator) cs[ i ];
+        t2.writeXML( writer );
+      }
     }
-
-@Override
-    public int getID() {
-
-        return -1;
-    }
-
-@Override
-    public String getName() {
-
-        return "dummy";
-    }
-
-@Override
-    public Object getValue() {
-
-        return cs;
-    }
-
-@Override
-    public String toText() {
-
-        return "dummy";
-    }
-
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("name", cmd);
-        for (int i = 0; i < cs.length; i++) {
-            if (cs[i] instanceof T2Operator) {
-                T2Operator t2 = (T2Operator) cs[i];
-                t2.writeXML(writer);
-            }
-        }
-        writer.writeEndElement();
-    }
+    writer.writeEndElement();
+  }
 }

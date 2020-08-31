@@ -19,16 +19,12 @@
 
 package org.extex.framework.configuration;
 
+import org.extex.framework.configuration.exception.*;
+import org.extex.framework.configuration.impl.XmlConfiguration;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
-
-import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
-import org.extex.framework.configuration.impl.XmlConfiguration;
 
 /**
  * This is the factory for {@link Configuration}s.
@@ -39,114 +35,116 @@ import org.extex.framework.configuration.impl.XmlConfiguration;
  * {@link org.extex.framework.configuration.impl.XmlConfiguration
  * XmlConfiguration} is used instead.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class ConfigurationFactory {
 
-    /**
-     * The field {@code classloader} contains the class loader.
-     */
-    private static final ClassLoader CLASSLOADER =
-        ConfigurationFactory.class.getClassLoader();
+  /**
+   * The field {@code classloader} contains the class loader.
+   */
+  private static final ClassLoader CLASSLOADER =
+      ConfigurationFactory.class.getClassLoader();
 
-    /**
-     * The field {@code ext} contains extensions to use when searching for
-     * configuration files.
-     */
-    private static final String[] XML_EXTENSIONS = new String[]{".xml", ""};
+  /**
+   * The field {@code ext} contains extensions to use when searching for
+   * configuration files.
+   */
+  private static final String[] XML_EXTENSIONS = new String[]{".xml", ""};
 
-    /**
-     * The field {@code path} contains the path to use when searching for
-     * configuration files.
-     */
-    private static final String[] PATHS = {"config/", ""};
+  /**
+   * The field {@code path} contains the path to use when searching for
+   * configuration files.
+   */
+  private static final String[] PATHS = {"config/", ""};
 
-    /**
-     * Delivers a new {@link org.extex.framework.configuration.Configuration
-     * Configuration} object which is initialized from a named source. This
-     * source is usually a file name but can be anything else, like a URL or a
-     * reference to a database &ndash; depending on the underlying
-     * implementation.
-     * <p>
-     * The implementation can be specified in the system property
-     * {@code Util.Configuration.class}. The content is expected to be a fully
-     * qualified class name. This class has to implement the interface
-     * {@link Configuration Configuration}.
-     * </p>
-     * <p>
-     * The default implementation is
-     * {@link org.extex.framework.configuration.impl.XmlConfiguration
-     * XmlConfiguration} which uses an XML file located on the classpath.
-     * </p>
-     * 
-     * @param source the source of the configuration
-     * 
-     * @return a new Configuration object
-     * 
-     * @throws ConfigurationException in case of an error. Especially
-     *         <ul>
-     *         <li>ConfigurationInvalidNameException in case that the source is
-     *         {@code null}</li>
-     *         <li>ConfigurationInstantiationException in case of some kind of
-     *         error during instantiation</li>
-     *         <li>ConfigurationClassNotFoundException in case that the class
-     *         could not be found</li>
-     *         <li>ConfigurationException in case that the creation of the
-     *         Configuration fails</li>
-     *         </ul>
-     */
-    public static Configuration newInstance(String source)
-            throws ConfigurationException {
+  /**
+   * Delivers a new {@link org.extex.framework.configuration.Configuration
+   * Configuration} object which is initialized from a named source. This
+   * source is usually a file name but can be anything else, like a URL or a
+   * reference to a database &ndash; depending on the underlying
+   * implementation.
+   * <p>
+   * The implementation can be specified in the system property
+   * {@code Util.Configuration.class}. The content is expected to be a fully
+   * qualified class name. This class has to implement the interface
+   * {@link Configuration Configuration}.
+   * </p>
+   * <p>
+   * The default implementation is
+   * {@link org.extex.framework.configuration.impl.XmlConfiguration
+   * XmlConfiguration} which uses an XML file located on the classpath.
+   * </p>
+   *
+   * @param source the source of the configuration
+   * @return a new Configuration object
+   * @throws ConfigurationException in case of an error. Especially
+   *                                <ul>
+   *                                <li>ConfigurationInvalidNameException
+   *                                in case that the source is
+   *                                {@code null}</li>
+   *                                <li>ConfigurationInstantiationException
+   *                                in case of some kind of
+   *                                error during instantiation</li>
+   *                                <li>ConfigurationClassNotFoundException
+   *                                in case that the class
+   *                                could not be found</li>
+   *                                <li>ConfigurationException in case that
+   *                                the creation of the
+   *                                Configuration fails</li>
+   *                                </ul>
+   */
+  public static Configuration newInstance( String source )
+      throws ConfigurationException {
 
-        if (source == null || "".equals(source)) {
-            throw new ConfigurationInvalidResourceException();
-        }
-
-        String classname = System.getProperty("Util.Configuration.class");
-
-        if (classname == null) {
-            for (final String p : PATHS) {
-                for (final String ext : XML_EXTENSIONS) {
-                    final String fullName = p + source + ext;
-
-                    try( InputStream stream =
-                             CLASSLOADER.getResourceAsStream( fullName ) ) {
-                        if( stream != null ) {
-                            final XmlConfiguration config =
-                                new XmlConfiguration( stream, fullName );
-                            return config;
-                        }
-                    } catch( final IOException ignored ) {
-                    }
-                }
-            }
-
-            throw new ConfigurationNotFoundException(source, null);
-        }
-
-        try {
-            return (Configuration) (Class.forName(classname).getConstructor(
-                new Class[]{String.class}).newInstance(new Object[]{source}));
-        } catch (InvocationTargetException e) {
-            final Throwable c = e.getCause();
-            if ( c instanceof ConfigurationException ) {
-                throw (ConfigurationException) c;
-            }
-            throw new ConfigurationInstantiationException(e);
-        } catch (ClassNotFoundException e) {
-            throw new ConfigurationClassNotFoundException(classname);
-        } catch ( final Exception e) {
-            throw new ConfigurationInstantiationException(e);
-        }
+    if( source == null || "".equals( source ) ) {
+      throw new ConfigurationInvalidResourceException();
     }
 
-    /**
-     * Creates a new object. Not used for this utility class.
-     */
-    private ConfigurationFactory() {
+    String classname = System.getProperty( "Util.Configuration.class" );
 
-        // unused
+    if( classname == null ) {
+      for( final String p : PATHS ) {
+        for( final String ext : XML_EXTENSIONS ) {
+          final String fullName = p + source + ext;
+
+          try( InputStream stream =
+                   CLASSLOADER.getResourceAsStream( fullName ) ) {
+            if( stream != null ) {
+              final XmlConfiguration config =
+                  new XmlConfiguration( stream, fullName );
+              return config;
+            }
+          } catch( final IOException ignored ) {
+          }
+        }
+      }
+
+      throw new ConfigurationNotFoundException( source, null );
     }
+
+    try {
+      return (Configuration) (Class.forName( classname ).getConstructor(
+          new Class[]{String.class} ).newInstance( new Object[]{source} ));
+    } catch( InvocationTargetException e ) {
+      final Throwable c = e.getCause();
+      if( c instanceof ConfigurationException ) {
+        throw (ConfigurationException) c;
+      }
+      throw new ConfigurationInstantiationException( e );
+    } catch( ClassNotFoundException e ) {
+      throw new ConfigurationClassNotFoundException( classname );
+    } catch( final Exception e ) {
+      throw new ConfigurationInstantiationException( e );
+    }
+  }
+
+  /**
+   * Creates a new object. Not used for this utility class.
+   */
+  private ConfigurationFactory() {
+
+    // unused
+  }
 
 }

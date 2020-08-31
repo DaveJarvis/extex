@@ -22,93 +22,90 @@ package org.extex.backend.documentWriter.rtf;
 /**
  * This class provides a color with 8-bit RGB channels but without alpha
  * channel.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Rgb8Color {
 
-    /**
-     * The field {@code EIGHT_BIT_MASK} contains the bit mask for the lower
-     * eight bits.
-     */
-    private static final int EIGHT_BIT_MASK = 0xff;
+  /**
+   * The field {@code EIGHT_BIT_MASK} contains the bit mask for the lower
+   * eight bits.
+   */
+  private static final int EIGHT_BIT_MASK = 0xff;
 
-    /**
-     * The field {@code value} contains the condensed value.
-     */
-    private int value;
+  /**
+   * The field {@code value} contains the condensed value.
+   */
+  private int value;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param blue the blue component
-     * @param green the green component
-     * @param red the red component
-     */
-    public Rgb8Color(int red, int green, int blue) {
+  /**
+   * Creates a new object.
+   *
+   * @param blue  the blue component
+   * @param green the green component
+   * @param red   the red component
+   */
+  public Rgb8Color( int red, int green, int blue ) {
 
-        this.value = (red & EIGHT_BIT_MASK);
-        this.value |= (green & EIGHT_BIT_MASK) << 8;
-        this.value |= (blue & EIGHT_BIT_MASK) << 16;
-    }
+    this.value = (red & EIGHT_BIT_MASK);
+    this.value |= (green & EIGHT_BIT_MASK) << 8;
+    this.value |= (blue & EIGHT_BIT_MASK) << 16;
+  }
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     * 
-     * @param obj the reference object with which to compare.
-     * 
-     * @return {@code true} if this object is the same as the obj
-     *         argument; {@code false} otherwise.
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj) {
+  /**
+   * Indicates whether some other object is "equal to" this one.
+   *
+   * @param obj the reference object with which to compare.
+   * @return {@code true} if this object is the same as the obj
+   * argument; {@code false} otherwise.
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals( Object obj ) {
 
-        return (obj instanceof Rgb8Color) && ((Rgb8Color) obj).value == value;
-    }
+    return (obj instanceof Rgb8Color) && ((Rgb8Color) obj).value == value;
+  }
 
-    /**
-     * Getter for blue.
-     * 
-     * @return the blue
-     */
-    public int getBlue() {
+  /**
+   * Getter for blue.
+   *
+   * @return the blue
+   */
+  public int getBlue() {
 
-        return (this.value >> 16) & EIGHT_BIT_MASK;
-    }
+    return (this.value >> 16) & EIGHT_BIT_MASK;
+  }
 
-    /**
-     * Getter for green.
-     * 
-     * @return the green
-     */
-    public int getGreen() {
+  /**
+   * Getter for green.
+   *
+   * @return the green
+   */
+  public int getGreen() {
 
-        return (this.value >> 8) & EIGHT_BIT_MASK;
-    }
+    return (this.value >> 8) & EIGHT_BIT_MASK;
+  }
 
-    /**
-     * Getter for red.
-     * 
-     * @return the red
-     */
-    public int getRed() {
+  /**
+   * Getter for red.
+   *
+   * @return the red
+   */
+  public int getRed() {
 
-        return this.value & EIGHT_BIT_MASK;
-    }
+    return this.value & EIGHT_BIT_MASK;
+  }
 
-    /**
-     * Compute the has code for this object.
-     * 
-     * @return the hash code
-     * 
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode() {
+  /**
+   * Compute the has code for this object.
+   *
+   * @return the hash code
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
 
-        return value;
-    }
+    return value;
+  }
 
 }

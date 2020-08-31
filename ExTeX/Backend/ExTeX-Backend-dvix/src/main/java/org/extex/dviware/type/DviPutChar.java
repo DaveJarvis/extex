@@ -19,48 +19,45 @@
 
 package org.extex.dviware.type;
 
+import org.extex.dviware.Dvi;
+
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.extex.dviware.Dvi;
 
 /**
  * This class represents the DVI instruction {@code put_char}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviPutChar extends AbstractDviCode {
 
-    /**
-     * The field {@code codePoint} contains the code point of the character.
-     */
-    private final int codePoint;
+  /**
+   * The field {@code codePoint} contains the code point of the character.
+   */
+  private final int codePoint;
 
-    /**
-     * Creates a new object.
-     *
-     * @param codePoint the code point of the character
-     */
-    public DviPutChar(int codePoint) {
+  /**
+   * Creates a new object.
+   *
+   * @param codePoint the code point of the character
+   */
+  public DviPutChar( int codePoint ) {
 
-        super("put_char" + variant(codePoint));
-        this.codePoint = codePoint;
-    }
+    super( "put_char" + variant( codePoint ) );
+    this.codePoint = codePoint;
+  }
 
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
 
-        return opcode(Dvi.PUT_CHAR1, codePoint, stream);
-    }
+    return opcode( Dvi.PUT_CHAR1, codePoint, stream );
+  }
 
 }

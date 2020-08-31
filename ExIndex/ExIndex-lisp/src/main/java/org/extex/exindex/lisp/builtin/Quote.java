@@ -27,35 +27,33 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This function takes one argument and returns it. This means the argument is
  * not evaluated but left unchanged.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Quote extends LFunction {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the name of the function
-     * 
-     * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
-     * @throws SecurityException in case a security problem occurred
-     */
-    public Quote(String name) throws SecurityException, NoSuchMethodException {
+  /**
+   * Creates a new object.
+   *
+   * @param name the name of the function
+   * @throws NoSuchMethodException in case that no method corresponding to the
+   *                               argument specification could be found
+   * @throws SecurityException     in case a security problem occurred
+   */
+  public Quote( String name ) throws SecurityException, NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.QVALUE});
-    }
+    super( name, new Arg[]{Arg.QVALUE} );
+  }
 
-    /**
-     * Evaluate the function.
-     * 
-     * @param interpreter the interpreter
-     * @param arg the term to quote
-     * 
-     * @return the quoted term
-     */
-    public LValue evaluate(LInterpreter interpreter, LValue arg) {
+  /**
+   * Evaluate the function.
+   *
+   * @param interpreter the interpreter
+   * @param arg         the term to quote
+   * @return the quoted term
+   */
+  public LValue evaluate( LInterpreter interpreter, LValue arg ) {
 
-        return arg;
-    }
+    return arg;
+  }
 }

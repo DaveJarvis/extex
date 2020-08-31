@@ -19,25 +19,24 @@
 
 package org.extex.exbib.core.io.bibio;
 
-import java.io.IOException;
-
 import org.extex.exbib.core.db.DB;
+
+import java.io.IOException;
 
 /**
  * This interface describes the capabilities of a printer for bibliographic
  * databases. The format is determined by the implementation.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface BibPrinter {
 
-    /**
-     * Prints a database in an implementation dependent form.
-     * 
-     * @param db the database context
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    void print(DB db) throws IOException;
+  /**
+   * Prints a database in an implementation dependent form.
+   *
+   * @param db the database context
+   * @throws IOException in case of an I/O error
+   */
+  void print( DB db ) throws IOException;
 
 }

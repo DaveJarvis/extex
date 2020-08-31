@@ -23,63 +23,64 @@ import org.extex.framework.configuration.Configuration;
 
 /**
  * This exception is thrown when a dynamically loaded class could not be found.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
-public class ConfigurationClassNotFoundException extends ConfigurationException {
+ */
+public class ConfigurationClassNotFoundException
+    extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2010L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2010L;
 
-    /**
-     * The field {@code className} contains the name of the class which could
-     * not be found.
-     */
-    private String className = null;
+  /**
+   * The field {@code className} contains the name of the class which could
+   * not be found.
+   */
+  private String className = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param className the name of the class which could not be found
-     */
-    public ConfigurationClassNotFoundException(String className) {
+  /**
+   * Creates a new object.
+   *
+   * @param className the name of the class which could not be found
+   */
+  public ConfigurationClassNotFoundException( String className ) {
 
-        super(null);
-        this.className = className;
-    }
+    super( null );
+    this.className = className;
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param className the name of the class which could not be found
-     * @param config the configuration in which the problem occurred or
-     *        {@code null}
-     */
-    public ConfigurationClassNotFoundException(String className,
-            Configuration config) {
+  /**
+   * Creates a new object.
+   *
+   * @param className the name of the class which could not be found
+   * @param config    the configuration in which the problem occurred or
+   *                  {@code null}
+   */
+  public ConfigurationClassNotFoundException( String className,
+                                              Configuration config ) {
 
-        super(null, config.toString());
-        this.className = className;
-    }
+    super( null, config.toString() );
+    this.className = className;
+  }
 
-    /**
-     * Getter for the text prefix of this ConfigException. The text is taken
-     * from the resource bundle {@code ConfigurationEception} under the key
-     * {@code ConfigurationClassNotFoundException.Text}. The argument {0} is
-     * replaced by the name of the missing class as passed to the constructor,
-     * or the message of the cause if no class name is present, or the empty
-     * string as final fallback.
-     * 
-     * @return the text
-     */
-    @Override
-    protected String getText() {
+  /**
+   * Getter for the text prefix of this ConfigException. The text is taken
+   * from the resource bundle {@code ConfigurationEception} under the key
+   * {@code ConfigurationClassNotFoundException.Text}. The argument {0} is
+   * replaced by the name of the missing class as passed to the constructor,
+   * or the message of the cause if no class name is present, or the empty
+   * string as final fallback.
+   *
+   * @return the text
+   */
+  @Override
+  protected String getText() {
 
-        return getLocalizer().format(
-            "ConfigurationClassNotFoundException.Text",
-            (className != null ? className : ""));
-    }
+    return getLocalizer().format(
+        "ConfigurationClassNotFoundException.Text",
+        (className != null ? className : "") );
+  }
 
 }

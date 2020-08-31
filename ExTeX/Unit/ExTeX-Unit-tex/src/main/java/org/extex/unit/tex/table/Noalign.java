@@ -34,82 +34,80 @@ import org.extex.typesetter.type.NodeList;
 
 /**
  * This class provides an implementation for the primitive {@code \noalign}.
- * 
+ *
  * <p>The Primitive {@code \noalign}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;noalign&rang;
  *       &rarr; {@code \noalign} {@code {} &lang;vertical material&rang; {@code }}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \cr\noalign{\vskip 4pt}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Noalign extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Noalign(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Noalign( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        throw new HelpingException(getLocalizer(), "TTP.MisplacedNoalign",
-            toText(context));
-    }
+    throw new HelpingException( getLocalizer(), "TTP.MisplacedNoalign",
+                                toText( context ) );
+  }
 
-    /**
-     * Acquire the vbox to be inserted as alignment.
-     * 
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * @param start the start token
-     * 
-     * @return the vbox acquired
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    public NodeList exec(Context context, TokenSource source,
-            Typesetter typesetter, Token start)
-            throws HelpingException,
-                TypesetterException {
+  /**
+   * Acquire the vbox to be inserted as alignment.
+   *
+   * @param context    the interpreter context
+   * @param source     the token source
+   * @param typesetter the typesetter
+   * @param start      the start token
+   * @return the vbox acquired
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  public NodeList exec( Context context, TokenSource source,
+                        Typesetter typesetter, Token start )
+      throws HelpingException,
+      TypesetterException {
 
-        Box b =
-                new Box(context, source, typesetter, false, null,
-                    GroupType.NO_ALIGN_GROUP, start);
+    Box b =
+        new Box( context, source, typesetter, false, null,
+                 GroupType.NO_ALIGN_GROUP, start );
 
-        return b.getNodes();
-    }
+    return b.getNodes();
+  }
 
 }

@@ -38,89 +38,92 @@ import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides an implementation for a font primitive.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class FontCode extends AbstractCode
-        implements
-            FontConvertible,
-            Theable,
-            ComparableCode {
+    implements
+    FontConvertible,
+    Theable,
+    ComparableCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code font} contains the font enclosed in this code.
-     */
-    private final Font font;
+  /**
+   * The field {@code font} contains the font enclosed in this code.
+   */
+  private final Font font;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     * @param fnt the font for this primitive
-     */
-    public FontCode(CodeToken token, Font fnt) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   * @param fnt   the font for this primitive
+   */
+  public FontCode( CodeToken token, Font fnt ) {
 
-        super(token);
-        this.font = fnt;
+    super( token );
+    this.font = fnt;
+  }
+
+  /**
+   * org.extex.scanner.type.token.Token,
+   * org.extex.interpreter.context.Context)
+   */
+  public boolean compare( Token token, Context context )
+      throws HelpingException {
+
+    if( !(token instanceof CodeToken) ) {
+      return false;
     }
 
-    /**
-*      org.extex.scanner.type.token.Token,
-     *      org.extex.interpreter.context.Context)
-     */
-    public boolean compare(Token token, Context context)
-            throws HelpingException {
+    Code code = context.getCode( (CodeToken) token );
 
-        if (!(token instanceof CodeToken)) {
-            return false;
-        }
-
-        Code code = context.getCode((CodeToken) token);
-
-        if (!(code instanceof FontCode)) {
-            return false;
-        }
-        return font == ((FontCode) code).font;
+    if( !(code instanceof FontCode) ) {
+      return false;
     }
+    return font == ((FontCode) code).font;
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Font convertFont(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Font convertFont( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        return font;
-    }
+    return font;
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        context.set(font, prefix.clearGlobal());
-    }
+    context.set( font, prefix.clearGlobal() );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        return context.getTokenFactory().toTokens(font.getFontName());
-    }
+    return context.getTokenFactory().toTokens( font.getFontName() );
+  }
 
 }

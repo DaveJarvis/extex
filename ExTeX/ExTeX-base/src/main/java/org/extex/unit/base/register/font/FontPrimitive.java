@@ -19,14 +19,6 @@
 
 package org.extex.unit.base.register.font;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.extex.core.count.Count;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
@@ -42,20 +34,23 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.font.FontConvertible;
-import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.ControlSequenceToken;
-import org.extex.scanner.type.token.LetterToken;
-import org.extex.scanner.type.token.OtherToken;
-import org.extex.scanner.type.token.SpaceToken;
-import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.*;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.tc.font.impl.FontImpl;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * This class provides an implementation for the primitive {@code \font}.
- * 
+ *
  * <p>The Primitive {@code \font}</p>
  * <p>
  * The primitive {@code \font} can be used to load a font with some specified
@@ -76,10 +71,10 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * <p>
  * This primitive is an assignment.
  * </p>
- * 
+ *
  * <p>Syntax</p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;font&rang;
  *      &rarr; &lang;prefix&rang; {@code \font} &lang;control sequence&rang; &lang;equals&rang; &lang;font name&rang; &lang;options&rang;
@@ -98,275 +93,280 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  *       | [noligatures]
  *       | [nokerning]
  *       | [letterspaced]  </pre>
- * 
- * 
+ *
+ *
  * <p>Examples</p>
-
+ *
  * <p>
  * In the following example the font cmr12 is loaded at its design size. The
  * macro {@code \myfont} is bound to this font.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *   \font\myfont=cmr12  </pre>
- * 
+ *
  * <p>
  * In the following example the font cmr12 is loaded at the size 15pt. The macro
  * {@code \myfont} is bound to this font.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *   \font\myfont=cmr12 at 15pt  </pre>
- * 
+ *
  * <p>
  * In the following example the font cmr12 is loaded at the double design size.
  * The scale factor 2000 is divided by 1000 to get the effective scaling factor.
  * The macro {@code \magnifiedfiverm} is bound to this font.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *   \font\magnifiedfiverm=cmr5 scaled 2000  </pre>
- * 
+ *
  * <p>
  * In the following example the font cmr10 is loaded at the size of 12 true pt.
  * The macro {@code \second} is bound to this font.
  * </p>
- * 
+ *
  * <pre class="TeXSample">
  *   \font\second=cmr10 at 12truept  </pre>
- * 
  *
- * 
+ *
+ *
  * <p>Possible Extension</p>
  * <p>
  * Example
  * </p>
- * 
+ *
  * <pre>
  * \font\myfont=cmr12 at 15pt letterspaced 10sp plus 3sp minus 2sp
  * \font\myfont=cmr12 at 15pt letterspaced 10sp plus 3sp minus 2sp noligatures
  * \font\myfont=cmr12 at 15pt noligatures
  * \font\myfont=cmr12 at 15pt noligatures nokerning
  * </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class FontPrimitive extends AbstractAssignment
-        implements
-            FontConvertible,
-            LogEnabled {
+    implements
+    FontConvertible,
+    LogEnabled {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code DEBUG} contains the indicator that debug output is
-     * desirable.
-     */
-    private static final boolean DEBUG = true;
+  /**
+   * The field {@code DEBUG} contains the indicator that debug output is
+   * desirable.
+   */
+  private static final boolean DEBUG = true;
 
-    /**
-     * The field {@code logger} contains the logger for debug output.
-     */
-    private transient Logger logger = null;
+  /**
+   * The field {@code logger} contains the logger for debug output.
+   */
+  private transient Logger logger = null;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public FontPrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public FontPrimitive( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    CodeToken fontId = source.getControlSequence( context, typesetter );
+    source.getOptionalEquals( context );
+    String fontname = scanFontName( context, source );
+    Dimen fontSize = null;
+    Count scale = null;
+
+    if( source.getKeyword( context, "at" ) ) {
+      fontSize =
+          new Dimen( source.parseDimen( context, source, typesetter ) );
+      if( fontSize.lt( Dimen.ZERO_PT ) ) {
+        throw new HelpingException( getLocalizer(), "TTP.ImproperAt",
+                                    fontSize.toString() );
+      }
+
+    }
+    else if( source.getKeyword( context, "scaled" ) ) {
+      long s = source.parseInteger( context, source, typesetter );
+      if( s <= 0 ) {
+        throw new HelpingException( getLocalizer(),
+                                    "TTP.IllegalMag",
+                                    Long.toString( s ),
+                                    "32768" ); // max, as reported by TeX
+      }
+      scale = new Count( s );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    Glue letterspaced = new Glue( 0 );
+    boolean ligatures = true;
+    boolean kerning = true;
+    List<String> features = null;
 
-        CodeToken fontId = source.getControlSequence(context, typesetter);
-        source.getOptionalEquals(context);
-        String fontname = scanFontName(context, source);
-        Dimen fontSize = null;
-        Count scale = null;
+    for( ; ; ) {
 
-        if (source.getKeyword(context, "at")) {
-            fontSize =
-                    new Dimen(source.parseDimen(context, source, typesetter));
-            if (fontSize.lt(Dimen.ZERO_PT)) {
-                throw new HelpingException(getLocalizer(), "TTP.ImproperAt",
-                    fontSize.toString());
-            }
-
-        } else if (source.getKeyword(context, "scaled")) {
-            long s = source.parseInteger(context, source, typesetter);
-            if (s <= 0) {
-                throw new HelpingException(getLocalizer(), "TTP.IllegalMag",
-                    Long.toString(s), "32768"); // max, as reported by TeX
-            }
-            scale = new Count(s);
+      if( source.getKeyword( context, "letterspaced" ) ) {
+        letterspaced = source.parseGlue( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "noligatures" ) ) {
+        ligatures = false;
+      }
+      else if( source.getKeyword( context, "nokerning" ) ) {
+        kerning = false;
+      }
+      else if( source.getKeyword( context, "tag" ) ) {
+        source.getOptionalEquals( context );
+        if( features == null ) {
+          features = new ArrayList<String>();
         }
-
-        Glue letterspaced = new Glue(0);
-        boolean ligatures = true;
-        boolean kerning = true;
-        List<String> features = null;
-
-        for (;;) {
-
-            if (source.getKeyword(context, "letterspaced")) {
-                letterspaced = source.parseGlue(context, source, typesetter);
-            } else if (source.getKeyword(context, "noligatures")) {
-                ligatures = false;
-            } else if (source.getKeyword(context, "nokerning")) {
-                kerning = false;
-            } else if (source.getKeyword(context, "tag")) {
-                source.getOptionalEquals(context);
-                if (features == null) {
-                    features = new ArrayList<String>();
-                }
-                features.add(getTag(source, context));
-            } else {
-                break;
-            }
-        }
-
-        CoreFontFactory factory = context.getFontFactory();
-        ExtexFont fnt;
-        FontKey fontKey;
-        try {
-            Map<String, Serializable> fontKeyMap =
-                    new HashMap<String, Serializable>();
-            fontKeyMap.put(FontKey.SCALE, scale);
-            fontKeyMap.put(FontKey.LETTERSPACE, letterspaced);
-            fontKeyMap.put(FontKey.LIGATURES, Boolean.valueOf(ligatures));
-            fontKeyMap.put(FontKey.KERNING, Boolean.valueOf(kerning));
-            fontKeyMap.put(FontKey.LANGUAGE, context.getTypesettingContext()
-                .getLanguage().getName());
-            if (features == null) {
-                fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap);
-            } else {
-                fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap,
-                    features);
-            }
-            fnt = factory.getInstance(fontKey);
-        } catch (FontException e) {
-            if (logger != null) {
-                logger.log(Level.FINE, "FontPrimitive", e);
-            }
-            throw new HelpingException(getLocalizer(), "TTP.TFMnotFound",
-                context.esc(fontId), fontname);
-        } catch (ConfigurationIOException e) {
-            if (logger != null) {
-                logger.log(Level.FINE, "FontPrimitive", e);
-            }
-            throw new HelpingException(getLocalizer(), "TTP.TFMnotFound",
-                context.esc(fontId), fontname);
-        }
-
-        if (fnt == null) {
-            throw new HelpingException(getLocalizer(), "TTP.TFMnotFound",
-                context.esc(fontId), fontname);
-        }
-
-        context.setCode(fontId,
-            new FontCode(fontId, new FontImpl(fnt)),
-            prefix.clearGlobal());
+        features.add( getTag( source, context ) );
+      }
+      else {
+        break;
+      }
     }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Font convertFont(Context context, TokenSource source,
-            Typesetter typesetter) {
-
-        return context.getTypesettingContext().getFont();
+    CoreFontFactory factory = context.getFontFactory();
+    ExtexFont fnt;
+    FontKey fontKey;
+    try {
+      Map<String, Serializable> fontKeyMap =
+          new HashMap<String, Serializable>();
+      fontKeyMap.put( FontKey.SCALE, scale );
+      fontKeyMap.put( FontKey.LETTERSPACE, letterspaced );
+      fontKeyMap.put( FontKey.LIGATURES, Boolean.valueOf( ligatures ) );
+      fontKeyMap.put( FontKey.KERNING, Boolean.valueOf( kerning ) );
+      fontKeyMap.put( FontKey.LANGUAGE, context.getTypesettingContext()
+                                               .getLanguage().getName() );
+      if( features == null ) {
+        fontKey = factory.getFontKey( fontname, fontSize, fontKeyMap );
+      }
+      else {
+        fontKey = factory.getFontKey( fontname, fontSize, fontKeyMap,
+                                      features );
+      }
+      fnt = factory.getInstance( fontKey );
+    } catch( FontException e ) {
+      if( logger != null ) {
+        logger.log( Level.FINE, "FontPrimitive", e );
+      }
+      throw new HelpingException( getLocalizer(), "TTP.TFMnotFound",
+                                  context.esc( fontId ), fontname );
+    } catch( ConfigurationIOException e ) {
+      if( logger != null ) {
+        logger.log( Level.FINE, "FontPrimitive", e );
+      }
+      throw new HelpingException( getLocalizer(), "TTP.TFMnotFound",
+                                  context.esc( fontId ), fontname );
     }
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
-    public void enableLogging(Logger log) {
-
-        if (DEBUG) {
-            this.logger = log;
-        }
+    if( fnt == null ) {
+      throw new HelpingException( getLocalizer(), "TTP.TFMnotFound",
+                                  context.esc( fontId ), fontname );
     }
 
-    /**
-     * Read a list of letters or other characters but at most 4 of them.
-     * 
-     * @param source the source for new tokens
-     * @param context the interpreter context
-     * 
-     * @return the four letters found
-     * 
-     * @throws HelpingException in case of an error
-     */
-    private String getTag(TokenSource source, Context context)
-            throws HelpingException {
+    context.setCode( fontId,
+                     new FontCode( fontId, new FontImpl( fnt ) ),
+                     prefix.clearGlobal() );
+  }
 
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 4; i++) {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Font convertFont( Context context, TokenSource source,
+                           Typesetter typesetter ) {
 
-            Token t = source.getToken(context);
-            if (t instanceof LetterToken || t instanceof OtherToken) {
-                sb.append(t.toText());
-            } else {
-                source.push(t);
-                break;
-            }
-        }
-        return sb.toString();
+    return context.getTypesettingContext().getFont();
+  }
+
+  /**
+   * Setter for the logger.
+   *
+   * @param log the logger to use
+   * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+   */
+  @Override
+  public void enableLogging( Logger log ) {
+
+    if( DEBUG ) {
+      this.logger = log;
+    }
+  }
+
+  /**
+   * Read a list of letters or other characters but at most 4 of them.
+   *
+   * @param source  the source for new tokens
+   * @param context the interpreter context
+   * @return the four letters found
+   * @throws HelpingException in case of an error
+   */
+  private String getTag( TokenSource source, Context context )
+      throws HelpingException {
+
+    StringBuilder sb = new StringBuilder();
+    for( int i = 0; i < 4; i++ ) {
+
+      Token t = source.getToken( context );
+      if( t instanceof LetterToken || t instanceof OtherToken ) {
+        sb.append( t.toText() );
+      }
+      else {
+        source.push( t );
+        break;
+      }
+    }
+    return sb.toString();
+  }
+
+  /**
+   * Scan the file name until a {@code SpaceToken} is found.
+   *
+   * @param context the interpreter context
+   * @param source  the source for new tokens
+   * @return the file name as string
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  private String scanFontName( Context context, TokenSource source )
+      throws HelpingException,
+      TypesetterException {
+
+    Token t = source.scanNonSpace( context );
+
+    if( t == null ) {
+      throw new HelpingException( getLocalizer(), "TTP.EOFinDef",
+                                  toText( context ) );
     }
 
-    /**
-     * Scan the file name until a {@code SpaceToken} is found.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * 
-     * @return the file name as string
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    private String scanFontName(Context context, TokenSource source)
-            throws HelpingException,
-                TypesetterException {
+    StringBuilder sb = new StringBuilder();
 
-        Token t = source.scanNonSpace(context);
-
-        if (t == null) {
-            throw new HelpingException(getLocalizer(), "TTP.EOFinDef",
-                toText(context));
-        }
-
-        StringBuilder sb = new StringBuilder();
-
-        while (t != null && !(t instanceof SpaceToken)) {
-            if (t instanceof ControlSequenceToken) {
-                source.push(t);
-                break;
-            }
-            sb.append((char) t.getChar().getCodePoint());
-            t = source.getToken(context);
-        }
-
-        return sb.toString();
+    while( t != null && !(t instanceof SpaceToken) ) {
+      if( t instanceof ControlSequenceToken ) {
+        source.push( t );
+        break;
+      }
+      sb.append( (char) t.getChar().getCodePoint() );
+      t = source.getToken( context );
     }
+
+    return sb.toString();
+  }
 
 }

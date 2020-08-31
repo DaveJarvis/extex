@@ -40,7 +40,7 @@ import org.extex.typesetter.tc.font.Font;
 /**
  * This class provides an implementation for the primitive
  * {@code \hyphenchar}.
- * 
+ *
  * <p>The Primitive {@code \hyphenchar}</p>
  * <p>
  * The primitive {@code \hyphenchar} can be used to set the hyphenation
@@ -48,121 +48,125 @@ import org.extex.typesetter.tc.font.Font;
  * negative value &ndash; indicates that no hyphenation should be applied.
  * Otherwise the given character will be used when hyphenating words.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *     &lang;hyphenchar&rang;
  *       &rarr; {@code \hyphenchar} &lang;font&rang; {@linkplain
  *         org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *         &lang;equals&rang;} {@linkplain
- *         org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *         org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *         &lang;8-bit number&rang;}
  * </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *     \hyphenchar\font=132
  * </pre>
- * 
+ *
  * <p>Incompatibility</p>
-
+ *
  * <p>
  * The TeXbook gives no indication how the primitive should react for
- * negative values &ndash; except -1. The implementation of TeX allows to store and retrieve arbitrary negative values.
+ * negative values &ndash; except -1. The implementation of TeX allows to
+ * store and retrieve arbitrary negative values.
  * This behavior of TeX is not preserved in εχTeX.
  * </p>
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Hyphenchar extends AbstractAssignment
-        implements
-            CountConvertible,
-            ExpandableCode,
-            Theable {
+    implements
+    CountConvertible,
+    ExpandableCode,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2011L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2011L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Hyphenchar(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Hyphenchar( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    try {
+      Font font = source.getFont( context, getToken() );
+      source.getOptionalEquals( context );
+      long c = source.parseInteger( context, source, typesetter );
+      font.setHyphenChar( UnicodeChar.get( (int) c ) );
+    } catch( EofException e ) {
+      throw new EofException( toText() );
     }
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        try {
-            Font font = source.getFont(context, getToken());
-            source.getOptionalEquals(context);
-            long c = source.parseInteger(context, source, typesetter);
-            font.setHyphenChar(UnicodeChar.get((int) c));
-        } catch (EofException e) {
-            throw new EofException(toText());
-        }
+    UnicodeChar uc;
+    try {
+      Font font = source.getFont( context, getToken() );
+      uc = font.getHyphenChar();
+    } catch( EofException e ) {
+      throw new EofException( toText() );
     }
+    return (uc == null ? -1 : uc.getCodePoint());
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        UnicodeChar uc;
-        try {
-            Font font = source.getFont(context, getToken());
-            uc = font.getHyphenChar();
-        } catch (EofException e) {
-            throw new EofException(toText());
-        }
-        return (uc == null ? -1 : uc.getCodePoint());
+    try {
+      source.push( the( context, source, typesetter ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        try {
-            source.push(the(context, source, typesetter));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        Font font = source.getFont(context, getToken());
-        UnicodeChar uc = font.getHyphenChar();
-        return context.getTokenFactory().toTokens(
-            uc == null ? "-1" : Integer.toString(uc.getCodePoint()));
-    }
+    Font font = source.getFont( context, getToken() );
+    UnicodeChar uc = font.getHyphenChar();
+    return context.getTokenFactory().toTokens(
+        uc == null ? "-1" : Integer.toString( uc.getCodePoint() ) );
+  }
 
 }

@@ -24,48 +24,47 @@ import java.util.List;
 
 /**
  * This class provides some utilities for Strings and such.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class StringUtils {
 
-    /**
-     * Create a list of strings from the arguments.
-     * 
-     * @param args the arguments
-     * 
-     * @return the list
-     */
-    public static List<String> makeList(String... args) {
+  /**
+   * Create a list of strings from the arguments.
+   *
+   * @param args the arguments
+   * @return the list
+   */
+  public static List<String> makeList( String... args ) {
 
-        ArrayList<String> list = new ArrayList<String>();
-        for (String a : args) {
-            list.add(a);
-        }
-        return list;
+    ArrayList<String> list = new ArrayList<String>();
+    for( String a : args ) {
+      list.add( a );
     }
+    return list;
+  }
 
-    /**
-     * Translate a {@link String} into a printable representation and place it
-     * in a {@link StringBuilder}. The String is surrounded by double quotes
-     * and special characters are quoted.
-     * 
-     * @param sb the target string builder
-     * @param s the string to translate
-     */
-    public static void putPrintable(StringBuilder sb, String s) {
+  /**
+   * Translate a {@link String} into a printable representation and place it
+   * in a {@link StringBuilder}. The String is surrounded by double quotes
+   * and special characters are quoted.
+   *
+   * @param sb the target string builder
+   * @param s  the string to translate
+   */
+  public static void putPrintable( StringBuilder sb, String s ) {
 
-        sb.append("\"");
-        sb.append(s.replaceAll("\\\\", "\\\\")
-            .replaceAll("\"", "\\\"")
-            .replaceAll("\n", "\\n")
-            .replaceAll("\t", "\\t"));
-        sb.append("\"");
-    }
+    sb.append( "\"" );
+    sb.append( s.replaceAll( "\\\\", "\\\\" )
+                .replaceAll( "\"", "\\\"" )
+                .replaceAll( "\n", "\\n" )
+                .replaceAll( "\t", "\\t" ) );
+    sb.append( "\"" );
+  }
 
 
-    private StringUtils() {
+  private StringUtils() {
 
-        // forbidden
-    }
+    // forbidden
+  }
 }

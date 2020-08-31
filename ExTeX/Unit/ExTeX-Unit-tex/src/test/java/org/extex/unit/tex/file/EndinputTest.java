@@ -25,40 +25,42 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \endinput}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EndinputTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(EndinputTest.class);
-    }
+    (new JUnitCore()).run( EndinputTest.class );
+  }
 
 
-    public EndinputTest() {
+  public EndinputTest() {
 
-        setPrimitive("endinput");setArguments("");setPrepare("");
-    }
+    setPrimitive( "endinput" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\endinput"> Test case checking that a
-     * {@code \endinput} works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\endinput"> Test case checking that a
+   * {@code \endinput} works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\endinput abc",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\endinput abc",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

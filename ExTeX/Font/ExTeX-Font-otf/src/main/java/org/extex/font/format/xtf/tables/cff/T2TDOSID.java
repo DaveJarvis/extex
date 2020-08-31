@@ -19,99 +19,100 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
-import java.io.IOException;
-import java.util.List;
-
 import org.extex.font.format.xtf.tables.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
+import java.io.IOException;
+import java.util.List;
+
 /**
  * Abstract class for all SID-values.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public abstract class T2TDOSID extends T2TopDICTOperator {
 
-    /**
-     * bytes
-     */
-    private final short[] bytes;
+  /**
+   * bytes
+   */
+  private final short[] bytes;
 
-    /**
-     * The string for the SID.
-     */
-    private String sidstring;
+  /**
+   * The string for the SID.
+   */
+  private String sidstring;
 
-    /**
-     * value
-     */
-    private final int value;
+  /**
+   * value
+   */
+  private final int value;
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @param id the operator-id for the value
-     * @throws IOException if an IO-error occurs.
-     */
-    protected T2TDOSID(List<T2CharString> stack, short[] id) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @param id    the operator-id for the value
+   * @throws IOException if an IO-error occurs.
+   */
+  protected T2TDOSID( List<T2CharString> stack, short[] id )
+      throws IOException {
 
-        if (stack.size() < 1) {
-            throw new T2MissingNumberException();
-        }
-        value = ((T2Number) stack.get(0)).getInteger();
-        bytes = convertStackaddID(stack, id);
+    if( stack.size() < 1 ) {
+      throw new T2MissingNumberException();
     }
+    value = ((T2Number) stack.get( 0 )).getInteger();
+    bytes = convertStackaddID( stack, id );
+  }
 
-@Override
-    public short[] getBytes() {
+  @Override
+  public short[] getBytes() {
 
-        return bytes;
-    }
+    return bytes;
+  }
 
-    /**
-     * Returns the SID.
-     * 
-     * @return Returns the SID.
-     */
-    public int getSID() {
+  /**
+   * Returns the SID.
+   *
+   * @return Returns the SID.
+   */
+  public int getSID() {
 
-        return value;
-    }
+    return value;
+  }
 
-@Override
-    public Object getValue() {
+  @Override
+  public Object getValue() {
 
-        return sidstring;
-    }
+    return sidstring;
+  }
 
-    /**
-*      org.extex.font.format.xtf.tables.OtfTableCFF, int,
-     *      org.extex.font.format.xtf.tables.cff.CffFont)
-     */
-    @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
-            CffFont cffFont) throws IOException {
+  /**
+   * org.extex.font.format.xtf.tables.OtfTableCFF, int,
+   * org.extex.font.format.xtf.tables.cff.CffFont)
+   */
+  @Override
+  public void init( RandomAccessR rar, OtfTableCFF cff, int baseoffset,
+                    CffFont cffFont ) throws IOException {
 
-        sidstring = cff.getStringIndex(getSID());
-    }
+    sidstring = cff.getStringIndex( getSID() );
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        return String.valueOf(value);
-    }
+    return String.valueOf( value );
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writer.writeStartElement(getName());
-        writer.writeAttribute("value", getValue());
-        writer.writeEndElement();
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "value", getValue() );
+    writer.writeEndElement();
 
-    }
+  }
 }

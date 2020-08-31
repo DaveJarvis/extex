@@ -51,368 +51,378 @@ import java.io.Serializable;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class TfmLigKernCommand implements Serializable {
 
-    /**
-     * This is a type-safe class to represent activity information.
-     */
-    public static final class Activity implements Serializable {
-
-        /**
-         * The field {@code serialVersionUID} ...
-         */
-        private static final long serialVersionUID = 1L;
-
-
-        public Activity() {
-
-        }
-    }
+  /**
+   * This is a type-safe class to represent activity information.
+   */
+  public static final class Activity implements Serializable {
 
     /**
-     * The value of {@code activity} field which means that this
-     * lig/kern instruction is a part of lig/kern program for some
-     * character.
-     */
-    public static final Activity ACCESSIBLE = new Activity();
-
-    /**
-     * Value of skipbyte which indicates the boundary information.
-     */
-    private static final short BOUNDARYFLAG = 255;
-
-    /**
-     * Value of opbyte which indicates the kerning instruction.
-     */
-    private static final short KERNFLAG = 128;
-
-    /**
-     * The value of {@code activity} field which means that this is
-     * restart instruction or the boundary information which was processed.
-     */
-    public static final Activity PASSTHROUGH = new Activity();
-
-    /**
-     * The field {@code serialVersionUID}.
+     * The field {@code serialVersionUID} ...
      */
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Value of skipbyte which indicates the last
-     * instruction in a lig/kern program.
-     */
-    private static final short STOPFLAG = 128;
 
-    /**
-     * The value of {@code activity} field which means that this
-     * lig/kern instruction is not a part of lig/kern program for any
-     * character.
-     */
-    public static final Activity UNREACHABLE = new Activity();
+    public Activity() {
 
-    /**
-     * The flag determining the status of this lig/kern instruction.
-     */
-    private Activity activity = UNREACHABLE;
-
-    /**
-     * the lig/kern id.
-     */
-    private final int lkid;
-
-    /**
-     * the nextchar.
-     */
-    private byte nextchar;
-
-    /**
-     * the opbyte.
-     */
-    private final byte opbyte;
-
-    /**
-     * the remainder.
-     */
-    private byte remainder;
-
-    /**
-     * the skipbyte.
-     */
-    private byte skipbyte;
-
-    /**
-     * Create a new object.
-     *
-     * @param rar   the input
-     * @param id    the id
-     * @throws IOException if an IO-error occurs.
-     */
-    public TfmLigKernCommand(RandomAccessR rar, int id)
-            throws IOException {
-
-        lkid = id;
-        skipbyte = rar.readByte();
-        nextchar = rar.readByte();
-        opbyte = rar.readByte();
-        remainder = rar.readByte();
     }
+  }
 
-    /**
-     * Returns the activity.
-     * @return Returns the activity.
-     */
-    public Activity getActivity() {
+  /**
+   * The value of {@code activity} field which means that this
+   * lig/kern instruction is a part of lig/kern program for some
+   * character.
+   */
+  public static final Activity ACCESSIBLE = new Activity();
 
-        return activity;
-    }
+  /**
+   * Value of skipbyte which indicates the boundary information.
+   */
+  private static final short BOUNDARYFLAG = 255;
 
-    /**
-     * Returns the lkid.
-     * @return Returns the lkid.
-     */
-    public int getLkid() {
+  /**
+   * Value of opbyte which indicates the kerning instruction.
+   */
+  private static final short KERNFLAG = 128;
 
-        return lkid;
-    }
+  /**
+   * The value of {@code activity} field which means that this is
+   * restart instruction or the boundary information which was processed.
+   */
+  public static final Activity PASSTHROUGH = new Activity();
 
-    /**
-     * Returns the nextchar.
-     * @return Returns the nextchar.
-     */
-    public short getNextchar() {
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-        return nextchar;
-    }
+  /**
+   * Value of skipbyte which indicates the last
+   * instruction in a lig/kern program.
+   */
+  private static final short STOPFLAG = 128;
 
-    /**
-     * Returns the opbyte.
-     * @return Returns the opbyte.
-     */
-    public short getOpbyte() {
+  /**
+   * The value of {@code activity} field which means that this
+   * lig/kern instruction is not a part of lig/kern program for any
+   * character.
+   */
+  public static final Activity UNREACHABLE = new Activity();
 
-        return opbyte;
-    }
+  /**
+   * The flag determining the status of this lig/kern instruction.
+   */
+  private Activity activity = UNREACHABLE;
 
-    /**
-     * Returns the remainder.
-     * @return Returns the remainder.
-     */
-    public short getRemainder() {
+  /**
+   * the lig/kern id.
+   */
+  private final int lkid;
 
-        return remainder;
-    }
+  /**
+   * the nextchar.
+   */
+  private byte nextchar;
 
-    /**
-     * Returns the skipbyte.
-     * @return Returns the skipbyte.
-     */
-    public short getSkipbyte() {
+  /**
+   * the opbyte.
+   */
+  private final byte opbyte;
 
-        return skipbyte;
-    }
+  /**
+   * the remainder.
+   */
+  private byte remainder;
 
-    /**
-     * Gives the index to the kern table from tfm file for kerning
-     * instruction.
-     *
-     * @return Returns the index to the {@code kernTable}.
-     */
-    public int kernIndex() {
+  /**
+   * the skipbyte.
+   */
+  private byte skipbyte;
 
-        return (opbyte() - KERNFLAG << TfmConstants.CONST_8) + remainder();
-    }
+  /**
+   * Create a new object.
+   *
+   * @param rar the input
+   * @param id  the id
+   * @throws IOException if an IO-error occurs.
+   */
+  public TfmLigKernCommand( RandomAccessR rar, int id )
+      throws IOException {
 
-    /**
-     * Tells whether the current character should be left in place when
-     * executing this ligature instructions.
-     *
-     * @return Returns {@code true} if the current character should be left.
-     */
-    public boolean leaveLeft() {
+    lkid = id;
+    skipbyte = rar.readByte();
+    nextchar = rar.readByte();
+    opbyte = rar.readByte();
+    remainder = rar.readByte();
+  }
 
-        return (opbyte() & 0x02) != 0;
-    }
+  /**
+   * Returns the activity.
+   *
+   * @return Returns the activity.
+   */
+  public Activity getActivity() {
 
-    /**
-     * Tells whether the next character should be left in place when
-     * executing this ligature instructions.
-     *
-     * @return Returns {@code true} if the next character should be left.
-     */
-    public boolean leaveRight() {
+    return activity;
+  }
 
-        return (opbyte() & 0x01) != 0;
-    }
+  /**
+   * Returns the lkid.
+   *
+   * @return Returns the lkid.
+   */
+  public int getLkid() {
 
-    /**
-     * Gives the code of charcter which should be inserted between the
-     * current and the next characters when executing this ligature
-     * instruction.
-     *
-     * @return Returns the code of the character to be inserted.
-     */
-    public short ligChar() {
+    return lkid;
+  }
 
-        return remainder();
-    }
+  /**
+   * Returns the nextchar.
+   *
+   * @return Returns the nextchar.
+   */
+  public short getNextchar() {
 
-    /**
-     * Forces this LigKern to be the last instruction in a lig/kern program.
-     */
-    public void makeStop() {
+    return nextchar;
+  }
 
-        skipbyte = (byte) STOPFLAG;
-    }
+  /**
+   * Returns the opbyte.
+   *
+   * @return Returns the opbyte.
+   */
+  public short getOpbyte() {
 
-    /**
-     * Tells whether this LigKern contains information
-     * about boundary.
-     * (it must be also first or last in the lig/kern table).
-     *
-     * @return Return {@code true} if it contains boundary information.
-     */
-    public boolean meansBoundary() {
+    return opbyte;
+  }
 
-        return (skipbyte() == BOUNDARYFLAG);
-    }
+  /**
+   * Returns the remainder.
+   *
+   * @return Returns the remainder.
+   */
+  public short getRemainder() {
 
-    /**
-     * Tells whether this LigKern is a kerning instruction.
-     *
-     * @return Returns {@code true} for kerning instruction.
-     */
-    public boolean meansKern() {
+    return remainder;
+  }
 
-        return opbyte() >= KERNFLAG;
-    }
+  /**
+   * Returns the skipbyte.
+   *
+   * @return Returns the skipbyte.
+   */
+  public short getSkipbyte() {
 
-    /**
-     * Tells whether this LigKern redirects the actual
-     * start of a lig/kern program to some other instruction
-     * (it must be also the first instruction of some lig/kern program).
-     *
-     * @return Return {@code true} if it is a restart instruction.
-     */
-    public boolean meansRestart() {
+    return skipbyte;
+  }
 
-        return (skipbyte() > STOPFLAG);
-    }
+  /**
+   * Gives the index to the kern table from tfm file for kerning
+   * instruction.
+   *
+   * @return Returns the index to the {@code kernTable}.
+   */
+  public int kernIndex() {
 
-    /**
-     * Tells whether this LigKern is the last instruction
-     * of a lig/kern program.
-     *
-     * @return Return {@code true} if this is the last
-     *         instruction of a lig/kern program.
-     */
-    public boolean meansStop() {
+    return (opbyte() - KERNFLAG << TfmConstants.CONST_8) + remainder();
+  }
 
-        return (skipbyte() >= STOPFLAG);
-    }
+  /**
+   * Tells whether the current character should be left in place when
+   * executing this ligature instructions.
+   *
+   * @return Returns {@code true} if the current character should be left.
+   */
+  public boolean leaveLeft() {
 
-    /**
-     * Gives the code of the character which must be next to the current
-     * character if this instruction has to be activated.
-     *
-     * @return Returns the next character code.
-     */
-    public short nextChar() {
+    return (opbyte() & 0x02) != 0;
+  }
 
-        return (short) (nextchar & TfmConstants.CONST_XFF);
-    }
+  /**
+   * Tells whether the next character should be left in place when
+   * executing this ligature instructions.
+   *
+   * @return Returns {@code true} if the next character should be left.
+   */
+  public boolean leaveRight() {
 
-    /**
-     * Tells the position of the next lig/kern program instruction given
-     * the position of this LigKern in the lig/kern table.
-     * @param pos   the pos
-     * @return Returns index to the {@code ligAuxTab}
-     *         of the next lig/kern instruction.
-     */
-    public int nextIndex(int pos) {
+    return (opbyte() & 0x01) != 0;
+  }
 
-        return pos + skipbyte() + 1;
-    }
+  /**
+   * Gives the code of charcter which should be inserted between the
+   * current and the next characters when executing this ligature
+   * instruction.
+   *
+   * @return Returns the code of the character to be inserted.
+   */
+  public short ligChar() {
 
-    /**
-     * Gives the unsigned value of the opbyte.
-     * @return Return the encoded ligature or kern operation.
-     */
-    public short opbyte() {
+    return remainder();
+  }
 
-        return (short) (opbyte & TfmConstants.CONST_XFF);
-    }
+  /**
+   * Forces this LigKern to be the last instruction in a lig/kern program.
+   */
+  public void makeStop() {
 
-    /**
-     * Gives the unsigned value of uninterpreted remainder.
-     * @return Return the remainder which meaning depends on
-     *         the value of opbyte.
-     */
-    public short remainder() {
+    skipbyte = (byte) STOPFLAG;
+  }
 
-        return (short) (remainder & TfmConstants.CONST_XFF);
-    }
+  /**
+   * Tells whether this LigKern contains information
+   * about boundary.
+   * (it must be also first or last in the lig/kern table).
+   *
+   * @return Return {@code true} if it contains boundary information.
+   */
+  public boolean meansBoundary() {
 
-    /**
-     * Gives actual starting index of the lig/kern program for restart
-     * instruction.
-     *
-     * @return Returns the actual start of lig/kern program.
-     */
-    public int restartIndex() {
+    return (skipbyte() == BOUNDARYFLAG);
+  }
 
-        return (opbyte() << TfmConstants.CONST_8) + remainder();
-    }
+  /**
+   * Tells whether this LigKern is a kerning instruction.
+   *
+   * @return Returns {@code true} for kerning instruction.
+   */
+  public boolean meansKern() {
 
-    /**
-     * Set the new value for actifity.
-     *
-     * @param act The activity to set.
-     */
-    public void setActivity(Activity act) {
+    return opbyte() >= KERNFLAG;
+  }
 
-        this.activity = act;
-    }
+  /**
+   * Tells whether this LigKern redirects the actual
+   * start of a lig/kern program to some other instruction
+   * (it must be also the first instruction of some lig/kern program).
+   *
+   * @return Return {@code true} if it is a restart instruction.
+   */
+  public boolean meansRestart() {
 
-    /**
-     * Forces the ligChar to have particular value.
-     *
-     * @param c the forced value of ligChar.
-     */
-    public void setLigChar(short c) {
+    return (skipbyte() > STOPFLAG);
+  }
 
-        remainder = (byte) c;
-    }
+  /**
+   * Tells whether this LigKern is the last instruction
+   * of a lig/kern program.
+   *
+   * @return Return {@code true} if this is the last
+   * instruction of a lig/kern program.
+   */
+  public boolean meansStop() {
 
-    /**
-     * Forces this LigKern to have particular value of nextchar.
-     *
-     * @param c the forced value of nextchar.
-     */
-    public void setNextChar(int c) {
+    return (skipbyte() >= STOPFLAG);
+  }
 
-        nextchar = (byte) c;
-    }
+  /**
+   * Gives the code of the character which must be next to the current
+   * character if this instruction has to be activated.
+   *
+   * @return Returns the next character code.
+   */
+  public short nextChar() {
 
-    /**
-     * Gives the unsigned value of the skipbyte.
-     * @return Return the amount of skip or the stop or boundary flag.
-     */
-    public short skipbyte() {
+    return (short) (nextchar & TfmConstants.CONST_XFF);
+  }
 
-        return (short) (skipbyte & TfmConstants.CONST_XFF);
-    }
+  /**
+   * Tells the position of the next lig/kern program instruction given
+   * the position of this LigKern in the lig/kern table.
+   *
+   * @param pos the pos
+   * @return Returns index to the {@code ligAuxTab}
+   * of the next lig/kern instruction.
+   */
+  public int nextIndex( int pos ) {
 
-    /**
-     * Tells how many character should be skipped over after executing this
-     * ligature instruction.
-     *
-     * @return the number of characters to be skipped.
-     */
-    public byte stepOver() {
+    return pos + skipbyte() + 1;
+  }
 
-        return (byte) (opbyte() >>> 2);
-    }
+  /**
+   * Gives the unsigned value of the opbyte.
+   *
+   * @return Return the encoded ligature or kern operation.
+   */
+  public short opbyte() {
+
+    return (short) (opbyte & TfmConstants.CONST_XFF);
+  }
+
+  /**
+   * Gives the unsigned value of uninterpreted remainder.
+   *
+   * @return Return the remainder which meaning depends on
+   * the value of opbyte.
+   */
+  public short remainder() {
+
+    return (short) (remainder & TfmConstants.CONST_XFF);
+  }
+
+  /**
+   * Gives actual starting index of the lig/kern program for restart
+   * instruction.
+   *
+   * @return Returns the actual start of lig/kern program.
+   */
+  public int restartIndex() {
+
+    return (opbyte() << TfmConstants.CONST_8) + remainder();
+  }
+
+  /**
+   * Set the new value for actifity.
+   *
+   * @param act The activity to set.
+   */
+  public void setActivity( Activity act ) {
+
+    this.activity = act;
+  }
+
+  /**
+   * Forces the ligChar to have particular value.
+   *
+   * @param c the forced value of ligChar.
+   */
+  public void setLigChar( short c ) {
+
+    remainder = (byte) c;
+  }
+
+  /**
+   * Forces this LigKern to have particular value of nextchar.
+   *
+   * @param c the forced value of nextchar.
+   */
+  public void setNextChar( int c ) {
+
+    nextchar = (byte) c;
+  }
+
+  /**
+   * Gives the unsigned value of the skipbyte.
+   *
+   * @return Return the amount of skip or the stop or boundary flag.
+   */
+  public short skipbyte() {
+
+    return (short) (skipbyte & TfmConstants.CONST_XFF);
+  }
+
+  /**
+   * Tells how many character should be skipped over after executing this
+   * ligature instruction.
+   *
+   * @return the number of characters to be skipped.
+   */
+  public byte stepOver() {
+
+    return (byte) (opbyte() >>> 2);
+  }
 
 }

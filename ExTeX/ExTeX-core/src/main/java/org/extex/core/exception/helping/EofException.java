@@ -25,53 +25,53 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is raised when an unexpected end of file is encountered.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code UnexpectedEofIn}.
+ * The localization format is taken from the Localizer under the key
+ * {@code UnexpectedEofIn}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EofException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     *
-     */
-    public EofException() {
+  /**
+   * Creates a new object.
+   */
+  public EofException() {
 
-        super(LocalizerFactory.getLocalizer(EofException.class),
-                "UnexpectedEof");
-    }
+    super( LocalizerFactory.getLocalizer( EofException.class ),
+           "UnexpectedEof" );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param localizer the localizer to use
-     * @param messageTag the name of the message
-     * @param a the argument
-     */
-    public EofException(Localizer localizer, String messageTag,
-            String a) {
+  /**
+   * Creates a new object.
+   *
+   * @param localizer  the localizer to use
+   * @param messageTag the name of the message
+   * @param a          the argument
+   */
+  public EofException( Localizer localizer, String messageTag,
+                       String a ) {
 
-        super(localizer, messageTag, a);
-    }
+    super( localizer, messageTag, a );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param macro the name of the macro in which the eof has been encountered.
-     *  If the value is {@code null} then a shortened error message is
-     *  used.
-     */
-    public EofException(String macro) {
+  /**
+   * Creates a new object.
+   *
+   * @param macro the name of the macro in which the eof has been encountered.
+   *              If the value is {@code null} then a shortened error 
+   *              message is
+   *              used.
+   */
+  public EofException( String macro ) {
 
-        super(LocalizerFactory.getLocalizer(EofException.class), 
-                (macro != null ? "UnexpectedEofIn" : "UnexpectedEof"), macro);
-    }
+    super( LocalizerFactory.getLocalizer( EofException.class ),
+           (macro != null ? "UnexpectedEofIn" : "UnexpectedEof"), macro );
+  }
 
 }

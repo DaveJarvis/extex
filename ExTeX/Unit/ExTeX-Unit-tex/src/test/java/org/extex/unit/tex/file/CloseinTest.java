@@ -25,40 +25,40 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \closein}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CloseinTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(CloseinTest.class);
-    }
+    (new JUnitCore()).run( CloseinTest.class );
+  }
 
 
-    public CloseinTest() {
+  public CloseinTest() {
 
-        super("closein", "1");
-    }
+    super( "closein", "1" );
+  }
 
-    /**
-     * <testcase primitive="\closein"> Test case checking that a
-     * {@code \closein} works on unopened file handles.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\closein"> Test case checking that a
+   * {@code \closein} works on unopened file handles.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\closein 1",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\closein 1",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

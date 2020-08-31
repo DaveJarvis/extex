@@ -24,38 +24,39 @@ import org.extex.framework.i18n.Localizer;
 /**
  * This exception signals the error handler that a continuation is not
  * desirable.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class InterpreterPanicException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 1L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 1L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param localizer the localizer
-     * @param tag the name of the format for the localizer
-     */
-    public InterpreterPanicException(Localizer localizer, String tag) {
+  /**
+   * Creates a new object.
+   *
+   * @param localizer the localizer
+   * @param tag       the name of the format for the localizer
+   */
+  public InterpreterPanicException( Localizer localizer, String tag ) {
 
-        super(localizer, tag, "?");
-    }
+    super( localizer, tag, "?" );
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param localizer the localizer
-     * @param tag the name of the format for the localizer
-     * @param arg the argument
-     */
-    public InterpreterPanicException(Localizer localizer, String tag, String arg) {
+  /**
+   * Creates a new object.
+   *
+   * @param localizer the localizer
+   * @param tag       the name of the format for the localizer
+   * @param arg       the argument
+   */
+  public InterpreterPanicException( Localizer localizer, String tag,
+                                    String arg ) {
 
-        super(localizer, tag, arg);
-    }
+    super( localizer, tag, arg );
+  }
 
 }

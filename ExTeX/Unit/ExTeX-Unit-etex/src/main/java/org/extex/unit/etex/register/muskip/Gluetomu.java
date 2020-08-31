@@ -35,71 +35,72 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \gluetomu}.
- * 
+ *
  * <p>The Primitive {@code \gluetomu}</p>
  * <p>
  * The primitive {@code \gluetomu} converts a glue specification to a muglue
  * specification. For this conversion 1mu=1pt is assumed. This primitive can be
  * used wherever a muskip is expected.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;gluetomu&rang;
  *      &rarr; {@code \gluetomu} &lang;glue&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \muskip0=\gluetomu1pt  </pre>
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Gluetomu extends AbstractCode implements MuskipConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Gluetomu(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Gluetomu( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-* org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Muskip convertMuskip(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public Muskip convertMuskip( Context context, TokenSource source,
+                               Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Glue glue = source.parseGlue(context, source, typesetter);
+    Glue glue = source.parseGlue( context, source, typesetter );
 
-        return new Muskip(glue.getLength(), glue.getStretch(), glue.getShrink());
-    }
+    return new Muskip( glue.getLength(), glue.getStretch(), glue.getShrink() );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        throw new CantUseInException(toText(context),
-            typesetter.getMode().toString());
-    }
+    throw new CantUseInException( toText( context ),
+                                  typesetter.getMode().toString() );
+  }
 
 }

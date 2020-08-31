@@ -25,39 +25,39 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \omit}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OmitTest extends ExTeXLauncher {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(OmitTest.class);
-    }
+    (new JUnitCore()).run( OmitTest.class );
+  }
 
 
-    public OmitTest() {
+  public OmitTest() {
 
-    }
+  }
 
-    /**
-     * <testcase primitive="\omit"> Test case checking that {@code \omit}
-     * needs to be used in a tabuling context.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLonelyCr() throws Exception {
+  /**
+   * <testcase primitive="\omit"> Test case checking that {@code \omit}
+   * needs to be used in a tabuling context.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLonelyCr() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\omit" + "\\end ",
-            // --- log message ---
-            "Misplaced \\omit");
-    }
+    assertFailure(// --- input code ---
+                  "\\omit" + "\\end ",
+                  // --- log message ---
+                  "Misplaced \\omit" );
+  }
 
 }

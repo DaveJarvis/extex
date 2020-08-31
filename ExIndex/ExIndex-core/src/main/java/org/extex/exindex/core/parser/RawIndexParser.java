@@ -19,34 +19,33 @@
 
 package org.extex.exindex.core.parser;
 
-import java.io.IOException;
-
 import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.lisp.exception.LException;
+
+import java.io.IOException;
 
 /**
  * This interface describes the ability to retrieve an index entry from some
  * source.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface RawIndexParser {
 
-    /**
-     * Close the parser.
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    void close() throws IOException;
+  /**
+   * Close the parser.
+   *
+   * @throws IOException in case of an I/O error
+   */
+  void close() throws IOException;
 
-    /**
-     * Read the next index entry.
-     * 
-     * @return the next index entry or {@code null} at end of file
-     * 
-     * @throws LException in case of an error
-     * @throws IOException in case of an I/O error
-     */
-    RawIndexentry parse() throws LException, IOException;
+  /**
+   * Read the next index entry.
+   *
+   * @return the next index entry or {@code null} at end of file
+   * @throws LException  in case of an error
+   * @throws IOException in case of an I/O error
+   */
+  RawIndexentry parse() throws LException, IOException;
 
 }

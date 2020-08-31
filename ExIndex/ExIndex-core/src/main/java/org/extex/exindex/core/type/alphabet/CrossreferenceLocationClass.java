@@ -23,51 +23,51 @@ import org.extex.exindex.core.type.page.PageReference;
 
 /**
  * This class contains a cross-reference location class.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CrossreferenceLocationClass implements LocationClass {
 
-    /**
-     * The field {@code verified} contains the indicator for unverified cross
-     * references.
-     */
-    private final boolean unverified;
+  /**
+   * The field {@code verified} contains the indicator for unverified cross
+   * references.
+   */
+  private final boolean unverified;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param unverified the indicator for unverified cross-references
-     */
-    public CrossreferenceLocationClass(boolean unverified) {
+  /**
+   * Creates a new object.
+   *
+   * @param unverified the indicator for unverified cross-references
+   */
+  public CrossreferenceLocationClass( boolean unverified ) {
 
-        this.unverified = unverified;
-    }
+    this.unverified = unverified;
+  }
 
-    /**
-     * Getter for verified.
-     * 
-     * @return the verified
-     */
-    public boolean isUnverified() {
+  /**
+   * Getter for verified.
+   *
+   * @return the verified
+   */
+  public boolean isUnverified() {
 
-        return unverified;
-    }
+    return unverified;
+  }
 
-    /**
-*      String)
-     */
-    public PageReference match(String encap, String text) {
+  /**
+   * String)
+   */
+  public PageReference match( String encap, String text ) {
 
-        // return new CrossReference(new String[] {text}, layer);
-        // TODO gene: match unimplemented
-        throw new RuntimeException("unimplemented");
-    }
+    // return new CrossReference(new String[] {text}, layer);
+    // TODO gene: match unimplemented
+    throw new RuntimeException( "unimplemented" );
+  }
 
-public boolean match(StringBuilder s) {
+  public boolean match( StringBuilder s ) {
 
-        // TODO gene: match unimplemented
-        throw new RuntimeException("unimplemented");
-    }
+    // TODO gene: match unimplemented
+    throw new RuntimeException( "unimplemented" );
+  }
 
 }

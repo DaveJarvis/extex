@@ -21,36 +21,36 @@ package org.extex.exbib.core.exceptions;
 
 /**
  * This Exception is used to wrap an IOException.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ExBibIoException extends ExBibException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the chained throwable
-     */
-    public ExBibIoException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the chained throwable
+   */
+  public ExBibIoException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
-    /**
-     * Provides the message for this Exception.
-     * 
-     * @return the message for this exception
-     */
-    @Override
-    public String getMessage() {
+  /**
+   * Provides the message for this Exception.
+   *
+   * @return the message for this exception
+   */
+  @Override
+  public String getMessage() {
 
-        return getCause().getMessage();
-    }
+    return getCause().getMessage();
+  }
 
 }

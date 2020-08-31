@@ -24,88 +24,87 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \ifhbox}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IfhboxTest extends ConditionalTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IfhboxTest.class);
-    }
+    (new JUnitCore()).run( IfhboxTest.class );
+  }
 
 
-    public IfhboxTest() {
+  public IfhboxTest() {
 
-        super("ifhbox", "0", DEFINE_BRACES + "\\setbox0=\\hbox{}");
-    }
+    super( "ifhbox", "0", DEFINE_BRACES + "\\setbox0=\\hbox{}" );
+  }
 
-    /**
-     * <testcase primitive="\ifhbox"> Test case checking that {@code \ifhbox}
-     * on an undefined box selects the else branch. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\ifhbox"> Test case checking that {@code \ifhbox}
+   * on an undefined box selects the else branch.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifhbox42 a\\else b\\fi\\end",
-            // --- output channel ---
-            "b" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifhbox42 a\\else b\\fi\\end",
+                  // --- output channel ---
+                  "b" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifhbox"> Test case checking that {@code \ifhbox}
-     * on an undefined box selects nothing if the else branch is missing.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\ifhbox"> Test case checking that {@code \ifhbox}
+   * on an undefined box selects nothing if the else branch is missing.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "x\\ifhbox42 a\\fi x\\end",
-            // --- output channel ---
-            "xx" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "x\\ifhbox42 a\\fi x\\end",
+                  // --- output channel ---
+                  "xx" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifhbox"> Test case checking that {@code \ifhbox}
-     * on an empty hbox selects the then branch. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\ifhbox"> Test case checking that {@code \ifhbox}
+   * on an empty hbox selects the then branch.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\catcode`{=1 " + "\\catcode`}=2 " + "\\setbox42\\hbox{}"
-                    + "\\ifhbox42 a\\else b\\fi\\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\catcode`{=1 " + "\\catcode`}=2 " + "\\setbox42\\hbox{}"
+                      + "\\ifhbox42 a\\else b\\fi\\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifhbox"> Test case checking that {@code \ifhbox}
-     * on an empty vbox selects the else branch. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test4() throws Exception {
+  /**
+   * <testcase primitive="\ifhbox"> Test case checking that {@code \ifhbox}
+   * on an empty vbox selects the else branch.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test4() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\catcode`{=1 " + "\\catcode`}=2 " + "\\setbox42\\vbox{}"
-                    + "\\ifhbox42 a\\else b\\fi\\end",
-            // --- output channel ---
-            "b" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\catcode`{=1 " + "\\catcode`}=2 " + "\\setbox42\\vbox{}"
+                      + "\\ifhbox42 a\\else b\\fi\\end",
+                  // --- output channel ---
+                  "b" + TERM );
+  }
 
 }

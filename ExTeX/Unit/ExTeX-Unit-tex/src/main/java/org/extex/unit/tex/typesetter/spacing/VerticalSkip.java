@@ -28,24 +28,23 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This interface describes macros which produces a vertical glue.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface VerticalSkip {
 
-    /**
-     * This method acquires a vertical glue.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the amount of vertical skip
-     *
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    FixedGlue getGlue(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException;
+  /**
+   * This method acquires a vertical glue.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the amount of vertical skip
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  FixedGlue getGlue( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws HelpingException, TypesetterException;
 
 }

@@ -23,27 +23,27 @@ import java.io.PrintStream;
 
 /**
  * This transformer translates all characters to their uppercase counterpart.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Upcase implements Transform {
 
 
-    public Upcase() {
+  public Upcase() {
 
-    }
+  }
 
-public void print(PrintStream stream) {
+  public void print( PrintStream stream ) {
 
-        stream.print("upcase");
-    }
+    stream.print( "upcase" );
+  }
 
-    /**
-*      java.lang.String)
-     */
-    public String transform(String in) {
+  /**
+   * java.lang.String)
+   */
+  public String transform( String in ) {
 
-        return in.toUpperCase();
-    }
+    return in.toUpperCase();
+  }
 
 }

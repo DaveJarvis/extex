@@ -19,83 +19,80 @@
 
 package org.extex.engine.backend;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.outputStream.OutputStreamObserver;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The trivial output stream factory is not configurable. It just creates files
  * in the current directory.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TrivialOutputFactory implements OutputStreamFactory {
 
-    /**
-     * The field {@code extension} contains the default extension used when
-     * type is {@code null}.
-     */
-    private String extension = null;
+  /**
+   * The field {@code extension} contains the default extension used when
+   * type is {@code null}.
+   */
+  private String extension = null;
 
-    /**
-     * The field {@code observers} contains the list of registered observers.
-     */
-    private List<OutputStreamObserver> observers = null;
+  /**
+   * The field {@code observers} contains the list of registered observers.
+   */
+  private List<OutputStreamObserver> observers = null;
 
 
-    public TrivialOutputFactory() {
+  public TrivialOutputFactory() {
 
+  }
+
+  /**
+   * java.lang.String, java.lang.String)
+   */
+  public OutputStream getOutputStream( String name, String type )
+      throws DocumentWriterException {
+
+    String ext = (type != null ? type : extension);
+    File file = new File( ".", name + "." + ext );
+    NamedOutputStream stream;
+    try {
+      stream =
+          new NamedOutputStream( file.toString(),
+                                 new BufferedOutputStream( new FileOutputStream(
+                                     file ) ) );
+    } catch( FileNotFoundException e ) {
+      throw new DocumentWriterException( e );
     }
-
-    /**
-*      java.lang.String, java.lang.String)
-     */
-    public OutputStream getOutputStream(String name, String type)
-            throws DocumentWriterException {
-
-        String ext = (type != null ? type : extension);
-        File file = new File(".", name + "." + ext);
-        NamedOutputStream stream;
-        try {
-            stream =
-                    new NamedOutputStream(file.toString(),
-                        new BufferedOutputStream(new FileOutputStream(file)));
-        } catch (FileNotFoundException e) {
-            throw new DocumentWriterException(e);
-        }
-        if (observers != null) {
-            for (OutputStreamObserver obs : observers) {
-                obs.update(name, type, stream);
-            }
-        }
-        return stream;
+    if( observers != null ) {
+      for( OutputStreamObserver obs : observers ) {
+        obs.update( name, type, stream );
+      }
     }
+    return stream;
+  }
 
-    /**
-*      org.extex.backend.outputStream.OutputStreamObserver)
-     */
-    public void register(OutputStreamObserver observer) {
+  /**
+   * org.extex.backend.outputStream.OutputStreamObserver)
+   */
+  public void register( OutputStreamObserver observer ) {
 
-        if (observers == null) {
-            observers = new ArrayList<OutputStreamObserver>();
-        }
-        observers.add(observer);
+    if( observers == null ) {
+      observers = new ArrayList<OutputStreamObserver>();
     }
+    observers.add( observer );
+  }
 
-    /**
-*      java.lang.String)
-     */
-    public void setExtension(String extension) {
+  /**
+   * java.lang.String)
+   */
+  public void setExtension( String extension ) {
 
-        this.extension = extension;
-    }
+    this.extension = extension;
+  }
 
 }

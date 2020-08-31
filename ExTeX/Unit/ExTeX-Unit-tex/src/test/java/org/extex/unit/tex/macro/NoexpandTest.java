@@ -25,13 +25,14 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
  * This is a test suite for the primitive {@code \noexpand}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoexpandTest extends NoFlagsButGlobalPrimitiveTester {
 
 
-    public NoexpandTest() {
+  public NoexpandTest() {
 
-        setPrimitive("noexpand");setArguments("\\relax");
-    }
+    setPrimitive( "noexpand" );
+    setArguments( "\\relax" );
+  }
 
 }

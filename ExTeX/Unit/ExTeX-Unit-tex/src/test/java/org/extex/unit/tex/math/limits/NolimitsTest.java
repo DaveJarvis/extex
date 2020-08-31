@@ -23,7 +23,7 @@ package org.extex.unit.tex.math.limits;
  * This is a test suite for the primitive {@code \nolimits}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NolimitsTest extends AbstractLimitsTester {
 
   public NolimitsTest() {

@@ -25,14 +25,16 @@ import org.extex.test.NoFlagsPrimitiveTester;
  * This is a test suite for the primitive {@code \patterns}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PatternsTest extends NoFlagsPrimitiveTester {
 
 
-    public PatternsTest() {
+  public PatternsTest() {
 
-        setPrimitive("patterns");setArguments("{}");setPrepare("");
-    }
+    setPrimitive( "patterns" );
+    setArguments( "{}" );
+    setPrepare( "" );
+  }
 
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

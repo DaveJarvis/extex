@@ -19,96 +19,94 @@
 
 package org.extex.typesetter.paragraphBuilder;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.FixedDimen;
 
 /**
  * This class defines an arbitrary paragraph shape.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ParagraphShape implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code points} contains the list of reference points for
-     * the parshape. There are always two consecutive points for the left and
-     * the right margin.
-     */
-    private final List<FixedDimen> points = new ArrayList<FixedDimen>();
+  /**
+   * The field {@code points} contains the list of reference points for
+   * the parshape. There are always two consecutive points for the left and
+   * the right margin.
+   */
+  private final List<FixedDimen> points = new ArrayList<FixedDimen>();
 
 
-    public ParagraphShape() {
+  public ParagraphShape() {
 
+  }
+
+  /**
+   * Add another pair of points.
+   *
+   * @param left  the left margin
+   * @param right the right margin
+   */
+  public void add( Dimen left, Dimen right ) {
+
+    points.add( left );
+    points.add( right );
+  }
+
+  /**
+   * Getter for the left hand margin of a certain position.
+   * The position is given by an index into the list.
+   * If the index points past the end of th list then the last entry is
+   * repeated. If the index is negative then 0pt is returned.
+   *
+   * @param index the index of the position
+   * @return the left hand margin
+   */
+  public FixedDimen getIndent( int index ) {
+
+    if( index < 0 ) {
+      return Dimen.ZERO_PT;
     }
+    int i = (points.size() - 1) / 2;
+    return points.get( (index > i ? i : index) * 2 );
+  }
 
-    /**
-     * Add another pair of points.
-     *
-     * @param left the left margin
-     * @param right the right margin
-     */
-    public void add(Dimen left, Dimen right) {
+  /**
+   * Getter for the right hand margin of a certain position.
+   * The position is given by an index into the list.
+   * If the index points past the end of th list then the last entry is
+   * repeated. If the index is negative then 0pt is returned.
+   *
+   * @param index the index of the position
+   * @return the right hand margin
+   */
+  public FixedDimen getLength( int index ) {
 
-        points.add(left);
-        points.add(right);
+    if( index < 0 ) {
+      return Dimen.ZERO_PT;
     }
+    int i = (points.size() - 1) / 2;
+    return points.get( (index > i ? i : index) * 2 + 1 );
+  }
 
-    /**
-     * Getter for the left hand margin of a certain position.
-     * The position is given by an index into the list.
-     * If the index points past the end of th list then the last entry is
-     * repeated. If the index is negative then 0pt is returned.
-     *
-     * @param index the index of the position
-     *
-     * @return the left hand margin
-     */
-    public FixedDimen getIndent(int index) {
+  /**
+   * Getter for the number of points.
+   *
+   * @return the number of points stored in this instance
+   */
+  public long getSize() {
 
-        if (index < 0) {
-            return Dimen.ZERO_PT;
-        }
-        int i = (points.size() - 1) / 2;
-        return points.get((index > i ? i : index) * 2);
-    }
-
-    /**
-     * Getter for the right hand margin of a certain position.
-     * The position is given by an index into the list.
-     * If the index points past the end of th list then the last entry is
-     * repeated. If the index is negative then 0pt is returned.
-     *
-     * @param index the index of the position
-     *
-     * @return the right hand margin
-     */
-    public FixedDimen getLength(int index) {
-
-        if (index < 0) {
-            return Dimen.ZERO_PT;
-        }
-        int i = (points.size() - 1) / 2;
-        return points.get((index > i ? i : index) * 2 + 1);
-    }
-
-    /**
-     * Getter for the number of points.
-     *
-     * @return the number of points stored in this instance
-     */
-    public long getSize() {
-
-        return points.size();
-    }
+    return points.size();
+  }
 
 }

@@ -19,75 +19,75 @@
 
 package org.extex.core;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is a test suite for the class Locator.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LocatorTest {
 
-    /**
-     * Test method for {@link org.extex.core.Locator#toString()}.
-     */
-    @Test
-    public final void testToString0() {
+  /**
+   * Test method for {@link org.extex.core.Locator#toString()}.
+   */
+  @Test
+  public final void testToString0() {
 
-        Locator locator = new Locator(null, -1, null, 0);
-        assertEquals("::", locator.toString());
-    }
+    Locator locator = new Locator( null, -1, null, 0 );
+    assertEquals( "::", locator.toString() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Locator#toString()}.
-     */
-    @Test
-    public final void testToString1() {
+  /**
+   * Test method for {@link org.extex.core.Locator#toString()}.
+   */
+  @Test
+  public final void testToString1() {
 
-        Locator locator = new Locator(null, 0, null, 0);
-        assertEquals(":0:", locator.toString());
-    }
+    Locator locator = new Locator( null, 0, null, 0 );
+    assertEquals( ":0:", locator.toString() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Locator#toString()}.
-     */
-    @Test
-    public final void testToString2() {
+  /**
+   * Test method for {@link org.extex.core.Locator#toString()}.
+   */
+  @Test
+  public final void testToString2() {
 
-        Locator locator = new Locator("XYZ", 42, null, 0);
-        assertEquals("XYZ:42:", locator.toString());
-    }
+    Locator locator = new Locator( "XYZ", 42, null, 0 );
+    assertEquals( "XYZ:42:", locator.toString() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Locator#toString()}.
-     */
-    @Test
-    public final void testToStringInt0() {
+  /**
+   * Test method for {@link org.extex.core.Locator#toString()}.
+   */
+  @Test
+  public final void testToStringInt0() {
 
-        Locator locator = new Locator(null, -1, null, 0);
-        assertEquals("::", locator.toString(1));
-    }
+    Locator locator = new Locator( null, -1, null, 0 );
+    assertEquals( "::", locator.toString( 1 ) );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Locator#toString()}.
-     */
-    @Test
-    public final void testToStringInt1() {
+  /**
+   * Test method for {@link org.extex.core.Locator#toString()}.
+   */
+  @Test
+  public final void testToStringInt1() {
 
-        Locator locator = new Locator(null, 0, null, 0);
-        assertEquals(":0:", locator.toString(1));
-    }
+    Locator locator = new Locator( null, 0, null, 0 );
+    assertEquals( ":0:", locator.toString( 1 ) );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.Locator#toString()}.
-     */
-    @Test
-    public final void testToStringInt2() {
+  /**
+   * Test method for {@link org.extex.core.Locator#toString()}.
+   */
+  @Test
+  public final void testToStringInt2() {
 
-        Locator locator = new Locator("XYZ", 42, null, 0);
-        assertEquals("XYZ:42:", locator.toString(1));
-    }
+    Locator locator = new Locator( "XYZ", 42, null, 0 );
+    assertEquals( "XYZ:42:", locator.toString( 1 ) );
+  }
 
 }

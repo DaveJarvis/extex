@@ -26,98 +26,98 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \global}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class GlobalTest extends PrefixTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(GlobalTest.class);
-    }
+    (new JUnitCore()).run( GlobalTest.class );
+  }
 
 
-    public GlobalTest() {
+  public GlobalTest() {
 
-        super("global");
-    }
+    super( "global" );
+  }
 
-    /**
-     * <testcase primitive="\global"> Test case checking that double
-     * {@code \global} has the same effect as one. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\global"> Test case checking that double
+   * {@code \global} has the same effect as one.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\begingroup\\global\\global\\count0=123\\endgroup"
-                    + "\\the\\count0\\end",
-            // --- output channel ---
-            "123" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\begingroup\\global\\global\\count0=123\\endgroup"
+                      + "\\the\\count0\\end",
+                  // --- output channel ---
+                  "123" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\global"> Test case checking that \global set the
-     * global flag. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test10() throws Exception {
+  /**
+   * <testcase primitive="\global"> Test case checking that \global set the
+   * global flag.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test10() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\global\\showprefix\\end",
-            // --- error channel ---
-            "global\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\global\\showprefix\\end",
+                  // --- error channel ---
+                  "global\n",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\global"> Test case checking that double
-     * {@code \global} has the same effect as one. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test11() throws Exception {
+  /**
+   * <testcase primitive="\global"> Test case checking that double
+   * {@code \global} has the same effect as one.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test11() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\global\\global\\showprefix\\end",
-            // --- error channel ---
-            "global\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\global\\global\\showprefix\\end",
+                  // --- error channel ---
+                  "global\n",
+                  // --- output channel ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\global"> Test case checking that \global can be
-     * combined with \long. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test12() throws Exception {
+  /**
+   * <testcase primitive="\global"> Test case checking that \global can be
+   * combined with \long.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test12() throws Exception {
 
-        assertOutput(showPrefixProperties(),
-        // --- input code ---
-            "\\global\\long\\showprefix\\end",
-            // --- error channel ---
-            "global and long\n",
-            // --- output channel ---
-            "");
-    }
+    assertOutput( showPrefixProperties(),
+                  // --- input code ---
+                  "\\global\\long\\showprefix\\end",
+                  // --- error channel ---
+                  "global and long\n",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

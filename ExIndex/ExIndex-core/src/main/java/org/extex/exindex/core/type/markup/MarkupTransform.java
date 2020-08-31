@@ -19,98 +19,96 @@
 
 package org.extex.exindex.core.type.markup;
 
+import org.extex.exindex.core.type.transform.Transform;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.exindex.core.type.transform.Transform;
-
 /**
  * This class provides a map of arrays with a default value.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MarkupTransform extends Markup {
 
-    /**
-     * The field {@code transformMap} contains the transforms.
-     */
-    private final Map<String, Transform> transformMap =
-            new HashMap<String, Transform>();
+  /**
+   * The field {@code transformMap} contains the transforms.
+   */
+  private final Map<String, Transform> transformMap =
+      new HashMap<String, Transform>();
 
-    /**
-     * The field {@code map} contains the mapping from name to Booleans.
-     */
-    private final Map<String, Boolean> forceMap = new HashMap<String, Boolean>();
+  /**
+   * The field {@code map} contains the mapping from name to Booleans.
+   */
+  private final Map<String, Boolean> forceMap = new HashMap<String, Boolean>();
 
-    /**
-     * Creates a new object.
-     * 
-     * @param displayName the name for debugging
-     */
-    public MarkupTransform(String displayName) {
+  /**
+   * Creates a new object.
+   *
+   * @param displayName the name for debugging
+   */
+  public MarkupTransform( String displayName ) {
 
-        super(displayName);
-    }
+    super( displayName );
+  }
 
-    /**
-     * Getter for the force value.
-     * 
-     * @param clazz the class name
-     * 
-     * @return the force indicator
-     */
-    public Boolean getForce(String clazz) {
+  /**
+   * Getter for the force value.
+   *
+   * @param clazz the class name
+   * @return the force indicator
+   */
+  public Boolean getForce( String clazz ) {
 
-        return forceMap.get(clazz);
-    }
+    return forceMap.get( clazz );
+  }
 
-    /**
-     * Getter for transform.
-     * 
-     * @param clazz the class
-     * 
-     * @return the transform
-     */
-    public Transform getTransform(String clazz) {
+  /**
+   * Getter for transform.
+   *
+   * @param clazz the class
+   * @return the transform
+   */
+  public Transform getTransform( String clazz ) {
 
-        Transform t = transformMap.get(clazz);
-        return (t == null && clazz != null ? transformMap.get(null) : t);
-    }
+    Transform t = transformMap.get( clazz );
+    return (t == null && clazz != null ? transformMap.get( null ) : t);
+  }
 
-    /**
-     * Set some major attributes.
-     * 
-     * @param clazz the class
-     * @param open the open string
-     * @param close the close string
-     * @param openHead the open head string
-     * @param closeHead the close head string
-     * @param force the force indicator
-     */
-    public void set(String clazz, String open, String close, String openHead,
-            String closeHead, boolean force) {
+  /**
+   * Set some major attributes.
+   *
+   * @param clazz     the class
+   * @param open      the open string
+   * @param close     the close string
+   * @param openHead  the open head string
+   * @param closeHead the close head string
+   * @param force     the force indicator
+   */
+  public void set( String clazz, String open, String close, String openHead,
+                   String closeHead, boolean force ) {
 
-        set(clazz, open, close, "", openHead, closeHead);
-        forceMap.put(clazz, Boolean.valueOf(force));
-    }
+    set( clazz, open, close, "", openHead, closeHead );
+    forceMap.put( clazz, Boolean.valueOf( force ) );
+  }
 
-    /**
-     * Setter for transform.
-     * 
-     * @param clazz the class
-     * @param transform the transform to set
-     */
-    public void setTransform(String clazz, Transform transform) {
+  /**
+   * Setter for transform.
+   *
+   * @param clazz     the class
+   * @param transform the transform to set
+   */
+  public void setTransform( String clazz, Transform transform ) {
 
-        this.transformMap.put(clazz, transform);
-    }
+    this.transformMap.put( clazz, transform );
+  }
 
-@Override
-    public String toString() {
+  @Override
+  public String toString() {
 
-        final StringBuilder sb = new StringBuilder(super.toString());
-        sb.append(forceMap.toString());
-        return sb.toString();
-    }
+    final StringBuilder sb = new StringBuilder( super.toString() );
+    sb.append( forceMap.toString() );
+    return sb.toString();
+  }
 
 }

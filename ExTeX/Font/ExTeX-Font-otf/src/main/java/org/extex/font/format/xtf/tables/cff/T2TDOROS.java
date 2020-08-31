@@ -24,33 +24,33 @@ import java.util.List;
 
 /**
  * ROS.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOROS extends T2TDOSID {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2TDOROS(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2TDOROS( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{ESCAPE_BYTE, CFF_ROS});
-    }
+    super( stack, new short[]{ESCAPE_BYTE, CFF_ROS} );
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return T2TopDICTOperator.TYPE_ROS;
-    }
+    return T2TopDICTOperator.TYPE_ROS;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "ROS";
-    }
+    return "ROS";
+  }
 
 }

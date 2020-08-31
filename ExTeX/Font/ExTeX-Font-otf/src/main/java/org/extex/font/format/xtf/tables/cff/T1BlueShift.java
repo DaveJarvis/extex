@@ -26,29 +26,29 @@ import java.util.List;
  * BlueShift.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T1BlueShift extends T1DictNumber {
 
-    /**
-     * Create a new object.
-     *
-     * @param stack the stack
-     * @throws IOException if an IO.error occurs.
-     */
-    public T1BlueShift(List<T2Number> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO.error occurs.
+   */
+  public T1BlueShift( List<T2Number> stack ) throws IOException {
 
-        super(stack, new short[]{BLUE_SHIFT});
-    }
+    super( stack, new short[]{BLUE_SHIFT} );
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
-     */
-    @Override
-    public String getName() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
+   */
+  @Override
+  public String getName() {
 
-        return "BlueShift";
-    }
+    return "BlueShift";
+  }
 
 }

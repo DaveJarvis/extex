@@ -22,35 +22,35 @@ package org.extex.exindex.lisp.exception;
 /**
  * This exception signals that an exception in the L system has been
  * encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LException extends Exception {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param message the message
-     */
-    public LException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   */
+  public LException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the cause
-     */
-    public LException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause
+   */
+  public LException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
 }

@@ -43,244 +43,237 @@ import org.extex.typesetter.listMaker.math.MathListMaker;
 
 /**
  * This abstract class provides some methods common to all ListMakers.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractListMaker implements TokenDelegateListMaker {
 
-    /**
-     * The field {@code locator} contains the locator pointing to the start.
-     */
-    private final Locator locator;
+  /**
+   * The field {@code locator} contains the locator pointing to the start.
+   */
+  private final Locator locator;
 
-    /**
-     * The field {@code manager} contains the manager to ask for global
-     * changes.
-     */
-    private final ListManager manager;
+  /**
+   * The field {@code manager} contains the manager to ask for global
+   * changes.
+   */
+  private final ListManager manager;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param theManager the manager to ask for global changes
-     * @param locator the locator
-     */
-    public AbstractListMaker(ListManager theManager, Locator locator) {
+  /**
+   * Creates a new object.
+   *
+   * @param theManager the manager to ask for global changes
+   * @param locator    the locator
+   */
+  public AbstractListMaker( ListManager theManager, Locator locator ) {
 
-        this.manager = theManager;
-        this.locator = locator;
+    this.manager = theManager;
+    this.locator = locator;
+  }
+
+  /**
+   * Getter for the localizer.
+   *
+   * @return the localizer
+   */
+  protected Localizer getLocalizer() {
+
+    return LocalizerFactory.getLocalizer( this.getClass() );
+  }
+
+  /**
+   * Getter for the locator.
+   *
+   * @return the locator
+   * @see org.extex.typesetter.ListMaker#getLocator()
+   */
+  @Override
+  public Locator getLocator() {
+
+    return locator;
+  }
+
+  /**
+   * Getter for manager.
+   *
+   * @return the manager.
+   */
+  public ListManager getManager() {
+
+    return manager;
+  }
+
+  /**
+   * Getter for the current mode.
+   *
+   * @return the mode which is one of the values defined in
+   * {@link org.extex.typesetter.Mode Mode}.
+   * @see org.extex.typesetter.ListMaker#getMode()
+   */
+  @Override
+  public abstract Mode getMode();
+
+  /**
+   * Getter for the localizer.
+   *
+   * @return the localizer
+   */
+  protected Localizer getMyLocalizer() {
+
+    return LocalizerFactory.getLocalizer( AbstractListMaker.class );
+  }
+
+  /**
+   * Getter for the previous depth parameter.
+   *
+   * @return the previous depth
+   * @throws TypesetterUnsupportedException in case of an error
+   * @see org.extex.typesetter.ListMaker#getPrevDepth()
+   */
+  @Override
+  public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
+
+    throw new TypesetterUnsupportedException();
+  }
+
+  @Override
+  public long getSpacefactor() throws TypesetterUnsupportedException {
+
+    throw new TypesetterUnsupportedException();
+  }
+
+  @Override
+  public void leftBrace() {
+
+    // noop
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource,
+   * org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void mathShift( Context context, TokenSource source, Token t )
+      throws TypesetterException,
+      ConfigurationException,
+      HelpingException {
+
+    Token next = source.getToken( context );
+
+    if( next == null ) {
+      throw new TypesetterException(
+          new MissingMathException( t.toString() ) );
     }
-
-    /**
-     * Getter for the localizer.
-     * 
-     * @return the localizer
-     */
-    protected Localizer getLocalizer() {
-
-        return LocalizerFactory.getLocalizer(this.getClass());
+    else if( next.isa( Catcode.MATHSHIFT ) ) {
+      manager.push(
+          new DisplaymathListMaker( manager, source.getLocator() ) );
+      source.push( context.getToks( "everydisplay" ) );
     }
-
-    /**
-     * Getter for the locator.
-     * 
-     * @return the locator
-     * 
-     * @see org.extex.typesetter.ListMaker#getLocator()
-     */
-    @Override
-    public Locator getLocator() {
-
-        return locator;
+    else {
+      source.push( next );
+      manager.push( new MathListMaker( manager, source.getLocator() ) );
+      source.push( context.getToks( "everymath" ) );
     }
+    context.setCount( "fam", -1, false );
 
-    /**
-     * Getter for manager.
-     * 
-     * @return the manager.
-     */
-    public ListManager getManager() {
+  }
 
-        return manager;
-    }
+  /**
+   * Notification method to deal the case that a right brace has been
+   * encountered.
+   *
+   * @throws TypesetterException in case of an error
+   * @see org.extex.typesetter.ListMaker#rightBrace()
+   */
+  @Override
+  public void rightBrace() throws TypesetterException {
 
-    /**
-     * Getter for the current mode.
-     * 
-     * @return the mode which is one of the values defined in
-     *         {@link org.extex.typesetter.Mode Mode}.
-     * 
-     * @see org.extex.typesetter.ListMaker#getMode()
-     */
-    @Override
-    public abstract Mode getMode();
+    // noop
+  }
 
-    /**
-     * Getter for the localizer.
-     * 
-     * @return the localizer
-     */
-    protected Localizer getMyLocalizer() {
+  /**
+   * Setter for the previous depth parameter.
+   *
+   * @param pd the previous depth parameter
+   * @throws TypesetterUnsupportedException in case of an error
+   * @see org.extex.typesetter.ListMaker#setPrevDepth(org.extex.core.dimen.FixedDimen)
+   */
+  @Override
+  public void setPrevDepth( FixedDimen pd )
+      throws TypesetterUnsupportedException {
 
-        return LocalizerFactory.getLocalizer(AbstractListMaker.class);
-    }
+    throw new TypesetterUnsupportedException();
+  }
 
-    /**
-     * Getter for the previous depth parameter.
-     * 
-     * @return the previous depth
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#getPrevDepth()
-     */
-    @Override
-    public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
+  /**
+   * Setter for the space factor.
+   *
+   * @param sf the space factor to set
+   * @throws TypesetterUnsupportedException in case of an error
+   * @throws InvalidSpacefactorException    in case of an invalid space factor
+   * @see org.extex.typesetter.ListMaker#setSpacefactor(org.extex.core.count.FixedCount)
+   */
+  @Override
+  public void setSpacefactor( FixedCount sf )
+      throws TypesetterUnsupportedException,
+      InvalidSpacefactorException {
 
-        throw new TypesetterUnsupportedException();
-    }
+    throw new TypesetterUnsupportedException();
+  }
 
-@Override
-    public long getSpacefactor() throws TypesetterUnsupportedException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+   * org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void subscriptMark( Context context, TokenSource source,
+                             Typesetter typesetter, Token token )
+      throws TypesetterException,
+      HelpingException {
 
-        throw new TypesetterUnsupportedException();
-    }
+    throw new TypesetterException(
+        new MissingMathException( token.toString() ) );
+  }
 
-@Override
-    public void leftBrace() {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+   * org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void superscriptMark( Context context, TokenSource source,
+                               Typesetter typesetter, Token token )
+      throws TypesetterException,
+      HelpingException {
 
-        // noop
-    }
+    throw new TypesetterException(
+        new MissingMathException( token.toString() ) );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource,
-     *      org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void mathShift(Context context, TokenSource source, Token t)
-            throws TypesetterException,
-                ConfigurationException,
-                HelpingException {
+  /**
+   * org.extex.interpreter.TokenSource,
+   * org.extex.scanner.type.token.Token)
+   */
+  @Override
+  public void tab( Context context, TokenSource source, Token token )
+      throws TypesetterException,
+      ConfigurationException {
 
-        Token next = source.getToken(context);
+    throw new TypesetterHelpingException( getMyLocalizer(),
+                                          "TTP.MisplacedTabMark",
+                                          token.toString() );
+  }
 
-        if (next == null) {
-            throw new TypesetterException(
-                new MissingMathException(t.toString()));
-        } else if (next.isa(Catcode.MATHSHIFT)) {
-            manager.push(
-                new DisplaymathListMaker(manager, source.getLocator()));
-            source.push(context.getToks("everydisplay"));
-        } else {
-            source.push(next);
-            manager.push(new MathListMaker(manager, source.getLocator()));
-            source.push(context.getToks("everymath"));
-        }
-        context.setCount("fam", -1, false);
+  /**
+   * Get the string representation of this object for debugging purposes.
+   *
+   * @return the string representation
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-    }
-
-    /**
-     * Notification method to deal the case that a right brace has been
-     * encountered.
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#rightBrace()
-     */
-    @Override
-    public void rightBrace() throws TypesetterException {
-
-        // noop
-    }
-
-    /**
-     * Setter for the previous depth parameter.
-     * 
-     * @param pd the previous depth parameter
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#setPrevDepth(org.extex.core.dimen.FixedDimen)
-     */
-    @Override
-    public void setPrevDepth(FixedDimen pd)
-            throws TypesetterUnsupportedException {
-
-        throw new TypesetterUnsupportedException();
-    }
-
-    /**
-     * Setter for the space factor.
-     * 
-     * @param sf the space factor to set
-     * 
-     * @throws TypesetterUnsupportedException in case of an error
-     * @throws InvalidSpacefactorException in case of an invalid space factor
-     * 
-     * @see org.extex.typesetter.ListMaker#setSpacefactor(org.extex.core.count.FixedCount)
-     */
-    @Override
-    public void setSpacefactor(FixedCount sf)
-            throws TypesetterUnsupportedException,
-                InvalidSpacefactorException {
-
-        throw new TypesetterUnsupportedException();
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void subscriptMark(Context context, TokenSource source,
-            Typesetter typesetter, Token token)
-            throws TypesetterException,
-                HelpingException {
-
-        throw new TypesetterException(
-            new MissingMathException(token.toString()));
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void superscriptMark(Context context, TokenSource source,
-            Typesetter typesetter, Token token)
-            throws TypesetterException,
-                HelpingException {
-
-        throw new TypesetterException(
-            new MissingMathException(token.toString()));
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource,
-     *      org.extex.scanner.type.token.Token)
-     */
-    @Override
-    public void tab(Context context, TokenSource source, Token token)
-            throws TypesetterException,
-                ConfigurationException {
-
-        throw new TypesetterHelpingException(getMyLocalizer(),
-            "TTP.MisplacedTabMark", token.toString());
-    }
-
-    /**
-     * Get the string representation of this object for debugging purposes.
-     * 
-     * @return the string representation
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        String name = getClass().getName();
-        return name.substring(name.lastIndexOf('.') + 1);
-    }
+    String name = getClass().getName();
+    return name.substring( name.lastIndexOf( '.' ) + 1 );
+  }
 
 }

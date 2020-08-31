@@ -24,33 +24,32 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive {@code \pdffontname}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdffontnameTest extends NoFlagsButProtectedPrimitiveTester {
 
 
-    public PdffontnameTest() {
+  public PdffontnameTest() {
 
-        super("pdffontname", "\\f{}", "\\font\\f=cmr10 "
-                + "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdffontname", "\\f{}", "\\font\\f=cmr10 "
+        + "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    /**
-     * <testcase primitive="\pdffontname"> Test case checking that ...
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pdffontname"> Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdffontname b",
-            // --- output message ---
-            "Missing font identifier");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdffontname b",
+                  // --- output message ---
+                  "Missing font identifier" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

@@ -26,31 +26,29 @@ import org.junit.Test;
  * This is a test suite for macro expansion.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MacroExpansionTest extends ExTeXLauncher {
 
 
-    public MacroExpansionTest() {
+  public MacroExpansionTest() {
 
-    }
+  }
 
-    /**
-     * 
-     *  Test case checking that the prefix global is passed in to the argument
-     *  of a macro.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test case checking that the prefix global is passed in to the argument
+   * of a macro.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\def\\abc{\\count0=123 }"
-                        + "{\\abc\\the\\count0} \\the\\count0 -"
-                        + "{\\global\\abc\\the\\count0} \\the\\count0" + "\\end",
-                //--- output channel ---
-                "123 0-123 123" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES + "\\def\\abc{\\count0=123 }"
+                      + "{\\abc\\the\\count0} \\the\\count0 -"
+                      + "{\\global\\abc\\the\\count0} \\the\\count0" + "\\end",
+                  //--- output channel ---
+                  "123 0-123 123" + TERM );
+  }
 
 }

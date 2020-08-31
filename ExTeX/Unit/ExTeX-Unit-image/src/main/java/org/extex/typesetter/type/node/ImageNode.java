@@ -27,39 +27,39 @@ import org.extex.typesetter.type.Node;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 @SuppressWarnings("unused")
 public class ImageNode extends WhatsItNode implements Node {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * The field {@code image} contains the image to pass to the back-end
-     * driver.
-     */
-    private final Image image;
+  /**
+   * The field {@code image} contains the image to pass to the back-end
+   * driver.
+   */
+  private final Image image;
 
-    /**
-     * Creates a new object.
-     *
-     * @param theImage the image to pass to the backend driver
-     */
-    public ImageNode(Image theImage) {
+  /**
+   * Creates a new object.
+   *
+   * @param theImage the image to pass to the backend driver
+   */
+  public ImageNode( Image theImage ) {
 
-        this.image = theImage;
-    }
+    this.image = theImage;
+  }
 
-    /**
-     * Getter for image.
-     *
-     * @return the image.
-     */
-    public Image getImage() {
+  /**
+   * Getter for image.
+   *
+   * @return the image.
+   */
+  public Image getImage() {
 
-        return this.image;
-    }
+    return this.image;
+  }
 
 }

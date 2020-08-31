@@ -19,50 +19,50 @@
 
 package org.extex.unit.omega;
 
+import org.extex.interpreter.context.Context;
+
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.extex.interpreter.context.Context;
-
 /**
  * TODO gene: missing JavaDoc.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OmegaInputStream extends InputStream {
 
-    /**
-     * The field {@code context} contains the interpreter context.
-     */
-    private final Context context;
+  /**
+   * The field {@code context} contains the interpreter context.
+   */
+  private final Context context;
 
-    /**
-     * The field {@code stream} contains the input stream itself.
-     */
-    private final InputStream stream;
+  /**
+   * The field {@code stream} contains the input stream itself.
+   */
+  private final InputStream stream;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param context the interpreter context
-     * @param stream the input stream
-     */
-    public OmegaInputStream(InputStream stream, Context context) {
+  /**
+   * Creates a new object.
+   *
+   * @param context the interpreter context
+   * @param stream  the input stream
+   */
+  public OmegaInputStream( InputStream stream, Context context ) {
 
-        this.stream = stream;
-        this.context = context;
-    }
+    this.stream = stream;
+    this.context = context;
+  }
 
-@Override
-    public int available() throws IOException {
+  @Override
+  public int available() throws IOException {
 
-        return stream.available();
-    }
+    return stream.available();
+  }
 
-@Override
-    public int read() throws IOException {
+  @Override
+  public int read() throws IOException {
 
-        return stream.read();
-    }
+    return stream.read();
+  }
 
 }

@@ -26,24 +26,24 @@ import org.extex.framework.i18n.LocalizerFactory;
  * encountered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class UndefinedControlSequenceException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param macro the name of the macro which is undefined
-     */
-    public UndefinedControlSequenceException(String macro) {
+  /**
+   * Creates a new object.
+   *
+   * @param macro the name of the macro which is undefined
+   */
+  public UndefinedControlSequenceException( String macro ) {
 
-        super(LocalizerFactory
-                .getLocalizer(UndefinedControlSequenceException.class),
-                "TTP.UndefinedToken", macro);
-    }
+    super( LocalizerFactory
+               .getLocalizer( UndefinedControlSequenceException.class ),
+           "TTP.UndefinedToken", macro );
+  }
 
 }

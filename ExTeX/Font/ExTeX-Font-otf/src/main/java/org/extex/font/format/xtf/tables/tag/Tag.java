@@ -19,9 +19,9 @@
 
 package org.extex.font.format.xtf.tables.tag;
 
-import java.io.IOException;
-
 import org.extex.util.file.random.RandomAccessR;
+
+import java.io.IOException;
 
 /**
  * OpenType Layout Tag Registry.
@@ -49,7 +49,7 @@ import org.extex.util.file.random.RandomAccessR;
  * letters, the letters are followed by the requisite number of spaces (0x20),
  * each consisting of a single byte.
  * </p>
- * 
+ *
  * <p>
  * OpenType layout tag registry for:
  * </p>
@@ -59,96 +59,97 @@ import org.extex.util.file.random.RandomAccessR;
  * <li>Feature tags</li>
  * <li>Baseline tags</li>
  * </ul>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public abstract class Tag {
 
-    /**
-     * Format the tag name.
-     * 
-     * @param name The name.
-     * @return returns the formated (4 byte) name.
-     */
-    protected static String format(String name) {
+  /**
+   * Format the tag name.
+   *
+   * @param name The name.
+   * @return returns the formated (4 byte) name.
+   */
+  protected static String format( String name ) {
 
-        String xtagname;
-        if (name == null) {
-            xtagname = "    ";
-        } else {
-            xtagname = (name + "    ").substring(0, 4);
-        }
-        return xtagname;
+    String xtagname;
+    if( name == null ) {
+      xtagname = "    ";
     }
-
-    /**
-     * Get a new Tag.
-     * <p>
-     * The tag can be a {@link ScriptTag}, a {@link FeatureTag}, a
-     * {@link LanguageSystemTag} or {@code null}, if not found.
-     * </p>
-     * 
-     * @param name The name of the tag.
-     * @return Returns a new tag.
-     */
-    public static Tag getInstance(String name) {
-
-        if (ScriptTag.containsTag( name)) {
-            return ScriptTag.getInstance(name);
-        }
-        if (FeatureTag.isInList(name)) {
-            return FeatureTag.getInstance(name);
-        }
-        if (LanguageSystemTag.isInList(name)) {
-            return LanguageSystemTag.getInstance(name);
-        }
-        return null;
+    else {
+      xtagname = (name + "    ").substring( 0, 4 );
     }
+    return xtagname;
+  }
 
-    /**
-     * The tag name.
-     */
-    private final String tagname;
+  /**
+   * Get a new Tag.
+   * <p>
+   * The tag can be a {@link ScriptTag}, a {@link FeatureTag}, a
+   * {@link LanguageSystemTag} or {@code null}, if not found.
+   * </p>
+   *
+   * @param name The name of the tag.
+   * @return Returns a new tag.
+   */
+  public static Tag getInstance( String name ) {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param rar The input.
-     * @throws IOException if a io-error occurred.
-     */
-    protected Tag(RandomAccessR rar) throws IOException {
-
-        StringBuilder buf = new StringBuilder();
-        for (int i = 0; i < 4; i++) {
-            buf.append((char) rar.readUnsignedByte());
-        }
-        tagname = format(buf.toString());
+    if( ScriptTag.containsTag( name ) ) {
+      return ScriptTag.getInstance( name );
     }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name The name of the tag.
-     */
-    protected Tag(String name) {
-
-        tagname = format(name);
+    if( FeatureTag.isInList( name ) ) {
+      return FeatureTag.getInstance( name );
     }
-
-    /**
-     * Getter for tag.
-     * 
-     * @return the tag
-     */
-    public String getTag() {
-
-        return tagname;
+    if( LanguageSystemTag.isInList( name ) ) {
+      return LanguageSystemTag.getInstance( name );
     }
+    return null;
+  }
 
-@Override
-    public String toString() {
+  /**
+   * The tag name.
+   */
+  private final String tagname;
 
-        return tagname;
+  /**
+   * Creates a new object.
+   *
+   * @param rar The input.
+   * @throws IOException if a io-error occurred.
+   */
+  protected Tag( RandomAccessR rar ) throws IOException {
+
+    StringBuilder buf = new StringBuilder();
+    for( int i = 0; i < 4; i++ ) {
+      buf.append( (char) rar.readUnsignedByte() );
     }
+    tagname = format( buf.toString() );
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name The name of the tag.
+   */
+  protected Tag( String name ) {
+
+    tagname = format( name );
+  }
+
+  /**
+   * Getter for tag.
+   *
+   * @return the tag
+   */
+  public String getTag() {
+
+    return tagname;
+  }
+
+  @Override
+  public String toString() {
+
+    return tagname;
+  }
 
 }

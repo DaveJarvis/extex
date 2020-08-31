@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \pdfmovechars}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfmovecharsTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PdfmovecharsTest.class);
-    }
+    (new JUnitCore()).run( PdfmovecharsTest.class );
+  }
 
 
-    public PdfmovecharsTest() {
+  public PdfmovecharsTest() {
 
-        super("pdfmovechars", "", "0");
-        setConfig("pdftex-test");
-    }
+    super( "pdfmovechars", "", "0" );
+    setConfig( "pdftex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

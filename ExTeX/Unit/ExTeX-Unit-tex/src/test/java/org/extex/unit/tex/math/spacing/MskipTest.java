@@ -27,37 +27,38 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \mskip}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MskipTest extends AbstractMathTester {
 
 
-    public MskipTest() {
+  public MskipTest() {
 
-        setPrimitive("mskip");setArguments(" 1mu");setPrepare("");
-    }
+    setPrimitive( "mskip" );
+    setArguments( " 1mu" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\mskip">
-     *  Test case checking that ...
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\mskip">
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                        + "$a\\mskip12mu b$\\end",
-                //--- output message ---
-                "\\vbox(6.94444pt+0.0pt)x3000.0pt\n"
-                        + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n" 
-                        + "..a\n" 
-                        + "..\\glue12.0pt\n" // TODO gene: convert mu to sp
-                        + "..b\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   //--- input code ---
+                   AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+                       + "$a\\mskip12mu b$\\end",
+                   //--- output message ---
+                   "\\vbox(6.94444pt+0.0pt)x3000.0pt\n"
+                       + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n"
+                       + "..a\n"
+                       + "..\\glue12.0pt\n" // TODO gene: convert mu to sp
+                       + "..b\n" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

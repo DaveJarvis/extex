@@ -83,142 +83,142 @@ import org.extex.framework.i18n.Localizer;
  * </ul>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TypesetterHelpingException extends TypesetterException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * The constant {@code DEFAULT_TAG} contains the tag to be used if none
-     * is given.
-     */
-    private static final String DEFAULT_TAG = "GeneralDetailedException.help";
+  /**
+   * The constant {@code DEFAULT_TAG} contains the tag to be used if none
+   * is given.
+   */
+  private static final String DEFAULT_TAG = "GeneralDetailedException.help";
 
-    /**
-     * The constant {@code DEFAULT_ARGUMENT} contains the argument if none
-     * is given.
-     */
-    private static final String DEFAULT_ARGUMENT = "?";
+  /**
+   * The constant {@code DEFAULT_ARGUMENT} contains the argument if none
+   * is given.
+   */
+  private static final String DEFAULT_ARGUMENT = "?";
 
-    /**
-     * The field {@code arg1} contains the first argument.
-     */
-    private final String arg1;
+  /**
+   * The field {@code arg1} contains the first argument.
+   */
+  private final String arg1;
 
-    /**
-     * The field {@code arg2} contains the second argument.
-     */
-    private final String arg2;
+  /**
+   * The field {@code arg2} contains the second argument.
+   */
+  private final String arg2;
 
-    /**
-     * The field {@code arg3} contains the third argument.
-     */
-    private final String arg3;
+  /**
+   * The field {@code arg3} contains the third argument.
+   */
+  private final String arg3;
 
-    /**
-     * The field {@code localizer} contains the localizer.
-     */
-    private final Localizer localizer;
+  /**
+   * The field {@code localizer} contains the localizer.
+   */
+  private final Localizer localizer;
 
-    /**
-     * The field {@code tag} contains the name of the message to show.
-     */
-    private final String tag;
+  /**
+   * The field {@code tag} contains the name of the message to show.
+   */
+  private final String tag;
 
-    /**
-     * Creates a new object without variable arguments.
-     *
-     * @param messageTag the message
-     * @param theLocalizer the localizer to use
-     */
-    public TypesetterHelpingException(Localizer theLocalizer,
-            String messageTag) {
+  /**
+   * Creates a new object without variable arguments.
+   *
+   * @param messageTag   the message
+   * @param theLocalizer the localizer to use
+   */
+  public TypesetterHelpingException( Localizer theLocalizer,
+                                     String messageTag ) {
 
-        this.tag = messageTag;
-        this.localizer = theLocalizer;
-        this.arg1 = DEFAULT_ARGUMENT;
-        this.arg2 = DEFAULT_ARGUMENT;
-        this.arg3 = DEFAULT_ARGUMENT;
-    }
+    this.tag = messageTag;
+    this.localizer = theLocalizer;
+    this.arg1 = DEFAULT_ARGUMENT;
+    this.arg2 = DEFAULT_ARGUMENT;
+    this.arg3 = DEFAULT_ARGUMENT;
+  }
 
-    /**
-     * Creates a new object with one variable argument.
-     *
-     * @param messageTag the message
-     * @param a1 the first argument
-     * @param theLocalizer the localizer to use
-     */
-    public TypesetterHelpingException(Localizer theLocalizer,
-            String messageTag, String a1) {
+  /**
+   * Creates a new object with one variable argument.
+   *
+   * @param messageTag   the message
+   * @param a1           the first argument
+   * @param theLocalizer the localizer to use
+   */
+  public TypesetterHelpingException( Localizer theLocalizer,
+                                     String messageTag, String a1 ) {
 
-        this.tag = messageTag;
-        this.localizer = theLocalizer;
-        this.arg1 = a1;
-        this.arg2 = DEFAULT_ARGUMENT;
-        this.arg3 = DEFAULT_ARGUMENT;
-    }
+    this.tag = messageTag;
+    this.localizer = theLocalizer;
+    this.arg1 = a1;
+    this.arg2 = DEFAULT_ARGUMENT;
+    this.arg3 = DEFAULT_ARGUMENT;
+  }
 
-    /**
-     * Creates a new object with two variable arguments.
-     *
-     * @param messageTag the message
-     * @param a1 the first argument
-     * @param a2 the second argument
-     * @param theLocalizer the localizer to use
-     */
-    public TypesetterHelpingException(Localizer theLocalizer,
-            String messageTag, String a1, String a2) {
+  /**
+   * Creates a new object with two variable arguments.
+   *
+   * @param messageTag   the message
+   * @param a1           the first argument
+   * @param a2           the second argument
+   * @param theLocalizer the localizer to use
+   */
+  public TypesetterHelpingException( Localizer theLocalizer,
+                                     String messageTag, String a1, String a2 ) {
 
-        this.tag = messageTag;
-        this.localizer = theLocalizer;
-        this.arg1 = a1;
-        this.arg2 = a2;
-        this.arg3 = DEFAULT_ARGUMENT;
-    }
+    this.tag = messageTag;
+    this.localizer = theLocalizer;
+    this.arg1 = a1;
+    this.arg2 = a2;
+    this.arg3 = DEFAULT_ARGUMENT;
+  }
 
-    /**
-     * Creates a new object with three variable arguments.
-     *
-     * @param messageTag the message
-     * @param a1 the first argument
-     * @param a2 the second argument
-     * @param a3 the third argument
-     * @param theLocalizer the localizer to use
-     */
-    public TypesetterHelpingException(Localizer theLocalizer,
-            String messageTag, String a1, String a2,
-            String a3) {
+  /**
+   * Creates a new object with three variable arguments.
+   *
+   * @param messageTag   the message
+   * @param a1           the first argument
+   * @param a2           the second argument
+   * @param a3           the third argument
+   * @param theLocalizer the localizer to use
+   */
+  public TypesetterHelpingException( Localizer theLocalizer,
+                                     String messageTag, String a1, String a2,
+                                     String a3 ) {
 
-        this.tag = messageTag;
-        this.localizer = theLocalizer;
-        this.arg1 = a1;
-        this.arg2 = a2;
-        this.arg3 = a3;
-    }
+    this.tag = messageTag;
+    this.localizer = theLocalizer;
+    this.arg1 = a1;
+    this.arg2 = a2;
+    this.arg3 = a3;
+  }
 
-    /**
-     * Getter for further help information.
-     *
-     * @return the help information
-     */
-    @Override
-    public String getHelp() {
+  /**
+   * Getter for further help information.
+   *
+   * @return the help information
+   */
+  @Override
+  public String getHelp() {
 
-        return localizer.format(tag + ".help", arg1, arg2, arg3);
-    }
+    return localizer.format( tag + ".help", arg1, arg2, arg3 );
+  }
 
-    /**
-     * Getter for further help information.
-     *
-     * @return the help information
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * Getter for further help information.
+   *
+   * @return the help information
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        return localizer.format(tag, arg1, arg2, arg3);
-    }
+    return localizer.format( tag, arg1, arg2, arg3 );
+  }
 
 }

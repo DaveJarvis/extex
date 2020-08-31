@@ -25,49 +25,49 @@ import org.junit.Test;
 
 /**
  * This is a test suite for (define-attributes).
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LDefineLocationClassTest {
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void test01() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void test01() throws Exception {
 
-        SomeTestUtilities
-            .runTest("(define-location-class \"abc\" (\"arabic-numbers\"))");
-    }
+    SomeTestUtilities
+        .runTest( "(define-location-class \"abc\" (\"arabic-numbers\"))" );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = LMissingArgumentsException.class)
-    public final void testError01() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = LMissingArgumentsException.class)
+  public final void testError01() throws Exception {
 
-        SomeTestUtilities.runTest("(define-location-class )");
-    }
+    SomeTestUtilities.runTest( "(define-location-class )" );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
-     * .
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = LException.class)
-    public final void testError02() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+   * .
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = LException.class)
+  public final void testError02() throws Exception {
 
-        SomeTestUtilities.runTest("(define-location-class \"abc\")");
-    }
+    SomeTestUtilities.runTest( "(define-location-class \"abc\")" );
+  }
 
 }

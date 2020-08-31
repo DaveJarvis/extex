@@ -25,26 +25,26 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception signals that a cycle in the letter group ordering has been
  * encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LetterGroupCycleException extends LException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param cycle the cycle
-     */
-    public LetterGroupCycleException(String cycle) {
+  /**
+   * Creates a new object.
+   *
+   * @param cycle the cycle
+   */
+  public LetterGroupCycleException( String cycle ) {
 
-        super(LocalizerFactory.getLocalizer(LetterGroupCycleException.class)
-            .format("Message", cycle));
-    }
+    super( LocalizerFactory.getLocalizer( LetterGroupCycleException.class )
+                           .format( "Message", cycle ) );
+  }
 
 }

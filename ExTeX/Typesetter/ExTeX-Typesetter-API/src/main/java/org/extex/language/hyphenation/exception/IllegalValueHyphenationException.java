@@ -25,22 +25,22 @@ package org.extex.language.hyphenation.exception;
  * as its character.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IllegalValueHyphenationException extends HyphenationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     */
-    public IllegalValueHyphenationException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   */
+  public IllegalValueHyphenationException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
 }

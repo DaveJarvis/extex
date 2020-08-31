@@ -26,16 +26,15 @@ import org.extex.typesetter.type.NodeList;
  * to be invoked when a paragraph is complete.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ParagraphObserver {
 
-    /**
-     * Callback to be invoked when a paragraph is complete.
-     *
-     * @param nodes the nodes of the paragraph
-     *
-     * @throws Exception in case of an error
-     */
-    void atParagraph(NodeList nodes) throws Exception;
+  /**
+   * Callback to be invoked when a paragraph is complete.
+   *
+   * @param nodes the nodes of the paragraph
+   * @throws Exception in case of an error
+   */
+  void atParagraph( NodeList nodes ) throws Exception;
 
 }

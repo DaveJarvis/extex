@@ -30,7 +30,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \par}.
- * 
+ *
  * <p>The Primitive {@code \par}</p>
  * <p>
  * The primitive {@code \par} signals the end of a paragraph. If
@@ -43,80 +43,79 @@ import org.extex.typesetter.exception.TypesetterException;
  * ignored.
  * </p>
  * <p>
- * The scanner rules of TeX determine that the macro {@code \par} is inserted for any
+ * The scanner rules of TeX determine that the macro {@code \par} is inserted
+ * for any
  * number of subsequent empty lines. This means that in a normal text there
  * might be a lot of invocations of {@code \par} even if none of them is
  * written explicitly.
  * </p>
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;par&rang;
  *      &rarr; {@code \par}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    abc \par  def </pre>
- * 
  *
- * 
+ *
+ *
  * <p>The Dimen Parameter {@code \parindent}</p>
  * <p>
  * The dimen parameter {@code \parindent} contains indentation to be applied
  * for each paragraph.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;parindent&rang;
  *      &rarr; {@code \parindent} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantDimenParser#parse(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantDimenParser#parse(Context, TokenSource, Typesetter)
  *        &lang;dimen&rang;}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \parindent=12em  </pre>
- * 
  *
- * 
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Par extends AbstractCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Par(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Par( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        typesetter.par();
-    }
+    typesetter.par();
+  }
 
 }

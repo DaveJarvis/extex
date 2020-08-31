@@ -21,32 +21,32 @@ package org.extex.font.exception;
 
 /**
  * Font Exception.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class FontException extends Exception {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new object
-     */
-    public FontException() {
+  /**
+   * Create a new object
+   */
+  public FontException() {
 
-    }
+  }
 
-    /**
-     * Create a new object
-     * 
-     * @param message the message
-     */
-    public FontException(String message) {
+  /**
+   * Create a new object
+   *
+   * @param message the message
+   */
+  public FontException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 }

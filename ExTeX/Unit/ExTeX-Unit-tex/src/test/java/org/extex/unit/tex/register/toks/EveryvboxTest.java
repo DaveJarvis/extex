@@ -26,23 +26,24 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for the primitive {@code \everyvbox}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EveryvboxTest extends AbstractToksRegisterTester {
 
-    /**
-     * Command line interface.
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(EveryvboxTest.class);
-    }
+    (new JUnitCore()).run( EveryvboxTest.class );
+  }
 
 
-    public EveryvboxTest() {
+  public EveryvboxTest() {
 
-        super("everyvbox", "", "");
-    }
+    super( "everyvbox", "", "" );
+  }
 
-    //TODO implement the primitive specific test cases
+  //TODO implement the primitive specific test cases
 }

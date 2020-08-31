@@ -25,15 +25,17 @@ import org.extex.test.NoFlagsPrimitiveTester;
  * This is a test suite for the primitive {@code \endL}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EndLTest extends NoFlagsPrimitiveTester {
 
 
-    public EndLTest() {
+  public EndLTest() {
 
-        setPrimitive("endL");setArguments("");setPrepare("\\TeXXeTstate=1\\beginL");
-        setConfig("etex-test");
-    }
+    setPrimitive( "endL" );
+    setArguments( "" );
+    setPrepare( "\\TeXXeTstate=1\\beginL" );
+    setConfig( "etex-test" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

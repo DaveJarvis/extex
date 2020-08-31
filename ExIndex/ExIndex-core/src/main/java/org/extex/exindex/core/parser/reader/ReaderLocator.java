@@ -19,52 +19,51 @@
 
 package org.extex.exindex.core.parser.reader;
 
+import org.extex.exindex.lisp.parser.ResourceLocator;
+
 import java.io.LineNumberReader;
 import java.io.Reader;
 import java.io.StringReader;
 
-import org.extex.exindex.lisp.parser.ResourceLocator;
-
 /**
  * This resource locator encapsulates a line number reader and can be used to
  * read single characters from the reader.
- * 
  */
 public class ReaderLocator extends LineNumberReader implements ResourceLocator {
 
-    /**
-     * The field {@code resource} contains the name of the resource.
-     */
-    private final String resource;
+  /**
+   * The field {@code resource} contains the name of the resource.
+   */
+  private final String resource;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the resource
-     * @param lineNumber the line number
-     */
-    public ReaderLocator(String resource, int lineNumber) {
+  /**
+   * Creates a new object.
+   *
+   * @param resource   the resource
+   * @param lineNumber the line number
+   */
+  public ReaderLocator( String resource, int lineNumber ) {
 
-        super(new StringReader(""));
-        this.resource = resource;
-        setLineNumber(lineNumber);
-    }
+    super( new StringReader( "" ) );
+    this.resource = resource;
+    setLineNumber( lineNumber );
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the resource
-     * @param reader the reader
-     */
-    public ReaderLocator(String resource, Reader reader) {
+  /**
+   * Creates a new object.
+   *
+   * @param resource the resource
+   * @param reader   the reader
+   */
+  public ReaderLocator( String resource, Reader reader ) {
 
-        super(reader);
-        this.resource = resource;
-    }
+    super( reader );
+    this.resource = resource;
+  }
 
-public String getResource() {
+  public String getResource() {
 
-        return resource;
-    }
+    return resource;
+  }
 
 }

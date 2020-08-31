@@ -26,43 +26,43 @@ import org.extex.backend.exception.BackendException;
  * interface.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DocumentWriterException extends BackendException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 1L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 1L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the error message
-     */
-    public DocumentWriterException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the error message
+   */
+  public DocumentWriterException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     * @param cause the cause
-     */
-    public DocumentWriterException(String message, Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   * @param cause   the cause
+   */
+  public DocumentWriterException( String message, Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the cause
-     */
-    public DocumentWriterException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause
+   */
+  public DocumentWriterException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
 }

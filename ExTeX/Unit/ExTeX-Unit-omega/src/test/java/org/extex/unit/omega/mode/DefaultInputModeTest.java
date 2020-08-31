@@ -25,58 +25,58 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \DefaultInputMode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(DefaultInputModeTest.class);
-    }
+    (new JUnitCore()).run( DefaultInputModeTest.class );
+  }
 
 
-    public DefaultInputModeTest() {
+  public DefaultInputModeTest() {
 
-        setPrimitive("DefaultInputMode");setArguments(" onebyte ");
-        setConfig("omega-test");
-    }
+    setPrimitive( "DefaultInputMode" );
+    setArguments( " onebyte " );
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\DefaultInputMode"> Test case checking that
-     * {@code \DefaultInputMode} needs an argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErrorEof1() throws Exception {
+  /**
+   * <testcase primitive="\DefaultInputMode"> Test case checking that
+   * {@code \DefaultInputMode} needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErrorEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\DefaultInputMode",
-            // --- output channel ---
-            "Unexpected end of file");
-    }
+    assertFailure(// --- input code ---
+                  "\\DefaultInputMode",
+                  // --- output channel ---
+                  "Unexpected end of file" );
+  }
 
-    /**
-     * <testcase primitive="\DefaultInputMode"> Test case checking that
-     * {@code \DefaultInputMode} needs a known input mode as argument.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\DefaultInputMode"> Test case checking that
+   * {@code \DefaultInputMode} needs a known input mode as argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\DefaultInputMode xxx",
-            // --- output channel ---
-            "Bad input mode");
-    }
+    assertFailure(// --- input code ---
+                  "\\DefaultInputMode xxx",
+                  // --- output channel ---
+                  "Bad input mode" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

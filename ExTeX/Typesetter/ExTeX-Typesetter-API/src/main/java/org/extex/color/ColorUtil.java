@@ -24,39 +24,39 @@ package org.extex.color;
  * This class provides some utility functions for colors.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class ColorUtil {
 
 
-    private ColorUtil() {
+  private ColorUtil() {
 
-        // never used
-    }
+    // never used
+  }
 
-    /**
-     * Format a single color component: the color value from 0 to 0xffff
-     * is translated to a representation in the range 0.0 to 1.0.
-     *
-     * @param sb the target string buffer
-     * @param cc the color component
-     */
-    public static void formatComponent(StringBuilder sb, long cc) {
+  /**
+   * Format a single color component: the color value from 0 to 0xffff
+   * is translated to a representation in the range 0.0 to 1.0.
+   *
+   * @param sb the target string buffer
+   * @param cc the color component
+   */
+  public static void formatComponent( StringBuilder sb, long cc ) {
 
-        sb.append((float) cc / Color.MAX_VALUE);
-    }
+    sb.append( (float) cc / Color.MAX_VALUE );
+  }
 
-    /**
-     * Format the alpha value. If it is the default value then nothing is added
-     * to the target string buffer. Otherwise the value in the range from 0.0
-     * to 1.0 preceded by {@code alpha} is added.
-     *
-     * @param sb the target string buffer
-     * @param alpha the alpha value
-     */
-    public static void formatAlpha(StringBuilder sb, long alpha) {
+  /**
+   * Format the alpha value. If it is the default value then nothing is added
+   * to the target string buffer. Otherwise the value in the range from 0.0
+   * to 1.0 preceded by {@code alpha} is added.
+   *
+   * @param sb    the target string buffer
+   * @param alpha the alpha value
+   */
+  public static void formatAlpha( StringBuilder sb, long alpha ) {
 
-        sb.append(alpha == 0 ? "" : "alpha " + (float) alpha / Color.MAX_VALUE
-                + " ");
-    }
+    sb.append( alpha == 0 ? "" : "alpha " + (float) alpha / Color.MAX_VALUE
+        + " " );
+  }
 
 }

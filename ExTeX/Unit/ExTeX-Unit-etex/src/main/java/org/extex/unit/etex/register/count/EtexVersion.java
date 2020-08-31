@@ -29,43 +29,43 @@ import org.extex.unit.tex.register.count.AbstractReadonlyCount;
 
 /**
  * This abstract base class provides the methods an read only count primitive.
- * 
+ *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
-*/
+ */
 
 public class EtexVersion extends AbstractReadonlyCount {
 
-    // TODO: this is the same as in eTeX, put this in etex.xml (TE)
+  // TODO: this is the same as in eTeX, put this in etex.xml (TE)
 
-    /**
-     * The field {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The eTeX version this class returns.
-     * 
-     */
-    private static final long ETEX_VERSION = 2;
+  /**
+   * The eTeX version this class returns.
+   */
+  private static final long ETEX_VERSION = 2;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public EtexVersion(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public EtexVersion( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        return ETEX_VERSION;
-    }
+    return ETEX_VERSION;
+  }
 
 }

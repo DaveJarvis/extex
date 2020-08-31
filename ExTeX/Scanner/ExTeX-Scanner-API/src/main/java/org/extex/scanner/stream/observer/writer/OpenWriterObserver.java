@@ -26,15 +26,15 @@ import java.io.Writer;
  * a new writer-based stream has been opened.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface OpenWriterObserver {
 
-    /**
-     * This method is meant to be invoked just after a new writer-based stream
-     * has been opened.
-     *
-     * @param writer the writer to be processed
-     */
-    void update(Writer writer);
+  /**
+   * This method is meant to be invoked just after a new writer-based stream
+   * has been opened.
+   *
+   * @param writer the writer to be processed
+   */
+  void update( Writer writer );
 
 }

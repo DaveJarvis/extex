@@ -25,40 +25,40 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \toks}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ToksTest extends AbstractToksRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(ToksTest.class);
-    }
+    (new JUnitCore()).run( ToksTest.class );
+  }
 
 
-    public ToksTest() {
+  public ToksTest() {
 
-        super("toks", "42", "");
-    }
+    super( "toks", "42", "" );
+  }
 
-    /**
-     * <testcase primitive="\toks"> Test case checking that the assignment of a
-     * tokens register works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAssign1() throws Exception {
+  /**
+   * <testcase primitive="\toks"> Test case checking that the assignment of a
+   * tokens register works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAssign1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\toks12=\\toks23 " + "\\end",
-            // --- output channel ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\toks12=\\toks23 " + "\\end",
+                  // --- output channel ---
+                  "" );
+  }
 
 }

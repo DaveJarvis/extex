@@ -24,36 +24,35 @@ package org.extex.scanner.api.exception;
  * number of characters in it.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CatcodeWrongLengthException extends CatcodeException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message of the exception
-     */
-    public CatcodeWrongLengthException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message of the exception
+   */
+  public CatcodeWrongLengthException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a localized description of this throwable.
-     *
-     * @return the localized description of this throwable
-     *
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * Creates a localized description of this throwable.
+   *
+   * @return the localized description of this throwable
+   * @see java.lang.Throwable#getLocalizedMessage()
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        return getLocalizer().format("CatcodeWrongLengthException.Text",
-            super.getMessage());
-    }
+    return getLocalizer().format( "CatcodeWrongLengthException.Text",
+                                  super.getMessage() );
+  }
 
 }

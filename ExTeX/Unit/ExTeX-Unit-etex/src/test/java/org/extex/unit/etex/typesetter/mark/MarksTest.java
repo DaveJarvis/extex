@@ -24,27 +24,29 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \marks}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MarksTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MarksTest.class);
-    }
+    (new JUnitCore()).run( MarksTest.class );
+  }
 
 
-    public MarksTest() {
+  public MarksTest() {
 
-        setPrimitive("marks");setArguments("1{}");setPrepare("");
-        setConfig("etex-test");
-    }
+    setPrimitive( "marks" );
+    setArguments( "1{}" );
+    setPrepare( "" );
+    setConfig( "etex-test" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

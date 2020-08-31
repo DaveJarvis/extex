@@ -26,29 +26,29 @@ import java.util.List;
  * ForceBold.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T1ForceBold extends T1DictBoolean {
 
-    /**
-     * Create a new object.
-     *
-     * @param stack the stack
-     * @throws IOException if an IO.error occurs.
-     */
-    public T1ForceBold(List<T2Number> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO.error occurs.
+   */
+  public T1ForceBold( List<T2Number> stack ) throws IOException {
 
-        super(stack, new short[]{FORCES_BOLD});
-    }
+    super( stack, new short[]{FORCES_BOLD} );
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
-     */
-    @Override
-    public String getName() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
+   */
+  @Override
+  public String getName() {
 
-        return "ForceBold";
-    }
+    return "ForceBold";
+  }
 
 }

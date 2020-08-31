@@ -25,52 +25,51 @@ import org.extex.core.exception.GeneralException;
  * This exception signals that something went wrong in the back-end.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BackendException extends GeneralException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 1L;
 
-    /**
-     * Creates a new object.
-     *
-     */
-    public BackendException() {
+  /**
+   * Creates a new object.
+   */
+  public BackendException() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     */
-    public BackendException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   */
+  public BackendException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     * @param cause the cause of all evil
-     */
-    public BackendException(String message, Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   * @param cause   the cause of all evil
+   */
+  public BackendException( String message, Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the cause of all evil
-     */
-    public BackendException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause of all evil
+   */
+  public BackendException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
 }

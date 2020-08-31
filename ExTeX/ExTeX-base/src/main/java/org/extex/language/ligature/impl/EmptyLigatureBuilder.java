@@ -31,54 +31,55 @@ import org.extex.typesetter.type.node.CharNode;
  * Nothing is inserted. This is just a noop.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EmptyLigatureBuilder implements LigatureBuilder {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
 
-    public EmptyLigatureBuilder() {
+  public EmptyLigatureBuilder() {
 
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.ligature.LigatureBuilder#insertLigatures(
+   *org.extex.typesetter.type.NodeList, int)
+   */
+  public int insertLigatures( NodeList list, int start )
+      throws HyphenationException {
+
+    int i = start;
+    while( i < list.size() && !(list.get( i ) instanceof CharNode) ) {
+      i++;
     }
+    Font font = ((CharNode) list.get( i )).getTypesettingContext().getFont();
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.ligature.LigatureBuilder#insertLigatures(
-     *      org.extex.typesetter.type.NodeList, int)
-     */
-    public int insertLigatures(NodeList list, int start)
-            throws HyphenationException {
-
-        int i = start;
-        while (i < list.size() && !(list.get(i) instanceof CharNode)) {
-            i++;
-        }
-        Font font = ((CharNode) list.get(i)).getTypesettingContext().getFont();
-
-        while (i < list.size()
-                && (list.get(i) instanceof CharNode)
-                && ((CharNode) list.get(i)).getTypesettingContext().getFont() == font) {
-            i++;
-        }
-        return i;
+    while( i < list.size()
+        && (list.get( i ) instanceof CharNode)
+        && ((CharNode) list.get( i )).getTypesettingContext()
+                                     .getFont() == font ) {
+      i++;
     }
+    return i;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.language.ligature.LigatureBuilder#getLigature(
-     *      org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar,
-     *      org.extex.typesetter.tc.font.Font)
-     */
-    public UnicodeChar getLigature(UnicodeChar c1, UnicodeChar c2,
-            Font f) {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.language.ligature.LigatureBuilder#getLigature(
+   *org.extex.core.UnicodeChar,
+   * org.extex.core.UnicodeChar,
+   * org.extex.typesetter.tc.font.Font)
+   */
+  public UnicodeChar getLigature( UnicodeChar c1, UnicodeChar c2,
+                                  Font f ) {
 
-        return null;
-    }
+    return null;
+  }
 
 }

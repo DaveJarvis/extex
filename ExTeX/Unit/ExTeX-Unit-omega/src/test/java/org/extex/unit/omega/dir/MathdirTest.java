@@ -19,83 +19,84 @@
 
 package org.extex.unit.omega.dir;
 
-import static org.junit.Assert.assertEquals;
-
 import org.extex.interpreter.Interpreter;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * This is a test suite for the primitive {@code mathdir}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MathdirTest.class);
-    }
+    (new JUnitCore()).run( MathdirTest.class );
+  }
 
 
-    public MathdirTest() {
+  public MathdirTest() {
 
-        setPrimitive("mathdir");setArguments(" LRL");
-        setConfig("omega-test");
-    }
+    setPrimitive( "mathdir" );
+    setArguments( " LRL" );
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\mathdir"> Test case checking that {@code \mathdir}
-     * sets the math direction in the context. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\mathdir"> Test case checking that {@code \mathdir}
+   * sets the math direction in the context.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        Interpreter in = assertSuccess(// --- input code ---
-            "\\mathdir LRL" + "\\end",
-            // --- output channel ---
-            "");
-        assertEquals("LRL", in.getContext().getTypesettingContext()
-            .getDirection().toString());
-        // TODO gene: correct???
-    }
+    Interpreter in = assertSuccess(// --- input code ---
+                                   "\\mathdir LRL" + "\\end",
+                                   // --- output channel ---
+                                   "" );
+    assertEquals( "LRL", in.getContext().getTypesettingContext()
+                           .getDirection().toString() );
+    // TODO gene: correct???
+  }
 
-    /**
-     * <testcase primitive="\mathdir"> Test case checking that {@code \mathdir}
-     * needs a direction as argument. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testErr1() throws Exception {
+  /**
+   * <testcase primitive="\mathdir"> Test case checking that {@code \mathdir}
+   * needs a direction as argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testErr1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\mathdir" + "\\end",
-            // --- output channel ---
-            "Bad direction");
-    }
+    assertFailure(// --- input code ---
+                  "\\mathdir" + "\\end",
+                  // --- output channel ---
+                  "Bad direction" );
+  }
 
-    /**
-     * <testcase primitive="\mathdir"> Test case checking that {@code \mathdir}
-     * needs an argument. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError0() throws Exception {
+  /**
+   * <testcase primitive="\mathdir"> Test case checking that {@code \mathdir}
+   * needs an argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError0() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\mathdir",
-            // --- output channel ---
-            "Unexpected end of file");
-    }
+    assertFailure(// --- input code ---
+                  "\\mathdir",
+                  // --- output channel ---
+                  "Unexpected end of file" );
+  }
 
 }

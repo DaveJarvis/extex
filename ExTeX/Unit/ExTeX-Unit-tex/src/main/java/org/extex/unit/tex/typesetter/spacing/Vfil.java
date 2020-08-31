@@ -34,76 +34,75 @@ import org.extex.unit.tex.typesetter.AbstractVerticalCode;
 
 /**
  * This class provides an implementation for the primitive {@code \vfil}.
- * 
+ *
  * <p>The Primitive {@code \vfil}</p>
  * <p>
  * The primitive {@code \vfill} inserts vertical glue into the current list. It
  * switches to vertical mode if necessary. The amount of glue inserted has the
  * natural height of 0pt and a stretchability of 1fil.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;vfil&rang;
  *        &rarr; {@code \vfil}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \vfil  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Vfil extends AbstractVerticalCode implements VerticalSkip {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code FIL} contains the amount of 1 fil.
-     */
-    private static final Glue FIL = new Glue(Dimen.ZERO, GlueComponent.ONE_FIL,
-        GlueComponent.ZERO);
+  /**
+   * The field {@code FIL} contains the amount of 1 fil.
+   */
+  private static final Glue FIL = new Glue( Dimen.ZERO, GlueComponent.ONE_FIL,
+                                            GlueComponent.ZERO );
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Vfil(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Vfil( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        ensureVerticalMode(typesetter);
-        typesetter.add(FIL);
-    }
+    ensureVerticalMode( typesetter );
+    typesetter.add( FIL );
+  }
 
-    /**
-     * This method acquires a vertical glue.
-     * 
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public FixedGlue getGlue(Context context, TokenSource source,
-            Typesetter typesetter) {
+  /**
+   * This method acquires a vertical glue.
+   * <p>
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public FixedGlue getGlue( Context context, TokenSource source,
+                            Typesetter typesetter ) {
 
-        return FIL;
-    }
+    return FIL;
+  }
 
 }

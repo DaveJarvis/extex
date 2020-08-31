@@ -25,73 +25,76 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \aftergroup}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AftergroupTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(AftergroupTest.class);
-    }
+    (new JUnitCore()).run( AftergroupTest.class );
+  }
 
 
-    public AftergroupTest() {
+  public AftergroupTest() {
 
-        setPrimitive("aftergroup");setArguments(" x");setPrepare("");
-    }
+    setPrimitive( "aftergroup" );
+    setArguments( " x" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\aftergroup"> Test case checking that
-     * {@code \aftergroup} needs a token argument.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\aftergroup"> Test case checking that
+   * {@code \aftergroup} needs a token argument.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\aftergroup",
-            // --- output channel ---
-            "Unexpected end of file while processing \\aftergroup");
-    }
+    assertFailure(// --- input code ---
+                  "\\aftergroup",
+                  // --- output channel ---
+                  "Unexpected end of file while processing \\aftergroup" );
+  }
 
-    /**
-     * <testcase primitive="\aftergroup"> Test case checking that a
-     * {@code \aftergroup} token of type letter is shifted to the end of the
-     * group.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\aftergroup"> Test case checking that a
+   * {@code \aftergroup} token of type letter is shifted to the end of the
+   * group.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\catcode`{=1" + "\\catcode`}=2" + "a{b\\aftergroup xd}e\\end",
-            // --- output channel ---
-            "abdxe" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\catcode`{=1" + "\\catcode`}=2" + "a{b\\aftergroup " +
+                      "xd}e\\end",
+                  // --- output channel ---
+                  "abdxe" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\aftergroup"> Test case checking that a
-     * {@code \aftergroup} token of type control sequence is expanded after
-     * the end of the group.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\aftergroup"> Test case checking that a
+   * {@code \aftergroup} token of type control sequence is expanded after
+   * the end of the group.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\catcode`{=1" + "\\catcode`}=2" + "\\def\\x{ttt}"
-                    + "a{b\\aftergroup\\x d}e\\end",
-            // --- output channel ---
-            "abdttte" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\catcode`{=1" + "\\catcode`}=2" + "\\def\\x{ttt}"
+                      + "a{b\\aftergroup\\x d}e\\end",
+                  // --- output channel ---
+                  "abdttte" + TERM );
+  }
 
 }

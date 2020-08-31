@@ -34,73 +34,73 @@ import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
 
 /**
  * This class provides an implementation for the primitive {@code \hfil}.
- * 
+ *
  * <p>The Primitive {@code \hfil}</p>
  * <p>
  * The primitive {@code \hfil} inserts glue at the current position which is
  * stretchable horizontally. The order of the glue is 1.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;hfil&rang;
  *        &rarr; {@code \hfil}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    x\hfil x  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Hfil extends AbstractHorizontalCode implements HorizontalSkip {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code FIL} contains the glue to insert for this primitive.
-     */
-    private static final Glue FIL = new Glue(Dimen.ZERO, GlueComponent.ONE_FIL,
-        GlueComponent.ZERO);
+  /**
+   * The field {@code FIL} contains the glue to insert for this primitive.
+   */
+  private static final Glue FIL = new Glue( Dimen.ZERO, GlueComponent.ONE_FIL,
+                                            GlueComponent.ZERO );
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Hfil(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Hfil( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        switchToHorizontalMode(typesetter);
-        typesetter.add(FIL);
-    }
+    switchToHorizontalMode( typesetter );
+    typesetter.add( FIL );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public FixedGlue getGlue(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public FixedGlue getGlue( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        return FIL;
-    }
+    return FIL;
+  }
 
 }

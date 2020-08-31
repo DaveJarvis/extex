@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \pdftexrevision}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdftexrevisionTest extends AbstractToksRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(PdftexrevisionTest.class);
-    }
+    (new JUnitCore()).run( PdftexrevisionTest.class );
+  }
 
 
-    public PdftexrevisionTest() {
+  public PdftexrevisionTest() {
 
-        super("pdftexrevision", "", "r");
-        setConfig("pdftex-test");
-    }
+    super( "pdftexrevision", "", "r" );
+    setConfig( "pdftex-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

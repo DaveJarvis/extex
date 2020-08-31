@@ -25,22 +25,22 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for the primitive {@code \hyphenchar}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HyphencharTest extends FontcharTester {
 
-    /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(HyphencharTest.class);
-    }
+    (new JUnitCore()).run( HyphencharTest.class );
+  }
 
-    public HyphencharTest() {
-        setPrimitive( "hyphenchar" );
-        setDef( "45" );
-    }
+  public HyphencharTest() {
+    setPrimitive( "hyphenchar" );
+    setDef( "45" );
+  }
 
 }

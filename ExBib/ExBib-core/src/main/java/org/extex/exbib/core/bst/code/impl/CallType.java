@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -31,7 +31,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code call.type$}
  * <p>
  * This function looks at the current entry and calls the function with the same
@@ -45,13 +46,13 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *   ITERATE {call.type$}
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation:</dt>
  * <dd>Executes the function whose name is the entry type of an entry. For
@@ -63,7 +64,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@code READ} command) one function for each standard entry type as well
  * as a {@code default.type} function.</dd>
  * </dl>
- * 
+ *
  * <dl>
  * <dt>BibTeX web documentation:</dt>
  * <dd>The <i>built_in</i> function {@code call.type$} executes the
@@ -72,8 +73,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@code default.type} defined in the <i>.bst</i> file, or unless it's
  * {@code empty}, in which case it does nothing.</dd>
  * </dl>
- * 
- * 
+ * <p>
+ * <p>
  *  Configuration
  * <p>
  * The configuration can take an embedded element with the name {@code default}
@@ -81,65 +82,64 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * be called when no appropriate function is found. The default is
  * {@code default.type}.
  * </p>
- * 
+ *
  * <pre>
  *   &lt;function name="call.type$"
  *             class="org.extex.exbib.core.bst.code.impl.CallType"&gt;
  *     &lt;default&gt;default.type&lt;/default&gt;
  *   &lt;/function&gt;
  * </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CallType extends AbstractCode implements Configurable {
 
-    /**
-     * The field {@code defaultType} contains the name of the default type.
-     */
-    private String defaultType = "default.type";
+  /**
+   * The field {@code defaultType} contains the name of the default type.
+   */
+  private String defaultType = "default.type";
 
 
-    public CallType() {
+  public CallType() {
 
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public CallType( String name ) {
+
+    super( name );
+  }
+
+  public void configure( Configuration config ) throws ConfigurationException {
+
+    String dt = config.getValue( "default" );
+    if( dt != null && !"".equals( dt ) ) {
+      defaultType = dt;
+    }
+  }
+
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
+
+    if( entry == null ) {
+      throw new ExBibMissingEntryException( null, locator );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public CallType(String name) {
+    String name = entry.getType();
 
-        super(name);
+    if( processor.getFunction( name ) != null ) {
+      new TLiteral( name, null ).execute( processor, entry, locator );
     }
-
-public void configure(Configuration config) throws ConfigurationException {
-
-        String dt = config.getValue("default");
-        if (dt != null && !"".equals(dt)) {
-            defaultType = dt;
-        }
+    else if( processor.getFunction( defaultType ) != null ) {
+      new TLiteral( defaultType, null ).execute( processor, entry, locator );
     }
-
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        if (entry == null) {
-            throw new ExBibMissingEntryException(null, locator);
-        }
-
-        String name = entry.getType();
-
-        if (processor.getFunction(name) != null) {
-            new TLiteral(name, null).execute(processor, entry, locator);
-        } else if (processor.getFunction(defaultType) != null) {
-            new TLiteral(defaultType, null).execute(processor, entry, locator);
-        }
-    }
+  }
 
 }

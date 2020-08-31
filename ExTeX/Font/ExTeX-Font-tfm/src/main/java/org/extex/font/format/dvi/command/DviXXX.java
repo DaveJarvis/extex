@@ -23,73 +23,74 @@ import org.extex.core.UnicodeChar;
 
 /**
  * DVI: xxx: Undefined command e.g. for specials.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviXXX extends DviCommand {
 
-    /**
-     * the value
-     */
-    private final int[] values;
+  /**
+   * the value
+   */
+  private final int[] values;
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param v the values
-     */
-    public DviXXX(final int opc, final int sp, final int[] v) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param v   the values
+   */
+  public DviXXX( final int opc, final int sp, final int[] v ) {
 
-        super(opc, sp);
-        values = v;
+    super( opc, sp );
+    values = v;
+  }
+
+  @Override
+  public String getName() {
+
+    return "xxx";
+  }
+
+  /**
+   * Returns the values.
+   *
+   * @return Returns the values.
+   */
+  public int[] getValues() {
+
+    return values;
+  }
+
+  /**
+   * Return the values as String. If xxx has only printed letters, the the
+   * String is returned, otherwise the hexvalues.
+   *
+   * @return Return a String for the values.
+   */
+  public String getXXXString() {
+
+    boolean print = true;
+    for( int i = 0; i < values.length; i++ ) {
+      UnicodeChar uc = UnicodeChar.get( values[ i ] );
+      if( !uc.isPrintable() ) {
+        print = false;
+        break;
+      }
     }
-
-@Override
-    public String getName() {
-
-        return "xxx";
+    StringBuilder buf = new StringBuilder( values.length );
+    if( print ) {
+      for( int i = 0; i < values.length; i++ ) {
+        buf.append( (char) values[ i ] );
+      }
     }
-
-    /**
-     * Returns the values.
-     * 
-     * @return Returns the values.
-     */
-    public int[] getValues() {
-
-        return values;
+    else {
+      for( int i = 0; i < values.length; i++ ) {
+        buf.append( "0x" ).append( Integer.toHexString( values[ i ] ) )
+           .append( ' ' );
+      }
     }
-
-    /**
-     * Return the values as String. If xxx has only printed letters, the the
-     * String is returned, otherwise the hexvalues.
-     * 
-     * @return Return a String for the values.
-     */
-    public String getXXXString() {
-
-        boolean print = true;
-        for (int i = 0; i < values.length; i++) {
-            UnicodeChar uc = UnicodeChar.get(values[i]);
-            if (!uc.isPrintable()) {
-                print = false;
-                break;
-            }
-        }
-        StringBuilder buf = new StringBuilder(values.length);
-        if (print) {
-            for (int i = 0; i < values.length; i++) {
-                buf.append((char) values[i]);
-            }
-        } else {
-            for (int i = 0; i < values.length; i++) {
-                buf.append("0x").append(Integer.toHexString(values[i]))
-                    .append(' ');
-            }
-        }
-        return buf.toString();
-    }
+    return buf.toString();
+  }
 }

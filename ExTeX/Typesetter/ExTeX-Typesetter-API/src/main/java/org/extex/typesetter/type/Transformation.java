@@ -29,101 +29,101 @@ package org.extex.typesetter.type;
  * </table>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Transformation {
 
-    /**
-     * The field {@code a} contains the a component.
-     */
-    private float a;
+  /**
+   * The field {@code a} contains the a component.
+   */
+  private float a;
 
-    /**
-     * The field {@code b} contains the b component.
-     */
-    private float b;
+  /**
+   * The field {@code b} contains the b component.
+   */
+  private float b;
 
-    /**
-     * The field {@code c} contains the c component.
-     */
-    private float c;
+  /**
+   * The field {@code c} contains the c component.
+   */
+  private float c;
 
-    /**
-     * The field {@code d} contains the d component.
-     */
-    private float d;
+  /**
+   * The field {@code d} contains the d component.
+   */
+  private float d;
 
-    /**
-     * The field {@code tx} contains the tx component.
-     */
-    private float tx;
+  /**
+   * The field {@code tx} contains the tx component.
+   */
+  private float tx;
 
-    /**
-     * The field {@code ty} contains the ty component.
-     */
-    private float ty;
+  /**
+   * The field {@code ty} contains the ty component.
+   */
+  private float ty;
 
 
-    public Transformation() {
+  public Transformation() {
 
-    }
+  }
 
-    /**
-     * Getter for a.
-     *
-     * @return the a
-     */
-    public String getA() {
+  /**
+   * Getter for a.
+   *
+   * @return the a
+   */
+  public String getA() {
 
-        return Float.toString(this.a);
-    }
+    return Float.toString( this.a );
+  }
 
-    /**
-     * Getter for b.
-     *
-     * @return the b
-     */
-    public String getB() {
+  /**
+   * Getter for b.
+   *
+   * @return the b
+   */
+  public String getB() {
 
-        return Float.toString(this.b);
-    }
+    return Float.toString( this.b );
+  }
 
-    /**
-     * Getter for c.
-     *
-     * @return the c
-     */
-    public String getC() {
+  /**
+   * Getter for c.
+   *
+   * @return the c
+   */
+  public String getC() {
 
-        return Float.toString(this.c);
-    }
+    return Float.toString( this.c );
+  }
 
-    /**
-     * Getter for d.
-     *
-     * @return the d
-     */
-    public String getD() {
+  /**
+   * Getter for d.
+   *
+   * @return the d
+   */
+  public String getD() {
 
-        return Float.toString(this.d);
-    }
+    return Float.toString( this.d );
+  }
 
-    /**
-     * Getter for tx component.
-     *
-     * @return the tx
-     */
-    public String getTx() {
+  /**
+   * Getter for tx component.
+   *
+   * @return the tx
+   */
+  public String getTx() {
 
-        return Float.toString(this.tx);
-    }
+    return Float.toString( this.tx );
+  }
 
-    /**
-     * Getter for ty component.
-     *
-     * @return the ty
-     */
-    public String getTy() {
+  /**
+   * Getter for ty component.
+   *
+   * @return the ty
+   */
+  public String getTy() {
 
-        return Float.toString(this.ty);
-    }
+    return Float.toString( this.ty );
+  }
 }

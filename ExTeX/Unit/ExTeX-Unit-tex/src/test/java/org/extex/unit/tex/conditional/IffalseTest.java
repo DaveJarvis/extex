@@ -24,70 +24,70 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \iffalse}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IffalseTest extends ConditionalTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IffalseTest.class);
-    }
+    (new JUnitCore()).run( IffalseTest.class );
+  }
 
 
-    public IffalseTest() {
+  public IffalseTest() {
 
-        super("iffalse", "\\else");
-    }
+    super( "iffalse", "\\else" );
+  }
 
-    /**
-     * <testcase primitive="\iffalse"> Test case checking that {@code \iffalse}
-     * selects the else branch.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\iffalse"> Test case checking that {@code \iffalse}
+   * selects the else branch.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\iffalse a\\else b\\fi\\end",
-            // --- output channel ---
-            "b" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\iffalse a\\else b\\fi\\end",
+                  // --- output channel ---
+                  "b" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\iffalse"> Test case checking that {@code \iffalse}
-     * selects nothing if the else branch is missing.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\iffalse"> Test case checking that {@code \iffalse}
+   * selects nothing if the else branch is missing.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "x\\iffalse a\\fi x\\end",
-            // --- output channel ---
-            "xx" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "x\\iffalse a\\fi x\\end",
+                  // --- output channel ---
+                  "xx" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\iffalse"> Test case checking that {@code \iffalse}
-     * works for a deeply nestes invocation.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\iffalse"> Test case checking that {@code \iffalse}
+   * works for a deeply nestes invocation.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "x\\iffalse \\iffalse \\iffalse a\\fi\\fi\\fi x\\end",
-            // --- output channel ---
-            "xx" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "x\\iffalse \\iffalse \\iffalse a\\fi\\fi\\fi x\\end",
+                  // --- output channel ---
+                  "xx" + TERM );
+  }
 
 }

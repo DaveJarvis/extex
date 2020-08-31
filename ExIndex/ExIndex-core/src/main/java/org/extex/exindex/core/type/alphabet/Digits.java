@@ -19,56 +19,55 @@
 
 package org.extex.exindex.core.type.alphabet;
 
-import java.io.PrintStream;
-
 import org.extex.exindex.core.type.page.NumericPage;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.type.value.LValue;
 
+import java.io.PrintStream;
+
 /**
  * This location class represents a parser for digits (0-9).
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Digits implements LValue, Alphabet, LocationClass {
 
-    /**
-     * Creates a new object.
-     * 
-     */
-    public Digits() {
+  /**
+   * Creates a new object.
+   */
+  public Digits() {
 
+  }
+
+  /**
+   * java.lang.String)
+   */
+  public PageReference match( String encap, String s ) {
+
+    if( s.matches( "[0-9]" ) ) {
+      return new NumericPage( encap, s );
     }
+    return null;
+  }
 
-    /**
-*      java.lang.String)
-     */
-    public PageReference match(String encap, String s) {
+  /**
+   * java.lang.StringBuilder)
+   */
+  public boolean match( StringBuilder s ) {
 
-        if (s.matches("[0-9]")) {
-            return new NumericPage(encap, s);
-        }
-        return null;
+    if( s.length() == 0 ) {
+      return false;
     }
-
-    /**
-*      java.lang.StringBuilder)
-     */
-    public boolean match(StringBuilder s) {
-
-        if (s.length() == 0) {
-            return false;
-        }
-        char c = s.charAt(0);
-        if (c < '0' || c > '9') {
-            return false;
-        }
-        s.deleteCharAt(0);
-        return true;
+    char c = s.charAt( 0 );
+    if( c < '0' || c > '9' ) {
+      return false;
     }
+    s.deleteCharAt( 0 );
+    return true;
+  }
 
-public void print(PrintStream stream) {
+  public void print( PrintStream stream ) {
 
-        stream.print("#digits");
-    }
+    stream.print( "#digits" );
+  }
 }

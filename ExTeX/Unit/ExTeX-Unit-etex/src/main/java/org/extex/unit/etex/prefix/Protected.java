@@ -35,64 +35,63 @@ import org.extex.typesetter.Typesetter;
  *
  * <p>The Prefix Primitive {@code \protected}</p>
  * <p>
- *  The primitive {@code \protected} is a prefix modifying the operation of a
- *  following primitive. If the immediately following token denotes another
- *  prefix primitives then the functionality is accumulated. This means that
- *  the next non-prefix primitive is modified by any directly preceding prefix
- *  primitives.
+ * The primitive {@code \protected} is a prefix modifying the operation of a
+ * following primitive. If the immediately following token denotes another
+ * prefix primitives then the functionality is accumulated. This means that
+ * the next non-prefix primitive is modified by any directly preceding prefix
+ * primitives.
  * </p>
  * <p>
- *  Multiple {@code \protected} prefixes act identical to a single one.
+ * Multiple {@code \protected} prefixes act identical to a single one.
  * </p>
  *
  * <p>Syntax</p>
-
+ *
  * <p>
- *  The formal description of this primitive is the following:
+ * The formal description of this primitive is the following:
  * </p>
- *  <pre class="syntax">
+ * <pre class="syntax">
  *    &lang;protected&rang;
  *      &rarr; {@code \protected}  </pre>
  *
  * <p>Examples</p>
-
- *  <pre class="TeXSample">
+ *
+ * <pre class="TeXSample">
  *    \protected\def\abc{123}  </pre>
  *
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Protected extends AbstractCode implements PrefixCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param token the initial token for the primitive
-     */
-    public Protected(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Protected( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter) {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.interpreter.type.Code#execute(
+   *org.extex.interpreter.Flags,
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource,
+   * org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context,
+                       TokenSource source, Typesetter typesetter ) {
 
-        prefix.setProtected();
-    }
+    prefix.setProtected();
+  }
 
 }

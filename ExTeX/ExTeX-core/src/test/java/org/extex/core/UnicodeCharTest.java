@@ -19,257 +19,252 @@
 
 package org.extex.core;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * This is a test suite for UnicodeChar.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class UnicodeCharTest {
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#get(int)}.
-     */
-    @Test
-    public final void testGet1() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#get(int)}.
+   */
+  @Test
+  public final void testGet1() {
 
-        assertNull(UnicodeChar.get(-1));
-    }
+    assertNull( UnicodeChar.get( -1 ) );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#get(int)}.
-     */
-    @Test
-    public final void testGet2() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#get(int)}.
+   */
+  @Test
+  public final void testGet2() {
 
-        assertNotNull(UnicodeChar.get(0));
-    }
+    assertNotNull( UnicodeChar.get( 0 ) );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#get(int)}.
-     */
-    @Test
-    public final void testGet3() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#get(int)}.
+   */
+  @Test
+  public final void testGet3() {
 
-        UnicodeChar uc = UnicodeChar.get(0);
-        assertNotNull(uc);
-        assertSame(uc, UnicodeChar.get(0));
-    }
+    UnicodeChar uc = UnicodeChar.get( 0 );
+    assertNotNull( uc );
+    assertSame( uc, UnicodeChar.get( 0 ) );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#get(int)}.
-     */
-    @Test
-    public final void testGet4() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#get(int)}.
+   */
+  @Test
+  public final void testGet4() {
 
-        UnicodeChar uc = UnicodeChar.get(512);
-        assertNotNull(uc);
-        assertSame(uc, UnicodeChar.get(512));
-    }
+    UnicodeChar uc = UnicodeChar.get( 512 );
+    assertNotNull( uc );
+    assertSame( uc, UnicodeChar.get( 512 ) );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#get(String)}.
-     */
-    @Test
-    public final void testGetString0() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#get(String)}.
+   */
+  @Test
+  public final void testGetString0() {
 
-        UnicodeChar uc = UnicodeChar.get("xyzzy");
-        assertNull(uc);
-    }
+    UnicodeChar uc = UnicodeChar.get( "xyzzy" );
+    assertNull( uc );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#get(String)}.
-     */
-    @Test
-    public final void testGetString1() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#get(String)}.
+   */
+  @Test
+  public final void testGetString1() {
 
-        UnicodeChar uc = UnicodeChar.get("asterisk");
-        assertNotNull(uc);
-        assertSame(uc, UnicodeChar.get('*'));
-    }
+    UnicodeChar uc = UnicodeChar.get( "asterisk" );
+    assertNotNull( uc );
+    assertSame( uc, UnicodeChar.get( '*' ) );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#getCodePoint()}.
-     */
-    @Test
-    public final void testGetCodePoint() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#getCodePoint()}.
+   */
+  @Test
+  public final void testGetCodePoint() {
 
-        UnicodeChar uc = UnicodeChar.get('*');
-        assertNotNull(uc);
-        assertTrue(42 == uc.getCodePoint());
-    }
+    UnicodeChar uc = UnicodeChar.get( '*' );
+    assertNotNull( uc );
+    assertTrue( 42 == uc.getCodePoint() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#getDirection()}.
-     */
-    @Test
-    public final void testGetDirection() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#getDirection()}.
+   */
+  @Test
+  public final void testGetDirection() {
 
-        UnicodeChar uc = UnicodeChar.get('*');
-        assertNotNull(uc);
-        assertTrue(10 == uc.getDirection());
-    }
+    UnicodeChar uc = UnicodeChar.get( '*' );
+    assertNotNull( uc );
+    assertTrue( 10 == uc.getDirection() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#getUnicodeName()}.
-     */
-    @Test
-    public final void testGetUnicodeName() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#getUnicodeName()}.
+   */
+  @Test
+  public final void testGetUnicodeName() {
 
-        UnicodeChar uc = UnicodeChar.get('*');
-        assertNotNull(uc);
-        assertEquals("ASTERISK", uc.getUnicodeName());
-    }
+    UnicodeChar uc = UnicodeChar.get( '*' );
+    assertNotNull( uc );
+    assertEquals( "ASTERISK", uc.getUnicodeName() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#isDigit()}.
-     */
-    @Test
-    public final void testIsDigit42() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#isDigit()}.
+   */
+  @Test
+  public final void testIsDigit42() {
 
-        UnicodeChar uc = UnicodeChar.get('*');
-        assertNotNull(uc);
-        assertFalse(uc.isDigit());
-    }
+    UnicodeChar uc = UnicodeChar.get( '*' );
+    assertNotNull( uc );
+    assertFalse( uc.isDigit() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#isDigit()}.
-     */
-    @Test
-    public final void testIsDigit48() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#isDigit()}.
+   */
+  @Test
+  public final void testIsDigit48() {
 
-        UnicodeChar uc = UnicodeChar.get('0');
-        assertNotNull(uc);
-        assertTrue(uc.isDigit());
-    }
+    UnicodeChar uc = UnicodeChar.get( '0' );
+    assertNotNull( uc );
+    assertTrue( uc.isDigit() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#isLetter()}.
-     */
-    @Test
-    public final void testIsLetter42() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#isLetter()}.
+   */
+  @Test
+  public final void testIsLetter42() {
 
-        UnicodeChar uc = UnicodeChar.get('*');
-        assertNotNull(uc);
-        assertFalse(uc.isLetter());
-    }
+    UnicodeChar uc = UnicodeChar.get( '*' );
+    assertNotNull( uc );
+    assertFalse( uc.isLetter() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#isLetter()}.
-     */
-    @Test
-    public final void testIsLetter65() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#isLetter()}.
+   */
+  @Test
+  public final void testIsLetter65() {
 
-        UnicodeChar uc = UnicodeChar.get('A');
-        assertNotNull(uc);
-        assertTrue(uc.isLetter());
-    }
+    UnicodeChar uc = UnicodeChar.get( 'A' );
+    assertNotNull( uc );
+    assertTrue( uc.isLetter() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#isPrintable()}.
-     */
-    @Test
-    public final void testIsPrintable42() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#isPrintable()}.
+   */
+  @Test
+  public final void testIsPrintable42() {
 
-        UnicodeChar uc = UnicodeChar.get('*');
-        assertNotNull(uc);
-        assertTrue(uc.isPrintable());
-    }
+    UnicodeChar uc = UnicodeChar.get( '*' );
+    assertNotNull( uc );
+    assertTrue( uc.isPrintable() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#isPrintable()}.
-     */
-    @Test
-    public final void testIsPrintable0() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#isPrintable()}.
+   */
+  @Test
+  public final void testIsPrintable0() {
 
-        UnicodeChar uc = UnicodeChar.get(0);
-        assertNotNull(uc);
-        assertFalse(uc.isPrintable());
-    }
+    UnicodeChar uc = UnicodeChar.get( 0 );
+    assertNotNull( uc );
+    assertFalse( uc.isPrintable() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#lower()}.
-     */
-    @Test
-    public final void testLower42() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#lower()}.
+   */
+  @Test
+  public final void testLower42() {
 
-        UnicodeChar uc = UnicodeChar.get('*');
-        assertNotNull(uc);
-        assertSame(uc, uc.lower());
-    }
+    UnicodeChar uc = UnicodeChar.get( '*' );
+    assertNotNull( uc );
+    assertSame( uc, uc.lower() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#lower()}.
-     */
-    @Test
-    public final void testLower92() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#lower()}.
+   */
+  @Test
+  public final void testLower92() {
 
-        UnicodeChar uc = UnicodeChar.get('a');
-        assertNotNull(uc);
-        assertSame(uc, uc.lower());
-    }
+    UnicodeChar uc = UnicodeChar.get( 'a' );
+    assertNotNull( uc );
+    assertSame( uc, uc.lower() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#lower()}.
-     */
-    @Test
-    public final void testLower65() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#lower()}.
+   */
+  @Test
+  public final void testLower65() {
 
-        UnicodeChar uc = UnicodeChar.get('A');
-        assertNotNull(uc);
-        assertTrue(uc.lower().getCodePoint() == 'a');
-    }
+    UnicodeChar uc = UnicodeChar.get( 'A' );
+    assertNotNull( uc );
+    assertTrue( uc.lower().getCodePoint() == 'a' );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#toString()}.
-     */
-    @Test
-    public final void testToString() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#toString()}.
+   */
+  @Test
+  public final void testToString() {
 
-        UnicodeChar uc = UnicodeChar.get('*');
-        assertNotNull(uc);
-        assertEquals("*", uc.toString());
-    }
+    UnicodeChar uc = UnicodeChar.get( '*' );
+    assertNotNull( uc );
+    assertEquals( "*", uc.toString() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#upper()}.
-     */
-    @Test
-    public final void testUpper42() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#upper()}.
+   */
+  @Test
+  public final void testUpper42() {
 
-        UnicodeChar uc = UnicodeChar.get('*');
-        assertNotNull(uc);
-        assertSame(uc, uc.upper());
-    }
+    UnicodeChar uc = UnicodeChar.get( '*' );
+    assertNotNull( uc );
+    assertSame( uc, uc.upper() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#upper()}.
-     */
-    @Test
-    public final void testUpper65() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#upper()}.
+   */
+  @Test
+  public final void testUpper65() {
 
-        UnicodeChar uc = UnicodeChar.get('A');
-        assertNotNull(uc);
-        assertSame(uc, uc.upper());
-    }
+    UnicodeChar uc = UnicodeChar.get( 'A' );
+    assertNotNull( uc );
+    assertSame( uc, uc.upper() );
+  }
 
-    /**
-     * Test method for {@link org.extex.core.UnicodeChar#upper()}.
-     */
-    @Test
-    public final void testUpper92() {
+  /**
+   * Test method for {@link org.extex.core.UnicodeChar#upper()}.
+   */
+  @Test
+  public final void testUpper92() {
 
-        UnicodeChar uc = UnicodeChar.get('a');
-        assertNotNull(uc);
-        assertSame(UnicodeChar.get('A'), uc.upper());
-    }
+    UnicodeChar uc = UnicodeChar.get( 'a' );
+    assertNotNull( uc );
+    assertSame( UnicodeChar.get( 'A' ), uc.upper() );
+  }
 
 }

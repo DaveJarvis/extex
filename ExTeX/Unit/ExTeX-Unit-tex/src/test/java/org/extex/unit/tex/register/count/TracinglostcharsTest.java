@@ -25,114 +25,113 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \tracinglostchars}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TracinglostcharsTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(TracinglostcharsTest.class);
-    }
+    (new JUnitCore()).run( TracinglostcharsTest.class );
+  }
 
 
-    public TracinglostcharsTest() {
+  public TracinglostcharsTest() {
 
-        super("tracinglostchars", "", "0");
-    }
+    super( "tracinglostchars", "", "0" );
+  }
 
-    /**
-     * <testcase primitive="\tracinglostchars"> Test case checking that without
-     * {@code \tracinglostchars} a lost character is silently dropped.
-     * 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\tracinglostchars"> Test case checking that without
+   * {@code \tracinglostchars} a lost character is silently dropped.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\nullfont a \\end",
-            // --- output stream ---
-            "");
-    }
+    assertSuccess(// --- input code ---
+                  "\\nullfont a \\end",
+                  // --- output stream ---
+                  "" );
+  }
 
-    /**
-     * <testcase primitive="\tracinglostchars"> Test case checking that
-     * {@code \tracinglostchars} on an non-existing character does produce an
-     * error message. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test01() throws Exception {
+  /**
+   * <testcase primitive="\tracinglostchars"> Test case checking that
+   * {@code \tracinglostchars} on an non-existing character does produce an
+   * error message.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test01() throws Exception {
 
-        assertOutput(// --- input code ---
-            "\\nullfont\\tracinglostchars=1 a \\end",
-            // --- log message ---
-            "Missing character: There is no a in font nullfont!\n",
-            // --- output stream ---
-            "");
-    }
+    assertOutput(// --- input code ---
+                 "\\nullfont\\tracinglostchars=1 a \\end",
+                 // --- log message ---
+                 "Missing character: There is no a in font nullfont!\n",
+                 // --- output stream ---
+                 "" );
+  }
 
-    /**
-     * <testcase primitive="\tracinglostchars"> Test case checking that
-     * {@code \tracinglostchars} on a non-existing character appearing later
-     * does produce a message. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test02() throws Exception {
+  /**
+   * <testcase primitive="\tracinglostchars"> Test case checking that
+   * {@code \tracinglostchars} on a non-existing character appearing later
+   * does produce a message.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test02() throws Exception {
 
-        assertOutput(// --- input code ---
-            DEFINE_BRACES + "\\nullfont\\tracinglostchars=1\\hbox{a}\\end",
-            // --- log message ---
-            "Missing character: There is no a in font nullfont!\n",
-            // --- output stream ---
-            TERM);
-    }
+    assertOutput(// --- input code ---
+                 DEFINE_BRACES + "\\nullfont\\tracinglostchars=1\\hbox{a}\\end",
+                 // --- log message ---
+                 "Missing character: There is no a in font nullfont!\n",
+                 // --- output stream ---
+                 TERM );
+  }
 
-    /**
-     * <testcase primitive="\tracinglostchars"> Test case checking that
-     * {@code \tracinglostchars} on an existing character does not produce a
-     * message. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\tracinglostchars"> Test case checking that
+   * {@code \tracinglostchars} on an existing character does not produce a
+   * message.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertOutput(// --- input code ---
-            "\\tracinglostchars=1 a \\end",
-            // --- log message ---
-            "",
-            // --- output stream ---
-            "a" + TERM);
-    }
+    assertOutput(// --- input code ---
+                 "\\tracinglostchars=1 a \\end",
+                 // --- log message ---
+                 "",
+                 // --- output stream ---
+                 "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\tracinglostchars"> Test case checking that
-     * {@code \tracinglostchars} ... 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\tracinglostchars"> Test case checking that
+   * {@code \tracinglostchars} ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertOutput(// --- input code ---
-            DEFINE_BRACES + "\\tracinglostchars=1\\hbox{a}\\end",
-            // --- log message ---
-            "",
-            // --- output stream ---
-            "a" + TERM);
-    }
+    assertOutput(// --- input code ---
+                 DEFINE_BRACES + "\\tracinglostchars=1\\hbox{a}\\end",
+                 // --- log message ---
+                 "",
+                 // --- output stream ---
+                 "a" + TERM );
+  }
 
-    // TODO implement more primitive specific test cases (lost chars in math
-    // mode, etc)
+  // TODO implement more primitive specific test cases (lost chars in math
+  // mode, etc)
 }

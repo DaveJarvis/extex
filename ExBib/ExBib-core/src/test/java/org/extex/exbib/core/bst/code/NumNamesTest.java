@@ -1,25 +1,22 @@
 /*
  * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
@@ -34,207 +31,209 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 /**
  * Test suite for {@code num.names$}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NumNamesTest {
 
-    /**
-     * The field {@code p} contains the processor.
-     */
-    private BstProcessor p = null;
+  /**
+   * The field {@code p} contains the processor.
+   */
+  private BstProcessor p = null;
 
-    /**
-     * Set-up method.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Before
-    public void setUp() throws Exception {
+  /**
+   * Set-up method.
+   *
+   * @throws Exception in case of an error
+   */
+  @Before
+  public void setUp() throws Exception {
 
-        p = new BstInterpreter099c(new DBImpl(), new NullWriter(), null);
-    }
+    p = new BstInterpreter099c( new DBImpl(), new NullWriter(), null );
+  }
 
-    /**
-     * Tear-down method.
-     */
-    @After
-    public void tearDown() {
+  /**
+   * Tear-down method.
+   */
+  @After
+  public void tearDown() {
 
-        p = null;
-    }
+    p = null;
+  }
 
-    /**
-     * Run a single test.
-     * 
-     * @param in the input string
-     * @param len the length
-     * 
-     * @throws Exception in case of an error
-     */
-    private void test(String in, int len) throws Exception {
+  /**
+   * Run a single test.
+   *
+   * @param in  the input string
+   * @param len the length
+   * @throws Exception in case of an error
+   */
+  private void test( String in, int len ) throws Exception {
 
-        p.push(new TString(in, null));
-        new NumNames("num.names$").execute(p, null, null);
-        assertEquals(len, p.popInteger(null).getInt());
-        assertNull(p.popUnchecked());
-    }
+    p.push( new TString( in, null ) );
+    new NumNames( "num.names$" ).execute( p, null, null );
+    assertEquals( len, p.popInteger( null ).getInt() );
+    assertNull( p.popUnchecked() );
+  }
 
-    /**
-     *  A single name is correctly recognized.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * A single name is correctly recognized.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        test("Gerd Neugebauer", 1);
-    }
+    test( "Gerd Neugebauer", 1 );
+  }
 
-    /**
-     *  A company should be enclosed in braces.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCompany() throws Exception {
+  /**
+   * A company should be enclosed in braces.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testCompany() throws Exception {
 
-        test("{Dun and Bradstreet}", 1);
-    }
+    test( "{Dun and Bradstreet}", 1 );
+  }
 
-    /**
-     *  The empty name has 0 names in it.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEmpty() throws Exception {
+  /**
+   * The empty name has 0 names in it.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEmpty() throws Exception {
 
-        test("", 0);
-    }
+    test( "", 0 );
+  }
 
-    /**
-     *  num.names$ needs an argument on the stack.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibStackEmptyException.class)
-    public void testEmptyStack() throws Exception {
+  /**
+   * num.names$ needs an argument on the stack.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibStackEmptyException.class)
+  public void testEmptyStack() throws Exception {
 
-        new NumNames("num.names$").execute(p, null, null);
-    }
+    new NumNames( "num.names$" ).execute( p, null, null );
+  }
 
-    /**
-     *  A trailing "and" is ignored.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEnd() throws Exception {
+  /**
+   * A trailing "and" is ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEnd() throws Exception {
 
-        test("Gerd Neugebauer and", 1);
-    }
+    test( "Gerd Neugebauer and", 1 );
+  }
 
-    /**
-     *  A trailing "and " is ignored.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEnd2() throws Exception {
+  /**
+   * A trailing "and " is ignored.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testEnd2() throws Exception {
 
-        test("Gerd Neugebauer and ", 1);
-    }
+    test( "Gerd Neugebauer and ", 1 );
+  }
 
-    /**
-     *  An integer argument leads to an exception.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibMissingStringException.class)
-    public void testInteger() throws Exception {
+  /**
+   * An integer argument leads to an exception.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibMissingStringException.class)
+  public void testInteger() throws Exception {
 
-        p.push(new TInteger(9876, null));
-        new NumNames("num.names$").execute(p, null, null);
-    }
+    p.push( new TInteger( 9876, null ) );
+    new NumNames( "num.names$" ).execute( p, null, null );
+  }
 
-    /**
-     *  "\tand " is recognized as separator.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testOthers1() throws Exception {
+  /**
+   * "\tand " is recognized as separator.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testOthers1() throws Exception {
 
-        test("Gerd Neugebauer\tand others", 2);
-    }
+    test( "Gerd Neugebauer\tand others", 2 );
+  }
 
-    /**
-     *  " and " is recognized as separator.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testOthers2() throws Exception {
+  /**
+   * " and " is recognized as separator.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testOthers2() throws Exception {
 
-        test("Gerd Neugebauer and others", 2);
-    }
+    test( "Gerd Neugebauer and others", 2 );
+  }
 
-    /**
-     *  "\tand\n" is recognized as separator.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testOthers3() throws Exception {
+  /**
+   * "\tand\n" is recognized as separator.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testOthers3() throws Exception {
 
-        test("Gerd Neugebauer\tand\nothers", 2);
-    }
+    test( "Gerd Neugebauer\tand\nothers", 2 );
+  }
 
-    /**
-     *  " and " is recognized as separator.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testTwo1() throws Exception {
+  /**
+   * " and " is recognized as separator.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testTwo1() throws Exception {
 
-        test("Stan Laurel and Oliver Hardy", 2);
-    }
+    test( "Stan Laurel and Oliver Hardy", 2 );
+  }
 
-    /**
-     *  "\tand " is recognized as separator.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testTwo2() throws Exception {
+  /**
+   * "\tand " is recognized as separator.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testTwo2() throws Exception {
 
-        test("Stan Laurel\tand Oliver Hardy", 2);
-    }
+    test( "Stan Laurel\tand Oliver Hardy", 2 );
+  }
 
-    /**
-     *  " and\t" is recognized as separator.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testTwo3() throws Exception {
+  /**
+   * " and\t" is recognized as separator.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testTwo3() throws Exception {
 
-        test("Stan Laurel and\tOliver Hardy", 2);
-    }
+    test( "Stan Laurel and\tOliver Hardy", 2 );
+  }
 
-    /**
-     *  "and" in a name is not recognized as separator.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testX() throws Exception {
+  /**
+   * "and" in a name is not recognized as separator.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testX() throws Exception {
 
-        test("Arhur Landry", 1);
-    }
+    test( "Arhur Landry", 1 );
+  }
 
 }

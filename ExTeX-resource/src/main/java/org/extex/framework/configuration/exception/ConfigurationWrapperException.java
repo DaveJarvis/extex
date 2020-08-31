@@ -23,24 +23,24 @@ package org.extex.framework.configuration.exception;
  * This exception is thrown when some other kind of Exception has been
  * encountered during configuration. The original Exception is contained as
  * cause in this exception.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationWrapperException extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2010L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2010L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the Exception causing the error
-     */
-    public ConfigurationWrapperException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the Exception causing the error
+   */
+  public ConfigurationWrapperException( Throwable cause ) {
 
-        super(null, cause);
-    }
+    super( null, cause );
+  }
 
 }

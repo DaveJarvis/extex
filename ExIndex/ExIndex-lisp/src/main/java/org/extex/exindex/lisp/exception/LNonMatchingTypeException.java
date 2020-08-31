@@ -22,25 +22,25 @@ package org.extex.exindex.lisp.exception;
 /**
  * This exception signals that something has been found which does not have the
  * expected type.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LNonMatchingTypeException extends LException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the resource
-     */
-    public LNonMatchingTypeException(String resource) {
+  /**
+   * Creates a new object.
+   *
+   * @param resource the resource
+   */
+  public LNonMatchingTypeException( String resource ) {
 
-        super(resource);
-    }
+    super( resource );
+  }
 
 }

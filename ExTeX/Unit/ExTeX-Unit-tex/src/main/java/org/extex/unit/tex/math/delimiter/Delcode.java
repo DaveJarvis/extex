@@ -43,7 +43,7 @@ import org.extex.typesetter.type.math.MathDelimiter;
 /**
  * This class provides an implementation for the primitive {@code \delcode}
  * .
- * 
+ *
  * <p>The Math Primitive {@code \delcode}</p>
  * <p>
  * The primitive {@code \delcode} can be used to assign and query the delimiter
@@ -72,213 +72,217 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * assignment is performed globally. The same effect can be achieved when the
  * count register {@code \globaldefs} is greater than 0.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;delcode&rang;
  *      &rarr; &lang;prefix&rang; {@code \delcode} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;8-bit&nbsp;number&rang;}
  *
  *    &lang;prefix&rang;
  *      &rarr;
  *       |  &lang;global&rang; </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \delcode`x="123456  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \global\delcode`x="123456  </pre>
- * 
+ *
  * <p>Using as Count Register</p>
-
+ *
  * <p>
  * The primitive {@code \delcode} can be used like a count register. This means
  * you can use it wherever a number is expected. In addition the value can be
  * advanced, multiplied, and divided. In any case the delimiter code is
  * translated according to the TeX encoding and processed as number.
  * </p>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \count1=\delcode`x  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \advance\delcode`x by 42  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Delcode extends AbstractAssignment
-        implements
-            CountConvertible,
-            Advanceable,
-            Divideable,
-            Multiplyable,
-            Theable {
+    implements
+    CountConvertible,
+    Advanceable,
+    Divideable,
+    Multiplyable,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Delcode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Delcode( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void advance( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    UnicodeChar charCode =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    source.getKeyword( context, "by" );
+
+    long value = source.parseInteger( context, source, null );
+    MathDelimiter delcode = context.getDelcode( charCode );
+    value += AbstractTeXDelimiter.delimiterToLong( delcode );
+
+    assign( prefix, context, source, charCode, value );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws ConfigurationException,
+      HelpingException,
+      TypesetterException {
+
+    UnicodeChar charCode =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    source.getOptionalEquals( context );
+    MathDelimiter del =
+        AbstractTeXDelimiter.parseDelimiter( context, source,
+                                             typesetter, getToken() );
+    context.setDelcode( charCode, del, prefix.clearGlobal() );
+  }
+
+  /**
+   * Perform an assignment of a delimiter code.
+   *
+   * @param prefix   the prefix indicator
+   * @param context  the interpreter context
+   * @param source   the token source
+   * @param charCode the character to assign the delimiter code to
+   * @param value    the delimiter code in TeX encoding
+   * @throws HelpingException in case of an error
+   */
+  private void assign( Flags prefix, Context context, TokenSource source,
+                       UnicodeChar charCode, long value )
+      throws HelpingException {
+
+    long globaldef = context.getCount( "globaldefs" ).getValue();
+    if( globaldef != 0 ) {
+      prefix.setGlobal( (globaldef > 0) );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void advance(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    context.setDelcode( charCode,
+                        AbstractTeXDelimiter.newMathDelimiter( value ),
+                        prefix.clearGlobal() );
 
-        UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getToken());
-        source.getKeyword(context, "by");
+    Token afterassignment = context.getAfterassignment();
+    if( afterassignment != null ) {
+      context.setAfterassignment( null );
+      source.push( afterassignment );
+    }
+  }
 
-        long value = source.parseInteger(context, source, null);
-        MathDelimiter delcode = context.getDelcode(charCode);
-        value += AbstractTeXDelimiter.delimiterToLong(delcode);
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        assign(prefix, context, source, charCode, value);
+    UnicodeChar charCode =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    MathDelimiter delcode = context.getDelcode( charCode );
+    return AbstractTeXDelimiter.delimiterToLong( delcode );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void divide( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    UnicodeChar charCode =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    source.getKeyword( context, "by" );
+
+    long value = source.parseInteger( context, source, null );
+    MathDelimiter delcode = context.getDelcode( charCode );
+    if( value == 0 ) {
+      throw new ArithmeticOverflowException( toText( context ) );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException,
-                TypesetterException {
+    value = AbstractTeXDelimiter.delimiterToLong( delcode ) / value;
+    assign( prefix, context, source, charCode, value );
+  }
 
-        UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getToken());
-        source.getOptionalEquals(context);
-        MathDelimiter del =
-                AbstractTeXDelimiter.parseDelimiter(context, source,
-                    typesetter, getToken());
-        context.setDelcode(charCode, del, prefix.clearGlobal());
-    }
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void multiply( Flags prefix, Context context, TokenSource source,
+                        Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-    /**
-     * Perform an assignment of a delimiter code.
-     * 
-     * @param prefix the prefix indicator
-     * @param context the interpreter context
-     * @param source the token source
-     * @param charCode the character to assign the delimiter code to
-     * @param value the delimiter code in TeX encoding
-     * 
-     * @throws HelpingException in case of an error
-     */
-    private void assign(Flags prefix, Context context, TokenSource source,
-            UnicodeChar charCode, long value) throws HelpingException {
+    UnicodeChar charCode =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    source.getKeyword( context, "by" );
 
-        long globaldef = context.getCount("globaldefs").getValue();
-        if (globaldef != 0) {
-            prefix.setGlobal((globaldef > 0));
-        }
+    long value = source.parseInteger( context, source, null );
+    MathDelimiter delcode = context.getDelcode( charCode );
+    value *= AbstractTeXDelimiter.delimiterToLong( delcode );
+    assign( prefix, context, source, charCode, value );
+  }
 
-        context.setDelcode(charCode,
-            AbstractTeXDelimiter.newMathDelimiter(value),
-            prefix.clearGlobal());
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        Token afterassignment = context.getAfterassignment();
-        if (afterassignment != null) {
-            context.setAfterassignment(null);
-            source.push(afterassignment);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getToken());
-        MathDelimiter delcode = context.getDelcode(charCode);
-        return AbstractTeXDelimiter.delimiterToLong(delcode);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void divide(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getToken());
-        source.getKeyword(context, "by");
-
-        long value = source.parseInteger(context, source, null);
-        MathDelimiter delcode = context.getDelcode(charCode);
-        if (value == 0) {
-            throw new ArithmeticOverflowException(toText(context));
-        }
-
-        value = AbstractTeXDelimiter.delimiterToLong(delcode) / value;
-        assign(prefix, context, source, charCode, value);
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void multiply(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getToken());
-        source.getKeyword(context, "by");
-
-        long value = source.parseInteger(context, source, null);
-        MathDelimiter delcode = context.getDelcode(charCode);
-        value *= AbstractTeXDelimiter.delimiterToLong(delcode);
-        assign(prefix, context, source, charCode, value);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getToken());
-        MathDelimiter delcode = context.getDelcode(charCode);
-        long value = AbstractTeXDelimiter.delimiterToLong(delcode);
-        return context.getTokenFactory().toTokens(value);
-    }
+    UnicodeChar charCode =
+        source.scanCharacterCode( context, typesetter, getToken() );
+    MathDelimiter delcode = context.getDelcode( charCode );
+    long value = AbstractTeXDelimiter.delimiterToLong( delcode );
+    return context.getTokenFactory().toTokens( value );
+  }
 
 }

@@ -34,17 +34,17 @@ import org.extex.typesetter.type.node.RuleNode;
 
 /**
  * This class provides an implementation for the primitive {@code \vrule}.
- * 
+ *
  * <p>The Primitive {@code \vrule}</p>
  * <p>
  * This primitive produces a vertical rule. This is a rectangular area of
  * specified dimensions. If not overwritten the height and depth are 0pt and the
  * width is 0.4&nbsp;pt (26214&nbsp;sp).
  * </p>
- * 
+ *
  * <p>Syntax</p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;vrule&rang;
  *        &rarr; {@code \vrule}&lang;rule specification&rang;
@@ -59,7 +59,7 @@ import org.extex.typesetter.type.node.RuleNode;
  *         |  {@code height} &lang;dimen&rang;
  *         |  {@code depth} &lang;dimen&rang;
  * </pre>
- * 
+ *
  * <p>
  * The color from the typographic context is taken as foreground color for the
  * rule. The default color is black.
@@ -68,77 +68,82 @@ import org.extex.typesetter.type.node.RuleNode;
  *
  * <pre class="TeXSample">
  *    \vrule  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \vrule height 2pt  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *    \vrule width 2pt depth 3mm height \dimen4  </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Vrule extends AbstractCode implements RuleConvertible {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The constant {@code DEFAULT_RULE} contains the equivalent to 0.4pt.
-     */
-    private static final long DEFAULT_RULE = 26214;
+  /**
+   * The constant {@code DEFAULT_RULE} contains the equivalent to 0.4pt.
+   */
+  private static final long DEFAULT_RULE = 26214;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Vrule(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Vrule( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    typesetter.add( getRule( context, source, typesetter ) );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public RuleNode getRule( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Mode mode = typesetter.getMode();
+    if( mode.isVmode() ) {
+      typesetter.par();
+    }
+    Dimen width = new Dimen( DEFAULT_RULE );
+    Dimen height = new Dimen( 0 );
+    Dimen depth = new Dimen( 0 );
+
+    for( ; ; ) {
+      if( source.getKeyword( context, "width" ) ) {
+        width = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "height" ) ) {
+        height = source.parseDimen( context, source, typesetter );
+      }
+      else if( source.getKeyword( context, "depth" ) ) {
+        depth = source.parseDimen( context, source, typesetter );
+      }
+      else {
+        break;
+      }
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        typesetter.add(getRule(context, source, typesetter));
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public RuleNode getRule(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Mode mode = typesetter.getMode();
-        if (mode.isVmode()) {
-            typesetter.par();
-        }
-        Dimen width = new Dimen(DEFAULT_RULE);
-        Dimen height = new Dimen(0);
-        Dimen depth = new Dimen(0);
-
-        for (;;) {
-            if (source.getKeyword(context, "width")) {
-                width = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "height")) {
-                height = source.parseDimen(context, source, typesetter);
-            } else if (source.getKeyword(context, "depth")) {
-                depth = source.parseDimen(context, source, typesetter);
-            } else {
-                break;
-            }
-        }
-
-        return new RuleNode(width, height, depth,
-            context.getTypesettingContext(), false);
-    }
+    return new RuleNode( width, height, depth,
+                         context.getTypesettingContext(), false );
+  }
 
 }

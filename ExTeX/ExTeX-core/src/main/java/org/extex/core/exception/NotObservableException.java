@@ -24,71 +24,69 @@ package org.extex.core.exception;
  * requested to be registered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NotObservableException extends GeneralException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Create a new object.
-     *
-     * @param message the message
-     */
-    public NotObservableException(String message) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   */
+  public NotObservableException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Create a new object.
-     *
-     * @param message the message
-     * @param cause the chained throwable
-     */
-    public NotObservableException(String message, Throwable cause) {
+  /**
+   * Create a new object.
+   *
+   * @param message the message
+   * @param cause   the chained throwable
+   */
+  public NotObservableException( String message, Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Create a new object.
-     *
-     * @param cause the cause for this exception
-     */
-    public NotObservableException(Throwable cause) {
+  /**
+   * Create a new object.
+   *
+   * @param cause the cause for this exception
+   */
+  public NotObservableException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
-    /**
-     * Provides the message for this Exception.
-     *
-     * @return the message for this exception
-     *
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * Provides the message for this Exception.
+   *
+   * @return the message for this exception
+   * @see java.lang.Throwable#getLocalizedMessage()
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        return getLocalizer().format("NotObservableException.Text",
-            super.getMessage());
-    }
+    return getLocalizer().format( "NotObservableException.Text",
+                                  super.getMessage() );
+  }
 
-    /**
-     * Returns the detail message string of this throwable.
-     *
-     * @return  the detail message string of this {@code Throwable} instance
-     *          (which may be {@code null}).
-     *
-     * @see java.lang.Throwable#getMessage()
-     */
-    @Override
-    public String getMessage() {
+  /**
+   * Returns the detail message string of this throwable.
+   *
+   * @return the detail message string of this {@code Throwable} instance
+   * (which may be {@code null}).
+   * @see java.lang.Throwable#getMessage()
+   */
+  @Override
+  public String getMessage() {
 
-        return getLocalizedMessage();
-    }
+    return getLocalizedMessage();
+  }
 
 }

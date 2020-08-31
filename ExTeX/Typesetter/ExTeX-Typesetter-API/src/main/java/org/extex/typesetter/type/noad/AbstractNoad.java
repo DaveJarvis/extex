@@ -19,8 +19,6 @@
 
 package org.extex.typesetter.type.noad;
 
-import java.util.logging.Logger;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.ImpossibleException;
@@ -34,11 +32,9 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.noad.util.MathFontParameter;
 import org.extex.typesetter.type.noad.util.MathSpacing;
-import org.extex.typesetter.type.node.CharNode;
-import org.extex.typesetter.type.node.GlueNode;
-import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.typesetter.type.node.ImplicitKernNode;
-import org.extex.typesetter.type.node.VerticalListNode;
+import org.extex.typesetter.type.node.*;
+
+import java.util.logging.Logger;
 
 /**
  * This is the abstract base class for Noads. A
@@ -46,363 +42,362 @@ import org.extex.typesetter.type.node.VerticalListNode;
  * structure which is used for processing mathematical material. Finally Noads
  * are translated into {@link org.extex.typesetter.type.Node Node}s. Thus Noad
  * will never arrive at the DocumentWriter.
- * 
- * 
+ *
+ *
  * <p>The Dimen Parameter {@code \scriptspace}</p>
  * <p>
  * The dimen parameter {@code \scriptspace} contains the amount of spacing
  * added to the width of subscripts.
  * </p>
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractNoad implements Noad {
 
-    /**
-     * Arrange that the node has exactly the width given and the old content is
-     * centered in it. If the node is a box then this can be achieved by
-     * inserting the appropriate glue. Otherwise a new box has to be
-     * constructed.
-     * 
-     * @param node the node to rebox
-     * @param width the target width
-     * 
-     * @return the argument box if it is a horizontal list or a new horizontal
-     *         list
-     * 
-     * @see "TTP [715]"
-     */
-    protected static Node rebox(Node node, Dimen width) {
+  /**
+   * Arrange that the node has exactly the width given and the old content is
+   * centered in it. If the node is a box then this can be achieved by
+   * inserting the appropriate glue. Otherwise a new box has to be
+   * constructed.
+   *
+   * @param node  the node to rebox
+   * @param width the target width
+   * @return the argument box if it is a horizontal list or a new horizontal
+   * list
+   * @see "TTP [715]"
+   */
+  protected static Node rebox( Node node, Dimen width ) {
 
-        if (node.getWidth().eq(width)) {
-            return node;
-        }
-        HorizontalListNode hlist =
-                (node instanceof HorizontalListNode
-                        ? (HorizontalListNode) node
-                        : new HorizontalListNode());
-        hlist.add(0, new GlueNode(FixedGlue.S_S, true));
-        hlist.add(new GlueNode(FixedGlue.S_S, true));
-        return hlist;
+    if( node.getWidth().eq( width ) ) {
+      return node;
+    }
+    HorizontalListNode hlist =
+        (node instanceof HorizontalListNode
+            ? (HorizontalListNode) node
+            : new HorizontalListNode());
+    hlist.add( 0, new GlueNode( FixedGlue.S_S, true ) );
+    hlist.add( new GlueNode( FixedGlue.S_S, true ) );
+    return hlist;
+  }
+
+  /**
+   * Print a noad to the string buffer preceded by some prefix if the noad is
+   * not {@code null}.
+   *
+   * @param sb     the target buffer
+   * @param noad   the noad to print
+   * @param depth  the recursion depth
+   * @param prefix the prefix to print before the noad
+   * @see "TTP [692]"
+   */
+  protected static void toStringSubsidiaray( StringBuilder sb, Noad noad,
+                                             int depth, String prefix ) {
+
+    if( noad != null ) {
+      sb.append( prefix );
+      noad.toString( sb, depth );
+    }
+  }
+
+  /**
+   * The field {@code spacingClass} contains the class for spacing.
+   */
+  private MathSpacing spacingClass = MathSpacing.UNDEF;
+
+  /**
+   * The field {@code subscript} contains the subscript noad.
+   */
+  private Noad subscript = null;
+
+  /**
+   * The field {@code superscript} contains the superscript noad.
+   */
+  private Noad superscript = null;
+
+  /**
+   * Creates a new object.
+   */
+  public AbstractNoad() {
+
+  }
+
+  /**
+   * Getter for the localizer.
+   *
+   * @return the localizer
+   */
+  public Localizer getLocalizer() {
+
+    return LocalizerFactory.getLocalizer( getClass() );
+  }
+
+  /**
+   * Getter for spacingClass.
+   *
+   * @return the spacingClass
+   */
+  @Override
+  public MathSpacing getSpacingClass() {
+
+    return this.spacingClass;
+  }
+
+  /**
+   * Getter for the subscript.
+   *
+   * @return the subscript.
+   */
+  @Override
+  public Noad getSubscript() {
+
+    return this.subscript;
+  }
+
+  /**
+   * Getter for the superscript.
+   *
+   * @return the superscript.
+   */
+  @Override
+  public Noad getSuperscript() {
+
+    return this.superscript;
+  }
+
+  /**
+   * Attach the subscripts and superscripts to the current hlist.
+   *
+   * @param node   the current node
+   * @param mc     the math context
+   * @param delta  superscript is delta to the right of the subscript if both
+   *               are present
+   * @param logger the logger
+   * @return a node containing the node and the subscripts and superscripts.
+   * If no subscripts and superscripts are present then
+   * {@code null} is returned instead.
+   * @throws TypesetterException    in case of an error
+   * @throws ConfigurationException in case of an configuration error
+   * @see "TTP [756,757]"
+   */
+  protected Node makeScripts( Node node, MathContext mc, FixedDimen delta,
+                              Logger logger )
+      throws TypesetterException, ConfigurationException {
+
+    if( superscript == null && subscript == null ) {
+      return null;
     }
 
-    /**
-     * Print a noad to the string buffer preceded by some prefix if the noad is
-     * not {@code null}.
-     * 
-     * @param sb the target buffer
-     * @param noad the noad to print
-     * @param depth the recursion depth
-     * @param prefix the prefix to print before the noad
-     * 
-     * @see "TTP [692]"
-     */
-    protected static void toStringSubsidiaray(StringBuilder sb, Noad noad,
-            int depth, String prefix) {
+    Dimen shiftDown;
+    Dimen shiftUp;
+    Dimen clr = new Dimen();
+    HorizontalListNode hlist;
+    StyleNoad style = mc.getStyle();
+    TypesetterOptions options = mc.getOptions();
 
-        if (noad != null) {
-            sb.append(prefix);
-            noad.toString(sb, depth);
-        }
+    if( node instanceof CharNode ) {
+      hlist = new HorizontalListNode( node );
+      shiftDown = new Dimen();
+      shiftUp = new Dimen();
+    }
+    else if( node instanceof HorizontalListNode ) {
+      hlist = (HorizontalListNode) node;
+      StyleNoad t =
+          (mc.getStyle().less( StyleNoad.SCRIPTSTYLE )
+              ? StyleNoad.SCRIPTSTYLE
+              : StyleNoad.SCRIPTSCRIPTSTYLE);
+      FixedDimen subDrop =
+          mc.mathParameter( MathFontParameter.SUB_DROP, t );
+
+      shiftUp = new Dimen( node.getHeight() );
+      shiftUp.subtract( subDrop );
+
+      shiftDown = new Dimen( node.getDepth() );
+      shiftDown.add( subDrop );
+    }
+    else {
+      throw new ImpossibleException( "makeScripts" );
     }
 
-    /**
-     * The field {@code spacingClass} contains the class for spacing.
-     */
-    private MathSpacing spacingClass = MathSpacing.UNDEF;
-
-    /**
-     * The field {@code subscript} contains the subscript noad.
-     */
-    private Noad subscript = null;
-
-    /**
-     * The field {@code superscript} contains the superscript noad.
-     */
-    private Noad superscript = null;
-
-    /**
-     * Creates a new object.
-     * 
-     */
-    public AbstractNoad() {
-
+    HorizontalListNode sub = null;
+    if( subscript != null ) {
+      sub = new HorizontalListNode();
+      mc.setStyle( style.sub() );
+      subscript.typeset( null, null, 0, sub, mc, logger );
+      sub.advanceNaturalWidth( options.getDimenOption( "scriptspace" ) ); //
+      // TODO:
+      // incorrect
+      mc.setStyle( style );
     }
 
-    /**
-     * Getter for the localizer.
-     * 
-     * @return the localizer
-     */
-    public Localizer getLocalizer() {
+    if( superscript == null ) {
+      // only subscript
+      // @see "TTP [757]"
 
-        return LocalizerFactory.getLocalizer(getClass());
+      shiftDown.max( mc.mathParameter( MathFontParameter.SUB1 ) );
+
+      clr.abs( mc.mathParameter( MathFontParameter.MATH_X_HEIGHT ) );
+      clr.multiply( -4, 5 );
+      if( sub != null ) {
+        clr.add( sub.getHeight() );
+      }
+      shiftDown.max( clr );
+      if( sub != null ) {
+        sub.setShift( shiftDown );
+        hlist.add( sub );
+      }
+      return hlist;
+    }
+    HorizontalListNode sup = new HorizontalListNode();
+    mc.setStyle( style.sup() );
+    superscript.typeset( null, null, 0, sup, mc, logger );
+    mc.setStyle( style );
+    sup.advanceNaturalWidth( options.getDimenOption( "scriptspace" ) );
+
+    if( style.isCramped() ) {
+      clr.set( mc.mathParameter( MathFontParameter.SUP3 ) );
+    }
+    else if( style.less( StyleNoad.TEXTSTYLE ) ) {
+      clr.set( mc.mathParameter( MathFontParameter.SUP1 ) );
+    }
+    else {
+      clr.set( mc.mathParameter( MathFontParameter.SUP2 ) );
+    }
+    shiftUp.max( clr );
+    clr.abs( mc.mathParameter( MathFontParameter.MATH_X_HEIGHT ) );
+    clr.multiply( 1, 4 );
+    clr.add( sup.getHeight() );
+    shiftUp.max( clr );
+
+    if( subscript == null ) {
+      // only superscript
+      shiftUp.negate();
+      sup.setShift( shiftUp );
+      hlist.add( sup );
+      return hlist;
+    }
+    // both subscript and superscript
+
+    shiftDown.max( mc.mathParameter( MathFontParameter.SUP2 ) );
+
+    clr.set( mc.mathParameter( MathFontParameter.DEFAULT_RULE_THICKNESS ) );
+    clr.multiply( 4 );
+    clr.subtract( shiftUp );
+    clr.add( sup.getDepth() );
+    if( sub != null ) {
+      clr.subtract( sub.getHeight() );
+    }
+    clr.add( shiftDown );
+
+    if( clr.gt( Dimen.ZERO_PT ) ) {
+      shiftDown.add( clr );
+
+      clr.abs( mc.mathParameter( MathFontParameter.MATH_X_HEIGHT ) );
+      clr.multiply( 4, 5 );
+      clr.subtract( shiftUp );
+      clr.add( sup.getDepth() );
+      if( clr.gt( Dimen.ZERO_PT ) ) {
+        shiftUp.add( clr );
+        shiftDown.subtract( clr );
+      }
     }
 
-    /**
-     * Getter for spacingClass.
-     * 
-     * @return the spacingClass
-     */
-    @Override
-    public MathSpacing getSpacingClass() {
-
-        return this.spacingClass;
+    // shift_amount(x) ? delta; {superscript is delta to the right of the
+    // subscript}
+    sup.setMove( delta );
+    VerticalListNode vlist = new VerticalListNode();
+    vlist.add( sup );
+    // p ? new_kern((shift_up-depth(x))-(height(y)-shift _down));
+    clr.set( shiftUp );
+    clr.subtract( sup.getDepth() );
+    if( sub != null ) {
+      clr.subtract( sub.getHeight() );
     }
+    clr.add( shiftDown );
+    vlist.add( new ImplicitKernNode( clr, false ) );
+    vlist.add( sub );
+    // link(x) ? p;
+    // link(p) ? y;
+    // x ? vpack(x,natural);
+    // shift_amount(x) ? shift_down;
+    vlist.setShift( shiftDown );
+    hlist.add( vlist );
+    return hlist;
+  }
 
-    /**
-     * Getter for the subscript.
-     * 
-     * @return the subscript.
-     */
-    @Override
-    public Noad getSubscript() {
+  /**
+   * Setter for spacingClass.
+   *
+   * @param spacingClass the spacingClass to set
+   */
+  @Override
+  public void setSpacingClass( MathSpacing spacingClass ) {
 
-        return this.subscript;
+    this.spacingClass = spacingClass;
+  }
+
+  /**
+   * Setter for the subscript.
+   *
+   * @param subscript the subscript to set.
+   */
+  @Override
+  public void setSubscript( Noad subscript ) {
+
+    this.subscript = subscript;
+  }
+
+  /**
+   * Setter for the superscript.
+   *
+   * @param superscript the superscript to set.
+   */
+  @Override
+  public void setSuperscript( Noad superscript ) {
+
+    this.superscript = superscript;
+  }
+
+  @Override
+  public String toString() {
+
+    StringBuilder sb = new StringBuilder();
+    toString( sb, Integer.MAX_VALUE );
+    return sb.toString();
+  }
+
+  @Override
+  public void toString( StringBuilder sb ) {
+
+    toString( sb, Integer.MAX_VALUE );
+  }
+
+  /**
+   * @see org.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuilder,
+   * int)
+   */
+  @Override
+  public void toString( StringBuilder sb, int depth ) {
+
+    if( depth < 0 ) {
+      sb.append( " {}" );
     }
-
-    /**
-     * Getter for the superscript.
-     * 
-     * @return the superscript.
-     */
-    @Override
-    public Noad getSuperscript() {
-
-        return this.superscript;
+    else {
+      sb.append( '\\' );
+      toStringAdd( sb, depth );
+      toStringSubsidiaray( sb, superscript, depth, "^" );
+      toStringSubsidiaray( sb, subscript, depth, "_" );
     }
+  }
 
-    /**
-     * Attach the subscripts and superscripts to the current hlist.
-     * 
-     * @param node the current node
-     * @param mc the math context
-     * @param delta superscript is delta to the right of the subscript if both
-     *        are present
-     * @param logger the logger
-     * 
-     * @return a node containing the node and the subscripts and superscripts.
-     *         If no subscripts and superscripts are present then
-     *         {@code null} is returned instead.
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     * 
-     * @see "TTP [756,757]"
-     */
-    protected Node makeScripts(Node node, MathContext mc, FixedDimen delta,
-            Logger logger) throws TypesetterException, ConfigurationException {
+  /**
+   * Add some information in the middle of the default toString method.
+   *
+   * @param sb    the target string buffer
+   * @param depth the recursion depth
+   */
+  protected void toStringAdd( StringBuilder sb, int depth ) {
 
-        if (superscript == null && subscript == null) {
-            return null;
-        }
-
-        Dimen shiftDown;
-        Dimen shiftUp;
-        Dimen clr = new Dimen();
-        HorizontalListNode hlist;
-        StyleNoad style = mc.getStyle();
-        TypesetterOptions options = mc.getOptions();
-
-        if (node instanceof CharNode) {
-            hlist = new HorizontalListNode(node);
-            shiftDown = new Dimen();
-            shiftUp = new Dimen();
-        } else if (node instanceof HorizontalListNode) {
-            hlist = (HorizontalListNode) node;
-            StyleNoad t =
-                    (mc.getStyle().less(StyleNoad.SCRIPTSTYLE)
-                            ? StyleNoad.SCRIPTSTYLE
-                            : StyleNoad.SCRIPTSCRIPTSTYLE);
-            FixedDimen subDrop =
-                    mc.mathParameter(MathFontParameter.SUB_DROP, t);
-
-            shiftUp = new Dimen(node.getHeight());
-            shiftUp.subtract(subDrop);
-
-            shiftDown = new Dimen(node.getDepth());
-            shiftDown.add(subDrop);
-        } else {
-            throw new ImpossibleException("makeScripts");
-        }
-
-        HorizontalListNode sub = null;
-        if (subscript != null) {
-            sub = new HorizontalListNode();
-            mc.setStyle(style.sub());
-            subscript.typeset(null, null, 0, sub, mc, logger);
-            sub.advanceNaturalWidth(options.getDimenOption("scriptspace")); // TODO:
-                                                                            // incorrect
-            mc.setStyle(style);
-        }
-
-        if (superscript == null) {
-            // only subscript
-            // @see "TTP [757]"
-
-            shiftDown.max(mc.mathParameter(MathFontParameter.SUB1));
-
-            clr.abs(mc.mathParameter(MathFontParameter.MATH_X_HEIGHT));
-            clr.multiply(-4, 5);
-            if (sub != null) {
-                clr.add(sub.getHeight());
-            }
-            shiftDown.max(clr);
-            if (sub != null) {
-                sub.setShift(shiftDown);
-                hlist.add(sub);
-            }
-            return hlist;
-        }
-        HorizontalListNode sup = new HorizontalListNode();
-        mc.setStyle(style.sup());
-        superscript.typeset(null, null, 0, sup, mc, logger);
-        mc.setStyle(style);
-        sup.advanceNaturalWidth(options.getDimenOption("scriptspace"));
-
-        if (style.isCramped()) {
-            clr.set(mc.mathParameter(MathFontParameter.SUP3));
-        } else if (style.less(StyleNoad.TEXTSTYLE)) {
-            clr.set(mc.mathParameter(MathFontParameter.SUP1));
-        } else {
-            clr.set(mc.mathParameter(MathFontParameter.SUP2));
-        }
-        shiftUp.max(clr);
-        clr.abs(mc.mathParameter(MathFontParameter.MATH_X_HEIGHT));
-        clr.multiply(1, 4);
-        clr.add(sup.getHeight());
-        shiftUp.max(clr);
-
-        if (subscript == null) {
-            // only superscript
-            shiftUp.negate();
-            sup.setShift(shiftUp);
-            hlist.add(sup);
-            return hlist;
-        }
-        // both subscript and superscript
-
-        shiftDown.max(mc.mathParameter(MathFontParameter.SUP2));
-
-        clr.set(mc.mathParameter(MathFontParameter.DEFAULT_RULE_THICKNESS));
-        clr.multiply(4);
-        clr.subtract(shiftUp);
-        clr.add(sup.getDepth());
-        if (sub != null) {
-            clr.subtract(sub.getHeight());
-        }
-        clr.add(shiftDown);
-
-        if (clr.gt(Dimen.ZERO_PT)) {
-            shiftDown.add(clr);
-
-            clr.abs(mc.mathParameter(MathFontParameter.MATH_X_HEIGHT));
-            clr.multiply(4, 5);
-            clr.subtract(shiftUp);
-            clr.add(sup.getDepth());
-            if (clr.gt(Dimen.ZERO_PT)) {
-                shiftUp.add(clr);
-                shiftDown.subtract(clr);
-            }
-        }
-
-        // shift_amount(x) ? delta; {superscript is delta to the right of the
-        // subscript}
-        sup.setMove(delta);
-        VerticalListNode vlist = new VerticalListNode();
-        vlist.add(sup);
-        // p ? new_kern((shift_up-depth(x))-(height(y)-shift _down));
-        clr.set(shiftUp);
-        clr.subtract(sup.getDepth());
-        if (sub != null) {
-            clr.subtract(sub.getHeight());
-        }
-        clr.add(shiftDown);
-        vlist.add(new ImplicitKernNode(clr, false));
-        vlist.add(sub);
-        // link(x) ? p;
-        // link(p) ? y;
-        // x ? vpack(x,natural);
-        // shift_amount(x) ? shift_down;
-        vlist.setShift(shiftDown);
-        hlist.add(vlist);
-        return hlist;
-    }
-
-    /**
-     * Setter for spacingClass.
-     * 
-     * @param spacingClass the spacingClass to set
-     */
-    @Override
-    public void setSpacingClass(MathSpacing spacingClass) {
-
-        this.spacingClass = spacingClass;
-    }
-
-    /**
-     * Setter for the subscript.
-     * 
-     * @param subscript the subscript to set.
-     */
-    @Override
-    public void setSubscript(Noad subscript) {
-
-        this.subscript = subscript;
-    }
-
-    /**
-     * Setter for the superscript.
-     * 
-     * @param superscript the superscript to set.
-     */
-    @Override
-    public void setSuperscript(Noad superscript) {
-
-        this.superscript = superscript;
-    }
-
-@Override
-    public String toString() {
-
-        StringBuilder sb = new StringBuilder();
-        toString(sb, Integer.MAX_VALUE);
-        return sb.toString();
-    }
-
-@Override
-    public void toString(StringBuilder sb) {
-
-        toString(sb, Integer.MAX_VALUE);
-    }
-
-    /**
-* @see org.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuilder,
-     *      int)
-     */
-    @Override
-    public void toString(StringBuilder sb, int depth) {
-
-        if (depth < 0) {
-            sb.append(" {}");
-        } else {
-            sb.append('\\');
-            toStringAdd(sb, depth);
-            toStringSubsidiaray(sb, superscript, depth, "^");
-            toStringSubsidiaray(sb, subscript, depth, "_");
-        }
-    }
-
-    /**
-     * Add some information in the middle of the default toString method.
-     * 
-     * @param sb the target string buffer
-     * @param depth the recursion depth
-     */
-    protected void toStringAdd(StringBuilder sb, int depth) {
-
-        // default is to do nothing
-    }
+    // default is to do nothing
+  }
 
 }

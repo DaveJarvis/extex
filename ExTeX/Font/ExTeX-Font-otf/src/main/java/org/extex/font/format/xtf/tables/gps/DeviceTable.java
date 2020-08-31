@@ -19,15 +19,15 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * Class for a Device Tables.
- * 
+ *
  * <p>
  * The DeltaValue array lists the number of pixels to adjust specified points on
  * the glyph, or the entire glyph, at each ppem size in the targeted range. In
@@ -40,7 +40,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Type</b></td>
+ * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -65,11 +65,11 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Array of compressed data</td>
  * </tr>
  * </table>
- * 
+ *
  * <p>
  * <b>DeltaFormat</b>
  * </p>
- * 
+ *
  * <p>
  * The 2-, 4-, or 8-bit signed values are packed into uint16's most significant
  * bits first. For example, using a DeltaFormat of 2 (4-bit values), an array of
@@ -78,7 +78,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Type</b></td>
+ * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -98,65 +98,65 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Signed 8-bit value, 2 values per uint16</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class DeviceTable implements XMLWriterConvertible {
 
-    /**
-     * Format of DeltaValue array data: 1, 2, or 3.
-     */
-    private final int deltaFormat;
+  /**
+   * Format of DeltaValue array data: 1, 2, or 3.
+   */
+  private final int deltaFormat;
 
-    /**
-     * Array of compressed data.
-     */
-    private final int[] deltaValues;
+  /**
+   * Array of compressed data.
+   */
+  private final int[] deltaValues;
 
-    /**
-     * Largest size to correct-in ppem.
-     */
-    private final int endSize;
+  /**
+   * Largest size to correct-in ppem.
+   */
+  private final int endSize;
 
-    /**
-     * Smallest size to correct-in ppem.
-     */
-    private final int startSize;
+  /**
+   * Smallest size to correct-in ppem.
+   */
+  private final int startSize;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param rar The input.
-     * @param offset The offset.
-     * @throws IOException if a IO-error occurred.
-     */
-    public DeviceTable(RandomAccessR rar, int offset) throws IOException {
+  /**
+   * Creates a new object.
+   *
+   * @param rar    The input.
+   * @param offset The offset.
+   * @throws IOException if a IO-error occurred.
+   */
+  public DeviceTable( RandomAccessR rar, int offset ) throws IOException {
 
-        rar.seek(offset);
-        startSize = rar.readUnsignedShort();
-        endSize = rar.readUnsignedShort();
-        deltaFormat = rar.readUnsignedShort();
-        int count = endSize - startSize + 1;
-        deltaValues = new int[count];
-        for (int i = 0; i < count; i++) {
-            deltaValues[i] = rar.readUnsignedShort();
-        }
-
+    rar.seek( offset );
+    startSize = rar.readUnsignedShort();
+    endSize = rar.readUnsignedShort();
+    deltaFormat = rar.readUnsignedShort();
+    int count = endSize - startSize + 1;
+    deltaValues = new int[ count ];
+    for( int i = 0; i < count; i++ ) {
+      deltaValues[ i ] = rar.readUnsignedShort();
     }
 
-public void writeXML(XMLStreamWriter writer) throws IOException {
+  }
 
-        writer.writeStartElement("device");
-        writer.writeAttribute("startSize", startSize);
-        writer.writeAttribute("endSize", endSize);
-        writer.writeAttribute("deltaFormat", deltaFormat);
-        for (int i = 0; i < deltaValues.length; i++) {
-            writer.writeStartElement("value");
-            writer.writeAttribute("id", i);
-            writer.writeAttribute("value", deltaValues[i]);
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( "device" );
+    writer.writeAttribute( "startSize", startSize );
+    writer.writeAttribute( "endSize", endSize );
+    writer.writeAttribute( "deltaFormat", deltaFormat );
+    for( int i = 0; i < deltaValues.length; i++ ) {
+      writer.writeStartElement( "value" );
+      writer.writeAttribute( "id", i );
+      writer.writeAttribute( "value", deltaValues[ i ] );
+      writer.writeEndElement();
     }
+    writer.writeEndElement();
+  }
 
 }

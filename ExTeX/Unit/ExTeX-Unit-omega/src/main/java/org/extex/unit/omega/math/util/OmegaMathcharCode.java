@@ -41,97 +41,100 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
 /**
  * This class is used to dynamically define mathematical characters having the
  * Omega encoding into a count value.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OmegaMathcharCode extends AbstractOmegaMathCode
-        implements
-            MathCodeConvertible,
-            CountConvertible,
-            Showable,
-            Theable {
+    implements
+    MathCodeConvertible,
+    CountConvertible,
+    Showable,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * The field {@code mathchar} contains the actual character in the form of
-     * a MathCode which can immediately be passed to the typesetter.
-     */
-    private final MathCode mathchar;
+  /**
+   * The field {@code mathchar} contains the actual character in the form of
+   * a MathCode which can immediately be passed to the typesetter.
+   */
+  private final MathCode mathchar;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     * @param charCode the code of the math char
-     */
-    public OmegaMathcharCode(CodeToken token, MathCode charCode) {
+  /**
+   * Creates a new object.
+   *
+   * @param token    the initial token for the primitive
+   * @param charCode the code of the math char
+   */
+  public OmegaMathcharCode( CodeToken token, MathCode charCode ) {
 
-        super(token);
-        mathchar = charCode;
+    super( token );
+    mathchar = charCode;
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    return mathCodeToLong( mathchar );
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public MathCode convertMathCode( Context context, TokenSource source,
+                                   Typesetter typesetter )
+      throws TypesetterException {
+
+    return mathchar;
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws TypesetterException,
+      MissingMathException {
+
+    NoadConsumer nc = getListMaker( context, typesetter );
+    nc.add( mathchar, context.getTypesettingContext() );
+  }
+
+  @Override
+  public Tokens show( Context context ) throws HelpingException {
+
+    try {
+      return context.getTokenFactory().toTokens(
+          context.esc( "omathchar" )
+              + "\""
+              + Long.toHexString( mathCodeToLong( mathchar ) )
+                    .toUpperCase() );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        return mathCodeToLong(mathchar);
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public MathCode convertMathCode(Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException {
-
-        return mathchar;
-    }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws TypesetterException,
-                MissingMathException {
-
-        NoadConsumer nc = getListMaker(context, typesetter);
-        nc.add(mathchar, context.getTypesettingContext());
-    }
-
-@Override
-    public Tokens show(Context context) throws HelpingException {
-
-        try {
-            return context.getTokenFactory().toTokens(
-                context.esc("omathchar")
-                        + "\""
-                        + Long.toHexString(mathCodeToLong(mathchar))
-                            .toUpperCase());
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-    }
-
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        return context.getTokenFactory().toTokens(mathCodeToLong(mathchar));
-    }
+    return context.getTokenFactory().toTokens( mathCodeToLong( mathchar ) );
+  }
 
 }

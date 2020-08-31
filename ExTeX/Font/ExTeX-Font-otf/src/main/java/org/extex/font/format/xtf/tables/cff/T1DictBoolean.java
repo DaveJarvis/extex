@@ -19,111 +19,113 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
-
-import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Type 1 dict boolean.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public abstract class T1DictBoolean extends T1DictKey {
 
-    /**
-     * Create a new object.
-     *
-     * @param stack the stack
-     * @param id    the operator-id for the value
-     * @throws IOException if an IO-error occurs.
-     */
-    protected T1DictBoolean(List<T2Number> stack, short[] id)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @param id    the operator-id for the value
+   * @throws IOException if an IO-error occurs.
+   */
+  protected T1DictBoolean( List<T2Number> stack, short[] id )
+      throws IOException {
 
-        if (stack.size() < 1) {
-            throw new T2MissingNumberException();
-        }
-        int v = stack.get(0).getInteger();
-        bytes = convertStackaddID(stack, id);
-
-      value = v != 0;
+    if( stack.size() < 1 ) {
+      throw new T2MissingNumberException();
     }
+    int v = stack.get( 0 ).getInteger();
+    bytes = convertStackaddID( stack, id );
 
-    /**
-     * bytes
-     */
-    private final short[] bytes;
+    value = v != 0;
+  }
 
-    /**
-     * Check, if the object is a boolean.
-     * @return Returns {@code true}, if the object is a boolean.
-     */
-    @Override
-    public boolean isBoolean() {
+  /**
+   * bytes
+   */
+  private final short[] bytes;
 
-        return true;
-    }
+  /**
+   * Check, if the object is a boolean.
+   *
+   * @return Returns {@code true}, if the object is a boolean.
+   */
+  @Override
+  public boolean isBoolean() {
 
-    /**
-     * value
-     */
-    private final boolean value;
+    return true;
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
-    public short[] getBytes() {
+  /**
+   * value
+   */
+  private final boolean value;
 
-        return bytes;
-    }
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
+   */
+  @Override
+  public short[] getBytes() {
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
+    return bytes;
+  }
 
-        return String.valueOf(value);
-    }
+  /**
+   * {@inheritDoc}
+   *
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-    /**
-     * Returns the value.
-     * @return Returns the value.
-     */
-    public boolean isValue() {
+    return String.valueOf( value );
+  }
 
-        return value;
-    }
+  /**
+   * Returns the value.
+   *
+   * @return Returns the value.
+   */
+  public boolean isValue() {
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
-    public Object getValue() {
+    return value;
+  }
 
-        return new Boolean(value);
-    }
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
+   */
+  @Override
+  public Object getValue() {
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+    return new Boolean( value );
+  }
 
-        writer.writeStartElement(getName());
-        writer.writeAttribute("value", value);
-        writer.writeEndElement();
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
+   *org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-    }
+    writer.writeStartElement( getName() );
+    writer.writeAttribute( "value", value );
+    writer.writeEndElement();
+
+  }
 
 }

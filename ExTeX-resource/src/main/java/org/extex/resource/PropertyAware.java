@@ -26,14 +26,14 @@ import java.util.Properties;
  * configuration.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface PropertyAware {
 
-    /**
-     * Setter for the properties.
-     *
-     * @param properties the properties to use for configuration
-     */
-    void setProperties(Properties properties);
+  /**
+   * Setter for the properties.
+   *
+   * @param properties the properties to use for configuration
+   */
+  void setProperties( Properties properties );
 
 }

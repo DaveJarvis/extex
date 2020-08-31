@@ -24,43 +24,42 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is raised when a {@code \csname} without matching
  * {@code \endcsname} is encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 
 public class MissingEndcsnameException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the token encountered
-     */
-    public MissingEndcsnameException(String token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the token encountered
+   */
+  public MissingEndcsnameException( String token ) {
 
-        super(LocalizerFactory.getLocalizer(MissingEndcsnameException.class),
-            "TTP.MissingEndcsname");
-    }
+    super( LocalizerFactory.getLocalizer( MissingEndcsnameException.class ),
+           "TTP.MissingEndcsname" );
+  }
 
-    /**
-     * Creates a localized description of this throwable. Subclasses may
-     * override this method in order to produce a locale-specific message. For
-     * subclasses that do not override this method, the default implementation
-     * returns the same result as {@code getMessage()}.
-     * 
-     * @return The localized description of this throwable.
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * Creates a localized description of this throwable. Subclasses may
+   * override this method in order to produce a locale-specific message. For
+   * subclasses that do not override this method, the default implementation
+   * returns the same result as {@code getMessage()}.
+   *
+   * @return The localized description of this throwable.
+   * @see java.lang.Throwable#getLocalizedMessage()
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        return super.getMessage();
-    }
+    return super.getMessage();
+  }
 
 }

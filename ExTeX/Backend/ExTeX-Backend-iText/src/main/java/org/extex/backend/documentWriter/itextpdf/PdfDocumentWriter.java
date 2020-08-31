@@ -19,14 +19,10 @@
 
 package org.extex.backend.documentWriter.itextpdf;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
-
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.PageSize;
+import com.lowagie.text.pdf.PdfWriter;
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.SingleDocumentStream;
@@ -46,198 +42,203 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.page.Page;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.PageSize;
-import com.lowagie.text.pdf.PdfWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Implementation of a pdf document writer with iText.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class PdfDocumentWriter
-        implements
-            DocumentWriter,
-            SingleDocumentStream,
-            Configurable,
-            LogEnabled,
-            FontAware/* ,PdftexSupport */{
+    implements
+    DocumentWriter,
+    SingleDocumentStream,
+    Configurable,
+    LogEnabled,
+    FontAware/* ,PdftexSupport */ {
 
-    /**
-     * The field {@code localizer} contains the localizer. It is initiated with
-     * a localizer for the name of this class.
-     */
-    private final Localizer localizer = LocalizerFactory
-        .getLocalizer(PdfDocumentWriter.class);
+  /**
+   * The field {@code localizer} contains the localizer. It is initiated with
+   * a localizer for the name of this class.
+   */
+  private final Localizer localizer = LocalizerFactory
+      .getLocalizer( PdfDocumentWriter.class );
 
-    /**
-     * The {@link CoreFontFactory}.
-     */
-    private CoreFontFactory corefactory;
+  /**
+   * The {@link CoreFontFactory}.
+   */
+  private CoreFontFactory corefactory;
 
-    /**
-     * The {@link BackendFontManager}.
-     */
-    private BackendFontManager manager;
+  /**
+   * The {@link BackendFontManager}.
+   */
+  private BackendFontManager manager;
 
-    /**
-     * The output stream.
-     */
-    private OutputStream out = null;
+  /**
+   * The output stream.
+   */
+  private OutputStream out = null;
 
-    /**
-     * Map for the parameters.
-     */
-    private final Map<String, String> param = new HashMap<String, String>();
+  /**
+   * Map for the parameters.
+   */
+  private final Map<String, String> param = new HashMap<String, String>();
 
-    /**
-     * The pdf document.
-     */
-    private Document document = null;
+  /**
+   * The pdf document.
+   */
+  private Document document = null;
 
-    /**
-     * The node visitor.
-     */
-    private PdfNodeVisitor nodevisitor;
+  /**
+   * The node visitor.
+   */
+  private PdfNodeVisitor nodevisitor;
 
-    /**
-     * the number of page which are shipped out.
-     */
-    private int shippedPages = 0;
+  /**
+   * the number of page which are shipped out.
+   */
+  private int shippedPages = 0;
 
-    /**
-     * The pdf writer.
-     */
-    private PdfWriter writer;
+  /**
+   * The pdf writer.
+   */
+  private PdfWriter writer;
 
-    /**
-     * The document writer options.
-     */
-    private final DocumentWriterOptions options;
+  /**
+   * The document writer options.
+   */
+  private final DocumentWriterOptions options;
 
-    /**
-     * The logger.
-     */
-    private Logger logger;
+  /**
+   * The logger.
+   */
+  private Logger logger;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param config The configurations.
-     * @param options The options.
-     */
-    public PdfDocumentWriter(Configuration config, DocumentWriterOptions options) {
+  /**
+   * Creates a new object.
+   *
+   * @param config  The configurations.
+   * @param options The options.
+   */
+  public PdfDocumentWriter( Configuration config,
+                            DocumentWriterOptions options ) {
 
-        this.options = options;
-        configure(config);
+    this.options = options;
+    configure( config );
+  }
+
+  @Override
+  public void close() throws GeneralException, IOException {
+
+    if( out != null ) {
+      if( document != null ) {
+        document.close();
+      }
+      out.close();
+      out = null;
+    }
+    else {
+      throw new DocumentWriterClosedChannelException( "closed channel" );
     }
 
-@Override
-    public void close() throws GeneralException, IOException {
+  }
 
-        if (out != null) {
-            if (document != null) {
-                document.close();
-            }
-            out.close();
-            out = null;
-        } else {
-            throw new DocumentWriterClosedChannelException("closed channel");
-        }
+  @Override
+  public void configure( Configuration config ) throws ConfigurationException {
 
+    if( config != null ) {
+      // TODO mgn: incomplete
     }
 
-@Override
-    public void configure(Configuration config) throws ConfigurationException {
+  }
 
-        if (config != null) {
-            // TODO mgn: incomplete
-        }
+  @Override
+  public void enableLogging( Logger logger ) {
 
+    this.logger = logger;
+
+  }
+
+  @Override
+  public String getExtension() {
+
+    return "pdf";
+  }
+
+  /**
+   * Set the page size.
+   */
+  private void pageSize() {
+
+    // TODO mgn: set the right page size.
+    document.setPageSize( PageSize.A4 );
+
+    nodevisitor.setPageSize( PageSize.A4 );
+  }
+
+  @Override
+  public void setFontFactory( CoreFontFactory factory ) {
+
+    corefactory = factory;
+    List<String> sl = new ArrayList<String>();
+    sl.add( "ttf" );
+    sl.add( "afm" );
+    sl.add( "tfm" );
+    manager = corefactory.createManager( sl );
+
+  }
+
+  @Override
+  public void setOutputStream( OutputStream writer ) {
+
+    out = writer;
+
+  }
+
+  /**
+   * java.lang.String)
+   */
+  @Override
+  public void setParameter( String name, String value ) {
+
+    param.put( name, value );
+
+  }
+
+  @Override
+  public int shipout( Page page ) throws GeneralException, IOException {
+
+    try {
+      if( document == null ) {
+        document = new Document();
+        writer = PdfWriter.getInstance( document, out );
+        document.open();
+
+        PdfFontFactory.setLogger( logger );
+        nodevisitor =
+            new PdfNodeVisitor( document, writer, manager, logger,
+                                localizer );
+      }
+      pageSize();
+      document.newPage();
+      shippedPages++;
+
+      // set start point
+      nodevisitor.setX( Dimen.ONE_INCH );
+      nodevisitor.setY( Dimen.ONE_INCH );
+
+      NodeList nodes = page.getNodes();
+      nodes.visit( nodevisitor, nodes );
+
+    } catch( DocumentException e ) {
+      throw new DocumentWriterException( e.getMessage() );
     }
-
-@Override
-    public void enableLogging(Logger logger) {
-
-        this.logger = logger;
-
-    }
-
-@Override
-    public String getExtension() {
-
-        return "pdf";
-    }
-
-    /**
-     * Set the page size.
-     */
-    private void pageSize() {
-
-        // TODO mgn: set the right page size.
-        document.setPageSize(PageSize.A4);
-
-        nodevisitor.setPageSize(PageSize.A4);
-    }
-
-@Override
-    public void setFontFactory(CoreFontFactory factory) {
-
-        corefactory = factory;
-        List<String> sl = new ArrayList<String>();
-        sl.add("ttf");
-        sl.add("afm");
-        sl.add("tfm");
-        manager = corefactory.createManager(sl);
-
-    }
-
-@Override
-    public void setOutputStream(OutputStream writer) {
-
-        out = writer;
-
-    }
-
-    /**
-*      java.lang.String)
-     */
-    @Override
-    public void setParameter(String name, String value) {
-
-        param.put(name, value);
-
-    }
-
-@Override
-    public int shipout(Page page) throws GeneralException, IOException {
-
-        try {
-            if (document == null) {
-                document = new Document();
-                writer = PdfWriter.getInstance(document, out);
-                document.open();
-
-                PdfFontFactory.setLogger(logger);
-                nodevisitor =
-                        new PdfNodeVisitor(document, writer, manager, logger,
-                            localizer);
-            }
-            pageSize();
-            document.newPage();
-            shippedPages++;
-
-            // set start point
-            nodevisitor.setX(Dimen.ONE_INCH);
-            nodevisitor.setY(Dimen.ONE_INCH);
-
-            NodeList nodes = page.getNodes();
-            nodes.visit(nodevisitor, nodes);
-
-        } catch (DocumentException e) {
-            throw new DocumentWriterException(e.getMessage());
-        }
-        return shippedPages;
-    }
+    return shippedPages;
+  }
 }

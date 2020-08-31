@@ -35,80 +35,80 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive {@code \badness}
  * .
- * 
+ *
  * <p>The Primitive {@code \badness}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *   &lang;badness&rang;
  *     &rarr; {@code \badness} {@linkplain
  *       org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *       &lang;equals&rang;} {@linkplain
- *       org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *       org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *       &lang;number&rang;} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \badness=999  </pre>
- * 
+ *
  * <pre class="TeXSample">
  *   \count1=\badness  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Badness extends AbstractCode implements CountConvertible, Theable {
 
-    /**
-     * The constant {@code BADNESS} contains the key for the register value.
-     */
-    private static final String BADNESS = "badness";
+  /**
+   * The constant {@code BADNESS} contains the key for the register value.
+   */
+  private static final String BADNESS = "badness";
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Badness(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Badness( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Count c = context.getCount(BADNESS);
-        return (c != null ? c.getValue() : 0);
-    }
+    Count c = context.getCount( BADNESS );
+    return (c != null ? c.getValue() : 0);
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
 
-        return context.getTokenFactory().toTokens(
-            context.getCount(BADNESS).toString());
-    }
+    return context.getTokenFactory().toTokens(
+        context.getCount( BADNESS ).toString() );
+  }
 
 }

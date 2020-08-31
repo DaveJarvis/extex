@@ -19,52 +19,52 @@
 
 package org.extex.font.format.ofm;
 
-import java.io.IOException;
-
 import org.extex.font.format.tfm.TfmCharInfoArray;
 import org.extex.util.file.random.RandomAccessR;
 
+import java.io.IOException;
+
 /**
  * Class for TFM char info.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class OfmCharInfoArray extends TfmCharInfoArray {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * The char-info-word array.
-     */
-    private final OfmCharInfoWord[] charinfoword;
+  /**
+   * The char-info-word array.
+   */
+  private final OfmCharInfoWord[] charinfoword;
 
-    /**
-     * Create a new object.
-     * 
-     * @param rar the input
-     * @param cc number of character
-     * @throws IOException if an IO-error occurs.
-     */
-    public OfmCharInfoArray(RandomAccessR rar, int cc) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param rar the input
+   * @param cc  number of character
+   * @throws IOException if an IO-error occurs.
+   */
+  public OfmCharInfoArray( RandomAccessR rar, int cc ) throws IOException {
 
-        charinfoword = new OfmCharInfoWord[cc];
-        for (int i = 0; i < cc; i++) {
-            charinfoword[i] = new OfmCharInfoWord(rar, i);
-        }
+    charinfoword = new OfmCharInfoWord[ cc ];
+    for( int i = 0; i < cc; i++ ) {
+      charinfoword[ i ] = new OfmCharInfoWord( rar, i );
     }
+  }
 
-    /**
-     * Getter for charinfoword.
-     * 
-     * @return the charinfoword
-     */
-    @Override
-    public OfmCharInfoWord[] getCharinfoword() {
+  /**
+   * Getter for charinfoword.
+   *
+   * @return the charinfoword
+   */
+  @Override
+  public OfmCharInfoWord[] getCharinfoword() {
 
-        return charinfoword;
-    }
+    return charinfoword;
+  }
 
 }

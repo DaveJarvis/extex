@@ -24,31 +24,31 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is raised when a illegal file reference has been encountered.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  {@code TTP.BadFileNumber}.
+ * The localization format is taken from the Localizer under the key
+ * {@code TTP.BadFileNumber}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class BadFileNumberException extends HelpingException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param value the illegal file reference
-     * @param min the minimum for numerical values
-     * @param max the maximum for numerical values
-     */
-    public BadFileNumberException(String value, String min,
-            String max) {
+  /**
+   * Creates a new object.
+   *
+   * @param value the illegal file reference
+   * @param min   the minimum for numerical values
+   * @param max   the maximum for numerical values
+   */
+  public BadFileNumberException( String value, String min,
+                                 String max ) {
 
-        super(LocalizerFactory.getLocalizer(BadFileNumberException.class),
-                "TTP.BadFileNumber", value, min, max);
-    }
+    super( LocalizerFactory.getLocalizer( BadFileNumberException.class ),
+           "TTP.BadFileNumber", value, min, max );
+  }
 
 }

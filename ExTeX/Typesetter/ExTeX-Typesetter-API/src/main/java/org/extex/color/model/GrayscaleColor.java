@@ -29,127 +29,123 @@ import org.extex.core.exception.GeneralException;
  * channel.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class GrayscaleColor implements Color {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 1L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 1L;
 
-    /**
-     * The field {@code alpha} contains the alpha channel of the color.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     */
-    private final int alpha;
+  /**
+   * The field {@code alpha} contains the alpha channel of the color.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   */
+  private final int alpha;
 
-    /**
-     * The field {@code gray} contains the gray value of the color.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     */
-    private final int gray;
+  /**
+   * The field {@code gray} contains the gray value of the color.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   */
+  private final int gray;
 
-    /**
-     * Creates a new object.
-     *
-     * @param thegray the gray channel
-     * @param theAlpha the alpha channel
-     */
-    protected GrayscaleColor(int thegray, int theAlpha) {
+  /**
+   * Creates a new object.
+   *
+   * @param thegray  the gray channel
+   * @param theAlpha the alpha channel
+   */
+  protected GrayscaleColor( int thegray, int theAlpha ) {
 
-        this.gray = (thegray < 0 ? 0 : thegray < MAX_VALUE
-                ? thegray
-                : MAX_VALUE);
-        this.alpha = (theAlpha < 0 ? 0 : theAlpha < MAX_VALUE
-                ? theAlpha
-                : MAX_VALUE);
+    this.gray = (thegray < 0 ? 0 : thegray < MAX_VALUE
+        ? thegray
+        : MAX_VALUE);
+    this.alpha = (theAlpha < 0 ? 0 : theAlpha < MAX_VALUE
+        ? theAlpha
+        : MAX_VALUE);
+  }
+
+  /**
+   * Indicates whether some other object is "equal to" this one.
+   *
+   * @param obj the reference object with which to compare.
+   * @return {@code true} if this object is the same as the obj
+   * argument; {@code false} otherwise.
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals( Object obj ) {
+
+    if( !(obj instanceof GrayscaleColor) ) {
+      return false;
     }
+    GrayscaleColor other = (GrayscaleColor) obj;
+    return gray == other.getGray() && alpha == other.getAlpha();
+  }
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param   obj   the reference object with which to compare.
-     * @return  {@code true} if this object is the same as the obj
-     *          argument; {@code false} otherwise.
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj) {
+  /**
+   * Getter for the alpha channel.
+   * The range of the value is 0x00 to 0xffff.
+   *
+   * @return the alpha channel
+   * @see org.extex.color.Color#getAlpha()
+   */
+  public int getAlpha() {
 
-        if (!(obj instanceof GrayscaleColor)) {
-            return false;
-        }
-        GrayscaleColor other = (GrayscaleColor) obj;
-        return gray == other.getGray() && alpha == other.getAlpha();
-    }
+    return alpha;
+  }
 
-    /**
-     * Getter for the alpha channel.
-     * The range of the value is 0x00 to 0xffff.
-     *
-     * @return the alpha channel
-     *
-     * @see org.extex.color.Color#getAlpha()
-     */
-    public int getAlpha() {
+  /**
+   * Getter for the gray value.
+   * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
+   *
+   * @return the gray value.
+   */
+  public int getGray() {
 
-        return alpha;
-    }
+    return gray;
+  }
 
-    /**
-     * Getter for the gray value.
-     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
-     *
-     * @return the gray value.
-     */
-    public int getGray() {
+  /**
+   * Returns a hash code value for the object.
+   *
+   * @return a hash code value for this object
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
 
-        return gray;
-    }
+    return (gray << 2) | (alpha << 3);
+  }
 
-    /**
-     * Returns a hash code value for the object.
-     *
-     * @return  a hash code value for this object
-     *
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode() {
+  /**
+   * Returns a string representation of the object.
+   *
+   * @return a string representation of the object.
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-        return (gray << 2) | (alpha << 3);
-    }
+    StringBuilder sb = new StringBuilder();
+    ColorUtil.formatAlpha( sb, alpha );
+    sb.append( "gray {" );
+    ColorUtil.formatComponent( sb, gray );
+    sb.append( "}" );
+    return sb.toString();
+  }
 
-    /**
-     * Returns a string representation of the object.
-     *
-     * @return  a string representation of the object.
-     *
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.color.Color#visit(
+   *org.extex.color.ColorVisitor,
+   * java.lang.Object)
+   */
+  public Object visit( ColorVisitor visitor, Object argument )
+      throws GeneralException {
 
-        StringBuilder sb = new StringBuilder();
-        ColorUtil.formatAlpha(sb, alpha);
-        sb.append("gray {");
-        ColorUtil.formatComponent(sb, gray);
-        sb.append("}");
-        return sb.toString();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.color.Color#visit(
-     *      org.extex.color.ColorVisitor,
-     *      java.lang.Object)
-     */
-    public Object visit(ColorVisitor visitor, Object argument)
-            throws GeneralException {
-
-        return visitor.visitGray(this, argument);
-    }
+    return visitor.visitGray( this, argument );
+  }
 
 }

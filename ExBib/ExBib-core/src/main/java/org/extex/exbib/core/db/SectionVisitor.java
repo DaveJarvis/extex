@@ -24,36 +24,33 @@ import java.io.IOException;
 
 /**
  * This interface describes the capabilities for visiting sections.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface SectionVisitor {
 
-    /**
-     * Visit the entries section.
-     * 
-     * @param db the database
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    void visitEntries(DB db) throws IOException;
+  /**
+   * Visit the entries section.
+   *
+   * @param db the database
+   * @throws IOException in case of an I/O error
+   */
+  void visitEntries( DB db ) throws IOException;
 
-    /**
-     * Visit the preamble section.
-     * 
-     * @param db the database
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    void visitPreamble(DB db) throws IOException;
+  /**
+   * Visit the preamble section.
+   *
+   * @param db the database
+   * @throws IOException in case of an I/O error
+   */
+  void visitPreamble( DB db ) throws IOException;
 
-    /**
-     * Visit the strings section.
-     * 
-     * @param db the database
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    void visitStrings(DB db) throws IOException;
+  /**
+   * Visit the strings section.
+   *
+   * @param db the database
+   * @throws IOException in case of an I/O error
+   */
+  void visitStrings( DB db ) throws IOException;
 
 }

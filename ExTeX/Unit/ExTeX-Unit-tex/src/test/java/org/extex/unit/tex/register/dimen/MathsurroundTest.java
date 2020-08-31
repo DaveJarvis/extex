@@ -26,65 +26,65 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \mathsurround}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathsurroundTest extends AbstractDimenRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MathsurroundTest.class);
-    }
+    (new JUnitCore()).run( MathsurroundTest.class );
+  }
 
 
-    public MathsurroundTest() {
+  public MathsurroundTest() {
 
-        super("mathsurround", "", "0.0pt");
-    }
+    super( "mathsurround", "", "0.0pt" );
+  }
 
-    /**
-     * Test case checking that {@code \mathsurround} is inserted before and after math
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test case checking that {@code \mathsurround} is inserted before and 
+   * after math
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
-                    + "\\mathsurround=10pt" + "o$x$o \\end",
-            // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n"
-                    + ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + "..o\n"
-                    + "..\\mathon, surrounded 10.0pt\n" + "..x\n"
-                    + "..\\mathoff, surrounded 10.0pt\n" + "..o\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
+                       + "\\mathsurround=10pt" + "o$x$o \\end",
+                   // --- output channel ---
+                   "\\vbox(8.0pt+0.0pt)x3000.0pt\n"
+                       + ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + "..o\n"
+                       + "..\\mathon, surrounded 10.0pt\n" + "..x\n"
+                       + "..\\mathoff, surrounded 10.0pt\n" + "..o\n" );
+  }
 
-    /**
-     *  Test case checking that {@code \mathsurround} is inserted
-     * before and after math &ndash; even when set within the math environment.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * Test case checking that {@code \mathsurround} is inserted
+   * before and after math &ndash; even when set within the math environment.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
-                    + "o$x\\mathsurround=10pt$o \\end",
-            // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n"
-                    + ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + "..o\n"
-                    + "..\\mathon, surrounded 10.0pt\n" + "..x\n"
-                    + "..\\mathoff, surrounded 10.0pt\n" + "..o\n");
-    }
+    assertSuccess( showNodesProperties(),
+                   // --- input code ---
+                   AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
+                       + "o$x\\mathsurround=10pt$o \\end",
+                   // --- output channel ---
+                   "\\vbox(8.0pt+0.0pt)x3000.0pt\n"
+                       + ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + "..o\n"
+                       + "..\\mathon, surrounded 10.0pt\n" + "..x\n"
+                       + "..\\mathoff, surrounded 10.0pt\n" + "..o\n" );
+  }
 
 }

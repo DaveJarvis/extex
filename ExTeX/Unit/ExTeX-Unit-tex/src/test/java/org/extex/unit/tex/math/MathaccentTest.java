@@ -23,14 +23,16 @@ package org.extex.unit.tex.math;
  * This is a test suite for the primitive {@code \mathaccent}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MathaccentTest extends AbstractMathTester {
 
 
-    public MathaccentTest() {
+  public MathaccentTest() {
 
-        setPrimitive("mathaccent");setArguments("12 a");setPrepare("");
-    }
+    setPrimitive( "mathaccent" );
+    setArguments( "12 a" );
+    setPrepare( "" );
+  }
 
-    //TODO implement the primitive specific test cases
+  //TODO implement the primitive specific test cases
 }

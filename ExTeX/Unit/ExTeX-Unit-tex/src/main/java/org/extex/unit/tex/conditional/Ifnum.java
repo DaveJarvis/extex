@@ -32,95 +32,94 @@ import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive {@code \ifnum}.
- * 
+ *
  * <p>The Primitive {@code \ifnum}</p>
  * <p>
  * The primitive {@code \ifnum} provides a conditional which compares two
  * numerical values. The comparison for equality, greater, and less are
  * possible.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;ifnum&rang;
  *      &rarr; {@code \ifnum} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; {@code \fi}
  *      | {@code \ifnum} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi}
  *
  *    &lang;op&rang;
  *      &rarr; [&lt;]
  *      | [=]
  *      | [&gt;]  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \ifnum\count0&gt;42 abc \fi  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Ifnum extends AbstractIf {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Ifnum(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Ifnum( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public boolean conditional( Context context, TokenSource source,
+                              Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    long value = source.parseInteger( context, source, typesetter );
+    Token rel = source.getNonSpace( context );
+    if( rel == null ) {
+      throw new EofException( toText() );
+    }
+    if( rel.getCatcode() == Catcode.OTHER ) {
+      switch( rel.getChar().getCodePoint() ) {
+        case '<':
+          return (value < source.parseInteger( context, source,
+                                               typesetter ));
+        case '=':
+          return (value == source.parseInteger( context, source,
+                                                typesetter ));
+        case '>':
+          return (value > source.parseInteger( context, source,
+                                               typesetter ));
+        default:
+          // fall-through
+      }
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        long value = source.parseInteger(context, source, typesetter);
-        Token rel = source.getNonSpace(context);
-        if (rel == null) {
-            throw new EofException(toText());
-        }
-        if (rel.getCatcode() == Catcode.OTHER) {
-            switch (rel.getChar().getCodePoint()) {
-                case '<':
-                    return (value < source.parseInteger(context, source,
-                        typesetter));
-                case '=':
-                    return (value == source.parseInteger(context, source,
-                        typesetter));
-                case '>':
-                    return (value > source.parseInteger(context, source,
-                        typesetter));
-                default:
-                    // fall-through
-            }
-        }
-
-        throw new HelpingException(getLocalizer(), "TTP.IllegalIfnumOp",
-            toText());
-    }
+    throw new HelpingException( getLocalizer(), "TTP.IllegalIfnumOp",
+                                toText() );
+  }
 
 }

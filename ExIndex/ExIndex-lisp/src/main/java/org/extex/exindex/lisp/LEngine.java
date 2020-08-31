@@ -26,23 +26,23 @@ import org.extex.exindex.lisp.builtin.Setq;
 
 /**
  * This class represents an LInterpreter with some predefined functions.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LEngine extends LInterpreter {
 
-    /**
-     * Creates a new object.
-     * 
-     * @throws NoSuchMethodException if a method is missing
-     * @throws SecurityException if a security problem is encountered
-     */
-    public LEngine() throws SecurityException, NoSuchMethodException {
+  /**
+   * Creates a new object.
+   *
+   * @throws NoSuchMethodException if a method is missing
+   * @throws SecurityException     if a security problem is encountered
+   */
+  public LEngine() throws SecurityException, NoSuchMethodException {
 
-        defun("setq", new Setq("setq"));
-        defun("quote", new Quote("quote"));
-        defun("print", new Print("print"));
-        defun("require", new Require("require"));
-    }
+    defun( "setq", new Setq( "setq" ) );
+    defun( "quote", new Quote( "quote" ) );
+    defun( "print", new Print( "print" ) );
+    defun( "require", new Require( "require" ) );
+  }
 
 }

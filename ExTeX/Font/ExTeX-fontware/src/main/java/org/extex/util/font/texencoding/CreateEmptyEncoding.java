@@ -19,70 +19,70 @@
 
 package org.extex.util.font.texencoding;
 
-import java.io.File;
-import java.io.FileOutputStream;
-
 import org.extex.font.format.texencoding.EncWriter;
 import org.extex.util.font.AbstractFontUtil;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 /**
  * Create a empty tex font encoding vector.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class CreateEmptyEncoding extends AbstractFontUtil {
 
-    /**
-     * main.
-     * 
-     * @param args The command line.
-     * @throws Exception if an error occurred.
-     */
-    public static void main(String[] args) throws Exception {
+  /**
+   * main.
+   *
+   * @param args The command line.
+   * @throws Exception if an error occurred.
+   */
+  public static void main( String[] args ) throws Exception {
 
-        CreateEmptyEncoding enc = new CreateEmptyEncoding();
+    CreateEmptyEncoding enc = new CreateEmptyEncoding();
 
-        if (args.length > 0) {
-            int i = 0;
-            do {
-                if ("-o".equals(args[i]) || "--outdir".equals(args[i])) {
-                    if (i + 1 < args.length) {
-                        enc.setOutdir(args[++i]);
-                    }
+    if( args.length > 0 ) {
+      int i = 0;
+      do {
+        if( "-o".equals( args[ i ] ) || "--outdir".equals( args[ i ] ) ) {
+          if( i + 1 < args.length ) {
+            enc.setOutdir( args[ ++i ] );
+          }
 
-                }
-                i++;
-            } while (i < args.length);
         }
-
-        enc.doIt();
+        i++;
+      } while( i < args.length );
     }
 
+    enc.doIt();
+  }
 
-    public CreateEmptyEncoding() {
 
-        super(CreateEmptyEncoding.class);
-    }
+  public CreateEmptyEncoding() {
 
-    /**
-     * do it.
-     * 
-     * @throws Exception if an error occurs.
-     */
-    public void doIt() throws Exception {
+    super( CreateEmptyEncoding.class );
+  }
 
-        EncWriter writer = new EncWriter();
+  /**
+   * do it.
+   *
+   * @throws Exception if an error occurs.
+   */
+  public void doIt() throws Exception {
 
-        String outfile = getOutdir() + File.separator + "empty.enc";
+    EncWriter writer = new EncWriter();
 
-        writer.setEncname("EmptyEncoding");
-        writer.setComments(true);
-        writer.setHeaderComment(createVersion("CreateEmptyEncoding.created"));
+    String outfile = getOutdir() + File.separator + "empty.enc";
 
-        writer.write(new FileOutputStream(outfile));
+    writer.setEncname( "EmptyEncoding" );
+    writer.setComments( true );
+    writer.setHeaderComment( createVersion( "CreateEmptyEncoding.created" ) );
 
-        getLogger().severe(
-            getLocalizer().format("CreateEmptyEncoding.end", outfile));
+    writer.write( new FileOutputStream( outfile ) );
 
-    }
+    getLogger().severe(
+        getLocalizer().format( "CreateEmptyEncoding.end", outfile ) );
+
+  }
 }

@@ -25,17 +25,16 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This interface describes the ability to carry a hyphenation factory.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface LanguageManagerCarrier {
 
-    /**
-     * Setter for the language manager.
-     *
-     * @param manager the language manager to carry
-     *
-     * @throws ConfigurationException in case of a configuration problem
-     */
-    void setLanguageManager(LanguageManager manager)
-            throws ConfigurationException;
+  /**
+   * Setter for the language manager.
+   *
+   * @param manager the language manager to carry
+   * @throws ConfigurationException in case of a configuration problem
+   */
+  void setLanguageManager( LanguageManager manager )
+      throws ConfigurationException;
 
 }

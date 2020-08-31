@@ -24,27 +24,27 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \localinterlinepenalty}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LocalinterlinepenaltyTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(LocalinterlinepenaltyTest.class);
-    }
+    (new JUnitCore()).run( LocalinterlinepenaltyTest.class );
+  }
 
 
-    public LocalinterlinepenaltyTest() {
+  public LocalinterlinepenaltyTest() {
 
-        super("localinterlinepenalty", " ", "0");
-        setConfig("omega-test");
-    }
+    super( "localinterlinepenalty", " ", "0" );
+    setConfig( "omega-test" );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

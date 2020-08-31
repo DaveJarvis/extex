@@ -35,64 +35,63 @@ import org.extex.typesetter.type.noad.RadicalNoad;
 
 /**
  * This class provides an implementation for the primitive {@code \radical}.
- * 
+ *
  * <p>The Math Primitive {@code \radical}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;radical&rang;
  *       &rarr; {@code \radical} ...  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \radical\delimiter"123456{a^2 + b^2}  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Radical extends AbstractTeXDelimiter {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Radical(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Radical( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException,
-                ConfigurationException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException,
+      ConfigurationException,
+      TypesetterException {
 
-        NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter delcode =
-                parseDelimiter(context, source, typesetter, getToken());
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
-            getToken(), GroupType.MATH_GROUP);
-        nc.add(new RadicalNoad(delcode, noad, context.getTypesettingContext()));
-    }
+    NoadConsumer nc = getListMaker( context, typesetter );
+    MathDelimiter delcode =
+        parseDelimiter( context, source, typesetter, getToken() );
+    Noad noad = nc.scanNoad( prefix, context, source, typesetter,
+                             getToken(), GroupType.MATH_GROUP );
+    nc.add( new RadicalNoad( delcode, noad, context.getTypesettingContext() ) );
+  }
 
 }

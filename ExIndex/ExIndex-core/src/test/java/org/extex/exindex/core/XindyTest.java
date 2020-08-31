@@ -23,23 +23,23 @@ import org.junit.Test;
 
 /**
  * This is a test suite for xindy compatibility.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class XindyTest {
 
-    /**
-     *  Test that makeidx.xdy can be read
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLoadStyle2() throws Exception {
+  /**
+   * Test that makeidx.xdy can be read
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLoadStyle2() throws Exception {
 
-        Indexer indexer = new Indexer();
-        indexer.load("src/test/resources/xindy/makeidx.xdy");
+    Indexer indexer = new Indexer();
+    indexer.load( "src/test/resources/xindy/makeidx.xdy" );
 
-        // indexer.printBindings(System.out);
-    }
+    // indexer.printBindings(System.out);
+  }
 
 }

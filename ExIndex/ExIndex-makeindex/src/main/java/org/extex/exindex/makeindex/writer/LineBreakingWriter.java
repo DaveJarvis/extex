@@ -25,117 +25,117 @@ import java.io.Writer;
 /**
  * This is a writer which tries to achieve a certain line length by breaking
  * longer lines.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class LineBreakingWriter extends Writer {
 
-    /**
-     * The field {@code buffer} contains the intermediary buffer.
-     */
-    private final StringBuilder buffer = new StringBuilder();
+  /**
+   * The field {@code buffer} contains the intermediary buffer.
+   */
+  private final StringBuilder buffer = new StringBuilder();
 
-    /**
-     * The field {@code w} contains the target writer.
-     */
-    private final Writer w;
+  /**
+   * The field {@code w} contains the target writer.
+   */
+  private final Writer w;
 
-    /**
-     * The field {@code column} contains the current column.
-     */
-    private int column = 0;
+  /**
+   * The field {@code column} contains the current column.
+   */
+  private int column = 0;
 
-    /**
-     * The field {@code sep} contains the separator.
-     */
-    private final String sep;
+  /**
+   * The field {@code sep} contains the separator.
+   */
+  private final String sep;
 
-    /**
-     * The field {@code in} contains the width of sep.
-     */
-    private final int in;
+  /**
+   * The field {@code in} contains the width of sep.
+   */
+  private final int in;
 
-    /**
-     * The field {@code lineLength} contains the desired line length.
-     */
-    private final int lineLength;
+  /**
+   * The field {@code lineLength} contains the desired line length.
+   */
+  private final int lineLength;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param w the target writer
-     * @param lineLength the line length
-     * @param separator the separator
-     * @param indent the indentation
-     */
-    public LineBreakingWriter(Writer w, int lineLength, String separator,
-            int indent) {
+  /**
+   * Creates a new object.
+   *
+   * @param w          the target writer
+   * @param lineLength the line length
+   * @param separator  the separator
+   * @param indent     the indentation
+   */
+  public LineBreakingWriter( Writer w, int lineLength, String separator,
+                             int indent ) {
 
-        this.w = w;
-        this.lineLength = lineLength;
-        this.sep = "\n" + separator;
-        this.in = indent;
+    this.w = w;
+    this.lineLength = lineLength;
+    this.sep = "\n" + separator;
+    this.in = indent;
+  }
+
+  @Override
+  public void close() throws IOException {
+
+    propagate();
+    w.flush();
+    w.close();
+  }
+
+  @Override
+  public void flush() throws IOException {
+
+    int length = buffer.length();
+    if( length != 0 ) {
+      w.write( buffer.toString() );
+      buffer.delete( 0, length );
     }
+    w.flush();
+  }
 
-@Override
-    public void close() throws IOException {
+  /**
+   * Pass the buffer contents to the encapsulated writer.
+   *
+   * @throws IOException in case of an I/O error
+   */
+  private void propagate() throws IOException {
 
-        propagate();
-        w.flush();
-        w.close();
+    if( column >= lineLength + 2 ) {
+      w.write( sep );
+      column = in + buffer.length();
     }
-
-@Override
-    public void flush() throws IOException {
-
-        int length = buffer.length();
-        if (length != 0) {
-            w.write(buffer.toString());
-            buffer.delete(0, length);
-        }
-        w.flush();
+    int length = buffer.length();
+    if( length != 0 ) {
+      w.write( buffer.toString() );
+      buffer.delete( 0, length );
     }
+  }
 
-    /**
-     * Pass the buffer contents to the encapsulated writer.
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    private void propagate() throws IOException {
+  @Override
+  public void write( char[] cbuf, int off, int len ) throws IOException {
 
-        if (column >= lineLength + 2) {
-            w.write(sep);
-            column = in + buffer.length();
-        }
-        int length = buffer.length();
-        if (length != 0) {
-            w.write(buffer.toString());
-            buffer.delete(0, length);
-        }
+    for( int i = off; i < off + len; i++ ) {
+      buffer.append( cbuf[ i ] );
+      switch( cbuf[ i ] ) {
+        case '\n':
+        case '\r':
+          propagate();
+          column = 0;
+          break;
+        case '\f':
+        case '\t':
+        case ' ':
+          column++;
+          propagate();
+          break;
+        default:
+          column++;
+          // nothing else to do
+      }
     }
-
-@Override
-    public void write(char[] cbuf, int off, int len) throws IOException {
-
-        for (int i = off; i < off + len; i++) {
-            buffer.append(cbuf[i]);
-            switch (cbuf[i]) {
-                case '\n':
-                case '\r':
-                    propagate();
-                    column = 0;
-                    break;
-                case '\f':
-                case '\t':
-                case ' ':
-                    column++;
-                    propagate();
-                    break;
-                default:
-                    column++;
-                    // nothing else to do
-            }
-        }
-    }
+  }
 
 }

@@ -19,71 +19,73 @@
 
 package org.extex.unit.tex.interaction;
 
-import static org.junit.Assert.assertEquals;
-
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * This is a test suite for the primitive {@code \nonstopmode}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NonstopmodeTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(NonstopmodeTest.class);
-    }
+    (new JUnitCore()).run( NonstopmodeTest.class );
+  }
 
 
-    public NonstopmodeTest() {
+  public NonstopmodeTest() {
 
-        setPrimitive("nonstopmode");setArguments("");setPrepare("");
-    }
+    setPrimitive( "nonstopmode" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\nonstopmode">
-     *  Test case checking that nonstop mode is reported as 0.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * <testcase primitive="\nonstopmode">
+   * Test case checking that nonstop mode is reported as 0.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        Interpreter interpreter = assertSuccess(//--- input code ---
-            "\\nonstopmode" + "\\end",
-            //--- output channel ---
-            "");
-        assertEquals(Interaction.NONSTOPMODE,
-            interpreter.getContext().getInteraction());
-    }
+    Interpreter interpreter = assertSuccess(//--- input code ---
+                                            "\\nonstopmode" + "\\end",
+                                            //--- output channel ---
+                                            "" );
+    assertEquals( Interaction.NONSTOPMODE,
+                  interpreter.getContext().getInteraction() );
+  }
 
-    /**
-     * <testcase primitive="\nonstopmode">
-     *  Test case checking that nonstop mode is always global.
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\nonstopmode">
+   * Test case checking that nonstop mode is always global.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        Interpreter interpreter = assertSuccess(//--- input code ---
-            "\\errorstopmode\\begingroup\\nonstopmode\\endgroup" + "\\end",
-            //--- output channel ---
-            "");
-        assertEquals(Interaction.NONSTOPMODE,
-            interpreter.getContext().getInteraction());
-    }
+    Interpreter interpreter = assertSuccess(//--- input code ---
+                                            "\\errorstopmode\\begingroup" +
+                                                "\\nonstopmode\\endgroup" +
+                                                "\\end",
+                                            //--- output channel ---
+                                            "" );
+    assertEquals( Interaction.NONSTOPMODE,
+                  interpreter.getContext().getInteraction() );
+  }
 
 }

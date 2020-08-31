@@ -26,33 +26,33 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \pdfximage}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
-public class PdfximageTest extends NoFlagsButImmediateAndProtectedPrimitiveTester {
+ */
+public class PdfximageTest
+    extends NoFlagsButImmediateAndProtectedPrimitiveTester {
 
-    /**
-     * Creates a new instance.
-     */
-    public PdfximageTest() {
+  /**
+   * Creates a new instance.
+   */
+  public PdfximageTest() {
 
-        super("pdfximage", "{}", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfximage", "{}", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    /**
-     * <testcase primitive="\pdfximage">
-     *  Test case checking that ...
-     * 
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pdfximage">
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfximage b",
-                //--- output message ---
-                "Missing `{' inserted");
-    }
+    assertFailure(//--- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfximage b",
+                  //--- output message ---
+                  "Missing `{' inserted" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }

@@ -42,231 +42,232 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
 /**
  * This is the base class for all math primitives using the Omega encoding. It
  * tries to ensure that the primitive is invoked in math mode only.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2009L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2009L;
 
-    /**
-     * The field {@code CLASS_OFFSET} contains the offset for adjoining the
-     * math class.
-     */
-    private static final int CLASS_OFFSET = 24;
+  /**
+   * The field {@code CLASS_OFFSET} contains the offset for adjoining the
+   * math class.
+   */
+  private static final int CLASS_OFFSET = 24;
 
-    /**
-     * The field {@code SPECIAL_MATH_CODE} contains the special math code.
-     */
-    private static final int SPECIAL_MATH_CODE = 0x8000000;
+  /**
+   * The field {@code SPECIAL_MATH_CODE} contains the special math code.
+   */
+  private static final int SPECIAL_MATH_CODE = 0x8000000;
 
-    /**
-     * The constant {@code CHARACTER_MASK} contains the mask for the character
-     * value in the TeX encoding.
-     */
-    private static final int CHARACTER_MASK = 0xffff;
+  /**
+   * The constant {@code CHARACTER_MASK} contains the mask for the character
+   * value in the TeX encoding.
+   */
+  private static final int CHARACTER_MASK = 0xffff;
 
-    /**
-     * The constant {@code FAMILY_MASK} contains the mask for the family in the
-     * TeX encoding.
-     */
-    private static final int FAMILY_MASK = 0xff;
+  /**
+   * The constant {@code FAMILY_MASK} contains the mask for the family in the
+   * TeX encoding.
+   */
+  private static final int FAMILY_MASK = 0xff;
 
-    /**
-     * The constant {@code FAMILY_OFFSET} contains the offset for the family in
-     * the TeX encoding.
-     */
-    private static final int FAMILY_OFFSET = 16;
+  /**
+   * The constant {@code FAMILY_OFFSET} contains the offset for the family in
+   * the TeX encoding.
+   */
+  private static final int FAMILY_OFFSET = 16;
 
-    /**
-     * The field {@code VISITOR} contains the visitor for mapping a math class
-     * to the integer representation used by Omega.
-     */
-    private static final MathClassVisitor<Long, Object, Object> VISITOR =
-            new MathClassVisitor<Long, Object, Object>() {
+  /**
+   * The field {@code VISITOR} contains the visitor for mapping a math class
+   * to the integer representation used by Omega.
+   */
+  private static final MathClassVisitor<Long, Object, Object> VISITOR =
+      new MathClassVisitor<Long, Object, Object>() {
 
-                /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(java.lang.Object,
-                 *      java.lang.Object)
-                 */
-                public Long visitBinary(Object arg, Object arg2) {
+        /**
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(java.lang.Object,
+         *      java.lang.Object)
+         */
+        public Long visitBinary( Object arg, Object arg2 ) {
 
-                    return new Long(2);
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(java.lang.Object,
-                 *      java.lang.Object)
-                 */
-                public Long visitClosing(Object arg, Object arg2) {
-
-                    return new Long(5);
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(java.lang.Object,
-                 *      java.lang.Object)
-                 */
-                public Long visitLarge(Object arg, Object arg2) {
-
-                    return new Long(1);
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(java.lang.Object,
-                 *      java.lang.Object)
-                 */
-                public Long visitOpening(Object arg, Object arg2) {
-
-                    return new Long(4);
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object,
-                 *      java.lang.Object)
-                 */
-                public Long visitOrdinary(Object arg, Object arg2) {
-
-                    return new Long(0);
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(java.lang.Object,
-                 *      java.lang.Object)
-                 */
-                public Long visitPunctation(Object arg, Object arg2) {
-
-                    return new Long(6);
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(java.lang.Object,
-                 *      java.lang.Object)
-                 */
-                public Long visitRelation(Object arg, Object arg2) {
-
-                    return new Long(3);
-                }
-
-                /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(java.lang.Object,
-                 *      java.lang.Object)
-                 */
-                public Long visitVariable(Object arg, Object arg2) {
-
-                    return new Long(7);
-                }
-            };
-
-    /**
-     * Convert a {@link MathCode MathCode} to a number using the TeX encoding.
-     * 
-     * @param mc the math code
-     * 
-     * @return a TeX-encoded math code
-     * 
-     * @throws HelpingException in case of an error
-     */
-    public static long mathCodeToLong(MathCode mc) throws HelpingException {
-
-        MathClass mathClass = mc.getMathClass();
-        if (mathClass == null) {
-            return SPECIAL_MATH_CODE;
+          return new Long( 2 );
         }
-        MathGlyph mg = mc.getMathGlyph();
-        long codePoint = mg.getCharacter().getCodePoint();
-        if (codePoint > CHARACTER_MASK) {
-            throw new HelpingException(
-                LocalizerFactory.getLocalizer(AbstractOmegaMathCode.class),
-                "InvalidCharacterCode");
-        }
-        long mathFamily = mg.getFamily();
-        if (mathFamily > FAMILY_MASK) {
-            throw new HelpingException(
-                LocalizerFactory.getLocalizer(AbstractOmegaMathCode.class),
-                "InvalidFamilyCode");
-        }
-        long cat = ((Long) mathClass.visit(VISITOR, null, null)).longValue();
-        return (cat << CLASS_OFFSET) | (mathFamily << FAMILY_OFFSET)
-                | codePoint;
 
+        /**
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(java.lang.Object,
+         *      java.lang.Object)
+         */
+        public Long visitClosing( Object arg, Object arg2 ) {
+
+          return new Long( 5 );
+        }
+
+        /**
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(java.lang.Object,
+         *      java.lang.Object)
+         */
+        public Long visitLarge( Object arg, Object arg2 ) {
+
+          return new Long( 1 );
+        }
+
+        /**
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(java.lang.Object,
+         *      java.lang.Object)
+         */
+        public Long visitOpening( Object arg, Object arg2 ) {
+
+          return new Long( 4 );
+        }
+
+        /**
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object,
+         *      java.lang.Object)
+         */
+        public Long visitOrdinary( Object arg, Object arg2 ) {
+
+          return new Long( 0 );
+        }
+
+        /**
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(java.lang.Object,
+         *      java.lang.Object)
+         */
+        public Long visitPunctation( Object arg, Object arg2 ) {
+
+          return new Long( 6 );
+        }
+
+        /**
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(java.lang.Object,
+         *      java.lang.Object)
+         */
+        public Long visitRelation( Object arg, Object arg2 ) {
+
+          return new Long( 3 );
+        }
+
+        /**
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(java.lang.Object,
+         *      java.lang.Object)
+         */
+        public Long visitVariable( Object arg, Object arg2 ) {
+
+          return new Long( 7 );
+        }
+      };
+
+  /**
+   * Convert a {@link MathCode MathCode} to a number using the TeX encoding.
+   *
+   * @param mc the math code
+   * @return a TeX-encoded math code
+   * @throws HelpingException in case of an error
+   */
+  public static long mathCodeToLong( MathCode mc ) throws HelpingException {
+
+    MathClass mathClass = mc.getMathClass();
+    if( mathClass == null ) {
+      return SPECIAL_MATH_CODE;
+    }
+    MathGlyph mg = mc.getMathGlyph();
+    long codePoint = mg.getCharacter().getCodePoint();
+    if( codePoint > CHARACTER_MASK ) {
+      throw new HelpingException(
+          LocalizerFactory.getLocalizer( AbstractOmegaMathCode.class ),
+          "InvalidCharacterCode" );
+    }
+    long mathFamily = mg.getFamily();
+    if( mathFamily > FAMILY_MASK ) {
+      throw new HelpingException(
+          LocalizerFactory.getLocalizer( AbstractOmegaMathCode.class ),
+          "InvalidFamilyCode" );
+    }
+    long cat = ((Long) mathClass.visit( VISITOR, null, null )).longValue();
+    return (cat << CLASS_OFFSET) | (mathFamily << FAMILY_OFFSET)
+        | codePoint;
+
+  }
+
+  /**
+   * Parse Math code according to TeX rules and extensions.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @param primitive  the name of the invoking primitive
+   * @return the MathCode
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  public static MathCode parseMathCode( Context context, TokenSource source,
+                                        Typesetter typesetter,
+                                        CodeToken primitive )
+      throws HelpingException,
+      TypesetterException {
+
+    Token t = source.getToken( context );
+    if( t instanceof LeftBraceToken ) {
+      MathClass mc =
+          (MathClass) source.parse( MathClass.class, context, source,
+                                    typesetter );
+      long family = source.parseNumber( context, source, typesetter );
+      UnicodeChar c =
+          source.scanCharacterCode( context, typesetter, primitive );
+
+      t = source.getToken( context );
+      if( !(t instanceof RightBraceToken) ) {
+        if( t == null ) {
+          throw new EofException();
+        }
+        throw new HelpingException(
+            LocalizerFactory.getLocalizer( AbstractOmegaMathCode.class ),
+            "MissingRightBrace" );
+      }
+      return new MathCode( mc, new MathGlyph( (int) family, c ) );
+    }
+    else if( t instanceof CodeToken ) {
+      Code code = context.getCode( (CodeToken) t );
+      if( code instanceof MathCodeConvertible ) {
+        return ((MathCodeConvertible) code).convertMathCode( context,
+                                                             source,
+                                                             typesetter );
+      }
     }
 
-    /**
-     * Parse Math code according to TeX rules and extensions.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param primitive the name of the invoking primitive
-     * 
-     * @return the MathCode
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    public static MathCode parseMathCode(Context context, TokenSource source,
-            Typesetter typesetter, CodeToken primitive)
-            throws HelpingException,
-                TypesetterException {
+    source.push( t );
+    long code = source.parseInteger( context, source, typesetter );
 
-        Token t = source.getToken(context);
-        if (t instanceof LeftBraceToken) {
-            MathClass mc =
-                    (MathClass) source.parse(MathClass.class, context, source,
-                        typesetter);
-            long family = source.parseNumber(context, source, typesetter);
-            UnicodeChar c =
-                    source.scanCharacterCode(context, typesetter, primitive);
-
-            t = source.getToken(context);
-            if (!(t instanceof RightBraceToken)) {
-                if (t == null) {
-                    throw new EofException();
-                }
-                throw new HelpingException(
-                    LocalizerFactory.getLocalizer(AbstractOmegaMathCode.class),
-                    "MissingRightBrace");
-            }
-            return new MathCode(mc, new MathGlyph((int) family, c));
-        } else if (t instanceof CodeToken) {
-            Code code = context.getCode((CodeToken) t);
-            if (code instanceof MathCodeConvertible) {
-                return ((MathCodeConvertible) code).convertMathCode(context,
-                    source, typesetter);
-            }
-        }
-
-        source.push(t);
-        long code = source.parseInteger(context, source, typesetter);
-
-        if (code < 0 || code > SPECIAL_MATH_CODE) {
-            throw new HelpingException(
-                LocalizerFactory.getLocalizer(AbstractOmegaMathCode.class),
-                "TTP.BadMathCharCode", Long.toString(code));
-        } else if (code == SPECIAL_MATH_CODE) {
-            return new MathCode(null, null);
-        } else {
-            return new MathCode(
-                MathClass.getMathClass((int) (code >> CLASS_OFFSET)),
-                new MathGlyph((int) (code >> FAMILY_OFFSET) & FAMILY_MASK,
-                    UnicodeChar.get((int) (code & CHARACTER_MASK))));
-        }
-
+    if( code < 0 || code > SPECIAL_MATH_CODE ) {
+      throw new HelpingException(
+          LocalizerFactory.getLocalizer( AbstractOmegaMathCode.class ),
+          "TTP.BadMathCharCode", Long.toString( code ) );
+    }
+    else if( code == SPECIAL_MATH_CODE ) {
+      return new MathCode( null, null );
+    }
+    else {
+      return new MathCode(
+          MathClass.getMathClass( (int) (code >> CLASS_OFFSET) ),
+          new MathGlyph( (int) (code >> FAMILY_OFFSET) & FAMILY_MASK,
+                         UnicodeChar.get( (int) (code & CHARACTER_MASK) ) ) );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractOmegaMathCode(CodeToken token) {
+  }
 
-        super(token);
-    }
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractOmegaMathCode( CodeToken token ) {
+
+    super( token );
+  }
 
 }

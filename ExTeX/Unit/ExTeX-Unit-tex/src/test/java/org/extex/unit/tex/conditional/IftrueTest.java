@@ -24,55 +24,55 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \iftrue}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IftrueTest extends ConditionalTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IftrueTest.class);
-    }
+    (new JUnitCore()).run( IftrueTest.class );
+  }
 
 
-    public IftrueTest() {
+  public IftrueTest() {
 
-        super("iftrue", "");
-    }
+    super( "iftrue", "" );
+  }
 
-    /**
-     * <testcase primitive="\iftrue"> Test case checking that {@code \iftrue}
-     * selects the then branch.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\iftrue"> Test case checking that {@code \iftrue}
+   * selects the then branch.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\iftrue a\\else b\\fi\\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\iftrue a\\else b\\fi\\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\iftrue"> Test case checking that {@code \iftrue}
-     * selects nothing if the else branch is missing.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\iftrue"> Test case checking that {@code \iftrue}
+   * selects nothing if the else branch is missing.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "x\\iftrue a\\fi x\\end",
-            // --- output channel ---
-            "xax" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "x\\iftrue a\\fi x\\end",
+                  // --- output channel ---
+                  "xax" + TERM );
+  }
 
 }

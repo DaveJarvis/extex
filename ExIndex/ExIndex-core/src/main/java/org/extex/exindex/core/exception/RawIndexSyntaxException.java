@@ -24,28 +24,28 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals that an unknown argument has been encountered.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RawIndexSyntaxException extends RawIndexException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2008L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     * @param message the message text to be added
-     */
-    public RawIndexSyntaxException(ResourceLocator locator, String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   * @param message the message text to be added
+   */
+  public RawIndexSyntaxException( ResourceLocator locator, String message ) {
 
-        super(locator, LocalizerFactory.getLocalizer(
-            RawIndexSyntaxException.class).format(
-            (message == null ? "NoMessage" : "Message"), message));
-    }
+    super( locator, LocalizerFactory.getLocalizer(
+        RawIndexSyntaxException.class ).format(
+        (message == null ? "NoMessage" : "Message"), message ) );
+  }
 
 }

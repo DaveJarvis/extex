@@ -23,15 +23,15 @@ import org.extex.test.AbstractHfillTester;
 
 /**
  * This is a test suite for the primitive {@code \hfil}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HfilTest extends AbstractHfillTester {
 
-    public HfilTest() {
-        setPrimitive( "hfil" );
-        setFil( "1.0fil" );
-    }
+  public HfilTest() {
+    setPrimitive( "hfil" );
+    setFil( "1.0fil" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

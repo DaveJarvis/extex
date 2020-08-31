@@ -59,9 +59,9 @@ import org.extex.typesetter.type.node.*;
  * appropriate method from the visitor interface is invoked. Thus as a result
  * the nodes and the algorithm are decoupled.
  * </p>
- * 
+ *
  * <p>The Mechanics of the NodeVisitor</p>
- * 
+ *
  * <p>
  * The actions during the use of a NodeVisitor is illustrated in the following
  * sequence diagram.
@@ -90,14 +90,14 @@ import org.extex.typesetter.type.node.*;
  * used the method {@code visitGlue()}. Thus in the calling instance the
  * GlueNode can be processed specially.
  * </p>
- * 
+ *
  * <p>Example Source Code</p>
  * <p>
  * Consider you have a class implementing DocumentWriter with a method which
  * needs to react differently on different node types. The first approximation
  * looks as follows:
  * </p>
- * 
+ *
  * <pre class="JavaSample">
  *
  * public class MyDocumentWriter implements DocumentWriter {
@@ -107,12 +107,12 @@ import org.extex.typesetter.type.node.*;
  *     }
  * }
  * </pre>
- * 
+ *
  * <p>
  * Now we can add the NodeVisitor interface. Thus we are forced to define a
  * bunch of methods declared in this interface:
  * </p>
- * 
+ *
  * <pre class="JavaSample">
  *
  * public class MyDocumentWriter
@@ -135,7 +135,7 @@ import org.extex.typesetter.type.node.*;
  * </b>
  * }
  * </pre>
- * 
+ *
  * <p>
  * Now we just have to make sure that those methods are invoked. This is done
  * with the method {@code visit()} of the Node. The signature allows us to
@@ -148,7 +148,7 @@ import org.extex.typesetter.type.node.*;
  * In the {@code visit} methods we can now safely assume that the node is of
  * the named type and cast the object to have access to its public methods.
  * </p>
- * 
+ *
  * <pre class="JavaSample">
  *
  * public class MyDocumentWriter
@@ -173,7 +173,7 @@ import org.extex.typesetter.type.node.*;
  *
  * }
  * </pre>
- * 
+ *
  * <p>
  * In the example above we have not used the additional argument or the return
  * value. In the {@code visit} methods we are free to use them in all ways we
@@ -190,298 +190,261 @@ import org.extex.typesetter.type.node.*;
  * the nodes it is possible to use another class as visitor, e.g. an inner
  * class.
  * </p>
- * 
- * 
+ *
  * @param <R> return type
  * @param <A> argument type
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface NodeVisitor<R, A> {
 
-    /**
-     * This method is called when an
-     * {@link org.extex.typesetter.type.node.AdjustNode AdjustNode} has been
-     * encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitAdjust(AdjustNode node, A value) throws GeneralException;
+  /**
+   * This method is called when an
+   * {@link org.extex.typesetter.type.node.AdjustNode AdjustNode} has been
+   * encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitAdjust( AdjustNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when an
-     * {@link org.extex.typesetter.type.node.AfterMathNode AfterMathNode} has
-     * been encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitAfterMath(AfterMathNode node, A value) throws GeneralException;
+  /**
+   * This method is called when an
+   * {@link org.extex.typesetter.type.node.AfterMathNode AfterMathNode} has
+   * been encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitAfterMath( AfterMathNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when an
-     * {@link org.extex.typesetter.type.node.AlignedLeadersNode AlignedLeadersNode}
-     * has been encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitAlignedLeaders(AlignedLeadersNode node, A value)
-            throws GeneralException;
+  /**
+   * This method is called when an
+   * {@link org.extex.typesetter.type.node.AlignedLeadersNode
+   * AlignedLeadersNode}
+   * has been encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitAlignedLeaders( AlignedLeadersNode node, A value )
+      throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.BeforeMathNode BeforeMathNode} has
-     * been encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitBeforeMath(BeforeMathNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.BeforeMathNode BeforeMathNode} has
+   * been encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitBeforeMath( BeforeMathNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.CenteredLeadersNode CenteredLeadersNode}
-     * has been encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitCenteredLeaders(CenteredLeadersNode node, A value)
-            throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.CenteredLeadersNode
+   * CenteredLeadersNode}
+   * has been encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitCenteredLeaders( CenteredLeadersNode node, A value )
+      throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.CharNode CharNode} has been
-     * encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitChar(CharNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.CharNode CharNode} has been
+   * encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitChar( CharNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.DiscretionaryNode DiscretionaryNode}
-     * has been encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitDiscretionary(DiscretionaryNode node, A value)
-            throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.DiscretionaryNode
+   * DiscretionaryNode}
+   * has been encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitDiscretionary( DiscretionaryNode node, A value )
+      throws GeneralException;
 
-    /**
-     * This method is called when an
-     * {@link org.extex.typesetter.type.node.ExpandedLeadersNode ExpandedLeadersNode}
-     * has been encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitExpandedLeaders(ExpandedLeadersNode node, A value)
-            throws GeneralException;
+  /**
+   * This method is called when an
+   * {@link org.extex.typesetter.type.node.ExpandedLeadersNode
+   * ExpandedLeadersNode}
+   * has been encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitExpandedLeaders( ExpandedLeadersNode node, A value )
+      throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.GlueNode GlueNode} has been
-     * encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitGlue(GlueNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.GlueNode GlueNode} has been
+   * encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitGlue( GlueNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.HorizontalListNode HorizontalListNode}
-     * has been encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitHorizontalList(HorizontalListNode node, A value)
-            throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.HorizontalListNode
+   * HorizontalListNode}
+   * has been encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitHorizontalList( HorizontalListNode node, A value )
+      throws GeneralException;
 
-    /**
-     * This method is called when an
-     * {@link org.extex.typesetter.type.node.InsertionNode InsertionNode} has
-     * been encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitInsertion(InsertionNode node, A value) throws GeneralException;
+  /**
+   * This method is called when an
+   * {@link org.extex.typesetter.type.node.InsertionNode InsertionNode} has
+   * been encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitInsertion( InsertionNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.KernNode KernNode} has been
-     * encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitKern(KernNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.KernNode KernNode} has been
+   * encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitKern( KernNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.LigatureNode LigatureNode} has been
-     * encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitLigature(LigatureNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.LigatureNode LigatureNode} has been
+   * encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitLigature( LigatureNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.MarkNode MarkNode} has been
-     * encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitMark(MarkNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.MarkNode MarkNode} has been
+   * encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitMark( MarkNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.PenaltyNode PenaltyNode} has been
-     * encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitPenalty(PenaltyNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.PenaltyNode PenaltyNode} has been
+   * encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitPenalty( PenaltyNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.RuleNode RuleNode} has been
-     * encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitRule(RuleNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.RuleNode RuleNode} has been
+   * encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitRule( RuleNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.SpaceNode SpaceNode} has been
-     * encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitSpace(SpaceNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.SpaceNode SpaceNode} has been
+   * encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitSpace( SpaceNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.VerticalListNode VerticalListNode}
-     * has been encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitVerticalList(VerticalListNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.VerticalListNode VerticalListNode}
+   * has been encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitVerticalList( VerticalListNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.VirtualCharNode VirtualCharNode}
-     * has been encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitVirtualChar(VirtualCharNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.VirtualCharNode VirtualCharNode}
+   * has been encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitVirtualChar( VirtualCharNode node, A value ) throws GeneralException;
 
-    /**
-     * This method is called when a
-     * {@link org.extex.typesetter.type.node.WhatsItNode WhatsItNode} has been
-     * encountered.
-     * 
-     * @param node the first parameter for the visitor is the node visited
-     * @param value the second parameter for the visitor
-     * 
-     * @return the visitor specific value
-     * 
-     * @throws GeneralException in case of an error
-     */
-    R visitWhatsIt(WhatsItNode node, A value) throws GeneralException;
+  /**
+   * This method is called when a
+   * {@link org.extex.typesetter.type.node.WhatsItNode WhatsItNode} has been
+   * encountered.
+   *
+   * @param node  the first parameter for the visitor is the node visited
+   * @param value the second parameter for the visitor
+   * @return the visitor specific value
+   * @throws GeneralException in case of an error
+   */
+  R visitWhatsIt( WhatsItNode node, A value ) throws GeneralException;
 
 }

@@ -25,107 +25,107 @@ import java.util.Set;
 
 /**
  * Map for a TTF/OTF table.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class XtfTableMap {
 
-    /**
-     * Create a new object.
-     */
-    public XtfTableMap() {
+  /**
+   * Create a new object.
+   */
+  public XtfTableMap() {
 
-        data = new HashMap<>();
+    data = new HashMap<>();
+  }
+
+  /**
+   * The map for the table.
+   */
+  private final Map<Integer, XtfTable> data;
+
+  /**
+   * Clear the table.
+   */
+  public void clear() {
+
+    data.clear();
+  }
+
+  /**
+   * Returns the size of the table.
+   *
+   * @return Returns the size of the table.
+   */
+  public int size() {
+
+    return data.size();
+  }
+
+  /**
+   * Check, if the table contains the table.
+   *
+   * @param key The key of the table.
+   * @return Returns {@code true}, if the map has the table, otherwise
+   * {@code false}.
+   */
+  public boolean containsKey( int key ) {
+
+    return data.containsKey( key );
+  }
+
+  /**
+   * Returns the table.
+   *
+   * @param key The key of the table.
+   * @return Returns the table.
+   */
+  public XtfTable get( int key ) {
+
+    return data.get( key );
+  }
+
+  /**
+   * Store a table.
+   *
+   * @param key   The key of the table.
+   * @param table The table
+   */
+  public void put( int key, XtfTable table ) {
+
+    data.put( key, table );
+  }
+
+  /**
+   * Returns the keys in an array
+   *
+   * @return Returns the keys in an array
+   */
+  public int[] getKeys() {
+
+    Set<Integer> set = data.keySet();
+    Integer[] i = new Integer[ set.size() ];
+    i = set.toArray( i );
+    int[] keys = new int[ i.length ];
+    for( int k = 0; k < i.length; k++ ) {
+      keys[ k ] = i[ k ];
     }
 
-    /**
-     * The map for the table.
-     */
-    private final Map<Integer, XtfTable> data;
+    return keys;
+  }
 
-    /**
-     * Clear the table.
-     */
-    public void clear() {
+  /**
+   * Returns a TTFTable array from the map.
+   *
+   * @return Returns a TTFTable array from the map.
+   */
+  public XtfTable[] getTables() {
 
-        data.clear();
+    XtfTable[] tab = new XtfTable[ data.size() ];
+    int[] keys = getKeys();
+    for( int i = 0; i < keys.length; i++ ) {
+      tab[ i ] = get( keys[ i ] );
     }
-
-    /**
-     * Returns the size of the table.
-     * 
-     * @return Returns the size of the table.
-     */
-    public int size() {
-
-        return data.size();
-    }
-
-    /**
-     * Check, if the table contains the table.
-     * 
-     * @param key The key of the table.
-     * @return Returns {@code true}, if the map has the table, otherwise
-     *         {@code false}.
-     */
-    public boolean containsKey(int key) {
-
-        return data.containsKey( key );
-    }
-
-    /**
-     * Returns the table.
-     * 
-     * @param key The key of the table.
-     * @return Returns the table.
-     */
-    public XtfTable get(int key) {
-
-        return data.get( key );
-    }
-
-    /**
-     * Store a table.
-     * 
-     * @param key The key of the table.
-     * @param table The table
-     */
-    public void put(int key, XtfTable table) {
-
-        data.put( key, table);
-    }
-
-    /**
-     * Returns the keys in an array
-     * 
-     * @return Returns the keys in an array
-     */
-    public int[] getKeys() {
-
-        Set<Integer> set = data.keySet();
-        Integer[] i = new Integer[set.size()];
-        i = set.toArray(i);
-        int[] keys = new int[i.length];
-        for (int k = 0; k < i.length; k++) {
-            keys[k] = i[ k ];
-        }
-
-        return keys;
-    }
-
-    /**
-     * Returns a TTFTable array from the map.
-     * 
-     * @return Returns a TTFTable array from the map.
-     */
-    public XtfTable[] getTables() {
-
-        XtfTable[] tab = new XtfTable[data.size()];
-        int[] keys = getKeys();
-        for (int i = 0; i < keys.length; i++) {
-            tab[i] = get(keys[i]);
-        }
-        return tab;
-    }
+    return tab;
+  }
 }

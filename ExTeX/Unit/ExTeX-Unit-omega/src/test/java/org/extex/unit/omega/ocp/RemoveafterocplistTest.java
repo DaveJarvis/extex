@@ -25,42 +25,41 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \removeafterocplist}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RemoveafterocplistTest extends ExTeXLauncher {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(RemoveafterocplistTest.class);
-    }
+    (new JUnitCore()).run( RemoveafterocplistTest.class );
+  }
 
 
-    public RemoveafterocplistTest() {
+  public RemoveafterocplistTest() {
 
-        setConfig("omega-test");
-    }
+    setConfig( "omega-test" );
+  }
 
-    /**
-     * <testcase primitive="\removeafterocplist"> Test case checking that
-     * {@code \removeafterocplist} can not be used in a normal mode.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\removeafterocplist"> Test case checking that
+   * {@code \removeafterocplist} can not be used in a normal mode.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\removeafterocplist",
-            // --- output channel ---
-            "To use ocps, use the \\pushocplist primitive");
-    }
+    assertFailure(// --- input code ---
+                  "\\removeafterocplist",
+                  // --- output channel ---
+                  "To use ocps, use the \\pushocplist primitive" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

@@ -25,67 +25,69 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \ignorespaces}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IgnorespacesTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IgnorespacesTest.class);
-    }
+    (new JUnitCore()).run( IgnorespacesTest.class );
+  }
 
 
-    public IgnorespacesTest() {
+  public IgnorespacesTest() {
 
-        setPrimitive("ignorespaces");setArguments("");setPrepare("");
-    }
+    setPrimitive( "ignorespaces" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    /**
-     * Test that {@code \ignorespaces} absorbs following spaces in
-     * a group. The open group character does not consume following spaces.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * Test that {@code \ignorespaces} absorbs following spaces in
+   * a group. The open group character does not consume following spaces.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(DEFINE_BRACES + "x\\expandafter\\ignorespaces{    }x", 
-            "xx" + TERM);
-    }
+    assertSuccess( DEFINE_BRACES + "x\\expandafter\\ignorespaces{    }x",
+                   "xx" + TERM );
+  }
 
-    /**
-     * Test that {@code \ignorespaces} absorbs following spaces if
-     * let to an active character. The active character does not consume
-     * following spaces.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * Test that {@code \ignorespaces} absorbs following spaces if
+   * let to an active character. The active character does not consume
+   * following spaces.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess("\\catcode`\\~=13 \\let~\\ignorespaces x~    x", 
-            "xx" + TERM);
-    }
+    assertSuccess( "\\catcode`\\~=13 \\let~\\ignorespaces x~    x",
+                   "xx" + TERM );
+  }
 
-    /**
-     * Test that {@code \ignorespaces} absorbs following spaces if
-     * used as last primitive in a macro (with arguments). The argument avoids
-     * that the following spaces are consumed by the scanner.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * Test that {@code \ignorespaces} absorbs following spaces if
+   * used as last primitive in a macro (with arguments). The argument avoids
+   * that the following spaces are consumed by the scanner.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(DEFINE_BRACES + DEFINE_HASH
-                + "\\def\\x#1{x\\ignorespaces}\\x.    x", 
-            "xx" + TERM);
-    }
+    assertSuccess( DEFINE_BRACES + DEFINE_HASH
+                       + "\\def\\x#1{x\\ignorespaces}\\x.    x",
+                   "xx" + TERM );
+  }
 
 }

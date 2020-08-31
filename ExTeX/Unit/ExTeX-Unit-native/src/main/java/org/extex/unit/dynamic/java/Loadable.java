@@ -30,23 +30,22 @@ import org.extex.typesetter.Typesetter;
  * initializations after it has been loaded dynamically.
  *
  * <p>
- *  Note that no provisions are made to avoid that a class is loaded more than
- *  once. It is up to the implementation to provide this behavior or not.
+ * Note that no provisions are made to avoid that a class is loaded more than
+ * once. It is up to the implementation to provide this behavior or not.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Loadable {
 
-    /**
-     * Perform any initializations desirable after the component has been
-     * loaded.
-     *
-     * @param context the processor context
-     * @param typesetter the current typesetter
-     *
-     * @throws GeneralException in case of an error
-     */
-    void init(Context context, Typesetter typesetter) throws GeneralException;
+  /**
+   * Perform any initializations desirable after the component has been
+   * loaded.
+   *
+   * @param context    the processor context
+   * @param typesetter the current typesetter
+   * @throws GeneralException in case of an error
+   */
+  void init( Context context, Typesetter typesetter ) throws GeneralException;
 
 }

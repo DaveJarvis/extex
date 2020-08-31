@@ -30,7 +30,7 @@ import java.util.Map;
 
 /**
  * List of Feature.
- * 
+ *
  * <p>
  * future list table
  * </p>
@@ -54,7 +54,7 @@ import java.util.Map;
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Type</b></td>
+ * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -76,7 +76,7 @@ import java.util.Map;
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Type</b></td>
+ * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -93,436 +93,436 @@ import java.util.Map;
  * </table>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class XtfFeatureList implements XMLWriterConvertible {
 
-    /**
-     * The feature name table allows you to include the font's text features,
-     * the settings for each text feature, and the name table indices for common
-     * (human-readable) names for the features and settings.
-     */
-    public class Feature implements XMLWriterConvertible {
-
-        /**
-         * feature params
-         */
-        private final int featureParams;
-
-        /**
-         * The index.
-         */
-        private final int idx;
-
-        /**
-         * lookup count
-         */
-        private final int lookupCount;
-
-        /**
-         * lookup list index
-         */
-        private final int[] lookupListIndex;
-
-        /**
-         * The tag.
-         */
-        private final String tag;
-
-        /**
-         * Create a new object
-         * 
-         * @param rar input
-         * @param offset offset
-         * @param idx
-         * @param tag The tag.
-         * @throws IOException if an IO-error occurs
-         */
-        Feature(RandomAccessR rar, int offset, int idx, String tag)
-                throws IOException {
-
-            this.idx = idx;
-            this.tag = tag;
-            rar.seek(offset);
-
-            featureParams = rar.readUnsignedShort();
-            lookupCount = rar.readUnsignedShort();
-            lookupListIndex = new int[lookupCount];
-            for (int i = 0; i < lookupCount; i++) {
-                lookupListIndex[i] = rar.readUnsignedShort();
-            }
-        }
-
-        /**
-         * Getter for idx.
-         * 
-         * @return the idx
-         */
-        public int getIdx() {
-
-            return idx;
-        }
-
-        // /**
-        // * Returns the Lookup with the type or {@code null}, if not
-        // * found.
-        // *
-        // * @param type The type of the lookup.
-        // * @return Returns the Lookup with the type or {@code null}, if
-        // * not found.
-        // */
-        // public XtfLookup getLookup(int type) {
-
-        // for (int i = 0; i < lookupCount; i++) {
-        // int lli = lookupListIndex[i];
-        // XtfLookupList lookuplist = gsub.getLookupList();
-        // if (lookuplist != null) {
-        // XtfLookup lo = lookuplist.getLookup(lli);
-        // if (lo != null) {
-        // if (lo.getType() == type) {
-        // return lo;
-        // }
-        // }
-        // }
-        // }
-        // return null;
-        // }
-
-        /**
-         * Returns the lookupCount
-         * 
-         * @return Returns the lookupCount
-         */
-        public int getLookupCount() {
-
-            return lookupCount;
-        }
-
-        /**
-         * Returns the lookuplistindex or -1, if not found.
-         * 
-         * @param i index
-         * @return Returns the lookuplistindex
-         */
-        public int getLookupListIndex(int i) {
-
-            if (i >= 0 && i < lookupListIndex.length) {
-                return lookupListIndex[i];
-            }
-            return -1;
-        }
-
-        /**
-         * Returns the Lookups.
-         * 
-         * @return Returns the Lookups.
-         */
-        public XtfLookup[] getLookups() {
-
-            XtfLookup[] lookups = new XtfLookup[lookupCount];
-
-            for (int i = 0; i < lookupCount; i++) {
-                int lli = lookupListIndex[i];
-                XtfLookupList lookuplist = gsub.getLookupList();
-                if (lookuplist != null) {
-                    XtfLookup lo = lookuplist.getLookup(lli);
-                    lookups[i] = lo;
-                }
-            }
-            return lookups;
-        }
-
-        /**
-         * Getter for tag.
-         * 
-         * @return the tag
-         */
-        public String getTag() {
-
-            return tag;
-        }
-
-        /**
-         * Returns the info for this class
-         * 
-         * @return Returns the info for this class
-         */
-        @Override
-        public String toString() {
-
-            StringBuilder buf = new StringBuilder("Feature\n");
-            buf.append("   featureparams  : ").append(featureParams)
-                .append('\n');
-            buf.append("   lookupcount    : ").append(lookupCount).append('\n');
-            return buf.toString();
-        }
-
-    @Override
-        public void writeXML(XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("feature");
-            writer.writeAttribute("id", idx);
-            writer.writeAttribute("tag", tag);
-            writer.writeAttribute("featureparams", featureParams);
-
-            for (int i = 0; i < lookupCount; i++) {
-                int lli = lookupListIndex[i];
-                writer.writeStartElement("lookup");
-                writer.writeAttribute("id", i);
-                writer.writeAttribute("lookupindex", lli);
-                XtfLookupList lookuplist = gsub.getLookupList();
-                if (lookuplist != null) {
-                    XtfLookup lookup = lookuplist.getLookup(lli);
-                    writer.writeAttribute("lookuptype",
-                        lookup.getTypeAsString());
-                }
-                writer.writeEndElement();
-            }
-            writer.writeEndElement();
-        }
-    }
+  /**
+   * The feature name table allows you to include the font's text features,
+   * the settings for each text feature, and the name table indices for common
+   * (human-readable) names for the features and settings.
+   */
+  public class Feature implements XMLWriterConvertible {
 
     /**
-     * record
+     * feature params
      */
-    public class Record implements XMLWriterConvertible {
-
-        /**
-         * The index.
-         */
-        private final int idx;
-
-        /**
-         * offset
-         */
-        private final int offset;
-
-        /**
-         * tag
-         */
-        private final int tag;
-
-        /**
-         * Create a new object
-         * 
-         * @param rar input
-         * @param idx The index.
-         * @throws IOException if an IO-error occurs
-         */
-        Record(RandomAccessR rar, int idx) throws IOException {
-
-            this.idx = idx;
-            tag = rar.readInt();
-            offset = rar.readUnsignedShort();
-        }
-
-        /**
-         * Getter for idx.
-         * 
-         * @return the idx
-         */
-        public int getIdx() {
-
-            return idx;
-        }
-
-        /**
-         * Returns the offset.
-         * 
-         * @return Returns the offset.
-         */
-        public int getOffset() {
-
-            return offset;
-        }
-
-        /**
-         * Returns the tag.
-         * 
-         * @return Returns the tag.
-         */
-        public int getTag() {
-
-            return tag;
-        }
-
-        /**
-         * Returns the tag string.
-         * 
-         * @return Returns the tag string.
-         */
-        public String getTagString() {
-
-            return XtfScriptList.tag2String(tag);
-        }
-
-        /**
-         * Returns the info for this class
-         * 
-         * @return Returns the info for this class
-         */
-        @Override
-        public String toString() {
-
-            StringBuilder buf = new StringBuilder("FeatureRecord\n");
-            buf.append("   tag    : ").append(tag).append('\n');
-            buf.append("   offset : ").append(offset).append('\n');
-            return buf.toString();
-        }
-
-    @Override
-        public void writeXML(XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("record");
-            writer.writeAttribute("id", idx);
-            writer.writeAttribute("tag", getTagString());
-            writer.writeEndElement();
-
-        }
-
-    }
+    private final int featureParams;
 
     /**
-     * feature count
+     * The index.
      */
-    private final int featureCount;
+    private final int idx;
 
     /**
-     * The map for the features (to improve the search in the list).
+     * lookup count
      */
-    private final Map<String, Feature> featureMap;
+    private final int lookupCount;
 
     /**
-     * feature records
+     * lookup list index
      */
-    private final Record[] featureRecords;
+    private final int[] lookupListIndex;
 
     /**
-     * features
+     * The tag.
      */
-    private final Feature[] features;
-
-    /**
-     * The gsub table.
-     */
-    private final AbstractXtfSFLTable gsub;
+    private final String tag;
 
     /**
      * Create a new object
-     * 
-     * @param rar input
+     *
+     * @param rar    input
      * @param offset offset
-     * @param gsub The gsub table.
+     * @param idx
+     * @param tag    The tag.
      * @throws IOException if an IO-error occurs
      */
-    public XtfFeatureList(RandomAccessR rar, int offset,
-            AbstractXtfSFLTable gsub) throws IOException {
+    Feature( RandomAccessR rar, int offset, int idx, String tag )
+        throws IOException {
 
-        this.gsub = gsub;
+      this.idx = idx;
+      this.tag = tag;
+      rar.seek( offset );
 
-        rar.seek(offset);
-        featureCount = rar.readUnsignedShort();
-        featureMap = new HashMap<String, Feature>(featureCount);
-        featureRecords = new Record[featureCount];
-        features = new Feature[featureCount];
-        for (int i = 0; i < featureCount; i++) {
-            featureRecords[i] = new Record(rar, i);
+      featureParams = rar.readUnsignedShort();
+      lookupCount = rar.readUnsignedShort();
+      lookupListIndex = new int[ lookupCount ];
+      for( int i = 0; i < lookupCount; i++ ) {
+        lookupListIndex[ i ] = rar.readUnsignedShort();
+      }
+    }
+
+    /**
+     * Getter for idx.
+     *
+     * @return the idx
+     */
+    public int getIdx() {
+
+      return idx;
+    }
+
+    // /**
+    // * Returns the Lookup with the type or {@code null}, if not
+    // * found.
+    // *
+    // * @param type The type of the lookup.
+    // * @return Returns the Lookup with the type or {@code null}, if
+    // * not found.
+    // */
+    // public XtfLookup getLookup(int type) {
+
+    // for (int i = 0; i < lookupCount; i++) {
+    // int lli = lookupListIndex[i];
+    // XtfLookupList lookuplist = gsub.getLookupList();
+    // if (lookuplist != null) {
+    // XtfLookup lo = lookuplist.getLookup(lli);
+    // if (lo != null) {
+    // if (lo.getType() == type) {
+    // return lo;
+    // }
+    // }
+    // }
+    // }
+    // return null;
+    // }
+
+    /**
+     * Returns the lookupCount
+     *
+     * @return Returns the lookupCount
+     */
+    public int getLookupCount() {
+
+      return lookupCount;
+    }
+
+    /**
+     * Returns the lookuplistindex or -1, if not found.
+     *
+     * @param i index
+     * @return Returns the lookuplistindex
+     */
+    public int getLookupListIndex( int i ) {
+
+      if( i >= 0 && i < lookupListIndex.length ) {
+        return lookupListIndex[ i ];
+      }
+      return -1;
+    }
+
+    /**
+     * Returns the Lookups.
+     *
+     * @return Returns the Lookups.
+     */
+    public XtfLookup[] getLookups() {
+
+      XtfLookup[] lookups = new XtfLookup[ lookupCount ];
+
+      for( int i = 0; i < lookupCount; i++ ) {
+        int lli = lookupListIndex[ i ];
+        XtfLookupList lookuplist = gsub.getLookupList();
+        if( lookuplist != null ) {
+          XtfLookup lo = lookuplist.getLookup( lli );
+          lookups[ i ] = lo;
         }
-        for (int i = 0; i < featureCount; i++) {
-            features[i] =
-                    new Feature(rar, offset + featureRecords[i].getOffset(), i,
-                        featureRecords[i].getTagString());
-            featureMap.put(features[i].getTag(), features[i]);
-        }
+      }
+      return lookups;
     }
 
     /**
-     * Find a feature.
-     * 
-     * @param tag the tag
-     * @return Returns a feature or {@code null}, if not found.
+     * Getter for tag.
+     *
+     * @return the tag
      */
-    public Feature findFeature(FeatureTag tag) {
+    public String getTag() {
 
-        return featureMap.get(tag.getTag());
-    }
-
-    /**
-     * Returns the featureCount.
-     * 
-     * @return Returns the featureCount.
-     */
-    public int getFeatureCount() {
-
-        return featureCount;
-    }
-
-    /**
-     * Returns the featureRecords.
-     * 
-     * @return Returns the featureRecords.
-     */
-    public Record[] getFeatureRecords() {
-
-        return featureRecords;
-    }
-
-    /**
-     * Returns the features.
-     * 
-     * @return Returns the features.
-     */
-    public Feature[] getFeatures() {
-
-        return features;
-    }
-
-    /**
-     * Returns the tag string for feature.
-     * 
-     * @param idx The index.
-     * @return Returns the tag string for feature.
-     */
-    public String getFeatureTag(int idx) {
-
-        if (idx >= 0 && idx < featureRecords.length) {
-            return featureRecords[idx].getTagString();
-        }
-        return null;
+      return tag;
     }
 
     /**
      * Returns the info for this class
-     * 
+     *
      * @return Returns the info for this class
      */
     @Override
     public String toString() {
 
-        StringBuilder buf = new StringBuilder("FeatureList\n");
-        buf.append("   feature count : " + featureCount + '\n');
-        return buf.toString();
+      StringBuilder buf = new StringBuilder( "Feature\n" );
+      buf.append( "   featureparams  : " ).append( featureParams )
+         .append( '\n' );
+      buf.append( "   lookupcount    : " ).append( lookupCount ).append( '\n' );
+      return buf.toString();
     }
 
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+    @Override
+    public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writer.writeStartElement("featurelist");
-        writer.writeAttribute("count", featureCount);
+      writer.writeStartElement( "feature" );
+      writer.writeAttribute( "id", idx );
+      writer.writeAttribute( "tag", tag );
+      writer.writeAttribute( "featureparams", featureParams );
 
-        // writer.writeStartElement("records");
-        // for (int i = 0; i < featureCount; i++) {
-        // Record rec = featureRecords[i];
-        // rec.writeXML(writer);
-        // }
-        // writer.writeEndElement();
-
-        writer.writeStartElement("features");
-        for (int i = 0; i < featureCount; i++) {
-            Feature fet = features[i];
-            fet.writeXML(writer);
+      for( int i = 0; i < lookupCount; i++ ) {
+        int lli = lookupListIndex[ i ];
+        writer.writeStartElement( "lookup" );
+        writer.writeAttribute( "id", i );
+        writer.writeAttribute( "lookupindex", lli );
+        XtfLookupList lookuplist = gsub.getLookupList();
+        if( lookuplist != null ) {
+          XtfLookup lookup = lookuplist.getLookup( lli );
+          writer.writeAttribute( "lookuptype",
+                                 lookup.getTypeAsString() );
         }
         writer.writeEndElement();
-
-        writer.writeEndElement();
+      }
+      writer.writeEndElement();
     }
+  }
+
+  /**
+   * record
+   */
+  public class Record implements XMLWriterConvertible {
+
+    /**
+     * The index.
+     */
+    private final int idx;
+
+    /**
+     * offset
+     */
+    private final int offset;
+
+    /**
+     * tag
+     */
+    private final int tag;
+
+    /**
+     * Create a new object
+     *
+     * @param rar input
+     * @param idx The index.
+     * @throws IOException if an IO-error occurs
+     */
+    Record( RandomAccessR rar, int idx ) throws IOException {
+
+      this.idx = idx;
+      tag = rar.readInt();
+      offset = rar.readUnsignedShort();
+    }
+
+    /**
+     * Getter for idx.
+     *
+     * @return the idx
+     */
+    public int getIdx() {
+
+      return idx;
+    }
+
+    /**
+     * Returns the offset.
+     *
+     * @return Returns the offset.
+     */
+    public int getOffset() {
+
+      return offset;
+    }
+
+    /**
+     * Returns the tag.
+     *
+     * @return Returns the tag.
+     */
+    public int getTag() {
+
+      return tag;
+    }
+
+    /**
+     * Returns the tag string.
+     *
+     * @return Returns the tag string.
+     */
+    public String getTagString() {
+
+      return XtfScriptList.tag2String( tag );
+    }
+
+    /**
+     * Returns the info for this class
+     *
+     * @return Returns the info for this class
+     */
+    @Override
+    public String toString() {
+
+      StringBuilder buf = new StringBuilder( "FeatureRecord\n" );
+      buf.append( "   tag    : " ).append( tag ).append( '\n' );
+      buf.append( "   offset : " ).append( offset ).append( '\n' );
+      return buf.toString();
+    }
+
+    @Override
+    public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+      writer.writeStartElement( "record" );
+      writer.writeAttribute( "id", idx );
+      writer.writeAttribute( "tag", getTagString() );
+      writer.writeEndElement();
+
+    }
+
+  }
+
+  /**
+   * feature count
+   */
+  private final int featureCount;
+
+  /**
+   * The map for the features (to improve the search in the list).
+   */
+  private final Map<String, Feature> featureMap;
+
+  /**
+   * feature records
+   */
+  private final Record[] featureRecords;
+
+  /**
+   * features
+   */
+  private final Feature[] features;
+
+  /**
+   * The gsub table.
+   */
+  private final AbstractXtfSFLTable gsub;
+
+  /**
+   * Create a new object
+   *
+   * @param rar    input
+   * @param offset offset
+   * @param gsub   The gsub table.
+   * @throws IOException if an IO-error occurs
+   */
+  public XtfFeatureList( RandomAccessR rar, int offset,
+                         AbstractXtfSFLTable gsub ) throws IOException {
+
+    this.gsub = gsub;
+
+    rar.seek( offset );
+    featureCount = rar.readUnsignedShort();
+    featureMap = new HashMap<String, Feature>( featureCount );
+    featureRecords = new Record[ featureCount ];
+    features = new Feature[ featureCount ];
+    for( int i = 0; i < featureCount; i++ ) {
+      featureRecords[ i ] = new Record( rar, i );
+    }
+    for( int i = 0; i < featureCount; i++ ) {
+      features[ i ] =
+          new Feature( rar, offset + featureRecords[ i ].getOffset(), i,
+                       featureRecords[ i ].getTagString() );
+      featureMap.put( features[ i ].getTag(), features[ i ] );
+    }
+  }
+
+  /**
+   * Find a feature.
+   *
+   * @param tag the tag
+   * @return Returns a feature or {@code null}, if not found.
+   */
+  public Feature findFeature( FeatureTag tag ) {
+
+    return featureMap.get( tag.getTag() );
+  }
+
+  /**
+   * Returns the featureCount.
+   *
+   * @return Returns the featureCount.
+   */
+  public int getFeatureCount() {
+
+    return featureCount;
+  }
+
+  /**
+   * Returns the featureRecords.
+   *
+   * @return Returns the featureRecords.
+   */
+  public Record[] getFeatureRecords() {
+
+    return featureRecords;
+  }
+
+  /**
+   * Returns the features.
+   *
+   * @return Returns the features.
+   */
+  public Feature[] getFeatures() {
+
+    return features;
+  }
+
+  /**
+   * Returns the tag string for feature.
+   *
+   * @param idx The index.
+   * @return Returns the tag string for feature.
+   */
+  public String getFeatureTag( int idx ) {
+
+    if( idx >= 0 && idx < featureRecords.length ) {
+      return featureRecords[ idx ].getTagString();
+    }
+    return null;
+  }
+
+  /**
+   * Returns the info for this class
+   *
+   * @return Returns the info for this class
+   */
+  @Override
+  public String toString() {
+
+    StringBuilder buf = new StringBuilder( "FeatureList\n" );
+    buf.append( "   feature count : " + featureCount + '\n' );
+    return buf.toString();
+  }
+
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
+
+    writer.writeStartElement( "featurelist" );
+    writer.writeAttribute( "count", featureCount );
+
+    // writer.writeStartElement("records");
+    // for (int i = 0; i < featureCount; i++) {
+    // Record rec = featureRecords[i];
+    // rec.writeXML(writer);
+    // }
+    // writer.writeEndElement();
+
+    writer.writeStartElement( "features" );
+    for( int i = 0; i < featureCount; i++ ) {
+      Feature fet = features[ i ];
+      fet.writeXML( writer );
+    }
+    writer.writeEndElement();
+
+    writer.writeEndElement();
+  }
 }

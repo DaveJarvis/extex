@@ -19,23 +19,23 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * The table 'fpgm' (BaseFont Program).
- * 
+ *
  * <p>
  * This table is similar to the CVT Program, except that it is only run once,
  * when the font is first used. It is used only for FDEFs and IDEFs. Thus the
  * CVT Program need not contain function definitions. However, the CVT Program
  * may redefine existing FDEFs or IDEFs.
  * </p>
- * 
+ *
  * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>Type</b></td>
@@ -47,71 +47,71 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Instructions</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTableFPGM extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
 
-    /**
-     * instructions
-     */
-    private final byte[] instructions;
+  /**
+   * instructions
+   */
+  private final byte[] instructions;
 
-    /**
-     * Create a new object.
-     * 
-     * @param tablemap the table map
-     * @param de directory entry
-     * @param rar the RandomAccessInput
-     * @throws IOException if an error occurred.
-     */
-    public TtfTableFPGM(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param tablemap the table map
+   * @param de       directory entry
+   * @param rar      the RandomAccessInput
+   * @throws IOException if an error occurred.
+   */
+  public TtfTableFPGM( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap);
-        rar.seek(de.getOffset());
+    super( tablemap );
+    rar.seek( de.getOffset() );
 
-        instructions = new byte[de.getLength()];
-        for (int i = 0; i < de.getLength(); i++) {
-            instructions[i] = (byte) rar.readUnsignedByte();
-        }
+    instructions = new byte[ de.getLength() ];
+    for( int i = 0; i < de.getLength(); i++ ) {
+      instructions[ i ] = (byte) rar.readUnsignedByte();
     }
+  }
 
-    /**
-     * Returns the instructions
-     * 
-     * @return Returns the instructions
-     */
-    public byte[] getInstructions() {
+  /**
+   * Returns the instructions
+   *
+   * @return Returns the instructions
+   */
+  public byte[] getInstructions() {
 
-        return instructions;
-    }
+    return instructions;
+  }
 
-public String getShortcut() {
+  public String getShortcut() {
 
-        return "fpgm";
-    }
+    return "fpgm";
+  }
 
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
 
-        return XtfReader.FPGM;
-    }
+    return XtfReader.FPGM;
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writeStartElement(writer);
-        writer.writeByteArray(instructions);
-        writer.writeEndElement();
-    }
+    writeStartElement( writer );
+    writer.writeByteArray( instructions );
+    writer.writeEndElement();
+  }
 }

@@ -23,73 +23,73 @@ import java.util.Stack;
 
 /**
  * DVI stack.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviStack {
 
-    /**
-     * The stack.
-     */
-    private final Stack<DviValues> stack;
+  /**
+   * The stack.
+   */
+  private final Stack<DviValues> stack;
 
-    /**
-     * Create a new object
-     */
-    public DviStack() {
+  /**
+   * Create a new object
+   */
+  public DviStack() {
 
-        stack = new Stack<DviValues>();
+    stack = new Stack<DviValues>();
 
-    }
+  }
 
-    /**
-     * Clear the stack.
-     */
-    public void clear() {
+  /**
+   * Clear the stack.
+   */
+  public void clear() {
 
-        stack.removeAllElements();
-    }
+    stack.removeAllElements();
+  }
 
-    /**
-     * Tests if this stack is empty.
-     * 
-     * @return Returns {@code true}, if this stack is empty.
-     */
-    public boolean empty() {
+  /**
+   * Tests if this stack is empty.
+   *
+   * @return Returns {@code true}, if this stack is empty.
+   */
+  public boolean empty() {
 
-        return stack.empty();
-    }
+    return stack.empty();
+  }
 
-    /**
-     * Removes the {@code DVIValues} at the top of this stack and returns
-     * that object as the value of this function.
-     * 
-     * @return Returns the {@code DVIValues} at the top of this stack.
-     */
-    public DviValues pop() {
+  /**
+   * Removes the {@code DVIValues} at the top of this stack and returns
+   * that object as the value of this function.
+   *
+   * @return Returns the {@code DVIValues} at the top of this stack.
+   */
+  public DviValues pop() {
 
-        return stack.pop();
-    }
+    return stack.pop();
+  }
 
-    /**
-     * Pushes an item onto the top of this stack.
-     * 
-     * @param item the item to be pushed onto this stack.
-     * @return Returns the item argument.
-     */
-    public DviValues push(final DviValues item) {
+  /**
+   * Pushes an item onto the top of this stack.
+   *
+   * @param item the item to be pushed onto this stack.
+   * @return Returns the item argument.
+   */
+  public DviValues push( final DviValues item ) {
 
-        return stack.push(new DviValues(item));
-    }
+    return stack.push( new DviValues( item ) );
+  }
 
-    /**
-     * Returns the size (depth) of the stack.
-     * 
-     * @return Returns the size (depth) of the stack.
-     */
-    public int size() {
+  /**
+   * Returns the size (depth) of the stack.
+   *
+   * @return Returns the size (depth) of the stack.
+   */
+  public int size() {
 
-        return stack.size();
-    }
+    return stack.size();
+  }
 }

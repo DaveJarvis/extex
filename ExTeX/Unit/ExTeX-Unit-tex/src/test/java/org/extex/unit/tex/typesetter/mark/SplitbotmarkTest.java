@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \splitbotmark}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class SplitbotmarkTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(SplitbotmarkTest.class);
-    }
+    (new JUnitCore()).run( SplitbotmarkTest.class );
+  }
 
 
-    public SplitbotmarkTest() {
+  public SplitbotmarkTest() {
 
-        setPrimitive("splitbotmark");setArguments("");setPrepare("");
-    }
+    setPrimitive( "splitbotmark" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

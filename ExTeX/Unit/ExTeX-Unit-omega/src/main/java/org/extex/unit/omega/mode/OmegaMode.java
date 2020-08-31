@@ -27,8 +27,19 @@ import java.io.Serializable;
  * are provides as constants defined in this class.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class OmegaMode implements Serializable {
+
+  /**
+   * The field {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2006L;
+
+  /**
+   * The constant {@code ONEBYTE} contains the mode for a single byte stream.
+   * The encoding is more or less a variant of ASCII.
+   */
+  public static final OmegaMode ONEBYTE = new OmegaMode() {
 
     /**
      * The field {@code serialVersionUID} contains the id for serialization.
@@ -36,166 +47,155 @@ public class OmegaMode implements Serializable {
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The constant {@code ONEBYTE} contains the mode for a single byte stream.
-     * The encoding is more or less a variant of ASCII.
+     * Return the singleton constant object after the serialized instance
+     * has been read back in.
+     *
+     * @return the one and only instance of this object
+     *
+     * @throws ObjectStreamException never
      */
-    public static final OmegaMode ONEBYTE = new OmegaMode() {
+    protected Object readResolve() throws ObjectStreamException {
 
-        /**
-         * The field {@code serialVersionUID} contains the id for serialization.
-         */
-        protected static final long serialVersionUID = 2006L;
-
-        /**
-         * Return the singleton constant object after the serialized instance
-         * has been read back in.
-         *
-         * @return the one and only instance of this object
-         *
-         * @throws ObjectStreamException never
-         */
-        protected Object readResolve() throws ObjectStreamException {
-
-            return ONEBYTE;
-        }
-
-        /**
-         * Return the printable representation for this instance.
-         *
-         * @return the printable representation for this instance
-         *
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            return "onebyte";
-        }
-    };
-
-    /**
-     * The constant {@code EBCDIC} contains the mode for a single byte stream.
-     * The encoding is more or less a variant of EBCDIC.
-     */
-    public static final OmegaMode EBCDIC = new OmegaMode() {
-
-        /**
-         * The field {@code serialVersionUID} contains the id for serialization.
-         */
-        protected static final long serialVersionUID = 2006L;
-
-        /**
-         * Return the singleton constant object after the serialized instance
-         * has been read back in.
-         *
-         * @return the one and only instance of this object
-         *
-         * @throws ObjectStreamException never
-         */
-        protected Object readResolve() throws ObjectStreamException {
-
-            return EBCDIC;
-        }
-
-        /**
-         * Return the printable representation for this instance.
-         *
-         * @return the printable representation for this instance
-         *
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            return "ebcdic";
-        }
-    };
-
-    /**
-     * The constant {@code TWOBYTE} contains the mode for a double byte stream.
-     * The encoding is more or less a variant of Unicode with the higher
-     * endian byte first.
-     */
-    public static final OmegaMode TWOBYTE = new OmegaMode() {
-
-        /**
-         * The field {@code serialVersionUID} contains the id for serialization.
-         */
-        protected static final long serialVersionUID = 2006L;
-
-        /**
-         * Return the singleton constant object after the serialized instance
-         * has been read back in.
-         *
-         * @return the one and only instance of this object
-         *
-         * @throws ObjectStreamException never
-         */
-        protected Object readResolve() throws ObjectStreamException {
-
-            return TWOBYTE;
-        }
-
-        /**
-         * Return the printable representation for this instance.
-         *
-         * @return the printable representation for this instance
-         *
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            return "twobyte";
-        }
-    };
-
-    /**
-     * The constant {@code TWOBYTE_LE} contains the mode for a double byte
-     * stream. The encoding is more or less a variant of Unicode with the lower
-     * endian byte first.
-     */
-    public static final OmegaMode TWOBYTE_LE = new OmegaMode() {
-
-        /**
-         * The field {@code serialVersionUID} contains the id for serialization.
-         */
-        protected static final long serialVersionUID = 2006L;
-
-        /**
-         * Return the singleton constant object after the serialized instance
-         * has been read back in.
-         *
-         * @return the one and only instance of this object
-         *
-         * @throws ObjectStreamException never
-         */
-        protected Object readResolve() throws ObjectStreamException {
-
-            return TWOBYTE_LE;
-        }
-
-        /**
-         * Return the printable representation for this instance.
-         *
-         * @return the printable representation for this instance
-         *
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            return "twobyteLE";
-        }
-    };
-
-    /**
-     * Creates a new object.
-     * This constructor is private to avoid abuse.
-     */
-    protected OmegaMode() {
-
-
+      return ONEBYTE;
     }
+
+    /**
+     * Return the printable representation for this instance.
+     *
+     * @return the printable representation for this instance
+     *
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+      return "onebyte";
+    }
+  };
+
+  /**
+   * The constant {@code EBCDIC} contains the mode for a single byte stream.
+   * The encoding is more or less a variant of EBCDIC.
+   */
+  public static final OmegaMode EBCDIC = new OmegaMode() {
+
+    /**
+     * The field {@code serialVersionUID} contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2006L;
+
+    /**
+     * Return the singleton constant object after the serialized instance
+     * has been read back in.
+     *
+     * @return the one and only instance of this object
+     *
+     * @throws ObjectStreamException never
+     */
+    protected Object readResolve() throws ObjectStreamException {
+
+      return EBCDIC;
+    }
+
+    /**
+     * Return the printable representation for this instance.
+     *
+     * @return the printable representation for this instance
+     *
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+      return "ebcdic";
+    }
+  };
+
+  /**
+   * The constant {@code TWOBYTE} contains the mode for a double byte stream.
+   * The encoding is more or less a variant of Unicode with the higher
+   * endian byte first.
+   */
+  public static final OmegaMode TWOBYTE = new OmegaMode() {
+
+    /**
+     * The field {@code serialVersionUID} contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2006L;
+
+    /**
+     * Return the singleton constant object after the serialized instance
+     * has been read back in.
+     *
+     * @return the one and only instance of this object
+     *
+     * @throws ObjectStreamException never
+     */
+    protected Object readResolve() throws ObjectStreamException {
+
+      return TWOBYTE;
+    }
+
+    /**
+     * Return the printable representation for this instance.
+     *
+     * @return the printable representation for this instance
+     *
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+      return "twobyte";
+    }
+  };
+
+  /**
+   * The constant {@code TWOBYTE_LE} contains the mode for a double byte
+   * stream. The encoding is more or less a variant of Unicode with the lower
+   * endian byte first.
+   */
+  public static final OmegaMode TWOBYTE_LE = new OmegaMode() {
+
+    /**
+     * The field {@code serialVersionUID} contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2006L;
+
+    /**
+     * Return the singleton constant object after the serialized instance
+     * has been read back in.
+     *
+     * @return the one and only instance of this object
+     *
+     * @throws ObjectStreamException never
+     */
+    protected Object readResolve() throws ObjectStreamException {
+
+      return TWOBYTE_LE;
+    }
+
+    /**
+     * Return the printable representation for this instance.
+     *
+     * @return the printable representation for this instance
+     *
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+      return "twobyteLE";
+    }
+  };
+
+  /**
+   * Creates a new object.
+   * This constructor is private to avoid abuse.
+   */
+  protected OmegaMode() {
+
+
+  }
 
 }

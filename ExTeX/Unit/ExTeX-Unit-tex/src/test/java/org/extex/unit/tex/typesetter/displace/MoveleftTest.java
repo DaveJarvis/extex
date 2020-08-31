@@ -25,41 +25,41 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \moveleft}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MoveleftTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(MoveleftTest.class);
-    }
+    (new JUnitCore()).run( MoveleftTest.class );
+  }
 
 
-    public MoveleftTest() {
-        setPrimitive( "moveleft" );
-        setArguments( "1pt\\hbox{}" );
-        setPrepare( "" );
-    }
+  public MoveleftTest() {
+    setPrimitive( "moveleft" );
+    setArguments( "1pt\\hbox{}" );
+    setPrepare( "" );
+  }
 
-    /**
-     * <testcase primitive="\moveleft"> Test case checking that
-     * {@code \moveleft} on a void box works.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVoid1() throws Exception {
+  /**
+   * <testcase primitive="\moveleft"> Test case checking that
+   * {@code \moveleft} on a void box works.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testVoid1() throws Exception {
 
-        assertSuccess(DEFINE_BRACES + "\\moveleft1pt\\box0 \\end",
+    assertSuccess( DEFINE_BRACES + "\\moveleft1pt\\box0 \\end",
 
-            "");
-    }
+                   "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

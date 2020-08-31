@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \cleaders}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CleadersTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(CleadersTest.class);
-    }
+    (new JUnitCore()).run( CleadersTest.class );
+  }
 
 
-    public CleadersTest() {
+  public CleadersTest() {
 
-        setPrimitive("cleaders");setArguments("\\vrule\\vfill");setPrepare("");
-    }
+    setPrimitive( "cleaders" );
+    setArguments( "\\vrule\\vfill" );
+    setPrepare( "" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

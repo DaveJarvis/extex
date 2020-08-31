@@ -23,19 +23,19 @@ import java.io.IOException;
 
 /**
  * Hints.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public abstract class T2Hints extends T2Operator {
 
-    /**
-     * Create a new object.
-     * 
-     * @throws IOException if an IO-error occurs.
-     */
-    protected T2Hints() throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @throws IOException if an IO-error occurs.
+   */
+  protected T2Hints() throws IOException {
 
-    }
+  }
 
 }

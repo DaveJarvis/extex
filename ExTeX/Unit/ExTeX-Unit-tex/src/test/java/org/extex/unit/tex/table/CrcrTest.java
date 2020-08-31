@@ -26,30 +26,31 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \crcr}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class CrcrTest extends NoFlagsPrimitiveTester {
 
 
-    public CrcrTest() {
+  public CrcrTest() {
 
-        setPrimitive("crcr");setArguments("}");setPrepare(DEFINE_HASH + "\\halign{#\\cr");
-    }
+    setPrimitive( "crcr" );
+    setArguments( "}" );
+    setPrepare( DEFINE_HASH + "\\halign{#\\cr" );
+  }
 
-    /**
-     * <testcase primitive="\crcr">
-     *  Test case checking that {@code \crcr} outside of an alignment context
-     *  produces an error.
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLonelyCr() throws Exception {
+  /**
+   * <testcase primitive="\crcr">
+   * Test case checking that {@code \crcr} outside of an alignment context
+   * produces an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testLonelyCr() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\crcr" + "\\end ",
-                //--- log message ---
-                "Misplaced \\crcr");
-    }
+    assertFailure(//--- input code ---
+                  "\\crcr" + "\\end ",
+                  //--- log message ---
+                  "Misplaced \\crcr" );
+  }
 
 }

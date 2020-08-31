@@ -24,26 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \vsplit}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class VsplitTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(VsplitTest.class);
-    }
+    (new JUnitCore()).run( VsplitTest.class );
+  }
 
 
-    public VsplitTest() {
+  public VsplitTest() {
 
-        setPrimitive("vsplit");setArguments("42 to 1pt");setPrepare("\\setbox42=\\vbox{A}");
-    }
+    setPrimitive( "vsplit" );
+    setArguments( "42 to 1pt" );
+    setPrepare( "\\setbox42=\\vbox{A}" );
+  }
 
-    // TODO implement primitive specific test cases
+  // TODO implement primitive specific test cases
 }

@@ -21,50 +21,50 @@ package org.extex.font.format.xtf.tables;
 
 /**
  * Constants for TTF/OTF.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public final class XtfConstants {
 
-    /**
-     * Shift 8
-     */
-    public static final int SHIFT8 = 8;
+  /**
+   * Shift 8
+   */
+  public static final int SHIFT8 = 8;
 
-    /**
-     * Shift 16
-     */
-    public static final int SHIFT16 = 16;
+  /**
+   * Shift 16
+   */
+  public static final int SHIFT16 = 16;
 
-    /**
-     * Shift 24
-     */
-    public static final int SHIFT24 = 24;
+  /**
+   * Shift 24
+   */
+  public static final int SHIFT24 = 24;
 
-    /**
-     * Shift 32
-     */
-    public static final int SHIFT32 = 32;
+  /**
+   * Shift 32
+   */
+  public static final int SHIFT32 = 32;
 
-    /**
-     * SHIFT 0x10
-     */
-    public static final int SHIFTX10 = 0x10;
+  /**
+   * SHIFT 0x10
+   */
+  public static final int SHIFTX10 = 0x10;
 
-    /**
-     * const 0xffff
-     */
-    public static final int CONSTXFFFF = 0xffff;
+  /**
+   * const 0xffff
+   */
+  public static final int CONSTXFFFF = 0xffff;
 
-    /**
-     * const 0xff
-     */
-    public static final int CONSTXFF = 0xff;
+  /**
+   * const 0xff
+   */
+  public static final int CONSTXFF = 0xff;
 
 
-    private XtfConstants() {
+  private XtfConstants() {
 
-        // 
-    }
+    //
+  }
 }

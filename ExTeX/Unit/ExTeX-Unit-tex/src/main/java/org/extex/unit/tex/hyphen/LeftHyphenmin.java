@@ -44,266 +44,272 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * {@code \lefthyphenmin}.
- * 
+ *
  * <p>The Primitive {@code \lefthyphenmin}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
- * 
+ *
+ *
  * <pre class="syntax">
  *    &lang;lefthyphenmin&rang;
  *      &rarr; {@code \lefthyphenmin} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context, TokenSource, Typesetter)
  *        &lang;number&rang;}  </pre>
- * 
+ *
  * <p>Example:</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \lefthyphenmin=3 </pre>
- * 
- *
- * 
+ * <p>
+ * <p>
+ * <p>
  * The value are stored in the {@code HyphernationTable}. Each
  * {@code HyphernationTable} are based on {@code \language} and have
  * its own {@code \lefthyphenmin} value (different to original TeX).
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class LeftHyphenmin extends AbstractHyphenationCode
-        implements
-            CountConvertible,
-            DimenConvertible,
-            Advanceable,
-            Multiplyable,
-            Divideable,
-            Theable {
+    implements
+    CountConvertible,
+    DimenConvertible,
+    Advanceable,
+    Multiplyable,
+    Divideable,
+    Theable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public LeftHyphenmin(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public LeftHyphenmin( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void advance( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    long globaldef = context.getCount( "globaldefs" ).getValue();
+    if( globaldef > 0 ) {
+      prefix.setGlobal( true );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void advance(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    Language language = getHyphenationTable( context );
+    source.getKeyword( context, "by" );
+    long lefthyphenmin;
+    try {
+      lefthyphenmin = language.getLeftHyphenMin();
+    } catch( HyphenationException e ) {
+      throw new NoHelpException( e );
+    }
+    lefthyphenmin += source.parseInteger( context, source, typesetter );
 
-        long globaldef = context.getCount("globaldefs").getValue();
-        if (globaldef > 0) {
-            prefix.setGlobal(true);
-        }
-
-        Language language = getHyphenationTable(context);
-        source.getKeyword(context, "by");
-        long lefthyphenmin;
-        try {
-            lefthyphenmin = language.getLeftHyphenMin();
-        } catch (HyphenationException e) {
-            throw new NoHelpException(e);
-        }
-        lefthyphenmin += source.parseInteger(context, source, typesetter);
-
-        try {
-            language.setLeftHyphenMin(lefthyphenmin);
-        } catch (HyphenationException e) {
-            if (e.getCause() instanceof ConfigurationException) {
-                throw (ConfigurationException) e.getCause();
-            }
-            throw new NoHelpException(e);
-        }
-
-        Token afterassignment = context.getAfterassignment();
-        if (afterassignment != null) {
-            context.setAfterassignment(null);
-            source.push(afterassignment);
-        }
-        prefix.clearGlobal(); // gene: not really useful but a little bit of
-        // compatibility
+    try {
+      language.setLeftHyphenMin( lefthyphenmin );
+    } catch( HyphenationException e ) {
+      if( e.getCause() instanceof ConfigurationException ) {
+        throw (ConfigurationException) e.getCause();
+      }
+      throw new NoHelpException( e );
     }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    Token afterassignment = context.getAfterassignment();
+    if( afterassignment != null ) {
+      context.setAfterassignment( null );
+      source.push( afterassignment );
+    }
+    prefix.clearGlobal(); // gene: not really useful but a little bit of
+    // compatibility
+  }
 
-        try {
-            return getHyphenationTable(context).getLeftHyphenMin();
-        } catch (HyphenationException e) {
-            throw new NoHelpException(e);
-        }
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertCount( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    try {
+      return getHyphenationTable( context ).getLeftHyphenMin();
+    } catch( HyphenationException e ) {
+      throw new NoHelpException( e );
+    }
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public long convertDimen( Context context, TokenSource source,
+                            Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    try {
+      return getHyphenationTable( context ).getLeftHyphenMin();
+    } catch( HyphenationException e ) {
+      throw new NoHelpException( e );
+    }
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void divide( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    long globaldef = context.getCount( "globaldefs" ).getValue();
+    if( globaldef > 0 ) {
+      prefix.setGlobal( true );
     }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    Language language = getHyphenationTable( context );
+    source.getKeyword( context, "by" );
+    long lefthyphenmin;
+    try {
+      lefthyphenmin = language.getLeftHyphenMin();
+    } catch( HyphenationException e ) {
+      throw new NoHelpException( e );
+    }
+    long arg = source.parseInteger( context, source, typesetter );
+    if( arg == 0 ) {
+      throw new ArithmeticOverflowException( toText( context ) );
+    }
+    lefthyphenmin /= arg;
 
-        try {
-            return getHyphenationTable(context).getLeftHyphenMin();
-        } catch (HyphenationException e) {
-            throw new NoHelpException(e);
-        }
+    try {
+      language.setLeftHyphenMin( lefthyphenmin );
+    } catch( HyphenationException e ) {
+      if( e.getCause() instanceof ConfigurationException ) {
+        throw (ConfigurationException) e.getCause();
+      }
+      throw new NoHelpException( e );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void divide(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    Token afterassignment = context.getAfterassignment();
+    if( afterassignment != null ) {
+      context.setAfterassignment( null );
+      source.push( afterassignment );
+    }
+    prefix.clearGlobal(); // gene: not really useful but a little bit of
+    // compatibility
+  }
 
-        long globaldef = context.getCount("globaldefs").getValue();
-        if (globaldef > 0) {
-            prefix.setGlobal(true);
-        }
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Language language = getHyphenationTable(context);
-        source.getKeyword(context, "by");
-        long lefthyphenmin;
-        try {
-            lefthyphenmin = language.getLeftHyphenMin();
-        } catch (HyphenationException e) {
-            throw new NoHelpException(e);
-        }
-        long arg = source.parseInteger(context, source, typesetter);
-        if (arg == 0) {
-            throw new ArithmeticOverflowException(toText(context));
-        }
-        lefthyphenmin /= arg;
-
-        try {
-            language.setLeftHyphenMin(lefthyphenmin);
-        } catch (HyphenationException e) {
-            if (e.getCause() instanceof ConfigurationException) {
-                throw (ConfigurationException) e.getCause();
-            }
-            throw new NoHelpException(e);
-        }
-
-        Token afterassignment = context.getAfterassignment();
-        if (afterassignment != null) {
-            context.setAfterassignment(null);
-            source.push(afterassignment);
-        }
-        prefix.clearGlobal(); // gene: not really useful but a little bit of
-        // compatibility
+    long globaldef = context.getCount( "globaldefs" ).getValue();
+    if( globaldef > 0 ) {
+      prefix.setGlobal( true );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    Language language = getHyphenationTable( context );
+    source.getOptionalEquals( context );
+    long lefthyphenmin = source.parseInteger( context, source, typesetter );
 
-        long globaldef = context.getCount("globaldefs").getValue();
-        if (globaldef > 0) {
-            prefix.setGlobal(true);
-        }
-
-        Language language = getHyphenationTable(context);
-        source.getOptionalEquals(context);
-        long lefthyphenmin = source.parseInteger(context, source, typesetter);
-
-        try {
-            language.setLeftHyphenMin(lefthyphenmin);
-        } catch (HyphenationException e) {
-            if (e.getCause() instanceof ConfigurationException) {
-                throw (ConfigurationException) e.getCause();
-            }
-            throw new NoHelpException(e);
-        }
-
-        Token afterassignment = context.getAfterassignment();
-        if (afterassignment != null) {
-            context.setAfterassignment(null);
-            source.push(afterassignment);
-        }
-        prefix.clearGlobal(); // gene: not really useful but a little bit of
-        // compatibility
+    try {
+      language.setLeftHyphenMin( lefthyphenmin );
+    } catch( HyphenationException e ) {
+      if( e.getCause() instanceof ConfigurationException ) {
+        throw (ConfigurationException) e.getCause();
+      }
+      throw new NoHelpException( e );
     }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void multiply(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    Token afterassignment = context.getAfterassignment();
+    if( afterassignment != null ) {
+      context.setAfterassignment( null );
+      source.push( afterassignment );
+    }
+    prefix.clearGlobal(); // gene: not really useful but a little bit of
+    // compatibility
+  }
 
-        long globaldef = context.getCount("globaldefs").getValue();
-        if (globaldef > 0) {
-            prefix.setGlobal(true);
-        }
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void multiply( Flags prefix, Context context, TokenSource source,
+                        Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        Language language = getHyphenationTable(context);
-        source.getKeyword(context, "by");
-        try {
-            long lefthyphenmin = language.getLeftHyphenMin();
-            lefthyphenmin *= source.parseInteger(context, source, typesetter);
-            language.setLeftHyphenMin(lefthyphenmin);
-        } catch (HyphenationException e) {
-            if (e.getCause() instanceof ConfigurationException) {
-                throw (ConfigurationException) e.getCause();
-            }
-            throw new NoHelpException(e);
-        }
-
-        Token afterassignment = context.getAfterassignment();
-        if (afterassignment != null) {
-            context.setAfterassignment(null);
-            source.push(afterassignment);
-        }
-        prefix.clearGlobal(); // gene: not really useful but a little bit of
-        // compatibility
+    long globaldef = context.getCount( "globaldefs" ).getValue();
+    if( globaldef > 0 ) {
+      prefix.setGlobal( true );
     }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        Language language = getHyphenationTable(context);
-        try {
-            return context.getTokenFactory().toTokens(
-                language.getLeftHyphenMin());
-        } catch (HyphenationException e) {
-            if (e.getCause() instanceof ConfigurationException) {
-                throw (ConfigurationException) e.getCause();
-            }
-            throw new NoHelpException(e);
-        }
+    Language language = getHyphenationTable( context );
+    source.getKeyword( context, "by" );
+    try {
+      long lefthyphenmin = language.getLeftHyphenMin();
+      lefthyphenmin *= source.parseInteger( context, source, typesetter );
+      language.setLeftHyphenMin( lefthyphenmin );
+    } catch( HyphenationException e ) {
+      if( e.getCause() instanceof ConfigurationException ) {
+        throw (ConfigurationException) e.getCause();
+      }
+      throw new NoHelpException( e );
     }
+
+    Token afterassignment = context.getAfterassignment();
+    if( afterassignment != null ) {
+      context.setAfterassignment( null );
+      source.push( afterassignment );
+    }
+    prefix.clearGlobal(); // gene: not really useful but a little bit of
+    // compatibility
+  }
+
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Tokens the( Context context, TokenSource source,
+                     Typesetter typesetter )
+      throws CatcodeException,
+      HelpingException,
+      TypesetterException {
+
+    Language language = getHyphenationTable( context );
+    try {
+      return context.getTokenFactory().toTokens(
+          language.getLeftHyphenMin() );
+    } catch( HyphenationException e ) {
+      if( e.getCause() instanceof ConfigurationException ) {
+        throw (ConfigurationException) e.getCause();
+      }
+      throw new NoHelpException( e );
+    }
+  }
 
 }

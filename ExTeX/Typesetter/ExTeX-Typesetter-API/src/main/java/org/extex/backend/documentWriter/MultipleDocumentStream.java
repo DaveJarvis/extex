@@ -26,17 +26,16 @@ import org.extex.backend.outputStream.OutputStreamFactory;
  * output documents. For this purpose a factory is passed in to receive new
  * output stream as needed.
  *
- * @see org.extex.backend.documentWriter.SingleDocumentStream
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ * @see org.extex.backend.documentWriter.SingleDocumentStream
+ */
 public interface MultipleDocumentStream {
 
-    /**
-     * Setter for the output stream.
-     *
-     * @param writerFactory the output stream
-     */
-    void setOutputStreamFactory(OutputStreamFactory writerFactory);
+  /**
+   * Setter for the output stream.
+   *
+   * @param writerFactory the output stream
+   */
+  void setOutputStreamFactory( OutputStreamFactory writerFactory );
 
 }

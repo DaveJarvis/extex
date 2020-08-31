@@ -19,101 +19,98 @@
 
 package org.extex.resource;
 
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.*;
+import org.extex.framework.logger.LogEnabled;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import org.extex.framework.logger.LogEnabled;
-
 /**
  * This class provides a factory for ResourceFinders.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ResourceFinderFactory {
 
-    /**
-     * The constant {@code CLASS_ATTRIBUTE} contains the name of the
-     * attribute containing the class name.
-     */
-    private static final String CLASS_ATTRIBUTE = "class";
+  /**
+   * The constant {@code CLASS_ATTRIBUTE} contains the name of the
+   * attribute containing the class name.
+   */
+  private static final String CLASS_ATTRIBUTE = "class";
 
 
-    public ResourceFinderFactory() {
+  public ResourceFinderFactory() {
 
+  }
+
+  /**
+   * Get an instance of a resource finder.
+   *
+   * @param config     the configuration to use
+   * @param logger     the logger to pass to the Resource finder elements
+   * @param properties the properties to pass to the resource finder elements
+   * @param provider   the interaction provider
+   * @return the resource finder
+   * @throws ConfigurationException in case of an error in the configuration
+   *                                or during instantiation
+   */
+  public ResourceFinder createResourceFinder( Configuration config,
+                                              Logger logger,
+                                              Properties properties,
+                                              InteractionIndicator provider )
+      throws ConfigurationException {
+
+    ResourceFinderList list = new ResourceFinderList();
+
+    Iterator<Configuration> iterator = config.iterator( "Finder" );
+    while( iterator.hasNext() ) {
+      Configuration cfg = iterator.next();
+      String classname = cfg.getAttribute( CLASS_ATTRIBUTE );
+      if( classname == null ) {
+        throw new ConfigurationMissingAttributeException(
+            CLASS_ATTRIBUTE, cfg );
+      }
+
+      ResourceFinder finder;
+
+      try {
+        finder =
+            (ResourceFinder) (Class.forName( classname )
+                                   .getConstructor( new Class[]{Configuration.class} )
+                                   .newInstance( new Object[]{cfg} ));
+      } catch( IllegalArgumentException e ) {
+        throw new ConfigurationInstantiationException( e );
+      } catch( SecurityException e ) {
+        throw new ConfigurationInstantiationException( e );
+      } catch( InstantiationException e ) {
+        throw new ConfigurationInstantiationException( e );
+      } catch( IllegalAccessException e ) {
+        throw new ConfigurationInstantiationException( e );
+      } catch( InvocationTargetException e ) {
+        throw new ConfigurationInstantiationException( e );
+      } catch( NoSuchMethodException e ) {
+        throw new ConfigurationNoSuchMethodException( classname + "("
+                                                          + Configuration.class.getName() + ")",
+                                                      config );
+      } catch( ClassNotFoundException e ) {
+        throw new ConfigurationClassNotFoundException( classname, config );
+      }
+
+      if( finder instanceof LogEnabled ) {
+        ((LogEnabled) finder).enableLogging( logger );
+      }
+      if( finder instanceof PropertyAware ) {
+        ((PropertyAware) finder).setProperties( properties );
+      }
+      if( finder instanceof InteractionAware ) {
+        ((InteractionAware) finder).setInteractionProvider( provider );
+      }
+      list.add( finder );
     }
-
-    /**
-     * Get an instance of a resource finder.
-     * 
-     * @param config the configuration to use
-     * @param logger the logger to pass to the Resource finder elements
-     * @param properties the properties to pass to the resource finder elements
-     * @param provider the interaction provider
-     * 
-     * @return the resource finder
-     * 
-     * @throws ConfigurationException in case of an error in the configuration
-     *         or during instantiation
-     */
-    public ResourceFinder createResourceFinder(Configuration config,
-            Logger logger, Properties properties, InteractionIndicator provider)
-            throws ConfigurationException {
-
-        ResourceFinderList list = new ResourceFinderList();
-
-        Iterator<Configuration> iterator = config.iterator("Finder");
-        while (iterator.hasNext()) {
-            Configuration cfg = iterator.next();
-            String classname = cfg.getAttribute(CLASS_ATTRIBUTE);
-            if (classname == null) {
-                throw new ConfigurationMissingAttributeException(
-                    CLASS_ATTRIBUTE, cfg);
-            }
-
-            ResourceFinder finder;
-
-            try {
-                finder =
-                        (ResourceFinder) (Class.forName(classname)
-                            .getConstructor(new Class[]{Configuration.class})
-                            .newInstance(new Object[]{cfg}));
-            } catch (IllegalArgumentException e) {
-                throw new ConfigurationInstantiationException(e);
-            } catch (SecurityException e) {
-                throw new ConfigurationInstantiationException(e);
-            } catch (InstantiationException e) {
-                throw new ConfigurationInstantiationException(e);
-            } catch (IllegalAccessException e) {
-                throw new ConfigurationInstantiationException(e);
-            } catch (InvocationTargetException e) {
-                throw new ConfigurationInstantiationException(e);
-            } catch (NoSuchMethodException e) {
-                throw new ConfigurationNoSuchMethodException(classname + "("
-                        + Configuration.class.getName() + ")", config);
-            } catch (ClassNotFoundException e) {
-                throw new ConfigurationClassNotFoundException(classname, config);
-            }
-
-            if (finder instanceof LogEnabled) {
-                ((LogEnabled) finder).enableLogging(logger);
-            }
-            if (finder instanceof PropertyAware) {
-                ((PropertyAware) finder).setProperties(properties);
-            }
-            if (finder instanceof InteractionAware) {
-                ((InteractionAware) finder).setInteractionProvider(provider);
-            }
-            list.add(finder);
-        }
-        return list;
-    }
+    return list;
+  }
 
 }

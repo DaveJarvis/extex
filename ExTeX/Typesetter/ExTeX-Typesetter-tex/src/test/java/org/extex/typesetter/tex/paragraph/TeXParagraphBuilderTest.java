@@ -23,22 +23,21 @@ import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 
 /**
  * This is the test class for the TeX paragraph builder.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TeXParagraphBuilderTest extends AbstractParagraphBuilderTester {
 
-    /**
-     * This method creates a new paragraph builder to be tested.
-     * 
-     * @return the new paragraph builder
-     * 
-     * @see AbstractParagraphBuilderTester#getParagraphBuilder()
-     */
-    @Override
-    protected ParagraphBuilder getParagraphBuilder() {
+  /**
+   * This method creates a new paragraph builder to be tested.
+   *
+   * @return the new paragraph builder
+   * @see AbstractParagraphBuilderTester#getParagraphBuilder()
+   */
+  @Override
+  protected ParagraphBuilder getParagraphBuilder() {
 
-        return new TeXParagraphBuilder();
-    }
+    return new TeXParagraphBuilder();
+  }
 
 }

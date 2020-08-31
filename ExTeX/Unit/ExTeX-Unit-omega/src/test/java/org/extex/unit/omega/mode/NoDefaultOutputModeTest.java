@@ -24,27 +24,28 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \noDefaultOutputMode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class NoDefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * The command line interface.
+   *
+   * @param args the command line arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(NoDefaultOutputModeTest.class);
-    }
+    (new JUnitCore()).run( NoDefaultOutputModeTest.class );
+  }
 
 
-    public NoDefaultOutputModeTest() {
+  public NoDefaultOutputModeTest() {
 
-        setPrimitive("noDefaultOutputMode");setArguments("");
-        setConfig("omega-test");
-    }
+    setPrimitive( "noDefaultOutputMode" );
+    setArguments( "" );
+    setConfig( "omega-test" );
+  }
 
-    // TODO implement more primitive specific test cases
+  // TODO implement more primitive specific test cases
 }

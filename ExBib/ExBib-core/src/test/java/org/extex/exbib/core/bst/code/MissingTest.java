@@ -1,25 +1,22 @@
 /*
  * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
@@ -37,101 +34,104 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 /**
  * Test suite for {@code missing$}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MissingTest {
 
-    /**
-     * The field {@code db} contains the database.
-     */
-    private DB db = null;
+  /**
+   * The field {@code db} contains the database.
+   */
+  private DB db = null;
 
-    /**
-     * The field {@code entry} contains the entry.
-     */
-    private Entry entry;
+  /**
+   * The field {@code entry} contains the entry.
+   */
+  private Entry entry;
 
-    /**
-     * The field {@code p} contains the processor.
-     */
-    private BstProcessor p = null;
+  /**
+   * The field {@code p} contains the processor.
+   */
+  private BstProcessor p = null;
 
-    /**
-     * Set-up method.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Before
-    public void setUp() throws Exception {
+  /**
+   * Set-up method.
+   *
+   * @throws Exception in case of an error
+   */
+  @Before
+  public void setUp() throws Exception {
 
-        db = new DBImpl();
-        entry = db.makeEntry("book", "abc", null);
-        entry.set("author", new Value());
-        p = new BstInterpreter099c(db, new NullWriter(), null);
-    }
+    db = new DBImpl();
+    entry = db.makeEntry( "book", "abc", null );
+    entry.set( "author", new Value() );
+    p = new BstInterpreter099c( db, new NullWriter(), null );
+  }
 
-    /**
-     * Tear-down method.
-     */
-    @After
-    public void tearDown() {
+  /**
+   * Tear-down method.
+   */
+  @After
+  public void tearDown() {
 
-        p = null;
-        db = null;
-    }
+    p = null;
+    db = null;
+  }
 
-    /**
-     *  An existing field is reported as not missing.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test0() throws Exception {
+  /**
+   * An existing field is reported as not missing.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test0() throws Exception {
 
-        p.push(new TString("title", null));
-        new Missing("missing$").execute(p, entry, null);
-        assertEquals("0", p.popInteger(null).getValue());
-        assertNull(p.popUnchecked());
-    }
+    p.push( new TString( "title", null ) );
+    new Missing( "missing$" ).execute( p, entry, null );
+    assertEquals( "0", p.popInteger( null ).getValue() );
+    assertNull( p.popUnchecked() );
+  }
 
-    /**
-     *  An non-existing field is reported as missing.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * An non-existing field is reported as missing.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        p.push(new TString(null, null));
-        new Missing("missing$").execute(p, entry, null);
-        assertEquals("1", p.popInteger(null).getValue());
-        assertNull(p.popUnchecked());
-    }
+    p.push( new TString( null, null ) );
+    new Missing( "missing$" ).execute( p, entry, null );
+    assertEquals( "1", p.popInteger( null ).getValue() );
+    assertNull( p.popUnchecked() );
+  }
 
-    /**
-     *  The empty stack leads to an error.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibStackEmptyException.class)
-    public void testEmptyStack() throws Exception {
+  /**
+   * The empty stack leads to an error.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibStackEmptyException.class)
+  public void testEmptyStack() throws Exception {
 
-        new Missing("missing$").execute(p, entry, null);
-    }
+    new Missing( "missing$" ).execute( p, entry, null );
+  }
 
-    /**
-     *  The first argument needs to be a string.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibMissingStringException.class)
-    public void testInteger() throws Exception {
+  /**
+   * The first argument needs to be a string.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibMissingStringException.class)
+  public void testInteger() throws Exception {
 
-        p.push(new TInteger(123, null));
-        new Missing("missing$").execute(p, entry, null);
-    }
+    p.push( new TInteger( 123, null ) );
+    new Missing( "missing$" ).execute( p, entry, null );
+  }
 
 }

@@ -31,62 +31,63 @@ import org.extex.typesetter.type.NodeVisitor;
  * For the document writer it acts like a glue or kerning node. The width
  * contains the distance to add.
  * </p>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class BeforeMathNode extends AbstractNode implements Discardable {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param mathsurround the width to add after the math
-     */
-    public BeforeMathNode(FixedDimen mathsurround) {
+  /**
+   * Creates a new object.
+   *
+   * @param mathsurround the width to add after the math
+   */
+  public BeforeMathNode( FixedDimen mathsurround ) {
 
-        super(mathsurround);
+    super( mathsurround );
+  }
+
+  /**
+   * This method puts the printable representation into the string buffer.
+   * This is meant to produce a exhaustive form as it is used in tracing
+   * output to the log file.
+   *
+   * @param sb      the output string buffer
+   * @param prefix  the prefix string inserted at the beginning of each line
+   * @param breadth the breadth
+   * @param depth   the depth
+   * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+   * java.lang.String, int, int)
+   */
+  @Override
+  public void toString( StringBuilder sb, String prefix, int breadth,
+                        int depth ) {
+
+    FixedDimen width = getWidth();
+
+    if( width.eq( Dimen.ZERO_PT ) ) {
+      sb.append( getLocalizer().format( "String.Format" ) );
     }
-
-    /**
-     * This method puts the printable representation into the string buffer.
-     * This is meant to produce a exhaustive form as it is used in tracing
-     * output to the log file.
-     * 
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * @param breadth the breadth
-     * @param depth the depth
-* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
-     *      java.lang.String, int, int)
-     */
-    @Override
-    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
-
-        FixedDimen width = getWidth();
-
-        if (width.eq(Dimen.ZERO_PT)) {
-            sb.append(getLocalizer().format("String.Format"));
-        } else {
-            sb.append(getLocalizer().format("StringSurrounded.Format",
-                width.toString()));
-        }
+    else {
+      sb.append( getLocalizer().format( "StringSurrounded.Format",
+                                        width.toString() ) );
     }
+  }
 
-    /**
-*      java.lang.Object)
-     */
-    @Override
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(NodeVisitor visitor, Object value)
-            throws GeneralException {
+  /**
+   * java.lang.Object)
+   */
+  @Override
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public Object visit( NodeVisitor visitor, Object value )
+      throws GeneralException {
 
-        return visitor.visitBeforeMath(this, value);
-    }
+    return visitor.visitBeforeMath( this, value );
+  }
 
 }

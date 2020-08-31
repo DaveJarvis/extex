@@ -27,74 +27,70 @@ import org.extex.core.dimen.FixedDimen;
  * left and by the given width on the right.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class FixedParagraphShape extends ParagraphShape {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * The field {@code hsize} contains the width of the fixed block.
-     */
-    private FixedDimen hsize;
+  /**
+   * The field {@code hsize} contains the width of the fixed block.
+   */
+  private FixedDimen hsize;
 
-    /**
-     * Creates a new object.
-     *
-     * @param theHsize the width
-     */
-    public FixedParagraphShape(FixedDimen theHsize) {
+  /**
+   * Creates a new object.
+   *
+   * @param theHsize the width
+   */
+  public FixedParagraphShape( FixedDimen theHsize ) {
 
-        this.hsize = theHsize;
-    }
+    this.hsize = theHsize;
+  }
 
-    /**
-     * Getter for the left hand margin of a certain position.
-     * The position is given by an index into the list.
-     * If the index points past the end of th list then the last entry is
-     * repeated. If the index is negative then 0pt is returned.
-     *
-     * @param index the index of the position
-     *
-     * @return the left hand margin
-     *
-     * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getIndent(int)
-     */
-    @Override
-    public FixedDimen getIndent(int index) {
+  /**
+   * Getter for the left hand margin of a certain position.
+   * The position is given by an index into the list.
+   * If the index points past the end of th list then the last entry is
+   * repeated. If the index is negative then 0pt is returned.
+   *
+   * @param index the index of the position
+   * @return the left hand margin
+   * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getIndent(int)
+   */
+  @Override
+  public FixedDimen getIndent( int index ) {
 
-        return Dimen.ZERO_PT;
-    }
+    return Dimen.ZERO_PT;
+  }
 
-    /**
-     * Getter for the right hand margin of a certain position.
-     * The position is given by an index into the list.
-     * If the index points past the end of th list then the last entry is
-     * repeated. If the index is negative then 0pt is returned.
-     *
-     * @param index the index of the position
-     *
-     * @return the right hand margin
-     *
-     * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getLength(int)
-     */
-    @Override
-    public FixedDimen getLength(int index) {
+  /**
+   * Getter for the right hand margin of a certain position.
+   * The position is given by an index into the list.
+   * If the index points past the end of th list then the last entry is
+   * repeated. If the index is negative then 0pt is returned.
+   *
+   * @param index the index of the position
+   * @return the right hand margin
+   * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getLength(int)
+   */
+  @Override
+  public FixedDimen getLength( int index ) {
 
-        return hsize;
-    }
+    return hsize;
+  }
 
-    /**
-     * Setter for hsize.
-     *
-     * @param theHsize the hsize to set.
-     */
-    public void setHsize(FixedDimen theHsize) {
+  /**
+   * Setter for hsize.
+   *
+   * @param theHsize the hsize to set.
+   */
+  public void setHsize( FixedDimen theHsize ) {
 
-        this.hsize = theHsize;
-    }
+    this.hsize = theHsize;
+  }
 
 }

@@ -19,158 +19,157 @@
 
 package org.extex.exindex.core.parser.reader;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.io.StringReader;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is a test suite for the {@link TeXReader}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class TeXReaderTest {
 
-    /**
-     * Create a reader to be tested.
-     * 
-     * @param s the contents to be read
-     * 
-     * @return the reader
-     */
-    protected TeXReader makeReader(String s) {
+  /**
+   * Create a reader to be tested.
+   *
+   * @param s the contents to be read
+   * @return the reader
+   */
+  protected TeXReader makeReader( String s ) {
 
-        return new TeXReader("rsc", new StringReader(s));
-    }
+    return new TeXReader( "rsc", new StringReader( s ) );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testTeXRead00() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testTeXRead00() throws Exception {
 
-        TeXReader r = makeReader("");
+    TeXReader r = makeReader( "" );
 
-        assertEquals(-1, r.read());
-    }
+    assertEquals( -1, r.read() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testTeXRead01() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testTeXRead01() throws Exception {
 
-        TeXReader r = makeReader("\\");
+    TeXReader r = makeReader( "\\" );
 
-        assertEquals('\\', r.read());
-        assertEquals(-1, r.read());
-    }
+    assertEquals( '\\', r.read() );
+    assertEquals( -1, r.read() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testTeXRead02() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testTeXRead02() throws Exception {
 
-        TeXReader r = makeReader("a");
+    TeXReader r = makeReader( "a" );
 
-        assertEquals('a', r.read());
-        assertEquals(-1, r.read());
-    }
+    assertEquals( 'a', r.read() );
+    assertEquals( -1, r.read() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testTeXRead03() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testTeXRead03() throws Exception {
 
-        TeXReader r = makeReader("a\nb");
+    TeXReader r = makeReader( "a\nb" );
 
-        assertEquals('a', r.read());
-        assertEquals('\n', r.read());
-        assertEquals('b', r.read());
-        assertEquals(-1, r.read());
-    }
+    assertEquals( 'a', r.read() );
+    assertEquals( '\n', r.read() );
+    assertEquals( 'b', r.read() );
+    assertEquals( -1, r.read() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testTeXRead04() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testTeXRead04() throws Exception {
 
-        TeXReader r = makeReader("a\rb");
+    TeXReader r = makeReader( "a\rb" );
 
-        assertEquals('a', r.read());
-        assertEquals('\n', r.read());
-        assertEquals('b', r.read());
-        assertEquals(-1, r.read());
-    }
+    assertEquals( 'a', r.read() );
+    assertEquals( '\n', r.read() );
+    assertEquals( 'b', r.read() );
+    assertEquals( -1, r.read() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testTeXRead05() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testTeXRead05() throws Exception {
 
-        TeXReader r = makeReader("\\relax ");
+    TeXReader r = makeReader( "\\relax " );
 
-        assertEquals('\\', r.read());
-        assertEquals('r', r.read());
-        assertEquals('e', r.read());
-        assertEquals('l', r.read());
-        assertEquals('a', r.read());
-        assertEquals('x', r.read());
-        assertEquals(' ', r.read());
-        assertEquals(-1, r.read());
-    }
+    assertEquals( '\\', r.read() );
+    assertEquals( 'r', r.read() );
+    assertEquals( 'e', r.read() );
+    assertEquals( 'l', r.read() );
+    assertEquals( 'a', r.read() );
+    assertEquals( 'x', r.read() );
+    assertEquals( ' ', r.read() );
+    assertEquals( -1, r.read() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testTeXRead06() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testTeXRead06() throws Exception {
 
-        TeXReader r = makeReader("^^@");
+    TeXReader r = makeReader( "^^@" );
 
-        assertEquals('\0', r.read());
-        assertEquals(-1, r.read());
-    }
+    assertEquals( '\0', r.read() );
+    assertEquals( -1, r.read() );
+  }
 
-    /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testTeXRead07() throws Exception {
+  /**
+   * Test method for
+   * {@link org.extex.exindex.core.parser.reader.TeXReader#read()}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testTeXRead07() throws Exception {
 
-        TeXReader r = makeReader("^^00");
+    TeXReader r = makeReader( "^^00" );
 
-        assertEquals('\0', r.read());
-        assertEquals(-1, r.read());
-    }
+    assertEquals( '\0', r.read() );
+    assertEquals( -1, r.read() );
+  }
 
 }

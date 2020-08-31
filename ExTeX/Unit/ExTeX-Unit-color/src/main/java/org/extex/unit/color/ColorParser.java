@@ -41,275 +41,280 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides a parser for color specifications. Several color models
  * are supported.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class ColorParser {
 
-    /**
-     * This internal interface is used to describe the parsers for the different
-     * color models.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-    */
-    private interface ColorMode {
-
-        /**
-         * Parse a color value.
-         * 
-         * @param context the interpreter context
-         * @param source the token source
-         * @param typesetter the typesetter
-         * @param alpha the alpha channel
-         * @param primitive the name of the primitive
-         * 
-         * @return the color found
-         * 
-         * @throws HelpingException in case of an error
-         * @throws TypesetterException in case of an error in the typesetter
-         */
-        Color parse(Context context, TokenSource source, Typesetter typesetter,
-                int alpha, CodeToken primitive)
-                throws HelpingException,
-                    TypesetterException;
-    }
+  /**
+   * This internal interface is used to describe the parsers for the different
+   * color models.
+   *
+   * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+   */
+  private interface ColorMode {
 
     /**
-     * The field {@code CMYK_MODE} contains the parser for a cmyk color.
+     * Parse a color value.
+     *
+     * @param context    the interpreter context
+     * @param source     the token source
+     * @param typesetter the typesetter
+     * @param alpha      the alpha channel
+     * @param primitive  the name of the primitive
+     * @return the color found
+     * @throws HelpingException    in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    private static final ColorMode CMYK_MODE = new ColorMode() {
+    Color parse( Context context, TokenSource source, Typesetter typesetter,
+                 int alpha, CodeToken primitive )
+        throws HelpingException,
+        TypesetterException;
+  }
 
-        /**
-         * @see org.extex.unit.color.ColorParser.ColorMode#parse(
-         *      org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter, int, CodeToken)
-         */
-        public Color parse(Context context, TokenSource source,
-                Typesetter typesetter, int alpha, CodeToken primitive)
-                throws HelpingException,
-                    TypesetterException {
-
-            int c = scanColorComponent(context, source, typesetter, primitive);
-            int m = scanColorComponent(context, source, typesetter, primitive);
-            int y = scanColorComponent(context, source, typesetter, primitive);
-            int k = scanColorComponent(context, source, typesetter, primitive);
-            return ColorFactory.getCmyk(c, m, y, k, alpha);
-        }
-
-    };
-
-    /**
-     * The field {@code GRAY_MODE} contains the parser for a gray-scale
-     * color.
-     */
-    private static final ColorMode GRAY_MODE = new ColorMode() {
-
-        /**
-         * @see org.extex.unit.color.ColorParser.ColorMode#parse(
-         *      org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter, int, CodeToken)
-         */
-        public Color parse(Context context, TokenSource source,
-                Typesetter typesetter, int alpha, CodeToken primitive)
-                throws HelpingException,
-                    TypesetterException {
-
-            int gray = scanColorComponent(context, source, typesetter, primitive);
-            return ColorFactory.getGray(gray, alpha);
-        }
-
-    };
-
-    /**
-     * The field {@code HSV_MODE} contains the parser for a hsv color.
-     */
-    private static final ColorMode HSV_MODE = new ColorMode() {
-
-        /**
-         * @see org.extex.unit.color.ColorParser.ColorMode#parse(
-         *      org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter, int, CodeToken)
-         */
-        public Color parse(Context context, TokenSource source,
-                Typesetter typesetter, int alpha, CodeToken primitive)
-                throws HelpingException,
-                    TypesetterException {
-
-            int h = scanColorComponent(context, source, typesetter, primitive);
-            int s = scanColorComponent(context, source, typesetter, primitive);
-            int v = scanColorComponent(context, source, typesetter, primitive);
-            return ColorFactory.getHsv(h, s, v, alpha);
-        }
-
-    };
+  /**
+   * The field {@code CMYK_MODE} contains the parser for a cmyk color.
+   */
+  private static final ColorMode CMYK_MODE = new ColorMode() {
 
     /**
      * @see org.extex.unit.color.ColorParser.ColorMode#parse(
+     *org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter, int, CodeToken)
+     */
+    public Color parse( Context context, TokenSource source,
+                        Typesetter typesetter, int alpha, CodeToken primitive )
+        throws HelpingException,
+        TypesetterException {
+
+      int c = scanColorComponent( context, source, typesetter, primitive );
+      int m = scanColorComponent( context, source, typesetter, primitive );
+      int y = scanColorComponent( context, source, typesetter, primitive );
+      int k = scanColorComponent( context, source, typesetter, primitive );
+      return ColorFactory.getCmyk( c, m, y, k, alpha );
+    }
+
+  };
+
+  /**
+   * The field {@code GRAY_MODE} contains the parser for a gray-scale
+   * color.
+   */
+  private static final ColorMode GRAY_MODE = new ColorMode() {
+
+    /**
+     * @see org.extex.unit.color.ColorParser.ColorMode#parse(
+     *org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter, int, CodeToken)
+     */
+    public Color parse( Context context, TokenSource source,
+                        Typesetter typesetter, int alpha, CodeToken primitive )
+        throws HelpingException,
+        TypesetterException {
+
+      int gray = scanColorComponent( context, source, typesetter, primitive );
+      return ColorFactory.getGray( gray, alpha );
+    }
+
+  };
+
+  /**
+   * The field {@code HSV_MODE} contains the parser for a hsv color.
+   */
+  private static final ColorMode HSV_MODE = new ColorMode() {
+
+    /**
+     * @see org.extex.unit.color.ColorParser.ColorMode#parse(
+     *org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter, int, CodeToken)
+     */
+    public Color parse( Context context, TokenSource source,
+                        Typesetter typesetter, int alpha, CodeToken primitive )
+        throws HelpingException,
+        TypesetterException {
+
+      int h = scanColorComponent( context, source, typesetter, primitive );
+      int s = scanColorComponent( context, source, typesetter, primitive );
+      int v = scanColorComponent( context, source, typesetter, primitive );
+      return ColorFactory.getHsv( h, s, v, alpha );
+    }
+
+  };
+
+  /**
+   * @see org.extex.unit.color.ColorParser.ColorMode#parse(
+   *org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+   * int, CodeToken)
+   */
+  private static final ColorMode RGB_MODE = new ColorMode() {
+
+    /**
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      int, CodeToken)
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter, int, CodeToken)
      */
-    private static final ColorMode RGB_MODE = new ColorMode() {
+    public Color parse( Context context, TokenSource source,
+                        Typesetter typesetter, int alpha, CodeToken primitive )
+        throws HelpingException,
+        TypesetterException {
 
-        /**
-    *      org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter, int, CodeToken)
-         */
-        public Color parse(Context context, TokenSource source,
-                Typesetter typesetter, int alpha, CodeToken primitive)
-                throws HelpingException,
-                    TypesetterException {
-
-            int r = scanColorComponent(context, source, typesetter, primitive);
-            int g = scanColorComponent(context, source, typesetter, primitive);
-            int b = scanColorComponent(context, source, typesetter, primitive);
-            return ColorFactory.getRgb(r, g, b, alpha);
-        }
-
-    };
-
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
-
-    /**
-     * Parse a color specification made up of a color constant for one of the
-     * supported color models or a control sequence which is bound to color
-     * convertible code.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param primitive the name of the invoking primitive
-     * 
-     * @return the color found
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    public static Color parseColor(Context context, TokenSource source,
-            Typesetter typesetter, CodeToken primitive)
-            throws HelpingException,
-                TypesetterException {
-
-        Token t = source.getNonSpace(context);
-        Color color = null;
-        if (t instanceof CodeToken) {
-            Code code = context.getCode((CodeToken) t);
-            if (code instanceof ColorConvertible) {
-                color = ((ColorConvertible) code).convertColor(context, source,
-                    typesetter);
-            }
-        } else {
-            source.push(t);
-            color = ColorParser.parseColorConstant(context, source, typesetter,
-                primitive);
-        }
-        if (color == null) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(ColorParser.class), "MissingColor");
-        }
-
-        return color;
+      int r = scanColorComponent( context, source, typesetter, primitive );
+      int g = scanColorComponent( context, source, typesetter, primitive );
+      int b = scanColorComponent( context, source, typesetter, primitive );
+      return ColorFactory.getRgb( r, g, b, alpha );
     }
 
-    /**
-     * Parse a color specification made up of a color constant for one of the
-     * supported color models.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param primitive the name of the invoking primitive
-     * 
-     * @return the color found
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    public static Color parseColorConstant(Context context, TokenSource source,
-            Typesetter typesetter, CodeToken primitive)
-            throws HelpingException,
-                TypesetterException {
+  };
 
-        int alpha = 0;
-        ColorMode mode = RGB_MODE;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-        for (;;) {
-            if (source.getKeyword(context, "alpha")) {
-                alpha = scanColorComponent(context, source, typesetter,
-                    primitive);
-            } else if (source.getKeyword(context, "rgb")) {
-                mode = RGB_MODE;
-            } else if (source.getKeyword(context, "gray")) {
-                mode = GRAY_MODE;
-            } else if (source.getKeyword(context, "hsv")) {
-                mode = HSV_MODE;
-            } else if (source.getKeyword(context, "cmyk")) {
-                mode = CMYK_MODE;
-            } else {
-                break;
-            }
-        }
-        Token t = source.getNonSpace(context);
-        if (t == null) {
-            throw new EofException(primitive.toText());
-        } else if (!(t instanceof LeftBraceToken)) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(ColorParser.class), "MissingLeftBrace");
-        }
+  /**
+   * Parse a color specification made up of a color constant for one of the
+   * supported color models or a control sequence which is bound to color
+   * convertible code.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @param primitive  the name of the invoking primitive
+   * @return the color found
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  public static Color parseColor( Context context, TokenSource source,
+                                  Typesetter typesetter, CodeToken primitive )
+      throws HelpingException,
+      TypesetterException {
 
-        Color color = mode.parse(context, source, typesetter, alpha, primitive);
-        t = source.getNonSpace(context);
-        if (!(t instanceof RightBraceToken)) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(ColorParser.class), "MissingRightBrace");
-        }
-        return color;
+    Token t = source.getNonSpace( context );
+    Color color = null;
+    if( t instanceof CodeToken ) {
+      Code code = context.getCode( (CodeToken) t );
+      if( code instanceof ColorConvertible ) {
+        color = ((ColorConvertible) code).convertColor( context, source,
+                                                        typesetter );
+      }
+    }
+    else {
+      source.push( t );
+      color = ColorParser.parseColorConstant( context, source, typesetter,
+                                              primitive );
+    }
+    if( color == null ) {
+      throw new HelpingException( LocalizerFactory
+                                      .getLocalizer( ColorParser.class ),
+                                  "MissingColor" );
     }
 
-    /**
-     * Scan a color component and translate it into a color value.
-     * 
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * @param primitive the name of the primitive for error messages
-     * 
-     * @return the color component in units of Color.MAX_VALUE
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    private static int scanColorComponent(Context context, TokenSource source,
-            Typesetter typesetter, CodeToken primitive)
-            throws HelpingException,
-                TypesetterException {
+    return color;
+  }
 
-        long cc;
-        try {
-            cc = ScaledNumberParser.parse(context, source, typesetter);
-        } catch (EofException e) {
-            throw new EofException(primitive.toText());
-        }
-        if (cc < 0 || cc > ScaledNumber.ONE) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(ColorParser.class), "IllegalValue",
-                Long.toString(cc));
-        }
-        return (int) (cc * Color.MAX_VALUE / GlueComponent.ONE);
+  /**
+   * Parse a color specification made up of a color constant for one of the
+   * supported color models.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @param primitive  the name of the invoking primitive
+   * @return the color found
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  public static Color parseColorConstant( Context context, TokenSource source,
+                                          Typesetter typesetter,
+                                          CodeToken primitive )
+      throws HelpingException,
+      TypesetterException {
+
+    int alpha = 0;
+    ColorMode mode = RGB_MODE;
+
+    for( ; ; ) {
+      if( source.getKeyword( context, "alpha" ) ) {
+        alpha = scanColorComponent( context, source, typesetter,
+                                    primitive );
+      }
+      else if( source.getKeyword( context, "rgb" ) ) {
+        mode = RGB_MODE;
+      }
+      else if( source.getKeyword( context, "gray" ) ) {
+        mode = GRAY_MODE;
+      }
+      else if( source.getKeyword( context, "hsv" ) ) {
+        mode = HSV_MODE;
+      }
+      else if( source.getKeyword( context, "cmyk" ) ) {
+        mode = CMYK_MODE;
+      }
+      else {
+        break;
+      }
+    }
+    Token t = source.getNonSpace( context );
+    if( t == null ) {
+      throw new EofException( primitive.toText() );
+    }
+    else if( !(t instanceof LeftBraceToken) ) {
+      throw new HelpingException( LocalizerFactory
+                                      .getLocalizer( ColorParser.class ),
+                                  "MissingLeftBrace" );
     }
 
-
-    private ColorParser() {
-
-        // never used
+    Color color = mode.parse( context, source, typesetter, alpha, primitive );
+    t = source.getNonSpace( context );
+    if( !(t instanceof RightBraceToken) ) {
+      throw new HelpingException( LocalizerFactory
+                                      .getLocalizer( ColorParser.class ),
+                                  "MissingRightBrace" );
     }
+    return color;
+  }
+
+  /**
+   * Scan a color component and translate it into a color value.
+   *
+   * @param context    the interpreter context
+   * @param source     the token source
+   * @param typesetter the typesetter
+   * @param primitive  the name of the primitive for error messages
+   * @return the color component in units of Color.MAX_VALUE
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  private static int scanColorComponent( Context context, TokenSource source,
+                                         Typesetter typesetter,
+                                         CodeToken primitive )
+      throws HelpingException,
+      TypesetterException {
+
+    long cc;
+    try {
+      cc = ScaledNumberParser.parse( context, source, typesetter );
+    } catch( EofException e ) {
+      throw new EofException( primitive.toText() );
+    }
+    if( cc < 0 || cc > ScaledNumber.ONE ) {
+      throw new HelpingException( LocalizerFactory
+                                      .getLocalizer( ColorParser.class ),
+                                  "IllegalValue",
+                                  Long.toString( cc ) );
+    }
+    return (int) (cc * Color.MAX_VALUE / GlueComponent.ONE);
+  }
+
+
+  private ColorParser() {
+
+    // never used
+  }
 
 }

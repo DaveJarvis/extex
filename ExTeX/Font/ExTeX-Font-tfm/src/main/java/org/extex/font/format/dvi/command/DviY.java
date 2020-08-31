@@ -21,77 +21,77 @@ package org.extex.font.format.dvi.command;
 
 /**
  * DVI: y
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DviY extends DviCommand {
 
-    /**
-     * y0
-     */
-    private static final int Y0 = 161;
+  /**
+   * y0
+   */
+  private static final int Y0 = 161;
 
-    /**
-     * the value
-     */
-    private final int value;
+  /**
+   * the value
+   */
+  private final int value;
 
-    /**
-     * the y0
-     */
-    private final boolean y0;
+  /**
+   * the y0
+   */
+  private final boolean y0;
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param v the value
-     */
-    public DviY(final int opc, final int sp, final int v) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param v   the value
+   */
+  public DviY( final int opc, final int sp, final int v ) {
 
-        this(opc, sp, v, false);
-    }
+    this( opc, sp, v, false );
+  }
 
-    /**
-     * Create a new object.
-     * 
-     * @param opc the opcode
-     * @param sp the start pointer
-     * @param v the value
-     * @param y the y0
-     */
-    public DviY(final int opc, final int sp, final int v, final boolean y) {
+  /**
+   * Create a new object.
+   *
+   * @param opc the opcode
+   * @param sp  the start pointer
+   * @param v   the value
+   * @param y   the y0
+   */
+  public DviY( final int opc, final int sp, final int v, final boolean y ) {
 
-        super(opc, sp);
-        value = v;
-        y0 = y;
-    }
+    super( opc, sp );
+    value = v;
+    y0 = y;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return new StringBuilder("y").append(getOpcode() - Y0).toString();
-    }
+    return new StringBuilder( "y" ).append( getOpcode() - Y0 ).toString();
+  }
 
-    /**
-     * Returns the value.
-     * 
-     * @return Returns the value.
-     */
-    public int getValue() {
+  /**
+   * Returns the value.
+   *
+   * @return Returns the value.
+   */
+  public int getValue() {
 
-        return value;
-    }
+    return value;
+  }
 
-    /**
-     * Returns the y0.
-     * 
-     * @return Returns the y0.
-     */
-    public boolean isY0() {
+  /**
+   * Returns the y0.
+   *
+   * @return Returns the y0.
+   */
+  public boolean isY0() {
 
-        return y0;
-    }
+    return y0;
+  }
 }

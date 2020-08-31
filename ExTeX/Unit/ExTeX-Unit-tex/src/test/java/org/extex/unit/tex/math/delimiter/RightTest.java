@@ -25,13 +25,15 @@ import org.extex.unit.tex.math.AbstractMathTester;
  * This is a test suite for the primitive {@code \right}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RightTest extends AbstractMathTester {
 
 
-    public RightTest() {
-        setPrimitive("right");setArguments(". ");setPrepare("\\left. ");
-    }
+  public RightTest() {
+    setPrimitive( "right" );
+    setArguments( ". " );
+    setPrepare( "\\left. " );
+  }
 
-    //TODO implement the primitive specific test cases
+  //TODO implement the primitive specific test cases
 }

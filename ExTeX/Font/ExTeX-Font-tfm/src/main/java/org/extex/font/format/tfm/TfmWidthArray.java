@@ -19,10 +19,10 @@
 
 package org.extex.font.format.tfm;
 
+import org.extex.util.file.random.RandomAccessR;
+
 import java.io.IOException;
 import java.io.Serializable;
-
-import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Class for TFM width table.
@@ -36,45 +36,46 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class TfmWidthArray implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID} ...
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} ...
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * the width table.
-     */
-    private final TfmFixWord[] table;
+  /**
+   * the width table.
+   */
+  private final TfmFixWord[] table;
 
-    /**
-     * Create a new object.
-     *
-     * @param rar   the input
-     * @param size  number of words in the table
-     * @throws IOException if an IO-error occurs.
-     */
-    public TfmWidthArray(RandomAccessR rar, int size)
-            throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param rar  the input
+   * @param size number of words in the table
+   * @throws IOException if an IO-error occurs.
+   */
+  public TfmWidthArray( RandomAccessR rar, int size )
+      throws IOException {
 
-        table = new TfmFixWord[size];
+    table = new TfmFixWord[ size ];
 
-        for (int i = 0; i < size; i++) {
-            table[i] = new TfmFixWord(rar.readInt(),
-                    TfmFixWord.FIXWORDDENOMINATOR);
-        }
+    for( int i = 0; i < size; i++ ) {
+      table[ i ] = new TfmFixWord( rar.readInt(),
+                                   TfmFixWord.FIXWORDDENOMINATOR );
     }
+  }
 
-    /**
-     * Returns the table.
-     * @return Returns the table.
-     */
-    public TfmFixWord[] getTable() {
+  /**
+   * Returns the table.
+   *
+   * @return Returns the table.
+   */
+  public TfmFixWord[] getTable() {
 
-        return table;
-    }
+    return table;
+  }
 
 }

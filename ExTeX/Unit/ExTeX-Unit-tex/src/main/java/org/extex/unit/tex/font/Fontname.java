@@ -39,7 +39,7 @@ import org.extex.typesetter.tc.font.Font;
 /**
  * This class provides an implementation for the primitive
  * {@code \fontname}.
- * 
+ *
  * <p>The Primitive {@code \fontname}</p>
  * <p>
  * The primitive {@code \fontname} can be used to retrieve the name of a
@@ -49,94 +49,95 @@ import org.extex.typesetter.tc.font.Font;
  * <i>other</i> tokens except of the spaces. This means that even the letters
  * are of category <i>other</i>.
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;fontname&rang;
  *       &rarr; {@code \fontname} {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(Context,CodeToken)
+ *          org.extex.interpreter.TokenSource#getFont(Context, CodeToken)
  *          &lang;font&rang;}  </pre>
- * 
+ *
  * <p>Example</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *  \font\myFont=cmr12
  *  \fontname\myfont
  *  &rArr; cmr12
  * </pre>
- * 
+ *
  * <pre class="TeXSample">
  * \font\myFont=cmr12 at 24pt
  * \fontname\myfont
  * &rArr; cmr12 at 24pt
  * </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Fontname extends AbstractCode implements ExpandableCode {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Fontname(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Fontname( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void execute( Flags prefix, Context context, TokenSource source,
+                       Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    source.skipSpace();
+    Font font;
+    Tokens fontname;
+    TokenFactory tokenFactory = context.getTokenFactory();
+    try {
+      font = source.getFont( context, getToken() );
+      fontname = tokenFactory.toTokens( font.getFontName() );
+    } catch( EofException e ) {
+      throw new EofException( toText( context ) );
+    } catch( CatcodeException e ) {
+      throw new NoHelpException( e );
     }
-
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        source.skipSpace();
-        Font font;
-        Tokens fontname;
-        TokenFactory tokenFactory = context.getTokenFactory();
-        try {
-            font = source.getFont(context, getToken());
-            fontname = tokenFactory.toTokens(font.getFontName());
-        } catch (EofException e) {
-            throw new EofException(toText(context));
-        } catch (CatcodeException e) {
-            throw new NoHelpException(e);
-        }
-        FixedDimen size = font.getActualSize();
-        if (font.getDesignSize().ne(size)) {
-            try {
-                fontname.add(tokenFactory.toTokens(" at "));
-                fontname.add(tokenFactory.toTokens(size.toString()));
-            } catch (CatcodeException e) {
-                throw new NoHelpException(e);
-            }
-        }
-        source.push(fontname);
+    FixedDimen size = font.getActualSize();
+    if( font.getDesignSize().ne( size ) ) {
+      try {
+        fontname.add( tokenFactory.toTokens( " at " ) );
+        fontname.add( tokenFactory.toTokens( size.toString() ) );
+      } catch( CatcodeException e ) {
+        throw new NoHelpException( e );
+      }
     }
+    source.push( fontname );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  public void expand( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        execute(prefix, context, source, typesetter);
-    }
+    execute( prefix, context, source, typesetter );
+  }
 
 }

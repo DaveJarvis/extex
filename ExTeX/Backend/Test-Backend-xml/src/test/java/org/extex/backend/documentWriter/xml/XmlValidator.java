@@ -35,105 +35,104 @@ import org.xml.sax.InputSource;
 
 /**
  * Validator which compares the xml result from the {@link ExTeXLauncher}.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class XmlValidator implements Validator {
 
-    /**
-     * The comment for the error message.
-     */
-    private String[] comment;
+  /**
+   * The comment for the error message.
+   */
+  private String[] comment;
 
-    /**
-     * The debug value.
-     */
-    private boolean debug = false;
+  /**
+   * The debug value.
+   */
+  private boolean debug = false;
 
-    /**
-     * The expected value.
-     */
-    private String[] expected;
+  /**
+   * The expected value.
+   */
+  private String[] expected;
 
-    /**
-     * The xpath string.
-     */
-    private String[] xpathstring;
+  /**
+   * The xpath string.
+   */
+  private String[] xpathstring;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param comment The comment for the error message.
-     * @param xpath The xpath string.
-     * @param expected The expected value.
-     */
-    public XmlValidator(String comment, String xpath, String expected) {
+  /**
+   * Creates a new object.
+   *
+   * @param comment  The comment for the error message.
+   * @param xpath    The xpath string.
+   * @param expected The expected value.
+   */
+  public XmlValidator( String comment, String xpath, String expected ) {
 
-        this.comment = new String[]{comment};
-        this.xpathstring = new String[]{xpath};
-        this.expected = new String[]{expected};
+    this.comment = new String[]{comment};
+    this.xpathstring = new String[]{xpath};
+    this.expected = new String[]{expected};
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param comment  The comment array for the error message.
+   * @param xpath    The xpath array.
+   * @param expected The expected value array.
+   */
+  public XmlValidator( String[] comment, String[] xpath, String[] expected ) {
+
+    this.comment = comment;
+    this.xpathstring = xpath;
+    this.expected = expected;
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param comment  The comment array for the error message.
+   * @param xpath    The xpath array.
+   * @param expected The expected value array.
+   * @param debug    Show debug info.
+   */
+  public XmlValidator( String[] comment, String[] xpath, String[] expected,
+                       boolean debug ) {
+
+    this( comment, xpath, expected );
+    this.debug = debug;
+  }
+
+  /**
+   * Returns {@code true} if the given string is not {@code null}
+   * and if it is equal to the given result of the xpath result. Otherwise an
+   * JUnit exception is raised.
+   */
+  public boolean validate( String s ) {
+
+    if( debug ) {
+      System.out.println( s );
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param comment The comment array for the error message.
-     * @param xpath The xpath array.
-     * @param expected The expected value array.
-     */
-    public XmlValidator(String[] comment, String[] xpath, String[] expected) {
+    XPathFactory xpathfactory = XPathFactory.newInstance();
+    XPath xpath = xpathfactory.newXPath();
 
-        this.comment = comment;
-        this.xpathstring = xpath;
-        this.expected = expected;
+    for( int i = 0; i < comment.length; i++ ) {
+      assertNotNull( comment[ i ], s );
+
+      try {
+        XPathExpression expression = xpath.compile( xpathstring[ i ] );
+
+        String result =
+            expression.evaluate( new InputSource(
+                new ByteArrayInputStream( s.getBytes() ) ) );
+
+        assertEquals( comment[ i ], expected[ i ], result );
+
+      } catch( Exception e ) {
+        assertTrue( e.getMessage(), false );
+      }
     }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param comment The comment array for the error message.
-     * @param xpath The xpath array.
-     * @param expected The expected value array.
-     * @param debug Show debug info.
-     */
-    public XmlValidator(String[] comment, String[] xpath, String[] expected,
-            boolean debug) {
-
-        this(comment, xpath, expected);
-        this.debug = debug;
-    }
-
-    /**
-     * Returns {@code true} if the given string is not {@code null}
-     * and if it is equal to the given result of the xpath result. Otherwise an
-     * JUnit exception is raised.
-     * 
-*/
-    public boolean validate(String s) {
-
-        if (debug) {
-            System.out.println(s);
-        }
-
-        XPathFactory xpathfactory = XPathFactory.newInstance();
-        XPath xpath = xpathfactory.newXPath();
-
-        for (int i = 0; i < comment.length; i++) {
-            assertNotNull(comment[i], s);
-
-            try {
-                XPathExpression expression = xpath.compile(xpathstring[i]);
-
-                String result =
-                        expression.evaluate(new InputSource(
-                            new ByteArrayInputStream(s.getBytes())));
-
-                assertEquals(comment[i], expected[i], result);
-
-            } catch (Exception e) {
-                assertTrue(e.getMessage(), false);
-            }
-        }
-        return true;
-    }
+    return true;
+  }
 }

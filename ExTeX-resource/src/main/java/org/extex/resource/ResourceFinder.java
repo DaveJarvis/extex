@@ -29,33 +29,31 @@ import org.extex.resource.io.NamedInputStream;
  * path, or using an external library &ndash; like kpathsea &ndash; are left to
  * possible implementations. Even an interaction with the user can be
  * envisioned.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface ResourceFinder {
 
-    /**
-     * Enable or disable the tracing. The argument indicates whether tracing
-     * should be enabled or disabled. The resource finder can decide on its own
-     * how to perform tracing. The preferred way is to write tracing records to
-     * a logger.
-     * 
-     * @param flag indicator whether tracing should be turned on or off.
-     */
-    void enableTracing(boolean flag);
+  /**
+   * Enable or disable the tracing. The argument indicates whether tracing
+   * should be enabled or disabled. The resource finder can decide on its own
+   * how to perform tracing. The preferred way is to write tracing records to
+   * a logger.
+   *
+   * @param flag indicator whether tracing should be turned on or off.
+   */
+  void enableTracing( boolean flag );
 
-    /**
-     * Find a resource which can be used for reading. If the search fails then
-     * {@code null} is returned.
-     * 
-     * @param name the base name of the resource
-     * @param type the type, i.e. the extension
-     * 
-     * @return the file or {@code null} if none could be found
-     * 
-     * @throws ConfigurationException in case of an exception
-     */
-    NamedInputStream findResource(String name, String type)
-            throws ConfigurationException;
+  /**
+   * Find a resource which can be used for reading. If the search fails then
+   * {@code null} is returned.
+   *
+   * @param name the base name of the resource
+   * @param type the type, i.e. the extension
+   * @return the file or {@code null} if none could be found
+   * @throws ConfigurationException in case of an exception
+   */
+  NamedInputStream findResource( String name, String type )
+      throws ConfigurationException;
 
 }

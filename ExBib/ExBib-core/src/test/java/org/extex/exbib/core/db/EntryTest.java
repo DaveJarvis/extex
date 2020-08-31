@@ -19,109 +19,106 @@
 
 package org.extex.exbib.core.db;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.Locator;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 /**
  * This is a test suite for {@link Entry}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class EntryTest {
 
-    /**
-     *  Test that the locator is initially {@code null}.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testGetLocator1() throws Exception {
+  /**
+   * Test that the locator is initially {@code null}.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testGetLocator1() throws Exception {
 
-        Entry entry = new Entry(null);
-        assertNull(entry.getLocator());
-    }
+    Entry entry = new Entry( null );
+    assertNull( entry.getLocator() );
+  }
 
-    /**
-     *  Test that the locator can be passed in with the constructor.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testGetLocator2() throws Exception {
+  /**
+   * Test that the locator can be passed in with the constructor.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testGetLocator2() throws Exception {
 
-        Locator locator = new Locator("", 0);
-        Entry entry = new Entry(locator);
-        assertEquals(locator, entry.getLocator());
-    }
+    Locator locator = new Locator( "", 0 );
+    Entry entry = new Entry( locator );
+    assertEquals( locator, entry.getLocator() );
+  }
 
-    /**
-     *  Test that a getter uses the crossref field.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibMissingEntryException.class)
-    public final void testGetStringDB() throws Exception {
+  /**
+   * Test that a getter uses the crossref field.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test(expected = ExBibMissingEntryException.class)
+  public final void testGetStringDB() throws Exception {
 
-        Entry entry = new Entry(null);
-        entry.set("crossref", "xr");
-        entry.get("abc", new DBImpl());
-    }
+    Entry entry = new Entry( null );
+    entry.set( "crossref", "xr" );
+    entry.get( "abc", new DBImpl() );
+  }
 
-    /**
-     *  Test that a getter uses the crossref field.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testGetStringDB2() throws Exception {
+  /**
+   * Test that a getter uses the crossref field.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testGetStringDB2() throws Exception {
 
-        DBImpl db = new DBImpl();
-        Entry e = db.makeEntry("book", "xr", null);
-        e.set("abc", "XYZ");
+    DBImpl db = new DBImpl();
+    Entry e = db.makeEntry( "book", "xr", null );
+    e.set( "abc", "XYZ" );
 
-        Entry entry = new Entry(null);
-        entry.set("crossref", "xr");
-        assertEquals("\"XYZ\"", entry.get("abc", db).toString());
-    }
+    Entry entry = new Entry( null );
+    entry.set( "crossref", "xr" );
+    assertEquals( "\"XYZ\"", entry.get( "abc", db ).toString() );
+  }
 
-    /**
-     *  Test that a getter uses the crossref field only if required.
-     *
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testGetStringDB3() throws Exception {
+  /**
+   * Test that a getter uses the crossref field only if required.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testGetStringDB3() throws Exception {
 
-        DBImpl db = new DBImpl();
-        Entry e = db.makeEntry("book", "xr", null);
-        e.set("abc", "XYZ");
+    DBImpl db = new DBImpl();
+    Entry e = db.makeEntry( "book", "xr", null );
+    e.set( "abc", "XYZ" );
 
-        Entry entry = new Entry(null);
-        entry.set("crossref", "xr");
-        entry.set("abc", "ABC");
-        assertEquals("\"ABC\"", entry.get("abc", db).toString());
-    }
+    Entry entry = new Entry( null );
+    entry.set( "crossref", "xr" );
+    entry.set( "abc", "ABC" );
+    assertEquals( "\"ABC\"", entry.get( "abc", db ).toString() );
+  }
 
-    /**
-     *  Test that setters for type and key work.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testToString() throws Exception {
+  /**
+   * Test that setters for type and key work.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public final void testToString() throws Exception {
 
-        Entry entry = new Entry(null);
-        entry.setKey("abc");
-        entry.setType("book");
-        assertEquals("@book{abc,...}", entry.toString());
-    }
+    Entry entry = new Entry( null );
+    entry.setKey( "abc" );
+    entry.setType( "book" );
+    assertEquals( "@book{abc,...}", entry.toString() );
+  }
 
 }

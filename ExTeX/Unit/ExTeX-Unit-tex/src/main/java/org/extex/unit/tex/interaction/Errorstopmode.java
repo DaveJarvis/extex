@@ -37,57 +37,56 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  * <p>The Primitive {@code \errorstopmode}</p>
  * <p>
- *  This primitive sets the interaction mode to error stop mode.
- *  In error stop mode the processing is interrupted and the error handler is
- *  invoked when an error occurs.
+ * This primitive sets the interaction mode to error stop mode.
+ * In error stop mode the processing is interrupted and the error handler is
+ * invoked when an error occurs.
  * </p>
  * <p>
- *  The setting of the interaction mode is an assignment. The mode is always
- *  processed globally. This means it does not interact with the group concept.
+ * The setting of the interaction mode is an assignment. The mode is always
+ * processed globally. This means it does not interact with the group concept.
  * </p>
  *
  * <p>Syntax</p>
-
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * <p>
+ * The formal description of this primitive is the following:
+ * <pre class="syntax">
  *    &lang;errorstopmode&rang;
  *      &rarr; {@code \errorstopmode}  </pre>
  *
  * <p>Examples</p>
-
- *  <pre class="TeXSample">
+ *
+ * <pre class="TeXSample">
  *    \errorstopmode  </pre>
  *
- *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Errorstopmode extends AbstractAssignment {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param token the initial token for the primitive
-     */
-    public Errorstopmode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Errorstopmode( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+  /**
+   * org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context,
+                      TokenSource source, Typesetter typesetter )
+      throws HelpingException, TypesetterException {
 
-        context.setInteraction(Interaction.ERRORSTOPMODE);
-    }
+    context.setInteraction( Interaction.ERRORSTOPMODE );
+  }
 
 }

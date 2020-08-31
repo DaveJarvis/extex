@@ -27,186 +27,193 @@ import org.extex.framework.i18n.LocalizerFactory;
  * detected.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class ConfigurationException extends RuntimeException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2009L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2009L;
 
-    /**
-     * The field {@code localizer} contains the localizer.
-     */
-    private Localizer localizer = null;
+  /**
+   * The field {@code localizer} contains the localizer.
+   */
+  private Localizer localizer = null;
 
-    /**
-     * The field {@code source} contains the location for this exception.
-     */
-    private String source = null;
+  /**
+   * The field {@code source} contains the location for this exception.
+   */
+  private String source = null;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message string
-     */
-    public ConfigurationException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message string
+   */
+  public ConfigurationException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message string
-     * @param source the name of the file causing this error
-     */
-    public ConfigurationException(String message, String source) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message string
+   * @param source  the name of the file causing this error
+   */
+  public ConfigurationException( String message, String source ) {
 
-        super(message);
-        this.source = source;
-    }
+    super( message );
+    this.source = source;
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message message the message string
-     * @param cause the next Throwable in the chained list
-     */
-    public ConfigurationException(String message, Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message message the message string
+   * @param cause   the next Throwable in the chained list
+   */
+  public ConfigurationException( String message, Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Getter for the localized message of this Exception. The text is taken
-     * from the resource bundle {@code ConfigurationEception} The key depends
-     * on the further information present:
-     *
-     * <p>
-     * {@code ConfigurationException.FormatCauseMessageLocation} is used when a
-     * cause, a message, and a location are present. The arguments {1}, {2}, and
-     * {3} are set respectively.
-     * </p>
-     * <p>
-     * {@code ConfigurationException.FormatCauseLocation} is used when a cause
-     * and a location are present. The arguments {1} and {2} are set
-     * respectively.
-     * </p>
-     * <p>
-     * {@code ConfigurationException.FormatCauseMessage} is used when a cause
-     * and a message are present. The arguments {1} and {2} are set
-     * respectively.
-     * </p>
-     * <p>
-     * {@code ConfigurationException.FormatCause} is used when a cause is
-     * present. The argument {1} is set respectively.
-     * </p>
-     * <p>
-     * {@code ConfigurationException.FormatMessageLocation} is used when a
-     * message and a location are present. The arguments {1} and {2} are set
-     * respectively.
-     * </p>
-     * <p>
-     * {@code ConfigurationException.FormatMessage} is used when a message is
-     * present. The argument {1} is set respectively.
-     * </p>
-     * <p>
-     * {@code ConfigurationException.FormatLocation} is used when a location is
-     * present. The argument {1} is set respectively.
-     * </p>
-     * <p>
-     * The arguments {0} is always replaced by the text from {@link #getText()
-     * getText()}.
-     * </p>
-     *
-     * @return the message
-     */
-    @Override
-    public String getLocalizedMessage() {
+  /**
+   * Getter for the localized message of this Exception. The text is taken
+   * from the resource bundle {@code ConfigurationEception} The key depends
+   * on the further information present:
+   *
+   * <p>
+   * {@code ConfigurationException.FormatCauseMessageLocation} is used when a
+   * cause, a message, and a location are present. The arguments {1}, {2}, and
+   * {3} are set respectively.
+   * </p>
+   * <p>
+   * {@code ConfigurationException.FormatCauseLocation} is used when a cause
+   * and a location are present. The arguments {1} and {2} are set
+   * respectively.
+   * </p>
+   * <p>
+   * {@code ConfigurationException.FormatCauseMessage} is used when a cause
+   * and a message are present. The arguments {1} and {2} are set
+   * respectively.
+   * </p>
+   * <p>
+   * {@code ConfigurationException.FormatCause} is used when a cause is
+   * present. The argument {1} is set respectively.
+   * </p>
+   * <p>
+   * {@code ConfigurationException.FormatMessageLocation} is used when a
+   * message and a location are present. The arguments {1} and {2} are set
+   * respectively.
+   * </p>
+   * <p>
+   * {@code ConfigurationException.FormatMessage} is used when a message is
+   * present. The argument {1} is set respectively.
+   * </p>
+   * <p>
+   * {@code ConfigurationException.FormatLocation} is used when a location is
+   * present. The argument {1} is set respectively.
+   * </p>
+   * <p>
+   * The arguments {0} is always replaced by the text from {@link #getText()
+   * getText()}.
+   * </p>
+   *
+   * @return the message
+   */
+  @Override
+  public String getLocalizedMessage() {
 
-        String message = getMessage();
+    String message = getMessage();
 
-        if (getCause() != null) {
-            for (Throwable t = getCause(); t != null; t = t.getCause()) {
-                String msg = t.getLocalizedMessage();
+    if( getCause() != null ) {
+      for( Throwable t = getCause(); t != null; t = t.getCause() ) {
+        String msg = t.getLocalizedMessage();
 
-                if (msg != null) {
-                    if (source != null) {
-                        if (message != null) {
-                            return getLocalizer()
-                                .format(
-                                    "ConfigurationException.FormatCauseMessageLocation",
-                                    getText(), msg, message, source);
-                        }
-                        return getLocalizer().format(
-                            "ConfigurationException.FormatCauseLocation",
-                            getText(), msg, source);
-                    } else if (message != null) {
-                        return getLocalizer().format(
-                            "ConfigurationException.FormatCauseMessage",
-                            getText(), msg, message);
-                    } else {
-                        return getLocalizer().format(
-                            "ConfigurationException.FormatCause", getText(),
-                            msg);
-                    }
-                }
-            }
-        }
-
-        if (source != null) {
-            if (message != null) {
-                return getLocalizer().format(
-                    "ConfigurationException.FormatMessageLocation", getText(),
-                    message, source);
+        if( msg != null ) {
+          if( source != null ) {
+            if( message != null ) {
+              return getLocalizer()
+                  .format(
+                      "ConfigurationException.FormatCauseMessageLocation",
+                      getText(),
+                      msg,
+                      message,
+                      source );
             }
             return getLocalizer().format(
-                "ConfigurationException.FormatLocation", getText(), source);
-        } else if (message != null) {
+                "ConfigurationException.FormatCauseLocation",
+                getText(), msg, source );
+          }
+          else if( message != null ) {
             return getLocalizer().format(
-                "ConfigurationException.FormatMessage", getText(), message);
-        } else {
-            return getLocalizer().format("ConfigurationException.Format",
-                getText());
+                "ConfigurationException.FormatCauseMessage",
+                getText(), msg, message );
+          }
+          else {
+            return getLocalizer().format(
+                "ConfigurationException.FormatCause", getText(),
+                msg );
+          }
         }
+      }
     }
 
-    /**
-     * Getter for localizer.
-     *
-     * @return the localizer.
-     */
-    protected Localizer getLocalizer() {
-
-        if (this.localizer == null) {
-            this.localizer =
-                    LocalizerFactory.getLocalizer(ConfigurationException.class);
-        }
-        return this.localizer;
+    if( source != null ) {
+      if( message != null ) {
+        return getLocalizer().format(
+            "ConfigurationException.FormatMessageLocation", getText(),
+            message, source );
+      }
+      return getLocalizer().format(
+          "ConfigurationException.FormatLocation", getText(), source );
     }
-
-    /**
-     * Getter for source.
-     *
-     * @return the source
-     */
-    public String getSource() {
-
-        return source;
+    else if( message != null ) {
+      return getLocalizer().format(
+          "ConfigurationException.FormatMessage", getText(), message );
     }
-
-    /**
-     * Getter for the text prefix of this ConfigurationException. The text is
-     * taken from the resource bundle {@code ConfigurationEception} under the
-     * key {@code ConfigurationException.Text}.
-     *
-     * @return the text
-     */
-    protected String getText() {
-
-        return getLocalizer().format("ConfigurationException.Text");
+    else {
+      return getLocalizer().format( "ConfigurationException.Format",
+                                    getText() );
     }
+  }
+
+  /**
+   * Getter for localizer.
+   *
+   * @return the localizer.
+   */
+  protected Localizer getLocalizer() {
+
+    if( this.localizer == null ) {
+      this.localizer =
+          LocalizerFactory.getLocalizer( ConfigurationException.class );
+    }
+    return this.localizer;
+  }
+
+  /**
+   * Getter for source.
+   *
+   * @return the source
+   */
+  public String getSource() {
+
+    return source;
+  }
+
+  /**
+   * Getter for the text prefix of this ConfigurationException. The text is
+   * taken from the resource bundle {@code ConfigurationEception} under the
+   * key {@code ConfigurationException.Text}.
+   *
+   * @return the text
+   */
+  protected String getText() {
+
+    return getLocalizer().format( "ConfigurationException.Text" );
+  }
 
 }

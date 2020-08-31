@@ -26,16 +26,16 @@ import java.util.logging.Logger;
  * logger can be provided by the framework at start-up. Alternatively some other
  * means might be present to provide the logger before the component comes to
  * action.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface LogEnabled {
 
-    /**
-     * Setter for the logger.
-     * 
-     * @param logger the logger to use
-     */
-    void enableLogging(Logger logger);
+  /**
+   * Setter for the logger.
+   *
+   * @param logger the logger to use
+   */
+  void enableLogging( Logger logger );
 
 }

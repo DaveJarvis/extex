@@ -19,83 +19,81 @@
 
 package org.extex.framework.configuration.exception;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import org.junit.Test;
 
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * This is a test suite for {@link ConfigurationInvalidResourceException}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ConfigurationInvalidResourceExceptionTest {
 
-    /**
-     *  ... 
-     */
-    @Test
-    public void testGetLocalizedMessage() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetLocalizedMessage() {
 
-        ConfigurationInvalidResourceException e =
-                new ConfigurationInvalidResourceException();
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals(
-            "Invalid configuration name found. The name is empty or null ",
-            e.getLocalizedMessage());
-    }
+    ConfigurationInvalidResourceException e =
+        new ConfigurationInvalidResourceException();
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals(
+        "Invalid configuration name found. The name is empty or null ",
+        e.getLocalizedMessage() );
+  }
 
-    /**
-     *  ... 
-     */
-    @Test
-    public void testGetLocalizer() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetLocalizer() {
 
-        ConfigurationInvalidResourceException e =
-                new ConfigurationInvalidResourceException();
-        Locale.setDefault(Locale.ENGLISH);
-        assertNotNull(e.getLocalizer());
-    }
+    ConfigurationInvalidResourceException e =
+        new ConfigurationInvalidResourceException();
+    Locale.setDefault( Locale.ENGLISH );
+    assertNotNull( e.getLocalizer() );
+  }
 
-    /**
-     *  ... 
-     */
-    @Test
-    public void testGetMessage() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetMessage() {
 
-        ConfigurationInvalidResourceException e =
-                new ConfigurationInvalidResourceException();
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("", e.getMessage());
-    }
+    ConfigurationInvalidResourceException e =
+        new ConfigurationInvalidResourceException();
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals( "", e.getMessage() );
+  }
 
-    /**
-     *  ... 
-     */
-    @Test
-    public void testGetSource() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetSource() {
 
-        ConfigurationInvalidResourceException e =
-                new ConfigurationInvalidResourceException();
-        Locale.setDefault(Locale.ENGLISH);
-        assertNull(e.getSource());
-    }
+    ConfigurationInvalidResourceException e =
+        new ConfigurationInvalidResourceException();
+    Locale.setDefault( Locale.ENGLISH );
+    assertNull( e.getSource() );
+  }
 
-    /**
-     *  ... 
-     */
-    @Test
-    public void testGetText() {
+  /**
+   * ...
+   */
+  @Test
+  public void testGetText() {
 
-        ConfigurationInvalidResourceException e =
-                new ConfigurationInvalidResourceException();
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals(
-            "Invalid configuration name found. The name is empty or null",
-            e.getText());
-    }
+    ConfigurationInvalidResourceException e =
+        new ConfigurationInvalidResourceException();
+    Locale.setDefault( Locale.ENGLISH );
+    assertEquals(
+        "Invalid configuration name found. The name is empty or null",
+        e.getText() );
+  }
 
 }

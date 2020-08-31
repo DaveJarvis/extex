@@ -24,269 +24,268 @@ import org.extex.core.glue.GlueComponent;
 /**
  * This class implements the dimen value. This is a length with fixed point
  * arithmetic.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class Dimen extends DimenConstant {
 
-    /**
-     * The constant {@code ZERO} contains the non-stretchable and
-     * non-shrinkable value of 0&nbsp;pt.
-     */
-    public static final FixedDimen ZERO = new DimenConstant(0);
+  /**
+   * The constant {@code ZERO} contains the non-stretchable and
+   * non-shrinkable value of 0&nbsp;pt.
+   */
+  public static final FixedDimen ZERO = new DimenConstant( 0 );
 
-    /**
-     * The constant {@code ONE} contains the internal representation for 1pt.
-*/
-    public static final long ONE = GlueComponent.ONE;
+  /**
+   * The constant {@code ONE} contains the internal representation for 1pt.
+   */
+  public static final long ONE = GlueComponent.ONE;
 
-    /**
-     * The constant {@code ONE_INCH} contains the immutable dimen register
-     * representing the length of 1&nbsp;in.
-     */
-    public static final FixedDimen ONE_INCH = new DimenConstant(
-        ONE * 7227 / 100);
+  /**
+   * The constant {@code ONE_INCH} contains the immutable dimen register
+   * representing the length of 1&nbsp;in.
+   */
+  public static final FixedDimen ONE_INCH = new DimenConstant(
+      ONE * 7227 / 100 );
 
-    /**
-     * The constant {@code ONE_PT} contains the immutable dimen register
-     * representing the length of 1&nbsp;pt.
-     */
-    public static final FixedDimen ONE_PT = new DimenConstant(ONE);
+  /**
+   * The constant {@code ONE_PT} contains the immutable dimen register
+   * representing the length of 1&nbsp;pt.
+   */
+  public static final FixedDimen ONE_PT = new DimenConstant( ONE );
 
-    /**
-     * The constant {@code ONE_SP} contains the immutable dimen register
-     * representing the length of 1&nbsp;scaled point.
-     */
-    public static final FixedDimen ONE_SP = new DimenConstant(1);
+  /**
+   * The constant {@code ONE_SP} contains the immutable dimen register
+   * representing the length of 1&nbsp;scaled point.
+   */
+  public static final FixedDimen ONE_SP = new DimenConstant( 1 );
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * The constant {@code ZERO_PT} contains the immutable dimen register
-     * representing the length of 0&nbsp;pt.
-     */
-    public static final FixedDimen ZERO_PT = new DimenConstant(0);
+  /**
+   * The constant {@code ZERO_PT} contains the immutable dimen register
+   * representing the length of 0&nbsp;pt.
+   */
+  public static final FixedDimen ZERO_PT = new DimenConstant( 0 );
 
-    /**
-     * Creates a new object. The length stored in it is initialized to
-     * 0&nbsp;pt.
-     */
-    public Dimen() {
+  /**
+   * Creates a new object. The length stored in it is initialized to
+   * 0&nbsp;pt.
+   */
+  public Dimen() {
 
-        super(0);
+    super( 0 );
+  }
+
+  /**
+   * Creates a new object. This method makes a new instance of the class with
+   * the same value as the given instance. I.e. it acts like clone().
+   *
+   * @param value the value to imitate
+   */
+  public Dimen( FixedDimen value ) {
+
+    super( value == null ? 0 : value.getValue() );
+  }
+
+  /**
+   * Creates a new object. This method makes a new instance of the class with
+   * the given value.
+   *
+   * @param value the value to set
+   */
+  public Dimen( long value ) {
+
+    super( value );
+  }
+
+  /**
+   * Set the value of this dimen to the absolute value of a given value.
+   *
+   * @param d the given value
+   */
+  public void abs( FixedDimen d ) {
+
+    long v = d.getValue();
+    value = (v < 0 ? -v : v);
+  }
+
+  /**
+   * Add the value of the argument to the current value. This operation
+   * modifies the instance.
+   *
+   * <p>
+   * |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
+   * </p>
+   *
+   * @param d the Dimen to add
+   */
+  public void add( FixedDimen d ) {
+
+    value += d.getValue();
+  }
+
+  /**
+   * Add the value of the argument to the current value. This operation
+   * modifies the instance.
+   *
+   * <p>
+   * |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
+   * </p>
+   *
+   * @param d the value to add in sp
+   */
+  public void add( long d ) {
+
+    if( d != 0 ) {
+      value += d;
     }
+  }
 
-    /**
-     * Creates a new object. This method makes a new instance of the class with
-     * the same value as the given instance. I.e. it acts like clone().
-     * 
-     * @param value the value to imitate
-     */
-    public Dimen(FixedDimen value) {
+  /**
+   * Divide the current value with a given number. This operation modifies
+   * this instance.
+   *
+   * <p>
+   * |<i>this</i>| &rarr; |<i>this</i>| / <i>denom</i>
+   * </p>
+   *
+   * @param denom denominator to divide by
+   * @throws ArithmeticException in case of a division by 0, i.e. if denom is
+   *                             0.
+   */
+  public void divide( long denom ) throws ArithmeticException {
 
-        super(value == null ? 0 : value.getValue());
+    if( denom == 0 ) {
+      throw new ArithmeticException();
     }
-
-    /**
-     * Creates a new object. This method makes a new instance of the class with
-     * the given value.
-     * 
-     * @param value the value to set
-     */
-    public Dimen(long value) {
-
-        super(value);
+    if( denom != 1 ) {
+      value /= denom;
     }
+  }
 
-    /**
-     * Set the value of this dimen to the absolute value of a given value.
-     * 
-     * @param d the given value
-     */
-    public void abs(FixedDimen d) {
+  /**
+   * Test for a value of zero.
+   *
+   * @return {@code true} iff the value is 0
+   */
+  public boolean isZero() {
 
-        long v = d.getValue();
-        value = (v < 0 ? -v : v);
+    return value == 0;
+  }
+
+  /**
+   * Sets the value of the dimen to the maximum of the value already stored
+   * and a given argument.
+   * <p>
+   * |this| = max(|this|, |d|)
+   *
+   * @param d the other dimen
+   */
+  public void max( FixedDimen d ) {
+
+    long val = d.getValue();
+    if( val > getValue() ) {
+      value = val;
     }
+  }
 
-    /**
-     * Add the value of the argument to the current value. This operation
-     * modifies the instance.
-     * 
-     * <p>
-     * |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
-     * </p>
-     * 
-     * @param d the Dimen to add
-     */
-    public void add(FixedDimen d) {
+  /**
+   * Sets the value of the dimen to the minimum of the value already stored
+   * and a given argument.
+   * <p>
+   * |this| = min(|this|, |d|)
+   *
+   * @param d the other dimen
+   */
+  public void min( FixedDimen d ) {
 
-        value += d.getValue();
+    long val = d.getValue();
+    if( val < getValue() ) {
+      value = val;
     }
+  }
 
-    /**
-     * Add the value of the argument to the current value. This operation
-     * modifies the instance.
-     * 
-     * <p>
-     * |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
-     * </p>
-     * 
-     * @param d the value to add in sp
-     */
-    public void add(long d) {
+  /**
+   * Multiply the value by an integer fraction.
+   * <p>
+   * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
+   * </p>
+   *
+   * @param nom   nominator
+   * @param denom denominator
+   */
+  public void multiply( long nom, long denom ) {
 
-        if (d != 0) {
-            value += d;
-        }
+    value = value * nom / denom;
+  }
+
+  /**
+   * Multiply the current value with a given number. This operation modifies
+   * this instance.
+   *
+   * <p>
+   * |<i>this</i>| &rarr; |<i>this</i>| * <i>factor</i>
+   * </p>
+   *
+   * @param factor the factor to multiply with
+   */
+  public void multiply( long factor ) {
+
+    if( factor != 1 ) {
+      value = getValue() * factor;
     }
+  }
 
-    /**
-     * Divide the current value with a given number. This operation modifies
-     * this instance.
-     * 
-     * <p>
-     * |<i>this</i>| &rarr; |<i>this</i>| / <i>denom</i>
-     * </p>
-     * 
-     * @param denom denominator to divide by
-     * 
-     * @throws ArithmeticException in case of a division by 0, i.e. if denom is
-     *         0.
-     */
-    public void divide(long denom) throws ArithmeticException {
+  /**
+   * Negate the value of the argument to the current value. This operation
+   * modifies the instance.
+   *
+   * <p>
+   * |<i>this</i>| &rarr; - |<i>this</i>|
+   * </p>
+   */
+  public void negate() {
 
-        if (denom == 0) {
-            throw new ArithmeticException();
-        }
-        if (denom != 1) {
-            value /= denom;
-        }
-    }
+    value = -getValue();
+  }
 
-    /**
-     * Test for a value of zero.
-     * 
-     * @return {@code true} iff the value is 0
-     */
-    public boolean isZero() {
+  /**
+   * Setter for the value. The order of the argument is ignored.
+   *
+   * @param d the new value
+   */
+  public void set( FixedDimen d ) {
 
-        return value == 0;
-    }
+    value = d.getValue();
+  }
 
-    /**
-     * Sets the value of the dimen to the maximum of the value already stored
-     * and a given argument.
-     * 
-     * |this| = max(|this|, |d|)
-     * 
-     * @param d the other dimen
-     */
-    public void max(FixedDimen d) {
+  /**
+   * Setter for the value. The order of the argument is ignored.
+   *
+   * @param d the new value
+   */
+  public void set( long d ) {
 
-        long val = d.getValue();
-        if (val > getValue()) {
-            value = val;
-        }
-    }
+    value = d;
+  }
 
-    /**
-     * Sets the value of the dimen to the minimum of the value already stored
-     * and a given argument.
-     * 
-     * |this| = min(|this|, |d|)
-     * 
-     * @param d the other dimen
-     */
-    public void min(FixedDimen d) {
+  /**
+   * Subtract the value of the argument from the current value. This operation
+   * modifies the instance.
+   *
+   * <p>
+   * |<i>this</i>| &rarr; |<i>this</i>| - |<i>d</i>|
+   * </p>
+   *
+   * @param d the Dimen to subtract
+   */
+  public void subtract( FixedDimen d ) {
 
-        long val = d.getValue();
-        if (val < getValue()) {
-            value = val;
-        }
-    }
-
-    /**
-     * Multiply the value by an integer fraction.
-     * <p>
-     * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
-     * </p>
-     * 
-     * @param nom nominator
-     * @param denom denominator
-     */
-    public void multiply(long nom, long denom) {
-
-        value = value * nom / denom;
-    }
-
-    /**
-     * Multiply the current value with a given number. This operation modifies
-     * this instance.
-     * 
-     * <p>
-     * |<i>this</i>| &rarr; |<i>this</i>| * <i>factor</i>
-     * </p>
-     * 
-     * @param factor the factor to multiply with
-     */
-    public void multiply(long factor) {
-
-        if (factor != 1) {
-            value = getValue() * factor;
-        }
-    }
-
-    /**
-     * Negate the value of the argument to the current value. This operation
-     * modifies the instance.
-     * 
-     * <p>
-     * |<i>this</i>| &rarr; - |<i>this</i>|
-     * </p>
-     */
-    public void negate() {
-
-        value = -getValue();
-    }
-
-    /**
-     * Setter for the value. The order of the argument is ignored.
-     * 
-     * @param d the new value
-     */
-    public void set(FixedDimen d) {
-
-        value = d.getValue();
-    }
-
-    /**
-     * Setter for the value. The order of the argument is ignored.
-     * 
-     * @param d the new value
-     */
-    public void set(long d) {
-
-        value = d;
-    }
-
-    /**
-     * Subtract the value of the argument from the current value. This operation
-     * modifies the instance.
-     * 
-     * <p>
-     * |<i>this</i>| &rarr; |<i>this</i>| - |<i>d</i>|
-     * </p>
-     * 
-     * @param d the Dimen to subtract
-     */
-    public void subtract(FixedDimen d) {
-
-        value -= d.getValue();
-    }
+    value -= d.getValue();
+  }
 
 }

@@ -25,53 +25,56 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \accent}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class AccentTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(AccentTest.class);
-    }
+    (new JUnitCore()).run( AccentTest.class );
+  }
 
 
-    public AccentTest() {
+  public AccentTest() {
 
-        setPrimitive("accent");setArguments("13 a");setPrepare("");
-    }
+    setPrimitive( "accent" );
+    setArguments( "13 a" );
+    setPrepare( "" );
+  }
 
-    /**
-     * Test case checking that {@code \accent} does not work in math mode
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAccentInMathMode() throws Exception {
+  /**
+   * Test case checking that {@code \accent} does not work in math mode
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAccentInMathMode() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_MATH + "$\\accent $\\end",
-            // --- log message ---
-            "Please use \\mathaccent for accents in math mode");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_MATH + "$\\accent $\\end",
+                  // --- log message ---
+                  "Please use \\mathaccent for accents in math mode" );
+  }
 
-    /**
-     * Test case checking that {@code \accent} does not work in display math mode
-* 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAccentInDisplayMathMode() throws Exception {
+  /**
+   * Test case checking that {@code \accent} does not work in display math 
+   * mode
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testAccentInDisplayMathMode() throws Exception {
 
-        assertFailure(// --- input code ---
-            DEFINE_MATH + "$$\\accent ",
-            // --- log message ---
-            "Please use \\mathaccent for accents in math mode");
-    }
+    assertFailure(// --- input code ---
+                  DEFINE_MATH + "$$\\accent ",
+                  // --- log message ---
+                  "Please use \\mathaccent for accents in math mode" );
+  }
 
 }

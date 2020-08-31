@@ -24,44 +24,47 @@ package org.extex.backend.documentWriter.pdf.exception;
  * The colorsystem is not aviable in the PDF.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class DocumentWriterPdfNotSupportedColorException
-        extends
-            DocumentWriterPdfException {
+    extends
+    DocumentWriterPdfException {
 
-    /**
-     * The field {@code serialVersionUID} ...
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} ...
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Create a new object.
-     * @param message The message.
-     */
-    public DocumentWriterPdfNotSupportedColorException(String message) {
+  /**
+   * Create a new object.
+   *
+   * @param message The message.
+   */
+  public DocumentWriterPdfNotSupportedColorException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Create a new object.
-     * @param message   The message.
-     * @param cause     The cuase.
-     */
-    public DocumentWriterPdfNotSupportedColorException(String message,
-            Throwable cause) {
+  /**
+   * Create a new object.
+   *
+   * @param message The message.
+   * @param cause   The cuase.
+   */
+  public DocumentWriterPdfNotSupportedColorException( String message,
+                                                      Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Create a new object.
-     * @param cause The cause.
-     */
-    public DocumentWriterPdfNotSupportedColorException(Throwable cause) {
+  /**
+   * Create a new object.
+   *
+   * @param cause The cause.
+   */
+  public DocumentWriterPdfNotSupportedColorException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
 }

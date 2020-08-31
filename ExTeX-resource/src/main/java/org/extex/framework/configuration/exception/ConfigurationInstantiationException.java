@@ -22,43 +22,44 @@ package org.extex.framework.configuration.exception;
 /**
  * This exception is thrown when a dynamically loaded class signals an
  * instantiation exception.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
-public class ConfigurationInstantiationException extends ConfigurationException {
+ */
+public class ConfigurationInstantiationException
+    extends ConfigurationException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2010L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2010L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the next Throwable in the list
-     */
-    public ConfigurationInstantiationException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the next Throwable in the list
+   */
+  public ConfigurationInstantiationException( Throwable cause ) {
 
-        super("", cause);
-    }
+    super( "", cause );
+  }
 
-    /**
-     * Getter for the text prefix of this ConfigException. The text is taken
-     * from the resource bundle {@code ConfigurationEception} under the key
-     * {@code ConfigurationInstantiationException.Text}. The argument {0} is
-     * replaced by the message of the embedded cause as passed to the
-     * constructor.
-     * 
-     * @return the text
-     */
-    @Override
-    protected String getText() {
+  /**
+   * Getter for the text prefix of this ConfigException. The text is taken
+   * from the resource bundle {@code ConfigurationEception} under the key
+   * {@code ConfigurationInstantiationException.Text}. The argument {0} is
+   * replaced by the message of the embedded cause as passed to the
+   * constructor.
+   *
+   * @return the text
+   */
+  @Override
+  protected String getText() {
 
-        Throwable cause = getCause();
-        String localizedMessage =
-                (cause == null ? "" : cause.getLocalizedMessage());
-        return getLocalizer().format(
-            "ConfigurationInstantiationException.Text", localizedMessage);
-    }
+    Throwable cause = getCause();
+    String localizedMessage =
+        (cause == null ? "" : cause.getLocalizedMessage());
+    return getLocalizer().format(
+        "ConfigurationInstantiationException.Text", localizedMessage );
+  }
 
 }

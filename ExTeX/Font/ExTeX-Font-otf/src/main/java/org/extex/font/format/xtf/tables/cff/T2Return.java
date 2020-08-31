@@ -19,60 +19,61 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * T2: return: return (11).
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class T2Return extends T2Subroutine {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @param ch The char string.
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2Return(List<T2CharString> stack, CharString ch) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @param ch    The char string.
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2Return( List<T2CharString> stack, CharString ch )
+      throws IOException {
 
-        super(stack, new short[]{T2CALLGSUBR}, ch);
+    super( stack, new short[]{T2CALLGSUBR}, ch );
 
-    }
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return TYPE_RETURN;
-    }
+    return TYPE_RETURN;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "return";
-    }
+    return "return";
+  }
 
-@Override
-    public Object getValue() {
+  @Override
+  public Object getValue() {
 
-        return null;
-    }
+    return null;
+  }
 
-@Override
-    public String toText() {
+  @Override
+  public String toText() {
 
-        return getName();
-    }
+    return getName();
+  }
 
-@Override
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  @Override
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writer.writeStartElement(getName());
-        writer.writeEndElement();
-    }
+    writer.writeStartElement( getName() );
+    writer.writeEndElement();
+  }
 
 }

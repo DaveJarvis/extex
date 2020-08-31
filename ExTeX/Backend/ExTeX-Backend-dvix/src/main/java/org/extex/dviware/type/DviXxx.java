@@ -19,79 +19,80 @@
 
 package org.extex.dviware.type;
 
+import org.extex.dviware.Dvi;
+
 import java.io.IOException;
 import java.io.OutputStream;
-
-import org.extex.dviware.Dvi;
 
 /**
  * This class represents the DVI instruction {@code xxx}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DviXxx extends AbstractDviCode {
 
-    /**
-     * The field {@code content} contains the array of bytes to pass to the
-     * DVI processor.
-     */
-    private final byte[] content;
+  /**
+   * The field {@code content} contains the array of bytes to pass to the
+   * DVI processor.
+   */
+  private final byte[] content;
 
-    /**
-     * Creates a new object.
-     *
-     * @param content the array of bytes to pass to the DVI processor
-     */
-    public DviXxx(byte[] content) {
+  /**
+   * Creates a new object.
+   *
+   * @param content the array of bytes to pass to the DVI processor
+   */
+  public DviXxx( byte[] content ) {
 
-        super("xxx" + variant(content.length));
-        this.content = content;
+    super( "xxx" + variant( content.length ) );
+    this.content = content;
+  }
+
+  /**
+   * Creates a new object.
+   *
+   * @param content the array of bytes to pass to the DVI processor
+   */
+  public DviXxx( String content ) {
+
+    this( content.getBytes() );
+  }
+
+  /**
+   * Write the code to the output stream.
+   *
+   * @param stream the target stream
+   * @return the number of bytes actually written
+   * @throws IOException in case of an error
+   * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
+   */
+  public int write( OutputStream stream ) throws IOException {
+
+    int len;
+    if( content.length < 1 ) {
+      return 0;
     }
-
-    /**
-     * Creates a new object.
-     *
-     * @param content the array of bytes to pass to the DVI processor
-     */
-    public DviXxx(String content) {
-
-        this(content.getBytes());
+    else if( content.length <= 0xff ) {
+      len = 2;
+      stream.write( Dvi.XXX1 );
+      stream.write( content.length );
     }
-
-    /**
-     * Write the code to the output stream.
-     *
-     * @param stream the target stream
-     *
-     * @return the number of bytes actually written
-     *
-     * @throws IOException in case of an error
-     *
-     * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
-     */
-    public int write(OutputStream stream) throws IOException {
-
-        int len;
-        if (content.length < 1) {
-            return 0;
-        } else if (content.length <= 0xff) {
-            len = 2;
-            stream.write(Dvi.XXX1);
-            stream.write(content.length);
-        } else if (content.length <= 0xffff) {
-            len = 3;
-            stream.write(Dvi.XXX2);
-            write2(stream, content.length);
-        } else if (content.length <= 0xffffff) {
-            len = 4;
-            stream.write(Dvi.XXX2);
-            write3(stream, content.length);
-        } else {
-            len = 5;
-            stream.write(Dvi.XXX4);
-            write4(stream, content.length);
-        }
-        return len + content.length;
+    else if( content.length <= 0xffff ) {
+      len = 3;
+      stream.write( Dvi.XXX2 );
+      write2( stream, content.length );
     }
+    else if( content.length <= 0xffffff ) {
+      len = 4;
+      stream.write( Dvi.XXX2 );
+      write3( stream, content.length );
+    }
+    else {
+      len = 5;
+      stream.write( Dvi.XXX4 );
+      write4( stream, content.length );
+    }
+    return len + content.length;
+  }
 
 }

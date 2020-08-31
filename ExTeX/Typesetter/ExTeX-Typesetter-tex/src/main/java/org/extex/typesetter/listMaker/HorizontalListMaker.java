@@ -53,282 +53,287 @@ import java.util.List;
  * <p>
  * After {@code par()}, the line breaking and hyphenation are applied.
  * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class HorizontalListMaker extends AbstractListMaker {
 
-    /**
-     * The constant {@code DEFAULT_SPACEFACTOR} contains the default value for
-     * the space factor. It is 1000 according to TeX.
-     */
-    private static final int DEFAULT_SPACEFACTOR = 1000;
+  /**
+   * The constant {@code DEFAULT_SPACEFACTOR} contains the default value for
+   * the space factor. It is 1000 according to TeX.
+   */
+  private static final int DEFAULT_SPACEFACTOR = 1000;
 
-    /**
-     * The constant {@code SPACEFACTOR_THRESHOLD} contains the threshold for
-     * the space factor above which the space is handled different.
-     */
-    private static final int SPACEFACTOR_THRESHOLD = 2000;
+  /**
+   * The constant {@code SPACEFACTOR_THRESHOLD} contains the threshold for
+   * the space factor above which the space is handled different.
+   */
+  private static final int SPACEFACTOR_THRESHOLD = 2000;
 
-    /**
-     * The field {@code afterParagraphObservers} contains the observers to be
-     * invoked after the paragraph has been completed.
-     */
-    private final List<ParagraphObserver> afterParagraphObservers =
-            new ArrayList<ParagraphObserver>();
+  /**
+   * The field {@code afterParagraphObservers} contains the observers to be
+   * invoked after the paragraph has been completed.
+   */
+  private final List<ParagraphObserver> afterParagraphObservers =
+      new ArrayList<ParagraphObserver>();
 
-    /**
-     * The field {@code nodes} contains the node list encapsulated by this
-     * class.
-     */
-    private HorizontalListNode nodes = new HorizontalListNode();
+  /**
+   * The field {@code nodes} contains the node list encapsulated by this
+   * class.
+   */
+  private HorizontalListNode nodes = new HorizontalListNode();
 
-    /**
-     * The field {@code spaceFactor} contains the current space factor.
-*/
-    private long spaceFactor = DEFAULT_SPACEFACTOR;
+  /**
+   * The field {@code spaceFactor} contains the current space factor.
+   */
+  private long spaceFactor = DEFAULT_SPACEFACTOR;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param manager the manager to ask for global changes
-     * @param locator the locator
-     */
-    public HorizontalListMaker(ListManager manager, Locator locator) {
+  /**
+   * Creates a new object.
+   *
+   * @param manager the manager to ask for global changes
+   * @param locator the locator
+   */
+  public HorizontalListMaker( ListManager manager, Locator locator ) {
 
-        super(manager, locator);
+    super( manager, locator );
+  }
+
+  @Override
+  public void add( FixedGlue g ) throws TypesetterException {
+
+    nodes.addSkip( g );
+    spaceFactor = DEFAULT_SPACEFACTOR;
+  }
+
+  @Override
+  public void add( Node c ) throws TypesetterException, ConfigurationException {
+
+    nodes.add( c );
+    spaceFactor = DEFAULT_SPACEFACTOR;
+  }
+
+  /**
+   * org.extex.typesetter.TypesetterOptions)
+   */
+  @Override
+  public void addAndAdjust( NodeList list, TypesetterOptions options )
+      throws TypesetterException {
+
+    nodes.add( list ); // TODO gene: correct?
+  }
+
+  /**
+   * FixedCount)
+   */
+  @Override
+  public void addSpace( TypesettingContext context, FixedCount sfCount )
+      throws TypesetterException,
+      ConfigurationException {
+
+    long sf = (sfCount != null ? sfCount.getValue() : spaceFactor);
+    Glue space = new Glue( context.getFont().getSpace() );
+
+    // gene: maybe my interpretation of the TeXbook is slightly wrong
+    if( sf != DEFAULT_SPACEFACTOR ) { // normal case handled first
+      if( sf == 0 ) {
+        return;
+      }
+      else if( sf >= SPACEFACTOR_THRESHOLD ) {
+        TypesetterOptions options = getManager().getOptions();
+        FixedGlue xspaceskip = options.getGlueOption( "xspaceskip" );
+        FixedGlue spaceskip = options.getGlueOption( "spaceskip" );
+
+        if( xspaceskip != null ) {
+          space = xspaceskip.copy();
+        }
+        else if( spaceskip != null ) {
+          space = spaceskip.copy();
+          space.multiplyStretch( sf, DEFAULT_SPACEFACTOR );
+          space.multiplyShrink( DEFAULT_SPACEFACTOR, sf );
+        }
+        else {
+          space = space.copy();
+          space.multiplyStretch( sf, DEFAULT_SPACEFACTOR );
+          space.multiplyShrink( DEFAULT_SPACEFACTOR, sf );
+        }
+      }
+      else {
+        space = space.copy();
+        space.multiplyStretch( sf, DEFAULT_SPACEFACTOR );
+        space.multiplyShrink( DEFAULT_SPACEFACTOR, sf );
+      }
     }
 
-@Override
-    public void add(FixedGlue g) throws TypesetterException {
+    add( new SpaceNode( space ) );
+  }
 
-        nodes.addSkip(g);
-        spaceFactor = DEFAULT_SPACEFACTOR;
-    }
+  @Override
+  public void afterParagraph( ParagraphObserver observer ) {
 
-@Override
-    public void add(Node c) throws TypesetterException, ConfigurationException {
+    afterParagraphObservers.add( observer );
+  }
 
-        nodes.add(c);
-        spaceFactor = DEFAULT_SPACEFACTOR;
-    }
+  @Override
+  public NodeList complete( TypesetterOptions context )
+      throws TypesetterException,
+      ConfigurationException {
 
-    /**
-*      org.extex.typesetter.TypesetterOptions)
-     */
-    @Override
-    public void addAndAdjust(NodeList list, TypesetterOptions options)
-            throws TypesetterException {
+    return getManager().buildParagraph( nodes );
+  }
 
-        nodes.add(list); // TODO gene: correct?
-    }
+  /**
+   * org.extex.typesetter.tc.TypesettingContext,
+   * org.extex.core.UnicodeChar)
+   */
+  @Override
+  public void cr( Context context, TypesettingContext tc, UnicodeChar uc )
+      throws TypesetterException {
 
-    /**
-*      FixedCount)
-     */
-    @Override
-    public void addSpace(TypesettingContext context, FixedCount sfCount)
-            throws TypesetterException,
-                ConfigurationException {
+    // TODO gene
+  }
 
-        long sf = (sfCount != null ? sfCount.getValue() : spaceFactor);
-        Glue space = new Glue(context.getFont().getSpace());
+  @Override
+  public Node getLastNode() {
 
-        // gene: maybe my interpretation of the TeXbook is slightly wrong
-        if (sf != DEFAULT_SPACEFACTOR) { // normal case handled first
-            if (sf == 0) {
-                return;
-            } else if (sf >= SPACEFACTOR_THRESHOLD) {
-                TypesetterOptions options = getManager().getOptions();
-                FixedGlue xspaceskip = options.getGlueOption("xspaceskip");
-                FixedGlue spaceskip = options.getGlueOption("spaceskip");
+    return (nodes.isEmpty() ? null : nodes.get( nodes.size() - 1 ));
+  }
 
-                if (xspaceskip != null) {
-                    space = xspaceskip.copy();
-                } else if (spaceskip != null) {
-                    space = spaceskip.copy();
-                    space.multiplyStretch(sf, DEFAULT_SPACEFACTOR);
-                    space.multiplyShrink(DEFAULT_SPACEFACTOR, sf);
-                } else {
-                    space = space.copy();
-                    space.multiplyStretch(sf, DEFAULT_SPACEFACTOR);
-                    space.multiplyShrink(DEFAULT_SPACEFACTOR, sf);
-                }
-            } else {
-                space = space.copy();
-                space.multiplyStretch(sf, DEFAULT_SPACEFACTOR);
-                space.multiplyShrink(DEFAULT_SPACEFACTOR, sf);
+  @Override
+  public Mode getMode() {
+
+    return Mode.HORIZONTAL;
+  }
+
+  /**
+   * Getter for nodes.
+   *
+   * @return the nodes.
+   */
+  protected HorizontalListNode getNodes() {
+
+    return this.nodes;
+  }
+
+  @Override
+  public long getSpacefactor() {
+
+    return spaceFactor;
+  }
+
+  /**
+   * org.extex.typesetter.tc.TypesettingContext,
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.core.Locator)
+   *
+   * @see "The TeXbook [p.76]"
+   */
+  @Override
+  public boolean letter( UnicodeChar symbol, TypesettingContext tc,
+                         Context context, TokenSource source, Locator locator )
+      throws TypesetterException {
+
+    UnicodeChar c = symbol;
+    Node node;
+    int size = nodes.size();
+    if( size > 0 ) {
+      Node n = nodes.get( size - 1 );
+      if( n instanceof CharNode ) {
+        CharNode cn = ((CharNode) n);
+        Font f = tc.getFont();
+        if( cn.getTypesettingContext().getFont().equals( f ) ) {
+          UnicodeChar cnc = cn.getCharacter();
+          UnicodeChar lig =
+              tc.getLanguage().getLigature( cnc, symbol, f );
+          if( lig != null ) {
+            nodes.remove( size - 1 );
+            c = lig;
+          }
+          else {
+            FixedDimen kerning = f.getKerning( cnc, symbol );
+            if( kerning != null && kerning.ne( Dimen.ZERO_PT ) ) {
+              nodes.add( new ImplicitKernNode( kerning, true ) );
             }
+          }
         }
-
-        add(new SpaceNode(space));
+      }
+    }
+    node = getManager().getNodeFactory().getNode( tc, c );
+    if( node == null ) {
+      return true;
     }
 
-@Override
-    public void afterParagraph(ParagraphObserver observer) {
+    nodes.add( node );
 
-        afterParagraphObservers.add(observer);
+    if( node instanceof CharNode ) {
+      int f = ((CharNode) node).getSpaceFactor();
+
+      if( f != 0 ) {
+        spaceFactor =
+            (spaceFactor < DEFAULT_SPACEFACTOR
+                && f > DEFAULT_SPACEFACTOR
+                ? DEFAULT_SPACEFACTOR : f);
+      }
     }
+    return false;
+  }
 
-@Override
-    public NodeList complete(TypesetterOptions context)
-            throws TypesetterException,
-                ConfigurationException {
+  @Override
+  public void par() throws TypesetterException, ConfigurationException {
 
-        return getManager().buildParagraph(nodes);
+    try {
+      // Note: the observers have to be run in reverse order to restore
+      // the language properly.
+      for( int i = afterParagraphObservers.size() - 1; i >= 0; i-- ) {
+        afterParagraphObservers.get( i ).atParagraph( nodes );
+      }
+    } catch( Exception e ) {
+      throw new TypesetterException( e );
     }
+    getManager().endParagraph();
+  }
 
-    /**
-*      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.UnicodeChar)
-     */
-    @Override
-    public void cr(Context context, TypesettingContext tc, UnicodeChar uc)
-            throws TypesetterException {
+  @Override
+  public void removeLastNode() {
 
-        // TODO gene
+    nodes.remove( nodes.size() - 1 );
+  }
+
+  /**
+   * Setter for nodes.
+   *
+   * @param nodes the nodes to set.
+   */
+  protected void setNodes( HorizontalListNode nodes ) {
+
+    this.nodes = nodes;
+  }
+
+  @Override
+  public void setSpacefactor( FixedCount f )
+      throws TypesetterUnsupportedException,
+      InvalidSpacefactorException {
+
+    long sf = f.getValue();
+    if( sf <= 0 ) {
+      throw new InvalidSpacefactorException();
     }
+    spaceFactor = sf;
+  }
 
-@Override
-    public Node getLastNode() {
+  @Override
+  public void showlist( StringBuilder sb, long l, long m ) {
 
-        return (nodes.isEmpty() ? null : nodes.get(nodes.size() - 1));
-    }
+    sb.append( "spacefactor " );
+    sb.append( spaceFactor );
+    sb.append( '\n' );
+  }
 
-@Override
-    public Mode getMode() {
+  @Override
+  public String toString() {
 
-        return Mode.HORIZONTAL;
-    }
-
-    /**
-     * Getter for nodes.
-     * 
-     * @return the nodes.
-     */
-    protected HorizontalListNode getNodes() {
-
-        return this.nodes;
-    }
-
-@Override
-    public long getSpacefactor() {
-
-        return spaceFactor;
-    }
-
-    /**
-*      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
-     * @see "The TeXbook [p.76]"
-     */
-    @Override
-    public boolean letter(UnicodeChar symbol, TypesettingContext tc,
-            Context context, TokenSource source, Locator locator)
-            throws TypesetterException {
-
-        UnicodeChar c = symbol;
-        Node node;
-        int size = nodes.size();
-        if (size > 0) {
-            Node n = nodes.get(size - 1);
-            if (n instanceof CharNode) {
-                CharNode cn = ((CharNode) n);
-                Font f = tc.getFont();
-                if (cn.getTypesettingContext().getFont().equals(f)) {
-                    UnicodeChar cnc = cn.getCharacter();
-                    UnicodeChar lig =
-                            tc.getLanguage().getLigature(cnc, symbol, f);
-                    if (lig != null) {
-                        nodes.remove(size - 1);
-                        c = lig;
-                    } else {
-                        FixedDimen kerning = f.getKerning(cnc, symbol);
-                        if (kerning != null && kerning.ne(Dimen.ZERO_PT)) {
-                            nodes.add(new ImplicitKernNode(kerning, true));
-                        }
-                    }
-                }
-            }
-        }
-        node = getManager().getNodeFactory().getNode(tc, c);
-        if (node == null) {
-            return true;
-        }
-
-        nodes.add(node);
-
-        if (node instanceof CharNode) {
-            int f = ((CharNode) node).getSpaceFactor();
-
-            if (f != 0) {
-                spaceFactor =
-                        (spaceFactor < DEFAULT_SPACEFACTOR
-                                && f > DEFAULT_SPACEFACTOR
-                        ? DEFAULT_SPACEFACTOR : f);
-            }
-        }
-        return false;
-    }
-
-@Override
-    public void par() throws TypesetterException, ConfigurationException {
-
-        try {
-            // Note: the observers have to be run in reverse order to restore
-            // the language properly.
-            for (int i = afterParagraphObservers.size() - 1; i >= 0; i--) {
-                afterParagraphObservers.get(i).atParagraph(nodes);
-            }
-        } catch (Exception e) {
-            throw new TypesetterException(e);
-        }
-        getManager().endParagraph();
-    }
-
-@Override
-    public void removeLastNode() {
-
-        nodes.remove(nodes.size() - 1);
-    }
-
-    /**
-     * Setter for nodes.
-     * 
-     * @param nodes the nodes to set.
-     */
-    protected void setNodes(HorizontalListNode nodes) {
-
-        this.nodes = nodes;
-    }
-
-@Override
-    public void setSpacefactor(FixedCount f)
-            throws TypesetterUnsupportedException,
-                InvalidSpacefactorException {
-
-        long sf = f.getValue();
-        if (sf <= 0) {
-            throw new InvalidSpacefactorException();
-        }
-        spaceFactor = sf;
-    }
-
-@Override
-    public void showlist(StringBuilder sb, long l, long m) {
-
-        sb.append("spacefactor ");
-        sb.append(spaceFactor);
-        sb.append('\n');
-    }
-
-@Override
-    public String toString() {
-
-        return super.toString() + "\n" + nodes.toString();
-    }
+    return super.toString() + "\n" + nodes.toString();
+  }
 
 }

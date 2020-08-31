@@ -19,8 +19,6 @@
 
 package org.extex.typesetter.type.noad;
 
-import java.util.logging.Logger;
-
 import org.extex.core.muskip.Mudimen;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.exception.TypesetterException;
@@ -28,71 +26,73 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.node.ExplicitKernNode;
 
+import java.util.logging.Logger;
+
 /**
  * This Noad carries a kerning value in math units.
  * This value is translated into a KernNode
  * with the translated kerning value.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class KernNoad extends AbstractNoad {
 
-    /**
-     * The field {@code kern} contains the kerning. A positive value means a
-     * right shift.
-     */
-    private final Mudimen kern;
+  /**
+   * The field {@code kern} contains the kerning. A positive value means a
+   * right shift.
+   */
+  private final Mudimen kern;
 
-    /**
-     * Creates a new object.
-     *
-     * @param kern the glue
-     */
-    public KernNoad(Mudimen kern) {
+  /**
+   * Creates a new object.
+   *
+   * @param kern the glue
+   */
+  public KernNoad( Mudimen kern ) {
 
-        this.kern = kern;
+    this.kern = kern;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.extex.typesetter.type.noad.Noad#typeset(
+   *org.extex.typesetter.type.noad.Noad,
+   * org.extex.typesetter.type.noad.NoadList,
+   * int,
+   * org.extex.typesetter.type.NodeList,
+   * org.extex.typesetter.type.noad.util.MathContext,
+   * java.util.logging.Logger)
+   */
+  public void typeset( Noad previousNoad, NoadList noads,
+                       int index, NodeList list,
+                       MathContext mathContext, Logger logger )
+      throws TypesetterException,
+      ConfigurationException {
+
+    if( previousNoad instanceof GlueNoad
+        && ((GlueNoad) previousNoad).isKill() ) {
+      StyleNoad style = mathContext.getStyle();
+      if( style == StyleNoad.SCRIPTSTYLE
+          || style == StyleNoad.SCRIPTSCRIPTSTYLE ) {
+        return;
+      }
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.typesetter.type.noad.Noad#typeset(
-     *      org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList,
-     *      int,
-     *      org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.type.noad.util.MathContext,
-     *      java.util.logging.Logger)
-     */
-    public void typeset(Noad previousNoad, NoadList noads,
-            int index, NodeList list,
-            MathContext mathContext, Logger logger)
-            throws TypesetterException,
-                ConfigurationException {
+    list.add( new ExplicitKernNode( mathContext.convert( kern ), true ) );
+  }
 
-        if (previousNoad instanceof GlueNoad
-                && ((GlueNoad) previousNoad).isKill()) {
-            StyleNoad style = mathContext.getStyle();
-            if (style == StyleNoad.SCRIPTSTYLE
-                    || style == StyleNoad.SCRIPTSCRIPTSTYLE) {
-                return;
-            }
-        }
+  /**
+   * Add some information in the middle of the default toString method.
+   *
+   * @param sb    the target string buffer
+   * @param depth the recursion depth
+   */
+  @Override
+  protected void toStringAdd( StringBuilder sb, int depth ) {
 
-        list.add(new ExplicitKernNode(mathContext.convert(kern), true));
-    }
-
-    /**
-     * Add some information in the middle of the default toString method.
-     *
-     * @param sb the target string buffer
-     * @param depth the recursion depth
-     */
-    @Override
-    protected void toStringAdd(StringBuilder sb, int depth) {
-
-        sb.append("kern");
-        kern.toString(sb);
-    }
+    sb.append( "kern" );
+    kern.toString( sb );
+  }
 
 }

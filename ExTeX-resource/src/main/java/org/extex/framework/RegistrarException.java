@@ -25,37 +25,37 @@ import java.io.ObjectStreamException;
  * This exception is used when the loader detects some problem.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RegistrarException extends ObjectStreamException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    private static final long serialVersionUID = 2006L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  private static final long serialVersionUID = 2006L;
 
 
-    public RegistrarException() {
+  public RegistrarException() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     */
-    public RegistrarException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   */
+  public RegistrarException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the cause
-     */
-    public RegistrarException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause
+   */
+  public RegistrarException( Throwable cause ) {
 
-        super(cause.getMessage());
-    }
+    super( cause.getMessage() );
+  }
 
 }

@@ -31,7 +31,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive {@code \color}.
- * 
+ *
  * <p>The Primitive {@code \color}</p>
  * <p>
  * The primitive {@code \color} sets the current color value to the value
@@ -39,44 +39,45 @@ import org.extex.typesetter.exception.TypesetterException;
  * color models.
  * </p>
  * <p>
- * The color models of εχTeX use components of two bytes. This means that values from 0
+ * The color models of εχTeX use components of two bytes. This means that 
+ * values from 0
  * to 65535 can be stored in each component. The external representation is a
  * floating point number in the range from 0.0 to 1.0.
  * </p>
  * <p>
  * The color models of εχTeX support an alpha channel.
  * </p>
- * 
+ *
  * <p>The RGB Color Model</p>
-
+ *
  * <p>
  * The RGB color model provides three values for the red, green, and blue
  * channel. Each is given as floating point number from 0.0 to 1.0.
  * </p>
- * 
+ *
  * <p>The CMYK Color Model</p>
-
+ *
  * <p>
  * The CMYK color model provides four values for cyan, magenta, yellow, and
  * black channel. Each is given as floating point number from 0.0 to 1.0.
  * </p>
- * 
+ *
  * <p>The Grayscale Model</p>
-
+ *
  * <p>
  * The gray-scale color model provides one value for the gray channel. It is
  * given as floating point number from 0.0 to 1.0.
  * </p>
- * 
+ *
  * <p>The HSV Color Model</p>
-
+ *
  * <p>
  * The HSV color model provides three values for the hue, saturation, and value
  * channel. Each is given as floating point number from 0.0 to 1.0.
  * </p>
- * 
+ *
  * <p>The Alpha Channel</p>
-
+ *
  * <p>
  * The alpha channel determines the opactivity of the color. A value of 0 means
  * that the given color completely overwrites the underlying texture. A value of
@@ -89,10 +90,10 @@ import org.extex.typesetter.exception.TypesetterException;
  * such a case it is up to the back-end driver to make best use of the alpha
  * value or ignore it at all.
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;color&rang;
  *      &rarr; &lang;prefix&rang; {@code \color} &lang;alpha&rang; &lang;color&rang;
@@ -115,82 +116,81 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  *    &lang;color value&rang;
  *      &rarr; &lang;number&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \color{\r \b \g}  </pre>
- * 
+ *
  * <br>
-*
+ *
  * <pre class="TeXSample">
  *    \color gray {\gray}  </pre>
- * 
+ *
  * <br>
-*
+ *
  * <pre class="TeXSample">
  *    \color rgb {\r \b \g}  </pre>
- * 
+ *
  * <br>
-*
+ *
  * <pre class="TeXSample">
  *    \color rgb {1 .2 .3333}  </pre>
- * 
+ *
  * <br>
-*
+ *
  * <pre class="TeXSample">
  *    \color hsv {\h \s \v}  </pre>
- * 
+ *
  * <br>
-*
+ *
  * <pre class="TeXSample">
  *    \color alpha 500 rgb {\r \b \g} </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ColorPrimitive extends AbstractColor {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public ColorPrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public ColorPrimitive( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException,
-                TypesetterException {
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public void assign( Flags prefix, Context context, TokenSource source,
+                      Typesetter typesetter )
+      throws ConfigurationException,
+      HelpingException,
+      TypesetterException {
 
-        Color color =
-                ColorParser.parseColor(context, source, typesetter, getToken());
-        context.set(color, prefix.clearGlobal());
-    }
+    Color color =
+        ColorParser.parseColor( context, source, typesetter, getToken() );
+    context.set( color, prefix.clearGlobal() );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public Color convertColor(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public Color convertColor( Context context, TokenSource source,
+                             Typesetter typesetter ) throws HelpingException {
 
-        return context.getTypesettingContext().getColor();
-    }
+    return context.getTypesettingContext().getColor();
+  }
 
 }

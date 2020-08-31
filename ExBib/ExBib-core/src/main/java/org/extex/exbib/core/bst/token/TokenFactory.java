@@ -25,29 +25,37 @@ import org.extex.exbib.core.bst.token.impl.TString;
 /**
  * The token factory is a place to request tokens from. Currently only a few
  * constant tokens can be received from the factory.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public final class TokenFactory {
 
-    /* Poor man's symbol table: created once, used often */
+  /* Poor man's symbol table: created once, used often */
 
-    /** The {@link TInteger TInteger} with the value 1. */
-    public static final TInteger T_ONE = new TInteger(1, null);
+  /**
+   * The {@link TInteger TInteger} with the value 1.
+   */
+  public static final TInteger T_ONE = new TInteger( 1, null );
 
-    /** The {@link TInteger TInteger} with the value 0. */
-    public static final TInteger T_ZERO = new TInteger(0, null);
+  /**
+   * The {@link TInteger TInteger} with the value 0.
+   */
+  public static final TInteger T_ZERO = new TInteger( 0, null );
 
-    /** The {@link TString TString} with the value "". */
-    public static final TString T_EMPTY = new TString("", null);
+  /**
+   * The {@link TString TString} with the value "".
+   */
+  public static final TString T_EMPTY = new TString( "", null );
 
-    /** The TString containing the quote character only. */
-    public static final TString T_QUOTE = new TString("\"", null);
+  /**
+   * The TString containing the quote character only.
+   */
+  public static final TString T_QUOTE = new TString( "\"", null );
 
 
-    private TokenFactory() {
+  private TokenFactory() {
 
-        // not used
-    }
+    // not used
+  }
 
 }

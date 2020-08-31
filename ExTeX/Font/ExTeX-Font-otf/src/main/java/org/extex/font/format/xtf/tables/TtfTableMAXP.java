@@ -28,7 +28,7 @@ import java.io.IOException;
 
 /**
  * The 'maxp' table establishes the memory requirements for a font.
- * 
+ *
  *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
@@ -114,316 +114,316 @@ import java.io.IOException;
  * <td> Maximum levels of recursion; 1 for simple components.</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTableMAXP extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
 
-    /**
-     * maxComponentDepth
-     */
-    private final int maxComponentDepth;
+  /**
+   * maxComponentDepth
+   */
+  private final int maxComponentDepth;
 
-    /**
-     * maxComponentElements
-     */
-    private final int maxComponentElements;
+  /**
+   * maxComponentElements
+   */
+  private final int maxComponentElements;
 
-    /**
-     * maxCompositeContours
-     */
-    private final int maxCompositeContours;
+  /**
+   * maxCompositeContours
+   */
+  private final int maxCompositeContours;
 
-    /**
-     * maxCompositePoints
-     */
-    private final int maxCompositePoints;
+  /**
+   * maxCompositePoints
+   */
+  private final int maxCompositePoints;
 
-    /**
-     * maxContours
-     */
-    private final int maxContours;
+  /**
+   * maxContours
+   */
+  private final int maxContours;
 
-    /**
-     * maxFunctionDefs
-     */
-    private final int maxFunctionDefs;
+  /**
+   * maxFunctionDefs
+   */
+  private final int maxFunctionDefs;
 
-    /**
-     * maxInstructionDefs
-     */
-    private final int maxInstructionDefs;
+  /**
+   * maxInstructionDefs
+   */
+  private final int maxInstructionDefs;
 
-    /**
-     * maxPoints
-     */
-    private final int maxPoints;
+  /**
+   * maxPoints
+   */
+  private final int maxPoints;
 
-    /**
-     * maxSizeOfInstructions
-     */
-    private final int maxSizeOfInstructions;
+  /**
+   * maxSizeOfInstructions
+   */
+  private final int maxSizeOfInstructions;
 
-    /**
-     * maxStackElements
-     */
-    private final int maxStackElements;
+  /**
+   * maxStackElements
+   */
+  private final int maxStackElements;
 
-    /**
-     * maxStorage
-     */
-    private final int maxStorage;
+  /**
+   * maxStorage
+   */
+  private final int maxStorage;
 
-    /**
-     * maxTwilightPoints
-     */
-    private final int maxTwilightPoints;
+  /**
+   * maxTwilightPoints
+   */
+  private final int maxTwilightPoints;
 
-    /**
-     * maxZones
-     */
-    private final int maxZones;
+  /**
+   * maxZones
+   */
+  private final int maxZones;
 
-    /**
-     * numGlyphs
-     */
-    private final int numGlyphs;
+  /**
+   * numGlyphs
+   */
+  private final int numGlyphs;
 
-    /**
-     * version
-     */
-    private final int version;
+  /**
+   * version
+   */
+  private final int version;
 
-    /**
-     * Create a new object.
-     * 
-     * @param tablemap the table map
-     * @param de directory entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public TtfTableMAXP(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param tablemap the table map
+   * @param de       directory entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public TtfTableMAXP( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap);
-        rar.seek(de.getOffset());
-        version = rar.readInt();
-        numGlyphs = rar.readUnsignedShort();
-        maxPoints = rar.readUnsignedShort();
-        maxContours = rar.readUnsignedShort();
-        maxCompositePoints = rar.readUnsignedShort();
-        maxCompositeContours = rar.readUnsignedShort();
-        maxZones = rar.readUnsignedShort();
-        maxTwilightPoints = rar.readUnsignedShort();
-        maxStorage = rar.readUnsignedShort();
-        maxFunctionDefs = rar.readUnsignedShort();
-        maxInstructionDefs = rar.readUnsignedShort();
-        maxStackElements = rar.readUnsignedShort();
-        maxSizeOfInstructions = rar.readUnsignedShort();
-        maxComponentElements = rar.readUnsignedShort();
-        maxComponentDepth = rar.readUnsignedShort();
-    }
+    super( tablemap );
+    rar.seek( de.getOffset() );
+    version = rar.readInt();
+    numGlyphs = rar.readUnsignedShort();
+    maxPoints = rar.readUnsignedShort();
+    maxContours = rar.readUnsignedShort();
+    maxCompositePoints = rar.readUnsignedShort();
+    maxCompositeContours = rar.readUnsignedShort();
+    maxZones = rar.readUnsignedShort();
+    maxTwilightPoints = rar.readUnsignedShort();
+    maxStorage = rar.readUnsignedShort();
+    maxFunctionDefs = rar.readUnsignedShort();
+    maxInstructionDefs = rar.readUnsignedShort();
+    maxStackElements = rar.readUnsignedShort();
+    maxSizeOfInstructions = rar.readUnsignedShort();
+    maxComponentElements = rar.readUnsignedShort();
+    maxComponentDepth = rar.readUnsignedShort();
+  }
 
-    /**
-     * Returns the max component depth
-     * 
-     * @return Returns the max component depth
-     */
-    public int getMaxComponentDepth() {
+  /**
+   * Returns the max component depth
+   *
+   * @return Returns the max component depth
+   */
+  public int getMaxComponentDepth() {
 
-        return maxComponentDepth;
-    }
+    return maxComponentDepth;
+  }
 
-    /**
-     * Returns the max component elements
-     * 
-     * @return Returns the max component elements
-     */
-    public int getMaxComponentElements() {
+  /**
+   * Returns the max component elements
+   *
+   * @return Returns the max component elements
+   */
+  public int getMaxComponentElements() {
 
-        return maxComponentElements;
-    }
+    return maxComponentElements;
+  }
 
-    /**
-     * Returns the max composite contours
-     * 
-     * @return Returns the max composite contours
-     */
-    public int getMaxCompositeContours() {
+  /**
+   * Returns the max composite contours
+   *
+   * @return Returns the max composite contours
+   */
+  public int getMaxCompositeContours() {
 
-        return maxCompositeContours;
-    }
+    return maxCompositeContours;
+  }
 
-    /**
-     * Returns the max composite points
-     * 
-     * @return Returns the max composite points
-     */
-    public int getMaxCompositePoints() {
+  /**
+   * Returns the max composite points
+   *
+   * @return Returns the max composite points
+   */
+  public int getMaxCompositePoints() {
 
-        return maxCompositePoints;
-    }
+    return maxCompositePoints;
+  }
 
-    /**
-     * Returns the max contours
-     * 
-     * @return Returns the max contours
-     */
-    public int getMaxContours() {
+  /**
+   * Returns the max contours
+   *
+   * @return Returns the max contours
+   */
+  public int getMaxContours() {
 
-        return maxContours;
-    }
+    return maxContours;
+  }
 
-    /**
-     * Returns the max function defs
-     * 
-     * @return Returns the max function defs
-     */
-    public int getMaxFunctionDefs() {
+  /**
+   * Returns the max function defs
+   *
+   * @return Returns the max function defs
+   */
+  public int getMaxFunctionDefs() {
 
-        return maxFunctionDefs;
-    }
+    return maxFunctionDefs;
+  }
 
-    /**
-     * Returns the max instruction defs
-     * 
-     * @return Returns the max instruction defs
-     */
-    public int getMaxInstructionDefs() {
+  /**
+   * Returns the max instruction defs
+   *
+   * @return Returns the max instruction defs
+   */
+  public int getMaxInstructionDefs() {
 
-        return maxInstructionDefs;
-    }
+    return maxInstructionDefs;
+  }
 
-    /**
-     * Returns the max points
-     * 
-     * @return Returns the max points
-     */
-    public int getMaxPoints() {
+  /**
+   * Returns the max points
+   *
+   * @return Returns the max points
+   */
+  public int getMaxPoints() {
 
-        return maxPoints;
-    }
+    return maxPoints;
+  }
 
-    /**
-     * Returns the max size of instructions
-     * 
-     * @return Returns the max size of instructions
-     */
-    public int getMaxSizeOfInstructions() {
+  /**
+   * Returns the max size of instructions
+   *
+   * @return Returns the max size of instructions
+   */
+  public int getMaxSizeOfInstructions() {
 
-        return maxSizeOfInstructions;
-    }
+    return maxSizeOfInstructions;
+  }
 
-    /**
-     * Returns the max stack elements
-     * 
-     * @return Returns the max stack elements
-     */
-    public int getMaxStackElements() {
+  /**
+   * Returns the max stack elements
+   *
+   * @return Returns the max stack elements
+   */
+  public int getMaxStackElements() {
 
-        return maxStackElements;
-    }
+    return maxStackElements;
+  }
 
-    /**
-     * Returns the max storage
-     * 
-     * @return Returns the max storage
-     */
-    public int getMaxStorage() {
+  /**
+   * Returns the max storage
+   *
+   * @return Returns the max storage
+   */
+  public int getMaxStorage() {
 
-        return maxStorage;
-    }
+    return maxStorage;
+  }
 
-    /**
-     * Returns the max twilight points
-     * 
-     * @return Returns the max twilight points
-     */
-    public int getMaxTwilightPoints() {
+  /**
+   * Returns the max twilight points
+   *
+   * @return Returns the max twilight points
+   */
+  public int getMaxTwilightPoints() {
 
-        return maxTwilightPoints;
-    }
+    return maxTwilightPoints;
+  }
 
-    /**
-     * Returns the max zones
-     * 
-     * @return Returns the max zones
-     */
-    public int getMaxZones() {
+  /**
+   * Returns the max zones
+   *
+   * @return Returns the max zones
+   */
+  public int getMaxZones() {
 
-        return maxZones;
-    }
+    return maxZones;
+  }
 
-    /**
-     * Returns the number of glyphs
-     * 
-     * @return Returns the number of glyphs
-     */
-    public int getNumGlyphs() {
+  /**
+   * Returns the number of glyphs
+   *
+   * @return Returns the number of glyphs
+   */
+  public int getNumGlyphs() {
 
-        return numGlyphs;
-    }
+    return numGlyphs;
+  }
 
-public String getShortcut() {
+  public String getShortcut() {
 
-        return "maxp";
-    }
+    return "maxp";
+  }
 
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
 
-        return XtfReader.MAXP;
-    }
+    return XtfReader.MAXP;
+  }
 
-    /**
-     * Returns the versionNumber.
-     * 
-     * @return Returns the versionNumber.
-     */
-    public int getVersion() {
+  /**
+   * Returns the versionNumber.
+   *
+   * @return Returns the versionNumber.
+   */
+  public int getVersion() {
 
-        return version;
-    }
+    return version;
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writeStartElement(writer);
-        writer.writeAttribute("version", XtfReader
-            .convertIntToHexString(version));
-        writer.writeAttribute("numberofglyphs", String.valueOf(numGlyphs));
-        writer.writeAttribute("maxpoints", String.valueOf(maxPoints));
-        writer.writeAttribute("maxcontours", String.valueOf(maxContours));
-        writer.writeAttribute("maxcompositepoints", String
-            .valueOf(maxCompositePoints));
-        writer.writeAttribute("maxcompositecontours", String
-            .valueOf(maxCompositeContours));
-        writer.writeAttribute("maxzones", String.valueOf(maxZones));
-        writer.writeAttribute("maxtwilightpoints", String
-            .valueOf(maxTwilightPoints));
-        writer.writeAttribute("maxstorage", String.valueOf(maxStorage));
-        writer.writeAttribute("maxfunctiondefs", String
-            .valueOf(maxFunctionDefs));
-        writer.writeAttribute("maxinstructionsdefs", String
-            .valueOf(maxInstructionDefs));
-        writer.writeAttribute("maxstackelements", String
-            .valueOf(maxStackElements));
-        writer.writeAttribute("maxsizeofinstructions", String
-            .valueOf(maxSizeOfInstructions));
-        writer.writeAttribute("maxcomponentelements", String
-            .valueOf(maxComponentElements));
-        writer.writeAttribute("maxcomponentdepth", String
-            .valueOf(maxComponentDepth));
-        writer.writeEndElement();
-    }
+    writeStartElement( writer );
+    writer.writeAttribute( "version", XtfReader
+        .convertIntToHexString( version ) );
+    writer.writeAttribute( "numberofglyphs", String.valueOf( numGlyphs ) );
+    writer.writeAttribute( "maxpoints", String.valueOf( maxPoints ) );
+    writer.writeAttribute( "maxcontours", String.valueOf( maxContours ) );
+    writer.writeAttribute( "maxcompositepoints", String
+        .valueOf( maxCompositePoints ) );
+    writer.writeAttribute( "maxcompositecontours", String
+        .valueOf( maxCompositeContours ) );
+    writer.writeAttribute( "maxzones", String.valueOf( maxZones ) );
+    writer.writeAttribute( "maxtwilightpoints", String
+        .valueOf( maxTwilightPoints ) );
+    writer.writeAttribute( "maxstorage", String.valueOf( maxStorage ) );
+    writer.writeAttribute( "maxfunctiondefs", String
+        .valueOf( maxFunctionDefs ) );
+    writer.writeAttribute( "maxinstructionsdefs", String
+        .valueOf( maxInstructionDefs ) );
+    writer.writeAttribute( "maxstackelements", String
+        .valueOf( maxStackElements ) );
+    writer.writeAttribute( "maxsizeofinstructions", String
+        .valueOf( maxSizeOfInstructions ) );
+    writer.writeAttribute( "maxcomponentelements", String
+        .valueOf( maxComponentElements ) );
+    writer.writeAttribute( "maxcomponentdepth", String
+        .valueOf( maxComponentDepth ) );
+    writer.writeEndElement();
+  }
 
 }

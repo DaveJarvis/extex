@@ -31,82 +31,81 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive {@code \muskip}.
  * It sets the named muskip register to the value given, and as a side effect
  * all prefixes are zeroed.
- * 
+ *
  * <p>
  * All features are inherited from
  * {@link org.extex.unit.tex.register.muskip.MuskipParameter MuskipParameter}.
  * Just the key has to be provided under which this Muskip has to be stored.
  * This key is constructed from the name, a hash mark and the running number.
  * </p>
- * 
+ *
  * <p>The Primitive {@code \muskip}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;muskip&rang;
  *      &rarr; &lang;optional prefix&rang; {@code \muskip}  {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context, TokenSource, Typesetter, CodeToken)
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantMuskipParser#parse(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantMuskipParser#parse(Context, TokenSource, Typesetter)
  *        &lang;muglue&rang;}
  *
  *   &lang;optional prefix&rang;
  *     &rarr;
  *      |  {@code \global} &lang;optional prefix&rang;  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   \muskip12=345mu plus 12mu  </pre>
- *  <pre class="TeXSample">
+ * <pre class="TeXSample">
  *   \muskip12=0mu plus 1.2fil  </pre>
- * 
  *
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class MuskipPrimitive extends MuskipParameter {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public MuskipPrimitive(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public MuskipPrimitive( CodeToken token ) {
 
-        super(token, null);
+    super( token, null );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    String number =
+        Long.toString( source.parseInteger( context, source, typesetter ) );
+
+    if( Namespace.SUPPORT_NAMESPACE_MUSKIP ) {
+      return context.getNamespace() + "\b" + getName() + "#" + number;
     }
-
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String number =
-                Long.toString(source.parseInteger(context, source, typesetter));
-
-        if (Namespace.SUPPORT_NAMESPACE_MUSKIP) {
-            return context.getNamespace() + "\b" + getName() + "#" + number;
-        }
-        return getName() + "#" + number;
-    }
+    return getName() + "#" + number;
+  }
 
 }

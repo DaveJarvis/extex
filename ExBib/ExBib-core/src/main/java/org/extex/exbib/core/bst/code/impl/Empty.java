@@ -28,7 +28,8 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;
+ * margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function {@code empty$}
  * <p>
  * This function pops a literal from the stack. If the argument is a string it
@@ -40,54 +41,54 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * The following example is taken from {@code alpha.bst}:
  * </p>
- * 
+ *
  * <pre>
  *   preamble$ empty$
  *     'skip$
  *     { preamble$ write$ newline$ }
  *   if$
  * </pre>
- * 
+ *
  * <hr>
- * 
+ *
  * <dl>
  * <dt>BibTeX documentation</dt>
  * <dd>Pops the top literal and pushes the integer 1 if it's a missing field or
  * a string having no non-white-space characters, 0 otherwise.</dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Empty extends AbstractCode {
 
-    /**
-     * Create a new object.
-     */
-    public Empty() {
+  /**
+   * Create a new object.
+   */
+  public Empty() {
 
-    }
+  }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Empty(String name) {
+  /**
+   * Creates a new object.
+   *
+   * @param name the function name in the processor context
+   */
+  public Empty( String name ) {
 
-        super(name);
-    }
+    super( name );
+  }
 
-    /**
-*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
+  /**
+   * org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+   */
+  public void execute( BstProcessor processor, Entry entry, Locator locator )
+      throws ExBibException {
 
-        String arg = processor.popString(locator).getValue();
+    String arg = processor.popString( locator ).getValue();
 
-        processor.push(arg.matches("\\s*")
-                ? TokenFactory.T_ONE
-                : TokenFactory.T_ZERO);
-    }
+    processor.push( arg.matches( "\\s*" )
+                        ? TokenFactory.T_ONE
+                        : TokenFactory.T_ZERO );
+  }
 
 }

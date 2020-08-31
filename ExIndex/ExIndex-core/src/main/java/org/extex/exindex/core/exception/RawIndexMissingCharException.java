@@ -25,29 +25,31 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception signals that a character is missing and another character has
  * been encountered instead.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class RawIndexMissingCharException extends RawIndexException {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     * @param c the character found
-     * @param ec the expected character
-     */
-    public RawIndexMissingCharException(ResourceLocator locator, char c, char ec) {
+  /**
+   * Creates a new object.
+   *
+   * @param locator the locator
+   * @param c       the character found
+   * @param ec      the expected character
+   */
+  public RawIndexMissingCharException( ResourceLocator locator, char c,
+                                       char ec ) {
 
-        super(locator, LocalizerFactory.getLocalizer(
-            RawIndexMissingCharException.class).format("Message",
-            Character.toString(c), Character.toString(ec)));
-    }
+    super( locator, LocalizerFactory.getLocalizer(
+        RawIndexMissingCharException.class ).format( "Message",
+                                                     Character.toString( c ),
+                                                     Character.toString( ec ) ) );
+  }
 
 }

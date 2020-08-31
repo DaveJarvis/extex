@@ -24,87 +24,87 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive {@code \ifvmode}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class IfvmodeTest extends ConditionalTester {
 
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
+  /**
+   * Method for running the tests standalone.
+   *
+   * @param args command line parameter
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(IfvmodeTest.class);
-    }
+    (new JUnitCore()).run( IfvmodeTest.class );
+  }
 
 
-    public IfvmodeTest() {
+  public IfvmodeTest() {
 
-        super("ifvmode", "");
-    }
+    super( "ifvmode", "" );
+  }
 
-    /**
-     * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
-     * is true initially. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
+   * is true initially.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\ifvmode a\\else b\\fi\\end",
-            // --- output channel ---
-            "a" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\ifvmode a\\else b\\fi\\end",
+                  // --- output channel ---
+                  "a" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
-     * is false when in a paragraph. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
+   * is false when in a paragraph.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "x\\ifvmode a\\else b\\fi x\\end",
-            // --- output channel ---
-            "xbx" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "x\\ifvmode a\\else b\\fi x\\end",
+                  // --- output channel ---
+                  "xbx" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
-     * is true in a vbox. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test3() throws Exception {
+  /**
+   * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
+   * is true in a vbox.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\catcode`{=1 " + "\\catcode`}=2 "
-                    + "\\vbox{\\ifvmode a\\else b\\fi}\\end",
-            // --- output channel ---
-            "a\n\n" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\catcode`{=1 " + "\\catcode`}=2 "
+                      + "\\vbox{\\ifvmode a\\else b\\fi}\\end",
+                  // --- output channel ---
+                  "a\n\n" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
-     * is false in an hbox. 
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test4() throws Exception {
+  /**
+   * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
+   * is false in an hbox.
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void test4() throws Exception {
 
-        assertSuccess(// --- input code ---
-            "\\catcode`{=1 " + "\\catcode`}=2 "
-                    + "\\hbox{\\ifvmode a\\else b\\fi}\\end",
-            // --- output channel ---
-            "b" + TERM);
-    }
+    assertSuccess(// --- input code ---
+                  "\\catcode`{=1 " + "\\catcode`}=2 "
+                      + "\\hbox{\\ifvmode a\\else b\\fi}\\end",
+                  // --- output channel ---
+                  "b" + TERM );
+  }
 
 }

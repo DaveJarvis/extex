@@ -23,89 +23,89 @@ import java.io.Serializable;
 
 /**
  * AFM kerning pairs.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class AfmKernPairs implements Serializable {
 
-    /**
-     * The field {@code serialVersionUID}.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID}.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * post.
-     */
-    private String charpost;
+  /**
+   * post.
+   */
+  private String charpost;
 
-    /**
-     * pre.
-     */
-    private String charpre;
+  /**
+   * pre.
+   */
+  private String charpre;
 
-    /**
-     * kerningsize.
-     */
-    private float kerningsize;
+  /**
+   * kerningsize.
+   */
+  private float kerningsize;
 
-    /**
-     * Returns the charpost.
-     * 
-     * @return Returns the charpost.
-     */
-    public String getCharpost() {
+  /**
+   * Returns the charpost.
+   *
+   * @return Returns the charpost.
+   */
+  public String getCharpost() {
 
-        return charpost;
-    }
+    return charpost;
+  }
 
-    /**
-     * Returns the charpre.
-     * 
-     * @return Returns the charpre.
-     */
-    public String getCharpre() {
+  /**
+   * Returns the charpre.
+   *
+   * @return Returns the charpre.
+   */
+  public String getCharpre() {
 
-        return charpre;
-    }
+    return charpre;
+  }
 
-    /**
-     * Returns the kerningsize.
-     * 
-     * @return Returns the kerningsize.
-     */
-    public float getKerningsize() {
+  /**
+   * Returns the kerningsize.
+   *
+   * @return Returns the kerningsize.
+   */
+  public float getKerningsize() {
 
-        return kerningsize;
-    }
+    return kerningsize;
+  }
 
-    /**
-     * Set the charpost.
-     * 
-     * @param cp The charpost to set.
-     */
-    public void setCharpost(String cp) {
+  /**
+   * Set the charpost.
+   *
+   * @param cp The charpost to set.
+   */
+  public void setCharpost( String cp ) {
 
-        charpost = cp;
-    }
+    charpost = cp;
+  }
 
-    /**
-     * Set the charpre.
-     * 
-     * @param cp The charpre to set.
-     */
-    public void setCharpre(String cp) {
+  /**
+   * Set the charpre.
+   *
+   * @param cp The charpre to set.
+   */
+  public void setCharpre( String cp ) {
 
-        charpre = cp;
-    }
+    charpre = cp;
+  }
 
-    /**
-     * Set the kerningsize.
-     * 
-     * @param ksize The kerningsize to set.
-     */
-    public void setKerningsize(float ksize) {
+  /**
+   * Set the kerningsize.
+   *
+   * @param ksize The kerningsize to set.
+   */
+  public void setKerningsize( float ksize ) {
 
-        kerningsize = ksize;
-    }
+    kerningsize = ksize;
+  }
 }

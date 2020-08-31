@@ -19,9 +19,6 @@
 
 package org.extex.font;
 
-import java.util.Properties;
-import java.util.logging.Logger;
-
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
@@ -31,62 +28,65 @@ import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
+import java.util.Properties;
+import java.util.logging.Logger;
+
 /**
  * Test for the font factory.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public abstract class AbstractFontFactoryTester {
 
-    /**
-     * The resource finder.
-     */
-    protected static ResourceFinder finder;
+  /**
+   * The resource finder.
+   */
+  protected static ResourceFinder finder;
 
-    /**
-     * Create the font factory.
-     * 
-     * @return the font factory.
-     * @throws ConfigurationException from the configuration system.
-     */
-    protected CoreFontFactory makeFontFactory() throws ConfigurationException {
+  /**
+   * Create the font factory.
+   *
+   * @return the font factory.
+   * @throws ConfigurationException from the configuration system.
+   */
+  protected CoreFontFactory makeFontFactory() throws ConfigurationException {
 
-        return makeFontFactory(AbstractFontFactoryTester.class.getName());
+    return makeFontFactory( AbstractFontFactoryTester.class.getName() );
+  }
+
+  /**
+   * Create the font factory.
+   *
+   * @param classname The class name for the configuration file.
+   * @return the font factory.
+   * @throws ConfigurationException from the configuration system.
+   */
+  protected CoreFontFactory makeFontFactory( String classname )
+      throws ConfigurationException {
+
+    CoreFontFactory factory = new FontFactoryImpl();
+
+    Configuration config =
+        ConfigurationFactory.newInstance( classname.replaceAll( "\\.",
+                                                                "/" ) );
+
+    if( factory instanceof Configurable ) {
+      ((Configurable) factory)
+          .configure( config.getConfiguration( "Fonts" ) );
     }
+    if( factory instanceof ResourceAware ) {
+      Logger logger = Logger.getLogger( "Test" );
+      finder =
+          new ResourceFinderFactory().createResourceFinder(
+              config.getConfiguration( "Resource" ), logger,
+              new Properties(), null /* provider */ );
+      finder.enableTracing( true );
 
-    /**
-     * Create the font factory.
-     * 
-     * @param classname The class name for the configuration file.
-     * @return the font factory.
-     * @throws ConfigurationException from the configuration system.
-     */
-    protected CoreFontFactory makeFontFactory(String classname)
-            throws ConfigurationException {
-
-        CoreFontFactory factory = new FontFactoryImpl();
-
-        Configuration config =
-                ConfigurationFactory.newInstance(classname.replaceAll("\\.",
-                    "/"));
-
-        if (factory instanceof Configurable) {
-            ((Configurable) factory)
-                .configure(config.getConfiguration("Fonts"));
-        }
-        if (factory instanceof ResourceAware) {
-            Logger logger = Logger.getLogger("Test");
-            finder =
-                    new ResourceFinderFactory().createResourceFinder(
-                        config.getConfiguration("Resource"), logger,
-                        new Properties(), null /* provider */);
-            finder.enableTracing(true);
-
-            ((ResourceAware) factory).setResourceFinder(finder);
-        }
-        if (factory instanceof PropertyAware) {
-            ((PropertyAware) factory).setProperties(new Properties());
-        }
-        return factory;
+      ((ResourceAware) factory).setResourceFinder( finder );
     }
+    if( factory instanceof PropertyAware ) {
+      ((PropertyAware) factory).setProperties( new Properties() );
+    }
+    return factory;
+  }
 }

@@ -25,43 +25,43 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
  * DocumentWriter: Exception from the PDF-Document.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class DocumentWriterPdfException extends DocumentWriterException {
 
-    /**
-     * The field {@code serialVersionUID} ...
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * The field {@code serialVersionUID} ...
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the error message
-     */
-    public DocumentWriterPdfException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the error message
+   */
+  public DocumentWriterPdfException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the message
-     * @param cause the cause
-     */
-    public DocumentWriterPdfException(String message,
-            Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the message
+   * @param cause   the cause
+   */
+  public DocumentWriterPdfException( String message,
+                                     Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the cause
-     */
-    public DocumentWriterPdfException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause
+   */
+  public DocumentWriterPdfException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 }

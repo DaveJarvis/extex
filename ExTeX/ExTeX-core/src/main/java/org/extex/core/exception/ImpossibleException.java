@@ -29,43 +29,43 @@ package org.extex.core.exception;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class ImpossibleException extends RuntimeException {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the description of the error
-     */
-    public ImpossibleException(String message) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the description of the error
+   */
+  public ImpossibleException( String message ) {
 
-        super(message);
-    }
+    super( message );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param cause the cause of the error
-     */
-    public ImpossibleException(Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param cause the cause of the error
+   */
+  public ImpossibleException( Throwable cause ) {
 
-        super(cause);
-    }
+    super( cause );
+  }
 
-    /**
-     * Creates a new object.
-     *
-     * @param message the description of the error
-     * @param cause the cause of the error
-     */
-    public ImpossibleException(String message, Throwable cause) {
+  /**
+   * Creates a new object.
+   *
+   * @param message the description of the error
+   * @param cause   the cause of the error
+   */
+  public ImpossibleException( String message, Throwable cause ) {
 
-        super(message, cause);
-    }
+    super( message, cause );
+  }
 
 }

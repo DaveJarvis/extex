@@ -19,34 +19,34 @@
 
 package org.extex.exbib.core.io.auxio;
 
-import java.io.IOException;
-
 import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
+import java.io.IOException;
+
 /**
  * This interface describes a handler for macros found in an aux file.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface AuxHandler {
 
-    /**
-     * Invoke the handler to do its job.
-     * 
-     * @param arg the macro parameter argument
-     * @param bibliographies the bibliography
-     * @param type the type of the bibliography
-     * @param auxReader the engine
-     * @throws IOException in case of an I/O error
-     * @throws ConfigurationException in case of an configuration error
-     * @throws ExBibException in case of an error
-     */
-    void invoke(String arg, ProcessorContainer bibliographies, String type,
-            AuxReader auxReader)
-            throws ConfigurationException,
-                IOException,
-                ExBibException;
+  /**
+   * Invoke the handler to do its job.
+   *
+   * @param arg            the macro parameter argument
+   * @param bibliographies the bibliography
+   * @param type           the type of the bibliography
+   * @param auxReader      the engine
+   * @throws IOException            in case of an I/O error
+   * @throws ConfigurationException in case of an configuration error
+   * @throws ExBibException         in case of an error
+   */
+  void invoke( String arg, ProcessorContainer bibliographies, String type,
+               AuxReader auxReader )
+      throws ConfigurationException,
+      IOException,
+      ExBibException;
 
 }

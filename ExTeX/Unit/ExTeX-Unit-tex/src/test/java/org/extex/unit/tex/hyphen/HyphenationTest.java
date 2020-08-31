@@ -27,54 +27,54 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \hyphenation}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class HyphenationTest extends NoFlagsPrimitiveTester {
 
 
-    public HyphenationTest() {
+  public HyphenationTest() {
 
-        setPrimitive("hyphenation");setArguments("{}");setPrepare(DEFINE_BRACES);
-    }
+    setPrimitive( "hyphenation" );
+    setArguments( "{}" );
+    setPrepare( DEFINE_BRACES );
+  }
 
-    /**
-     * <testcase primitive="\hyphenation">
-     *  Test case checking that {@code \hyphenation} ...
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test1() throws Exception {
+  /**
+   * <testcase primitive="\hyphenation">
+   * Test case checking that {@code \hyphenation} ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "\\hsize=15pt "
-                + "\\font\\f cmr10 \\f"
-                + "\\hyphenation{abc-def ghi-jkl}"
-                + "x abcdef\\end ",
-                //--- output channel ---
-                "x\n abc-\n--def" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES
+                      + "\\hsize=15pt "
+                      + "\\font\\f cmr10 \\f"
+                      + "\\hyphenation{abc-def ghi-jkl}"
+                      + "x abcdef\\end ",
+                  //--- output channel ---
+                  "x\n abc-\n--def" + TERM );
+  }
 
-    /**
-     * <testcase primitive="\hyphenation">
-     *  Test case checking that {@code \hyphenation} ...
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void test2() throws Exception {
+  /**
+   * <testcase primitive="\hyphenation">
+   * Test case checking that {@code \hyphenation} ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  @Ignore
+  public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "\\hsize=15pt "
-                + "\\font\\f cmr10 \\f"
-                + "\\hyphenation{abc-def auf-flug}"
-                + "x aufflug\\end ",
-                //--- output channel ---
-                "x\n auf-\n--flug" + TERM);
-    }
+    assertSuccess(//--- input code ---
+                  DEFINE_BRACES
+                      + "\\hsize=15pt "
+                      + "\\font\\f cmr10 \\f"
+                      + "\\hyphenation{abc-def auf-flug}"
+                      + "x aufflug\\end ",
+                  //--- output channel ---
+                  "x\n auf-\n--flug" + TERM );
+  }
 }

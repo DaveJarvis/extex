@@ -19,29 +19,29 @@
 
 package org.extex.font.format.dvi.command;
 
-import java.io.IOException;
-
 import org.extex.font.exception.FontException;
 import org.extex.util.file.random.RandomAccessR;
 
+import java.io.IOException;
+
 /**
  * Interface for a DVI command to read.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public interface DviReadCommand {
 
-    /**
-     * Read a dvi command.
-     * 
-     * @param rar the input
-     * @param opcode the opcode
-     * @param sp the start pointer
-     * @return Returns the dvi command
-     * @throws IOException in case of a IO-error.
-     * @throws FontException in case of a font-error.
-     */
-    DviCommand read(RandomAccessR rar, int opcode, int sp)
-            throws IOException,
-                FontException;
+  /**
+   * Read a dvi command.
+   *
+   * @param rar    the input
+   * @param opcode the opcode
+   * @param sp     the start pointer
+   * @return Returns the dvi command
+   * @throws IOException   in case of a IO-error.
+   * @throws FontException in case of a font-error.
+   */
+  DviCommand read( RandomAccessR rar, int opcode, int sp )
+      throws IOException,
+      FontException;
 }

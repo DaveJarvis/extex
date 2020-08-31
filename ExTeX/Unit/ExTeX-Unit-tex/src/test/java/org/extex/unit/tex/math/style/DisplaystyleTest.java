@@ -25,14 +25,16 @@ import org.extex.unit.tex.math.AbstractMathTester;
  * This is a test suite for the primitive {@code \displaystyle}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class DisplaystyleTest extends AbstractMathTester {
 
 
-    public DisplaystyleTest() {
+  public DisplaystyleTest() {
 
-        setPrimitive("displaystyle");setArguments("");setPrepare("");
-    }
+    setPrimitive( "displaystyle" );
+    setArguments( "" );
+    setPrepare( "" );
+  }
 
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

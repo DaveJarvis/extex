@@ -29,9 +29,9 @@ import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive {@code \if}.
- * 
+ *
  * <p>The Primitive {@code &#x005c;unless}</p>
- * 
+ *
  * <p>
  * <strong>Copied from the ε-TeX reference</strong>:
  * </p>
@@ -41,53 +41,52 @@ import org.extex.unit.base.conditional.AbstractIf;
  * to actually be undefined, since no explicit comparison is made with any
  * particular control sequence. </i>
  * </p>
- * 
+ *
  * <p>Syntax</p>
- The formal description of this primitive is the following:
- * 
+ * The formal description of this primitive is the following:
+ *
  * <pre class="syntax">
  *    &lang;ifdefined&rang;
  *      &rarr; {@code \ifdefined} &lang;true text&rang; {@code \else}&lang;false text&rang;{@code \fi}
  *       |  {@code \ifdefined} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi}  </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *   &#x005c;ifdefined\TESTNAME\else not\fi defined  </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
-*/
+ */
 public class Ifdefined extends AbstractIf {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Ifdefined(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Ifdefined( CodeToken token ) {
 
-        super(token);
-    }
+    super( token );
+  }
 
-    /**
-*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+  /**
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public boolean conditional( Context context, TokenSource source,
+                              Typesetter typesetter ) throws HelpingException {
 
-        Token token = source.getToken(context);
+    Token token = source.getToken( context );
 
-        return (token instanceof CodeToken && context
-            .getCode((CodeToken) token) != null);
-    }
+    return (token instanceof CodeToken && context
+        .getCode( (CodeToken) token ) != null);
+  }
 
 }

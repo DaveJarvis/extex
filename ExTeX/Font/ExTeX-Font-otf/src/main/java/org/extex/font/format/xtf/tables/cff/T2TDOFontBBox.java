@@ -24,33 +24,33 @@ import java.util.List;
 
 /**
  * FontBBox.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 
 public class T2TDOFontBBox extends T2TDOArray {
 
-    /**
-     * Create a new object.
-     * 
-     * @param stack the stack
-     * @throws IOException if an IO-error occurs.
-     */
-    public T2TDOFontBBox(List<T2CharString> stack) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param stack the stack
+   * @throws IOException if an IO-error occurs.
+   */
+  public T2TDOFontBBox( List<T2CharString> stack ) throws IOException {
 
-        super(stack, new short[]{CFF_FONTBBOX});
-    }
+    super( stack, new short[]{CFF_FONTBBOX} );
+  }
 
-@Override
-    public int getID() {
+  @Override
+  public int getID() {
 
-        return T2TopDICTOperator.TYPE_FONTBBOX;
-    }
+    return T2TopDICTOperator.TYPE_FONTBBOX;
+  }
 
-@Override
-    public String getName() {
+  @Override
+  public String getName() {
 
-        return "fontbbox";
-    }
+    return "fontbbox";
+  }
 
 }

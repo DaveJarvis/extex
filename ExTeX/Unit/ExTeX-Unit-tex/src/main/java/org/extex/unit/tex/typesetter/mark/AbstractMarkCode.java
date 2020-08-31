@@ -32,51 +32,50 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This abstract base class for mark primitives provides the common features.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public abstract class AbstractMarkCode extends AbstractCode {
 
-    /**
-     * The field {@code serialVersionUID} contains the version number for
-     * serialization.
-     */
-    static final long serialVersionUID = 2007L;
+  /**
+   * The field {@code serialVersionUID} contains the version number for
+   * serialization.
+   */
+  static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public AbstractMarkCode(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public AbstractMarkCode( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * Get the key for this mark.
+   *
+   * @param context    the interpreter context
+   * @param source     the source for new tokens
+   * @param typesetter the typesetter
+   * @return the key for the mark primitive
+   * @throws HelpingException    in case of an error
+   * @throws TypesetterException in case of an error in the typesetter
+   */
+  protected String getKey( Context context, TokenSource source,
+                           Typesetter typesetter )
+      throws HelpingException, TypesetterException {
+
+    Token t = source.getNonSpace( context );
+    source.push( t );
+    if( t instanceof LeftBraceToken ) {
+      Tokens tokens =
+          source.scanTokens( context, false, false, getToken() );
+      return (tokens == null ? "" : tokens.toText());
     }
 
-    /**
-     * Get the key for this mark.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the key for the mark primitive
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Token t = source.getNonSpace(context);
-        source.push(t);
-        if (t instanceof LeftBraceToken) {
-            Tokens tokens =
-                    source.scanTokens(context, false, false, getToken());
-            return (tokens == null ? "" : tokens.toText());
-        }
-
-        return Long.toString(source.parseInteger(context, source, typesetter));
-    }
+    return Long.toString( source.parseInteger( context, source, typesetter ) );
+  }
 
 }

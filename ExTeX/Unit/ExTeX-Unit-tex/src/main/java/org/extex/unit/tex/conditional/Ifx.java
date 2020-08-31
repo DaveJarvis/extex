@@ -32,7 +32,7 @@ import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive {@code \ifx}.
- * 
+ *
  * <p>The Primitive {@code \ifx}</p>
  * <p>
  * The primitive {@code \ifx} compares the following two tokens. If the
@@ -48,11 +48,11 @@ import org.extex.unit.base.conditional.AbstractIf;
  * <p>
  * TODO missing documentation
  * </p>
- * 
+ *
  * <p>Syntax</p>
-
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *    &lang;ifx&rang;
  *      &rarr; {@code \ifx} {@linkplain
@@ -65,76 +65,78 @@ import org.extex.unit.base.conditional.AbstractIf;
  *        &lang;token<sub>1</sub>&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getToken(Context)
  *        &lang;token<sub>2</sub>&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
- * 
+ *
  * <p>Examples</p>
-
- * 
+ *
+ *
  * <pre class="TeXSample">
  *    \ifx\a\x ok \fi  </pre>
- * 
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class Ifx extends AbstractIf {
 
-    /**
-     * The constant {@code serialVersionUID} contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+  /**
+   * The constant {@code serialVersionUID} contains the id for
+   * serialization.
+   */
+  protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param token the initial token for the primitive
-     */
-    public Ifx(CodeToken token) {
+  /**
+   * Creates a new object.
+   *
+   * @param token the initial token for the primitive
+   */
+  public Ifx( CodeToken token ) {
 
-        super(token);
+    super( token );
+  }
+
+  /**
+   * org.extex.interpreter.context.Context,
+   * org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+   */
+  @Override
+  public boolean conditional( Context context, TokenSource source,
+                              Typesetter typesetter ) throws HelpingException {
+
+    Token t1 = source.getToken( context );
+    Token t2 = source.getToken( context );
+
+    if( t1 == null || t2 == null ) {
+      throw new EofException( toText() );
     }
+    else if( t1 instanceof CodeToken ) {
+      Code c1 = context.getCode( (CodeToken) t1 );
 
-    /**
-*      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+      if( c1 instanceof ComparableCode ) {
+        return ((ComparableCode) c1).compare( t2, context );
+      }
+      if( t2 instanceof CodeToken ) {
 
-        Token t1 = source.getToken(context);
-        Token t2 = source.getToken(context);
+        Code c2 = context.getCode( (CodeToken) t2 );
 
-        if (t1 == null || t2 == null) {
-            throw new EofException(toText());
-        } else if (t1 instanceof CodeToken) {
-            Code c1 = context.getCode((CodeToken) t1);
-
-            if (c1 instanceof ComparableCode) {
-                return ((ComparableCode) c1).compare(t2, context);
-            }
-            if (t2 instanceof CodeToken) {
-
-                Code c2 = context.getCode((CodeToken) t2);
-
-                if (c2 instanceof ComparableCode) {
-                    return ((ComparableCode) c2).compare(t1, context);
-                } else if (c1 == null && c2 == null) {
-                    return true;
-                }
-                return c1.equals(c2);
-            }
-
-        } else if (t2 instanceof CodeToken) {
-
-            Code c2 = context.getCode((CodeToken) t2);
-
-            if (c2 instanceof ComparableCode) {
-                return ((ComparableCode) c2).compare(t1, context);
-            }
-
+        if( c2 instanceof ComparableCode ) {
+          return ((ComparableCode) c2).compare( t1, context );
         }
+        else if( c1 == null && c2 == null ) {
+          return true;
+        }
+        return c1.equals( c2 );
+      }
 
-        return t1.equals(t2);
     }
+    else if( t2 instanceof CodeToken ) {
+
+      Code c2 = context.getCode( (CodeToken) t2 );
+
+      if( c2 instanceof ComparableCode ) {
+        return ((ComparableCode) c2).compare( t1, context );
+      }
+
+    }
+
+    return t1.equals( t2 );
+  }
 
 }

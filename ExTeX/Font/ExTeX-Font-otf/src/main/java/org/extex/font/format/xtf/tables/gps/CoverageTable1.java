@@ -19,10 +19,10 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+
+import java.io.IOException;
 
 /**
  * <p>
@@ -34,7 +34,8 @@ import org.extex.util.xml.XMLStreamWriter;
  * (GlyphArray). The glyph indices must be in numerical order for binary
  * searching of the list. When a glyph is found in the Coverage table, its
  * position in the GlyphArray determines the Coverage Index that is returned-the
- * first glyph has a Coverage Index = 0, and the last glyph has a Coverage Index =
+ * first glyph has a Coverage Index = 0, and the last glyph has a Coverage
+ * Index =
  * GlyphCount -1.
  * </p>
  * <p>
@@ -43,7 +44,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * <table>
  * <caption>TBD</caption>
  * <tr>
-* <td><b>Type</b></td>
+ * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -63,54 +64,54 @@ import org.extex.util.xml.XMLStreamWriter;
  * <td>Array of GlyphIDs-in numerical order</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class CoverageTable1 extends CoverageTable {
 
-    /**
-     * Array of GlyphIDs-in numerical order
-     */
-    private final int[] glyphArray;
+  /**
+   * Array of GlyphIDs-in numerical order
+   */
+  private final int[] glyphArray;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param format The format.
-     * @param rar The input.
-     * @throws IOException if a io-error occurred.
-     */
-    protected CoverageTable1(int format, RandomAccessR rar) throws IOException {
+  /**
+   * Creates a new object.
+   *
+   * @param format The format.
+   * @param rar    The input.
+   * @throws IOException if a io-error occurred.
+   */
+  protected CoverageTable1( int format, RandomAccessR rar ) throws IOException {
 
-        super(format);
+    super( format );
 
-        int glyphCount = rar.readUnsignedShort();
+    int glyphCount = rar.readUnsignedShort();
 
-        glyphArray = new int[0];
-        // for (int i = 0; i < glyphCount; i++) {
-        // glyphArray[i] = rar.readUnsignedShort();
-        // }
-    }
+    glyphArray = new int[ 0 ];
+    // for (int i = 0; i < glyphCount; i++) {
+    // glyphArray[i] = rar.readUnsignedShort();
+    // }
+  }
 
-    /**
-     * Getter for glyphArray.
-     * 
-     * @return the glyphArray
-     */
-    public int[] getGlyphArray() {
+  /**
+   * Getter for glyphArray.
+   *
+   * @return the glyphArray
+   */
+  public int[] getGlyphArray() {
 
-        return glyphArray;
-    }
+    return glyphArray;
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writer.writeStartElement("covertable");
-        writer.writeAttribute("format", getCoverageFormat());
-        writer.writeIntArrayAsEntries(glyphArray);
-        writer.writeEndElement();
-    }
+    writer.writeStartElement( "covertable" );
+    writer.writeAttribute( "format", getCoverageFormat() );
+    writer.writeIntArrayAsEntries( glyphArray );
+    writer.writeEndElement();
+  }
 
 }

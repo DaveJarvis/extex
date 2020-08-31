@@ -19,14 +19,14 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-import java.text.DateFormat;
-
 import org.extex.font.format.Fixed32;
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.IOException;
+import java.text.DateFormat;
 
 /**
  * The 'head' table contains global information about the font. It records such
@@ -35,7 +35,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * whole. This includes a specification of the font bounding box, the direction
  * in which the font's glyphs are most likely to be written and other
  * information about the placement of glyphs in the em square.
- * 
+ *
  *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
@@ -167,352 +167,353 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>0 for current format.</td>
  * </tr>
  * </table>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class TtfTableHEAD extends AbstractXtfTable
-        implements
-            XtfTable,
-            XMLWriterConvertible {
+    implements
+    XtfTable,
+    XMLWriterConvertible {
 
-    /**
-     * checksumadjustment.
-     */
-    private final int checkSumAdjustment;
+  /**
+   * checksumadjustment.
+   */
+  private final int checkSumAdjustment;
 
-    /**
-     * created.
-     */
-    private final long created;
+  /**
+   * created.
+   */
+  private final long created;
 
-    /**
-     * flags.
-     */
-    private final short flags;
+  /**
+   * flags.
+   */
+  private final short flags;
 
-    /**
-     * fontDirectionHint.
-     */
-    private final short fontDirectionHint;
+  /**
+   * fontDirectionHint.
+   */
+  private final short fontDirectionHint;
 
-    /**
-     * font revision.
-     */
-    private final Fixed32 fontRevision;
+  /**
+   * font revision.
+   */
+  private final Fixed32 fontRevision;
 
-    /**
-     * glyphDataFormat.
-     */
-    private final short glyphDataFormat;
+  /**
+   * glyphDataFormat.
+   */
+  private final short glyphDataFormat;
 
-    /**
-     * indexToLocFormat.
-     */
-    private final short indexToLocFormat;
+  /**
+   * indexToLocFormat.
+   */
+  private final short indexToLocFormat;
 
-    /**
-     * lowestRecPPEM.
-     */
-    private final short lowestRecPPEM;
+  /**
+   * lowestRecPPEM.
+   */
+  private final short lowestRecPPEM;
 
-    /**
-     * macstyle.
-     */
-    private final short macStyle;
+  /**
+   * macstyle.
+   */
+  private final short macStyle;
 
-    /**
-     * magic number.
-     */
-    private final int magicNumber;
+  /**
+   * magic number.
+   */
+  private final int magicNumber;
 
-    /**
-     * modified.
-     */
-    private final long modified;
+  /**
+   * modified.
+   */
+  private final long modified;
 
-    /**
-     * units per em.
-     */
-    private final short unitsPerEm;
+  /**
+   * units per em.
+   */
+  private final short unitsPerEm;
 
-    /**
-     * version.
-     */
-    private final int version;
+  /**
+   * version.
+   */
+  private final int version;
 
-    /**
-     * xmax.
-     */
-    private final short xMax;
+  /**
+   * xmax.
+   */
+  private final short xMax;
 
-    /**
-     * xmin.
-     */
-    private final short xMin;
+  /**
+   * xmin.
+   */
+  private final short xMin;
 
-    /**
-     * ymax.
-     */
-    private final short yMax;
+  /**
+   * ymax.
+   */
+  private final short yMax;
 
-    /**
-     * ymin.
-     */
-    private final short yMin;
+  /**
+   * ymin.
+   */
+  private final short yMin;
 
-    /**
-     * Create a new object.
-     * 
-     * @param tablemap the tablemap
-     * @param de entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    public TtfTableHEAD(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+  /**
+   * Create a new object.
+   *
+   * @param tablemap the tablemap
+   * @param de       entry
+   * @param rar      input
+   * @throws IOException if an IO-error occurs
+   */
+  public TtfTableHEAD( XtfTableMap tablemap, XtfTableDirectory.Entry de,
+                       RandomAccessR rar ) throws IOException {
 
-        super(tablemap);
-        rar.seek(de.getOffset());
-        version = rar.readInt();
-        fontRevision = new Fixed32(rar.readInt());
-        checkSumAdjustment = rar.readInt();
-        magicNumber = rar.readInt();
-        flags = rar.readShort();
-        unitsPerEm = rar.readShort();
-        created = rar.readLong();
-        modified = rar.readLong();
-        xMin = rar.readShort();
-        yMin = rar.readShort();
-        xMax = rar.readShort();
-        yMax = rar.readShort();
-        macStyle = rar.readShort();
-        lowestRecPPEM = rar.readShort();
-        fontDirectionHint = rar.readShort();
-        indexToLocFormat = rar.readShort();
-        glyphDataFormat = rar.readShort();
-    }
+    super( tablemap );
+    rar.seek( de.getOffset() );
+    version = rar.readInt();
+    fontRevision = new Fixed32( rar.readInt() );
+    checkSumAdjustment = rar.readInt();
+    magicNumber = rar.readInt();
+    flags = rar.readShort();
+    unitsPerEm = rar.readShort();
+    created = rar.readLong();
+    modified = rar.readLong();
+    xMin = rar.readShort();
+    yMin = rar.readShort();
+    xMax = rar.readShort();
+    yMax = rar.readShort();
+    macStyle = rar.readShort();
+    lowestRecPPEM = rar.readShort();
+    fontDirectionHint = rar.readShort();
+    indexToLocFormat = rar.readShort();
+    glyphDataFormat = rar.readShort();
+  }
 
-    /**
-     * Returns the checkSumAdjustment.
-     * 
-     * @return Returns the checkSumAdjustment.
-     */
-    public int getCheckSumAdjustment() {
+  /**
+   * Returns the checkSumAdjustment.
+   *
+   * @return Returns the checkSumAdjustment.
+   */
+  public int getCheckSumAdjustment() {
 
-        return checkSumAdjustment;
-    }
+    return checkSumAdjustment;
+  }
 
-    /**
-     * Returns the created.
-     * 
-     * @return Returns the created.
-     */
-    public long getCreated() {
+  /**
+   * Returns the created.
+   *
+   * @return Returns the created.
+   */
+  public long getCreated() {
 
-        return created;
-    }
+    return created;
+  }
 
-    /**
-     * Returns the flags.
-     * 
-     * @return Returns the flags.
-     */
-    public short getFlags() {
+  /**
+   * Returns the flags.
+   *
+   * @return Returns the flags.
+   */
+  public short getFlags() {
 
-        return flags;
-    }
+    return flags;
+  }
 
-    /**
-     * Returns the fontDirectionHint.
-     * 
-     * @return Returns the fontDirectionHint.
-     */
-    public short getFontDirectionHint() {
+  /**
+   * Returns the fontDirectionHint.
+   *
+   * @return Returns the fontDirectionHint.
+   */
+  public short getFontDirectionHint() {
 
-        return fontDirectionHint;
-    }
+    return fontDirectionHint;
+  }
 
-    /**
-     * Returns the fontRevision.
-     * 
-     * @return Returns the fontRevision.
-     */
-    public Fixed32 getFontRevision() {
+  /**
+   * Returns the fontRevision.
+   *
+   * @return Returns the fontRevision.
+   */
+  public Fixed32 getFontRevision() {
 
-        return fontRevision;
-    }
+    return fontRevision;
+  }
 
-    /**
-     * Returns the glyphDataFormat.
-     * 
-     * @return Returns the glyphDataFormat.
-     */
-    public short getGlyphDataFormat() {
+  /**
+   * Returns the glyphDataFormat.
+   *
+   * @return Returns the glyphDataFormat.
+   */
+  public short getGlyphDataFormat() {
 
-        return glyphDataFormat;
-    }
+    return glyphDataFormat;
+  }
 
-    /**
-     * Returns the indexToLocFormat.
-     * 
-     * @return Returns the indexToLocFormat.
-     */
-    public short getIndexToLocFormat() {
+  /**
+   * Returns the indexToLocFormat.
+   *
+   * @return Returns the indexToLocFormat.
+   */
+  public short getIndexToLocFormat() {
 
-        return indexToLocFormat;
-    }
+    return indexToLocFormat;
+  }
 
-    /**
-     * Returns the lowestRecPPEM.
-     * 
-     * @return Returns the lowestRecPPEM.
-     */
-    public short getLowestRecPPEM() {
+  /**
+   * Returns the lowestRecPPEM.
+   *
+   * @return Returns the lowestRecPPEM.
+   */
+  public short getLowestRecPPEM() {
 
-        return lowestRecPPEM;
-    }
+    return lowestRecPPEM;
+  }
 
-    /**
-     * Returns the macStyle.
-     * 
-     * @return Returns the macStyle.
-     */
-    public short getMacStyle() {
+  /**
+   * Returns the macStyle.
+   *
+   * @return Returns the macStyle.
+   */
+  public short getMacStyle() {
 
-        return macStyle;
-    }
+    return macStyle;
+  }
 
-    /**
-     * Returns the magicNumber.
-     * 
-     * @return Returns the magicNumber.
-     */
-    public int getMagicNumber() {
+  /**
+   * Returns the magicNumber.
+   *
+   * @return Returns the magicNumber.
+   */
+  public int getMagicNumber() {
 
-        return magicNumber;
-    }
+    return magicNumber;
+  }
 
-    /**
-     * Returns the modified.
-     * 
-     * @return Returns the modified.
-     */
-    public long getModified() {
+  /**
+   * Returns the modified.
+   *
+   * @return Returns the modified.
+   */
+  public long getModified() {
 
-        return modified;
-    }
+    return modified;
+  }
 
-public String getShortcut() {
+  public String getShortcut() {
 
-        return "head";
-    }
+    return "head";
+  }
 
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return Returns the table type
+   */
+  public int getType() {
 
-        return XtfReader.HEAD;
-    }
+    return XtfReader.HEAD;
+  }
 
-    /**
-     * Returns the unitsPerEm.
-     * 
-     * @return Returns the unitsPerEm.
-     */
-    public short getUnitsPerEm() {
+  /**
+   * Returns the unitsPerEm.
+   *
+   * @return Returns the unitsPerEm.
+   */
+  public short getUnitsPerEm() {
 
-        return unitsPerEm;
-    }
+    return unitsPerEm;
+  }
 
-    /**
-     * Returns the version.
-     * 
-     * @return Returns the version.
-     */
-    public int getVersion() {
+  /**
+   * Returns the version.
+   *
+   * @return Returns the version.
+   */
+  public int getVersion() {
 
-        return version;
-    }
+    return version;
+  }
 
-    /**
-     * Returns the xMax.
-     * 
-     * @return Returns the xMax.
-     */
-    public short getXMax() {
+  /**
+   * Returns the xMax.
+   *
+   * @return Returns the xMax.
+   */
+  public short getXMax() {
 
-        return xMax;
-    }
+    return xMax;
+  }
 
-    /**
-     * Returns the xMin.
-     * 
-     * @return Returns the xMin.
-     */
-    public short getXMin() {
+  /**
+   * Returns the xMin.
+   *
+   * @return Returns the xMin.
+   */
+  public short getXMin() {
 
-        return xMin;
-    }
+    return xMin;
+  }
 
-    /**
-     * Returns the yMax.
-     * 
-     * @return Returns the yMax.
-     */
-    public short getYMax() {
+  /**
+   * Returns the yMax.
+   *
+   * @return Returns the yMax.
+   */
+  public short getYMax() {
 
-        return yMax;
-    }
+    return yMax;
+  }
 
-    /**
-     * Returns the yMin.
-     * 
-     * @return Returns the yMin.
-     */
-    public short getYMin() {
+  /**
+   * Returns the yMin.
+   *
+   * @return Returns the yMin.
+   */
+  public short getYMin() {
 
-        return yMin;
-    }
+    return yMin;
+  }
 
-    /**
-*      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+  /**
+   * org.extex.util.xml.XMLStreamWriter)
+   */
+  public void writeXML( XMLStreamWriter writer ) throws IOException {
 
-        writeStartElement(writer);
+    writeStartElement( writer );
 
-        DateFormat dformat = DateFormat.getDateInstance();
-        writer.writeAttribute("version", XtfReader
-            .convertIntToHexString(version));
-        writer.writeAttribute("fontrevision", String.valueOf(fontRevision
-            .getDoubleValue()));
-        writer.writeAttribute("checksumadjustment", XtfReader
-            .convertIntToHexString(checkSumAdjustment));
-        writer.writeAttribute("magicnumber", XtfReader
-            .convertIntToHexString(magicNumber));
-        writer.writeAttribute("flags", XtfReader
-            .convertIntToBinaryString(flags));
-        writer.writeAttribute("unitsperem", String.valueOf(unitsPerEm));
-        writer.writeAttribute("created", dformat.format(XtfReader
-            .convertDate(created)));
-        writer.writeAttribute("modified", dformat.format(XtfReader
-            .convertDate(modified)));
-        writer.writeAttribute("xmin", String.valueOf(xMin));
-        writer.writeAttribute("ymin", String.valueOf(yMin));
-        writer.writeAttribute("xmax", String.valueOf(xMax));
-        writer.writeAttribute("ymax", String.valueOf(yMax));
-        writer.writeAttribute("macstyle", XtfReader
-            .convertIntToBinaryString(macStyle));
-        writer.writeAttribute("lowestrecppem", String.valueOf(lowestRecPPEM));
-        writer.writeAttribute("fontdiretionhint", String
-            .valueOf(fontDirectionHint));
-        writer.writeAttribute("indextolocformat", String
-            .valueOf(indexToLocFormat));
-        writer.writeAttribute("glyphdataformat", String
-            .valueOf(glyphDataFormat));
-        writer.writeEndElement();
-    }
+    DateFormat dformat = DateFormat.getDateInstance();
+    writer.writeAttribute( "version", XtfReader
+        .convertIntToHexString( version ) );
+    writer.writeAttribute( "fontrevision", String.valueOf( fontRevision
+                                                               .getDoubleValue() ) );
+    writer.writeAttribute( "checksumadjustment", XtfReader
+        .convertIntToHexString( checkSumAdjustment ) );
+    writer.writeAttribute( "magicnumber", XtfReader
+        .convertIntToHexString( magicNumber ) );
+    writer.writeAttribute( "flags", XtfReader
+        .convertIntToBinaryString( flags ) );
+    writer.writeAttribute( "unitsperem", String.valueOf( unitsPerEm ) );
+    writer.writeAttribute( "created", dformat.format( XtfReader
+                                                          .convertDate( created ) ) );
+    writer.writeAttribute( "modified", dformat.format( XtfReader
+                                                           .convertDate(
+                                                               modified ) ) );
+    writer.writeAttribute( "xmin", String.valueOf( xMin ) );
+    writer.writeAttribute( "ymin", String.valueOf( yMin ) );
+    writer.writeAttribute( "xmax", String.valueOf( xMax ) );
+    writer.writeAttribute( "ymax", String.valueOf( yMax ) );
+    writer.writeAttribute( "macstyle", XtfReader
+        .convertIntToBinaryString( macStyle ) );
+    writer.writeAttribute( "lowestrecppem", String.valueOf( lowestRecPPEM ) );
+    writer.writeAttribute( "fontdiretionhint", String
+        .valueOf( fontDirectionHint ) );
+    writer.writeAttribute( "indextolocformat", String
+        .valueOf( indexToLocFormat ) );
+    writer.writeAttribute( "glyphdataformat", String
+        .valueOf( glyphDataFormat ) );
+    writer.writeEndElement();
+  }
 }

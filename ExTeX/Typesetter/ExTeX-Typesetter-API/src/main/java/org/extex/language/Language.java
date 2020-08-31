@@ -26,26 +26,26 @@ import org.extex.language.word.WordTokenizer;
 /**
  * This interface describes a container for all language-dependent information.
  * <p>
- *  This container subsumes a hyphenator. In addition the access to the ligature
- *  builder is enabled.
+ * This container subsumes a hyphenator. In addition the access to the ligature
+ * builder is enabled.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public interface Language extends Hyphenator, LigatureBuilder, WordTokenizer {
 
-    /**
-     * Getter for the name.
-     *
-     * @return the name
-     */
-    String getName();
+  /**
+   * Getter for the name.
+   *
+   * @return the name
+   */
+  String getName();
 
-    /**
-     * Setter for the name.
-     *
-     * @param name the name
-     */
-    void setName(String name);
+  /**
+   * Setter for the name.
+   *
+   * @param name the name
+   */
+  void setName( String name );
 
 }

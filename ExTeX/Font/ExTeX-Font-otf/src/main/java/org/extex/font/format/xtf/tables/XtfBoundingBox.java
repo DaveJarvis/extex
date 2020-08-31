@@ -21,145 +21,149 @@ package org.extex.font.format.xtf.tables;
 
 /**
  * Bounding box.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-*/
+ */
 public class XtfBoundingBox {
 
-    /**
-     * The x-Max.
-     */
-    private final short xMax;
+  /**
+   * The x-Max.
+   */
+  private final short xMax;
 
-    /**
-     * The x-Min.
-     */
-    private final short xMin;
+  /**
+   * The x-Min.
+   */
+  private final short xMin;
 
-    /**
-     * The y-Max.
-     */
-    private final short yMax;
+  /**
+   * The y-Max.
+   */
+  private final short yMax;
 
-    /**
-     * The y-Min.
-     */
-    private final short yMin;
+  /**
+   * The y-Min.
+   */
+  private final short yMin;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param xmin The x-min.
-     * @param ymin The y-min.
-     * @param xmax The x-max.
-     * @param ymax The y-max.
-     */
-    public XtfBoundingBox(short xmin, short ymin, short xmax, short ymax) {
+  /**
+   * Creates a new object.
+   *
+   * @param xmin The x-min.
+   * @param ymin The y-min.
+   * @param xmax The x-max.
+   * @param ymax The y-max.
+   */
+  public XtfBoundingBox( short xmin, short ymin, short xmax, short ymax ) {
 
-        xMin = xmin;
-        yMin = ymin;
-        xMax = xmax;
-        yMax = ymax;
+    xMin = xmin;
+    yMin = ymin;
+    xMax = xmax;
+    yMax = ymax;
 
+  }
+
+  /**
+   * Returns {@code true}, if the values are equals.
+   *
+   * @param xmin The x-min.
+   * @param ymin The y-min.
+   * @param xmax The x-max.
+   * @param ymax The y-max.
+   * @return {@code true}, if the values are equals.
+   */
+  public boolean eq( int xmin, int ymin, int xmax, int ymax ) {
+
+    return eq( (short) xmin, (short) ymin, (short) xmax, (short) ymax );
+  }
+
+  /**
+   * Returns {@code true}, if the values are equals.
+   *
+   * @param xmin The x-min.
+   * @param ymin The y-min.
+   * @param xmax The x-max.
+   * @param ymax The y-max.
+   * @return {@code true}, if the values are equals.
+   */
+  public boolean eq( short xmin, short ymin, short xmax, short ymax ) {
+
+    return xMin == xmin && yMin == ymin && xMax == xmax && yMax == ymax;
+  }
+
+  /**
+   * Returns the depth of the bounding box.
+   *
+   * @return Returns the depth of the bounding box.
+   */
+  public int getDepth() {
+
+    if( yMin < 0 ) {
+      return -yMin;
     }
+    return 0;
+  }
 
-    /**
-     * Returns {@code true}, if the values are equals.
-     * 
-     * @param xmin The x-min.
-     * @param ymin The y-min.
-     * @param xmax The x-max.
-     * @param ymax The y-max.
-     * @return {@code true}, if the values are equals.
-     */
-    public boolean eq(int xmin, int ymin, int xmax, int ymax) {
+  /**
+   * Returns the height of the bounding box.
+   *
+   * @return Returns the height of the bounding box.
+   */
+  public int getHeight() {
 
-        return eq((short) xmin, (short) ymin, (short) xmax, (short) ymax);
-    }
+    return yMax;
+  }
 
-    /**
-     * Returns {@code true}, if the values are equals.
-     * 
-     * @param xmin The x-min.
-     * @param ymin The y-min.
-     * @param xmax The x-max.
-     * @param ymax The y-max.
-     * @return {@code true}, if the values are equals.
-     */
-    public boolean eq(short xmin, short ymin, short xmax, short ymax) {
+  /**
+   * Getter for xMax.
+   *
+   * @return Returns the xMax.
+   */
+  public short getXMax() {
 
-        return xMin == xmin && yMin == ymin && xMax == xmax && yMax == ymax;
-    }
+    return xMax;
+  }
 
-    /**
-     * Returns the depth of the bounding box.
-     * 
-     * @return Returns the depth of the bounding box.
-     */
-    public int getDepth() {
+  /**
+   * Getter for xMin.
+   *
+   * @return Returns the xMin.
+   */
+  public short getXMin() {
 
-        if (yMin < 0) {
-            return -yMin;
-        }
-        return 0;
-    }
+    return xMin;
+  }
 
-    /**
-     * Returns the height of the bounding box.
-     * 
-     * @return Returns the height of the bounding box.
-     */
-    public int getHeight() {
+  /**
+   * Getter for yMax.
+   *
+   * @return Returns the yMax.
+   */
+  public short getYMax() {
 
-        return yMax;
-    }
+    return yMax;
+  }
 
-    /**
-     * Getter for xMax.
-     * 
-     * @return Returns the xMax.
-     */
-    public short getXMax() {
+  /**
+   * Getter for yMin.
+   *
+   * @return Returns the yMin.
+   */
+  public short getYMin() {
 
-        return xMax;
-    }
+    return yMin;
+  }
 
-    /**
-     * Getter for xMin.
-     * 
-     * @return Returns the xMin.
-     */
-    public short getXMin() {
+  @Override
+  public String toString() {
 
-        return xMin;
-    }
-
-    /**
-     * Getter for yMax.
-     * 
-     * @return Returns the yMax.
-     */
-    public short getYMax() {
-
-        return yMax;
-    }
-
-    /**
-     * Getter for yMin.
-     * 
-     * @return Returns the yMin.
-     */
-    public short getYMin() {
-
-        return yMin;
-    }
-
-@Override
-    public String toString() {
-
-        StringBuilder buf = new StringBuilder();
-        buf.append("(").append(xMin).append(" ").append(yMin).append(") ");
-        buf.append("(").append(xMax).append(" ").append(yMax).append(")");
-        return buf.toString();
-    }
+    StringBuilder buf = new StringBuilder();
+    buf.append( "(" )
+       .append( xMin )
+       .append( " " )
+       .append( yMin )
+       .append( ") " );
+    buf.append( "(" ).append( xMax ).append( " " ).append( yMax ).append( ")" );
+    return buf.toString();
+  }
 }

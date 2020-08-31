@@ -26,31 +26,30 @@ import org.junit.Test;
  * This is a test suite for the primitive {@code \pdfrefximage}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-*/
+ */
 public class PdfrefximageTest extends NoFlagsButProtectedPrimitiveTester {
 
 
-    public PdfrefximageTest() {
+  public PdfrefximageTest() {
 
-        super("pdfrefximage", "1", "\\pdfoutput=1 ");
-        setConfig("pdftex-test");
-    }
+    super( "pdfrefximage", "1", "\\pdfoutput=1 " );
+    setConfig( "pdftex-test" );
+  }
 
-    /**
-     * <testcase primitive="\pdfrefximage">
-     *  Test case checking that ...
-     *
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
+  /**
+   * <testcase primitive="\pdfrefximage">
+   * Test case checking that ...
+   *
+   * @throws Exception in case of an error
+   */
+  @Test
+  public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfrefximage b",
-                //--- output message ---
-                "Missing number, treated as zero");
-    }
+    assertFailure(//--- input code ---
+                  DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfrefximage b",
+                  //--- output message ---
+                  "Missing number, treated as zero" );
+  }
 
-    //TODO implement more primitive specific test cases
+  //TODO implement more primitive specific test cases
 }
