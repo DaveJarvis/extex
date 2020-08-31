@@ -37,7 +37,8 @@ import org.junit.Test;
 */
 public class TocIndexTest {
 
-    private final static String DIR_TARGET = "build/empty";
+    private final static String DIR_TARGET = "build";
+    private final static String DIR_EMPTY = DIR_TARGET + "/empty";
 
     /**
      * Run a test and compare the result.
@@ -99,7 +100,7 @@ public class TocIndexTest {
     }
 
     private void setupTargetDirectory() {
-        File dir = new File(DIR_TARGET);
+        File dir = new File(DIR_EMPTY);
         dir.delete();
         dir.mkdirs();
         dir.deleteOnExit();
@@ -111,7 +112,7 @@ public class TocIndexTest {
     @Test
     public final void test1() {
         setupTargetDirectory();
-        runTestEn("#\n", "", DIR_TARGET);
+        runTestEn("#\n", "", DIR_EMPTY);
     }
 
     /**
@@ -193,7 +194,7 @@ public class TocIndexTest {
         runTestEn(
             "",
             "The output file `file/which/is/not/writable' can not be written\n",
-            DIR_TARGET, "-out", "file/which/is/not/writable");
+            DIR_EMPTY, "-out", "file/which/is/not/writable");
     }
 
     /**
@@ -205,7 +206,7 @@ public class TocIndexTest {
         runTestEn(
             "",
             "The output file `file/which/is/not/writable' can not be written\n",
-            DIR_TARGET, "-output=file/which/is/not/writable");
+            DIR_EMPTY, "-output=file/which/is/not/writable");
     }
 
     /**
@@ -217,7 +218,7 @@ public class TocIndexTest {
         runTestEn(
             "",
             "The output file `file/which/is/not/writable' can not be written\n",
-            DIR_TARGET, "--output=file/which/is/not/writable");
+            DIR_EMPTY, "--output=file/which/is/not/writable");
     }
 
     /**
@@ -245,7 +246,7 @@ public class TocIndexTest {
     @Test
     public final void testOmit1() {
 
-        File dir = new File(DIR_TARGET + "/toc-index-test");
+        File dir = new File(DIR_EMPTY + "/toc-index-test");
         File file = new File(dir, "xxx");
         assertFalse(dir.toString() + " exists. Make sure it is gone",
             dir.exists());
@@ -292,7 +293,7 @@ public class TocIndexTest {
 
         runTestEn("", "",
             "src/test/resources/org/extex/framework/resource/tool/toc",
-            "-omit=.*/\\.svn$", "--output=target/toc");
+            "-omit=.*/\\.svn$", "--output="+DIR_TARGET+"/toc");
     }
 
     /**

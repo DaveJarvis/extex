@@ -25,24 +25,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.whitemagicsoftware.tex;
-
-import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.max.StringSource;
 
 /**
- * Demonstrates parsing a TeX string.
+ * Contains examples for parsing and typesetting TeX.
  */
-public class ParseTeX {
-  private final static String TEX = "$e^{\\pi i} + 1 = 0$";
-
-  public static void main( final String[] args ) {
-    final Interpreter interpreter;
-
-    final StringSource ss = new StringSource(TEX);
-
-    //ss.getTokens(  )
-
-
-  }
-}
+package com.whitemagicsoftware.tex;
